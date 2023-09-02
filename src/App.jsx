@@ -8,6 +8,10 @@ const AppContainer = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${(props) => (props.$theme ? "white" : "black")};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const App = () => {
@@ -18,7 +22,9 @@ const App = () => {
   return (
     <AppContainer $theme={theme}>
       <Header theme={theme} setTheme={setTheme} />
-      <ContactForm theme={theme} />
+      <main>
+        <ContactForm theme={theme} />
+      </main>
       <Footer theme={theme} />
     </AppContainer>
   );

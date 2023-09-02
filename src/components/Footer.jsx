@@ -5,11 +5,10 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faCodepen } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import FrontendMentor from "../assets/images/frontend-mentor-icon.png";
+import { ReactComponent as FEM } from "../assets/images/frontend-mentor.svg";
 
 const StyledFooter = styled.footer`
   width: 100%;
-  background-color: var(--light);
 `;
 const StyledList = styled.ul`
   display: flex;
@@ -26,11 +25,13 @@ const Icon = styled(FontAwesomeIcon)`
   height: 1.5rem;
   color: var(--focus1);
 `;
-const FEMIcon = styled.img`
+const FEMIcon = styled(FEM)`
   width: 1.5rem;
   height: 1.5rem;
-  border: 1px solid var(--focus1);
-  border-radius: 50%;
+  transform: scale(0.8);
+  & > path {
+    fill: var(--focus1);
+  }
 `;
 
 const Footer = () => {
@@ -50,7 +51,7 @@ const Footer = () => {
             target="_blank"
             href="https://www.frontendmentor.io/profile/zun-liang"
           >
-            <FEMIcon src={FrontendMentor} alt="frontend mentor icon" />
+            <FEMIcon />
           </StyledLink>
         </StyledListItem>
         <StyledListItem>
@@ -59,7 +60,7 @@ const Footer = () => {
           </StyledLink>
         </StyledListItem>
         <StyledListItem>
-          <StyledLink target="_blank" href="">
+          <StyledLink target="_blank" href="https://codepen.io/zunl">
             <Icon icon={faCodepen} />
           </StyledLink>
         </StyledListItem>

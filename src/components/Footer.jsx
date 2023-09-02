@@ -8,13 +8,14 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { ReactComponent as FEM } from "../assets/images/frontend-mentor.svg";
 
 const StyledFooter = styled.footer`
-  width: 100%;
+  width: 100vw;
+  padding: 2rem;
 `;
 const StyledList = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 `;
 const StyledListItem = styled.li`
   list-style: none;
@@ -32,6 +33,14 @@ const FEMIcon = styled(FEM)`
   & > path {
     fill: var(--focus1);
   }
+`;
+const StyledP = styled.p`
+  text-align: center;
+  color: var(--focus1);
+  font-family: "Roboto", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  margin-top: 1rem;
 `;
 
 const Footer = () => {
@@ -75,6 +84,7 @@ const Footer = () => {
           </StyledLink>
         </StyledListItem>
       </StyledList>
+      <StyledP>© 2023 Zun Liang. All Rights Reserved.</StyledP>
     </StyledFooter>
   );
 };

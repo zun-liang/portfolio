@@ -9,7 +9,7 @@ import { ReactComponent as FEM } from "../assets/images/frontend-mentor.svg";
 
 const StyledFooter = styled.footer`
   width: 100vw;
-  padding: 2rem;
+  padding: 1.5rem;
 `;
 const StyledList = styled.ul`
   display: flex;
@@ -40,7 +40,7 @@ const StyledP = styled.p`
   font-family: "Roboto", sans-serif;
   font-size: 0.8rem;
   letter-spacing: 1px;
-  margin-top: 1rem;
+  margin-top: 0.8rem;
 `;
 
 const Footer = () => {

@@ -6,18 +6,19 @@ import { Link } from "react-router-dom";
 
 const StyledHeader = styled.header`
   width: 100vw;
-  padding: 2rem;
+  padding: 3rem 2rem 0;
   position: sticky;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 3fr 4fr 1fr 1fr;
   align-items: center;
-  gap: 1rem;
 `;
 const Title = styled.h1`
   font-family: "Black Ops One", cursive;
   font-size: 2rem;
 `;
-const StyledNav = styled.nav``;
+const StyledNav = styled.nav`
+  justify-self: start;
+`;
 const StyledList = styled.ul`
   display: flex;
   gap: 2rem;
@@ -37,7 +38,8 @@ const StyledLink = styled(Link)`
   }
 `;
 const Time = styled.p`
-  width: 15rem;
+  justify-self: end;
+  width: 12rem;
   text-align: center;
   color: var(--focus1);
   font-family: "Lobster", cursive;
@@ -46,12 +48,12 @@ const Time = styled.p`
 const ThemeSwitch = styled.p`
   color: var(--focus1);
   font-size: 1.5rem;
+  justify-self: end;
 `;
 
 const Header = ({ theme, setTheme }) => {
   const options = {
     weekday: "short",
-    year: "2-digit",
     month: "short",
     day: "2-digit",
     hour: "2-digit",

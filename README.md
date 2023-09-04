@@ -4,6 +4,7 @@
 
 - [favicon.io](https://favicon.io/favicon-generator/)
 - [COOLTEXT](https://cooltext.top/)
+- [Pixel Speech Bubble](https://pixelspeechbubble.com/)
 
 #### React Router
 

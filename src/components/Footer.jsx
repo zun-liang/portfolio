@@ -6,6 +6,7 @@ import { faCodepen } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { ReactComponent as FEM } from "../assets/images/frontend-mentor.svg";
+import { Link } from "react-router-dom";
 
 const StyledFooter = styled.footer`
   width: 100vw;
@@ -21,6 +22,7 @@ const StyledListItem = styled.li`
   list-style: none;
 `;
 const StyledLink = styled.a``;
+const StyledLinkEn = styled(Link)``;
 const Icon = styled(FontAwesomeIcon)`
   width: 1.5rem;
   height: 1.5rem;
@@ -79,9 +81,9 @@ const Footer = () => {
           </StyledLink>
         </StyledListItem>
         <StyledListItem>
-          <StyledLink target="_blank" href="">
+          <StyledLinkEn to="/contact">
             <Icon icon={faEnvelope} />
-          </StyledLink>
+          </StyledLinkEn>
         </StyledListItem>
       </StyledList>
       <StyledP>© 2023 Zun Liang. All Rights Reserved.</StyledP>

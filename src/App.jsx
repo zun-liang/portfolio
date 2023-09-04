@@ -1,8 +1,13 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import ContactForm from "./components/ContactForm";
+
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Projects from "./pages/Projects";
+import Blog from "./pages/Blog";
+import ContactForm from "./pages/ContactForm";
+import { Routes, Route } from "react-router-dom";
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -21,11 +26,20 @@ const App = () => {
 
   return (
     <AppContainer $theme={theme}>
-      <Header theme={theme} setTheme={setTheme} />
       <main>
-        <ContactForm theme={theme} />
+        <Routes>
+          <Route
+            path="/"
+            element={<Layout theme={theme} setTheme={setTheme} />}
+          >
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="blog" element={<Blog />} />
+            <Route path="contact" element={<ContactForm />} theme={theme} />
+          </Route>
+        </Routes>
       </main>
-      <Footer theme={theme} />
     </AppContainer>
   );
 };

@@ -5,6 +5,10 @@
 - [favicon.io](https://favicon.io/favicon-generator/)
 - [COOLTEXT](https://cooltext.top/)
 
+#### React Router
+
+- [React Router Version 6 Tutorial – How to Set Up Router and Route to Other Components](https://www.freecodecamp.org/news/how-to-use-react-router-version-6/)
+
 #### JavaScript
 
 - [Date.prototype.toLocaleString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString)

@@ -2,8 +2,8 @@ import { useForm, ValidationError } from "@formspree/react";
 import styled from "styled-components";
 
 const StyledForm = styled.form`
-  width: 50vw;
-  min-height: 50vh;
+  width: 60vw;
+  min-height: 60vh;
   padding: 3rem 2rem;
   border: 5px ridge var(--focus1);
   display: flex;
@@ -45,7 +45,7 @@ const StyledTextarea = styled.textarea`
 `;
 const StyledButton = styled.button`
   width: 80%;
-  height: 2rem;
+  height: 2.5rem;
   font-family: "Black Ops One", cursive;
   font-size: 1rem;
   color: var(--focus1);
@@ -56,6 +56,10 @@ const StyledButton = styled.button`
   &:hover {
     background-color: white;
   }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const ContactForm = () => {

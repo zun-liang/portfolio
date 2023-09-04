@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const StyledHeader = styled.header`
   width: 100vw;
@@ -26,6 +27,15 @@ const StyledListItem = styled.li`
   font-family: "Black Ops One", cursive;
   font-size: 1.1rem;
 `;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  &:link {
+    color: var(--focus1);
+  }
+  &:visited {
+    color: var(--focus1);
+  }
+`;
 const Time = styled.p`
   width: 15rem;
   text-align: center;
@@ -37,6 +47,7 @@ const ThemeSwitch = styled.p`
   color: var(--focus1);
   font-size: 1.5rem;
 `;
+
 const Header = ({ theme, setTheme }) => {
   const options = {
     weekday: "short",
@@ -66,11 +77,21 @@ const Header = ({ theme, setTheme }) => {
       <Title>Zun Liang ⊹˚₊⊹˚ʚ☕️੭</Title>
       <StyledNav>
         <StyledList>
-          <StyledListItem>Home</StyledListItem>
-          <StyledListItem>About Me</StyledListItem>
-          <StyledListItem>Projects</StyledListItem>
-          <StyledListItem>Blog</StyledListItem>
-          <StyledListItem>Contact</StyledListItem>
+          <StyledListItem>
+            <StyledLink to="/">Home</StyledLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLink to="/about">About Me</StyledLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLink to="/projects">Projects</StyledLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLink to="/blog">Blog</StyledLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLink to="/contact">Contact</StyledLink>
+          </StyledListItem>
         </StyledList>
       </StyledNav>
       <Time>{current}</Time>

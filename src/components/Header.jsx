@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const StyledHeader = styled.header`
   width: 100vw;
-  padding: 3rem 2rem 0;
+  padding: 2rem 3rem 0;
   position: sticky;
   display: grid;
   grid-template-columns: 3fr 4fr 1fr 1fr;

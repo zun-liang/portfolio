@@ -11,7 +11,7 @@ import { Routes, Route } from "react-router-dom";
 
 const AppContainer = styled.div`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: ${(props) => (props.$theme ? "white" : "black")};
   display: flex;
   flex-direction: column;

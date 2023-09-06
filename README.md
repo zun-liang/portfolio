@@ -15,6 +15,10 @@
 - [Date.prototype.toLocaleString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString)
 - [Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)
 
+#### Styled-Components
+
+- [Referring to other components](https://styled-components.com/docs/advanced#referring-to-other-components)
+
 #### SVGs
 
 - [How to Import SVGs in a React and Vite app] (https://www.freecodecamp.org/news/how-to-import-svgs-in-react-and-vite/#3importingsvgsasreactcomponents)

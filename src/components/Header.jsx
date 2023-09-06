@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
-import styled from "styled-components";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const StyledHeader = styled.header`
   width: 100vw;
@@ -26,7 +26,7 @@ const StyledList = styled.ul`
 const StyledListItem = styled.li`
   list-style: none;
   font-family: "Black Ops One", cursive;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -49,6 +49,7 @@ const ThemeSwitch = styled.p`
   color: var(--focus1);
   font-size: 1.5rem;
   justify-self: end;
+  cursor: pointer;
 `;
 
 const Header = ({ theme, setTheme }) => {

@@ -8,7 +8,7 @@ const AboutContainer = styled.div`
   width: 80%;
   height: 100%;
   margin: 0 auto;
-  @media (min-width: 800px) {
+  @media (min-width: 1000px) {
     padding: 8rem 0;
   }
 `;
@@ -70,18 +70,18 @@ const About = ({ theme }) => {
       </StyledDiv>
       <StyledH2>Journey</StyledH2>
       <StyledP $theme={theme}>
-        I embarked on my front-end development journey in February 2022, driven
-        by a deep fascination with programming. Prior to this, I had minimal
-        experience with coding, having only dabbled in Markdown for blogging.
+        I embarked on my learning journey in February 2022, driven by a deep
+        fascination with programming. Prior to this, I had minimal experience
+        with coding, having only dabbled in Markdown for blogging.
       </StyledP>
       <StyledP $theme={theme}>
         This journey has been a rollercoaster of excitement and frustration.
-        Completing challenges on freeCodeCamp brings a profound sense of
+        Completing challengesand projects brings a profound sense of
         accomplishment, yet certain concepts often elude me.
       </StyledP>
       <StyledP $theme={theme}>
         Nevertheless, I'm proud of my progress. I've acquired a diverse skill
-        set, from HTML and CSS to JavaScript and web design. This journey has
+        set, from HTML, CSS, JavaScript to React and more. This journey has
         taught me resilience and the value of perseverance. I'm excited to keep
         pushing forward in front-end development.
       </StyledP>

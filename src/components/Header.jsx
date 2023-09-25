@@ -11,6 +11,9 @@ const StyledHeader = styled.header`
   flex-direction: column;
   align-items: flex-end;
   @media (min-width: 800px) {
+    padding: 2.5rem 2.5rem 0;
+  }
+  @media (min-width: 1000px) {
     padding: 2rem 3rem 0;
     display: grid;
     grid-template-columns: 3fr 4fr 1fr 1fr;
@@ -22,6 +25,9 @@ const StyledHeader = styled.header`
 const Title = styled.h1`
   font-family: "Black Ops One", cursive;
   font-size: 2rem;
+  @media (min-width: 800px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const SubTitle = styled.span`
@@ -58,7 +64,7 @@ const Overlay = styled.div`
   background-color: ${({ $theme }) =>
     $theme ? "rgba(0, 0, 0, 0.5)" : "rgba(0, 0, 0, 0.8)"};
   display: ${({ $menu }) => ($menu ? "block" : "none")};
-  @media (min-width: 800px) {
+  @media (min-width: 1000px) {
     display: ${({ $menu }) => ($menu ? "block" : "block")};
     background-color: transparent;
   }
@@ -74,6 +80,10 @@ const StyledNav = styled.nav`
   left: 50%;
   transform: translate(-50%, -50%);
   @media (min-width: 800px) {
+    width: 70vw;
+    height: 60vh;
+  }
+  @media (min-width: 1000px) {
     width: auto;
     height: auto;
     background-color: transparent;
@@ -89,6 +99,9 @@ const StyledList = styled.ul`
   justify-content: center;
   gap: 2rem;
   @media (min-width: 800px) {
+    gap: 2.5rem;
+  }
+  @media (min-width: 1000px) {
     flex-direction: row;
   }
 `;
@@ -96,24 +109,36 @@ const StyledListItem = styled.li`
   list-style: none;
   font-family: "Black Ops One", cursive;
   font-size: 1.5rem;
-  @media (min-width: 800px) {
+  @media (min-width: 1000px) {
     font-size: 1.2rem;
   }
 `;
 const MenuBorder = styled(StyledListItem)`
-  font-size: 1.5rem;
-  margin: 1rem;
+  font-size: 1.3rem;
+  margin: -0.5rem;
+  font-weight: 700;
   @media (min-width: 800px) {
+    font-size: 2rem;
+    margin: 3.6rem;
+  }
+  @media (min-width: 1000px) {
     display: none;
   }
 `;
 const MenuBorderVertical = styled(MenuBorder)`
   writing-mode: vertical-lr;
+  text-orientation: sideways;
   position: absolute;
-  left: 0;
+  left: 10%;
+  @media (min-width: 800px) {
+    left: -2%;
+  }
 `;
 const MenuBorderVerticalRight = styled(MenuBorderVertical)`
-  left: 82%;
+  left: 87%;
+  @media (min-width: 800px) {
+    left: 75%;
+  }
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -127,19 +152,25 @@ const StyledLink = styled(Link)`
   }
 `;
 const Time = styled.p`
-  width: 50%;
-  font-family: "Lobster", cursive;
-  letter-spacing: 2px;
+  width: 45%;
   margin: 0.5rem 0;
   @media (min-width: 800px) {
+    width: 33%;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  @media (min-width: 1000px) {
     justify-self: end;
-    width: 12rem;
   }
 `;
 const ThemeSwitch = styled.p`
   font-size: 1.5rem;
   cursor: pointer;
   @media (min-width: 800px) {
+    font-size: 2rem;
+  }
+  @media (min-width: 1000px) {
     justify-self: end;
   }
 `;

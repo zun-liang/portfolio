@@ -1,7 +1,17 @@
 /* eslint-disable react/prop-types */
 import { useForm, ValidationError } from "@formspree/react";
 import styled from "styled-components";
+import Profile from "../assets/images/profile.png";
+import SpeechBubble from "../assets/images/hi.png";
 
+const StyledDiv = styled.div`
+  width: 70%;
+  //border: 1px solid red;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+`;
 const StyledForm = styled.form`
   width: 80vw;
   padding: 2rem 0;
@@ -15,16 +25,39 @@ const StyledForm = styled.form`
   justify-content: center;
   gap: 0.5rem;
   @media (min-width: 800px) {
+    height: 65vh;
+    gap: 2rem;
+  }
+  @media (min-width: 1000px) {
     width: 60vw;
     min-height: 60vh;
     padding: 3rem 2rem;
   }
 `;
+const StyledImg = styled.img`
+  width: 5rem;
+  height: 5rem;
+  @media (min-width: 800px) {
+    width: 7rem;
+    height: 7rem;
+  }
+`;
+const StyledSpeechBubble = styled.img`
+  width: 3rem;
+  @media (min-width: 800px) {
+    width: 5rem;
+  }
+`;
 const StyledP = styled.p`
+  width: 70%;
+  //border: 1px solid red;
   font-family: "Black Ops One", cursive;
   font-size: 1.5rem;
-  border: 1px solid red;
-  //doesn't look very good
+  margin: 1rem auto;
+  text-align: center;
+  @media (min-width: 800px) {
+    font-size: 2rem;
+  }
 `;
 const StyledLabel = styled.label`
   width: 80%;
@@ -42,11 +75,17 @@ const StyledInput = styled.input`
   padding: 0 1rem;
   font-size: 0.9rem;
   font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  color: ${({ $theme }) =>
+    $theme ? "var(--light-primary)" : "var(--dark-primary)"};
   &:focus {
     outline: ${({ $theme }) =>
       $theme
         ? "2px solid var(--light-primary)"
         : "2px solid var(--dark-primary)"};
+  }
+  @media (min-width: 800px) {
+    height: 2.5rem;
   }
 `;
 const StyledTextarea = styled.textarea`
@@ -61,6 +100,9 @@ const StyledTextarea = styled.textarea`
   resize: none;
   font-size: 0.9rem;
   font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  color: ${({ $theme }) =>
+    $theme ? "var(--light-primary)" : "var(--dark-primary)"};
   line-height: 1.2rem;
   overflow-wrap: break-word;
   &:focus {
@@ -68,6 +110,9 @@ const StyledTextarea = styled.textarea`
       $theme
         ? "2px solid var(--light-primary)"
         : "2px solid var(--dark-primary)"};
+  }
+  @media (min-width: 800px) {
+    min-height: 10rem;
   }
 `;
 const StyledButton = styled.button`
@@ -96,9 +141,12 @@ const Contact = ({ theme }) => {
   const [state, handleSubmit] = useForm("mbjvygnp");
   if (state.succeeded) {
     return (
-      <StyledP>
-        Thanks for reaching out! I will get back to you as soon as possible!
-      </StyledP>
+      <StyledDiv>
+        <StyledImg src={Profile} alt="profile picture" />
+        <StyledSpeechBubble src={SpeechBubble} alt="speech bubble picture" />
+        <StyledP>Thanks for reaching out to me!</StyledP>
+        <StyledP>I will get back to you as soon as possible!</StyledP>
+      </StyledDiv>
     );
   }
   return (

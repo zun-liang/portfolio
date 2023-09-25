@@ -1,8 +1,18 @@
+import styled from "styled-components";
+
+import Project from "../components/Project";
+
+const ProjectsContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 5rem;
+  border: 1px solid red;
+`;
 const Projects = () => {
   return (
-    <>
-      <h1>This is the projects page</h1>
-    </>
+    <ProjectsContainer>
+      <Project url="https://github.com/zun-liang/todo-app" />
+    </ProjectsContainer>
   );
 };
 

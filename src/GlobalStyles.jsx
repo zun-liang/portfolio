@@ -18,14 +18,14 @@ const GlobalStyles = createGlobalStyle`
   --dark-secondary: #bc8cf2;
   --dark-tertiary: #9f5af6;
   --dark-hover: white;
+  --app-height: 100%;
 }
 
 html,
 body {
   width: 100vw;
   height: 100%;
-  //min-height: 100vh;
-  //overflow-x: hidden;
+  overflow-x: hidden;
   font-size: 14px;
   font-family: "Roboto", sans-serif;
   color: ${({ $theme }) =>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 
@@ -12,12 +12,24 @@ import GlobalStyles from "./GlobalStyles";
 
 const AppContainer = styled.div`
   width: 100vw;
+  height: var(--app-height);
 `;
 
 const App = () => {
   const Hour = new Date().getHours();
   const isLight = Hour < 18 && Hour >= 6;
   const [theme, setTheme] = useState(isLight);
+
+  const setAppHeight = () => {
+    const doc = document.documentElement;
+    doc.style.setProperty("--app-height", `${window.innerHeight}px`);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", setAppHeight);
+    setAppHeight();
+    return () => window.removeEventListener("resize", setAppHeight);
+  }, []);
 
   return (
     <>

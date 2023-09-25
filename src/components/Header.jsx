@@ -6,8 +6,10 @@ import styled from "styled-components";
 
 const StyledHeader = styled.header`
   width: 100%;
-  padding: 1rem;
-  display: grid;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   @media (min-width: 800px) {
     padding: 2rem 3rem 0;
     display: grid;
@@ -62,9 +64,9 @@ const Overlay = styled.div`
   }
 `;
 const StyledNav = styled.nav`
-  width: 70vw;
-  height: 40vh;
-  border-radius: 0.5rem;
+  width: 80vw;
+  height: 50vh;
+  border-radius: 1rem;
   position: absolute;
   background-color: ${({ $theme }) =>
     $theme ? "var(--light-background)" : "var(--dark-background)"};
@@ -85,10 +87,9 @@ const StyledList = styled.ul`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
   @media (min-width: 800px) {
     flex-direction: row;
-    gap: 2rem;
   }
 `;
 const StyledListItem = styled.li`
@@ -100,7 +101,7 @@ const StyledListItem = styled.li`
   }
 `;
 const MenuBorder = styled(StyledListItem)`
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   margin: 1rem;
   @media (min-width: 800px) {
     display: none;
@@ -126,10 +127,10 @@ const StyledLink = styled(Link)`
   }
 `;
 const Time = styled.p`
-  text-align: center;
+  width: 50%;
   font-family: "Lobster", cursive;
   letter-spacing: 2px;
-  margin: 0.5rem;
+  margin: 0.5rem 0;
   @media (min-width: 800px) {
     justify-self: end;
     width: 12rem;
@@ -137,8 +138,10 @@ const Time = styled.p`
 `;
 const ThemeSwitch = styled.p`
   font-size: 1.5rem;
-  justify-self: end;
   cursor: pointer;
+  @media (min-width: 800px) {
+    justify-self: end;
+  }
 `;
 
 const Header = ({ theme, setTheme }) => {
@@ -196,8 +199,10 @@ const Header = ({ theme, setTheme }) => {
                 Projects
               </StyledLink>
             </StyledListItem>
-            <MenuBorderVertical>⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝</MenuBorderVertical>
-            <MenuBorderVerticalRight>⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜</MenuBorderVerticalRight>
+            <MenuBorderVertical>⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝</MenuBorderVertical>
+            <MenuBorderVerticalRight>
+              ⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜
+            </MenuBorderVerticalRight>
             <StyledListItem>
               <StyledLink $theme={theme} to="/blog" onClick={toggleMenu}>
                 Blog

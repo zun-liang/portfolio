@@ -13,8 +13,6 @@ import { ReactComponent as FEM } from "../assets/images/frontend-mentor.svg";
 const StyledFooter = styled.footer`
   width: 100%;
   padding: 1.5rem;
-  position: fixed;
-  bottom: 0;
 `;
 const StyledList = styled.ul`
   display: flex;
@@ -51,6 +49,7 @@ const StyledP = styled.p`
 `;
 
 const Footer = ({ theme }) => {
+  const Year = new Date().getFullYear();
   return (
     <StyledFooter $theme={theme}>
       <StyledList>
@@ -91,7 +90,7 @@ const Footer = ({ theme }) => {
           </StyledLinkEn>
         </StyledListItem>
       </StyledList>
-      <StyledP>© 2023 Zun Liang. All Rights Reserved.</StyledP>
+      <StyledP>© {Year} Zun Liang. All Rights Reserved.</StyledP>
     </StyledFooter>
   );
 };

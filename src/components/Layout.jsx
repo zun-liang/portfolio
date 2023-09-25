@@ -10,7 +10,7 @@ const LayoutContainer = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
 const Layout = ({ theme, setTheme }) => {

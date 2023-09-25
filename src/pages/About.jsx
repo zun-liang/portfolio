@@ -7,6 +7,7 @@ import Logo from "../../public/apple-touch-icon.png";
 const AboutContainer = styled.div`
   width: 80%;
   height: 100%;
+  margin: 0 auto;
   @media (min-width: 800px) {
     padding: 8rem 0;
   }
@@ -49,12 +50,14 @@ const StyledH2 = styled.h2`
   }
 `;
 const StyledP = styled.p`
+  margin-bottom: 1rem;
   color: ${({ $theme }) =>
     $theme ? "var(--light-secondary)" : "var(--dark-secondary)"};
 `;
 const StyledList = styled.ul``;
 const StyledListItem = styled.li`
   list-style: none;
+  line-height: 1.7;
   color: ${({ $theme }) =>
     $theme ? "var(--light-secondary)" : "var(--dark-secondary)"};
 `;
@@ -65,20 +68,24 @@ const About = ({ theme }) => {
         <StyledH1>About me</StyledH1>
         <StyledImg src={Logo} alt="decoration logo" />
       </StyledDiv>
-      <StyledH2>Leanring Journey</StyledH2>
+      <StyledH2>Journey</StyledH2>
       <StyledP $theme={theme}>
         I embarked on my front-end development journey in February 2022, driven
         by a deep fascination with programming. Prior to this, I had minimal
         experience with coding, having only dabbled in Markdown for blogging.
+      </StyledP>
+      <StyledP $theme={theme}>
         This journey has been a rollercoaster of excitement and frustration.
         Completing challenges on freeCodeCamp brings a profound sense of
-        accomplishment, yet certain concepts often elude me. Nevertheless, I'm
-        proud of my progress. I've acquired a diverse skill set, from HTML and
-        CSS to JavaScript and web design. This journey has taught me resilience
-        and the value of perseverance. I'm excited to keep pushing forward in
-        front-end development.
+        accomplishment, yet certain concepts often elude me.
       </StyledP>
-      <StyledH2>Languages & Libraries</StyledH2>
+      <StyledP $theme={theme}>
+        Nevertheless, I'm proud of my progress. I've acquired a diverse skill
+        set, from HTML and CSS to JavaScript and web design. This journey has
+        taught me resilience and the value of perseverance. I'm excited to keep
+        pushing forward in front-end development.
+      </StyledP>
+      <StyledH2>Tools</StyledH2>
       <StyledList>
         <StyledListItem $theme={theme}>🪄 HTML</StyledListItem>
         <StyledListItem $theme={theme}>🪄 CSS</StyledListItem>
@@ -93,7 +100,7 @@ const About = ({ theme }) => {
           target="_blank"
           href="https://github.com/zun-liang/certificates-achievements-archive"
         >
-          Achievements & Certificates
+          Achievements
         </StyledLink>
       </StyledH2>
       <StyledList>
@@ -103,7 +110,7 @@ const About = ({ theme }) => {
             target="_blank"
             href="https://www.freecodecamp.org/certification/zun-liang/responsive-web-design"
           >
-            ✨ Responsive Web Design Certification (freeCodeCamp)
+            ✨ Responsive Web Design Certification
           </StyledLink>
         </StyledListItem>
         <StyledListItem $theme={theme}>
@@ -113,7 +120,6 @@ const About = ({ theme }) => {
             href="https://www.freecodecamp.org/certification/zun-liang/javascript-algorithms-and-data-structures"
           >
             ✨ JavaScript Algorithms and Data Structures Certification
-            (freeCodeCamp)
           </StyledLink>
         </StyledListItem>
         <StyledListItem $theme={theme}>
@@ -122,19 +128,21 @@ const About = ({ theme }) => {
             target="_blank"
             href="https://scrimba.com/certificate/u9enxdu5/greact"
           >
-            ✨ Advanced React Certification (Scrimba)
+            ✨ Advanced React Certification
           </StyledLink>
         </StyledListItem>
       </StyledList>
       <StyledP></StyledP>
       {/*<StyledH2>Contributions</StyledH2>
       <StyledP></StyledP>*/}
-      <StyledH2>Future Goals</StyledH2>
+      <StyledH2>Next Challenges</StyledH2>
       <StyledList>
         <StyledListItem $theme={theme}>🔮 Jest</StyledListItem>
         <StyledListItem $theme={theme}>🔮 TypeScript</StyledListItem>
-        <StyledListItem $theme={theme}>🔮 React Native</StyledListItem>
         <StyledListItem $theme={theme}>🔮 Next.js</StyledListItem>
+        <StyledListItem $theme={theme}>🔮 React Native</StyledListItem>
+        <StyledListItem $theme={theme}>🔮 Node.js</StyledListItem>
+        <StyledListItem $theme={theme}>🔮 ...</StyledListItem>
       </StyledList>
       <StyledP></StyledP>
     </AboutContainer>

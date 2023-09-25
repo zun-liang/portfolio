@@ -5,15 +5,19 @@ import SpeechBubble from "../assets/images/pixel-speech-bubble.gif";
 import Profile from "../assets/images/profile.png";
 
 const HomeContainer = styled.div`
-  //width: 50vw;
-  //height: 20rem;
-  //transform: translateY(100%);
-  justify-content: center;
-  align-self: center;
+  width: 70%;
+  height: 60%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: grid;
   grid-template-columns: 5rem 1fr;
-  grid-template-rows: 2fr 2fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   align-items: center;
+  @media (min-width: 800px) {
+    grid-template-rows: 2fr 2fr 1fr;
+  }
 `;
 const StyledH1 = styled.h1`
   font-family: "Black Ops One", cursive;

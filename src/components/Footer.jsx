@@ -15,10 +15,6 @@ const StyledFooter = styled.footer`
   padding: 1.5rem;
   position: fixed;
   bottom: 0;
-  color: ${({ $theme }) =>
-    $theme ? "var(--light-primary)" : "var(--dark-primary)"};
-  background-color: ${({ $theme }) =>
-    $theme ? "var(--light-background)" : "var(--dark-background)"};
 `;
 const StyledList = styled.ul`
   display: flex;

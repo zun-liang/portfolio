@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styled from "styled-components";
 
 import SpeechBubble from "../assets/images/pixel-speech-bubble.gif";
@@ -13,7 +14,6 @@ const HomeContainer = styled.div`
   grid-template-columns: 5rem 1fr;
   grid-template-rows: 2fr 2fr 1fr;
   align-items: center;
-  border: 1px solid blue;
 `;
 const StyledH1 = styled.h1`
   font-family: "Black Ops One", cursive;

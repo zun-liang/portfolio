@@ -7,11 +7,7 @@ import styled from "styled-components";
 const StyledHeader = styled.header`
   width: 100%;
   padding: 1rem;
-  //background-color: white;
-  border: 1px solid red;
-  //display: grid;
-  //grid-template-columns: 1fr;
-  //grid-template-rows: 1fr 2fr 1fr 1fr;
+  display: grid;
   @media (min-width: 800px) {
     padding: 2rem 3rem 0;
     display: grid;
@@ -24,13 +20,11 @@ const StyledHeader = styled.header`
 const Title = styled.h1`
   font-family: "Black Ops One", cursive;
   font-size: 2rem;
-  border: 1px solid blue;
 `;
 
 const SubTitle = styled.span`
   font-size: 1.5rem;
   cursor: pointer;
-  //color: var(--focus3);
   @media (min-width: 800px) {
     cursor: auto;
   }
@@ -59,7 +53,8 @@ const Overlay = styled.div`
   z-index: 2;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${({ $theme }) =>
+    $theme ? "rgba(0, 0, 0, 0.5)" : "rgba(0, 0, 0, 0.8)"};
   display: ${({ $menu }) => ($menu ? "block" : "none")};
   @media (min-width: 800px) {
     display: ${({ $menu }) => ($menu ? "block" : "block")};
@@ -71,7 +66,8 @@ const StyledNav = styled.nav`
   height: 40vh;
   border-radius: 0.5rem;
   position: absolute;
-  background-color: black;
+  background-color: ${({ $theme }) =>
+    $theme ? "var(--light-background)" : "var(--dark-background)"};
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -121,22 +117,25 @@ const MenuBorderVerticalRight = styled(MenuBorderVertical)`
 const StyledLink = styled(Link)`
   text-decoration: none;
   &:link {
-    color: var(--focus1);
+    color: ${({ $theme }) =>
+      $theme ? "var(--light-primary)" : "var(--dark-primary)"};
   }
   &:visited {
-    color: var(--focus1);
+    color: ${({ $theme }) =>
+      $theme ? "var(--light-primary)" : "var(--dark-primary)"};
   }
 `;
 const Time = styled.p`
-  justify-self: end;
-  width: 12rem;
   text-align: center;
-  color: var(--focus1);
   font-family: "Lobster", cursive;
   letter-spacing: 2px;
+  margin: 0.5rem;
+  @media (min-width: 800px) {
+    justify-self: end;
+    width: 12rem;
+  }
 `;
 const ThemeSwitch = styled.p`
-  color: var(--focus1);
   font-size: 1.5rem;
   justify-self: end;
   cursor: pointer;
@@ -178,34 +177,34 @@ const Header = ({ theme, setTheme }) => {
         <SubTitleBlinkSlow>⊹</SubTitleBlinkSlow>
         <SubTitle onClick={toggleMenu}> ʚ☕️੭</SubTitle>
       </Title>
-      <Overlay $menu={menu}>
-        <StyledNav>
+      <Overlay $menu={menu} $theme={theme}>
+        <StyledNav $theme={theme}>
           <StyledList>
             <MenuBorder>⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜</MenuBorder>
             <StyledListItem>
-              <StyledLink to="/" onClick={toggleMenu}>
+              <StyledLink $theme={theme} to="/" onClick={toggleMenu}>
                 Home
               </StyledLink>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink to="/about" onClick={toggleMenu}>
+              <StyledLink $theme={theme} to="/about" onClick={toggleMenu}>
                 About Me
               </StyledLink>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink to="/projects" onClick={toggleMenu}>
+              <StyledLink $theme={theme} to="/projects" onClick={toggleMenu}>
                 Projects
               </StyledLink>
             </StyledListItem>
             <MenuBorderVertical>⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝</MenuBorderVertical>
             <MenuBorderVerticalRight>⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜</MenuBorderVerticalRight>
             <StyledListItem>
-              <StyledLink to="/blog" onClick={toggleMenu}>
+              <StyledLink $theme={theme} to="/blog" onClick={toggleMenu}>
                 Blog
               </StyledLink>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink to="/contact" onClick={toggleMenu}>
+              <StyledLink $theme={theme} to="/contact" onClick={toggleMenu}>
                 Contact
               </StyledLink>
             </StyledListItem>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { faFreeCodeCamp } from "@fortawesome/free-brands-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faCodepen } from "@fortawesome/free-brands-svg-icons";
@@ -10,12 +11,14 @@ import styled from "styled-components";
 import { ReactComponent as FEM } from "../assets/images/frontend-mentor.svg";
 
 const StyledFooter = styled.footer`
-  width: 100vw;
-  background-color: white;
+  width: 100%;
   padding: 1.5rem;
   position: fixed;
   bottom: 0;
-  z-index: 1;
+  color: ${({ $theme }) =>
+    $theme ? "var(--light-primary)" : "var(--dark-primary)"};
+  background-color: ${({ $theme }) =>
+    $theme ? "var(--light-background)" : "var(--dark-background)"};
 `;
 const StyledList = styled.ul`
   display: flex;
@@ -31,35 +34,36 @@ const StyledLinkEn = styled(Link)``;
 const Icon = styled(FontAwesomeIcon)`
   width: 1.5rem;
   height: 1.5rem;
-  color: var(--focus1);
+  color: ${({ $theme }) =>
+    $theme ? "var(--light-primary)" : "var(--dark-primary)"};
 `;
 const FEMIcon = styled(FEM)`
   width: 1.5rem;
   height: 1.5rem;
   transform: scale(0.8);
   & > path {
-    fill: var(--focus1);
+    fill: ${({ $theme }) =>
+      $theme ? "var(--light-primary)" : "var(--dark-primary)"};
   }
 `;
 const StyledP = styled.p`
   text-align: center;
-  color: var(--focus1);
   font-family: "Roboto", sans-serif;
   font-size: 0.8rem;
   letter-spacing: 1px;
   margin-top: 0.8rem;
 `;
 
-const Footer = () => {
+const Footer = ({ theme }) => {
   return (
-    <StyledFooter>
+    <StyledFooter $theme={theme}>
       <StyledList>
         <StyledListItem>
           <StyledLink
             target="_blank"
             href="https://www.freecodecamp.org/zun-liang"
           >
-            <Icon icon={faFreeCodeCamp} />
+            <Icon icon={faFreeCodeCamp} $theme={theme} />
           </StyledLink>
         </StyledListItem>
         <StyledListItem>
@@ -67,27 +71,27 @@ const Footer = () => {
             target="_blank"
             href="https://www.frontendmentor.io/profile/zun-liang"
           >
-            <FEMIcon />
+            <FEMIcon $theme={theme} />
           </StyledLink>
         </StyledListItem>
         <StyledListItem>
           <StyledLink target="_blank" href="https://github.com/zun-liang">
-            <Icon icon={faGithub} />
+            <Icon icon={faGithub} $theme={theme} />
           </StyledLink>
         </StyledListItem>
         <StyledListItem>
           <StyledLink target="_blank" href="https://codepen.io/zunl">
-            <Icon icon={faCodepen} />
+            <Icon icon={faCodepen} $theme={theme} />
           </StyledLink>
         </StyledListItem>
         <StyledListItem>
           <StyledLink target="_blank" href="">
-            <Icon icon={faLinkedin} />
+            <Icon icon={faLinkedin} $theme={theme} />
           </StyledLink>
         </StyledListItem>
         <StyledListItem>
           <StyledLinkEn to="/contact">
-            <Icon icon={faEnvelope} />
+            <Icon icon={faEnvelope} $theme={theme} />
           </StyledLinkEn>
         </StyledListItem>
       </StyledList>

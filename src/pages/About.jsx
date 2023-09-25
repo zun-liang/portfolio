@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 import styled from "styled-components";
 
@@ -6,9 +7,9 @@ import Logo from "../../public/apple-touch-icon.png";
 const AboutContainer = styled.div`
   width: 80%;
   height: 100%;
-  //padding: 4rem 0;
-  border: 1px solid red;
-  //transform: translateY(100%);
+  @media (min-width: 800px) {
+    padding: 8rem 0;
+  }
 `;
 const StyledDiv = styled.div`
   display: flex;
@@ -35,25 +36,29 @@ const StyledLink = styled.a`
   text-decoration: none;
   &:link,
   &:visited {
-    color: var(--focus2);
+    color: ${({ $theme }) =>
+      $theme ? "var(--light-secondary)" : "var(--dark-secondary)"};
   }
 `;
 const StyledH2 = styled.h2`
   font-family: "Black Ops One", cursive;
   margin: 1rem 0 0.5rem;
   ${StyledLink} {
-    color: var(--focus1);
+    color: ${({ $theme }) =>
+      $theme ? "var(--light-primary)" : "var(--dark-primary)"};
   }
 `;
 const StyledP = styled.p`
-  color: var(--focus2);
+  color: ${({ $theme }) =>
+    $theme ? "var(--light-secondary)" : "var(--dark-secondary)"};
 `;
 const StyledList = styled.ul``;
 const StyledListItem = styled.li`
   list-style: none;
-  color: var(--focus2);
+  color: ${({ $theme }) =>
+    $theme ? "var(--light-secondary)" : "var(--dark-secondary)"};
 `;
-const About = () => {
+const About = ({ theme }) => {
   return (
     <AboutContainer>
       <StyledDiv>
@@ -61,7 +66,7 @@ const About = () => {
         <StyledImg src={Logo} alt="decoration logo" />
       </StyledDiv>
       <StyledH2>Leanring Journey</StyledH2>
-      <StyledP>
+      <StyledP $theme={theme}>
         I embarked on my front-end development journey in February 2022, driven
         by a deep fascination with programming. Prior to this, I had minimal
         experience with coding, having only dabbled in Markdown for blogging.
@@ -75,15 +80,16 @@ const About = () => {
       </StyledP>
       <StyledH2>Languages & Libraries</StyledH2>
       <StyledList>
-        <StyledListItem>🪄 HTML</StyledListItem>
-        <StyledListItem>🪄 CSS</StyledListItem>
-        <StyledListItem>🪄 JavaScript</StyledListItem>
-        <StyledListItem>🪄 React</StyledListItem>
-        <StyledListItem>🪄 React Router</StyledListItem>
-        <StyledListItem>🪄 Styled-Components</StyledListItem>
+        <StyledListItem $theme={theme}>🪄 HTML</StyledListItem>
+        <StyledListItem $theme={theme}>🪄 CSS</StyledListItem>
+        <StyledListItem $theme={theme}>🪄 JavaScript</StyledListItem>
+        <StyledListItem $theme={theme}>🪄 React</StyledListItem>
+        <StyledListItem $theme={theme}>🪄 React Router</StyledListItem>
+        <StyledListItem $theme={theme}>🪄 Styled-Components</StyledListItem>
       </StyledList>
-      <StyledH2>
+      <StyledH2 $theme={theme}>
         <StyledLink
+          $theme={theme}
           target="_blank"
           href="https://github.com/zun-liang/certificates-achievements-archive"
         >
@@ -91,16 +97,18 @@ const About = () => {
         </StyledLink>
       </StyledH2>
       <StyledList>
-        <StyledListItem>
+        <StyledListItem $theme={theme}>
           <StyledLink
+            $theme={theme}
             target="_blank"
             href="https://www.freecodecamp.org/certification/zun-liang/responsive-web-design"
           >
             ✨ Responsive Web Design Certification (freeCodeCamp)
           </StyledLink>
         </StyledListItem>
-        <StyledListItem>
+        <StyledListItem $theme={theme}>
           <StyledLink
+            $theme={theme}
             target="_blank"
             href="https://www.freecodecamp.org/certification/zun-liang/javascript-algorithms-and-data-structures"
           >
@@ -108,8 +116,9 @@ const About = () => {
             (freeCodeCamp)
           </StyledLink>
         </StyledListItem>
-        <StyledListItem>
+        <StyledListItem $theme={theme}>
           <StyledLink
+            $theme={theme}
             target="_blank"
             href="https://scrimba.com/certificate/u9enxdu5/greact"
           >
@@ -122,10 +131,10 @@ const About = () => {
       <StyledP></StyledP>*/}
       <StyledH2>Future Goals</StyledH2>
       <StyledList>
-        <StyledListItem>🔮 Jest</StyledListItem>
-        <StyledListItem>🔮 TypeScript</StyledListItem>
-        <StyledListItem>🔮 React Native</StyledListItem>
-        <StyledListItem>🔮 Next.js</StyledListItem>
+        <StyledListItem $theme={theme}>🔮 Jest</StyledListItem>
+        <StyledListItem $theme={theme}>🔮 TypeScript</StyledListItem>
+        <StyledListItem $theme={theme}>🔮 React Native</StyledListItem>
+        <StyledListItem $theme={theme}>🔮 Next.js</StyledListItem>
       </StyledList>
       <StyledP></StyledP>
     </AboutContainer>

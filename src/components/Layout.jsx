@@ -6,8 +6,8 @@ import Footer from "./Footer";
 import Header from "./Header";
 
 const LayoutContainer = styled.div`
-  width: 100vw;
-  //min-height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,7 +17,9 @@ const Layout = ({ theme, setTheme }) => {
   return (
     <LayoutContainer>
       <Header theme={theme} setTheme={setTheme} />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <Footer theme={theme} />
     </LayoutContainer>
   );

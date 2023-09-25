@@ -8,11 +8,10 @@ import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
+import GlobalStyles from "./GlobalStyles";
 
 const AppContainer = styled.div`
   width: 100vw;
-  //min-height: 100vh;
-  background-color: ${(props) => (props.$theme ? "white" : "black")};
 `;
 
 const App = () => {
@@ -21,22 +20,27 @@ const App = () => {
   const [theme, setTheme] = useState(isLight);
 
   return (
-    <AppContainer $theme={theme}>
-      <main>
+    <>
+      <GlobalStyles $theme={theme} />
+      <AppContainer>
         <Routes>
           <Route
             path="/"
             element={<Layout theme={theme} setTheme={setTheme} />}
           >
             <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="projects" element={<Projects />} />
-            <Route path="blog" element={<Blog />} />
-            <Route path="contact" element={<Contact />} theme={theme} />
+            <Route path="about" element={<About theme={theme} />} />
+            <Route path="projects" element={<Projects theme={theme} />} />
+            <Route path="blog" element={<Blog theme={theme} />} />
+            <Route
+              path="contact"
+              element={<Contact theme={theme} />}
+              theme={theme}
+            />
           </Route>
         </Routes>
-      </main>
-    </AppContainer>
+      </AppContainer>
+    </>
   );
 };
 

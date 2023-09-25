@@ -1,12 +1,19 @@
 import styled from "styled-components";
-import Profile from "../assets/images/profile.png";
+
 import SpeechBubble from "../assets/images/pixel-speech-bubble.gif";
+import Profile from "../assets/images/profile.png";
 
 const HomeContainer = styled.div`
+  //width: 50vw;
+  //height: 20rem;
+  //transform: translateY(100%);
+  justify-content: center;
+  align-self: center;
   display: grid;
   grid-template-columns: 5rem 1fr;
   grid-template-rows: 2fr 2fr 1fr;
   align-items: center;
+  border: 1px solid blue;
 `;
 const StyledH1 = styled.h1`
   font-family: "Black Ops One", cursive;

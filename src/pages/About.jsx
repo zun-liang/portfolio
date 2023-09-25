@@ -4,9 +4,11 @@ import styled from "styled-components";
 import Logo from "../../public/apple-touch-icon.png";
 
 const AboutContainer = styled.div`
-  width: 40%;
+  width: 80%;
   height: 100%;
-  padding: 4rem 0;
+  //padding: 4rem 0;
+  border: 1px solid red;
+  //transform: translateY(100%);
 `;
 const StyledDiv = styled.div`
   display: flex;

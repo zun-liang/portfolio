@@ -1,22 +1,18 @@
 import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 
 import Layout from "./components/Layout";
-import Home from "./pages/Home";
 import About from "./pages/About";
-import Projects from "./pages/Projects";
 import Blog from "./pages/Blog";
-import ContactForm from "./pages/ContactForm";
-import { Routes, Route } from "react-router-dom";
+import Contact from "./pages/Contact";
+import Home from "./pages/Home";
+import Projects from "./pages/Projects";
 
 const AppContainer = styled.div`
   width: 100vw;
-  min-height: 100vh;
+  //min-height: 100vh;
   background-color: ${(props) => (props.$theme ? "white" : "black")};
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
 `;
 
 const App = () => {
@@ -36,7 +32,7 @@ const App = () => {
             <Route path="about" element={<About />} />
             <Route path="projects" element={<Projects />} />
             <Route path="blog" element={<Blog />} />
-            <Route path="contact" element={<ContactForm />} theme={theme} />
+            <Route path="contact" element={<Contact />} theme={theme} />
           </Route>
         </Routes>
       </main>

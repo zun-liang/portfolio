@@ -2,20 +2,25 @@ import { useForm, ValidationError } from "@formspree/react";
 import styled from "styled-components";
 
 const StyledForm = styled.form`
-  width: 60vw;
-  min-height: 60vh;
-  padding: 3rem 2rem;
+  width: 80vw;
+  padding: 2rem 0;
   border: 5px ridge var(--focus1);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  @media (min-width: 800px) {
+    width: 60vw;
+    min-height: 60vh;
+    padding: 3rem 2rem;
+  }
 `;
 const StyledP = styled.p`
   color: var(--focus1);
   font-family: "Black Ops One", cursive;
   font-size: 1.5rem;
+  border: 1px solid red;
   //doesn't look very good
 `;
 const StyledLabel = styled.label`
@@ -29,16 +34,24 @@ const StyledInput = styled.input`
   height: 2rem;
   border: 2px solid var(--focus1);
   margin-bottom: 1rem;
+  padding: 0 1rem;
+  font-size: 0.9rem;
+  font-family: "Roboto", sans-serif;
   &:focus {
     outline: 2px solid var(--focus1);
   }
 `;
 const StyledTextarea = styled.textarea`
   width: 80%;
-  min-height: 5rem;
+  min-height: 8rem;
   border: 2px solid var(--focus1);
   margin-bottom: 1rem;
+  padding: 0.8rem 1rem;
   resize: none;
+  font-size: 0.9rem;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.2rem;
+  overflow-wrap: break-word;
   &:focus {
     outline: 2px solid var(--focus1);
   }
@@ -62,7 +75,7 @@ const StyledButton = styled.button`
   justify-content: center;
 `;
 
-const ContactForm = () => {
+const Contact = () => {
   const [state, handleSubmit] = useForm("mbjvygnp");
   if (state.succeeded) {
     return (
@@ -92,4 +105,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default Contact;

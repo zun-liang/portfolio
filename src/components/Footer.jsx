@@ -1,16 +1,21 @@
-import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFreeCodeCamp } from "@fortawesome/free-brands-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faCodepen } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { ReactComponent as FEM } from "../assets/images/frontend-mentor.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+import { ReactComponent as FEM } from "../assets/images/frontend-mentor.svg";
 
 const StyledFooter = styled.footer`
   width: 100vw;
+  background-color: white;
   padding: 1.5rem;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
 `;
 const StyledList = styled.ul`
   display: flex;

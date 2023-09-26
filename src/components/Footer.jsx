@@ -19,6 +19,9 @@ const StyledList = styled.ul`
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
+  @media (min-width: 800px) {
+    gap: 2rem;
+  }
 `;
 const StyledListItem = styled.li`
   list-style: none;
@@ -46,6 +49,8 @@ const StyledP = styled.p`
   font-size: 0.8rem;
   letter-spacing: 1px;
   margin-top: 0.8rem;
+  color: ${({ $theme }) =>
+    $theme ? "var(--light-secondary)" : "var(--dark-secondary)"};
 `;
 
 const Footer = ({ theme }) => {
@@ -90,7 +95,7 @@ const Footer = ({ theme }) => {
           </StyledLinkEn>
         </StyledListItem>
       </StyledList>
-      <StyledP>© {Year} Zun Liang. All Rights Reserved.</StyledP>
+      <StyledP $theme={theme}>© {Year} Zun Liang. All Rights Reserved.</StyledP>
     </StyledFooter>
   );
 };

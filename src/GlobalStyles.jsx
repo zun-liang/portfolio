@@ -8,7 +8,7 @@ const GlobalStyles = createGlobalStyle`
 }
 
 :root {
-  --light-background: #fff3da;
+  --light-background: #f9ffda;
   --light-primary: #beadfa;
   --light-secondary: #d0bfff;
   --light-tertiary: #dfccfb;
@@ -31,7 +31,7 @@ body {
   color: ${({ $theme }) =>
     $theme ? "var(--light-primary)" : "var(--dark-primary)"};
   background-color:${({ $theme }) =>
-    $theme ? "var(--light-background)" : "var(--dark-background)"}; ;
+    $theme ? "var(--light-background)" : "var(--dark-background)"}; 
 }
 
 @media (min-width: 800px) {

@@ -40,7 +40,7 @@ const App = () => {
             path="/"
             element={<Layout theme={theme} setTheme={setTheme} />}
           >
-            <Route index element={<Home />} />
+            <Route index element={<Home theme={theme} />} />
             <Route path="about" element={<About theme={theme} />} />
             <Route path="projects" element={<Projects theme={theme} />} />
             <Route path="blog" element={<Blog theme={theme} />} />

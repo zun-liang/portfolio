@@ -14,7 +14,9 @@ const StyledDiv = styled.div`
 `;
 const StyledForm = styled.form`
   width: 80vw;
+  height: 55vh;
   padding: 2rem 0;
+  border-radius: 5px;
   border: ${({ $theme }) =>
     $theme
       ? "5px ridge var(--light-primary)"
@@ -25,13 +27,13 @@ const StyledForm = styled.form`
   justify-content: center;
   gap: 0.5rem;
   @media (min-width: 800px) {
-    height: 65vh;
+    height: 60vh;
     gap: 2rem;
   }
   @media (min-width: 1000px) {
     width: 60vw;
-    min-height: 60vh;
-    padding: 3rem 2rem;
+    height: auto;
+    gap: 1rem;
   }
 `;
 const StyledImg = styled.img`
@@ -67,12 +69,13 @@ const StyledLabel = styled.label`
 const StyledInput = styled.input`
   width: 80%;
   height: 2rem;
+  border-radius: 5px;
   border: ${({ $theme }) =>
     $theme
       ? "2px solid var(--light-primary)"
       : "2px solid var(--dark-primary)"};
   margin-bottom: 1rem;
-  padding: 0 1rem;
+  padding: 0 0.7rem;
   font-size: 0.9rem;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
@@ -84,6 +87,13 @@ const StyledInput = styled.input`
         ? "2px solid var(--light-primary)"
         : "2px solid var(--dark-primary)"};
   }
+  &:-webkit-autofill,
+  :-webkit-autofill:hover,
+  :-webkit-autofill:focus {
+    box-shadow: 0 0 0 1000px white inset;
+    -webkit-text-fill-color: ${({ $theme }) =>
+      $theme ? "var(--light-primary)" : "var(--dark-primary)"};
+  }
   @media (min-width: 800px) {
     height: 2.5rem;
   }
@@ -91,6 +101,7 @@ const StyledInput = styled.input`
 const StyledTextarea = styled.textarea`
   width: 80%;
   min-height: 8rem;
+  border-radius: 5px;
   border: ${({ $theme }) =>
     $theme
       ? "2px solid var(--light-primary)"
@@ -111,8 +122,12 @@ const StyledTextarea = styled.textarea`
         ? "2px solid var(--light-primary)"
         : "2px solid var(--dark-primary)"};
   }
-  @media (min-width: 800px) {
-    min-height: 10rem;
+  &:-webkit-autofill,
+  :-webkit-autofill:hover,
+  :-webkit-autofill:focus {
+    box-shadow: 0 0 0 1000px white inset;
+    -webkit-text-fill-color: ${({ $theme }) =>
+      $theme ? "var(--light-primary)" : "var(--dark-primary)"};
   }
 `;
 const StyledButton = styled.button`

@@ -22,7 +22,10 @@ const HomeContainer = styled.div`
     grid-template-rows: 1fr 2fr 1fr;
   }
   @media (min-width: 1000px) {
+    width: 50%;
     grid-template-rows: 2fr 2fr 1fr;
+    top: 45%;
+    transform: translate(-50%, -45%);
   }
 `;
 const StyledH1 = styled.h1`
@@ -38,6 +41,8 @@ const StyledH2 = styled.h2`
   text-align: right;
   font-size: 1.6rem;
   grid-column: 1 / 3;
+  color: ${({ $theme }) =>
+    $theme ? "var(--light-secondary)" : "var(--dark-secondary)"};
   @media (min-width: 800px) {
     font-size: 2.2rem;
     line-height: 1.6;
@@ -59,13 +64,13 @@ const StyledGif = styled.img`
   }
 `;
 
-const Home = () => {
+const Home = ({ theme }) => {
   return (
     <HomeContainer>
       <StyledImg src={Profile} alt="profile picture" />
       <StyledGif src={SpeechBubble} alt="speech bubble" />
       <StyledH1>ZUN LIANG,</StyledH1>
-      <StyledH2>A self-taught front end developer.</StyledH2>
+      <StyledH2 $theme={theme}>A self-taught front end developer.</StyledH2>
     </HomeContainer>
   );
 };

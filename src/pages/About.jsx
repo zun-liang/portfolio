@@ -3,13 +3,15 @@
 import styled from "styled-components";
 
 import Logo from "../../public/apple-touch-icon.png";
+import LogoLight from "../../public/apple-touch-icon-light.png";
 
 const AboutContainer = styled.div`
   width: 80%;
   height: 100%;
   margin: 0 auto;
   @media (min-width: 1000px) {
-    padding: 8rem 0;
+    width: 550px;
+    padding: 4rem 0;
   }
 `;
 const StyledDiv = styled.div`
@@ -66,7 +68,7 @@ const About = ({ theme }) => {
     <AboutContainer>
       <StyledDiv>
         <StyledH1>About me</StyledH1>
-        <StyledImg src={Logo} alt="decoration logo" />
+        <StyledImg src={theme ? LogoLight : Logo} alt="decoration logo" />
       </StyledDiv>
       <StyledH2>Journey</StyledH2>
       <StyledP $theme={theme}>
@@ -87,12 +89,12 @@ const About = ({ theme }) => {
       </StyledP>
       <StyledH2>Tools</StyledH2>
       <StyledList>
-        <StyledListItem $theme={theme}>🪄 HTML</StyledListItem>
-        <StyledListItem $theme={theme}>🪄 CSS</StyledListItem>
-        <StyledListItem $theme={theme}>🪄 JavaScript</StyledListItem>
-        <StyledListItem $theme={theme}>🪄 React</StyledListItem>
-        <StyledListItem $theme={theme}>🪄 React Router</StyledListItem>
-        <StyledListItem $theme={theme}>🪄 Styled-Components</StyledListItem>
+        <StyledListItem $theme={theme}>✞ HTML</StyledListItem>
+        <StyledListItem $theme={theme}>✞ CSS</StyledListItem>
+        <StyledListItem $theme={theme}>✞ JavaScript</StyledListItem>
+        <StyledListItem $theme={theme}>✞ React</StyledListItem>
+        <StyledListItem $theme={theme}>✞ React Router</StyledListItem>
+        <StyledListItem $theme={theme}>✞ Styled-Components</StyledListItem>
       </StyledList>
       <StyledH2 $theme={theme}>
         <StyledLink
@@ -110,7 +112,7 @@ const About = ({ theme }) => {
             target="_blank"
             href="https://www.freecodecamp.org/certification/zun-liang/responsive-web-design"
           >
-            ✨ Responsive Web Design Certification
+            ✰ Responsive Web Design Certification
           </StyledLink>
         </StyledListItem>
         <StyledListItem $theme={theme}>
@@ -119,7 +121,7 @@ const About = ({ theme }) => {
             target="_blank"
             href="https://www.freecodecamp.org/certification/zun-liang/javascript-algorithms-and-data-structures"
           >
-            ✨ JavaScript Algorithms and Data Structures Certification
+            ✰ JavaScript Algorithms and Data Structures Certification
           </StyledLink>
         </StyledListItem>
         <StyledListItem $theme={theme}>
@@ -128,7 +130,7 @@ const About = ({ theme }) => {
             target="_blank"
             href="https://scrimba.com/certificate/u9enxdu5/greact"
           >
-            ✨ Advanced React Certification
+            ✰ Advanced React Certification
           </StyledLink>
         </StyledListItem>
       </StyledList>
@@ -137,12 +139,12 @@ const About = ({ theme }) => {
       <StyledP></StyledP>*/}
       <StyledH2>Next Challenges</StyledH2>
       <StyledList>
-        <StyledListItem $theme={theme}>🔮 Jest</StyledListItem>
-        <StyledListItem $theme={theme}>🔮 TypeScript</StyledListItem>
-        <StyledListItem $theme={theme}>🔮 Next.js</StyledListItem>
-        <StyledListItem $theme={theme}>🔮 React Native</StyledListItem>
-        <StyledListItem $theme={theme}>🔮 Node.js</StyledListItem>
-        <StyledListItem $theme={theme}>🔮 ...</StyledListItem>
+        <StyledListItem $theme={theme}>𖦹 Jest</StyledListItem>
+        <StyledListItem $theme={theme}>𖦹 TypeScript</StyledListItem>
+        <StyledListItem $theme={theme}>𖦹 Next.js</StyledListItem>
+        <StyledListItem $theme={theme}>𖦹 React Native</StyledListItem>
+        <StyledListItem $theme={theme}>𖦹 Node.js</StyledListItem>
+        <StyledListItem $theme={theme}>𖦹 ...</StyledListItem>
       </StyledList>
       <StyledP></StyledP>
     </AboutContainer>

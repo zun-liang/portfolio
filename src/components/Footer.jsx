@@ -13,6 +13,9 @@ import { ReactComponent as FEM } from "../assets/images/frontend-mentor.svg";
 const StyledFooter = styled.footer`
   width: 100%;
   padding: 1.5rem;
+  @media (min-width: 1000px) {
+    padding: 1.5rem 1.5rem 2rem;
+  }
 `;
 const StyledList = styled.ul`
   display: flex;
@@ -26,7 +29,15 @@ const StyledList = styled.ul`
 const StyledListItem = styled.li`
   list-style: none;
 `;
-const StyledLink = styled.a``;
+const StyledLink = styled.a`
+  &:link,
+  &:hover,
+  &:active,
+  &:visited {
+    color: ${({ $theme }) =>
+      $theme ? "var(--light-primary)" : "var(--dark-primary)"};
+  }
+`;
 const StyledLinkEn = styled(Link)``;
 const Icon = styled(FontAwesomeIcon)`
   width: 1.5rem;
@@ -44,11 +55,11 @@ const FEMIcon = styled(FEM)`
   }
 `;
 const StyledP = styled.p`
+  margin-top: 0.8rem;
   text-align: center;
+  letter-spacing: 1px;
   font-family: "Roboto", sans-serif;
   font-size: 0.8rem;
-  letter-spacing: 1px;
-  margin-top: 0.8rem;
   color: ${({ $theme }) =>
     $theme ? "var(--light-secondary)" : "var(--dark-secondary)"};
 `;

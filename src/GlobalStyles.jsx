@@ -2,51 +2,48 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
     * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-:root {
-  --light-background: #f9ffda;
-  --light-primary: #beadfa;
-  --light-secondary: #d0bfff;
-  --light-tertiary: #dfccfb;
-  --light-hover: black;
-  --dark-background: #000000;
-  --dark-primary: #aa14f0;
-  --dark-secondary: #bc8cf2;
-  --dark-tertiary: #9f5af6;
-  --dark-hover: white;
-  --app-height: 100%;
-}
+    :root {
+        --light-background: #f9ffda;
+        --light-primary: #beadfa;
+        --light-secondary: #d0bfff;
+        --light-tertiary: #dfccfb;
+        --light-paragraph: #AEA9BA;
+        --light-hover: #8779C1;
 
-html,
-body {
-  width: 100vw;
-  height: 100%;
-  overflow-x: hidden;
-  font-size: 14px;
-  font-family: "Roboto", sans-serif;
-  color: ${({ $theme }) =>
-    $theme ? "var(--light-primary)" : "var(--dark-primary)"};
-  background-color:${({ $theme }) =>
-    $theme ? "var(--light-background)" : "var(--dark-background)"}; 
-}
+        --dark-background: #000000;
+        --dark-primary: #aa14f0;
+        --dark-secondary: #CB41FF;
+        --dark-tertiary: #FF83FF;
+        --dark-paragraph: #EC63FF;
+        --dark-hover: #FFC7FF;
 
-@media (min-width: 800px) {
-  html,
-  body {
-    font-size: 16px;
-  }
-}
+        --app-height: 100%;
+    }
 
-/*
-font-family: 'Black Ops One', cursive;
-font-family: 'Lobster', cursive;
-font-family: 'Roboto', sans-serif;
-*/
+    html,
+    body {
+        width: 100vw;
+        height: 100%;
+        background-color:${({ $theme }) =>
+          $theme ? "var(--light-background)" : "var(--dark-background)"}; 
+        overflow-x: hidden;
+        font-family: "Roboto", sans-serif;
+        font-size: 14px;
+        color: ${({ $theme }) =>
+          $theme ? "var(--light-primary)" : "var(--dark-primary)"};
+    }
 
+    @media (min-width: 800px) {
+        html,
+        body {
+            font-size: 16px;
+        }
+    }
 `;
 
 export default GlobalStyles;

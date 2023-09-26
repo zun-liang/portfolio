@@ -23,29 +23,29 @@ const HomeContainer = styled.div`
   }
   @media (min-width: 1000px) {
     width: 50%;
-    grid-template-rows: 2fr 2fr 1fr;
     top: 45%;
     transform: translate(-50%, -45%);
+    grid-template-rows: 2fr 2fr 1fr;
   }
 `;
 const StyledH1 = styled.h1`
+  grid-column: 1 / 3;
+  text-align: center;
   font-family: "Black Ops One", cursive;
   font-size: 5rem;
-  text-align: center;
-  grid-column: 1 / 3;
   @media (min-width: 800px) {
     font-size: 6.5rem;
   }
 `;
 const StyledH2 = styled.h2`
+  grid-column: 1 / 3;
   text-align: right;
   font-size: 1.6rem;
-  grid-column: 1 / 3;
   color: ${({ $theme }) =>
     $theme ? "var(--light-secondary)" : "var(--dark-secondary)"};
   @media (min-width: 800px) {
-    font-size: 2.2rem;
     line-height: 1.6;
+    font-size: 2.2rem;
   }
 `;
 const StyledImg = styled.img`
@@ -57,8 +57,8 @@ const StyledImg = styled.img`
   }
 `;
 const StyledGif = styled.img`
-  width: 6rem;
   align-self: start;
+  width: 6rem;
   @media (min-width: 800px) {
     width: 7rem;
   }

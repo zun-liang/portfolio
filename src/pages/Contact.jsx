@@ -6,11 +6,12 @@ import SpeechBubble from "../assets/images/hi.png";
 
 const StyledDiv = styled.div`
   width: 70%;
-  //border: 1px solid red;
   position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -40%);
+  //border: 1px solid red;
+  //doesn't look good yet.
 `;
 const StyledForm = styled.form`
   width: 80vw;
@@ -23,14 +24,15 @@ const StyledForm = styled.form`
       : "5px ridge var(--dark-primary)"};
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   gap: 0.5rem;
   @media (min-width: 800px) {
     height: 60vh;
     gap: 2rem;
   }
   @media (min-width: 1000px) {
+    margin-top: 1rem;
     width: 60vw;
     height: auto;
     gap: 1rem;
@@ -52,11 +54,11 @@ const StyledSpeechBubble = styled.img`
 `;
 const StyledP = styled.p`
   width: 70%;
-  //border: 1px solid red;
-  font-family: "Black Ops One", cursive;
-  font-size: 1.5rem;
   margin: 1rem auto;
   text-align: center;
+  font-family: "Black Ops One", cursive;
+  font-size: 1.5rem;
+  //border: 1px solid red;
   @media (min-width: 800px) {
     font-size: 2rem;
   }
@@ -69,13 +71,13 @@ const StyledLabel = styled.label`
 const StyledInput = styled.input`
   width: 80%;
   height: 2rem;
+  margin-bottom: 1rem;
+  padding: 0 0.7rem;
   border-radius: 5px;
   border: ${({ $theme }) =>
     $theme
       ? "2px solid var(--light-primary)"
       : "2px solid var(--dark-primary)"};
-  margin-bottom: 1rem;
-  padding: 0 0.7rem;
   font-size: 0.9rem;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
@@ -88,11 +90,12 @@ const StyledInput = styled.input`
         : "2px solid var(--dark-primary)"};
   }
   &:-webkit-autofill,
-  :-webkit-autofill:hover,
-  :-webkit-autofill:focus {
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
     box-shadow: 0 0 0 1000px white inset;
     -webkit-text-fill-color: ${({ $theme }) =>
       $theme ? "var(--light-primary)" : "var(--dark-primary)"};
+    //works for desktop, but not for mobile.
   }
   @media (min-width: 800px) {
     height: 2.5rem;
@@ -101,21 +104,21 @@ const StyledInput = styled.input`
 const StyledTextarea = styled.textarea`
   width: 80%;
   min-height: 8rem;
+  resize: none;
+  margin-bottom: 1rem;
+  padding: 0.8rem 1rem;
   border-radius: 5px;
   border: ${({ $theme }) =>
     $theme
       ? "2px solid var(--light-primary)"
       : "2px solid var(--dark-primary)"};
-  margin-bottom: 1rem;
-  padding: 0.8rem 1rem;
-  resize: none;
-  font-size: 0.9rem;
+  line-height: 1.2rem;
+  overflow-wrap: break-word;
   font-family: "Roboto", sans-serif;
+  font-size: 0.9rem;
   font-weight: 700;
   color: ${({ $theme }) =>
     $theme ? "var(--light-primary)" : "var(--dark-primary)"};
-  line-height: 1.2rem;
-  overflow-wrap: break-word;
   &:focus {
     outline: ${({ $theme }) =>
       $theme
@@ -123,8 +126,8 @@ const StyledTextarea = styled.textarea`
         : "2px solid var(--dark-primary)"};
   }
   &:-webkit-autofill,
-  :-webkit-autofill:hover,
-  :-webkit-autofill:focus {
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
     box-shadow: 0 0 0 1000px white inset;
     -webkit-text-fill-color: ${({ $theme }) =>
       $theme ? "var(--light-primary)" : "var(--dark-primary)"};
@@ -133,16 +136,21 @@ const StyledTextarea = styled.textarea`
 const StyledButton = styled.button`
   width: 80%;
   height: 2.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: ${({ $theme }) =>
+    $theme ? "var(--light-tertiary)" : "var(--dark-tertiary)"};
   font-family: "Black Ops One", cursive;
   font-size: 1rem;
   color: ${({ $theme }) =>
     $theme ? "var(--light-primary)" : "var(--dark-primary)"};
-  border: none;
-  border-radius: 5px;
-  background-color: ${({ $theme }) =>
-    $theme ? "var(--light-tertiary)" : "var(--dark-tertiary)"};
-  cursor: pointer;
-  &:hover {
+  &:hover,
+  &:active {
+    border: ${({ $theme }) =>
+      $theme
+        ? "2px solid var(--light-primary)"
+        : "2px solid var(--dark-primary)"};
     background-color: ${({ $theme }) =>
       $theme ? "var(--light-hover)" : "var(--dark-hover)"};
   }

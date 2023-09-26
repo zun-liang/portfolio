@@ -13,12 +13,8 @@ const StyledHeader = styled.header`
   @media (min-width: 800px) {
     padding: 2.5rem 2.5rem 0;
   }
-  @media (min-width: 1000px) {
-    padding: 2rem 3rem 0;
-    display: grid;
-    grid-template-columns: 2fr 4fr 1fr 1fr;
-    justify-items: center;
-    align-items: center;
+  @media (min-width: 1350px) {
+    padding: 2.5rem 4rem 0;
   }
 `;
 const TitleContainer = styled.div`
@@ -26,20 +22,23 @@ const TitleContainer = styled.div`
   align-items: center;
 `;
 const Title = styled.h1`
+  margin-right: 0.5rem;
   font-family: "Black Ops One", cursive;
   font-size: 1.5rem;
-  margin-right: 0.5rem;
   @media (min-width: 800px) {
-    font-size: 2rem;
     letter-spacing: 2px;
+    font-size: 2rem;
+  }
+  @media (min-width: 1000px) {
+    font-size: 1.8rem;
   }
 `;
 const SubTitle = styled.span`
-  font-size: 1.5rem;
   cursor: pointer;
+  font-size: 1.5rem;
   > span {
-    font-size: 1rem;
     font-family: "Lobster", cursive;
+    font-size: 1rem;
     @media (min-width: 1000px) {
       display: none;
     }
@@ -67,23 +66,21 @@ const SubTitleBlinkSlow = styled(SubTitleBlink)`
 `;
 
 const Time = styled.p`
-  width: 45%;
+  text-align: right;
   margin: 0.5rem 0;
   color: ${({ $theme }) =>
     $theme ? "var(--light-secondary)" : "var(--dark-secondary)"};
   @media (min-width: 800px) {
-    width: 30%;
     margin: 1rem 0;
     font-size: 1.2rem;
   }
   @media (min-width: 1000px) {
-    width: 12rem;
     font-size: 1rem;
   }
 `;
 const ThemeSwitch = styled.p`
-  font-size: 1.5rem;
   cursor: pointer;
+  font-size: 1.5rem;
   @media (min-width: 800px) {
     font-size: 1.8rem;
   }

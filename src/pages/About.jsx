@@ -12,11 +12,13 @@ import {
   faReact,
   faNode,
 } from "@fortawesome/free-brands-svg-icons";
-import { ReactComponent as RRIcon } from "../assets/images/react-router.svg";
-import { ReactComponent as SCIcon } from "../assets/images/styled-components.svg";
-import { ReactComponent as JestIcon } from "../assets/images/jest.svg";
-import { ReactComponent as TSIcon } from "../assets/images/typescript.svg";
-import { ReactComponent as NextIcon } from "../assets/images/next-js.svg";
+import { ReactComponent as RRIcon } from "../assets/images/icons/react-router.svg";
+import { ReactComponent as SCIcon } from "../assets/images/icons/styled-components.svg";
+import { ReactComponent as JestIcon } from "../assets/images/icons/jest.svg";
+import { ReactComponent as TSIcon } from "../assets/images/icons/typescript.svg";
+import { ReactComponent as NextIcon } from "../assets/images/icons/next-js.svg";
+import CursorLight from "../assets/images/cursor/coffin-black-30x30.png";
+import CursorDark from "../assets/images/cursor/coffin-white-30x30.png";
 
 const AboutContainer = styled.div`
   width: 80%;
@@ -66,6 +68,8 @@ const StyledLink = styled.a`
     color: ${({ $theme }) =>
       $theme ? "var(--light-paragraph)" : "var(--dark-paragraph)"};
   }
+  cursor: ${({ $theme }) =>
+    $theme ? `url(${CursorLight}), pointer` : `url(${CursorDark}), pointer`};
 `;
 const StyledH2 = styled.h2`
   margin: 1rem 0 0.5rem;

@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import CursorLight from "../assets/images/cursor/coffin-black-30x30.png";
+import CursorDark from "../assets/images/cursor/coffin-white-30x30.png";
 
 const MenuContainer = styled.div`
   display: ${({ $menu }) => ($menu ? "block" : "none")};
@@ -27,8 +29,6 @@ const StyledNav = styled.nav`
   width: 80vw;
   height: 50vh;
   border-radius: 1rem;
-  border-image: url("../assets/images/hi.png") 25% repeat;
-  //this doesn't work
   background-color: ${({ $theme }) =>
     $theme ? "var(--light-background)" : "var(--dark-background)"};
   position: absolute;
@@ -111,6 +111,8 @@ const StyledLink = styled(NavLink)`
     color: ${({ $theme }) =>
       $theme ? "var(--light-secondary)" : "var(--dark-secondary)"};
   }
+  cursor: ${({ $theme }) =>
+    $theme ? `url(${CursorLight}), pointer` : `url(${CursorDark}), pointer`};
 `;
 
 const Menu = ({ theme, menu, toggleMenu }) => {

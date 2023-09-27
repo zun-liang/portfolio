@@ -9,8 +9,10 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import CursorLight from "../assets/images/cursor/coffin-black-30x30.png";
+import CursorDark from "../assets/images/cursor/coffin-white-30x30.png";
 
-import { ReactComponent as FEM } from "../assets/images/frontend-mentor.svg";
+import { ReactComponent as FEM } from "../assets/images/icons/frontend-mentor.svg";
 
 const StyledFooter = styled.footer`
   width: 100%;
@@ -46,6 +48,8 @@ const Icon = styled(FontAwesomeIcon)`
   height: 1.5rem;
   color: ${({ $theme }) =>
     $theme ? "var(--light-primary)" : "var(--dark-primary)"};
+  cursor: ${({ $theme }) =>
+    $theme ? `url(${CursorLight}), pointer` : `url(${CursorDark}), pointer`};
 `;
 const FEMIcon = styled(FEM)`
   width: 1.5rem;
@@ -55,6 +59,8 @@ const FEMIcon = styled(FEM)`
     fill: ${({ $theme }) =>
       $theme ? "var(--light-primary)" : "var(--dark-primary)"};
   }
+  cursor: ${({ $theme }) =>
+    $theme ? `url(${CursorLight}), pointer` : `url(${CursorDark}), pointer`};
 `;
 const StyledP = styled.p`
   margin-top: 0.8rem;
@@ -98,7 +104,7 @@ const Footer = ({ theme }) => {
           </StyledLink>
         </StyledListItem>
         <StyledListItem>
-          <StyledLink target="_blank" href="">
+          <StyledLink target="_blank" href="https://www.linkedin.com">
             <Icon icon={faLinkedin} $theme={theme} />
           </StyledLink>
         </StyledListItem>

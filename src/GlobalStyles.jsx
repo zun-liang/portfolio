@@ -1,4 +1,6 @@
 import { createGlobalStyle } from "styled-components";
+import CursorLight from "./assets/images/cursor/cross-black-30x30.png";
+import CursorDark from "./assets/images/cursor/cross-white-30x30.png";
 
 const GlobalStyles = createGlobalStyle`
     * {
@@ -22,6 +24,12 @@ const GlobalStyles = createGlobalStyle`
         --dark-paragraph: #EC63FF;
         --dark-hover: #FFC7FF;
 
+        /*--dark-background: #2F323A;
+        --dark-primary: #C47AC0;
+        --dark-secondary:  #E39EC1;
+        --dark-paragraph: #77567A;
+        --dark-hover: #FFC7FF;*/
+
         --app-height: 100%;
     }
 
@@ -36,6 +44,10 @@ const GlobalStyles = createGlobalStyle`
         font-size: 14px;
         color: ${({ $theme }) =>
           $theme ? "var(--light-primary)" : "var(--dark-primary)"};
+        cursor:  ${({ $theme }) =>
+          $theme
+            ? `url(${CursorLight}) 15 15, auto`
+            : `url(${CursorDark}) 15 15, auto`};
     }
 
     @media (min-width: 800px) {

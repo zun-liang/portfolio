@@ -31,6 +31,16 @@ const App = () => {
     return () => window.removeEventListener("resize", setAppHeight);
   }, []);
 
+  const initialFavicon32 = isLight
+    ? "/favicon-32x32-light.png"
+    : "/favicon-32x32.png";
+  const [faviconHref32, setFaviconHref32] = useState(initialFavicon32);
+  useEffect(() => {
+    const favicon32 = document.getElementById("favicon32");
+    favicon32.href = faviconHref32;
+    setFaviconHref32(theme ? "/favicon-32x32.png" : "/favicon-32x32-light.png");
+  }, [theme]);
+
   return (
     <>
       <GlobalStyles $theme={theme} />

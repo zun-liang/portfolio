@@ -3,6 +3,8 @@ import { useForm, ValidationError } from "@formspree/react";
 import styled from "styled-components";
 import Profile from "../assets/images/profile.png";
 import SpeechBubble from "../assets/images/hi.png";
+import CursorLight from "../assets/images/cursor/coffin-black-30x30.png";
+import CursorDark from "../assets/images/cursor/coffin-white-30x30.png";
 
 const StyledDiv = styled.div`
   width: 70%;
@@ -138,7 +140,8 @@ const StyledButton = styled.button`
   height: 2.5rem;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
+  cursor: ${({ $theme }) =>
+    $theme ? `url(${CursorLight}), pointer` : `url(${CursorDark}), pointer`};
   background-color: ${({ $theme }) =>
     $theme ? "var(--light-tertiary)" : "var(--dark-tertiary)"};
   font-family: "Black Ops One", cursive;

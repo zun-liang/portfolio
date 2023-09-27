@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Menu from "./Menu";
+import CursorLight from "../assets/images/cursor/coffin-black-30x30.png";
+import CursorDark from "../assets/images/cursor/coffin-white-30x30.png";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -79,8 +81,9 @@ const Time = styled.p`
   }
 `;
 const ThemeSwitch = styled.p`
-  cursor: pointer;
   font-size: 1.5rem;
+  cursor: ${({ $theme }) =>
+    $theme ? `url(${CursorLight}), pointer` : `url(${CursorDark}), pointer`};
   @media (min-width: 800px) {
     font-size: 1.8rem;
   }

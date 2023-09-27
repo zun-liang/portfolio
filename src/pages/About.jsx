@@ -4,6 +4,19 @@ import styled from "styled-components";
 
 import Logo from "../../public/apple-touch-icon.png";
 import LogoLight from "../../public/apple-touch-icon-light.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHtml5,
+  faCss3Alt,
+  faSquareJs,
+  faReact,
+  faNode,
+} from "@fortawesome/free-brands-svg-icons";
+import { ReactComponent as RRIcon } from "../assets/images/react-router.svg";
+import { ReactComponent as SCIcon } from "../assets/images/styled-components.svg";
+import { ReactComponent as JestIcon } from "../assets/images/jest.svg";
+import { ReactComponent as TSIcon } from "../assets/images/typescript.svg";
+import { ReactComponent as NextIcon } from "../assets/images/next-js.svg";
 
 const AboutContainer = styled.div`
   width: 80%;
@@ -78,7 +91,58 @@ const StyledListItem = styled.li`
   line-height: 1.7;
   color: ${({ $theme }) =>
     $theme ? "var(--light-paragraph)" : "var(--dark-paragraph)"};
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 `;
+
+const StyledRRIcon = styled(RRIcon)`
+  width: 1rem;
+  height: 1rem;
+  & > g > path {
+    fill: ${({ $theme }) =>
+      $theme ? "var(--light-paragraph)" : "var(--dark-paragraph)"};
+  }
+`;
+const StyledSCIcon = styled(SCIcon)`
+  width: 1.2rem;
+  height: 1.2rem;
+  & > path {
+    fill: ${({ $theme }) =>
+      $theme ? "var(--light-paragraph)" : "var(--dark-paragraph)"};
+  }
+`;
+const StyledJestIcon = styled(JestIcon)`
+  width: 1rem;
+  height: 1rem;
+  & > g > path:first-child {
+    fill: ${({ $theme }) =>
+      $theme ? "var(--light-paragraph)" : "var(--dark-paragraph)"};
+  }
+  & > g > path:last-child {
+    fill: ${({ $theme }) =>
+      $theme ? "var(--light-background)" : "var(--dark-background)"};
+  }
+`;
+const StyledTSIcon = styled(TSIcon)`
+  width: 1rem;
+  height: 1rem;
+  & > rect {
+    fill: ${({ $theme }) =>
+      $theme ? "var(--light-paragraph)" : "var(--dark-paragraph)"};
+  }
+  & > path {
+    fill: ${({ $theme }) =>
+      $theme ? "var(--light-background)" : "var(--dark-background)"};
+  }
+`;
+const StyledNextIcon = styled(NextIcon)`
+  width: 1rem;
+  height: 1rem;
+  fill: ${({ $theme }) =>
+    $theme ? "var(--light-paragraph)" : "var(--dark-paragraph)"};
+`;
+
 const About = ({ theme }) => {
   return (
     <AboutContainer>
@@ -108,13 +172,31 @@ const About = ({ theme }) => {
       <Section>
         <StyledH2 $theme={theme}>Tools</StyledH2>
         <StyledList>
-          <StyledListItem $theme={theme}>✞ HTML</StyledListItem>
-          <StyledListItem $theme={theme}>✞ CSS</StyledListItem>
-          <StyledListItem $theme={theme}>✞ JavaScript</StyledListItem>
-          <StyledListItem $theme={theme}>✞ React</StyledListItem>
-          <StyledListItem $theme={theme}>✞ React Router</StyledListItem>
-          <StyledListItem $theme={theme}>✞ Styled-Components</StyledListItem>
-          <StyledListItem $theme={theme}>✞ ...</StyledListItem>
+          <StyledListItem $theme={theme}>
+            <FontAwesomeIcon icon={faHtml5} />
+            <span>HTML5</span>
+          </StyledListItem>
+          <StyledListItem $theme={theme}>
+            <FontAwesomeIcon icon={faCss3Alt} />
+            <span>CSS3</span>
+          </StyledListItem>
+          <StyledListItem $theme={theme}>
+            <FontAwesomeIcon icon={faSquareJs} />
+            <span>JavaScript</span>
+          </StyledListItem>
+          <StyledListItem $theme={theme}>
+            <FontAwesomeIcon icon={faReact} />
+            <span>React</span>
+          </StyledListItem>
+          <StyledListItem $theme={theme}>
+            <StyledSCIcon $theme={theme} />
+            <span>Styled-Components</span>
+          </StyledListItem>
+          <StyledListItem $theme={theme}>
+            <StyledRRIcon $theme={theme} />
+            <span>React Router</span>
+          </StyledListItem>
+          <StyledListItem $theme={theme}>...</StyledListItem>
         </StyledList>
       </Section>
       <Section>
@@ -134,7 +216,7 @@ const About = ({ theme }) => {
               target="_blank"
               href="https://www.freecodecamp.org/certification/zun-liang/responsive-web-design"
             >
-              ✰ Responsive Web Design Certification
+              ✞ Responsive Web Design Certification
             </StyledLink>
           </StyledListItem>
           <StyledListItem $theme={theme}>
@@ -143,7 +225,7 @@ const About = ({ theme }) => {
               target="_blank"
               href="https://www.freecodecamp.org/certification/zun-liang/javascript-algorithms-and-data-structures"
             >
-              ✰ JavaScript Algorithms and Data Structures Certification
+              ✞ JavaScript Algorithms and Data Structures Certification
             </StyledLink>
           </StyledListItem>
           <StyledListItem $theme={theme}>
@@ -152,21 +234,36 @@ const About = ({ theme }) => {
               target="_blank"
               href="https://scrimba.com/certificate/u9enxdu5/greact"
             >
-              ✰ Advanced React Certification
+              ✞ Advanced React Certification
             </StyledLink>
           </StyledListItem>
-          <StyledListItem $theme={theme}>✰ ...</StyledListItem>
+          <StyledListItem $theme={theme}>...</StyledListItem>
         </StyledList>
       </Section>
       <Section>
         <StyledH2 $theme={theme}>Next Challenges</StyledH2>
         <StyledList>
-          <StyledListItem $theme={theme}>♪ Jest</StyledListItem>
-          <StyledListItem $theme={theme}>♪ TypeScript</StyledListItem>
-          <StyledListItem $theme={theme}>♪ Next.js</StyledListItem>
-          <StyledListItem $theme={theme}>♪ React Native</StyledListItem>
-          <StyledListItem $theme={theme}>♪ Node.js</StyledListItem>
-          <StyledListItem $theme={theme}>♪ ...</StyledListItem>
+          <StyledListItem $theme={theme}>
+            <StyledJestIcon $theme={theme} />
+            <span>Jest</span>
+          </StyledListItem>
+          <StyledListItem $theme={theme}>
+            <StyledTSIcon $theme={theme} />
+            <span>TypeScript</span>
+          </StyledListItem>
+          <StyledListItem $theme={theme}>
+            <StyledNextIcon $theme={theme} />
+            <span>Next.js</span>
+          </StyledListItem>
+          <StyledListItem $theme={theme}>
+            <FontAwesomeIcon icon={faReact} />
+            <span>React Native</span>
+          </StyledListItem>
+          <StyledListItem $theme={theme}>
+            <FontAwesomeIcon icon={faNode} />
+            <span>Node.js</span>
+          </StyledListItem>
+          <StyledListItem $theme={theme}>...</StyledListItem>
         </StyledList>
       </Section>
     </AboutContainer>

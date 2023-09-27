@@ -32,10 +32,10 @@ const StyledForm = styled.form`
     gap: 2rem;
   }
   @media (min-width: 1000px) {
-    margin-top: 1rem;
+    margin-bottom: 1rem;
     width: 60vw;
     height: auto;
-    gap: 1rem;
+    gap: 0.5rem;
   }
 `;
 const StyledImg = styled.img`

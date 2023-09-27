@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const MenuContainer = styled.div`
   display: ${({ $menu }) => ($menu ? "block" : "none")};
@@ -27,7 +27,8 @@ const StyledNav = styled.nav`
   width: 80vw;
   height: 50vh;
   border-radius: 1rem;
-  border-image: url("../assets/images/lace.webp") 25% repeat;
+  border-image: url("../assets/images/hi.png") 25% repeat;
+  //this doesn't work
   background-color: ${({ $theme }) =>
     $theme ? "var(--light-background)" : "var(--dark-background)"};
   position: absolute;
@@ -101,47 +102,76 @@ const MenuBorderVerticalRight = styled(MenuBorderVertical)`
     left: 76%;
   }
 `;
-const StyledLink = styled(Link)`
+const StyledLink = styled(NavLink)`
   text-decoration: none;
   &:link,
-  &:visited,
   &:hover,
-  &:active {
+  &:active,
+  &:visited {
     color: ${({ $theme }) =>
       $theme ? "var(--light-secondary)" : "var(--dark-secondary)"};
   }
 `;
 
 const Menu = ({ theme, menu, toggleMenu }) => {
+  const activeStyle = {
+    textDecoration: "wavy underline",
+    textUnderlineOffset: "7px",
+  };
   return (
     <MenuContainer $menu={menu} $theme={theme}>
       <StyledNav $theme={theme}>
         <StyledList>
           <MenuBorder>⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜</MenuBorder>
           <StyledListItem>
-            <StyledLink $theme={theme} to="/" onClick={toggleMenu}>
+            <StyledLink
+              $theme={theme}
+              to="/"
+              onClick={toggleMenu}
+              style={({ isActive }) => (isActive ? activeStyle : null)}
+            >
               Home
             </StyledLink>
           </StyledListItem>
           <StyledListItem>
-            <StyledLink $theme={theme} to="/about" onClick={toggleMenu}>
+            <StyledLink
+              $theme={theme}
+              to="/about"
+              onClick={toggleMenu}
+              style={({ isActive }) => (isActive ? activeStyle : null)}
+            >
               About Me
             </StyledLink>
           </StyledListItem>
           <StyledListItem>
-            <StyledLink $theme={theme} to="/projects" onClick={toggleMenu}>
+            <StyledLink
+              $theme={theme}
+              to="/projects"
+              onClick={toggleMenu}
+              style={({ isActive }) => (isActive ? activeStyle : null)}
+            >
               Projects
             </StyledLink>
           </StyledListItem>
           <MenuBorderVertical>⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣</MenuBorderVertical>
           <MenuBorderVerticalRight>⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢</MenuBorderVerticalRight>
           <StyledListItem>
-            <StyledLink $theme={theme} to="/blog" onClick={toggleMenu}>
+            <StyledLink
+              $theme={theme}
+              to="/blog"
+              onClick={toggleMenu}
+              style={({ isActive }) => (isActive ? activeStyle : null)}
+            >
               Blog
             </StyledLink>
           </StyledListItem>
           <StyledListItem>
-            <StyledLink $theme={theme} to="/contact" onClick={toggleMenu}>
+            <StyledLink
+              $theme={theme}
+              to="/contact"
+              onClick={toggleMenu}
+              style={({ isActive }) => (isActive ? activeStyle : null)}
+            >
               Contact
             </StyledLink>
           </StyledListItem>

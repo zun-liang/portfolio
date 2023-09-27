@@ -9,6 +9,8 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import GlobalStyles from "./GlobalStyles";
+import Loading from "./pages/Loading";
+import Error from "./pages/Error";
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -16,6 +18,9 @@ const AppContainer = styled.div`
 `;
 
 const App = () => {
+  const [loading, setLoading] = useState(null);
+  const [error, setError] = useState(null);
+
   const Hour = new Date().getHours();
   const isLight = Hour < 18 && Hour >= 6;
   const [theme, setTheme] = useState(isLight);
@@ -41,6 +46,8 @@ const App = () => {
     setFaviconHref32(theme ? "/favicon-32x32.png" : "/favicon-32x32-light.png");
   }, [theme]);
 
+  if (loading) return <Loading />;
+  if (error) return <Error />;
   return (
     <>
       <GlobalStyles $theme={theme} />

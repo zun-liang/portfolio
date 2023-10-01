@@ -3,8 +3,11 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Menu from "./Menu";
-import CursorLight from "../assets/images/cursor/coffin-black-30x30.png";
-import CursorDark from "../assets/images/cursor/coffin-white-30x30.png";
+import {
+  CursorPointerSwitch,
+  PrimaryColorSwitch,
+  SecondaryColorSwitch,
+} from "../assets/styles/Styles";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -25,8 +28,9 @@ const TitleContainer = styled.div`
 `;
 const Title = styled.h1`
   margin-right: 0.5rem;
-  font-family: "Black Ops One", cursive;
+  font-family: "Black Ops One", sans-serif;
   font-size: 1.5rem;
+  text-shadow: 2px 2px ${SecondaryColorSwitch};
   @media (min-width: 800px) {
     letter-spacing: 2px;
     font-size: 2rem;
@@ -38,8 +42,10 @@ const Title = styled.h1`
 const SubTitle = styled.span`
   cursor: pointer;
   font-size: 1.5rem;
+  color: ${SecondaryColorSwitch};
+  text-shadow: 1px 1px ${PrimaryColorSwitch};
   > span {
-    font-family: "Lobster", cursive;
+    font-family: "Lobster", sans-serif;
     font-size: 1rem;
     @media (min-width: 1000px) {
       display: none;
@@ -70,8 +76,8 @@ const SubTitleBlinkSlow = styled(SubTitleBlink)`
 const Time = styled.p`
   text-align: right;
   margin: 0.5rem 0;
-  color: ${({ $theme }) =>
-    $theme ? "var(--light-secondary)" : "var(--dark-secondary)"};
+  color: ${SecondaryColorSwitch};
+  text-shadow: 1px 1px ${PrimaryColorSwitch};
   @media (min-width: 800px) {
     margin: 1rem 0;
     font-size: 1.2rem;
@@ -82,8 +88,8 @@ const Time = styled.p`
 `;
 const ThemeSwitch = styled.p`
   font-size: 1.5rem;
-  cursor: ${({ $theme }) =>
-    $theme ? `url(${CursorLight}), pointer` : `url(${CursorDark}), pointer`};
+  cursor: ${CursorPointerSwitch};
+  text-shadow: 1px 1px ${SecondaryColorSwitch};
   @media (min-width: 800px) {
     font-size: 1.8rem;
   }
@@ -92,7 +98,7 @@ const ThemeSwitch = styled.p`
   }
 `;
 
-const Header = ({ theme, setTheme }) => {
+const Header = ({ accessible, theme, setTheme }) => {
   const options = {
     weekday: "short",
     month: "short",
@@ -121,18 +127,40 @@ const Header = ({ theme, setTheme }) => {
   return (
     <StyledHeader>
       <TitleContainer>
-        <Title>ZUN LIANG</Title>
-        <SubTitleBlink> ⊹</SubTitleBlink>
-        <SubTitleBlinkSlow>˚</SubTitleBlinkSlow>
-        <SubTitleBlink>₊</SubTitleBlink>
-        <SubTitleBlinkSlow>⊹</SubTitleBlinkSlow>
-        <SubTitle onClick={toggleMenu}>
+        <Title $accessible={accessible} $theme={theme}>
+          ZUN LIANG
+        </Title>
+        <SubTitleBlink $accessible={accessible} $theme={theme}>
+          {" "}
+          ⊹
+        </SubTitleBlink>
+        <SubTitleBlinkSlow $accessible={accessible} $theme={theme}>
+          ˚
+        </SubTitleBlinkSlow>
+        <SubTitleBlink $accessible={accessible} $theme={theme}>
+          ₊
+        </SubTitleBlink>
+        <SubTitleBlinkSlow $accessible={accessible} $theme={theme}>
+          ⊹
+        </SubTitleBlinkSlow>
+        <SubTitle $accessible={accessible} $theme={theme} onClick={toggleMenu}>
           ʚ☕️੭<span>menu</span>
         </SubTitle>
       </TitleContainer>
-      <Menu theme={theme} menu={menu} toggleMenu={toggleMenu} />
-      <Time $theme={theme}>{current}</Time>
-      <ThemeSwitch onClick={updateTheme}>
+      <Menu
+        accessible={accessible}
+        theme={theme}
+        menu={menu}
+        toggleMenu={toggleMenu}
+      />
+      <Time $accessible={accessible} $theme={theme}>
+        {current}
+      </Time>
+      <ThemeSwitch
+        onClick={updateTheme}
+        $accessible={accessible}
+        $theme={theme}
+      >
         {theme ? "✩·͙*̩̩͙˚̩̥̩̥*̩̩͙✩·͙˚̩̥̩̥." : "⋆⁺₊⋆ ☼ ⋆⁺₊⋆"}
       </ThemeSwitch>
     </StyledHeader>

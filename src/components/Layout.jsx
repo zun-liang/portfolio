@@ -13,14 +13,14 @@ const LayoutContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-const Layout = ({ theme, setTheme }) => {
+const Layout = ({ accessible, theme, setTheme }) => {
   return (
     <LayoutContainer>
-      <Header theme={theme} setTheme={setTheme} />
+      <Header accessible={accessible} theme={theme} setTheme={setTheme} />
       <main>
         <Outlet />
       </main>
-      <Footer theme={theme} />
+      <Footer accessible={accessible} theme={theme} />
     </LayoutContainer>
   );
 };

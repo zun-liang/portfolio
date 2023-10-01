@@ -3,6 +3,10 @@ import styled from "styled-components";
 
 import SpeechBubble from "../assets/images/hey-i-am.gif";
 import Profile from "../assets/images/profile.png";
+import {
+  PrimaryColorSwitch,
+  SecondaryColorSwitch,
+} from "../assets/styles/Styles.jsx";
 
 const HomeContainer = styled.div`
   width: 70%;
@@ -31,8 +35,9 @@ const HomeContainer = styled.div`
 const StyledH1 = styled.h1`
   grid-column: 1 / 3;
   text-align: center;
-  font-family: "Black Ops One", cursive;
+  font-family: "Black Ops One", sans-serif;
   font-size: 5rem;
+  text-shadow: 5px 5px ${SecondaryColorSwitch};
   @media (min-width: 800px) {
     font-size: 6.5rem;
   }
@@ -41,8 +46,8 @@ const StyledH2 = styled.h2`
   grid-column: 1 / 3;
   text-align: right;
   font-size: 1.6rem;
-  color: ${({ $theme }) =>
-    $theme ? "var(--light-secondary)" : "var(--dark-secondary)"};
+  color: ${SecondaryColorSwitch};
+  text-shadow: 2px 2px ${PrimaryColorSwitch};
   @media (min-width: 800px) {
     line-height: 1.6;
     font-size: 2.2rem;
@@ -69,7 +74,7 @@ const Home = ({ theme }) => {
     <HomeContainer>
       <StyledImg src={Profile} alt="profile picture" />
       <StyledGif src={SpeechBubble} alt="speech bubble" />
-      <StyledH1>ZUN LIANG,</StyledH1>
+      <StyledH1 $theme={theme}>ZUN LIANG,</StyledH1>
       <StyledH2 $theme={theme}>A self-taught front end developer.</StyledH2>
     </HomeContainer>
   );

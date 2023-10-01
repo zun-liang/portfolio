@@ -2,8 +2,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import styled from "styled-components";
 
-import Logo from "../../public/apple-touch-icon.png";
-import LogoLight from "../../public/apple-touch-icon-light.png";
+import Logo from "../../public/favicon/dark/apple-touch-icon.png";
+import LogoLight from "../../public/favicon/light/apple-touch-icon.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHtml5,
@@ -17,8 +17,12 @@ import { ReactComponent as SCIcon } from "../assets/images/icons/styled-componen
 import { ReactComponent as JestIcon } from "../assets/images/icons/jest.svg";
 import { ReactComponent as TSIcon } from "../assets/images/icons/typescript.svg";
 import { ReactComponent as NextIcon } from "../assets/images/icons/next-js.svg";
-import CursorLight from "../assets/images/cursor/coffin-black-30x30.png";
-import CursorDark from "../assets/images/cursor/coffin-white-30x30.png";
+import {
+  CursorPointerSwitch,
+  ParagraphColorSwitch,
+  SecondaryColorSwitch,
+  PrimaryColorSwitch,
+} from "../assets/styles/Styles";
 
 const AboutContainer = styled.div`
   width: 80%;
@@ -40,7 +44,8 @@ const StyledDiv = styled.div`
   gap: 1rem;
 `;
 const StyledH1 = styled.h1`
-  font-family: "Black Ops One", cursive;
+  font-family: "Black Ops One", sans-serif;
+  text-shadow: 2px 2px ${SecondaryColorSwitch};
 `;
 const StyledImg = styled.img`
   width: 1.8rem;
@@ -65,26 +70,28 @@ const StyledLink = styled.a`
   &:hover,
   &:active,
   &:visited {
-    color: ${({ $theme }) =>
-      $theme ? "var(--light-paragraph)" : "var(--dark-paragraph)"};
+    color: ${ParagraphColorSwitch};
   }
-  cursor: ${({ $theme }) =>
-    $theme ? `url(${CursorLight}), pointer` : `url(${CursorDark}), pointer`};
+  cursor: ${CursorPointerSwitch};
+  > span {
+    color: ${SecondaryColorSwitch};
+    text-shadow: 1px 1px ${PrimaryColorSwitch};
+  }
 `;
 const StyledH2 = styled.h2`
   margin: 1rem 0 0.5rem;
-  font-family: "Black Ops One", cursive;
-  color: ${({ $theme }) =>
-    $theme ? "var(--light-secondary)" : "var(--dark-secondary)"};
+  font-family: "Black Ops One", sans-serif;
+  color: ${SecondaryColorSwitch};
+  text-shadow: 2px 2px ${PrimaryColorSwitch};
   ${StyledLink} {
-    color: ${({ $theme }) =>
-      $theme ? "var(--light-secondary)" : "var(--dark-secondary)"};
+    color: ${SecondaryColorSwitch};
+    text-shadow: 2px 2px ${PrimaryColorSwitch};
   }
 `;
 const StyledP = styled.p`
   margin-bottom: 1rem;
-  color: ${({ $theme }) =>
-    $theme ? "var(--light-paragraph)" : "var(--dark-paragraph)"};
+  color: ${ParagraphColorSwitch};
+  line-height: 1.5;
   @media (min-width: 800px) {
     max-width: 800px;
   }
@@ -93,78 +100,81 @@ const StyledList = styled.ul``;
 const StyledListItem = styled.li`
   list-style: none;
   line-height: 1.7;
-  color: ${({ $theme }) =>
-    $theme ? "var(--light-paragraph)" : "var(--dark-paragraph)"};
+  color: ${ParagraphColorSwitch};
   display: flex;
   align-items: center;
   gap: 0.3rem;
 `;
 
+const Icon = styled(FontAwesomeIcon)`
+  width: 1rem;
+  height: 1rem;
+  background-color: ${SecondaryColorSwitch};
+  color: ${PrimaryColorSwitch};
+`;
 const StyledRRIcon = styled(RRIcon)`
   width: 1rem;
   height: 1rem;
+  background-color: ${SecondaryColorSwitch};
   & > g > path {
-    fill: ${({ $theme }) =>
-      $theme ? "var(--light-paragraph)" : "var(--dark-paragraph)"};
+    fill: ${PrimaryColorSwitch};
   }
 `;
 const StyledSCIcon = styled(SCIcon)`
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: ${SecondaryColorSwitch};
   & > path {
-    fill: ${({ $theme }) =>
-      $theme ? "var(--light-paragraph)" : "var(--dark-paragraph)"};
+    fill: ${PrimaryColorSwitch};
   }
 `;
 const StyledJestIcon = styled(JestIcon)`
   width: 1rem;
   height: 1rem;
   & > g > path:first-child {
-    fill: ${({ $theme }) =>
-      $theme ? "var(--light-paragraph)" : "var(--dark-paragraph)"};
+    fill: ${PrimaryColorSwitch};
   }
   & > g > path:last-child {
-    fill: ${({ $theme }) =>
-      $theme ? "var(--light-background)" : "var(--dark-background)"};
+    fill: ${SecondaryColorSwitch};
   }
 `;
 const StyledTSIcon = styled(TSIcon)`
   width: 1rem;
   height: 1rem;
   & > rect {
-    fill: ${({ $theme }) =>
-      $theme ? "var(--light-paragraph)" : "var(--dark-paragraph)"};
+    fill: ${PrimaryColorSwitch};
   }
   & > path {
-    fill: ${({ $theme }) =>
-      $theme ? "var(--light-background)" : "var(--dark-background)"};
+    fill: ${SecondaryColorSwitch};
   }
 `;
 const StyledNextIcon = styled(NextIcon)`
   width: 1rem;
   height: 1rem;
-  fill: ${({ $theme }) =>
-    $theme ? "var(--light-paragraph)" : "var(--dark-paragraph)"};
+  background-color: ${SecondaryColorSwitch};
+  fill: ${PrimaryColorSwitch};
 `;
 
 const About = ({ theme }) => {
   return (
     <AboutContainer>
       <StyledDiv>
-        <StyledH1>About me</StyledH1>
+        <StyledH1 $theme={theme}>About me</StyledH1>
         <StyledImg src={theme ? LogoLight : Logo} alt="decoration logo" />
       </StyledDiv>
       <Section>
         <StyledH2 $theme={theme}>Journey</StyledH2>
         <StyledP $theme={theme}>
-          I embarked on my learning journey in February 2022, driven by a deep
-          fascination with programming. Prior to this, I had minimal experience
-          with coding, having only dabbled in Markdown for blogging.
+          I started my learning journey in February 2022, driven by a long time
+          fascination with the elegance and ingenuity of programming. Prior to
+          this, I had minimal experience with coding, having only dabbled in
+          Markdown for blogging.
         </StyledP>
         <StyledP $theme={theme}>
           This journey has been a rollercoaster of excitement and frustration.
           Completing challenges and projects brings a profound sense of
-          accomplishment, yet certain concepts often elude me.
+          accomplishment, yet certain abstract concepts can elude me for a long
+          time as well.
         </StyledP>
         <StyledP $theme={theme}>
           Nevertheless, I'm proud of my progress. I've acquired a diverse skill
@@ -177,19 +187,19 @@ const About = ({ theme }) => {
         <StyledH2 $theme={theme}>Tools</StyledH2>
         <StyledList>
           <StyledListItem $theme={theme}>
-            <FontAwesomeIcon icon={faHtml5} />
+            <Icon $theme={theme} icon={faHtml5} />
             <span>HTML5</span>
           </StyledListItem>
           <StyledListItem $theme={theme}>
-            <FontAwesomeIcon icon={faCss3Alt} />
+            <Icon $theme={theme} icon={faCss3Alt} />
             <span>CSS3</span>
           </StyledListItem>
           <StyledListItem $theme={theme}>
-            <FontAwesomeIcon icon={faSquareJs} />
+            <Icon $theme={theme} icon={faSquareJs} />
             <span>JavaScript</span>
           </StyledListItem>
           <StyledListItem $theme={theme}>
-            <FontAwesomeIcon icon={faReact} />
+            <Icon $theme={theme} icon={faReact} />
             <span>React</span>
           </StyledListItem>
           <StyledListItem $theme={theme}>
@@ -220,7 +230,7 @@ const About = ({ theme }) => {
               target="_blank"
               href="https://www.freecodecamp.org/certification/zun-liang/responsive-web-design"
             >
-              ✞ Responsive Web Design Certification
+              <span>✞ </span>Responsive Web Design Certification
             </StyledLink>
           </StyledListItem>
           <StyledListItem $theme={theme}>
@@ -229,7 +239,8 @@ const About = ({ theme }) => {
               target="_blank"
               href="https://www.freecodecamp.org/certification/zun-liang/javascript-algorithms-and-data-structures"
             >
-              ✞ JavaScript Algorithms and Data Structures Certification
+              <span>✞ </span>JavaScript Algorithms and Data Structures
+              Certification
             </StyledLink>
           </StyledListItem>
           <StyledListItem $theme={theme}>
@@ -238,7 +249,7 @@ const About = ({ theme }) => {
               target="_blank"
               href="https://scrimba.com/certificate/u9enxdu5/greact"
             >
-              ✞ Advanced React Certification
+              <span>✞ </span>Advanced React Certification
             </StyledLink>
           </StyledListItem>
           <StyledListItem $theme={theme}>...</StyledListItem>
@@ -260,11 +271,11 @@ const About = ({ theme }) => {
             <span>Next.js</span>
           </StyledListItem>
           <StyledListItem $theme={theme}>
-            <FontAwesomeIcon icon={faReact} />
+            <Icon $theme={theme} icon={faReact} />
             <span>React Native</span>
           </StyledListItem>
           <StyledListItem $theme={theme}>
-            <FontAwesomeIcon icon={faNode} />
+            <Icon $theme={theme} icon={faNode} />
             <span>Node.js</span>
           </StyledListItem>
           <StyledListItem $theme={theme}>...</StyledListItem>

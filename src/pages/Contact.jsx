@@ -142,7 +142,7 @@ const StyledButton = styled.button`
   color: ${PrimaryColorSwitch};
   &:hover,
   &:active {
-    border: 2px solid ${SecondaryColorSwitch};
+    border: 3px solid ${SecondaryColorSwitch};
     background-color: ${HoverColorSwitch};
   }
   display: flex;

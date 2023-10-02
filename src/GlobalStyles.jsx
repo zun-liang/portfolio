@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import {
-  BackgroundColorSwitch,
+  BackgroundSwitch,
   PrimaryColorSwitch,
   CursorAutoSwitch,
 } from "./assets/styles/Styles";
@@ -37,7 +37,7 @@ const GlobalStyles = createGlobalStyle`
     body {
         width: 100vw;
         height: 100%;
-        background: ${BackgroundColorSwitch};
+        background: ${BackgroundSwitch};
         overflow-x: hidden;
         font-family: "Roboto", sans-serif;
         font-size: 14px;

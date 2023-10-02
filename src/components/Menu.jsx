@@ -2,10 +2,9 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import {
-  BackgroundColorSwitch,
+  BackgroundSwitch,
   CursorPointerSwitch,
   PrimaryColorSwitch,
-  SecondaryColorSwitch,
 } from "../assets/styles/Styles";
 
 const MenuContainer = styled.div`
@@ -30,22 +29,25 @@ const MenuContainer = styled.div`
   }
 `;
 const StyledNav = styled.nav`
-  width: 80vw;
-  height: 50vh;
+  //width: 80vw;
+  //height: 50vh;
   border-radius: 1rem;
-  background-color: ${BackgroundColorSwitch};
+  background: ${BackgroundSwitch};
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  //border: 1px solid red;
+  width: 300px;
+  height: 400px;
   @media (min-width: 800px) {
-    width: 70vw;
-    height: 60vh;
+    //width: 70vw;
+    //height: 60vh;
   }
   @media (min-width: 1000px) {
     width: 100%;
     height: auto;
-    background-color: transparent;
+    background: transparent;
     position: static;
     top: 0;
     left: 0;
@@ -79,11 +81,11 @@ const StyledListItem = styled.li`
 `;
 const MenuBorder = styled(StyledListItem)`
   margin: 1rem;
-  font-size: 1.5rem;
+  font-size: 25px;
   font-weight: 700;
   @media (min-width: 800px) {
-    margin: 5rem;
-    font-size: 2.2rem;
+    //margin: 5rem;
+    //font-size: 2.2rem;
   }
   @media (min-width: 1000px) {
     display: none;
@@ -94,10 +96,10 @@ const MenuBorderVertical = styled(MenuBorder)`
   left: -2%;
   writing-mode: vertical-lr;
   text-orientation: sideways;
-  font-size: 1.6rem;
+  //font-size: 1.6rem;
   @media (min-width: 800px) {
     left: -12%;
-    font-size: 2.3rem;
+    //font-size: 2.3rem;
   }
 `;
 const MenuBorderVerticalRight = styled(MenuBorderVertical)`
@@ -112,27 +114,27 @@ const StyledLink = styled(NavLink)`
   &:hover,
   &:active,
   &:visited {
-    color: ${SecondaryColorSwitch};
-    text-shadow: 2px 2px ${PrimaryColorSwitch};
+    color: ${({ $theme }) =>
+      $theme ? "var(--light-primary)" : "var(--dark-secondary)"};
+    text-shadow: 2px 2px
+      ${({ $theme }) =>
+        $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
   }
   cursor: ${CursorPointerSwitch};
 `;
 
-const Menu = ({ accessible, theme, menu, toggleMenu }) => {
+const Menu = ({ theme, menu, toggleMenu }) => {
   const activeStyle = {
     textDecoration: "wavy underline",
     textUnderlineOffset: "7px",
   };
   return (
     <MenuContainer $menu={menu} $theme={theme}>
-      <StyledNav $accessible={accessible} $theme={theme}>
+      <StyledNav $theme={theme}>
         <StyledList>
-          <MenuBorder $accessible={accessible} $theme={theme}>
-            ⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜
-          </MenuBorder>
-          <StyledListItem $accessible={accessible} $theme={theme}>
+          <MenuBorder $theme={theme}>⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜</MenuBorder>
+          <StyledListItem $theme={theme}>
             <StyledLink
-              $accessible={accessible}
               $theme={theme}
               to="/"
               onClick={toggleMenu}
@@ -140,13 +142,9 @@ const Menu = ({ accessible, theme, menu, toggleMenu }) => {
                 isActive
                   ? {
                       ...activeStyle,
-                      textDecorationColor: accessible
-                        ? theme
-                          ? "var(--accessible-light-primary)"
-                          : "var(--accessible-dark-primary)"
-                        : theme
-                        ? "var(--light-primary)"
-                        : "var(--dark-primary)",
+                      textDecorationColor: theme
+                        ? "var(---light-primary)"
+                        : "var(---dark-primary)",
                     }
                   : null
               }
@@ -154,9 +152,8 @@ const Menu = ({ accessible, theme, menu, toggleMenu }) => {
               Home
             </StyledLink>
           </StyledListItem>
-          <StyledListItem $accessible={accessible} $theme={theme}>
+          <StyledListItem $theme={theme}>
             <StyledLink
-              $accessible={accessible}
               $theme={theme}
               to="/about"
               onClick={toggleMenu}
@@ -164,13 +161,9 @@ const Menu = ({ accessible, theme, menu, toggleMenu }) => {
                 isActive
                   ? {
                       ...activeStyle,
-                      textDecorationColor: accessible
-                        ? theme
-                          ? "var(--accessible-light-primary)"
-                          : "var(--accessible-dark-primary)"
-                        : theme
-                        ? "var(--light-primary)"
-                        : "var(--dark-primary)",
+                      textDecorationColor: theme
+                        ? "var(---light-primary)"
+                        : "var(---dark-primary)",
                     }
                   : null
               }
@@ -178,9 +171,8 @@ const Menu = ({ accessible, theme, menu, toggleMenu }) => {
               About Me
             </StyledLink>
           </StyledListItem>
-          <StyledListItem $accessible={accessible} $theme={theme}>
+          <StyledListItem $theme={theme}>
             <StyledLink
-              $accessible={accessible}
               $theme={theme}
               to="/projects"
               onClick={toggleMenu}
@@ -188,13 +180,9 @@ const Menu = ({ accessible, theme, menu, toggleMenu }) => {
                 isActive
                   ? {
                       ...activeStyle,
-                      textDecorationColor: accessible
-                        ? theme
-                          ? "var(--accessible-light-primary)"
-                          : "var(--accessible-dark-primary)"
-                        : theme
-                        ? "var(--light-primary)"
-                        : "var(--dark-primary)",
+                      textDecorationColor: theme
+                        ? "var(---light-primary)"
+                        : "var(---dark-primary)",
                     }
                   : null
               }
@@ -202,15 +190,14 @@ const Menu = ({ accessible, theme, menu, toggleMenu }) => {
               Projects
             </StyledLink>
           </StyledListItem>
-          <MenuBorderVertical $accessible={accessible} $theme={theme}>
+          <MenuBorderVertical $theme={theme}>
             ⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣
           </MenuBorderVertical>
-          <MenuBorderVerticalRight $accessible={accessible} $theme={theme}>
+          <MenuBorderVerticalRight $theme={theme}>
             ⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢
           </MenuBorderVerticalRight>
-          <StyledListItem $accessible={accessible} $theme={theme}>
+          <StyledListItem $theme={theme}>
             <StyledLink
-              $accessible={accessible}
               $theme={theme}
               to="/blog"
               onClick={toggleMenu}
@@ -218,13 +205,9 @@ const Menu = ({ accessible, theme, menu, toggleMenu }) => {
                 isActive
                   ? {
                       ...activeStyle,
-                      textDecorationColor: accessible
-                        ? theme
-                          ? "var(--accessible-light-primary)"
-                          : "var(--accessible-dark-primary)"
-                        : theme
-                        ? "var(--light-primary)"
-                        : "var(--dark-primary)",
+                      textDecorationColor: theme
+                        ? "var(---light-primary)"
+                        : "var(---dark-primary)",
                     }
                   : null
               }
@@ -232,9 +215,8 @@ const Menu = ({ accessible, theme, menu, toggleMenu }) => {
               Blog
             </StyledLink>
           </StyledListItem>
-          <StyledListItem $accessible={accessible} $theme={theme}>
+          <StyledListItem $theme={theme}>
             <StyledLink
-              $accessible={accessible}
               $theme={theme}
               to="/contact"
               onClick={toggleMenu}
@@ -242,13 +224,9 @@ const Menu = ({ accessible, theme, menu, toggleMenu }) => {
                 isActive
                   ? {
                       ...activeStyle,
-                      textDecorationColor: accessible
-                        ? theme
-                          ? "var(--accessible-light-primary)"
-                          : "var(--accessible-dark-primary)"
-                        : theme
-                        ? "var(--light-primary)"
-                        : "var(--dark-primary)",
+                      textDecorationColor: theme
+                        ? "var(---light-primary)"
+                        : "var(---dark-primary)",
                     }
                   : null
               }
@@ -256,9 +234,7 @@ const Menu = ({ accessible, theme, menu, toggleMenu }) => {
               Contact
             </StyledLink>
           </StyledListItem>
-          <MenuBorder $accessible={accessible} $theme={theme}>
-            ‌⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝
-          </MenuBorder>
+          <MenuBorder $theme={theme}>‌⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝</MenuBorder>
         </StyledList>
       </StyledNav>
     </MenuContainer>

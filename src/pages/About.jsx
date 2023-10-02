@@ -2,8 +2,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import styled from "styled-components";
 
-import Logo from "../../public/favicon/dark/apple-touch-icon.png";
-import LogoLight from "../../public/favicon/light/apple-touch-icon.png";
+import Logo from "../assets/images/favicon/dark/apple-touch-icon.png";
+import LogoLight from "../assets/images/favicon/light/apple-touch-icon.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHtml5,
@@ -11,12 +11,16 @@ import {
   faSquareJs,
   faReact,
   faNode,
+  faGitAlt,
+  faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 import { ReactComponent as RRIcon } from "../assets/images/icons/react-router.svg";
 import { ReactComponent as SCIcon } from "../assets/images/icons/styled-components.svg";
 import { ReactComponent as JestIcon } from "../assets/images/icons/jest.svg";
 import { ReactComponent as TSIcon } from "../assets/images/icons/typescript.svg";
 import { ReactComponent as NextIcon } from "../assets/images/icons/next-js.svg";
+import { ReactComponent as VSCIcon } from "../assets/images/icons/vscode.svg";
+import { ReactComponent as FBIcon } from "../assets/images/icons/firebase.svg";
 import {
   CursorPointerSwitch,
   ParagraphColorSwitch,
@@ -154,6 +158,20 @@ const StyledNextIcon = styled(NextIcon)`
   background-color: ${SecondaryColorSwitch};
   fill: ${PrimaryColorSwitch};
 `;
+const StyledVSCIcon = styled(VSCIcon)`
+  width: 1rem;
+  height: 1rem;
+  background-color: ${SecondaryColorSwitch};
+  & > path {
+    fill: ${PrimaryColorSwitch};
+  }
+`;
+const StyledFBIcon = styled(FBIcon)`
+  width: 1rem;
+  height: 1rem;
+  background-color: ${SecondaryColorSwitch};
+  fill: ${PrimaryColorSwitch};
+`;
 
 const About = ({ theme }) => {
   return (
@@ -184,7 +202,7 @@ const About = ({ theme }) => {
         </StyledP>
       </Section>
       <Section>
-        <StyledH2 $theme={theme}>Tools</StyledH2>
+        <StyledH2 $theme={theme}>Languages, Libraries, & Tools</StyledH2>
         <StyledList>
           <StyledListItem $theme={theme}>
             <Icon $theme={theme} icon={faHtml5} />
@@ -209,6 +227,22 @@ const About = ({ theme }) => {
           <StyledListItem $theme={theme}>
             <StyledRRIcon $theme={theme} />
             <span>React Router</span>
+          </StyledListItem>
+          <StyledListItem $theme={theme}>
+            <Icon icon={faGitAlt} $theme={theme} />
+            <span>Git</span>
+          </StyledListItem>
+          <StyledListItem $theme={theme}>
+            <Icon icon={faGithub} $theme={theme} />
+            <span>Github</span>
+          </StyledListItem>
+          <StyledListItem $theme={theme}>
+            <StyledVSCIcon $theme={theme} />
+            <span>VS Code</span>
+          </StyledListItem>
+          <StyledListItem $theme={theme}>
+            <StyledFBIcon $theme={theme} />
+            <span>Firebase</span>
           </StyledListItem>
           <StyledListItem $theme={theme}>...</StyledListItem>
         </StyledList>

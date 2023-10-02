@@ -11,6 +11,7 @@ import Projects from "./pages/Projects";
 import GlobalStyles from "./GlobalStyles";
 import Loading from "./pages/Loading";
 import Error from "./pages/Error";
+import BlogEditor from "./pages/BlogEditor";
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -18,8 +19,9 @@ const AppContainer = styled.div`
 `;
 
 const App = () => {
-  const [loading, setLoading] = useState(true); //true
+  const [loading, setLoading] = useState(false); //true
   const [error, setError] = useState(null);
+  const [showEditor, setShowEditor] = useState(false);
 
   const Hour = new Date().getHours();
   const isLight = Hour < 18 && Hour >= 6;
@@ -45,8 +47,8 @@ const App = () => {
     favicon32.href = faviconHref32;
     setFaviconHref32(
       theme
-        ? "./public/favicon/dark/favicon-32x32.png"
-        : "./public/favicon/light/favicon-32x32.png"
+        ? "./src/assets/images/favicon/dark/favicon-32x32.png"
+        : "./src/assets/images/favicon/light/favicon-32x32.png"
     );
   }, [theme]);
 
@@ -64,7 +66,20 @@ const App = () => {
             <Route index element={<Home theme={theme} />} />
             <Route path="about" element={<About theme={theme} />} />
             <Route path="projects" element={<Projects theme={theme} />} />
-            <Route path="blog" element={<Blog theme={theme} />} />
+            <Route
+              path="blog"
+              element={
+                <Blog
+                  showEditor={showEditor}
+                  setShowEditor={setShowEditor}
+                  theme={theme}
+                />
+              }
+            />
+            <Route
+              path="editor"
+              element={<BlogEditor showEditor={showEditor} theme={theme} />}
+            />
             <Route path="contact" element={<Contact theme={theme} />} />
           </Route>
         </Routes>

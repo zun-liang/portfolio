@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 import styled from "styled-components";
-import LoadingImage from "../../public/favicon/dark/apple-touch-icon.png";
-import LoadingImageLight from "../../public/favicon/light/apple-touch-icon.png";
+import LoadingImage from "../assets/images/favicon/dark/apple-touch-icon.png";
+import LoadingImageLight from "../assets/images/favicon/light/apple-touch-icon.png";
 import GlobalStyles from "../GlobalStyles";
 import {
-  BackgroundColorSwitch,
+  BackgroundSwitch,
   CursorPointerSwitch,
   PrimaryColorSwitch,
 } from "../assets/styles/Styles.jsx";
@@ -13,7 +13,7 @@ import {
 const LoadingContainer = styled.div`
   width: 100%;
   height: var(--app-height);
-  background: ${BackgroundColorSwitch};
+  background: ${BackgroundSwitch};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -57,7 +57,7 @@ const StyledButton = styled.button`
     ${({ $theme }) => ($theme ? "black" : "var(--dark-secondary)")};
   cursor: ${CursorPointerSwitch};
   color: ${({ $theme }) => ($theme ? "black" : "var(--dark-secondary)")};
-  background-color: ${BackgroundColorSwitch};
+  background-color: transparent;
   font-family: "Black Ops One", sans-serif;
   font-size: 1rem;
   &:hover,

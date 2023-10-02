@@ -4,6 +4,9 @@ import CursorPointerLight from "../images/cursor/cursor-pointer-light.svg";
 import CursorPointerDark from "../images/cursor/cursor-pointer-dark.svg";
 
 export const BackgroundColorSwitch = ({ $theme }) =>
+  $theme ? "var(--light-background)" : "var(--dark-background)";
+
+export const BackgroundSwitch = ({ $theme }) =>
   $theme
     ? `radial-gradient(var(--light-tertiary), 
         var(--light-background))`

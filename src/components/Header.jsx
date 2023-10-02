@@ -98,7 +98,7 @@ const ThemeSwitch = styled.p`
   }
 `;
 
-const Header = ({ accessible, theme, setTheme }) => {
+const Header = ({ theme, setTheme }) => {
   const options = {
     weekday: "short",
     month: "short",
@@ -127,40 +127,18 @@ const Header = ({ accessible, theme, setTheme }) => {
   return (
     <StyledHeader>
       <TitleContainer>
-        <Title $accessible={accessible} $theme={theme}>
-          ZUN LIANG
-        </Title>
-        <SubTitleBlink $accessible={accessible} $theme={theme}>
-          {" "}
-          ⊹
-        </SubTitleBlink>
-        <SubTitleBlinkSlow $accessible={accessible} $theme={theme}>
-          ˚
-        </SubTitleBlinkSlow>
-        <SubTitleBlink $accessible={accessible} $theme={theme}>
-          ₊
-        </SubTitleBlink>
-        <SubTitleBlinkSlow $accessible={accessible} $theme={theme}>
-          ⊹
-        </SubTitleBlinkSlow>
-        <SubTitle $accessible={accessible} $theme={theme} onClick={toggleMenu}>
+        <Title $theme={theme}>ZUN LIANG</Title>
+        <SubTitleBlink $theme={theme}> ⊹</SubTitleBlink>
+        <SubTitleBlinkSlow $theme={theme}>˚</SubTitleBlinkSlow>
+        <SubTitleBlink $theme={theme}>₊</SubTitleBlink>
+        <SubTitleBlinkSlow $theme={theme}>⊹</SubTitleBlinkSlow>
+        <SubTitle $theme={theme} onClick={toggleMenu}>
           ʚ☕️੭<span>menu</span>
         </SubTitle>
       </TitleContainer>
-      <Menu
-        accessible={accessible}
-        theme={theme}
-        menu={menu}
-        toggleMenu={toggleMenu}
-      />
-      <Time $accessible={accessible} $theme={theme}>
-        {current}
-      </Time>
-      <ThemeSwitch
-        onClick={updateTheme}
-        $accessible={accessible}
-        $theme={theme}
-      >
+      <Menu theme={theme} menu={menu} toggleMenu={toggleMenu} />
+      <Time $theme={theme}>{current}</Time>
+      <ThemeSwitch onClick={updateTheme} $theme={theme}>
         {theme ? "✩·͙*̩̩͙˚̩̥̩̥*̩̩͙✩·͙˚̩̥̩̥." : "⋆⁺₊⋆ ☼ ⋆⁺₊⋆"}
       </ThemeSwitch>
     </StyledHeader>

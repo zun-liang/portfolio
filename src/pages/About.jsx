@@ -1,31 +1,31 @@
+import {
+  faCss3Alt,
+  faGitAlt,
+  faGithub,
+  faHtml5,
+  faNode,
+  faReact,
+  faSquareJs,
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 import styled from "styled-components";
 
 import Logo from "../assets/images/favicon/dark/apple-touch-icon.png";
 import LogoLight from "../assets/images/favicon/light/apple-touch-icon.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHtml5,
-  faCss3Alt,
-  faSquareJs,
-  faReact,
-  faNode,
-  faGitAlt,
-  faGithub,
-} from "@fortawesome/free-brands-svg-icons";
+import { ReactComponent as FBIcon } from "../assets/images/icons/firebase.svg";
+import { ReactComponent as JestIcon } from "../assets/images/icons/jest.svg";
+import { ReactComponent as NextIcon } from "../assets/images/icons/next-js.svg";
 import { ReactComponent as RRIcon } from "../assets/images/icons/react-router.svg";
 import { ReactComponent as SCIcon } from "../assets/images/icons/styled-components.svg";
-import { ReactComponent as JestIcon } from "../assets/images/icons/jest.svg";
 import { ReactComponent as TSIcon } from "../assets/images/icons/typescript.svg";
-import { ReactComponent as NextIcon } from "../assets/images/icons/next-js.svg";
 import { ReactComponent as VSCIcon } from "../assets/images/icons/vscode.svg";
-import { ReactComponent as FBIcon } from "../assets/images/icons/firebase.svg";
 import {
   CursorPointerSwitch,
   ParagraphColorSwitch,
-  SecondaryColorSwitch,
   PrimaryColorSwitch,
+  SecondaryColorSwitch,
 } from "../assets/styles/Styles";
 
 const AboutContainer = styled.div`
@@ -70,13 +70,13 @@ const Section = styled.div`
 `;
 const StyledLink = styled.a`
   text-decoration: none;
+  cursor: ${CursorPointerSwitch};
   &:link,
   &:hover,
   &:active,
   &:visited {
     color: ${ParagraphColorSwitch};
   }
-  cursor: ${CursorPointerSwitch};
   > span {
     color: ${SecondaryColorSwitch};
     text-shadow: 1px 1px ${PrimaryColorSwitch};
@@ -214,7 +214,7 @@ const About = ({ theme }) => {
           </StyledListItem>
           <StyledListItem $theme={theme}>
             <Icon $theme={theme} icon={faSquareJs} />
-            <span>JavaScript</span>
+            <span>JavaScript ES6+</span>
           </StyledListItem>
           <StyledListItem $theme={theme}>
             <Icon $theme={theme} icon={faReact} />
@@ -226,7 +226,7 @@ const About = ({ theme }) => {
           </StyledListItem>
           <StyledListItem $theme={theme}>
             <StyledRRIcon $theme={theme} />
-            <span>React Router</span>
+            <span>React Router v6</span>
           </StyledListItem>
           <StyledListItem $theme={theme}>
             <Icon icon={faGitAlt} $theme={theme} />
@@ -264,7 +264,7 @@ const About = ({ theme }) => {
               target="_blank"
               href="https://www.freecodecamp.org/certification/zun-liang/responsive-web-design"
             >
-              <span>✞ </span>Responsive Web Design Certification
+              <span>✞ </span> Responsive Web Design Certification
             </StyledLink>
           </StyledListItem>
           <StyledListItem $theme={theme}>
@@ -273,7 +273,7 @@ const About = ({ theme }) => {
               target="_blank"
               href="https://www.freecodecamp.org/certification/zun-liang/javascript-algorithms-and-data-structures"
             >
-              <span>✞ </span>JavaScript Algorithms and Data Structures
+              <span>✞ </span> JavaScript Algorithms and Data Structures
               Certification
             </StyledLink>
           </StyledListItem>
@@ -283,7 +283,7 @@ const About = ({ theme }) => {
               target="_blank"
               href="https://scrimba.com/certificate/u9enxdu5/greact"
             >
-              <span>✞ </span>Advanced React Certification
+              <span>✞ </span> Advanced React Certification
             </StyledLink>
           </StyledListItem>
           <StyledListItem $theme={theme}>...</StyledListItem>

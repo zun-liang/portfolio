@@ -1,11 +1,8 @@
+import { NavLink } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-import {
-  BackgroundSwitch,
-  CursorPointerSwitch,
-  PrimaryColorSwitch,
-} from "../assets/styles/Styles";
+
+import { BackgroundSwitch, CursorPointerSwitch, PrimaryColorSwitch } from "../assets/styles/Styles";
 
 const MenuContainer = styled.div`
   display: ${({ $menu }) => ($menu ? "block" : "none")};
@@ -136,7 +133,7 @@ const Menu = ({ theme, menu, toggleMenu }) => {
           <StyledListItem $theme={theme}>
             <StyledLink
               $theme={theme}
-              to="/"
+              to="."
               onClick={toggleMenu}
               style={({ isActive }) =>
                 isActive
@@ -155,7 +152,7 @@ const Menu = ({ theme, menu, toggleMenu }) => {
           <StyledListItem $theme={theme}>
             <StyledLink
               $theme={theme}
-              to="/about"
+              to="about"
               onClick={toggleMenu}
               style={({ isActive }) =>
                 isActive
@@ -174,7 +171,7 @@ const Menu = ({ theme, menu, toggleMenu }) => {
           <StyledListItem $theme={theme}>
             <StyledLink
               $theme={theme}
-              to="/projects"
+              to="projects"
               onClick={toggleMenu}
               style={({ isActive }) =>
                 isActive
@@ -199,7 +196,7 @@ const Menu = ({ theme, menu, toggleMenu }) => {
           <StyledListItem $theme={theme}>
             <StyledLink
               $theme={theme}
-              to="/blog"
+              to="blogs"
               onClick={toggleMenu}
               style={({ isActive }) =>
                 isActive
@@ -212,13 +209,13 @@ const Menu = ({ theme, menu, toggleMenu }) => {
                   : null
               }
             >
-              Blog
+              Blogs
             </StyledLink>
           </StyledListItem>
           <StyledListItem $theme={theme}>
             <StyledLink
               $theme={theme}
-              to="/contact"
+              to="contact"
               onClick={toggleMenu}
               style={({ isActive }) =>
                 isActive

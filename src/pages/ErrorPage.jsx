@@ -4,11 +4,16 @@ import styled from "styled-components";
 
 import Kuma from "../assets/images/ojigi_animal_kuma.png";
 import {
+  BackgroundSwitch,
   PrimaryColorSwitch,
   SecondaryColorSwitch,
 } from "../assets/styles/Styles";
+import GlobalStyles from "../GlobalStyles";
 
 const ErrorPage = styled.div`
+  width: 100%;
+  height: var(--app-height);
+  background: ${BackgroundSwitch};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +24,7 @@ const StyledImg = styled.img`
   width: 10rem;
 `;
 const StyledH1 = styled.h1`
-  width: 70%;
+  width: 50%;
   text-align: center;
   line-height: 1.5;
   font-family: "Black Ops One", sans-serif;
@@ -29,12 +34,15 @@ const StyledH1 = styled.h1`
 
 const Error = ({ theme }) => {
   return (
-    <ErrorPage $theme={theme}>
-      <StyledImg src={Kuma} alt="sorry bear picture" />
-      <StyledH1 $theme={theme}>
-        Sorry, the page you are looking for doesn't seem to exist.
-      </StyledH1>
-    </ErrorPage>
+    <>
+      <GlobalStyles />
+      <ErrorPage $theme={theme}>
+        <StyledImg src={Kuma} alt="sorry bear picture" />
+        <StyledH1 $theme={theme}>
+          Something went wrong, please refresh or contact the site owner.
+        </StyledH1>
+      </ErrorPage>
+    </>
   );
 };
 

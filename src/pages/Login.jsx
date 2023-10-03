@@ -1,44 +1,37 @@
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import {
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
-import { auth } from "../firebase";
-import { useState } from "react";
-import {
-  PrimaryColorSwitch,
-  CursorPointerSwitch,
-  HoverColorSwitch,
-  SecondaryColorSwitch,
-} from "../assets/styles/Styles";
-import { Link } from "react-router-dom";
 
-const StyledLogin = styled.div`
-  border: 1px solid red;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+import { CursorPointerSwitch, HoverColorSwitch, PrimaryColorSwitch, SecondaryColorSwitch } from "../assets/styles/Styles";
+import { auth } from "../firebase";
+
+const LoginPage = styled.div`
+  width: 40vw;
+  border: 5px ridge ${SecondaryColorSwitch};
+  border-radius: 5px;
+  padding: 2rem;
+  display: grid;
+  row-gap: 1rem;
 `;
 const StyledLabel = styled.label`
   font-family: "Black Ops One", sans-serif;
   font-size: 1rem;
   color: ${PrimaryColorSwitch};
+  text-align: left;
 `;
 const StyledInput = styled.input`
-  //width: 80%;
   height: 2rem;
   padding: 0 0.7rem;
   border-radius: 5px;
   border: none;
-  //border: 2px solid ${SecondaryColorSwitch};
+  border: 2px solid ${SecondaryColorSwitch};
   font-size: 0.9rem;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   color: ${PrimaryColorSwitch};
-  //background-color: white;
+  background-color: white;
   &:focus {
     outline: 2px solid ${SecondaryColorSwitch};
   }
@@ -50,7 +43,11 @@ const StyledInput = styled.input`
     //works for desktop, but not for mobile.
   }
 `;
-const StyledButton = styled(Link)`
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  // seems like longer than the button
+`;
+const StyledButton = styled.button`
   width: 5rem;
   height: 2rem;
   border: 2px solid ${PrimaryColorSwitch};
@@ -71,37 +68,20 @@ const StyledButton = styled(Link)`
 `;
 const StyledP = styled.p``;
 
-const Login = ({ showEditor, setShowEditor, theme }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [user, setUser] = useState({});
+const Login = ({
+  theme,
+  email,
+  setEmail,
+  password,
+  setPassword,
+  login,
+  authToken,
+  user,
+}) => {
   const [error, setError] = useState(null);
 
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
-
-  console.log(showEditor);
-  const login = async () => {
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      setEmail("");
-      setPassword("");
-      setShowEditor(true);
-    } catch (error) {
-      setError(true);
-    }
-
-    //error handling
-  };
-
-  const logout = async () => {
-    await signOut(auth);
-    showEditor(false);
-  };
-
   return (
-    <StyledLogin>
+    <LoginPage $theme={theme}>
       <StyledLabel htmlFor="email" $theme={theme}>
         Email
       </StyledLabel>
@@ -126,20 +106,16 @@ const Login = ({ showEditor, setShowEditor, theme }) => {
         $theme={theme}
         required
       />
-      {error && <StyledP>Wrong user/password</StyledP>}
-      <StyledButton $theme={theme} onClick={login} to="/editor">
-        Log in
-      </StyledButton>
-      {showEditor && (
-        <>
-          <StyledP $theme={theme}>admin: {user?.email}</StyledP>
-          <StyledButton as="button" $theme={theme} onClick={logout}>
-            Log out
-          </StyledButton>
-        </>
-      )}
-    </StyledLogin>
+      {/* {error && <StyledP>Wrong user/password</StyledP>} */}
+      <StyledLink to="editor">
+        <StyledButton $theme={theme} onClick={login}>
+          Log in
+        </StyledButton>
+      </StyledLink>
+      <StyledP $theme={theme}>admin: {user?.email}</StyledP>
+    </LoginPage>
   );
 };
 
 export default Login;
+// {user?.email}

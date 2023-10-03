@@ -1,15 +1,11 @@
 /* eslint-disable react/prop-types */
 import { onSnapshot } from "firebase/firestore";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+
+import { CursorPointerSwitch, ParagraphColorSwitch, PrimaryColorSwitch, SecondaryColorSwitch } from "../assets/styles/Styles";
 import { blogsCollection } from "../firebase";
-import {
-  PrimaryColorSwitch,
-  SecondaryColorSwitch,
-  CursorPointerSwitch,
-  HoverColorSwitch,
-} from "../assets/styles/Styles";
-import Login from "../components/Login";
 
 const BlogsContainer = styled.div`
   width: 80vw;
@@ -28,33 +24,33 @@ const StyledH1 = styled.h1`
 const StyledH2 = styled.h2`
   color: ${SecondaryColorSwitch};
   text-shadow: 2px 2px ${PrimaryColorSwitch};
+  //border: 1px solid red;
+  //color strange
+  //seem to have to do with onsnapshot, one step slower
 `;
-const StyledP = styled.p``;
-const StyledButton = styled.button`
+const StyledP = styled.p`
+  color: ${ParagraphColorSwitch};
+  border: 1px solid red;
+`;
+const StyledLink = styled(Link)`
   width: 4.5rem;
   height: 2rem;
-  border: none;
-  border-radius: 5px;
+  text-decoration: none;
   cursor: ${CursorPointerSwitch};
-  background-color: transparent;
   font-family: "Black Ops One", sans-serif;
   font-size: 1rem;
   color: ${PrimaryColorSwitch};
+  &:link,
   &:hover,
-  &:active {
-    background-color: ${HoverColorSwitch};
+  &:active,
+  &:visited {
+    color: ${SecondaryColorSwitch};
+    text-shadow: 2px 2px ${PrimaryColorSwitch};
   }
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 `;
 
-const Blog = ({ showEditor, setShowEditor, theme }) => {
+const Blogs = ({ theme }) => {
   const [blogs, setBlogs] = useState([]);
-  const [showLogin, setShowLogin] = useState(false);
-  const handleShowLogin = () => setShowLogin(true);
-
   useEffect(() => {
     const unsubscribe = onSnapshot(blogsCollection, function (snapshot) {
       const blogsArr = snapshot.docs.map((doc) => (
@@ -72,18 +68,11 @@ const Blog = ({ showEditor, setShowEditor, theme }) => {
     <BlogsContainer>
       <StyledH1 $theme={theme}>Blogs</StyledH1>
       {blogs}
-      <StyledButton $theme={theme} onClick={handleShowLogin}>
-        admin
-      </StyledButton>
-      {showLogin && (
-        <Login
-          showEditor={showEditor}
-          setShowEditor={setShowEditor}
-          theme={theme}
-        />
-      )}
+      <StyledLink $theme={theme} to="login">
+        Editor
+      </StyledLink>
     </BlogsContainer>
   );
 };
 
-export default Blog;
+export default Blogs;

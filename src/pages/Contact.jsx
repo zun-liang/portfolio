@@ -1,14 +1,15 @@
 /* eslint-disable react/prop-types */
 import { useForm, ValidationError } from "@formspree/react";
 import styled from "styled-components";
-import Profile from "../assets/images/profile.png";
+
 import SpeechBubble from "../assets/images/hi.png";
+import Profile from "../assets/images/profile.png";
 import {
   CursorAutoSwitch,
   CursorPointerSwitch,
+  HoverColorSwitch,
   PrimaryColorSwitch,
   SecondaryColorSwitch,
-  HoverColorSwitch,
 } from "../assets/styles/Styles";
 
 const StyledDiv = styled.div`
@@ -175,7 +176,14 @@ const Contact = ({ theme }) => {
       <StyledLabel htmlFor="name" $theme={theme}>
         Full Name
       </StyledLabel>
-      <StyledInput id="name" type="text" name="name" $theme={theme} required />
+      <StyledInput
+        id="name"
+        type="text"
+        name="name"
+        placeholder="Enter your name..."
+        $theme={theme}
+        required
+      />
       <StyledLabel htmlFor="email" $theme={theme}>
         Email Address
       </StyledLabel>
@@ -183,6 +191,7 @@ const Contact = ({ theme }) => {
         id="email"
         type="email"
         name="email"
+        placeholder="Enter your email..."
         $theme={theme}
         required
       />
@@ -190,7 +199,13 @@ const Contact = ({ theme }) => {
       <StyledLabel htmlFor="message" $theme={theme}>
         Message
       </StyledLabel>
-      <StyledTextarea id="message" name="message" $theme={theme} required />
+      <StyledTextarea
+        id="message"
+        name="message"
+        placeholder="Please leave me a message here ... (*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ"
+        $theme={theme}
+        required
+      />
       <ValidationError prefix="Message" field="message" errors={state.errors} />
       <StyledButton type="submit" disabled={state.submitting} $theme={theme}>
         Submit

@@ -1,9 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import {
-  BackgroundSwitch,
-  PrimaryColorSwitch,
-  CursorAutoSwitch,
-} from "./assets/styles/Styles";
+
+import { BackgroundSwitch, CursorAutoSwitch, PrimaryColorSwitch } from "./assets/styles/Styles";
 
 const GlobalStyles = createGlobalStyle`
     * {

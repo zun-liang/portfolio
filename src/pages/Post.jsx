@@ -4,10 +4,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { CursorPointerSwitch, HoverColorSwitch } from "../assets/styles/Styles";
-import {
-  PrimaryColorSwitch,
-  SecondaryColorSwitch,
-} from "../assets/styles/Styles";
+import { PrimaryColorSwitch, SecondaryColorSwitch } from "../assets/styles/Styles";
 
 const PostContainer = styled.div`
   display: flex;
@@ -56,7 +53,7 @@ const Post = ({ theme, logout, user }) => {
     <PostContainer>
       <StyledH1 $theme={theme}>♡⸜(˶˃ ᵕ ˂˶)⸝♡</StyledH1>
       <StyledP $theme={theme}>You've successfully posted your blog!</StyledP>
-      <StyledLink to="logout">
+      <StyledLink to="/logout">
         <StyledButton $theme={theme} onClick={logout}>
           Log out
         </StyledButton>

@@ -1,11 +1,13 @@
-import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { CursorPointerSwitch, HoverColorSwitch, PrimaryColorSwitch, SecondaryColorSwitch } from "../assets/styles/Styles";
-import { auth } from "../firebase";
+import {
+  CursorPointerSwitch,
+  HoverColorSwitch,
+  PrimaryColorSwitch,
+  SecondaryColorSwitch,
+} from "../assets/styles/Styles";
 
 const LoginPage = styled.div`
   width: 40vw;
@@ -43,10 +45,6 @@ const StyledInput = styled.input`
     //works for desktop, but not for mobile.
   }
 `;
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  // seems like longer than the button
-`;
 const StyledButton = styled.button`
   width: 5rem;
   height: 2rem;
@@ -75,7 +73,6 @@ const Login = ({
   password,
   setPassword,
   login,
-  authToken,
   user,
 }) => {
   const [error, setError] = useState(null);
@@ -107,11 +104,9 @@ const Login = ({
         required
       />
       {/* {error && <StyledP>Wrong user/password</StyledP>} */}
-      <StyledLink to="editor">
-        <StyledButton $theme={theme} onClick={login}>
-          Log in
-        </StyledButton>
-      </StyledLink>
+      <StyledButton $theme={theme} onClick={login}>
+        Log in
+      </StyledButton>
       <StyledP $theme={theme}>admin: {user?.email}</StyledP>
     </LoginPage>
   );

@@ -4,7 +4,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import AuthRequired from "./components/AuthRequired";
@@ -12,6 +12,7 @@ import Layout from "./components/Layout";
 import { auth } from "./firebase";
 import GlobalStyles from "./GlobalStyles";
 import About from "./pages/About";
+import Blog from "./pages/Blog";
 import BlogEditor from "./pages/BlogEditor";
 import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
@@ -36,17 +37,21 @@ const App = () => {
   const [authToken, setAuthToken] = useState(
     sessionStorage.getItem("Auth Token")
   );
+  console.log(authToken);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
   const login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         sessionStorage.setItem("Auth Token", user.accessToken);
+        setAuthToken(user.accessToken);
         setEmail("");
         setPassword("");
+        navigate("/editor", { replace: true });
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -59,6 +64,7 @@ const App = () => {
     signOut(auth)
       .then(() => {
         sessionStorage.setItem("Auth Token", null);
+        setAuthToken(null);
       })
       .catch((error) => {
         console.log(error);
@@ -72,7 +78,6 @@ const App = () => {
       setUser(currentUser);
     });
   }, []);
-  console.log(user);
 
   const Hour = new Date().getHours();
   const isLight = Hour < 18 && Hour >= 6;
@@ -118,9 +123,13 @@ const App = () => {
             <Route index element={<Home theme={theme} />} />
             <Route path="about" element={<About theme={theme} />} />
             <Route path="projects" element={<Projects theme={theme} />} />
-            <Route path="blogs" element={<Blogs theme={theme} />} />
             <Route
-              path="blogs/login"
+              path="blogs"
+              element={<Blogs theme={theme} authToken={authToken} />}
+            />
+            <Route path="blogs/:title" element={<Blog theme={theme} />} />
+            <Route
+              path="login"
               element={
                 <Login
                   theme={theme}
@@ -137,19 +146,17 @@ const App = () => {
             />
             <Route element={<AuthRequired authToken={authToken} />}>
               <Route
-                path="blogs/login/editor"
-                element={<BlogEditor theme={theme} user={user} />}
+                path="editor"
+                element={
+                  <BlogEditor theme={theme} logout={logout} user={user} />
+                }
               />
-            </Route>
-            <Route element={<AuthRequired authToken={authToken} />}>
               <Route
-                path="blogs/login/editor/post"
+                path="post"
                 element={<Post theme={theme} logout={logout} user={user} />}
               />
-            </Route>
-            <Route element={<AuthRequired authToken={authToken} />}>
               <Route
-                path="blogs/login/editor/post/logout"
+                path="logout"
                 element={<Logout theme={theme} user={user} />}
               />
             </Route>

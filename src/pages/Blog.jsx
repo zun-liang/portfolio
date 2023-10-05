@@ -1,7 +1,7 @@
+/* eslint-disable react-refresh/only-export-components */
 import { doc, getDoc } from "firebase/firestore";
-import { useEffect, useState } from "react";
 import Markdown from "react-markdown";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
@@ -65,31 +65,27 @@ const EditLink = styled(Link)`
   }
 `;
 
+export const loader = async ({ params }) => {
+  const { title } = params;
+  const docRef = doc(db, "blogs", title);
+  try {
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      return docSnap.data();
+    } else {
+      console.log("No such document!");
+    }
+  } catch (error) {
+    console.error("Error fetching document:", error);
+  }
+};
+
 const Blog = ({ theme }) => {
-  const [blogTime, setBlogTime] = useState("loading...");
-  const [blogTitle, setBlogTitle] = useState("loading...");
-  const [blogContent, setBlogContent] = useState("loading...");
-  const { title } = useParams();
-  useEffect(() => {
-    const docRef = doc(db, "blogs", title);
-    (async () => {
-      try {
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          const updatedTime = docSnap.data().time;
-          const updatedTitle = docSnap.data().title;
-          const updatedContent = docSnap.data().content;
-          setBlogTime(updatedTime);
-          setBlogTitle(updatedTitle);
-          setBlogContent(updatedContent);
-        } else {
-          console.log("No such document!");
-        }
-      } catch (error) {
-        console.error("Error fetching document:", error);
-      }
-    })();
-  }, [title]);
+  const {
+    time: blogTime,
+    title: blogTitle,
+    content: blogContent,
+  } = useLoaderData();
 
   return (
     <BlogContainer>

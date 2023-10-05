@@ -1,21 +1,12 @@
 /* eslint-disable react/prop-types */
-import {
-  faGithub,
-  faCodepen,
-  faLinkedin,
-  faFreeCodeCamp,
-} from "@fortawesome/free-brands-svg-icons";
+import { faCodepen, faFreeCodeCamp, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import {
-  CursorPointerSwitch,
-  PrimaryColorSwitch,
-  SecondaryColorSwitch,
-} from "../assets/styles/Styles";
 
 import { ReactComponent as FEM } from "../assets/images/icons/frontend-mentor.svg";
+import { CursorPointerSwitch, PrimaryColorSwitch, SecondaryColorSwitch } from "../assets/styles/Styles";
 
 const StyledFooter = styled.footer`
   width: 100%;

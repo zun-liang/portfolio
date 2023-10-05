@@ -2,12 +2,15 @@ import MDEditor from "@uiw/react-md-editor";
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import { doc, setDoc } from "firebase/firestore";
-import { useRef } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { CursorPointerSwitch, HoverColorSwitch, PrimaryColorSwitch } from "../assets/styles/Styles";
+import {
+  CursorPointerSwitch,
+  HoverColorSwitch,
+  PrimaryColorSwitch,
+} from "../assets/styles/Styles";
 import { db } from "../firebase";
 
 const EditorContainer = styled.div`
@@ -44,14 +47,18 @@ const BlogEditor = ({ theme, user, logout }) => {
   const title = blog.split("\n")[0];
   const content = blog.split("\n").slice(1).join("\n");
   const time = new Date().toLocaleString();
-  const tag = blog.split("\n")[-1];
-  const blogId = blog
-    .split("\n")[0]
-    .split(" ")
-    .slice(1)
-    .join("-")
-    .toLowerCase();
-  const blogObject = { title: title, content: content, time: time, tag: tag };
+  const tag = blog.split("\n")[blog.split("\n").length - 1];
+  const blogId =
+    blog.split("\n")[0].split(" ").slice(1).join("-").toLowerCase() +
+    "-" +
+    new Date().getTime();
+  const blogObject = {
+    id: blogId,
+    title: title,
+    content: content,
+    time: time,
+    tag: tag,
+  };
   const post = async () => await setDoc(doc(db, "blogs", blogId), blogObject);
   return (
     <EditorContainer>

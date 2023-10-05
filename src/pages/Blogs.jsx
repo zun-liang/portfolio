@@ -1,15 +1,10 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
-import { onSnapshot } from "firebase/firestore";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { getDocs } from "firebase/firestore";
+import { Link, useLoaderData } from "react-router-dom";
 import styled from "styled-components";
 
-import {
-  CursorPointerSwitch,
-  ParagraphColorSwitch,
-  PrimaryColorSwitch,
-  SecondaryColorSwitch,
-} from "../assets/styles/Styles";
+import { CursorPointerSwitch, HoverColorSwitch, ParagraphColorSwitch, PrimaryColorSwitch, SecondaryColorSwitch } from "../assets/styles/Styles";
 import { blogsCollection } from "../firebase";
 
 const BlogsContainer = styled.div`
@@ -55,14 +50,11 @@ const Filter = styled(Link)`
 `;
 const StyledP = styled.p`
   color: ${ParagraphColorSwitch};
-  //color strange
-  //seem to have to do with onsnapshot, one step slower
 `;
 const BlogLink = styled(Link)`
-  //text-decoration: none;
+  text-underline-offset: 3px;
+  border: 1px solid blue;
   //will take over 100% width
-  display: contents;
-  border: 1px solid red;
   &:link,
   &:hover,
   &:active,
@@ -72,10 +64,10 @@ const BlogLink = styled(Link)`
   cursor: ${CursorPointerSwitch};
 `;
 const StyledH2 = styled.h2`
+  display: inline;
+  border: 1px solid red;
   font-size: 1.2rem;
   font-family: "Black Ops One", sans-serif;
-  //color strange
-  //seem to have to do with onsnapshot, one step slower
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -90,26 +82,34 @@ const StyledLink = styled(Link)`
     color: ${SecondaryColorSwitch};
     text-shadow: 2px 2px ${PrimaryColorSwitch};
   }
+  &:hover {
+    background-color: ${HoverColorSwitch};
+  }
 `;
+
+export const loader = async () => {
+  const querySnapshot = await getDocs(blogsCollection);
+  let data = [];
+  querySnapshot.forEach((doc) => {
+    data.push(doc.data());
+  });
+  return data;
+};
+
 //blogs don't show in order
-const Blogs = ({ theme, authToken }) => {
-  const [blogs, setBlogs] = useState([]);
-  useEffect(() => {
-    const unsubscribe = onSnapshot(blogsCollection, function (snapshot) {
-      const blogsArr = snapshot.docs.map((doc) => (
-        <BlogContainer key={doc.id}>
-          <StyledP $theme={theme}>{doc.data().time}</StyledP>
-          <BlogLink to={doc.id} $theme={theme}>
-            <StyledH2 $theme={theme}>
-              {doc.data().title.split(" ").slice(1).join(" ")}
-            </StyledH2>
-          </BlogLink>
-        </BlogContainer>
-      ));
-      setBlogs(blogsArr);
-    });
-    return unsubscribe;
-  }, []);
+const Blogs = ({ theme }) => {
+  const authToken = sessionStorage.getItem("Auth Token");
+  const blogsArr = useLoaderData();
+  const blogs = blogsArr.map((blog) => (
+    <BlogContainer key={blog.id}>
+      <StyledP $theme={theme}>{blog.time}</StyledP>
+      <BlogLink to={blog.id} $theme={theme}>
+        <StyledH2 $theme={theme}>
+          {blog.title.split(" ").slice(1).join(" ")}
+        </StyledH2>
+      </BlogLink>
+    </BlogContainer>
+  ));
 
   return (
     <BlogsContainer>
@@ -129,7 +129,7 @@ const Blogs = ({ theme, authToken }) => {
         </StyledLink>
       ) : (
         <StyledLink $theme={theme} to="/login">
-          Log in
+          Log in to edit
         </StyledLink>
       )}
     </BlogsContainer>

@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+/* eslint-disable react-refresh/only-export-components */
+import { Form, redirect } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
@@ -8,8 +10,9 @@ import {
   PrimaryColorSwitch,
   SecondaryColorSwitch,
 } from "../assets/styles/Styles";
+import { auth } from "../firebase";
 
-const LoginPage = styled.div`
+const LoginPage = styled(Form)`
   width: 40vw;
   border: 5px ridge ${SecondaryColorSwitch};
   border-radius: 5px;
@@ -66,51 +69,58 @@ const StyledButton = styled.button`
 `;
 const StyledP = styled.p``;
 
-const Login = ({
-  theme,
-  email,
-  setEmail,
-  password,
-  setPassword,
-  login,
-  user,
-}) => {
-  const [error, setError] = useState(null);
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const email = formData.get("email");
+  const password = formData.get("password");
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCredential.user;
+    sessionStorage.setItem("Auth Token", user.accessToken);
+    return redirect("/editor");
+  } catch (error) {
+    console.error("Error signing in:", error);
+    // Handle the error as needed.
+  }
+};
 
+const Login = ({ theme, user, logout }) => {
   return (
-    <LoginPage $theme={theme}>
-      <StyledLabel htmlFor="email" $theme={theme}>
-        Email
-      </StyledLabel>
-      <StyledInput
-        type="email"
-        id="email"
-        name="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        $theme={theme}
-        required
-      />
-      <StyledLabel htmlFor="password" $theme={theme}>
-        Password
-      </StyledLabel>
-      <StyledInput
-        type="password"
-        id="password"
-        name="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        $theme={theme}
-        required
-      />
-      {/* {error && <StyledP>Wrong user/password</StyledP>} */}
-      <StyledButton $theme={theme} onClick={login}>
-        Log in
+    <>
+      <LoginPage method="post" $theme={theme}>
+        <StyledLabel htmlFor="email" $theme={theme}>
+          Email
+        </StyledLabel>
+        <StyledInput
+          type="email"
+          id="email"
+          name="email"
+          $theme={theme}
+          required
+        />
+        <StyledLabel htmlFor="password" $theme={theme}>
+          Password
+        </StyledLabel>
+        <StyledInput
+          type="password"
+          id="password"
+          name="password"
+          $theme={theme}
+          required
+        />
+        {/* {error && <StyledP>Wrong user/password</StyledP>} */}
+        <StyledButton $theme={theme}>Log in</StyledButton>
+        <StyledP $theme={theme}>admin: {user?.email}</StyledP>
+      </LoginPage>
+      <StyledButton onClick={logout} $theme={theme}>
+        Log out
       </StyledButton>
-      <StyledP $theme={theme}>admin: {user?.email}</StyledP>
-    </LoginPage>
+    </>
   );
 };
 
 export default Login;
-// {user?.email}

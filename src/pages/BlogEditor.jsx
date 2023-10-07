@@ -6,11 +6,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import {
-  CursorPointerSwitch,
-  HoverColorSwitch,
-  PrimaryColorSwitch,
-} from "../assets/styles/Styles";
+import { CursorPointerSwitch, HoverColorSwitch, PrimaryColorSwitch } from "../assets/styles/Styles";
 import { db } from "../firebase";
 
 const EditorContainer = styled.div`
@@ -47,7 +43,7 @@ const BlogEditor = ({ theme, user, logout }) => {
   const title = blog.split("\n")[0];
   const content = blog.split("\n").slice(1).join("\n");
   const time = new Date().toLocaleString();
-  const tag = blog.split("\n")[blog.split("\n").length - 1];
+  const tag = blog.split("\n")[blog.split("\n").length - 1].replace("#", "");
   const blogId =
     blog.split("\n")[0].split(" ").slice(1).join("-").toLowerCase() +
     "-" +
@@ -60,6 +56,7 @@ const BlogEditor = ({ theme, user, logout }) => {
     tag: tag,
   };
   const post = async () => await setDoc(doc(db, "blogs", blogId), blogObject);
+  //placeholder for editor, what stands for title, what stands for tags...
   return (
     <EditorContainer>
       <MDEditor value={blog} onChange={setBlog} />

@@ -17,7 +17,6 @@ const GlobalStyles = createGlobalStyle`
         --light-paragraph: #000000;
         --light-hover: #beadfa;
 
-
         --dark-background: #000000;
         --dark-primary: #ff76a7;
         --dark-secondary: #d6ffc3;

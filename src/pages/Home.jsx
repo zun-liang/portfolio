@@ -3,10 +3,7 @@ import styled from "styled-components";
 
 import SpeechBubble from "../assets/images/hey-i-am.gif";
 import Profile from "../assets/images/profile.png";
-import {
-  PrimaryColorSwitch,
-  SecondaryColorSwitch,
-} from "../assets/styles/Styles.jsx";
+import { PrimaryColorSwitch, SecondaryColorSwitch } from "../assets/styles/Styles.jsx";
 
 const HomeContainer = styled.div`
   width: 70%;

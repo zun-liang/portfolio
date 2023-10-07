@@ -1,10 +1,16 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { getDocs } from "firebase/firestore";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
-import { CursorPointerSwitch, HoverColorSwitch, ParagraphColorSwitch, PrimaryColorSwitch, SecondaryColorSwitch } from "../assets/styles/Styles";
+import {
+  CursorPointerSwitch,
+  HoverColorSwitch,
+  ParagraphColorSwitch,
+  PrimaryColorSwitch,
+  SecondaryColorSwitch,
+} from "../assets/styles/Styles";
 import { blogsCollection } from "../firebase";
 
 const BlogsContainer = styled.div`
@@ -34,19 +40,14 @@ const Filters = styled.div`
   justify-content: center;
   gap: 2rem;
 `;
-const Filter = styled(Link)`
-  text-decoration: none;
+const Filter = styled.button`
+  border: none;
+  background-color: transparent;
   cursor: ${CursorPointerSwitch};
   font-family: "Black Ops One", sans-serif;
   font-size: 1rem;
-  color: ${PrimaryColorSwitch};
-  &:link,
-  &:hover,
-  &:active,
-  &:visited {
-    color: ${SecondaryColorSwitch};
-    text-shadow: 2px 2px ${PrimaryColorSwitch};
-  }
+  color: ${SecondaryColorSwitch};
+  text-shadow: 1px 1px ${PrimaryColorSwitch};
 `;
 const StyledP = styled.p`
   color: ${ParagraphColorSwitch};
@@ -70,6 +71,7 @@ const StyledH2 = styled.h2`
   font-family: "Black Ops One", sans-serif;
 `;
 const StyledLink = styled(Link)`
+  //will take over 100% width
   text-decoration: none;
   cursor: ${CursorPointerSwitch};
   font-family: "Black Ops One", sans-serif;
@@ -81,9 +83,6 @@ const StyledLink = styled(Link)`
   &:visited {
     color: ${SecondaryColorSwitch};
     text-shadow: 2px 2px ${PrimaryColorSwitch};
-  }
-  &:hover {
-    background-color: ${HoverColorSwitch};
   }
 `;
 
@@ -97,13 +96,20 @@ export const loader = async () => {
 };
 
 //blogs don't show in order
+//how to split blogs into pages
 const Blogs = ({ theme }) => {
   const authToken = sessionStorage.getItem("Auth Token");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const languageFilter = searchParams.get("language");
+  console.log(languageFilter);
   const blogsArr = useLoaderData();
-  const blogs = blogsArr.map((blog) => (
+  const filteredBlogs = languageFilter
+    ? blogsArr.filter((blog) => blog.tag.toLowerCase() === languageFilter)
+    : blogsArr;
+  const blogs = filteredBlogs.map((blog) => (
     <BlogContainer key={blog.id}>
       <StyledP $theme={theme}>{blog.time}</StyledP>
-      <BlogLink to={blog.id} $theme={theme}>
+      <BlogLink to={encodeURIComponent(blog.id)} $theme={theme}>
         <StyledH2 $theme={theme}>
           {blog.title.split(" ").slice(1).join(" ")}
         </StyledH2>
@@ -111,16 +117,69 @@ const Blogs = ({ theme }) => {
     </BlogContainer>
   ));
 
+  const generateSearchParams = (key, value) => {
+    setSearchParams((prev) => {
+      if (value === null) {
+        prev.delete(key);
+      } else {
+        prev.set(key, value);
+      }
+      return prev;
+    });
+  };
+
   return (
     <BlogsContainer>
       <StyledH1 $theme={theme}>Blogs</StyledH1>
       <Filters>
-        <Filter $theme={theme}>HTML</Filter>
-        <Filter $theme={theme}>CSS</Filter>
-        <Filter $theme={theme}>Javascript</Filter>
-        <Filter $theme={theme}>React</Filter>
-        <Filter $theme={theme}>Router</Filter>
-        <Filter $theme={theme}>Design</Filter>
+        <Filter
+          onClick={() => generateSearchParams("language", "html")}
+          $theme={theme}
+        >
+          HTML
+        </Filter>
+        <Filter
+          onClick={() => generateSearchParams("language", "css")}
+          $theme={theme}
+        >
+          CSS
+        </Filter>
+        <Filter
+          onClick={() => generateSearchParams("language", "javascript")}
+          $theme={theme}
+        >
+          Javascript
+        </Filter>
+        <Filter
+          onClick={() => generateSearchParams("language", "react")}
+          $theme={theme}
+        >
+          React
+        </Filter>
+        <Filter
+          onClick={() => generateSearchParams("language", "router")}
+          $theme={theme}
+        >
+          Router
+        </Filter>
+        <Filter
+          onClick={() => generateSearchParams("language", "design")}
+          $theme={theme}
+        >
+          Design
+        </Filter>
+        <Filter
+          onClick={() => generateSearchParams("language", "other")}
+          $theme={theme}
+        >
+          Other
+        </Filter>
+        <Filter
+          onClick={() => generateSearchParams("language", null)}
+          $theme={theme}
+        >
+          Clear Filter
+        </Filter>
       </Filters>
       {blogs}
       {authToken ? (

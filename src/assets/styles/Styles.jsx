@@ -1,19 +1,17 @@
-import CursorAutoLight from "../images/cursor/cursor-auto-light.svg";
 import CursorAutoDark from "../images/cursor/cursor-auto-dark.svg";
-import CursorPointerLight from "../images/cursor/cursor-pointer-light.svg";
+import CursorAutoLight from "../images/cursor/cursor-auto-light.svg";
 import CursorPointerDark from "../images/cursor/cursor-pointer-dark.svg";
+import CursorPointerLight from "../images/cursor/cursor-pointer-light.svg";
 
 export const BackgroundColorSwitch = ({ $theme }) =>
   $theme ? "var(--light-background)" : "var(--dark-background)";
 
 export const BackgroundSwitch = ({ $theme }) =>
   $theme
-    ? `radial-gradient(var(--light-tertiary), 
-        var(--light-background))`
+    ? `radial-gradient(var(--light-tertiary), var(--light-background))`
     : `linear-gradient(90deg, var(--dark-background) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
         linear-gradient(var(--dark-background) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
         var(--dark-tertiary)`;
-
 export const PrimaryColorSwitch = ({ $theme }) =>
   $theme ? "var(--light-primary)" : "var(--dark-primary)";
 

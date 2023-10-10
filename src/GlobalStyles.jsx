@@ -1,10 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-import {
-  BackgroundSwitch,
-  CursorAutoSwitch,
-  PrimaryColorSwitch,
-} from "./assets/styles/Styles";
+import { BackgroundSwitch, CursorAutoSwitch, PrimaryColorSwitch } from "./assets/styles/Styles";
 
 const GlobalStyles = createGlobalStyle`
     * {
@@ -19,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
         --light-secondary: #ffffff;
         --light-tertiary: #6c7a89;
         --light-paragraph: #000000;
-        --light-hover: #6c7a89;
+        --light-hover: #badbf4;
 
         --dark-background: #000000;
         --dark-primary: #ff76a7;

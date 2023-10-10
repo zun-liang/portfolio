@@ -1,6 +1,11 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import styled from "styled-components";
 
 import AuthRequired from "./components/AuthRequired";
@@ -27,7 +32,7 @@ const AppContainer = styled.div`
 `;
 
 const App = () => {
-  const [loading, setLoading] = useState(true); //true
+  const [loading, setLoading] = useState(null); //true
 
   const [error, setError] = useState(null); //null
 
@@ -57,7 +62,7 @@ const App = () => {
 
   const isLight = Hour < 18 && Hour >= 6;
 
-  const [theme, setTheme] = useState(isLight); //isLight
+  const [theme, setTheme] = useState(true); //isLight
 
   /* Automatically ajust app height based on device */
 

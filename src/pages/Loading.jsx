@@ -4,13 +4,7 @@ import styled from "styled-components";
 
 import LoadingImage from "../assets/images/favicon/dark/apple-touch-icon.png";
 import LoadingImageLight from "../assets/images/favicon/light/apple-touch-icon.png";
-import {
-  BackgroundSwitch,
-  CursorAutoSwitch,
-  CursorPointerSwitch,
-  PrimaryColorSwitch,
-  SecondaryColorSwitch,
-} from "../assets/styles/Styles.jsx";
+import { BackgroundSwitch, CursorAutoSwitch, CursorPointerSwitch, PrimaryColorSwitch, PrimarySecondary, SecondaryColorSwitch, SecondaryPrimary, TertiaryHover, TertiaryPrimary } from "../assets/styles/Styles.jsx";
 import GlobalStyles from "../GlobalStyles";
 
 const LoadingContainer = styled.div`
@@ -42,7 +36,7 @@ const StyledLoadingImage = styled.img`
 const StyledP = styled.p`
   font-family: "Black Ops One", sans-serif;
   font-size: 1.5rem;
-  color: ${PrimaryColorSwitch};
+  color: ${PrimarySecondary};
 `;
 const StyledDiv = styled.div`
   width: 40%;
@@ -57,31 +51,28 @@ const StyledButton = styled.button`
   height: auto;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
-  border: 2px dashed
-    ${({ $theme }) => ($theme ? "black" : "var(--dark-secondary)")};
+  border: 2px dashed ${PrimaryColorSwitch};
   cursor: ${CursorPointerSwitch};
-  color: ${({ $theme }) => ($theme ? "black" : "var(--dark-secondary)")};
+  color: ${PrimaryColorSwitch};
   background-color: transparent;
   font-family: "Black Ops One", sans-serif;
   font-size: 1rem;
   &:hover,
   &:active,
   &:focus {
-    color: ${SecondaryColorSwitch};
-    background-color: ${({ $theme }) =>
-      $theme ? "var(--light-tertiary)" : "var(--dark-primary)"};
+    color: ${SecondaryPrimary};
+    background-color: ${TertiaryHover};
   }
 `;
 const PassButton = styled(StyledButton)`
-  border: 2px dashed ${PrimaryColorSwitch};
-  color: ${PrimaryColorSwitch};
+  border: 2px dashed ${PrimarySecondary};
+  color: ${PrimarySecondary};
   font-size: 1.5rem;
   &:hover,
   &:active,
   &:focus {
     color: ${SecondaryColorSwitch};
-    background-color: ${({ $theme }) =>
-      $theme ? "var(--light-tertiary)" : "var(--dark-secondary)"};
+    background-color: ${TertiaryPrimary};
   }
 `;
 

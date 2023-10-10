@@ -1,12 +1,4 @@
-import {
-  faCss3Alt,
-  faGitAlt,
-  faGithub,
-  faHtml5,
-  faNode,
-  faReact,
-  faSquareJs,
-} from "@fortawesome/free-brands-svg-icons";
+import { faCss3Alt, faGitAlt, faGithub, faHtml5, faNode, faReact, faSquareJs } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 /* eslint-disable react/prop-types */
@@ -22,16 +14,10 @@ import { ReactComponent as RRIcon } from "../assets/images/icons/react-router.sv
 import { ReactComponent as SCIcon } from "../assets/images/icons/styled-components.svg";
 import { ReactComponent as TSIcon } from "../assets/images/icons/typescript.svg";
 import { ReactComponent as VSCIcon } from "../assets/images/icons/vscode.svg";
-import {
-  CursorPointerSwitch,
-  ParagraphColorSwitch,
-  SecondaryColorSwitch,
-  TertiaryColorSwitch,
-} from "../assets/styles/Styles";
+import { CursorPointerSwitch, ParagraphColorSwitch, SecondaryColorSwitch, TertiaryColorSwitch } from "../assets/styles/Styles";
 
 const AboutContainer = styled.div`
   width: 80vw;
-  height: 100%;
   margin: 0 auto;
   @media (min-width: 1000px) {
     width: 70vw;
@@ -42,19 +28,20 @@ const AboutContainer = styled.div`
     column-gap: 8rem;
   }
 `;
+const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 const StyledDiv = styled.div`
+  margin-bottom: 0.7rem;
   grid-column: 1 / 3;
   display: flex;
   align-items: center;
   gap: 1rem;
 `;
-const StyledH1 = styled.h1`
-  font-family: "Black Ops One", sans-serif;
-  text-shadow: 2px 2px ${SecondaryColorSwitch};
-`;
 const StyledImg = styled.img`
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 1.5rem;
+  height: 1.5rem;
   animation: rotateAnimation 4s linear infinite;
   @keyframes rotateAnimation {
     0% {
@@ -64,10 +51,6 @@ const StyledImg = styled.img`
       transform: rotateY(360deg);
     }
   }
-`;
-const Section = styled.div`
-  display: flex;
-  flex-direction: column;
 `;
 const StyledLink = styled.a`
   text-decoration: none;
@@ -84,13 +67,16 @@ const StyledLink = styled.a`
   }
 `;
 const StyledH2 = styled.h2`
-  margin: 1rem 0 0.5rem;
   font-family: "Black Ops One", sans-serif;
   color: ${TertiaryColorSwitch};
-  text-shadow: 2px 2px ${SecondaryColorSwitch};
+  text-shadow: 2px 2px
+    ${({ $theme }) =>
+      $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
   ${StyledLink} {
     color: ${TertiaryColorSwitch};
-    text-shadow: 2px 2px ${SecondaryColorSwitch};
+    text-shadow: 2px 2px
+      ${({ $theme }) =>
+        $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
   }
 `;
 const StyledP = styled.p`
@@ -101,7 +87,9 @@ const StyledP = styled.p`
     max-width: 800px;
   }
 `;
-const StyledList = styled.ul``;
+const StyledList = styled.ul`
+  margin-top: 0.7rem;
+`;
 const StyledListItem = styled.li`
   list-style: none;
   line-height: 1.7;
@@ -115,14 +103,16 @@ const Icon = styled(FontAwesomeIcon)`
   width: 1rem;
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
-  color: ${SecondaryColorSwitch};
+  color: ${({ $theme }) =>
+    $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
 `;
 const StyledRRIcon = styled(RRIcon)`
   width: 1rem;
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
   & > g > path {
-    fill: ${SecondaryColorSwitch};
+    fill: ${({ $theme }) =>
+      $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
   }
 `;
 const StyledSCIcon = styled(SCIcon)`
@@ -130,14 +120,16 @@ const StyledSCIcon = styled(SCIcon)`
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
   & > path {
-    fill: ${SecondaryColorSwitch};
+    fill: ${({ $theme }) =>
+      $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
   }
 `;
 const StyledJestIcon = styled(JestIcon)`
   width: 1rem;
   height: 1rem;
   & > g > path:first-child {
-    fill: ${SecondaryColorSwitch};
+    fill: ${({ $theme }) =>
+      $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
   }
   & > g > path:last-child {
     fill: ${TertiaryColorSwitch};
@@ -147,7 +139,8 @@ const StyledTSIcon = styled(TSIcon)`
   width: 1rem;
   height: 1rem;
   & > rect {
-    fill: ${SecondaryColorSwitch};
+    fill: ${({ $theme }) =>
+    $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
   }
   & > path {
     fill: ${TertiaryColorSwitch};
@@ -157,21 +150,24 @@ const StyledNextIcon = styled(NextIcon)`
   width: 1rem;
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
-  fill: ${SecondaryColorSwitch};
+  fill: ${({ $theme }) =>
+    $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
 `;
 const StyledVSCIcon = styled(VSCIcon)`
   width: 1rem;
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
   & > path {
-    fill: ${SecondaryColorSwitch};
+    fill: ${({ $theme }) =>
+    $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
   }
 `;
 const StyledFBIcon = styled(FBIcon)`
   width: 1rem;
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
-  fill: ${SecondaryColorSwitch};
+  fill: ${({ $theme }) =>
+    $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
 `;
 
 const About = ({ theme }) => {
@@ -180,33 +176,41 @@ const About = ({ theme }) => {
   }, []);
   return (
     <AboutContainer>
-      <StyledDiv>
-        <StyledH1 $theme={theme}>About me</StyledH1>
-        <StyledImg src={theme ? LogoLight : Logo} alt="decoration logo" />
-      </StyledDiv>
       <Section>
-        <StyledH2 $theme={theme}>Journey</StyledH2>
+        <StyledDiv>
+          <StyledH2 $theme={theme}>Journey</StyledH2>
+          <StyledImg src={theme ? LogoLight : Logo} alt="decoration logo" />
+        </StyledDiv>
         <StyledP $theme={theme}>
-          I started my learning journey in February 2022, driven by a long time
-          fascination with the elegance and ingenuity of programming. Prior to
+          There are always charming programmers portrayed in TV shows and
+          movies, but one who truly left a lasting impression on me is Penelope
+          Garcia from the series "Criminal Minds." I've always held immense
+          admiration for her intelligence, professionalism, confidence, and her
+          bold and vibrant fashion choices.
+        </StyledP>
+        <StyledP $theme={theme}>
+          Over the "lost" couple of years of the pandemic, I repeatedly asked
+          myself the same question: What kind of life do I really want? I have
+          always been fascinated by programming, but I'd never given it a shot.
+          I am so tired of living with a life of regrets. I decided it was time
+          to make a change. I started my learning journey in 2022, prior to
           this, I had minimal experience with coding, having only dabbled in
           Markdown for blogging.
         </StyledP>
         <StyledP $theme={theme}>
           This journey has been a rollercoaster of excitement and frustration.
           Completing challenges and projects brings a profound sense of
-          accomplishment, yet certain abstract concepts can elude me for a long
-          time as well.
-        </StyledP>
-        <StyledP $theme={theme}>
-          Nevertheless, I'm proud of my progress. I've acquired a diverse skill
-          set, from HTML, CSS, JavaScript to React and more. This journey has
-          taught me resilience and the value of perseverance. I'm excited to
-          keep pushing forward in the field of web development.
+          accomplishment, yet being eluded by certain abstract concepts
+          frustrated me as well. Nevertheless, I'm proud of my progress. I've
+          acquired diverse skills, from HTML, CSS, and JavaScript to React and
+          beyond. This journey has taught me resilience and the value of
+          perseverance. I'm excited to keep pushing forward in the field of web
+          development and share my accomplishments and my sense of contentment
+          with everyone along the way.
         </StyledP>
       </Section>
       <Section>
-        <StyledH2 $theme={theme}>Languages, Libraries, & Tools</StyledH2>
+        <StyledH2 $theme={theme}>Toolset</StyledH2>
         <StyledList>
           <StyledListItem $theme={theme}>
             <Icon $theme={theme} icon={faHtml5} />

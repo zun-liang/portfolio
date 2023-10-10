@@ -1,21 +1,17 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useEffect } from "react";
 /* eslint-disable react-refresh/only-export-components */
 import { Form, redirect } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { useEffect } from "react";
 
-import {
-  CursorPointerSwitch,
-  HoverColorSwitch,
-  PrimaryColorSwitch,
-  SecondaryColorSwitch,
-} from "../assets/styles/Styles";
+import { CursorPointerSwitch, HoverColorSwitch, OpacitySwitch, OutlineSwitch, PrimaryColorSwitch, SecondaryColorSwitch, TertiarySecondary } from "../assets/styles/Styles";
 import { auth } from "../firebase";
 
 const LoginPage = styled(Form)`
   width: 40vw;
   border: 5px ridge ${SecondaryColorSwitch};
+  background-color: ${OpacitySwitch};
   border-radius: 5px;
   padding: 2rem;
   display: grid;
@@ -32,14 +28,13 @@ const StyledInput = styled.input`
   padding: 0 0.7rem;
   border-radius: 5px;
   border: none;
-  border: 2px solid ${SecondaryColorSwitch};
+  border: 2px solid ${TertiarySecondary};
   font-size: 0.9rem;
   font-family: "Roboto", sans-serif;
-  font-weight: 700;
   color: ${PrimaryColorSwitch};
   background-color: white;
   &:focus {
-    outline: 2px solid ${SecondaryColorSwitch};
+    outline: ${OutlineSwitch};
   }
   &:-webkit-autofill,
   &:-webkit-autofill:hover,

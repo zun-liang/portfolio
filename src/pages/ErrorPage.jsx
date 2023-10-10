@@ -1,12 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
+
 import Kuma from "../assets/images/ojigi_animal_kuma.png";
-import {
-  BackgroundSwitch,
-  PrimaryColorSwitch,
-  SecondaryColorSwitch,
-} from "../assets/styles/Styles";
+import { BackgroundSwitch, PrimaryColorSwitch, SecondaryColorSwitch } from "../assets/styles/Styles";
 import GlobalStyles from "../GlobalStyles";
 
 const ErrorPage = styled.div`
@@ -38,7 +35,7 @@ const Error = ({ theme }) => {
       <ErrorPage $theme={theme}>
         <StyledImg src={Kuma} alt="sorry bear picture" />
         <StyledH1 $theme={theme}>
-          Something went wrong, please refresh or contact the site owner.
+          Something went wrong, try refreshing the page or come back later.
         </StyledH1>
       </ErrorPage>
     </>

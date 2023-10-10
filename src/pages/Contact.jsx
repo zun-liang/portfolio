@@ -5,7 +5,16 @@ import styled from "styled-components";
 
 import SpeechBubble from "../assets/images/hi.png";
 import Profile from "../assets/images/profile.png";
-import { BackgroundColorSwitch, CursorAutoSwitch, CursorPointerSwitch, HoverColorSwitch, PrimaryColorSwitch, SecondaryColorSwitch, TertiaryColorSwitch } from "../assets/styles/Styles";
+import {
+  BackgroundSecondary,
+  CursorAutoSwitch,
+  CursorPointerSwitch,
+  HoverColorSwitch,
+  OpacitySwitch,
+  OutlineSwitch,
+  PrimaryColorSwitch,
+  TertiaryColorSwitch,
+} from "../assets/styles/Styles";
 
 const StyledDiv = styled.div`
   width: 70%;
@@ -23,7 +32,7 @@ const StyledForm = styled.form`
   padding: 2rem 0;
   border-radius: 5px;
   border: 5px ridge ${PrimaryColorSwitch};
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: ${OpacitySwitch};
   cursor: ${CursorAutoSwitch};
   display: flex;
   flex-direction: column;
@@ -60,8 +69,7 @@ const StyledP = styled.p`
   text-align: left;
   font-family: "Black Ops One", sans-serif;
   font-size: 1.5rem;
-  color: ${({ $theme }) =>
-    $theme ? "var(--light-background)" : "var(--dark-secondary)"};
+  color: ${BackgroundSecondary};
   text-shadow: 2px 2px ${PrimaryColorSwitch};
   @media (min-width: 800px) {
     font-size: 2rem;
@@ -88,7 +96,7 @@ const StyledInput = styled.input`
   color: ${PrimaryColorSwitch};
   background-color: white;
   &:focus {
-    outline: none;
+    outline: ${OutlineSwitch};
   }
   &::placeholder {
     font-weight: 400;
@@ -120,7 +128,7 @@ const StyledTextarea = styled.textarea`
   color: ${PrimaryColorSwitch};
   background-color: white;
   &:focus {
-    outline: none;
+    outline: ${OutlineSwitch};
   }
   &::placeholder {
     font-weight: 400;
@@ -144,8 +152,7 @@ const StyledButton = styled.button`
   color: ${PrimaryColorSwitch};
   &:hover,
   &:active {
-    background-color: ${TertiaryColorSwitch};
-    color: ${SecondaryColorSwitch};
+    background-color: ${HoverColorSwitch};
   }
   display: flex;
   flex-direction: column;

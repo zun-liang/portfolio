@@ -5,13 +5,7 @@ import { memo, useEffect, useMemo } from "react";
 import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
-import {
-  CursorPointerSwitch,
-  ParagraphColorSwitch,
-  PrimaryColorSwitch,
-  SecondaryColorSwitch,
-  TertiaryColorSwitch,
-} from "../assets/styles/Styles";
+import { CursorPointerSwitch, ParagraphColorSwitch, PrimaryColorSwitch, TertiaryColorSwitch } from "../assets/styles/Styles";
 import { blogsCollection } from "../firebase";
 
 const BlogsContainer = styled.div`
@@ -35,11 +29,6 @@ const BlogContainer = styled.div`
   flex-direction: column;
   gap: 0.5rem;
 `;
-const StyledH1 = styled.h1`
-  color: ${PrimaryColorSwitch};
-  font-family: "Black Ops One", sans-serif;
-  text-shadow: 2px 2px ${SecondaryColorSwitch};
-`;
 const Filters = styled.div`
   margin: 0 auto 2rem;
   display: flex;
@@ -54,7 +43,6 @@ const Filter = styled.button`
   font-family: "Black Ops One", sans-serif;
   font-size: 1.1rem;
   color: ${TertiaryColorSwitch};
-  text-shadow: 2px 2px ${SecondaryColorSwitch};
 `;
 const Time = styled.p`
   font-size: 0.8rem;
@@ -83,7 +71,6 @@ const StyledLink = styled(Link)`
   &:active,
   &:visited {
     color: ${TertiaryColorSwitch};
-    text-shadow: 1px 1px ${SecondaryColorSwitch};
   }
 `;
 
@@ -147,7 +134,6 @@ const Blogs = ({ theme }) => {
 
   return (
     <BlogsContainer>
-      <StyledH1 $theme={theme}>Blogs</StyledH1>
       <Filters>
         <Filter
           onClick={() => generateSearchParams("language", "html")}

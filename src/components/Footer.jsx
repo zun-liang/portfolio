@@ -14,7 +14,6 @@ import { ReactComponent as FEM } from "../assets/images/icons/frontend-mentor.sv
 import {
   CursorPointerSwitch,
   PrimaryColorSwitch,
-  TertiaryColorSwitch,
 } from "../assets/styles/Styles";
 
 const StyledFooter = styled.footer`
@@ -67,7 +66,8 @@ const StyledP = styled.p`
   font-family: "Roboto", sans-serif;
   font-size: 0.8rem;
   font-weight: 500;
-  color: ${TertiaryColorSwitch};
+  color: ${({ $theme }) =>
+    $theme ? "var(--light-tertiary)" : "var(--dark-secondary)"};
 `;
 
 const Footer = ({ theme }) => {

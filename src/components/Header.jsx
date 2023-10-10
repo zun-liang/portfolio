@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { CursorPointerSwitch, PrimaryColorSwitch, SecondaryColorSwitch, TertiaryColorSwitch } from "../assets/styles/Styles";
+import { CursorPointerSwitch, PrimaryColorSwitch, SecondaryColorSwitch } from "../assets/styles/Styles";
 import Menu from "./Menu";
 
 const StyledHeader = styled.header`
@@ -74,8 +74,9 @@ const SubTitleBlinkSlow = styled(SubTitleBlink)`
 const Time = styled.p`
   text-align: right;
   margin: 0.5rem 0;
-  font-weight: 700;
-  color: ${TertiaryColorSwitch};
+  font-weight: 500;
+  color: ${({ $theme }) =>
+    $theme ? "var(--light-tertiary)" : "var(--dark-secondary)"};
   @media (min-width: 800px) {
     margin: 1rem 0;
     font-size: 1.2rem;

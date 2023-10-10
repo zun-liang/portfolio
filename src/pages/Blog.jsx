@@ -34,7 +34,7 @@ const MarkdownTitle = styled(Markdown)`
 `;
 const StyledP = styled.p`
   color: ${TertiaryColorSwitch};
-  font-weight: 700;
+  font-weight: 500;
   text-align: right;
 `;
 const MarkdownContent = styled(Markdown)`
@@ -57,7 +57,9 @@ const BackLink = styled(Link)`
   &:active,
   &:visited {
     color: ${TertiaryColorSwitch};
-    text-shadow: 2px 2px ${SecondaryColorSwitch};
+    text-shadow: 2px 2px
+      ${({ $theme }) =>
+        $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
   }
 `;
 const ActionLink = styled(BackLink)`

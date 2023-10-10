@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import SpeechBubble from "../assets/images/hey-i-am.gif";
 import Profile from "../assets/images/profile.png";
-import { SecondaryColorSwitch, TertiaryColorSwitch } from "../assets/styles/Styles.jsx";
+import { SecondaryColorSwitch } from "../assets/styles/Styles.jsx";
 
 const HomeContainer = styled.div`
   width: 70%;
@@ -44,9 +44,11 @@ const StyledH2 = styled.h2`
   grid-column: 1 / 3;
   text-align: right;
   font-size: 1.6rem;
-  font-weight: 900;
+  font-weight: ${({$theme}) => $theme ? "900" : "700"};
   color: ${SecondaryColorSwitch};
-  -webkit-text-stroke: 1px ${TertiaryColorSwitch};
+  -webkit-text-stroke: ${({ $theme }) =>
+    $theme ? "1px var(--light-tertiary)" : ""};
+  text-shadow: ${({ $theme }) => ($theme ? "" : "2px 2px var(--dark-primary)")};
   @media (min-width: 800px) {
     line-height: 1.6;
     font-size: 2.2rem;

@@ -2,15 +2,11 @@ import MDEditor from "@uiw/react-md-editor";
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import { doc, setDoc } from "firebase/firestore";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import {
-  CursorPointerSwitch,
-  HoverColorSwitch,
-  PrimaryColorSwitch,
-} from "../assets/styles/Styles";
+import { CursorPointerSwitch, PrimaryColorSwitch, TertiaryHover } from "../assets/styles/Styles";
 import { db } from "../firebase";
 
 const EditorContainer = styled.div`
@@ -49,7 +45,7 @@ const StyledButton = styled.button`
   color: ${PrimaryColorSwitch};
   &:hover,
   &:active {
-    background-color: ${HoverColorSwitch};
+    background-color: ${TertiaryHover};
   }
   display: flex;
   flex-direction: column;

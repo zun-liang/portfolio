@@ -16,6 +16,7 @@
 - [writing-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode)
 - [text-orientation](https://developer.mozilla.org/en-US/docs/Web/CSS/text-orientation)
 - [CSS Dot Patter/Grid Background](https://codepen.io/edmundojr/pen/xOYJGw)
+- [-webkit-text-stroke](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-text-stroke)
 
 #### React Router
 

@@ -9,9 +9,9 @@ import { auth } from "./firebase";
 import GlobalStyles from "./GlobalStyles";
 import About from "./pages/About";
 import Blog, { loader as blogLoader } from "./pages/Blog";
-import BlogEditor from "./pages/BlogEditor";
 import Blogs, { loader as blogsLoader } from "./pages/Blogs";
 import Contact from "./pages/Contact";
+import Editor from "./pages/Editor";
 import Error from "./pages/Error";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
@@ -19,7 +19,7 @@ import Loading from "./pages/Loading";
 import Login, { action as loginAction } from "./pages/Login";
 import Logout from "./pages/Logout";
 import Post from "./pages/Post";
-import Projects from "./pages/Project";
+import Projects from "./pages/Projects";
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -27,10 +27,12 @@ const AppContainer = styled.div`
 `;
 
 const App = () => {
-  const [loading, setLoading] = useState(false); //true
+  const [loading, setLoading] = useState(true); //true
+
   const [error, setError] = useState(null); //null
 
   const [email, setEmail] = useState("");
+
   const [password, setPassword] = useState("");
 
   const logout = () => {
@@ -52,8 +54,12 @@ const App = () => {
   }, []);
 
   const Hour = new Date().getHours();
+
   const isLight = Hour < 18 && Hour >= 6;
+
   const [theme, setTheme] = useState(isLight); //isLight
+
+  /* Automatically ajust app height based on device */
 
   const setAppHeight = () => {
     const doc = document.documentElement;
@@ -66,18 +72,26 @@ const App = () => {
     return () => window.removeEventListener("resize", setAppHeight);
   }, []);
 
+  /* Automatically ajust app height based on device */
+
+  /* Toggle favicon based on theme */
+
   const initialFavicon32 = isLight
     ? "./src/assets/images/favicon/light/favicon-32x32.png"
     : "./src/assets/images/favicon/dark/favicon-32x32.png";
+
   const [faviconHref32, setFaviconHref32] = useState(initialFavicon32);
+
   useEffect(() => {
     const favicon32 = document.getElementById("favicon32");
     favicon32.href = faviconHref32;
     const updatedFavicon32 = theme
-      ? "./src/assets/images/favicon/dark/favicon-32x32.png"
-      : "./src/assets/images/favicon/light/favicon-32x32.png";
+      ? "./src/assets/images/favicon/light/favicon-32x32.png"
+      : "./src/assets/images/favicon/dark/favicon-32x32.png";
     setFaviconHref32(updatedFavicon32);
-  }, [theme]); //this is also one step slower, currently set the opposite
+  }, [theme, faviconHref32]);
+
+  /* Toggle favicon based on theme */
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -114,7 +128,7 @@ const App = () => {
         <Route element={<AuthRequired />}>
           <Route
             path="editor"
-            element={<BlogEditor theme={theme} logout={logout} user={user} />}
+            element={<Editor theme={theme} logout={logout} user={user} />}
           />
           <Route
             path="post"
@@ -126,7 +140,9 @@ const App = () => {
       </Route>
     )
   );
+
   if (loading) return <Loading theme={theme} setLoading={setLoading} />;
+
   if (error) return <ErrorPage theme={theme} />;
 
   return (

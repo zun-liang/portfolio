@@ -1,28 +1,33 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
-import { getDocs } from "firebase/firestore";
+import { getDocs, orderBy, query } from "firebase/firestore";
+import { memo, useEffect, useMemo } from "react";
 import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
 import {
   CursorPointerSwitch,
-  HoverColorSwitch,
   ParagraphColorSwitch,
   PrimaryColorSwitch,
   SecondaryColorSwitch,
+  TertiaryColorSwitch,
 } from "../assets/styles/Styles";
 import { blogsCollection } from "../firebase";
 
 const BlogsContainer = styled.div`
   width: 80vw;
-  min-height: 50vh;
+  min-height: 55vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
   @media (min-width: 1000px) {
-    width: 70vw;
+    width: 60vw;
   }
+`;
+const BlogLink = styled(Link)`
+  text-decoration: none;
+  cursor: ${CursorPointerSwitch};
 `;
 const BlogContainer = styled.div`
   margin-bottom: 1rem;
@@ -36,85 +41,97 @@ const StyledH1 = styled.h1`
   text-shadow: 2px 2px ${SecondaryColorSwitch};
 `;
 const Filters = styled.div`
+  margin: 0 auto 2rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
 `;
 const Filter = styled.button`
   border: none;
   background-color: transparent;
   cursor: ${CursorPointerSwitch};
   font-family: "Black Ops One", sans-serif;
-  font-size: 1rem;
-  color: ${SecondaryColorSwitch};
-  text-shadow: 1px 1px ${PrimaryColorSwitch};
+  font-size: 1.1rem;
+  color: ${TertiaryColorSwitch};
+  text-shadow: 2px 2px ${SecondaryColorSwitch};
 `;
-const StyledP = styled.p`
-  color: ${ParagraphColorSwitch};
-`;
-const BlogLink = styled(Link)`
-  text-underline-offset: 3px;
-  border: 1px solid blue;
-  //will take over 100% width
-  &:link,
-  &:hover,
-  &:active,
-  &:visited {
-    color: ${PrimaryColorSwitch};
-  }
-  cursor: ${CursorPointerSwitch};
+const Time = styled.p`
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: ${TertiaryColorSwitch};
 `;
 const StyledH2 = styled.h2`
   display: inline;
-  border: 1px solid red;
   font-size: 1.2rem;
   font-family: "Black Ops One", sans-serif;
+  color: ${PrimaryColorSwitch};
+`;
+const StyledP = styled.p`
+  color: ${ParagraphColorSwitch};
+  line-height: 1.5;
 `;
 const StyledLink = styled(Link)`
   //will take over 100% width
+  align-self: flex-end;
   text-decoration: none;
   cursor: ${CursorPointerSwitch};
   font-family: "Black Ops One", sans-serif;
   font-size: 1rem;
-  color: ${PrimaryColorSwitch};
   &:link,
   &:hover,
   &:active,
   &:visited {
-    color: ${SecondaryColorSwitch};
-    text-shadow: 2px 2px ${PrimaryColorSwitch};
+    color: ${TertiaryColorSwitch};
+    text-shadow: 1px 1px ${SecondaryColorSwitch};
   }
 `;
 
+//how to cache the data so it doesn't need to get data everytime;
 export const loader = async () => {
-  const querySnapshot = await getDocs(blogsCollection);
-  let data = [];
-  querySnapshot.forEach((doc) => {
-    data.push(doc.data());
-  });
-  return data;
+  try {
+    const blogsRef = blogsCollection;
+    const q = query(blogsRef, orderBy("time", "desc"));
+    //blogs showing order is still werid
+    const querySnapshot = await getDocs(q);
+    let data = [];
+    querySnapshot.forEach((doc) => {
+      data.push(doc.data());
+    });
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-//blogs don't show in order
-//how to split blogs into pages
+//pagination
 const Blogs = ({ theme }) => {
+  //console.log("blogs rendered");
+  useEffect(() => {
+    document.title = "Blogs ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+  }, []);
   const authToken = sessionStorage.getItem("Auth Token");
   const [searchParams, setSearchParams] = useSearchParams();
   const languageFilter = searchParams.get("language");
-  console.log(languageFilter);
   const blogsArr = useLoaderData();
   const filteredBlogs = languageFilter
     ? blogsArr.filter((blog) => blog.tag.toLowerCase() === languageFilter)
     : blogsArr;
   const blogs = filteredBlogs.map((blog) => (
-    <BlogContainer key={blog.id}>
-      <StyledP $theme={theme}>{blog.time}</StyledP>
-      <BlogLink to={encodeURIComponent(blog.id)} $theme={theme}>
+    <BlogLink
+      key={blog.id}
+      to={encodeURIComponent(blog.id)}
+      state={{ search: `?${searchParams.toString()}` }}
+      $theme={theme}
+    >
+      <BlogContainer>
         <StyledH2 $theme={theme}>
           {blog.title.split(" ").slice(1).join(" ")}
         </StyledH2>
-      </BlogLink>
-    </BlogContainer>
+        <Time $theme={theme}>{blog.time}</Time>
+        <StyledP $theme={theme}>{blog.content.split("\n")[1]}</StyledP>
+      </BlogContainer>
+    </BlogLink>
   ));
 
   const generateSearchParams = (key, value) => {
@@ -169,16 +186,10 @@ const Blogs = ({ theme }) => {
           Design
         </Filter>
         <Filter
-          onClick={() => generateSearchParams("language", "other")}
-          $theme={theme}
-        >
-          Other
-        </Filter>
-        <Filter
           onClick={() => generateSearchParams("language", null)}
           $theme={theme}
         >
-          Clear Filter
+          Clear
         </Filter>
       </Filters>
       {blogs}
@@ -195,4 +206,5 @@ const Blogs = ({ theme }) => {
   );
 };
 
-export default Blogs;
+export default memo(Blogs);
+//looks like memo can not stop many rerendering;

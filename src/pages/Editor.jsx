@@ -2,24 +2,44 @@ import MDEditor from "@uiw/react-md-editor";
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import { doc, setDoc } from "firebase/firestore";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { CursorPointerSwitch, HoverColorSwitch, PrimaryColorSwitch } from "../assets/styles/Styles";
+import {
+  CursorPointerSwitch,
+  HoverColorSwitch,
+  PrimaryColorSwitch,
+} from "../assets/styles/Styles";
 import { db } from "../firebase";
 
 const EditorContainer = styled.div`
-  width: 80vw;
+  width: 70vw;
   margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+`;
+const StyledMDEditor = styled(MDEditor)`
+  width: 100%;
+`;
+const StyledDiv = styled.div`
+  align-self: flex-end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
   // seems like longer than the button
 `;
 const StyledButton = styled.button`
-  width: 5rem;
+  width: auto;
   height: 2rem;
+  padding: 0.5rem;
   border: 2px solid ${PrimaryColorSwitch};
   border-radius: 5px;
   cursor: ${CursorPointerSwitch};
@@ -36,9 +56,8 @@ const StyledButton = styled.button`
   align-items: center;
   justify-content: center;
 `;
-const StyledP = styled.p``;
 
-const BlogEditor = ({ theme, user, logout }) => {
+const Editor = ({ theme, logout }) => {
   const [blog, setBlog] = useState("");
   const title = blog.split("\n")[0];
   const content = blog.split("\n").slice(1).join("\n");
@@ -48,7 +67,9 @@ const BlogEditor = ({ theme, user, logout }) => {
     blog.split("\n")[0].split(" ").slice(1).join("-").toLowerCase() +
     "-" +
     new Date().getTime();
+  const timeStamp = new Date().getTime();
   const blogObject = {
+    timeStamp: timeStamp,
     id: blogId,
     title: title,
     content: content,
@@ -56,24 +77,41 @@ const BlogEditor = ({ theme, user, logout }) => {
     tag: tag,
   };
   const post = async () => await setDoc(doc(db, "blogs", blogId), blogObject);
-  //placeholder for editor, what stands for title, what stands for tags...
+  const saveDraft = async () =>
+    await setDoc(doc(db, "drafts", blogId), blogObject);
+
+  useEffect(() => {
+    document.title = "Editor ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+  }, []);
+
   return (
     <EditorContainer>
-      <MDEditor value={blog} onChange={setBlog} />
+      <StyledMDEditor
+        value={blog}
+        onChange={setBlog}
+        textareaProps={{
+          placeholder:
+            "## your title \n\n put your content here... \n\n #your tag",
+        }}
+      />
       <MDEditor.Markdown source={blog} style={{ whiteSpace: "pre-wrap" }} />
-      <StyledLink to="/post">
-        <StyledButton $theme={theme} onClick={post}>
-          Post
+      <StyledDiv>
+        <StyledButton $theme={theme} onClick={saveDraft}>
+          Save to Draft
         </StyledButton>
-      </StyledLink>
-      <StyledLink to="/logout">
-        <StyledButton $theme={theme} onClick={logout}>
-          Log out
-        </StyledButton>
-      </StyledLink>
-      <StyledP $theme={theme}>admin: {user?.email}</StyledP>
+        <StyledLink to="/post">
+          <StyledButton $theme={theme} onClick={post}>
+            Post
+          </StyledButton>
+        </StyledLink>
+        <StyledLink to="/logout">
+          <StyledButton $theme={theme} onClick={logout}>
+            Log out
+          </StyledButton>
+        </StyledLink>
+      </StyledDiv>
     </EditorContainer>
   );
 };
 
-export default BlogEditor;
+export default Editor;

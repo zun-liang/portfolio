@@ -1,14 +1,17 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
+import { useEffect } from "react";
 
 const ProjectContainer = styled.div`
   width: 30%;
-  height: auto;
-  border: 1px solid var(--focus1);
+  border: 1px solid blue;
   border-radius: 0.5rem;
 `;
 
-const Project = ({ url }) => {
+const Project = () => {
+  useEffect(() => {
+    document.title = "Project ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+  }, []);
   return (
     <ProjectContainer>
       <p>project preview</p>

@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { BackgroundSwitch, CursorPointerSwitch, PrimaryColorSwitch } from "../assets/styles/Styles";
+import { BackgroundSwitch, CursorPointerSwitch, PrimaryColorSwitch, TertiaryColorSwitch } from "../assets/styles/Styles";
 
 const MenuContainer = styled.div`
   display: ${({ $menu }) => ($menu ? "block" : "none")};
@@ -122,8 +122,9 @@ const StyledLink = styled(NavLink)`
 
 const Menu = ({ theme, menu, toggleMenu }) => {
   const activeStyle = {
+    color: theme ? "var(--light-tertiary)" : "var(--dark-tertiary)",
     textDecoration: "wavy underline",
-    textUnderlineOffset: "7px",
+    textUnderlineOffset: "8px",
   };
   return (
     <MenuContainer $menu={menu} $theme={theme}>
@@ -135,16 +136,7 @@ const Menu = ({ theme, menu, toggleMenu }) => {
               $theme={theme}
               to="."
               onClick={toggleMenu}
-              style={({ isActive }) =>
-                isActive
-                  ? {
-                      ...activeStyle,
-                      textDecorationColor: theme
-                        ? "var(---light-primary)"
-                        : "var(---dark-primary)",
-                    }
-                  : null
-              }
+              style={({ isActive }) => (isActive ? activeStyle : null)}
             >
               Home
             </StyledLink>
@@ -154,16 +146,7 @@ const Menu = ({ theme, menu, toggleMenu }) => {
               $theme={theme}
               to="about"
               onClick={toggleMenu}
-              style={({ isActive }) =>
-                isActive
-                  ? {
-                      ...activeStyle,
-                      textDecorationColor: theme
-                        ? "var(---light-primary)"
-                        : "var(---dark-primary)",
-                    }
-                  : null
-              }
+              style={({ isActive }) => (isActive ? activeStyle : null)}
             >
               About Me
             </StyledLink>
@@ -173,16 +156,7 @@ const Menu = ({ theme, menu, toggleMenu }) => {
               $theme={theme}
               to="projects"
               onClick={toggleMenu}
-              style={({ isActive }) =>
-                isActive
-                  ? {
-                      ...activeStyle,
-                      textDecorationColor: theme
-                        ? "var(---light-primary)"
-                        : "var(---dark-primary)",
-                    }
-                  : null
-              }
+              style={({ isActive }) => (isActive ? activeStyle : null)}
             >
               Projects
             </StyledLink>
@@ -198,16 +172,7 @@ const Menu = ({ theme, menu, toggleMenu }) => {
               $theme={theme}
               to="blogs"
               onClick={toggleMenu}
-              style={({ isActive }) =>
-                isActive
-                  ? {
-                      ...activeStyle,
-                      textDecorationColor: theme
-                        ? "var(---light-primary)"
-                        : "var(---dark-primary)",
-                    }
-                  : null
-              }
+              style={({ isActive }) => (isActive ? activeStyle : null)}
             >
               Blogs
             </StyledLink>
@@ -217,16 +182,7 @@ const Menu = ({ theme, menu, toggleMenu }) => {
               $theme={theme}
               to="contact"
               onClick={toggleMenu}
-              style={({ isActive }) =>
-                isActive
-                  ? {
-                      ...activeStyle,
-                      textDecorationColor: theme
-                        ? "var(---light-primary)"
-                        : "var(---dark-primary)",
-                    }
-                  : null
-              }
+              style={({ isActive }) => (isActive ? activeStyle : null)}
             >
               Contact
             </StyledLink>

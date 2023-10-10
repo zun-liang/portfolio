@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-
+import { useEffect } from "react";
 import { CursorPointerSwitch, HoverColorSwitch } from "../assets/styles/Styles";
-import { PrimaryColorSwitch, SecondaryColorSwitch } from "../assets/styles/Styles";
+import {
+  PrimaryColorSwitch,
+  SecondaryColorSwitch,
+} from "../assets/styles/Styles";
 
 const PostContainer = styled.div`
   display: flex;
@@ -17,7 +20,6 @@ const StyledH1 = styled.h1`
   color: ${PrimaryColorSwitch};
   text-shadow: 2px 2px ${SecondaryColorSwitch};
   text-align: center;
-  margin-bottom: 2rem;
 `;
 const StyledP = styled.p`
   font-family: "Black Ops One", sans-serif;
@@ -29,14 +31,13 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 const StyledButton = styled.button`
-  width: 5rem;
-  height: 2rem;
-  border: 2px solid ${PrimaryColorSwitch};
+  padding: 0.5rem;
+  border: 2px dashed ${PrimaryColorSwitch};
   border-radius: 5px;
   cursor: ${CursorPointerSwitch};
   background-color: transparent;
   font-family: "Black Ops One", sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: ${PrimaryColorSwitch};
   &:hover,
   &:active {
@@ -48,7 +49,10 @@ const StyledButton = styled.button`
   justify-content: center;
 `;
 
-const Post = ({ theme, logout, user }) => {
+const Post = ({ theme, logout }) => {
+  useEffect(() => {
+    document.title = "Post ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+  }, []);
   return (
     <PostContainer>
       <StyledH1 $theme={theme}>♡⸜(˶˃ ᵕ ˂˶)⸝♡</StyledH1>
@@ -58,7 +62,6 @@ const Post = ({ theme, logout, user }) => {
           Log out
         </StyledButton>
       </StyledLink>
-      <StyledP $theme={theme}>admin: {user?.email}</StyledP>
     </PostContainer>
   );
 };

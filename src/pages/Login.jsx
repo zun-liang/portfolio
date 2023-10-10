@@ -3,6 +3,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { Form, redirect } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
+import { useEffect } from "react";
 
 import {
   CursorPointerSwitch,
@@ -67,7 +68,6 @@ const StyledButton = styled.button`
   align-items: center;
   justify-content: center;
 `;
-const StyledP = styled.p``;
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -88,10 +88,14 @@ export const action = async ({ request }) => {
   }
 };
 
-const Login = ({ theme, user, logout }) => {
+const Login = ({ theme }) => {
+  useEffect(() => {
+    document.title = "Log In ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+  }, []);
+
   return (
     <>
-      <LoginPage method="post" $theme={theme}>
+      <LoginPage method="post" $theme={theme} replace>
         <StyledLabel htmlFor="email" $theme={theme}>
           Email
         </StyledLabel>
@@ -114,11 +118,7 @@ const Login = ({ theme, user, logout }) => {
         />
         {/* {error && <StyledP>Wrong user/password</StyledP>} */}
         <StyledButton $theme={theme}>Log in</StyledButton>
-        <StyledP $theme={theme}>admin: {user?.email}</StyledP>
       </LoginPage>
-      <StyledButton onClick={logout} $theme={theme}>
-        Log out
-      </StyledButton>
     </>
   );
 };

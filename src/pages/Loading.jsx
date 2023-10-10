@@ -1,18 +1,22 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 import styled from "styled-components";
+
 import LoadingImage from "../assets/images/favicon/dark/apple-touch-icon.png";
 import LoadingImageLight from "../assets/images/favicon/light/apple-touch-icon.png";
-import GlobalStyles from "../GlobalStyles";
 import {
   BackgroundSwitch,
+  CursorAutoSwitch,
   CursorPointerSwitch,
   PrimaryColorSwitch,
+  SecondaryColorSwitch,
 } from "../assets/styles/Styles.jsx";
+import GlobalStyles from "../GlobalStyles";
 
 const LoadingContainer = styled.div`
   width: 100%;
   height: var(--app-height);
+  cursor: ${CursorAutoSwitch};
   background: ${BackgroundSwitch};
   display: flex;
   flex-direction: column;
@@ -63,8 +67,9 @@ const StyledButton = styled.button`
   &:hover,
   &:active,
   &:focus {
+    color: ${SecondaryColorSwitch};
     background-color: ${({ $theme }) =>
-      $theme ? "var(--light-background)" : "var(--dark-primary)"};
+      $theme ? "var(--light-tertiary)" : "var(--dark-primary)"};
   }
 `;
 const PassButton = styled(StyledButton)`
@@ -74,8 +79,9 @@ const PassButton = styled(StyledButton)`
   &:hover,
   &:active,
   &:focus {
+    color: ${SecondaryColorSwitch};
     background-color: ${({ $theme }) =>
-      $theme ? "var(--light-background)" : "var(--dark-secondary)"};
+      $theme ? "var(--light-tertiary)" : "var(--dark-secondary)"};
   }
 `;
 

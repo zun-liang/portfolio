@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-
 import Kuma from "../assets/images/ojigi_animal_kuma.png";
 import {
   BackgroundSwitch,

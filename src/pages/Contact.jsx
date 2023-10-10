@@ -1,16 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useForm, ValidationError } from "@formspree/react";
+import { useEffect } from "react";
 import styled from "styled-components";
 
 import SpeechBubble from "../assets/images/hi.png";
 import Profile from "../assets/images/profile.png";
-import {
-  CursorAutoSwitch,
-  CursorPointerSwitch,
-  HoverColorSwitch,
-  PrimaryColorSwitch,
-  SecondaryColorSwitch,
-} from "../assets/styles/Styles";
+import { BackgroundColorSwitch, CursorAutoSwitch, CursorPointerSwitch, HoverColorSwitch, PrimaryColorSwitch, SecondaryColorSwitch, TertiaryColorSwitch } from "../assets/styles/Styles";
 
 const StyledDiv = styled.div`
   width: 70%;
@@ -28,6 +23,7 @@ const StyledForm = styled.form`
   padding: 2rem 0;
   border-radius: 5px;
   border: 5px ridge ${PrimaryColorSwitch};
+  background-color: rgba(255, 255, 255, 0.5);
   cursor: ${CursorAutoSwitch};
   display: flex;
   flex-direction: column;
@@ -36,7 +32,6 @@ const StyledForm = styled.form`
   gap: 0.5rem;
   @media (min-width: 800px) {
     height: 60vh;
-    gap: 2rem;
   }
   @media (min-width: 1000px) {
     margin-bottom: 1rem;
@@ -86,14 +81,17 @@ const StyledInput = styled.input`
   margin-bottom: 1rem;
   padding: 0 0.7rem;
   border-radius: 5px;
-  border: 2px solid ${SecondaryColorSwitch};
+  border: 2px solid ${TertiaryColorSwitch};
   font-size: 0.9rem;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   color: ${PrimaryColorSwitch};
   background-color: white;
   &:focus {
-    outline: 2px solid ${SecondaryColorSwitch};
+    outline: none;
+  }
+  &::placeholder {
+    font-weight: 400;
   }
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
@@ -113,7 +111,7 @@ const StyledTextarea = styled.textarea`
   margin-bottom: 1rem;
   padding: 0.8rem 1rem;
   border-radius: 5px;
-  border: 2px solid ${SecondaryColorSwitch};
+  border: 2px solid ${TertiaryColorSwitch};
   line-height: 1.2rem;
   overflow-wrap: break-word;
   font-family: "Roboto", sans-serif;
@@ -122,7 +120,10 @@ const StyledTextarea = styled.textarea`
   color: ${PrimaryColorSwitch};
   background-color: white;
   &:focus {
-    outline: 2px solid ${SecondaryColorSwitch};
+    outline: none;
+  }
+  &::placeholder {
+    font-weight: 400;
   }
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
@@ -137,14 +138,14 @@ const StyledButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: ${CursorPointerSwitch};
-  background-color: ${SecondaryColorSwitch};
+  background-color: ${TertiaryColorSwitch};
   font-family: "Black Ops One", sans-serif;
   font-size: 1rem;
   color: ${PrimaryColorSwitch};
   &:hover,
   &:active {
-    border: 3px solid ${SecondaryColorSwitch};
-    background-color: ${HoverColorSwitch};
+    background-color: ${TertiaryColorSwitch};
+    color: ${SecondaryColorSwitch};
   }
   display: flex;
   flex-direction: column;
@@ -153,6 +154,10 @@ const StyledButton = styled.button`
 `;
 
 const Contact = ({ theme }) => {
+  useEffect(() => {
+    document.title = "Contact ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+  }, []);
+
   const [state, handleSubmit] = useForm("mbjvygnp");
   if (state.succeeded) {
     return (
@@ -166,6 +171,7 @@ const Contact = ({ theme }) => {
       </StyledDiv>
     );
   }
+
   return (
     <StyledForm
       onSubmit={handleSubmit}

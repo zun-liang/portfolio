@@ -1,9 +1,10 @@
+import { useEffect } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
 import SpeechBubble from "../assets/images/hey-i-am.gif";
 import Profile from "../assets/images/profile.png";
-import { PrimaryColorSwitch, SecondaryColorSwitch } from "../assets/styles/Styles.jsx";
+import { SecondaryColorSwitch, TertiaryColorSwitch } from "../assets/styles/Styles.jsx";
 
 const HomeContainer = styled.div`
   width: 70%;
@@ -43,8 +44,9 @@ const StyledH2 = styled.h2`
   grid-column: 1 / 3;
   text-align: right;
   font-size: 1.6rem;
+  font-weight: 900;
   color: ${SecondaryColorSwitch};
-  text-shadow: 2px 2px ${PrimaryColorSwitch};
+  -webkit-text-stroke: 1px ${TertiaryColorSwitch};
   @media (min-width: 800px) {
     line-height: 1.6;
     font-size: 2.2rem;
@@ -67,6 +69,9 @@ const StyledGif = styled.img`
 `;
 
 const Home = ({ theme }) => {
+  useEffect(() => {
+    document.title = "Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+  }, []);
   return (
     <HomeContainer>
       <StyledImg src={Profile} alt="profile picture" />

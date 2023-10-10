@@ -1,3 +1,4 @@
+import Cloud from "../images/cloud.svg";
 import CursorAutoDark from "../images/cursor/cursor-auto-dark.svg";
 import CursorAutoLight from "../images/cursor/cursor-auto-light.svg";
 import CursorPointerDark from "../images/cursor/cursor-pointer-dark.svg";
@@ -8,10 +9,11 @@ export const BackgroundColorSwitch = ({ $theme }) =>
 
 export const BackgroundSwitch = ({ $theme }) =>
   $theme
-    ? `radial-gradient(var(--light-tertiary), var(--light-background))`
+    ? `url(${Cloud}), var(--light-background)`
     : `linear-gradient(90deg, var(--dark-background) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
         linear-gradient(var(--dark-background) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
-        var(--dark-tertiary)`;
+        var(--dark-secondary)`;
+
 export const PrimaryColorSwitch = ({ $theme }) =>
   $theme ? "var(--light-primary)" : "var(--dark-primary)";
 

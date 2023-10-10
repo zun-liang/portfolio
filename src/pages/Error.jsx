@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-
+import { useEffect } from "react";
 import Kuma from "../assets/images/ojigi_animal_kuma.png";
 import {
   PrimaryColorSwitch,
@@ -28,6 +28,10 @@ const StyledH1 = styled.h1`
 `;
 
 const Error = ({ theme }) => {
+  useEffect(() => {
+    document.title = "404 ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+  }, []);
+
   return (
     <ErrorPage $theme={theme}>
       <StyledImg src={Kuma} alt="sorry bear picture" />

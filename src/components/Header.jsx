@@ -2,12 +2,9 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+
+import { CursorPointerSwitch, PrimaryColorSwitch, SecondaryColorSwitch, TertiaryColorSwitch } from "../assets/styles/Styles";
 import Menu from "./Menu";
-import {
-  CursorPointerSwitch,
-  PrimaryColorSwitch,
-  SecondaryColorSwitch,
-} from "../assets/styles/Styles";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -30,7 +27,8 @@ const Title = styled.h1`
   margin-right: 0.5rem;
   font-family: "Black Ops One", sans-serif;
   font-size: 1.5rem;
-  text-shadow: 2px 2px ${SecondaryColorSwitch};
+  color: ${PrimaryColorSwitch};
+  text-shadow: -2px -2px ${SecondaryColorSwitch};
   @media (min-width: 800px) {
     letter-spacing: 2px;
     font-size: 2rem;
@@ -76,8 +74,8 @@ const SubTitleBlinkSlow = styled(SubTitleBlink)`
 const Time = styled.p`
   text-align: right;
   margin: 0.5rem 0;
-  color: ${SecondaryColorSwitch};
-  text-shadow: 1px 1px ${PrimaryColorSwitch};
+  font-weight: 700;
+  color: ${TertiaryColorSwitch};
   @media (min-width: 800px) {
     margin: 1rem 0;
     font-size: 1.2rem;

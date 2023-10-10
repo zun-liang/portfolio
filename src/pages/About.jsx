@@ -8,6 +8,7 @@ import {
   faSquareJs,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect } from "react";
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 import styled from "styled-components";
@@ -24,16 +25,16 @@ import { ReactComponent as VSCIcon } from "../assets/images/icons/vscode.svg";
 import {
   CursorPointerSwitch,
   ParagraphColorSwitch,
-  PrimaryColorSwitch,
   SecondaryColorSwitch,
+  TertiaryColorSwitch,
 } from "../assets/styles/Styles";
 
 const AboutContainer = styled.div`
-  width: 80%;
+  width: 80vw;
   height: 100%;
   margin: 0 auto;
   @media (min-width: 1000px) {
-    width: 70%;
+    width: 70vw;
     padding: 0 0 2rem;
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -78,18 +79,18 @@ const StyledLink = styled.a`
     color: ${ParagraphColorSwitch};
   }
   > span {
-    color: ${SecondaryColorSwitch};
-    text-shadow: 1px 1px ${PrimaryColorSwitch};
+    color: ${TertiaryColorSwitch};
+    text-shadow: 1px 1px ${SecondaryColorSwitch};
   }
 `;
 const StyledH2 = styled.h2`
   margin: 1rem 0 0.5rem;
   font-family: "Black Ops One", sans-serif;
-  color: ${SecondaryColorSwitch};
-  text-shadow: 2px 2px ${PrimaryColorSwitch};
+  color: ${TertiaryColorSwitch};
+  text-shadow: 2px 2px ${SecondaryColorSwitch};
   ${StyledLink} {
-    color: ${SecondaryColorSwitch};
-    text-shadow: 2px 2px ${PrimaryColorSwitch};
+    color: ${TertiaryColorSwitch};
+    text-shadow: 2px 2px ${SecondaryColorSwitch};
   }
 `;
 const StyledP = styled.p`
@@ -113,67 +114,70 @@ const StyledListItem = styled.li`
 const Icon = styled(FontAwesomeIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${SecondaryColorSwitch};
-  color: ${PrimaryColorSwitch};
+  background-color: ${TertiaryColorSwitch};
+  color: ${SecondaryColorSwitch};
 `;
 const StyledRRIcon = styled(RRIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${SecondaryColorSwitch};
+  background-color: ${TertiaryColorSwitch};
   & > g > path {
-    fill: ${PrimaryColorSwitch};
+    fill: ${SecondaryColorSwitch};
   }
 `;
 const StyledSCIcon = styled(SCIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${SecondaryColorSwitch};
+  background-color: ${TertiaryColorSwitch};
   & > path {
-    fill: ${PrimaryColorSwitch};
+    fill: ${SecondaryColorSwitch};
   }
 `;
 const StyledJestIcon = styled(JestIcon)`
   width: 1rem;
   height: 1rem;
   & > g > path:first-child {
-    fill: ${PrimaryColorSwitch};
+    fill: ${SecondaryColorSwitch};
   }
   & > g > path:last-child {
-    fill: ${SecondaryColorSwitch};
+    fill: ${TertiaryColorSwitch};
   }
 `;
 const StyledTSIcon = styled(TSIcon)`
   width: 1rem;
   height: 1rem;
   & > rect {
-    fill: ${PrimaryColorSwitch};
+    fill: ${SecondaryColorSwitch};
   }
   & > path {
-    fill: ${SecondaryColorSwitch};
+    fill: ${TertiaryColorSwitch};
   }
 `;
 const StyledNextIcon = styled(NextIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${SecondaryColorSwitch};
-  fill: ${PrimaryColorSwitch};
+  background-color: ${TertiaryColorSwitch};
+  fill: ${SecondaryColorSwitch};
 `;
 const StyledVSCIcon = styled(VSCIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${SecondaryColorSwitch};
+  background-color: ${TertiaryColorSwitch};
   & > path {
-    fill: ${PrimaryColorSwitch};
+    fill: ${SecondaryColorSwitch};
   }
 `;
 const StyledFBIcon = styled(FBIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${SecondaryColorSwitch};
-  fill: ${PrimaryColorSwitch};
+  background-color: ${TertiaryColorSwitch};
+  fill: ${SecondaryColorSwitch};
 `;
 
 const About = ({ theme }) => {
+  useEffect(() => {
+    document.title = "About Me ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+  }, []);
   return (
     <AboutContainer>
       <StyledDiv>
@@ -218,7 +222,7 @@ const About = ({ theme }) => {
           </StyledListItem>
           <StyledListItem $theme={theme}>
             <Icon $theme={theme} icon={faReact} />
-            <span>React</span>
+            <span>React 18</span>
           </StyledListItem>
           <StyledListItem $theme={theme}>
             <StyledSCIcon $theme={theme} />
@@ -242,7 +246,7 @@ const About = ({ theme }) => {
           </StyledListItem>
           <StyledListItem $theme={theme}>
             <StyledFBIcon $theme={theme} />
-            <span>Firebase</span>
+            <span>Firebase 9</span>
           </StyledListItem>
           <StyledListItem $theme={theme}>...</StyledListItem>
         </StyledList>

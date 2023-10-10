@@ -26,6 +26,8 @@
 - [Date.prototype.toLocaleString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString)
 - [Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)
 - [encodeURIComponent()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent)
+- [Document: title property](https://developer.mozilla.org/en-US/docs/Web/API/Document/title)
+- [Window: location property](https://developer.mozilla.org/en-US/docs/Web/API/Window/location)
 
 #### Styled-Components
 
@@ -38,5 +40,10 @@
 #### APIs
 
 - [Formspree](https://formspree.io/)
-- []()
+- [react-md-editor](https://uiwjs.github.io/react-md-editor/)
+
   I first tryied rich text editor (tinymce) but its data can not be stored in firebase, then i switched to markdown.
+
+  - [How can I set the placeholder value? #154](https://github.com/uiwjs/react-md-editor/issues/154)
+
+- [react-markdown](https://github.com/remarkjs/react-markdown)

@@ -1,8 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-
-import { PrimaryColorSwitch, SecondaryColorSwitch } from "../assets/styles/Styles";
+import { useEffect } from "react";
+import {
+  PrimaryColorSwitch,
+  SecondaryColorSwitch,
+} from "../assets/styles/Styles";
 
 const PostContainer = styled.div`
   display: flex;
@@ -15,7 +18,6 @@ const StyledH1 = styled.h1`
   color: ${PrimaryColorSwitch};
   text-shadow: 2px 2px ${SecondaryColorSwitch};
   text-align: center;
-  margin-bottom: 2rem;
 `;
 const StyledP = styled.p`
   font-family: "Black Ops One", sans-serif;
@@ -23,13 +25,14 @@ const StyledP = styled.p`
   color: ${PrimaryColorSwitch};
   text-shadow: 2px 2px ${SecondaryColorSwitch};
 `;
-const Post = ({ theme, user }) => {
+const Post = ({ theme }) => {
+  useEffect(() => {
+    document.title = "Log Out ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+  }, []);
   return (
     <PostContainer>
       <StyledH1 $theme={theme}>૮꒰˶ᵕ ༝ᵕ˶꒱აᶻ 𝗓 𐰁ᶻ </StyledH1>
       <StyledP $theme={theme}>You've successfully logged out!</StyledP>
-
-      <StyledP $theme={theme}>admin: {user?.email}</StyledP>
     </PostContainer>
   );
 };

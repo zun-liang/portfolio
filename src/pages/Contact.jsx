@@ -39,9 +39,6 @@ const StyledForm = styled.form`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  @media (min-width: 800px) {
-    height: 60vh;
-  }
   @media (min-width: 1000px) {
     margin-bottom: 1rem;
     width: 60vw;

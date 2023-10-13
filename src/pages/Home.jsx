@@ -44,7 +44,7 @@ const StyledH2 = styled.h2`
   grid-column: 1 / 3;
   text-align: right;
   font-size: 1.6rem;
-  font-weight: ${({$theme}) => $theme ? "900" : "700"};
+  font-weight: ${({ $theme }) => ($theme ? "900" : "700")};
   color: ${SecondaryColorSwitch};
   -webkit-text-stroke: ${({ $theme }) =>
     $theme ? "1px var(--light-tertiary)" : ""};

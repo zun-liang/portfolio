@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { BackgroundSwitch, CursorPointerSwitch, PrimaryColorSwitch, TertiaryColorSwitch } from "../assets/styles/Styles";
+import { BackgroundSwitch, CursorPointerSwitch, PrimaryColorSwitch, PrimarySecondary, SecondaryPrimary } from "../assets/styles/Styles";
 
 const MenuContainer = styled.div`
   display: ${({ $menu }) => ($menu ? "block" : "none")};
@@ -26,21 +26,14 @@ const MenuContainer = styled.div`
   }
 `;
 const StyledNav = styled.nav`
-  //width: 80vw;
-  //height: 50vh;
-  border-radius: 1rem;
+  width: 300px;
+  height: 400px;
+  border-radius: 14px;
   background: ${BackgroundSwitch};
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  //border: 1px solid red;
-  width: 300px;
-  height: 400px;
-  @media (min-width: 800px) {
-    //width: 70vw;
-    //height: 60vh;
-  }
   @media (min-width: 1000px) {
     width: 100%;
     height: auto;
@@ -58,10 +51,7 @@ const StyledList = styled.ul`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
-  @media (min-width: 800px) {
-    gap: 2.5rem;
-  }
+  gap: 28px;
   @media (min-width: 1000px) {
     flex-direction: row;
     justify-content: flex-start;
@@ -70,40 +60,31 @@ const StyledList = styled.ul`
 const StyledListItem = styled.li`
   list-style: none;
   font-family: "Black Ops One", sans-serif;
-  font-size: 1.5rem;
+  font-size: 21px;
   color: ${PrimaryColorSwitch};
   @media (min-width: 1000px) {
     font-size: 1.3rem;
   }
 `;
-const MenuBorder = styled(StyledListItem)`
-  margin: 1rem;
-  font-size: 25px;
-  font-weight: 700;
-  @media (min-width: 800px) {
-    //margin: 5rem;
-    //font-size: 2.2rem;
-  }
+const MenuBorder = styled.li`
+  list-style: none;
+  margin: 10px;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  color: ${PrimaryColorSwitch};
   @media (min-width: 1000px) {
     display: none;
   }
 `;
 const MenuBorderVertical = styled(MenuBorder)`
   position: absolute;
-  left: -2%;
+  left: -3px;
   writing-mode: vertical-lr;
   text-orientation: sideways;
-  //font-size: 1.6rem;
-  @media (min-width: 800px) {
-    left: -12%;
-    //font-size: 2.3rem;
-  }
 `;
 const MenuBorderVerticalRight = styled(MenuBorderVertical)`
-  left: 85%;
-  @media (min-width: 800px) {
-    left: 76%;
-  }
+  left: 258px;
 `;
 const StyledLink = styled(NavLink)`
   text-decoration: none;
@@ -111,11 +92,8 @@ const StyledLink = styled(NavLink)`
   &:hover,
   &:active,
   &:visited {
-    color: ${({ $theme }) =>
-      $theme ? "var(--light-primary)" : "var(--dark-secondary)"};
-    text-shadow: 2px 2px
-      ${({ $theme }) =>
-        $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
+    color: ${PrimarySecondary};
+    text-shadow: 2px 2px ${SecondaryPrimary};
   }
   cursor: ${CursorPointerSwitch};
 `;
@@ -162,10 +140,10 @@ const Menu = ({ theme, menu, toggleMenu }) => {
             </StyledLink>
           </StyledListItem>
           <MenuBorderVertical $theme={theme}>
-            ⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣
+            ⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣
           </MenuBorderVertical>
           <MenuBorderVerticalRight $theme={theme}>
-            ⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢
+            ⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢
           </MenuBorderVerticalRight>
           <StyledListItem $theme={theme}>
             <StyledLink

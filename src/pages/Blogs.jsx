@@ -5,7 +5,14 @@ import { memo, useEffect, useMemo } from "react";
 import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
-import { CursorPointerSwitch, ParagraphColorSwitch, PrimaryColorSwitch, TertiaryColorSwitch } from "../assets/styles/Styles";
+import {
+  CursorPointerSwitch,
+  HoverColorSwitch,
+  ParagraphColorSwitch,
+  PrimaryColorSwitch,
+  SecondaryColorSwitch,
+  TertiaryColorSwitch,
+} from "../assets/styles/Styles";
 import { blogsCollection } from "../firebase";
 
 const BlogsContainer = styled.div`
@@ -24,7 +31,6 @@ const BlogLink = styled(Link)`
   cursor: ${CursorPointerSwitch};
 `;
 const BlogContainer = styled.div`
-  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -37,12 +43,17 @@ const Filters = styled.div`
   gap: 1rem;
 `;
 const Filter = styled.button`
+  padding: 0.2rem 0.5rem;
   border: none;
+  border-radius: 5px;
   background-color: transparent;
   cursor: ${CursorPointerSwitch};
   font-family: "Black Ops One", sans-serif;
   font-size: 1.1rem;
   color: ${TertiaryColorSwitch};
+  &:hover {
+    background-color: ${PrimaryColorSwitch};
+  }
 `;
 const Time = styled.p`
   font-size: 0.8rem;
@@ -62,20 +73,26 @@ const StyledP = styled.p`
 const StyledLink = styled(Link)`
   //will take over 100% width
   align-self: flex-end;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
   text-decoration: none;
   cursor: ${CursorPointerSwitch};
   font-family: "Black Ops One", sans-serif;
   font-size: 1rem;
   &:link,
-  &:hover,
-  &:active,
   &:visited {
     color: ${TertiaryColorSwitch};
+  }
+  &:hover,
+  &:active {
+    color: ${TertiaryColorSwitch};
+    background-color: ${PrimaryColorSwitch};
   }
 `;
 
 //how to cache the data so it doesn't need to get data everytime;
 export const loader = async () => {
+  //console.log("data fetched");
   try {
     const blogsRef = blogsCollection;
     const q = query(blogsRef, orderBy("time", "desc"));
@@ -175,7 +192,7 @@ const Blogs = ({ theme }) => {
           onClick={() => generateSearchParams("language", null)}
           $theme={theme}
         >
-          Clear
+          All
         </Filter>
       </Filters>
       {blogs}

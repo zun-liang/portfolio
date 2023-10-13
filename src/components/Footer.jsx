@@ -14,6 +14,7 @@ import { ReactComponent as FEM } from "../assets/images/icons/frontend-mentor.sv
 import {
   CursorPointerSwitch,
   PrimaryColorSwitch,
+  TertiarySecondary,
 } from "../assets/styles/Styles";
 
 const StyledFooter = styled.footer`
@@ -66,8 +67,7 @@ const StyledP = styled.p`
   font-family: "Roboto", sans-serif;
   font-size: 0.8rem;
   font-weight: 500;
-  color: ${({ $theme }) =>
-    $theme ? "var(--light-tertiary)" : "var(--dark-secondary)"};
+  color: ${TertiarySecondary};
 `;
 
 const Footer = ({ theme }) => {
@@ -112,7 +112,10 @@ const Footer = ({ theme }) => {
           </StyledLinkEn>
         </StyledListItem>
       </StyledList>
-      <StyledP $theme={theme}>© {Year} Zun Liang. All Rights Reserved.</StyledP>
+      <StyledP $theme={theme}>
+        © {Year > 2023 ? `2023 - ${Year}` : "2023"} Zun Liang. All Rights
+        Reserved.
+      </StyledP>
     </StyledFooter>
   );
 };

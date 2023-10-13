@@ -1,4 +1,12 @@
-import { faCss3Alt, faGitAlt, faGithub, faHtml5, faNode, faReact, faSquareJs } from "@fortawesome/free-brands-svg-icons";
+import {
+  faCss3Alt,
+  faGitAlt,
+  faGithub,
+  faHtml5,
+  faNode,
+  faReact,
+  faSquareJs,
+} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 /* eslint-disable react/prop-types */
@@ -14,7 +22,13 @@ import { ReactComponent as RRIcon } from "../assets/images/icons/react-router.sv
 import { ReactComponent as SCIcon } from "../assets/images/icons/styled-components.svg";
 import { ReactComponent as TSIcon } from "../assets/images/icons/typescript.svg";
 import { ReactComponent as VSCIcon } from "../assets/images/icons/vscode.svg";
-import { CursorPointerSwitch, ParagraphColorSwitch, SecondaryColorSwitch, TertiaryColorSwitch } from "../assets/styles/Styles";
+import {
+  CursorPointerSwitch,
+  ParagraphColorSwitch,
+  SecondaryColorSwitch,
+  SecondaryPrimary,
+  TertiaryColorSwitch,
+} from "../assets/styles/Styles";
 
 const AboutContainer = styled.div`
   width: 80vw;
@@ -23,7 +37,7 @@ const AboutContainer = styled.div`
     width: 70vw;
     padding: 0 0 2rem;
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 1fr;
     row-gap: 1rem;
     column-gap: 8rem;
   }
@@ -34,7 +48,6 @@ const Section = styled.div`
 `;
 const StyledDiv = styled.div`
   margin-bottom: 0.7rem;
-  grid-column: 1 / 3;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -69,14 +82,10 @@ const StyledLink = styled.a`
 const StyledH2 = styled.h2`
   font-family: "Black Ops One", sans-serif;
   color: ${TertiaryColorSwitch};
-  text-shadow: 2px 2px
-    ${({ $theme }) =>
-      $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
+  text-shadow: 2px 2px ${SecondaryPrimary};
   ${StyledLink} {
     color: ${TertiaryColorSwitch};
-    text-shadow: 2px 2px
-      ${({ $theme }) =>
-        $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
+    text-shadow: 2px 2px ${SecondaryPrimary};
   }
 `;
 const StyledP = styled.p`
@@ -103,16 +112,14 @@ const Icon = styled(FontAwesomeIcon)`
   width: 1rem;
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
-  color: ${({ $theme }) =>
-    $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
+  color: ${SecondaryPrimary};
 `;
 const StyledRRIcon = styled(RRIcon)`
   width: 1rem;
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
   & > g > path {
-    fill: ${({ $theme }) =>
-      $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
+    fill: ${SecondaryPrimary};
   }
 `;
 const StyledSCIcon = styled(SCIcon)`
@@ -120,16 +127,14 @@ const StyledSCIcon = styled(SCIcon)`
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
   & > path {
-    fill: ${({ $theme }) =>
-      $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
+    fill: ${SecondaryPrimary};
   }
 `;
 const StyledJestIcon = styled(JestIcon)`
   width: 1rem;
   height: 1rem;
   & > g > path:first-child {
-    fill: ${({ $theme }) =>
-      $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
+    fill: ${SecondaryPrimary};
   }
   & > g > path:last-child {
     fill: ${TertiaryColorSwitch};
@@ -139,8 +144,7 @@ const StyledTSIcon = styled(TSIcon)`
   width: 1rem;
   height: 1rem;
   & > rect {
-    fill: ${({ $theme }) =>
-    $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
+    fill: ${SecondaryPrimary};
   }
   & > path {
     fill: ${TertiaryColorSwitch};
@@ -150,24 +154,21 @@ const StyledNextIcon = styled(NextIcon)`
   width: 1rem;
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
-  fill: ${({ $theme }) =>
-    $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
+  fill: ${SecondaryPrimary};
 `;
 const StyledVSCIcon = styled(VSCIcon)`
   width: 1rem;
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
   & > path {
-    fill: ${({ $theme }) =>
-    $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
+    fill: ${SecondaryPrimary};
   }
 `;
 const StyledFBIcon = styled(FBIcon)`
   width: 1rem;
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
-  fill: ${({ $theme }) =>
-    $theme ? "var(--light-secondary)" : "var(--dark-primary)"};
+  fill: ${SecondaryPrimary};
 `;
 
 const About = ({ theme }) => {

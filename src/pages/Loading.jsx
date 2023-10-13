@@ -39,12 +39,15 @@ const StyledP = styled.p`
   color: ${PrimarySecondary};
 `;
 const StyledDiv = styled.div`
-  width: 40%;
+  width: 60%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  @media (min-width: 1000px) {
+    width: 40%;
+  }
 `;
 const StyledButton = styled.button`
   width: auto;

@@ -6,7 +6,6 @@ import styled from "styled-components";
 import SpeechBubble from "../assets/images/hi.png";
 import Profile from "../assets/images/profile.png";
 import {
-  BackgroundSecondary,
   CursorAutoSwitch,
   CursorPointerSwitch,
   HoverColorSwitch,
@@ -14,6 +13,7 @@ import {
   OutlineSwitch,
   PrimaryColorSwitch,
   TertiaryColorSwitch,
+  SecondaryColorSwitch,
 } from "../assets/styles/Styles";
 
 const StyledDiv = styled.div`
@@ -66,8 +66,8 @@ const StyledP = styled.p`
   text-align: left;
   font-family: "Black Ops One", sans-serif;
   font-size: 1.5rem;
-  color: ${BackgroundSecondary};
-  text-shadow: 2px 2px ${PrimaryColorSwitch};
+  color: ${PrimaryColorSwitch};
+  text-shadow: 2px 2px ${SecondaryColorSwitch};
   @media (min-width: 800px) {
     font-size: 2rem;
   }
@@ -89,7 +89,7 @@ const StyledInput = styled.input`
   border: 2px solid ${TertiaryColorSwitch};
   font-size: 0.9rem;
   font-family: "Roboto", sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   color: ${PrimaryColorSwitch};
   background-color: white;
   &:focus {
@@ -121,7 +121,7 @@ const StyledTextarea = styled.textarea`
   overflow-wrap: break-word;
   font-family: "Roboto", sans-serif;
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 400;
   color: ${PrimaryColorSwitch};
   background-color: white;
   &:focus {

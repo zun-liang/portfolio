@@ -4,7 +4,17 @@ import styled from "styled-components";
 
 import LoadingImage from "../assets/images/favicon/dark/apple-touch-icon.png";
 import LoadingImageLight from "../assets/images/favicon/light/apple-touch-icon.png";
-import { BackgroundSwitch, CursorAutoSwitch, CursorPointerSwitch, PrimaryColorSwitch, PrimarySecondary, SecondaryColorSwitch, SecondaryPrimary, TertiaryHover, TertiaryPrimary } from "../assets/styles/Styles.jsx";
+import {
+  BackgroundSwitch,
+  CursorAutoSwitch,
+  CursorPointerSwitch,
+  PrimaryColorSwitch,
+  PrimarySecondary,
+  SecondaryColorSwitch,
+  SecondaryPrimary,
+  TertiaryHover,
+  TertiaryPrimary,
+} from "../assets/styles/Styles.jsx";
 import GlobalStyles from "../GlobalStyles";
 
 const LoadingContainer = styled.div`

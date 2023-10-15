@@ -10,7 +10,7 @@ export const BackgroundSwitch = ({ $theme }) =>
     ? `url(${Cloud}), var(--light-background)`
     : `linear-gradient(90deg, var(--dark-background) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
         linear-gradient(var(--dark-background) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
-        var(--dark-secondary)`;
+        var(--dot-color)`;
 
 //Coherent color switch
 export const BackgroundColorSwitch = ({ $theme }) =>
@@ -38,10 +38,16 @@ export const PrimarySecondary = ({ $theme }) =>
   $theme ? "var(--light-primary)" : "var(--dark-secondary)";
 export const SecondaryPrimary = ({ $theme }) =>
   $theme ? "var(--light-secondary)" : "var(--dark-primary)";
+export const SecondaryHover = ({ $theme }) =>
+  $theme ? "var(--light-secondary)" : "var(--dark-hover)";
+export const SecondaryTransparent = ({ $theme }) =>
+  $theme ? "var(--light-secondary)" : "transparent";
 export const TertiaryPrimary = ({ $theme }) =>
   $theme ? "var(--light-tertiary)" : "var(--dark-primary)";
 export const TertiarySecondary = ({ $theme }) =>
   $theme ? "var(--light-tertiary)" : "var(--dark-secondary)";
+export const TertiaryParagraph = ({ $theme }) =>
+  $theme ? "var(--light-tertiary)" : "var(--dark-paragraph)";
 export const TertiaryHover = ({ $theme }) =>
   $theme ? "var(--light-tertiary)" : "var(--dark-hover)";
 export const BackgroundSecondary = ({ $theme }) =>

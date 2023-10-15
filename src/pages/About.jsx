@@ -22,23 +22,23 @@ import { ReactComponent as RRIcon } from "../assets/images/icons/react-router.sv
 import { ReactComponent as SCIcon } from "../assets/images/icons/styled-components.svg";
 import { ReactComponent as TSIcon } from "../assets/images/icons/typescript.svg";
 import { ReactComponent as VSCIcon } from "../assets/images/icons/vscode.svg";
+import { ReactComponent as RTLIcon } from "../assets/images/icons/testing-library.svg";
 import {
   CursorPointerSwitch,
   ParagraphColorSwitch,
-  SecondaryColorSwitch,
   SecondaryPrimary,
   TertiaryColorSwitch,
 } from "../assets/styles/Styles";
 
 const AboutContainer = styled.div`
   width: 80vw;
-  margin: 0 auto;
+  margin: -1rem auto 0;
   @media (min-width: 1000px) {
+    margin: 0 auto;
     width: 70vw;
     padding: 0 0 2rem;
     display: grid;
     grid-template-columns: 3fr 1fr;
-    row-gap: 1rem;
     column-gap: 8rem;
   }
 `;
@@ -53,6 +53,7 @@ const StyledDiv = styled.div`
   gap: 1rem;
 `;
 const StyledImg = styled.img`
+  margin-top: 0.5rem;
   width: 1.5rem;
   height: 1.5rem;
   animation: rotateAnimation 4s linear infinite;
@@ -76,10 +77,11 @@ const StyledLink = styled.a`
   }
   > span {
     color: ${TertiaryColorSwitch};
-    text-shadow: 1px 1px ${SecondaryColorSwitch};
+    text-shadow: 1px 1px ${SecondaryPrimary};
   }
 `;
 const StyledH2 = styled.h2`
+  margin: 1rem 0 0.5rem;
   font-family: "Black Ops One", sans-serif;
   color: ${TertiaryColorSwitch};
   text-shadow: 2px 2px ${SecondaryPrimary};
@@ -97,7 +99,7 @@ const StyledP = styled.p`
   }
 `;
 const StyledList = styled.ul`
-  margin-top: 0.7rem;
+  margin-bottom: 1rem;
 `;
 const StyledListItem = styled.li`
   list-style: none;
@@ -170,6 +172,14 @@ const StyledFBIcon = styled(FBIcon)`
   background-color: ${TertiaryColorSwitch};
   fill: ${SecondaryPrimary};
 `;
+const StyledRTLIcon = styled(RTLIcon)`
+  width: 1rem;
+  height: 1rem;
+  background-color: ${TertiaryColorSwitch};
+  & > path {
+    fill: ${SecondaryPrimary};
+  }
+`;
 
 const About = ({ theme }) => {
   useEffect(() => {
@@ -211,7 +221,7 @@ const About = ({ theme }) => {
         </StyledP>
       </Section>
       <Section>
-        <StyledH2 $theme={theme}>Toolset</StyledH2>
+        <StyledH2 $theme={theme}>Languages</StyledH2>
         <StyledList>
           <StyledListItem $theme={theme}>
             <Icon $theme={theme} icon={faHtml5} />
@@ -225,6 +235,9 @@ const About = ({ theme }) => {
             <Icon $theme={theme} icon={faSquareJs} />
             <span>JavaScript ES6+</span>
           </StyledListItem>
+        </StyledList>
+        <StyledList>
+          <StyledH2 $theme={theme}>Libraries</StyledH2>
           <StyledListItem $theme={theme}>
             <Icon $theme={theme} icon={faReact} />
             <span>React 18</span>
@@ -237,6 +250,9 @@ const About = ({ theme }) => {
             <StyledRRIcon $theme={theme} />
             <span>React Router v6</span>
           </StyledListItem>
+        </StyledList>
+        <StyledList>
+          <StyledH2 $theme={theme}>Tools</StyledH2>
           <StyledListItem $theme={theme}>
             <Icon icon={faGitAlt} $theme={theme} />
             <span>Git</span>
@@ -253,7 +269,6 @@ const About = ({ theme }) => {
             <StyledFBIcon $theme={theme} />
             <span>Firebase 9</span>
           </StyledListItem>
-          <StyledListItem $theme={theme}>...</StyledListItem>
         </StyledList>
       </Section>
       <Section>
@@ -295,7 +310,6 @@ const About = ({ theme }) => {
               <span>✞ </span> Advanced React Certification
             </StyledLink>
           </StyledListItem>
-          <StyledListItem $theme={theme}>...</StyledListItem>
         </StyledList>
       </Section>
       <Section>
@@ -304,6 +318,10 @@ const About = ({ theme }) => {
           <StyledListItem $theme={theme}>
             <StyledJestIcon $theme={theme} />
             <span>Jest</span>
+          </StyledListItem>
+          <StyledListItem $theme={theme}>
+            <StyledRTLIcon icon="logos:testing-library" $theme={theme} />
+            <span>React Testing Library</span>
           </StyledListItem>
           <StyledListItem $theme={theme}>
             <StyledTSIcon $theme={theme} />

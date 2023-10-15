@@ -9,6 +9,11 @@
 - [ColorSpace](https://mycolor.space/)
 - [SVG REPO](https://www.svgrepo.com/)
 - [icons8](https://icons8.com/icons)
+- [SVG Icons](https://fontawesomeicons.com/svg/icons)
+
+#### HTML
+
+- [Geolocation: getCurrentPosition() method](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition)
 
 #### CSS
 
@@ -17,6 +22,7 @@
 - [text-orientation](https://developer.mozilla.org/en-US/docs/Web/CSS/text-orientation)
 - [CSS Dot Patter/Grid Background](https://codepen.io/edmundojr/pen/xOYJGw)
 - [-webkit-text-stroke](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-text-stroke)
+- [object-position](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position)
 
 #### React Router
 
@@ -48,3 +54,5 @@
   - [How can I set the placeholder value? #154](https://github.com/uiwjs/react-md-editor/issues/154)
 
 - [react-markdown](https://github.com/remarkjs/react-markdown)
+- [remark-gfm](https://github.com/remarkjs/remark-gfm)
+- [Open Weather API](https://openweathermap.org/)

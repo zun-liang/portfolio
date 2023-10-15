@@ -75,11 +75,15 @@ const SubTitleBlink = styled(SubTitle)`
 const SubTitleBlinkSlow = styled(SubTitleBlink)`
   animation: blink 5s ease-out infinite;
 `;
-
+const StyledDiv = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
 const Time = styled.p`
   text-align: right;
   margin: 0.5rem 0;
-  font-weight: 500;
+  font-size: 0.8rem;
   color: ${TertiarySecondary};
   @media (min-width: 800px) {
     margin: 1rem 0;
@@ -89,8 +93,14 @@ const Time = styled.p`
     font-size: 1rem;
   }
 `;
-const ThemeSwitch = styled.p`
-  font-size: 1.5rem;
+const Weather = styled.p`
+  color: ${TertiarySecondary};
+  & > span {
+    font-size: 0.8rem;
+  }
+`;
+const ThemeSwitch = styled.pre`
+  transform: scale(0.8);
   cursor: ${CursorPointerSwitch};
   text-shadow: 1px 1px ${SecondaryColorSwitch};
   @media (min-width: 800px) {
@@ -109,6 +119,7 @@ const Header = ({ theme, setTheme }) => {
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
+    hourCycle: "h23",
     hour12: false,
   };
   const [current, setCurrent] = useState(
@@ -121,6 +132,33 @@ const Header = ({ theme, setTheme }) => {
       setCurrent(updatedCurrent);
     }, 1000);
     return () => clearInterval(interval);
+  }, []);
+
+  const [lat, setLat] = useState("");
+  const [log, setLog] = useState("");
+  const [weather, setWeather] = useState("");
+  const [temp, setTemp] = useState("");
+  const celsius = parseInt(temp - 273.15);
+  const fahrenheit = parseInt(((temp - 273.15) * 9) / 5 + 32);
+  const [fetchError, setFetchhError] = useState(null);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((pos) => {
+      setLat(pos.coords.latitude);
+      setLog(pos.coords.longitude);
+    });
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${log}&appid=49fd57e86d1e7e545f5c08f4b28d7dd7`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setWeather(data.weather[0].main);
+        setTemp(data.main.temp);
+      })
+      .catch(() => {
+        setFetchhError(true);
+      });
+    //have no idea why it is 400 bad request all the time
   }, []);
 
   const updateTheme = () => setTheme((prev) => !prev);
@@ -140,12 +178,24 @@ const Header = ({ theme, setTheme }) => {
         </SubTitle>
       </TitleContainer>
       <Menu theme={theme} menu={menu} toggleMenu={toggleMenu} />
-      <Time $theme={theme}>{current}</Time>
+      <StyledDiv>
+        <Time $theme={theme}>{current}</Time>
+        {fetchError ? null : (
+          <Weather $theme={theme}>
+            : {weather} {celsius}
+            <span>°C</span> / {fahrenheit}
+            <span>°F</span>
+          </Weather>
+        )}
+      </StyledDiv>
       <ThemeSwitch onClick={updateTheme} $theme={theme}>
-        {theme ? "✩·͙*̩̩͙˚̩̥̩̥*̩̩͙✩·͙˚̩̥̩̥." : "⋆⁺₊⋆ ☼ ⋆⁺₊⋆"}
+        {theme ? "✩·͙*̩̩͙˚̩̥̩̥*̩̩͙✩·͙˚̩̥̩̥." : "⁺☁️☼₊☁️⁺₊"}
       </ThemeSwitch>
     </StyledHeader>
   );
 };
 
 export default Header;
+//it was showing "24:xx" instead of "00:xx"
+//should be fixed by hourCycle, have to see tomorrow
+//different browsers display emojis differently, pre better?

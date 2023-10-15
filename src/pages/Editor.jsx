@@ -6,7 +6,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { CursorPointerSwitch, PrimaryColorSwitch, TertiaryHover } from "../assets/styles/Styles";
+import {
+  CursorPointerSwitch,
+  PrimaryColorSwitch,
+  TertiaryHover,
+} from "../assets/styles/Styles";
 import { db } from "../firebase";
 
 const EditorContainer = styled.div`
@@ -71,6 +75,7 @@ const Editor = ({ theme, logout }) => {
     content: content,
     time: time,
     tag: tag,
+    type: "markdown",
   };
   const post = async () => await setDoc(doc(db, "blogs", blogId), blogObject);
   const saveDraft = async () =>

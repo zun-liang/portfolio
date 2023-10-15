@@ -2,7 +2,13 @@ import { NavLink } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { BackgroundSwitch, CursorPointerSwitch, PrimaryColorSwitch, PrimarySecondary, SecondaryPrimary } from "../assets/styles/Styles";
+import {
+  BackgroundSwitch,
+  CursorPointerSwitch,
+  PrimaryColorSwitch,
+  PrimarySecondary,
+  SecondaryTransparent,
+} from "../assets/styles/Styles";
 
 const MenuContainer = styled.div`
   display: ${({ $menu }) => ($menu ? "block" : "none")};
@@ -55,6 +61,7 @@ const StyledList = styled.ul`
   @media (min-width: 1000px) {
     flex-direction: row;
     justify-content: flex-start;
+    gap: 2rem;
   }
 `;
 const StyledListItem = styled.li`
@@ -93,7 +100,7 @@ const StyledLink = styled(NavLink)`
   &:active,
   &:visited {
     color: ${PrimarySecondary};
-    text-shadow: 2px 2px ${SecondaryPrimary};
+    text-shadow: 2px 2px ${SecondaryTransparent};
   }
   cursor: ${CursorPointerSwitch};
 `;

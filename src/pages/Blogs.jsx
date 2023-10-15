@@ -5,14 +5,7 @@ import { memo, useEffect, useMemo } from "react";
 import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
-import {
-  CursorPointerSwitch,
-  HoverColorSwitch,
-  ParagraphColorSwitch,
-  PrimaryColorSwitch,
-  SecondaryColorSwitch,
-  TertiaryColorSwitch,
-} from "../assets/styles/Styles";
+import { CursorPointerSwitch, ParagraphColorSwitch, PrimaryColorSwitch, TertiaryColorSwitch } from "../assets/styles/Styles";
 import { blogsCollection } from "../firebase";
 
 const BlogsContainer = styled.div`

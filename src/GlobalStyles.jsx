@@ -1,6 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
-import { BackgroundSwitch, CursorAutoSwitch, PrimaryColorSwitch } from "./assets/styles/Styles";
+import {
+  BackgroundSwitch,
+  CursorAutoSwitch,
+  PrimaryColorSwitch,
+} from "./assets/styles/Styles";
 
 const GlobalStyles = createGlobalStyle`
     * {
@@ -11,21 +15,22 @@ const GlobalStyles = createGlobalStyle`
 
     :root {
         --light-background: #badbf4;
-        --light-primary: #000000;
+        --light-primary: #181c1f;
         --light-secondary: #ffffff;
         --light-tertiary: #6c7a89;
-        --light-paragraph: #000000;
-        --light-hover: #badbf4;
+        --light-paragraph: #181c1f;
+        --light-hover: #f4d3ba;
 
-        --dark-background: #000000;
+        --dark-background: #121212;
         --dark-primary: #ff76a7;
         --dark-secondary: #d6ffc3;
-        --dark-tertiary: #C6FFAC;
+        --dark-tertiary: #bdd9b0;
         --dark-paragraph: #E6A5B7;
-        --dark-hover: #ffd2ec; 
+        --dark-hover: #ffc5d7;
 
         --dot-size: 1px;
         --dot-space: 25px;
+        --dot-color: #8b8b8b;
 
         --app-height: 100%;
     }

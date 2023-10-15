@@ -24,7 +24,8 @@ import Loading from "./pages/Loading";
 import Login, { action as loginAction } from "./pages/Login";
 import Logout from "./pages/Logout";
 import Post from "./pages/Post";
-import Projects from "./pages/Projects";
+import Projects, { loader as projectsLoader } from "./pages/Projects";
+import Project, { loader as projectLoader } from "./pages/Project";
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -104,7 +105,16 @@ const App = () => {
         <Route path="*" element={<Error theme={theme} />} />
         <Route index element={<Home theme={theme} />} />
         <Route path="about" element={<About theme={theme} />} />
-        <Route path="projects" element={<Projects theme={theme} />} />
+        <Route
+          path="projects"
+          element={<Projects theme={theme} />}
+          loader={projectsLoader}
+        />
+        <Route
+          path="projects/:title"
+          element={<Project theme={theme} />}
+          loader={projectLoader}
+        />
         <Route
           path="blogs"
           element={<Blogs theme={theme} />}

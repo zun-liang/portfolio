@@ -2,11 +2,18 @@
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect } from "react";
 import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { Link, useLoaderData, useLocation } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { CursorPointerSwitch, ParagraphColorSwitch, PrimaryColorSwitch, SecondaryColorSwitch, SecondaryPrimary, TertiaryColorSwitch } from "../assets/styles/Styles";
+import {
+  CursorPointerSwitch,
+  ParagraphColorSwitch,
+  PrimaryColorSwitch,
+  SecondaryTransparent,
+  TertiaryColorSwitch,
+} from "../assets/styles/Styles";
 import { db } from "../firebase";
 
 const BlogContainer = styled.div`
@@ -23,7 +30,7 @@ const BlogContainer = styled.div`
 const MarkdownTitle = styled(Markdown)`
   color: ${PrimaryColorSwitch};
   font-family: "Black Ops One", sans-serif;
-  text-shadow: 2px 2px ${SecondaryColorSwitch};
+  text-shadow: 2px 2px ${SecondaryTransparent};
   text-align: center;
 `;
 const StyledP = styled.p`
@@ -33,7 +40,7 @@ const StyledP = styled.p`
 `;
 const MarkdownContent = styled(Markdown)`
   color: ${ParagraphColorSwitch};
-  line-height: 1.3;
+  line-height: 1.5;
 `;
 const StyledDiv = styled.div`
   display: flex;
@@ -41,22 +48,18 @@ const StyledDiv = styled.div`
   padding-bottom: 1rem;
 `;
 const BackLink = styled(Link)`
-  padding: 0.2rem 0.5rem;
-  border-radius: 5px;
   align-self: flex-end;
   text-decoration: none;
   cursor: ${CursorPointerSwitch};
   font-family: "Black Ops One", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   &:link,
   &:visited {
     color: ${TertiaryColorSwitch};
-    text-shadow: 2px 2px ${SecondaryPrimary};
+    text-shadow: 2px 2px ${SecondaryTransparent};
   }
   &:hover,
   &:active {
-    text-decoration: underline double;
-    text-underline-offset: 6px;
     text-shadow: 2px 2px transparent;
   }
 `;
@@ -111,7 +114,9 @@ const Blog = ({ theme }) => {
       </StyledDiv>
       <MarkdownTitle $theme={theme}>{blogTitle}</MarkdownTitle>
       <StyledP $theme={theme}>{blogTime}</StyledP>
-      <MarkdownContent $theme={theme}>{blogContent}</MarkdownContent>
+      <MarkdownContent remarkPlugins={[remarkGfm]} $theme={theme}>
+        {`${blogContent}`}
+      </MarkdownContent>
     </BlogContainer>
   );
 };

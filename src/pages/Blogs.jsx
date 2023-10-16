@@ -4,14 +4,20 @@ import { getDocs, orderBy, query } from "firebase/firestore";
 import { memo, useEffect, useMemo } from "react";
 import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
+import Markdown from "react-markdown";
 
-import { CursorPointerSwitch, ParagraphColorSwitch, PrimaryColorSwitch, TertiaryColorSwitch } from "../assets/styles/Styles";
+import {
+  CursorPointerSwitch,
+  ParagraphColorSwitch,
+  PrimaryColorSwitch,
+  TertiaryColorSwitch,
+} from "../assets/styles/Styles";
 import { blogsCollection } from "../firebase";
 
 const BlogsContainer = styled.div`
   width: 80vw;
   min-height: 55vh;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -29,11 +35,11 @@ const BlogContainer = styled.div`
   gap: 0.5rem;
 `;
 const Filters = styled.div`
-  margin: 0 auto 2rem;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
 `;
 const Filter = styled.button`
   padding: 0.2rem 0.5rem;
@@ -50,7 +56,7 @@ const Filter = styled.button`
 `;
 const Time = styled.p`
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 500;
   color: ${TertiaryColorSwitch};
 `;
 const StyledH2 = styled.h2`
@@ -59,7 +65,7 @@ const StyledH2 = styled.h2`
   font-family: "Black Ops One", sans-serif;
   color: ${PrimaryColorSwitch};
 `;
-const StyledP = styled.p`
+const MarkdownOverview = styled(Markdown)`
   color: ${ParagraphColorSwitch};
   line-height: 1.5;
 `;
@@ -88,7 +94,7 @@ export const loader = async () => {
   //console.log("data fetched");
   try {
     const blogsRef = blogsCollection;
-    const q = query(blogsRef, orderBy("time", "desc"));
+    const q = query(blogsRef, orderBy("timestamp", "desc"));
     //blogs showing order is still werid
     const querySnapshot = await getDocs(q);
     let data = [];
@@ -126,7 +132,7 @@ const Blogs = ({ theme }) => {
           {blog.title.split(" ").slice(1).join(" ")}
         </StyledH2>
         <Time $theme={theme}>{blog.time}</Time>
-        <StyledP $theme={theme}>{blog.content.split("\n")[1]}</StyledP>
+        <MarkdownOverview $theme={theme}>{blog.overview}</MarkdownOverview>
       </BlogContainer>
     </BlogLink>
   ));
@@ -204,3 +210,4 @@ const Blogs = ({ theme }) => {
 
 export default memo(Blogs);
 //looks like memo can not stop many rerendering;
+//really don't like the link color of overview

@@ -35,6 +35,8 @@
 - [encodeURIComponent()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent)
 - [Document: title property](https://developer.mozilla.org/en-US/docs/Web/API/Document/title)
 - [Window: location property](https://developer.mozilla.org/en-US/docs/Web/API/Window/location)
+- [Chrome 80 shows timestamp "24:xx" instead of "00:00".](https://support.google.com/chrome/thread/29828561/chrome-80-shows-timestamp-24-xx-instead-of-00-00?hl=en)
+  spotted only on chrome mac shows 24 instead of 00, fixed by using hourCycle: 23h instead of hour12: false.
 
 #### Styled-Components
 

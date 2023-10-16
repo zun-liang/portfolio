@@ -5,17 +5,31 @@ import { Form, redirect } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { CursorPointerSwitch, HoverColorSwitch, OpacitySwitch, OutlineSwitch, PrimaryColorSwitch, SecondaryColorSwitch, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  CursorPointerSwitch,
+  HoverColorSwitch,
+  OpacitySwitch,
+  OutlineSwitch,
+  PrimaryColorSwitch,
+  SecondaryColorSwitch,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import { auth } from "../firebase";
 
 const LoginPage = styled(Form)`
-  width: 40vw;
+  width: 70vw;
   border: 5px ridge ${SecondaryColorSwitch};
   background-color: ${OpacitySwitch};
   border-radius: 5px;
   padding: 2rem;
   display: grid;
-  row-gap: 1rem;
+  row-gap: 1.5rem;
+  @media (min-width: 800px) {
+    width: 60vw;
+  }
+  @media (min-width: 1000px) {
+    width: 40vw;
+  }
 `;
 const StyledLabel = styled.label`
   font-family: "Black Ops One", sans-serif;
@@ -25,6 +39,7 @@ const StyledLabel = styled.label`
 `;
 const StyledInput = styled.input`
   height: 2rem;
+  margin-top: -1rem;
   padding: 0 0.7rem;
   border-radius: 5px;
   border: none;
@@ -45,7 +60,8 @@ const StyledInput = styled.input`
   }
 `;
 const StyledButton = styled.button`
-  width: 5rem;
+  justify-self: center;
+  width: 100%;
   height: 2rem;
   border: 2px solid ${PrimaryColorSwitch};
   border-radius: 5px;
@@ -98,6 +114,7 @@ const Login = ({ theme }) => {
           type="email"
           id="email"
           name="email"
+          placeholder="Enter admin email..."
           $theme={theme}
           required
         />
@@ -108,10 +125,10 @@ const Login = ({ theme }) => {
           type="password"
           id="password"
           name="password"
+          placeholder="Enter admin password..."
           $theme={theme}
           required
         />
-        {/* {error && <StyledP>Wrong user/password</StyledP>} */}
         <StyledButton $theme={theme}>Log in</StyledButton>
       </LoginPage>
     </>
@@ -119,3 +136,5 @@ const Login = ({ theme }) => {
 };
 
 export default Login;
+//how to clear form after submitted
+//error for wrong user/password, how to handle

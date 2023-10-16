@@ -2,14 +2,13 @@
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect } from "react";
 import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import { Link, useLoaderData, useLocation } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
+import BlogContent from "../components/BlogContent";
 
 import {
   CursorPointerSwitch,
-  ParagraphColorSwitch,
   PrimaryColorSwitch,
   SecondaryTransparent,
   TertiaryColorSwitch,
@@ -21,7 +20,7 @@ const BlogContainer = styled.div`
   min-height: 55vh;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   padding-bottom: 4rem;
   @media (min-width: 1000px) {
     width: 60vw;
@@ -34,13 +33,9 @@ const MarkdownTitle = styled(Markdown)`
   text-align: center;
 `;
 const StyledP = styled.p`
+  font-size: 0.9rem;
   color: ${TertiaryColorSwitch};
-  font-weight: 500;
   text-align: right;
-`;
-const MarkdownContent = styled(Markdown)`
-  color: ${ParagraphColorSwitch};
-  line-height: 1.5;
 `;
 const StyledDiv = styled.div`
   display: flex;
@@ -96,28 +91,28 @@ const Blog = ({ theme }) => {
   const location = useLocation();
   const search = location.state?.search;
   return (
-    <BlogContainer>
-      <StyledDiv>
-        <BackLink to={`/blogs${search}`} $theme={theme}>
-          Back to blogs
-        </BackLink>
-        {authToken ? (
-          <ActionLink $theme={theme} to="/editor">
-            Edit
-          </ActionLink>
-        ) : null}
-        {authToken ? (
-          <ActionLink $theme={theme} to="/editor">
-            Delete
-          </ActionLink>
-        ) : null}
-      </StyledDiv>
-      <MarkdownTitle $theme={theme}>{blogTitle}</MarkdownTitle>
-      <StyledP $theme={theme}>{blogTime}</StyledP>
-      <MarkdownContent remarkPlugins={[remarkGfm]} $theme={theme}>
-        {`${blogContent}`}
-      </MarkdownContent>
-    </BlogContainer>
+    <>
+      <BlogContainer>
+        <StyledDiv>
+          <BackLink to={`/blogs${search}`} $theme={theme}>
+            Back to blogs
+          </BackLink>
+          {authToken ? (
+            <ActionLink $theme={theme} to="/editor">
+              Edit
+            </ActionLink>
+          ) : null}
+          {authToken ? (
+            <ActionLink $theme={theme} to="/editor">
+              Delete
+            </ActionLink>
+          ) : null}
+        </StyledDiv>
+        <MarkdownTitle $theme={theme}>{blogTitle}</MarkdownTitle>
+        <StyledP $theme={theme}>{blogTime}</StyledP>
+        <BlogContent theme={theme} blogContent={blogContent} />
+      </BlogContainer>
+    </>
   );
 };
 export default Blog;

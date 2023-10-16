@@ -1,10 +1,11 @@
 import MDEditor from "@uiw/react-md-editor";
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { marked } from "marked";
 
 import {
   CursorPointerSwitch,
@@ -14,13 +15,16 @@ import {
 import { db } from "../firebase";
 
 const EditorContainer = styled.div`
-  width: 70vw;
+  width: 80vw;
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  @media (min-width: 1000px) {
+    width: 70vw;
+  }
 `;
 const StyledMDEditor = styled(MDEditor)`
   width: 100%;
@@ -60,18 +64,20 @@ const StyledButton = styled.button`
 const Editor = ({ theme, logout }) => {
   const [blog, setBlog] = useState("");
   const title = blog.split("\n")[0];
-  const content = blog.split("\n").slice(1).join("\n");
+  const overview = blog.split("\n").filter((x) => x !== "")[1];
+  const content = marked.parse(blog.split("\n").slice(1).join("\n"));
   const time = new Date().toLocaleString();
   const tag = blog.split("\n")[blog.split("\n").length - 1].replace("#", "");
   const blogId =
     blog.split("\n")[0].split(" ").slice(1).join("-").toLowerCase() +
     "-" +
     new Date().getTime();
-  const timeStamp = new Date().getTime();
+  const timestamp = serverTimestamp();
   const blogObject = {
-    timeStamp: timeStamp,
+    timestamp: timestamp,
     id: blogId,
     title: title,
+    overview: overview,
     content: content,
     time: time,
     tag: tag,

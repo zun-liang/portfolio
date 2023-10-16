@@ -12,20 +12,25 @@ import {
 const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
 `;
 const StyledH1 = styled.h1`
+  grid-column: 1 /4;
   color: ${PrimaryColorSwitch};
   text-shadow: 2px 2px ${SecondaryColorSwitch};
   text-align: center;
 `;
 const StyledP = styled.p`
+  grid-column: 1 /4;
   font-family: "Black Ops One", sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: ${PrimaryColorSwitch};
   text-shadow: 2px 2px ${SecondaryColorSwitch};
+`;
+const StyledDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -33,11 +38,11 @@ const StyledLink = styled(Link)`
 const StyledButton = styled.button`
   padding: 0.5rem;
   border: 2px dashed ${PrimaryColorSwitch};
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: ${CursorPointerSwitch};
   background-color: transparent;
   font-family: "Black Ops One", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: ${PrimaryColorSwitch};
   &:hover,
   &:active {
@@ -57,11 +62,19 @@ const Post = ({ theme, logout }) => {
     <PostContainer>
       <StyledH1 $theme={theme}>♡⸜(˶˃ ᵕ ˂˶)⸝♡</StyledH1>
       <StyledP $theme={theme}>You've successfully posted your blog!</StyledP>
-      <StyledLink to="/logout">
-        <StyledButton $theme={theme} onClick={logout}>
-          Log out
-        </StyledButton>
-      </StyledLink>
+      <StyledDiv>
+        <StyledLink to="/logout">
+          <StyledButton $theme={theme} onClick={logout}>
+            Log out
+          </StyledButton>
+        </StyledLink>
+        <StyledLink to="/editor">
+          <StyledButton $theme={theme}>Go to Editor</StyledButton>
+        </StyledLink>
+        <StyledLink to="/blogs">
+          <StyledButton $theme={theme}>Go to Blogs</StyledButton>
+        </StyledLink>
+      </StyledDiv>
     </PostContainer>
   );
 };

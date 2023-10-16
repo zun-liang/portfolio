@@ -35,11 +35,11 @@ const Title = styled.h1`
   color: ${PrimaryColorSwitch};
   text-shadow: -2px -2px ${SecondaryColorSwitch};
   @media (min-width: 800px) {
-    letter-spacing: 2px;
     font-size: 2rem;
   }
   @media (min-width: 1000px) {
     font-size: 1.8rem;
+    letter-spacing: 3px;
   }
 `;
 const SubTitle = styled.span`
@@ -78,7 +78,13 @@ const SubTitleBlinkSlow = styled(SubTitleBlink)`
 const StyledDiv = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
+  @media (min-width: 800px) {
+    gap: 7px;
+  }
+  @media (min-width: 1000px) {
+    gap: 9px;
+  }
 `;
 const Time = styled.p`
   text-align: right;
@@ -86,29 +92,21 @@ const Time = styled.p`
   font-size: 0.8rem;
   color: ${TertiarySecondary};
   @media (min-width: 800px) {
-    margin: 1rem 0;
-    font-size: 1.2rem;
-  }
-  @media (min-width: 1000px) {
-    font-size: 1rem;
+    margin: 0.8rem 0;
+    font-size: 0.9rem;
   }
 `;
 const Weather = styled.p`
   color: ${TertiarySecondary};
-  & > span {
-    font-size: 0.8rem;
+  font-size: 0.8rem;
+  @media (min-width: 800px) {
+    font-size: 0.9rem;
   }
 `;
-const ThemeSwitch = styled.pre`
-  transform: scale(0.8);
+const ThemeSwitch = styled.p`
+  font-size: 1.5rem;
   cursor: ${CursorPointerSwitch};
   text-shadow: 1px 1px ${SecondaryColorSwitch};
-  @media (min-width: 800px) {
-    font-size: 1.8rem;
-  }
-  @media (min-width: 1000px) {
-    font-size: 1.5rem;
-  }
 `;
 
 const Header = ({ theme, setTheme }) => {
@@ -120,7 +118,6 @@ const Header = ({ theme, setTheme }) => {
     minute: "2-digit",
     second: "2-digit",
     hourCycle: "h23",
-    hour12: false,
   };
   const [current, setCurrent] = useState(
     new Date().toLocaleString("en-US", options)
@@ -134,31 +131,29 @@ const Header = ({ theme, setTheme }) => {
     return () => clearInterval(interval);
   }, []);
 
-  const [lat, setLat] = useState("");
-  const [log, setLog] = useState("");
   const [weather, setWeather] = useState("");
   const [temp, setTemp] = useState("");
   const celsius = parseInt(temp - 273.15);
   const fahrenheit = parseInt(((temp - 273.15) * 9) / 5 + 32);
-  const [fetchError, setFetchhError] = useState(null);
+  const [fetchError, setFetchhError] = useState(true);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((pos) => {
-      setLat(pos.coords.latitude);
-      setLog(pos.coords.longitude);
+      const lat = pos.coords.latitude;
+      const log = pos.coords.longitude;
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${log}&appid=49fd57e86d1e7e545f5c08f4b28d7dd7`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setFetchhError(false);
+          setWeather(data.weather[0].main);
+          setTemp(data.main.temp);
+        })
+        .catch(() => {
+          setFetchhError(true);
+        });
     });
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${log}&appid=49fd57e86d1e7e545f5c08f4b28d7dd7`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setWeather(data.weather[0].main);
-        setTemp(data.main.temp);
-      })
-      .catch(() => {
-        setFetchhError(true);
-      });
-    //have no idea why it is 400 bad request all the time
   }, []);
 
   const updateTheme = () => setTheme((prev) => !prev);
@@ -179,14 +174,16 @@ const Header = ({ theme, setTheme }) => {
       </TitleContainer>
       <Menu theme={theme} menu={menu} toggleMenu={toggleMenu} />
       <StyledDiv>
-        <Time $theme={theme}>{current}</Time>
-        {fetchError ? null : (
+        {fetchError ? (
+          <Weather $theme={theme}>Wx: Unk, Temp: Unk,</Weather>
+        ) : (
           <Weather $theme={theme}>
-            : {weather} {celsius}
-            <span>°C</span> / {fahrenheit}
-            <span>°F</span>
+            {weather} {celsius}
+            °C/{fahrenheit}
+            °F,
           </Weather>
         )}
+        <Time $theme={theme}>{current}</Time>
       </StyledDiv>
       <ThemeSwitch onClick={updateTheme} $theme={theme}>
         {theme ? "✩·͙*̩̩͙˚̩̥̩̥*̩̩͙✩·͙˚̩̥̩̥." : "⁺☁️☼₊☁️⁺₊"}
@@ -196,6 +193,3 @@ const Header = ({ theme, setTheme }) => {
 };
 
 export default Header;
-//it was showing "24:xx" instead of "00:xx"
-//should be fixed by hourCycle, have to see tomorrow
-//different browsers display emojis differently, pre better?

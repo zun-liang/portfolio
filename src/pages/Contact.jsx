@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import { useForm, ValidationError } from "@formspree/react";
 import { useEffect } from "react";
@@ -28,8 +29,8 @@ const StyledDiv = styled.div`
 `;
 const StyledForm = styled.form`
   width: 80vw;
-  height: 55vh;
-  padding: 2rem 0;
+  margin: 0.5rem 0 1rem;
+  padding: 2rem;
   border-radius: 5px;
   border: 5px ridge ${PrimaryColorSwitch};
   background-color: ${OpacitySwitch};
@@ -38,11 +39,13 @@ const StyledForm = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.7rem;
+  @media (min-width: 800px) {
+    padding: 2.5rem 3rem;
+  }
   @media (min-width: 1000px) {
-    margin-bottom: 1rem;
+    padding: 2.5rem 4rem;
     width: 60vw;
-    height: auto;
     gap: 1rem;
   }
 `;
@@ -74,15 +77,43 @@ const StyledP = styled.p`
   @media (min-width: 1000px) {
   }
 `;
+const StyledH2 = styled.h2`
+  font-family: "Black Ops One", sans-serif;
+  font-size: 1.25rem;
+  color: ${PrimaryColorSwitch};
+  text-shadow: 2px 2px ${SecondaryColorSwitch};
+  @media (min-width: 800px) {
+    font-size: 1.4rem;
+  }
+`;
+const StyledList = styled.ul`
+  width: 100%;
+  margin-top: 0.5rem;
+  @media (min-width: 800px) {
+    margin-top: 0;
+  }
+`;
+const Message = styled.li`
+  width: 100%;
+  list-style: none;
+  line-height: 1.5;
+  text-align: center;
+  font-size: 0.9rem;
+  color: ${TertiaryColorSwitch};
+  @media (min-width: 1000px) {
+    font-size: 1rem;
+  }
+`;
 const StyledLabel = styled.label`
-  width: 80%;
+  width: 100%;
   text-align: left;
   font-family: "Black Ops One", sans-serif;
   color: ${PrimaryColorSwitch};
 `;
 const StyledInput = styled.input`
-  width: 80%;
+  width: 100%;
   height: 2rem;
+  margin-top: -0.3rem;
   margin-bottom: 1rem;
   padding: 0 0.7rem;
   border-radius: 5px;
@@ -110,9 +141,9 @@ const StyledInput = styled.input`
   }
 `;
 const StyledTextarea = styled.textarea`
-  width: 80%;
+  width: 100%;
+  max-width: 100%;
   min-height: 8rem;
-  resize: none;
   margin-bottom: 1rem;
   padding: 0.8rem 1rem;
   border-radius: 5px;
@@ -138,7 +169,7 @@ const StyledTextarea = styled.textarea`
   }
 `;
 const StyledButton = styled.button`
-  width: 80%;
+  width: 100%;
   height: 2.5rem;
   border: none;
   border-radius: 5px;
@@ -183,6 +214,19 @@ const Contact = ({ theme }) => {
       method="post"
       $theme={theme}
     >
+      <StyledH2 $theme={theme}>Hey, dear visitor!</StyledH2>
+      <StyledList>
+        <Message $theme={theme}>
+          Got brilliant ideas to share? Shoot me a message! 💭
+        </Message>
+        <Message $theme={theme}>
+          Up for a fantastic collaboration? Go ahead and shoot me a message! 🤝
+        </Message>
+        <Message $theme={theme}>
+          Just looking to connect and have a chat? No doubt, shoot me a message!
+          👋
+        </Message>
+      </StyledList>
       <StyledLabel htmlFor="name" $theme={theme}>
         Full Name
       </StyledLabel>

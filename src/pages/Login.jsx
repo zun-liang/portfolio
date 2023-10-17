@@ -6,13 +6,14 @@ import { Form, redirect } from "react-router-dom";
 import styled from "styled-components";
 
 import {
-  CursorPointerSwitch,
+  BasicButton,
   HoverColorSwitch,
   OpacitySwitch,
   OutlineSwitch,
   PrimaryColorSwitch,
   SecondaryColorSwitch,
   TertiarySecondary,
+  TertiaryColorSwitch,
 } from "../assets/styles/Styles";
 import { auth } from "../firebase";
 
@@ -59,25 +60,16 @@ const StyledInput = styled.input`
     //works for desktop, but not for mobile.
   }
 `;
-const StyledButton = styled.button`
+const StyledButton = styled(BasicButton)`
   justify-self: center;
   width: 100%;
   height: 2rem;
   border: 2px solid ${PrimaryColorSwitch};
-  border-radius: 5px;
-  cursor: ${CursorPointerSwitch};
-  background-color: transparent;
-  font-family: "Black Ops One", sans-serif;
-  font-size: 1rem;
-  color: ${PrimaryColorSwitch};
+  background-color: ${TertiaryColorSwitch};
   &:hover,
   &:active {
     background-color: ${HoverColorSwitch};
   }
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const action = async ({ request }) => {

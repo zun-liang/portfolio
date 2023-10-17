@@ -1,4 +1,3 @@
-import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import {
   createBrowserRouter,
@@ -10,7 +9,6 @@ import styled from "styled-components";
 
 import AuthRequired from "./components/AuthRequired";
 import Layout from "./components/Layout";
-import { auth } from "./firebase";
 import GlobalStyles from "./GlobalStyles";
 import About from "./pages/About";
 import Blog, { loader as blogLoader } from "./pages/Blog";
@@ -34,39 +32,15 @@ const AppContainer = styled.div`
 
 const App = () => {
   const [loading, setLoading] = useState(null); //true
-
-  const [error, setError] = useState(null); //null
-
-  const [email, setEmail] = useState("");
-
-  const [password, setPassword] = useState("");
-
-  const logout = () => {
-    signOut(auth)
-      .then(() => {
-        sessionStorage.removeItem("Auth Token");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-  }, []);
+  const [error, setError] = useState(false); //null
+  const [blogToEdit, setBlogToEdit] = useState(null);
+  const [draft, setDraft] = useState(null);
 
   const Hour = new Date().getHours();
-
   const isLight = Hour < 18 && Hour >= 6;
-
-  const [theme, setTheme] = useState(true); //isLight
+  const [theme, setTheme] = useState(isLight); //isLight
 
   /* Automatically ajust app height based on device */
-
   const setAppHeight = () => {
     const doc = document.documentElement;
     doc.style.setProperty("--app-height", `${window.innerHeight}px`);
@@ -77,15 +51,12 @@ const App = () => {
     setAppHeight();
     return () => window.removeEventListener("resize", setAppHeight);
   }, []);
-
   /* Automatically ajust app height based on device */
 
   /* Toggle favicon based on theme */
-
   const initialFavicon32 = isLight
     ? "./src/assets/images/favicon/light/favicon-32x32.png"
     : "./src/assets/images/favicon/dark/favicon-32x32.png";
-
   const [faviconHref32, setFaviconHref32] = useState(initialFavicon32);
 
   useEffect(() => {
@@ -96,7 +67,6 @@ const App = () => {
       : "./src/assets/images/favicon/dark/favicon-32x32.png";
     setFaviconHref32(updatedFavicon32);
   }, [theme, faviconHref32]);
-
   /* Toggle favicon based on theme */
 
   const router = createBrowserRouter(
@@ -117,39 +87,34 @@ const App = () => {
         />
         <Route
           path="blogs"
-          element={<Blogs theme={theme} />}
+          element={<Blogs theme={theme} setDraft={setDraft} />}
           loader={blogsLoader}
         />
         <Route
           path="blogs/:title"
-          element={<Blog theme={theme} />}
+          element={<Blog theme={theme} setBlogToEdit={setBlogToEdit} />}
           loader={blogLoader}
         />
         <Route
           path="login"
-          element={
-            <Login
-              theme={theme}
-              email={email}
-              setEmail={setEmail}
-              password={password}
-              setPassword={setPassword}
-              user={user}
-              logout={logout}
-            />
-          }
+          element={<Login theme={theme} />}
           action={loginAction}
         />
         <Route element={<AuthRequired />}>
           <Route
             path="editor"
-            element={<Editor theme={theme} logout={logout} user={user} />}
+            element={
+              <Editor
+                theme={theme}
+                blogToEdit={blogToEdit}
+                setBlogToEdit={setBlogToEdit}
+                draft={draft}
+                setDraft={setDraft}
+              />
+            }
           />
-          <Route
-            path="post"
-            element={<Post theme={theme} logout={logout} user={user} />}
-          />
-          <Route path="logout" element={<Logout theme={theme} user={user} />} />
+          <Route path="post" element={<Post theme={theme} draft={draft} />} />
+          <Route path="logout" element={<Logout theme={theme} />} />
         </Route>
         <Route path="contact" element={<Contact theme={theme} />} />
       </Route>

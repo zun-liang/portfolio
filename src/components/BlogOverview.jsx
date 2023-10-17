@@ -2,9 +2,9 @@
 import parse from "html-react-parser";
 import { createMarkdownOptions } from "../assets/styles/Styles";
 
-const BlogContent = ({ theme, blogContent }) => {
-  const html = blogContent;
+const BlogOverview = ({ theme, overview }) => {
+  const html = overview;
   const options = createMarkdownOptions(theme);
   return <>{parse(html, options)}</>;
 };
-export default BlogContent;
+export default BlogOverview;

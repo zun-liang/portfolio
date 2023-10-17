@@ -86,21 +86,18 @@ const StyledDiv = styled.div`
     gap: 9px;
   }
 `;
-const Time = styled.p`
-  text-align: right;
-  margin: 0.5rem 0;
-  font-size: 0.8rem;
-  color: ${TertiarySecondary};
-  @media (min-width: 800px) {
-    margin: 0.8rem 0;
-    font-size: 0.9rem;
-  }
-`;
 const Weather = styled.p`
   color: ${TertiarySecondary};
   font-size: 0.8rem;
   @media (min-width: 800px) {
     font-size: 0.9rem;
+  }
+`;
+const Time = styled(Weather)`
+  text-align: right;
+  margin: 0.5rem 0;
+  @media (min-width: 800px) {
+    margin: 0.8rem 0;
   }
 `;
 const ThemeSwitch = styled.p`

@@ -1,18 +1,23 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
-import { getDocs, orderBy, query } from "firebase/firestore";
+import { getDocs, orderBy, query, getDoc, doc } from "firebase/firestore";
 import { memo, useEffect, useMemo } from "react";
-import { Link, useLoaderData, useSearchParams } from "react-router-dom";
-import styled from "styled-components";
-import Markdown from "react-markdown";
-
 import {
+  Link,
+  useLoaderData,
+  useSearchParams,
+  useNavigate,
+} from "react-router-dom";
+import styled from "styled-components";
+import {
+  BasicLink,
+  BasicButton,
   CursorPointerSwitch,
-  ParagraphColorSwitch,
   PrimaryColorSwitch,
   TertiaryColorSwitch,
 } from "../assets/styles/Styles";
-import { blogsCollection } from "../firebase";
+import { db, blogsCollection } from "../firebase";
+import BlogOverview from "../components/BlogOverview";
 
 const BlogsContainer = styled.div`
   width: 80vw;
@@ -41,16 +46,12 @@ const Filters = styled.div`
   justify-content: center;
   gap: 0.5rem;
 `;
-const Filter = styled.button`
-  padding: 0.2rem 0.5rem;
-  border: none;
-  border-radius: 5px;
-  background-color: transparent;
-  cursor: ${CursorPointerSwitch};
-  font-family: "Black Ops One", sans-serif;
+const Filter = styled(BasicButton)`
   font-size: 1.1rem;
   color: ${TertiaryColorSwitch};
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     background-color: ${PrimaryColorSwitch};
   }
 `;
@@ -65,19 +66,14 @@ const StyledH2 = styled.h2`
   font-family: "Black Ops One", sans-serif;
   color: ${PrimaryColorSwitch};
 `;
-const MarkdownOverview = styled(Markdown)`
-  color: ${ParagraphColorSwitch};
-  line-height: 1.5;
+const StyledButton = styled(Filter)`
+  align-self: flex-end;
 `;
-const StyledLink = styled(Link)`
+const StyledLink = styled(BasicLink)`
   //will take over 100% width
   align-self: flex-end;
   padding: 0.2rem 0.5rem;
   border-radius: 5px;
-  text-decoration: none;
-  cursor: ${CursorPointerSwitch};
-  font-family: "Black Ops One", sans-serif;
-  font-size: 1rem;
   &:link,
   &:visited {
     color: ${TertiaryColorSwitch};
@@ -108,7 +104,7 @@ export const loader = async () => {
 };
 
 //pagination
-const Blogs = ({ theme }) => {
+const Blogs = ({ theme, setDraft }) => {
   //console.log("blogs rendered");
   useEffect(() => {
     document.title = "Blogs ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
@@ -132,7 +128,7 @@ const Blogs = ({ theme }) => {
           {blog.title.split(" ").slice(1).join(" ")}
         </StyledH2>
         <Time $theme={theme}>{blog.time}</Time>
-        <MarkdownOverview $theme={theme}>{blog.overview}</MarkdownOverview>
+        <BlogOverview theme={theme} overview={blog.overview} />
       </BlogContainer>
     </BlogLink>
   ));
@@ -146,6 +142,14 @@ const Blogs = ({ theme }) => {
       }
       return prev;
     });
+  };
+  const navigate = useNavigate();
+  const getDraft = async () => {
+    const docSnap = await getDoc(doc(db, "drafts", "draft"));
+    const data = docSnap.data();
+    setDraft(data);
+    navigate("/editor");
+    //error handle
   };
 
   return (
@@ -196,9 +200,9 @@ const Blogs = ({ theme }) => {
       </Filters>
       {blogs}
       {authToken ? (
-        <StyledLink $theme={theme} to="/editor">
+        <StyledButton $theme={theme} onClick={getDraft}>
           Go to Editor
-        </StyledLink>
+        </StyledButton>
       ) : (
         <StyledLink $theme={theme} to="/login">
           Log in to edit
@@ -210,4 +214,4 @@ const Blogs = ({ theme }) => {
 
 export default memo(Blogs);
 //looks like memo can not stop many rerendering;
-//really don't like the link color of overview
+// a blog can contain a couple tags, how to work with it

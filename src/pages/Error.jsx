@@ -3,10 +3,7 @@
 import styled from "styled-components";
 import { useEffect } from "react";
 import Kuma from "../assets/images/ojigi_animal_kuma.png";
-import {
-  PrimaryColorSwitch,
-  SecondaryColorSwitch,
-} from "../assets/styles/Styles";
+import { SecondaryColorSwitch } from "../assets/styles/Styles";
 
 const ErrorPage = styled.div`
   display: flex;
@@ -18,12 +15,12 @@ const ErrorPage = styled.div`
 const StyledImg = styled.img`
   width: 10rem;
 `;
-const StyledH1 = styled.h1`
+const StyledP = styled.p`
   width: 70%;
   text-align: center;
   line-height: 1.5;
+  font-size: 2rem;
   font-family: "Black Ops One", sans-serif;
-  color: ${PrimaryColorSwitch};
   text-shadow: 2px 2px ${SecondaryColorSwitch};
 `;
 
@@ -35,9 +32,9 @@ const Error = ({ theme }) => {
   return (
     <ErrorPage $theme={theme}>
       <StyledImg src={Kuma} alt="sorry bear picture" />
-      <StyledH1 $theme={theme}>
+      <StyledP $theme={theme}>
         Sorry, the page you are looking for doesn't seem to exist.
-      </StyledH1>
+      </StyledP>
     </ErrorPage>
   );
 };

@@ -7,15 +7,19 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { ReactComponent as FEM } from "../assets/images/icons/frontend-mentor.svg";
 import {
+  BasicButton,
   CursorPointerSwitch,
   PrimaryColorSwitch,
   TertiarySecondary,
+  TertiaryColorSwitch,
 } from "../assets/styles/Styles";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 
 const StyledFooter = styled.footer`
   width: 100%;
@@ -64,14 +68,36 @@ const StyledP = styled.p`
   margin-top: 0.8rem;
   text-align: center;
   letter-spacing: 1px;
-  font-family: "Roboto", sans-serif;
   font-size: 0.8rem;
-  font-weight: 500;
   color: ${TertiarySecondary};
+`;
+const StyledButton = styled(BasicButton)`
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  font-size: 0.8rem;
+  color: ${TertiaryColorSwitch};
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: ${PrimaryColorSwitch};
+  }
 `;
 
 const Footer = ({ theme }) => {
+  const authToken = sessionStorage.getItem("Auth Token");
   const Year = new Date().getFullYear();
+  const navigate = useNavigate();
+  const logout = () => {
+    signOut(auth)
+      .then(() => {
+        sessionStorage.removeItem("Auth Token");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    navigate("/logout");
+  };
   return (
     <StyledFooter $theme={theme}>
       <StyledList>
@@ -116,6 +142,11 @@ const Footer = ({ theme }) => {
         © {Year > 2023 ? `2023 - ${Year}` : "2023"} Zun Liang. All Rights
         Reserved.
       </StyledP>
+      {authToken ? (
+        <StyledButton $theme={theme} onClick={logout}>
+          Log out
+        </StyledButton>
+      ) : null}
     </StyledFooter>
   );
 };

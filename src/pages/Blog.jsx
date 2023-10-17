@@ -1,14 +1,16 @@
 /* eslint-disable react-refresh/only-export-components */
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, deleteDoc } from "firebase/firestore";
 import { useEffect } from "react";
 import Markdown from "react-markdown";
-import { Link, useLoaderData, useLocation } from "react-router-dom";
+import { useLoaderData, useLocation } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import BlogContent from "../components/BlogContent";
+import { useNavigate } from "react-router-dom";
 
 import {
-  CursorPointerSwitch,
+  BasicButton,
+  BasicLink,
   PrimaryColorSwitch,
   SecondaryTransparent,
   TertiaryColorSwitch,
@@ -42,12 +44,8 @@ const StyledDiv = styled.div`
   gap: 2rem;
   padding-bottom: 1rem;
 `;
-const BackLink = styled(Link)`
+const BackLink = styled(BasicLink)`
   align-self: flex-end;
-  text-decoration: none;
-  cursor: ${CursorPointerSwitch};
-  font-family: "Black Ops One", sans-serif;
-  font-size: 1rem;
   &:link,
   &:visited {
     color: ${TertiaryColorSwitch};
@@ -58,8 +56,15 @@ const BackLink = styled(Link)`
     text-shadow: 2px 2px transparent;
   }
 `;
-const ActionLink = styled(BackLink)`
-  font-size: 1rem;
+const StyledButton = styled(BasicButton)`
+  align-self: flex-end;
+  color: ${TertiaryColorSwitch};
+  text-shadow: 2px 2px ${SecondaryTransparent};
+  &:hover,
+  &:active,
+  &:focus {
+    text-shadow: 2px 2px transparent;
+  }
 `;
 
 export const loader = async ({ params }) => {
@@ -77,9 +82,10 @@ export const loader = async ({ params }) => {
   }
 };
 
-const Blog = ({ theme }) => {
+const Blog = ({ theme, setBlogToEdit }) => {
   const authToken = sessionStorage.getItem("Auth Token");
   const {
+    id: blogID,
     time: blogTime,
     title: blogTitle,
     content: blogContent,
@@ -90,6 +96,19 @@ const Blog = ({ theme }) => {
   }, []);
   const location = useLocation();
   const search = location.state?.search;
+
+  const navigate = useNavigate();
+  const blogData = useLoaderData();
+
+  const editBlog = () => {
+    setBlogToEdit(blogData);
+    navigate("/editor");
+  };
+  const deleteBlog = async () => {
+    await deleteDoc(doc(db, "blogs", blogID));
+    navigate("/blogs");
+    //user experience, loading page? error handle
+  };
   return (
     <>
       <BlogContainer>
@@ -98,14 +117,14 @@ const Blog = ({ theme }) => {
             Back to blogs
           </BackLink>
           {authToken ? (
-            <ActionLink $theme={theme} to="/editor">
+            <StyledButton $theme={theme} onClick={editBlog}>
               Edit
-            </ActionLink>
+            </StyledButton>
           ) : null}
           {authToken ? (
-            <ActionLink $theme={theme} to="/editor">
+            <StyledButton $theme={theme} onClick={deleteBlog}>
               Delete
-            </ActionLink>
+            </StyledButton>
           ) : null}
         </StyledDiv>
         <MarkdownTitle $theme={theme}>{blogTitle}</MarkdownTitle>

@@ -310,6 +310,7 @@ const About = ({ theme }) => {
               <span>✞ </span> Advanced React Certification
             </StyledLink>
           </StyledListItem>
+          <StyledListItem $theme={theme}>...</StyledListItem>
         </StyledList>
       </Section>
       <Section>

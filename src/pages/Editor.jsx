@@ -1,16 +1,24 @@
-import MDEditor from "@uiw/react-md-editor";
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import MDEditor from "@uiw/react-md-editor";
+import {
+  doc,
+  setDoc,
+  updateDoc,
+  serverTimestamp,
+  deleteDoc,
+} from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { marked } from "marked";
 
 import {
-  CursorPointerSwitch,
+  BasicLink,
+  BasicButton,
+  HoverColorSwitch,
   PrimaryColorSwitch,
-  TertiaryHover,
 } from "../assets/styles/Styles";
 import { db } from "../firebase";
 
@@ -36,36 +44,44 @@ const StyledDiv = styled.div`
   align-items: center;
   gap: 1rem;
 `;
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  // seems like longer than the button
-`;
-const StyledButton = styled.button`
-  width: auto;
-  height: 2rem;
-  padding: 0.5rem;
+const StyledLink = styled(BasicLink)`
+  padding: 0.3rem 0.5rem;
   border: 2px solid ${PrimaryColorSwitch};
   border-radius: 5px;
-  cursor: ${CursorPointerSwitch};
-  background-color: transparent;
-  font-family: "Black Ops One", sans-serif;
-  font-size: 1rem;
-  color: ${PrimaryColorSwitch};
+  &:link,
+  &:visited {
+    color: ${PrimaryColorSwitch};
+  }
   &:hover,
   &:active {
-    background-color: ${TertiaryHover};
+    color: ${PrimaryColorSwitch};
+    background-color: ${HoverColorSwitch};
   }
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+`;
+const StyledButton = styled(BasicButton)`
+  padding: 0.3rem 0.5rem;
+  border: 2px solid ${PrimaryColorSwitch};
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: ${HoverColorSwitch};
+  }
 `;
 
-const Editor = ({ theme, logout }) => {
-  const [blog, setBlog] = useState("");
+const Editor = ({ theme, blogToEdit, setBlogToEdit, draft, setDraft }) => {
+  const retrievedBlog = blogToEdit?.title + "\n\n" + blogToEdit?.content;
+  const retrievedDraft = draft?.title + "\n\n" + draft?.content;
+  const initialContent = blogToEdit
+    ? retrievedBlog
+    : draft
+    ? retrievedDraft
+    : "";
+  const [blog, setBlog] = useState(initialContent);
   const title = blog.split("\n")[0];
-  const overview = blog.split("\n").filter((x) => x !== "")[1];
-  const content = marked.parse(blog.split("\n").slice(1).join("\n"));
+  const overview = marked.parse(
+    blog.split("\n").filter((x) => x !== "")[1] || ""
+  );
+  const content = marked.parse(blog.split("\n").slice(1).join("\n") || "");
   const time = new Date().toLocaleString();
   const tag = blog.split("\n")[blog.split("\n").length - 1].replace("#", "");
   const blogId =
@@ -81,11 +97,58 @@ const Editor = ({ theme, logout }) => {
     content: content,
     time: time,
     tag: tag,
-    type: "markdown",
   };
-  const post = async () => await setDoc(doc(db, "blogs", blogId), blogObject);
-  const saveDraft = async () =>
-    await setDoc(doc(db, "drafts", blogId), blogObject);
+  const preBlogId = blogToEdit?.id;
+  const updatedBlogObject = {
+    timestamp: blogToEdit?.timestamp,
+    id: preBlogId,
+    title: title,
+    overview: overview,
+    content: content,
+    time: blogToEdit?.time,
+    tag: tag,
+  };
+
+  const navigate = useNavigate();
+  const post = async () => {
+    if (blogToEdit) {
+      await updateDoc(doc(db, "blogs", preBlogId), updatedBlogObject);
+      setBlogToEdit(null);
+    } else if (draft) {
+      await setDoc(doc(db, "blogs", blogId), blogObject);
+      await deleteDoc(doc(db, "drafts", "draft"));
+      setDraft(null);
+    } else {
+      await setDoc(doc(db, "blogs", blogId), blogObject);
+    }
+    navigate("/post");
+  };
+  const initialDraft = {
+    timestamp: timestamp,
+    id: "draft",
+    title: title || "",
+    overview: overview || "",
+    content: content || "",
+    time: time,
+    tag: tag || "",
+  };
+  const updatedDraftObject = {
+    timestamp: draft?.timestamp,
+    id: "draft",
+    title: title,
+    overview: overview,
+    content: content,
+    time: draft?.time,
+    tag: tag,
+  };
+  const saveDraft = async () => {
+    if (draft) {
+      await updateDoc(doc(db, "drafts", "draft"), updatedDraftObject);
+    } else {
+      await setDoc(doc(db, "drafts", "draft"), initialDraft);
+    }
+    navigate("/post");
+  };
 
   useEffect(() => {
     document.title = "Editor ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
@@ -101,21 +164,16 @@ const Editor = ({ theme, logout }) => {
             "## your title \n\n put your content here... \n\n #your tag",
         }}
       />
-      <MDEditor.Markdown source={blog} style={{ whiteSpace: "pre-wrap" }} />
       <StyledDiv>
+        <StyledLink $theme={theme} to="/blogs">
+          Back to Blogs
+        </StyledLink>
         <StyledButton $theme={theme} onClick={saveDraft}>
           Save to Draft
         </StyledButton>
-        <StyledLink to="/post">
-          <StyledButton $theme={theme} onClick={post}>
-            Post
-          </StyledButton>
-        </StyledLink>
-        <StyledLink to="/logout">
-          <StyledButton $theme={theme} onClick={logout}>
-            Log out
-          </StyledButton>
-        </StyledLink>
+        <StyledButton $theme={theme} onClick={post}>
+          Post
+        </StyledButton>
       </StyledDiv>
     </EditorContainer>
   );

@@ -3,7 +3,11 @@
 import styled from "styled-components";
 
 import Kuma from "../assets/images/ojigi_animal_kuma.png";
-import { BackgroundSwitch, PrimaryColorSwitch, SecondaryColorSwitch } from "../assets/styles/Styles";
+import {
+  BackgroundSwitch,
+  PrimaryColorSwitch,
+  SecondaryColorSwitch,
+} from "../assets/styles/Styles";
 import GlobalStyles from "../GlobalStyles";
 
 const ErrorPage = styled.div`

@@ -1,9 +1,11 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { useEffect } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import {
+  BasicLink,
   CursorPointerSwitch,
   ParagraphColorSwitch,
   PrimaryColorSwitch,
@@ -28,19 +30,16 @@ const ProjectContainer = styled.div`
     width: 60vw;
   }
 `;
-const BackLink = styled(Link)`
+const BackLink = styled(BasicLink)`
   width: 11rem;
   margin-bottom: 1rem;
-  text-decoration: none;
-  cursor: ${CursorPointerSwitch};
-  font-family: "Black Ops One", sans-serif;
-  font-size: 1rem;
   &:link,
   &:visited {
     color: ${TertiaryColorSwitch};
   }
   &:hover,
   &:active {
+    color: ${TertiaryColorSwitch};
     text-decoration: underline wavy;
     text-underline-offset: 7px;
   }

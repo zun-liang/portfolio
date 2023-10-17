@@ -7,14 +7,15 @@ import styled from "styled-components";
 import SpeechBubble from "../assets/images/hi.png";
 import Profile from "../assets/images/profile.png";
 import {
+  BasicButton,
   CursorAutoSwitch,
-  CursorPointerSwitch,
   HoverColorSwitch,
   OpacitySwitch,
   OutlineSwitch,
   PrimaryColorSwitch,
   TertiaryColorSwitch,
   SecondaryColorSwitch,
+  SecondaryTransparent,
 } from "../assets/styles/Styles";
 
 const StyledDiv = styled.div`
@@ -69,21 +70,21 @@ const StyledP = styled.p`
   text-align: left;
   font-family: "Black Ops One", sans-serif;
   font-size: 1.5rem;
-  color: ${PrimaryColorSwitch};
   text-shadow: 2px 2px ${SecondaryColorSwitch};
   @media (min-width: 800px) {
     font-size: 2rem;
-  }
-  @media (min-width: 1000px) {
   }
 `;
 const StyledH2 = styled.h2`
   font-family: "Black Ops One", sans-serif;
   font-size: 1.25rem;
   color: ${PrimaryColorSwitch};
-  text-shadow: 2px 2px ${SecondaryColorSwitch};
+  text-shadow: 2px 2px ${SecondaryTransparent};
   @media (min-width: 800px) {
     font-size: 1.4rem;
+  }
+  @media (min-width: 1000px) {
+    font-size: 1.5rem;
   }
 `;
 const StyledList = styled.ul`
@@ -102,6 +103,7 @@ const Message = styled.li`
   color: ${TertiaryColorSwitch};
   @media (min-width: 1000px) {
     font-size: 1rem;
+    line-height: 1.7;
   }
 `;
 const StyledLabel = styled.label`
@@ -168,24 +170,16 @@ const StyledTextarea = styled.textarea`
     -webkit-text-fill-color: ${PrimaryColorSwitch};
   }
 `;
-const StyledButton = styled.button`
+const StyledButton = styled(BasicButton)`
   width: 100%;
   height: 2.5rem;
-  border: none;
-  border-radius: 5px;
-  cursor: ${CursorPointerSwitch};
+  border: 2px solid ${PrimaryColorSwitch};
   background-color: ${TertiaryColorSwitch};
-  font-family: "Black Ops One", sans-serif;
-  font-size: 1rem;
-  color: ${PrimaryColorSwitch};
   &:hover,
-  &:active {
+  &:active,
+  &:focus {
     background-color: ${HoverColorSwitch};
   }
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 `;
 
 const Contact = ({ theme }) => {

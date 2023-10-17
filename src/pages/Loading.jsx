@@ -5,15 +5,14 @@ import styled from "styled-components";
 import LoadingImage from "../assets/images/favicon/dark/apple-touch-icon.png";
 import LoadingImageLight from "../assets/images/favicon/light/apple-touch-icon.png";
 import {
+  BasicButton,
   BackgroundSwitch,
   CursorAutoSwitch,
-  CursorPointerSwitch,
   PrimaryColorSwitch,
   PrimarySecondary,
   SecondaryColorSwitch,
-  SecondaryPrimary,
-  TertiaryHover,
   TertiaryPrimary,
+  HoverColorSwitch,
 } from "../assets/styles/Styles.jsx";
 import GlobalStyles from "../GlobalStyles";
 
@@ -59,22 +58,14 @@ const StyledDiv = styled.div`
     width: 40%;
   }
 `;
-const StyledButton = styled.button`
-  width: auto;
-  height: auto;
+const StyledButton = styled(BasicButton)`
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   border: 2px dashed ${PrimaryColorSwitch};
-  cursor: ${CursorPointerSwitch};
-  color: ${PrimaryColorSwitch};
-  background-color: transparent;
-  font-family: "Black Ops One", sans-serif;
-  font-size: 1rem;
   &:hover,
   &:active,
   &:focus {
-    color: ${SecondaryPrimary};
-    background-color: ${TertiaryHover};
+    background-color: ${HoverColorSwitch};
   }
 `;
 const PassButton = styled(StyledButton)`

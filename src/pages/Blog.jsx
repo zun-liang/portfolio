@@ -11,9 +11,11 @@ import { useNavigate } from "react-router-dom";
 import {
   BasicButton,
   BasicLink,
-  PrimaryColorSwitch,
-  SecondaryTransparent,
+  PrimaryTertiary,
+  SecondaryParagraph,
   TertiaryColorSwitch,
+  TertiarySecondary,
+  SecondaryPrimary,
 } from "../assets/styles/Styles";
 import { db } from "../firebase";
 
@@ -29,9 +31,9 @@ const BlogContainer = styled.div`
   }
 `;
 const MarkdownTitle = styled(Markdown)`
-  color: ${PrimaryColorSwitch};
+  color: ${PrimaryTertiary};
   font-family: "Black Ops One", sans-serif;
-  text-shadow: 2px 2px ${SecondaryTransparent};
+  text-shadow: 1px 1px ${SecondaryParagraph};
   text-align: center;
 `;
 const StyledP = styled.p`
@@ -45,25 +47,28 @@ const StyledDiv = styled.div`
   padding-bottom: 1rem;
 `;
 const BackLink = styled(BasicLink)`
-  align-self: flex-end;
+  position: relative;
   &:link,
   &:visited {
-    color: ${TertiaryColorSwitch};
-    text-shadow: 2px 2px ${SecondaryTransparent};
+    color: ${TertiarySecondary};
+    text-shadow: 1px 1px ${SecondaryPrimary};
+    top: 0;
+    transition: top 0.3s ease-out;
   }
   &:hover,
   &:active {
-    text-shadow: 2px 2px transparent;
+    top: 5px;
+    transition: top 0.3s ease-in;
   }
 `;
 const StyledButton = styled(BasicButton)`
   align-self: flex-end;
-  color: ${TertiaryColorSwitch};
-  text-shadow: 2px 2px ${SecondaryTransparent};
+  padding: 0;
+  color: ${TertiarySecondary};
+  text-shadow: 1px 1px ${SecondaryPrimary};
   &:hover,
   &:active,
   &:focus {
-    text-shadow: 2px 2px transparent;
   }
 `;
 
@@ -92,7 +97,7 @@ const Blog = ({ theme, setBlogToEdit }) => {
   } = useLoaderData();
 
   useEffect(() => {
-    document.title = "Blog ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+    document.title = "Blog ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
   const location = useLocation();
   const search = location.state?.search;
@@ -135,3 +140,4 @@ const Blog = ({ theme, setBlogToEdit }) => {
   );
 };
 export default Blog;
+//if chose in page link and select back, it will go to blogsundefined, which is 404 of course

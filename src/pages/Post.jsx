@@ -5,8 +5,8 @@ import { useEffect } from "react";
 import { HoverColorSwitch } from "../assets/styles/Styles";
 import {
   BasicLink,
-  PrimaryColorSwitch,
-  SecondaryColorSwitch,
+  ParagraphColorSwitch,
+  TextShadowSwitch,
 } from "../assets/styles/Styles";
 
 const PostContainer = styled.div`
@@ -19,7 +19,8 @@ const StyledP = styled.p`
   grid-column: 1 /4;
   font-family: "Black Ops One", sans-serif;
   font-size: 1.8rem;
-  text-shadow: 2px 2px ${SecondaryColorSwitch};
+  color: ${ParagraphColorSwitch};
+  text-shadow: ${TextShadowSwitch};
 `;
 const StyledDiv = styled.div`
   display: flex;
@@ -28,22 +29,22 @@ const StyledDiv = styled.div`
 `;
 const StyledLink = styled(BasicLink)`
   padding: 0.5rem;
-  border: 2px dashed ${PrimaryColorSwitch};
+  border: 2px dashed ${ParagraphColorSwitch};
   border-radius: 10px;
   &:link,
   &:visited {
-    color: ${PrimaryColorSwitch};
+    color: ${ParagraphColorSwitch};
   }
   &:hover,
   &:active {
-    color: ${PrimaryColorSwitch};
+    color: ${ParagraphColorSwitch};
     background-color: ${HoverColorSwitch};
   }
 `;
 
 const Post = ({ theme, draft }) => {
   useEffect(() => {
-    document.title = "Post ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+    document.title = "Post ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
   return (
     <PostContainer>

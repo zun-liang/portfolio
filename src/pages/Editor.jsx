@@ -17,8 +17,9 @@ import { marked } from "marked";
 import {
   BasicLink,
   BasicButton,
-  HoverColorSwitch,
-  PrimaryColorSwitch,
+  SecondaryPrimary,
+  PrimarySecondary,
+  TertiaryParagraph,
 } from "../assets/styles/Styles";
 import { db } from "../firebase";
 
@@ -46,25 +47,25 @@ const StyledDiv = styled.div`
 `;
 const StyledLink = styled(BasicLink)`
   padding: 0.3rem 0.5rem;
-  border: 2px solid ${PrimaryColorSwitch};
   border-radius: 5px;
   &:link,
   &:visited {
-    color: ${PrimaryColorSwitch};
+    color: ${PrimarySecondary};
+    text-shadow: 1px 1px ${SecondaryPrimary};
   }
   &:hover,
   &:active {
-    color: ${PrimaryColorSwitch};
-    background-color: ${HoverColorSwitch};
+    color: ${TertiaryParagraph};
   }
 `;
 const StyledButton = styled(BasicButton)`
+  color: ${PrimarySecondary};
+  text-shadow: 1px 1px ${SecondaryPrimary};
   padding: 0.3rem 0.5rem;
-  border: 2px solid ${PrimaryColorSwitch};
   &:hover,
   &:active,
   &:focus {
-    background-color: ${HoverColorSwitch};
+    color: ${TertiaryParagraph};
   }
 `;
 
@@ -151,7 +152,7 @@ const Editor = ({ theme, blogToEdit, setBlogToEdit, draft, setDraft }) => {
   };
 
   useEffect(() => {
-    document.title = "Editor ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+    document.title = "Editor ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
 
   return (

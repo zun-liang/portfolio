@@ -14,7 +14,11 @@ import {
   BasicButton,
   CursorPointerSwitch,
   PrimaryColorSwitch,
+  TertiarySecondary,
   TertiaryColorSwitch,
+  PrimaryTertiary,
+  SecondaryPrimary,
+  SecondaryParagraph,
 } from "../assets/styles/Styles";
 import { db, blogsCollection } from "../firebase";
 import BlogOverview from "../components/BlogOverview";
@@ -40,7 +44,7 @@ const BlogContainer = styled.div`
   gap: 0.5rem;
 `;
 const Filters = styled.div`
-  margin: 0 auto;
+  margin: 1rem auto 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -48,11 +52,16 @@ const Filters = styled.div`
 `;
 const Filter = styled(BasicButton)`
   font-size: 1.1rem;
-  color: ${TertiaryColorSwitch};
+  color: ${TertiarySecondary};
+  text-shadow: 1px 1px ${SecondaryPrimary};
+  position: relative;
+  top: 0;
+  transition: top 0.3s ease-out;
   &:hover,
   &:active,
   &:focus {
-    background-color: ${PrimaryColorSwitch};
+    top: 5px;
+    transition: top 0.3s ease-in;
   }
 `;
 const Time = styled.p`
@@ -64,7 +73,8 @@ const StyledH2 = styled.h2`
   display: inline;
   font-size: 1.2rem;
   font-family: "Black Ops One", sans-serif;
-  color: ${PrimaryColorSwitch};
+  color: ${PrimaryTertiary};
+  text-shadow: 1px 1px ${SecondaryParagraph};
 `;
 const StyledButton = styled(Filter)`
   align-self: flex-end;
@@ -107,7 +117,7 @@ export const loader = async () => {
 const Blogs = ({ theme, setDraft }) => {
   //console.log("blogs rendered");
   useEffect(() => {
-    document.title = "Blogs ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+    document.title = "Blogs ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
   const authToken = sessionStorage.getItem("Auth Token");
   const [searchParams, setSearchParams] = useSearchParams();

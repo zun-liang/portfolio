@@ -26,7 +26,7 @@ import { ReactComponent as RTLIcon } from "../assets/images/icons/testing-librar
 import {
   CursorPointerSwitch,
   ParagraphColorSwitch,
-  SecondaryPrimary,
+  SecondaryParagraph,
   TertiaryColorSwitch,
 } from "../assets/styles/Styles";
 
@@ -77,17 +77,17 @@ const StyledLink = styled.a`
   }
   > span {
     color: ${TertiaryColorSwitch};
-    text-shadow: 1px 1px ${SecondaryPrimary};
+    text-shadow: -1px -1px ${SecondaryParagraph};
   }
 `;
 const StyledH2 = styled.h2`
   margin: 1rem 0 0.5rem;
   font-family: "Black Ops One", sans-serif;
   color: ${TertiaryColorSwitch};
-  text-shadow: 2px 2px ${SecondaryPrimary};
+  text-shadow: -1px -1px ${SecondaryParagraph};
   ${StyledLink} {
     color: ${TertiaryColorSwitch};
-    text-shadow: 2px 2px ${SecondaryPrimary};
+    text-shadow: -1px -1px ${SecondaryParagraph};
   }
 `;
 const StyledP = styled.p`
@@ -114,14 +114,14 @@ const Icon = styled(FontAwesomeIcon)`
   width: 1rem;
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
-  color: ${SecondaryPrimary};
+  color: ${SecondaryParagraph};
 `;
 const StyledRRIcon = styled(RRIcon)`
   width: 1rem;
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
   & > g > path {
-    fill: ${SecondaryPrimary};
+    fill: ${SecondaryParagraph};
   }
 `;
 const StyledSCIcon = styled(SCIcon)`
@@ -129,14 +129,14 @@ const StyledSCIcon = styled(SCIcon)`
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
   & > path {
-    fill: ${SecondaryPrimary};
+    fill: ${SecondaryParagraph};
   }
 `;
 const StyledJestIcon = styled(JestIcon)`
   width: 1rem;
   height: 1rem;
   & > g > path:first-child {
-    fill: ${SecondaryPrimary};
+    fill: ${SecondaryParagraph};
   }
   & > g > path:last-child {
     fill: ${TertiaryColorSwitch};
@@ -146,7 +146,7 @@ const StyledTSIcon = styled(TSIcon)`
   width: 1rem;
   height: 1rem;
   & > rect {
-    fill: ${SecondaryPrimary};
+    fill: ${SecondaryParagraph};
   }
   & > path {
     fill: ${TertiaryColorSwitch};
@@ -156,34 +156,34 @@ const StyledNextIcon = styled(NextIcon)`
   width: 1rem;
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
-  fill: ${SecondaryPrimary};
+  fill: ${SecondaryParagraph};
 `;
 const StyledVSCIcon = styled(VSCIcon)`
   width: 1rem;
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
   & > path {
-    fill: ${SecondaryPrimary};
+    fill: ${SecondaryParagraph};
   }
 `;
 const StyledFBIcon = styled(FBIcon)`
   width: 1rem;
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
-  fill: ${SecondaryPrimary};
+  fill: ${SecondaryParagraph};
 `;
 const StyledRTLIcon = styled(RTLIcon)`
   width: 1rem;
   height: 1rem;
   background-color: ${TertiaryColorSwitch};
   & > path {
-    fill: ${SecondaryPrimary};
+    fill: ${SecondaryParagraph};
   }
 `;
 
 const About = ({ theme }) => {
   useEffect(() => {
-    document.title = "About Me ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+    document.title = "About Me ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
   return (
     <AboutContainer>

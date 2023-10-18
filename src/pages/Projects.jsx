@@ -3,7 +3,11 @@
 import { useEffect } from "react";
 import styled from "styled-components";
 
-import { CursorPointerSwitch, PrimarySecondary } from "../assets/styles/Styles";
+import {
+  CursorPointerSwitch,
+  PrimaryColorSwitch,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import ProjectOverview from "../components/ProjectOverview";
 import { projectsCollection } from "../firebase";
 import { getDocs, orderBy, query } from "firebase/firestore";
@@ -27,7 +31,7 @@ const ProjectsContainer = styled.div`
 `;
 const View = styled.p`
   font-size: 0.8rem;
-  color: ${PrimarySecondary};
+  color: ${TertiarySecondary};
   position: relative;
   left: 0;
   transition: left 0.5s ease-in-out;
@@ -40,7 +44,7 @@ const StyledLink = styled.a`
   &:hover,
   &:active,
   &:visited {
-    color: ${PrimarySecondary};
+    color: ${PrimaryColorSwitch};
   }
   > span {
     font-family: "Black Ops One", sans-serif;
@@ -77,7 +81,7 @@ export const loader = async () => {
 };
 const Projects = ({ theme }) => {
   useEffect(() => {
-    document.title = "Projects ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+    document.title = "Projects ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
   const projectsArr = useLoaderData();
   return (

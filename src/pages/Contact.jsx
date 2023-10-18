@@ -13,9 +13,9 @@ import {
   OpacitySwitch,
   OutlineSwitch,
   PrimaryColorSwitch,
-  TertiaryColorSwitch,
+  PrimaryTertiary,
   SecondaryColorSwitch,
-  SecondaryTransparent,
+  TertiarySecondary,
 } from "../assets/styles/Styles";
 
 const StyledDiv = styled.div`
@@ -70,7 +70,7 @@ const StyledP = styled.p`
   text-align: left;
   font-family: "Black Ops One", sans-serif;
   font-size: 1.5rem;
-  text-shadow: 2px 2px ${SecondaryColorSwitch};
+  text-shadow: 1px 1px ${SecondaryColorSwitch};
   @media (min-width: 800px) {
     font-size: 2rem;
   }
@@ -79,7 +79,7 @@ const StyledH2 = styled.h2`
   font-family: "Black Ops One", sans-serif;
   font-size: 1.25rem;
   color: ${PrimaryColorSwitch};
-  text-shadow: 2px 2px ${SecondaryTransparent};
+  text-shadow: 1px 1px ${SecondaryColorSwitch};
   @media (min-width: 800px) {
     font-size: 1.4rem;
   }
@@ -100,7 +100,7 @@ const Message = styled.li`
   line-height: 1.5;
   text-align: center;
   font-size: 0.9rem;
-  color: ${TertiaryColorSwitch};
+  color: ${TertiarySecondary};
   @media (min-width: 1000px) {
     font-size: 1rem;
     line-height: 1.7;
@@ -119,11 +119,11 @@ const StyledInput = styled.input`
   margin-bottom: 1rem;
   padding: 0 0.7rem;
   border-radius: 5px;
-  border: 2px solid ${TertiaryColorSwitch};
+  border: 2px solid ${TertiarySecondary};
   font-size: 0.9rem;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  color: ${PrimaryColorSwitch};
+  color: ${PrimaryTertiary};
   background-color: white;
   &:focus {
     outline: ${OutlineSwitch};
@@ -149,13 +149,13 @@ const StyledTextarea = styled.textarea`
   margin-bottom: 1rem;
   padding: 0.8rem 1rem;
   border-radius: 5px;
-  border: 2px solid ${TertiaryColorSwitch};
+  border: 2px solid ${TertiarySecondary};
   line-height: 1.2rem;
   overflow-wrap: break-word;
   font-family: "Roboto", sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
-  color: ${PrimaryColorSwitch};
+  color: ${PrimaryTertiary};
   background-color: white;
   &:focus {
     outline: ${OutlineSwitch};
@@ -174,7 +174,7 @@ const StyledButton = styled(BasicButton)`
   width: 100%;
   height: 2.5rem;
   border: 2px solid ${PrimaryColorSwitch};
-  background-color: ${TertiaryColorSwitch};
+  background-color: ${TertiarySecondary};
   &:hover,
   &:active,
   &:focus {
@@ -184,7 +184,7 @@ const StyledButton = styled(BasicButton)`
 
 const Contact = ({ theme }) => {
   useEffect(() => {
-    document.title = "Contact ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+    document.title = "Contact ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
 
   const [state, handleSubmit] = useForm("mbjvygnp");

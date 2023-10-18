@@ -72,7 +72,7 @@ const StyledGif = styled.img`
 
 const Home = ({ theme }) => {
   useEffect(() => {
-    document.title = "Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+    document.title = "Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
   return (
     <HomeContainer>

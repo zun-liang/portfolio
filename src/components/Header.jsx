@@ -7,6 +7,7 @@ import {
   CursorPointerSwitch,
   PrimaryColorSwitch,
   SecondaryColorSwitch,
+  SecondaryPrimary,
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import Menu from "./Menu";
@@ -28,14 +29,14 @@ const TitleContainer = styled.div`
   display: flex;
   align-items: center;
 `;
-const Title = styled.h1`
+const Title = styled.p`
   margin-right: 0.5rem;
   font-family: "Black Ops One", sans-serif;
   font-size: 1.5rem;
   color: ${PrimaryColorSwitch};
   text-shadow: -2px -2px ${SecondaryColorSwitch};
   @media (min-width: 800px) {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
   @media (min-width: 1000px) {
     font-size: 1.8rem;
@@ -88,6 +89,7 @@ const StyledDiv = styled.div`
 `;
 const Weather = styled.p`
   color: ${TertiarySecondary};
+  text-shadow: 1px 1px ${SecondaryPrimary};
   font-size: 0.8rem;
   @media (min-width: 800px) {
     font-size: 0.9rem;

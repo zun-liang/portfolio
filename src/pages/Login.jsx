@@ -13,7 +13,7 @@ import {
   PrimaryColorSwitch,
   SecondaryColorSwitch,
   TertiarySecondary,
-  TertiaryColorSwitch,
+  PrimaryTertiary,
 } from "../assets/styles/Styles";
 import { auth } from "../firebase";
 
@@ -47,7 +47,7 @@ const StyledInput = styled.input`
   border: 2px solid ${TertiarySecondary};
   font-size: 0.9rem;
   font-family: "Roboto", sans-serif;
-  color: ${PrimaryColorSwitch};
+  color: ${PrimaryTertiary};
   background-color: white;
   &:focus {
     outline: ${OutlineSwitch};
@@ -65,7 +65,7 @@ const StyledButton = styled(BasicButton)`
   width: 100%;
   height: 2rem;
   border: 2px solid ${PrimaryColorSwitch};
-  background-color: ${TertiaryColorSwitch};
+  background-color: ${TertiarySecondary};
   &:hover,
   &:active {
     background-color: ${HoverColorSwitch};
@@ -93,7 +93,7 @@ export const action = async ({ request }) => {
 
 const Login = ({ theme }) => {
   useEffect(() => {
-    document.title = "Log In ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+    document.title = "Log In ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
 
   return (

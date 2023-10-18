@@ -6,6 +6,8 @@ import {
   PrimaryColorSwitch,
   TertiaryParagraph,
   SecondaryHover,
+  PrimaryTertiary,
+  OpaqueSwitch,
 } from "../assets/styles/Styles";
 import { Link } from "react-router-dom";
 
@@ -31,7 +33,7 @@ const StyledH2 = styled.h2`
   font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 1px;
-  color: ${PrimaryColorSwitch};
+  color: ${PrimaryTertiary};
   @media (min-width: 800px) {
     font-size: 1rem;
   }
@@ -44,11 +46,9 @@ const ProjectOverviewContainer = styled.div`
   margin: 1rem 0;
   width: 100%;
   height: 100%;
-  background-color: ${({ $theme }) =>
-    $theme ? "rgba(255, 255, 255, 0.5)" : "#282828"};
+  background-color: ${OpaqueSwitch};
   transition: background-color 0.5s ease-out;
-  border: ${({ $theme }) =>
-    $theme ? "none" : "1px solid var(--dark-paragraph)"};
+  border: 1px solid transparent;
   border-radius: 10px;
   padding: 1.5rem;
   display: flex;
@@ -56,14 +56,9 @@ const ProjectOverviewContainer = styled.div`
   &:hover {
     background-color: ${SecondaryHover};
     transition: background-color 0.5s ease-in;
-    ${StyledH2} {
-      color: ${({ $theme }) => ($theme ? "" : "var(--dark-background)")};
-      transition: color 0.5s ease-in;
-    }
-    ${StyledP} {
-      color: ${({ $theme }) => ($theme ? "" : "var(--dark-background)")};
-      transition: color 0.5s ease-in;
-    }
+    border: ${({ $theme }) =>
+      $theme ? "1px solid transparent" : "1px solid var(--dark-paragraph)"};
+    transition: border 0.5s ease-in;
   }
   @media (min-width: 600px) {
     margin: 0;

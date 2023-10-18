@@ -5,8 +5,8 @@ import styled from "styled-components";
 import Kuma from "../assets/images/ojigi_animal_kuma.png";
 import {
   BackgroundSwitch,
-  PrimaryColorSwitch,
-  SecondaryColorSwitch,
+  ParagraphColorSwitch,
+  TextShadowSwitch,
 } from "../assets/styles/Styles";
 import GlobalStyles from "../GlobalStyles";
 
@@ -23,13 +23,14 @@ const ErrorPage = styled.div`
 const StyledImg = styled.img`
   width: 10rem;
 `;
-const StyledH1 = styled.h1`
+const StyledP = styled.p`
   width: 50%;
   text-align: center;
   line-height: 1.5;
   font-family: "Black Ops One", sans-serif;
-  color: ${PrimaryColorSwitch};
-  text-shadow: 2px 2px ${SecondaryColorSwitch};
+  font-size: 2rem;
+  color: ${ParagraphColorSwitch};
+  text-shadow: ${TextShadowSwitch};
 `;
 
 const Error = ({ theme }) => {
@@ -38,9 +39,9 @@ const Error = ({ theme }) => {
       <GlobalStyles />
       <ErrorPage $theme={theme}>
         <StyledImg src={Kuma} alt="sorry bear picture" />
-        <StyledH1 $theme={theme}>
+        <StyledP $theme={theme}>
           Something went wrong, try refreshing the page or come back later.
-        </StyledH1>
+        </StyledP>
       </ErrorPage>
     </>
   );

@@ -10,9 +10,7 @@ import {
   CursorAutoSwitch,
   PrimaryColorSwitch,
   PrimarySecondary,
-  SecondaryColorSwitch,
-  TertiaryPrimary,
-  HoverColorSwitch,
+  OpaqueSwitch,
 } from "../assets/styles/Styles.jsx";
 import GlobalStyles from "../GlobalStyles";
 
@@ -65,7 +63,7 @@ const StyledButton = styled(BasicButton)`
   &:hover,
   &:active,
   &:focus {
-    background-color: ${HoverColorSwitch};
+    background-color: ${OpaqueSwitch};
   }
 `;
 const PassButton = styled(StyledButton)`
@@ -75,8 +73,7 @@ const PassButton = styled(StyledButton)`
   &:hover,
   &:active,
   &:focus {
-    color: ${SecondaryColorSwitch};
-    background-color: ${TertiaryPrimary};
+    background-color: ${OpaqueSwitch};
   }
 `;
 

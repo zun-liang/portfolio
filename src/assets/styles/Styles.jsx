@@ -38,12 +38,20 @@ export const HoverColorSwitch = ({ $theme }) =>
 //Incoherent color switch
 export const OpacitySwitch = ({ $theme }) =>
   $theme ? "rgba(255, 255, 255, 0.5)" : "transparent";
+export const OpaqueSwitch = ({ $theme }) =>
+  $theme ? "rgba(255, 255, 255, 0.5)" : "#282828";
 export const PrimarySecondary = ({ $theme }) =>
   $theme ? "var(--light-primary)" : "var(--dark-secondary)";
+export const PrimaryTertiary = ({ $theme }) =>
+  $theme ? "var(--light-primary)" : "var(--dark-tertiary)";
 export const SecondaryPrimary = ({ $theme }) =>
   $theme ? "var(--light-secondary)" : "var(--dark-primary)";
+export const SecondaryParagraph = ({ $theme }) =>
+  $theme ? "var(--light-secondary)" : "var(--dark-paragraph)";
 export const SecondaryHover = ({ $theme }) =>
   $theme ? "var(--light-secondary)" : "var(--dark-hover)";
+export const SecondaryTertiary = ({ $theme }) =>
+  $theme ? "var(--light-secondary)" : "var(--dark-tertiary)";
 export const SecondaryTransparent = ({ $theme }) =>
   $theme ? "var(--light-secondary)" : "transparent";
 export const TertiaryPrimary = ({ $theme }) =>
@@ -60,6 +68,8 @@ export const BackgroundSecondary = ({ $theme }) =>
   $theme ? "var(--light-background)" : "var(--dark-secondary)";
 export const OutlineSwitch = ({ $theme }) =>
   $theme ? "none" : "2px solid var(--dark-secondary)";
+export const TextShadowSwitch = ({ $theme }) =>
+  $theme ? "1px 1px var(--light-secondary)" : "1px 1px var(--dark-tertiary)";
 
 //Cursor switch
 export const CursorAutoSwitch = ({ $theme }) =>
@@ -92,12 +102,28 @@ export const BasicLink = styled(Link)`
 `;
 
 //HTML parse rules
-const StyledH1 = styled.h1``;
+const StyledH1 = styled.h1`
+  color: ${PrimaryTertiary};
+  font-family: "Black Ops One", sans-serif;
+  text-shadow: 1px 1px ${SecondaryParagraph};
+`;
 const StyledH2 = styled.h2`
-  color: ${PrimarySecondary};
+  color: ${TertiaryColorSwitch};
+  text-shadow: 1px 1px ${SecondaryParagraph};
+  font-family: "Black Ops One", sans-serif;
 `;
 const StyledH3 = styled.h3`
-  color: ${PrimarySecondary};
+  color: ${TertiaryColorSwitch};
+  text-shadow: 1px 1px ${SecondaryParagraph};
+  font-family: "Black Ops One", sans-serif;
+`;
+const StyledH4 = styled.h4`
+  color: ${TertiaryColorSwitch};
+  font-family: "Black Ops One", sans-serif;
+`;
+const StyledH5 = styled.h5`
+  color: ${TertiaryColorSwitch};
+  font-family: "Black Ops One", sans-serif;
 `;
 const StyledP = styled.p`
   color: ${ParagraphColorSwitch};
@@ -164,6 +190,16 @@ export const createMarkdownOptions = (theme) => {
       if (domNode.type === "tag" && domNode.name === "h3") {
         return (
           <StyledH3 $theme={theme}>{domToReact(domNode.children)}</StyledH3>
+        );
+      }
+      if (domNode.type === "tag" && domNode.name === "h4") {
+        return (
+          <StyledH4 $theme={theme}>{domToReact(domNode.children)}</StyledH4>
+        );
+      }
+      if (domNode.type === "tag" && domNode.name === "h5") {
+        return (
+          <StyledH5 $theme={theme}>{domToReact(domNode.children)}</StyledH5>
         );
       }
       if (domNode.type === "tag" && domNode.name === "p") {

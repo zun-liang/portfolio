@@ -9,8 +9,10 @@ import {
   CursorPointerSwitch,
   ParagraphColorSwitch,
   PrimaryColorSwitch,
-  SecondaryTransparent,
-  TertiaryColorSwitch,
+  SecondaryParagraph,
+  PrimaryTertiary,
+  TertiarySecondary,
+  TertiaryPrimary,
 } from "../assets/styles/Styles";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
@@ -31,23 +33,27 @@ const ProjectContainer = styled.div`
   }
 `;
 const BackLink = styled(BasicLink)`
-  width: 11rem;
+  width: 10rem;
   margin-bottom: 1rem;
+  border-radius: 5px;
+  position: relative;
+  top: 0;
+  transition: top 0.3s ease-out;
   &:link,
   &:visited {
-    color: ${TertiaryColorSwitch};
+    color: ${TertiaryPrimary};
   }
   &:hover,
   &:active {
-    color: ${TertiaryColorSwitch};
-    text-decoration: underline wavy;
-    text-underline-offset: 7px;
+    color: ${TertiaryPrimary};
+    top: 5px;
+    transition: top 0.3s ease-in;
   }
 `;
 const StyledH2 = styled.h2`
-  color: ${PrimaryColorSwitch};
+  color: ${PrimaryTertiary};
   font-family: "Black Ops One", sans-serif;
-  text-shadow: 2px 2px ${SecondaryTransparent};
+  text-shadow: 1px 1px ${SecondaryParagraph};
   text-align: center;
 `;
 const StyledDiv = styled.div`
@@ -68,12 +74,12 @@ const StyledLink = styled.a`
   width: 1.6rem;
   &:link,
   &:visited {
-    color: ${TertiaryColorSwitch};
+    color: ${TertiarySecondary};
     ${WebsiteIcon} {
-      fill: ${TertiaryColorSwitch};
+      fill: ${TertiarySecondary};
     }
     ${PuzzleIcon} > g > path {
-      fill: ${TertiaryColorSwitch};
+      fill: ${TertiarySecondary};
     }
   }
   &:hover,
@@ -93,11 +99,14 @@ const Icon = styled(FontAwesomeIcon)`
   height: 1.5rem;
 `;
 const StyledH3 = styled.h3`
+  color: ${PrimaryTertiary};
   font-family: "Black Ops One", sans-serif;
-  color: ${TertiaryColorSwitch};
-  text-shadow: 2px 2px ${SecondaryTransparent};
+  text-shadow: 1px 1px ${SecondaryParagraph};
 `;
-const StyledH4 = styled.h4``;
+const StyledH4 = styled.h4`
+  color: ${PrimaryTertiary};
+  font-family: "Black Ops One", sans-serif;
+`;
 const StyledP = styled.p`
   color: ${ParagraphColorSwitch};
   line-height: 1.5;
@@ -127,7 +136,7 @@ export const loader = async ({ params }) => {
 
 const Project = ({ theme }) => {
   useEffect(() => {
-    document.title = "Project ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+    document.title = "Project ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
   const {
     name: projectName,
@@ -152,7 +161,6 @@ const Project = ({ theme }) => {
           <PuzzleIcon $theme={theme} />
         </StyledLink>
       </StyledDiv>
-
       <StyledH3 $theme={theme}>Introduction</StyledH3>
       <StyledP $theme={theme}>
         This solo project is the solution to Frontend Mentor Challenge Todo App.

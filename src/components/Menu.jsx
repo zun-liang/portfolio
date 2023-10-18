@@ -7,7 +7,7 @@ import {
   CursorPointerSwitch,
   PrimaryColorSwitch,
   PrimarySecondary,
-  SecondaryTransparent,
+  SecondaryPrimary,
 } from "../assets/styles/Styles";
 
 const MenuContainer = styled.div`
@@ -100,7 +100,7 @@ const StyledLink = styled(NavLink)`
   &:active,
   &:visited {
     color: ${PrimarySecondary};
-    text-shadow: 2px 2px ${SecondaryTransparent};
+    text-shadow: 1px 1px ${SecondaryPrimary};
   }
   cursor: ${CursorPointerSwitch};
 `;
@@ -108,6 +108,9 @@ const StyledLink = styled(NavLink)`
 const Menu = ({ theme, menu, toggleMenu }) => {
   const activeStyle = {
     color: theme ? "var(--light-tertiary)" : "var(--dark-tertiary)",
+    textShadow: theme
+      ? "1px 1px var(--light-secondary)"
+      : "1px 1px var(--dark-paragraph)",
     textDecoration: "wavy underline",
     textUnderlineOffset: "8px",
   };

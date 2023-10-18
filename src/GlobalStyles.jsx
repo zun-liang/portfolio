@@ -24,9 +24,9 @@ const GlobalStyles = createGlobalStyle`
         --dark-background: #121212;
         --dark-primary: #ff76a7;
         --dark-secondary: #d6ffc3;
-        --dark-tertiary: #bdd9b0;
-        --dark-paragraph: #E6A5B7;
-        --dark-hover: #ffc5d7;
+        --dark-tertiary: #f25688;
+        --dark-paragraph: #B3FBE7;
+        --dark-hover: #121212;
 
         --dot-size: 1px;
         --dot-space: 25px;

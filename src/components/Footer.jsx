@@ -16,7 +16,7 @@ import {
   CursorPointerSwitch,
   PrimaryColorSwitch,
   TertiarySecondary,
-  TertiaryColorSwitch,
+  SecondaryPrimary,
 } from "../assets/styles/Styles";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
@@ -73,14 +73,14 @@ const StyledP = styled.p`
 `;
 const StyledButton = styled(BasicButton)`
   position: absolute;
-  right: 2rem;
-  bottom: 2rem;
+  left: 1.5rem;
+  bottom: 1.5rem;
   font-size: 0.8rem;
-  color: ${TertiaryColorSwitch};
+  color: ${TertiarySecondary};
+  text-shadow: 1px 1px ${SecondaryPrimary};
   &:hover,
   &:active,
   &:focus {
-    background-color: ${PrimaryColorSwitch};
   }
 `;
 

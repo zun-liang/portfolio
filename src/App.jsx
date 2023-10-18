@@ -32,13 +32,13 @@ const AppContainer = styled.div`
 
 const App = () => {
   const [loading, setLoading] = useState(null); //true
-  const [error, setError] = useState(false); //null
+  const [error, setError] = useState(null); //null
   const [blogToEdit, setBlogToEdit] = useState(null);
   const [draft, setDraft] = useState(null);
 
   const Hour = new Date().getHours();
   const isLight = Hour < 18 && Hour >= 6;
-  const [theme, setTheme] = useState(isLight); //isLight
+  const [theme, setTheme] = useState(false); //isLight
 
   /* Automatically ajust app height based on device */
   const setAppHeight = () => {

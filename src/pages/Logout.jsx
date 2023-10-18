@@ -2,7 +2,10 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { useEffect } from "react";
-import { SecondaryColorSwitch } from "../assets/styles/Styles";
+import {
+  ParagraphColorSwitch,
+  TextShadowSwitch,
+} from "../assets/styles/Styles";
 
 const PostContainer = styled.div`
   display: flex;
@@ -15,11 +18,12 @@ const StyledP = styled.p`
   text-align: center;
   font-family: "Black Ops One", sans-serif;
   font-size: 2rem;
-  text-shadow: 2px 2px ${SecondaryColorSwitch};
+  color: ${ParagraphColorSwitch};
+  text-shadow: ${TextShadowSwitch};
 `;
 const Post = ({ theme }) => {
   useEffect(() => {
-    document.title = "Log Out ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+    document.title = "Log Out ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
   return (
     <PostContainer>

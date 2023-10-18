@@ -3,7 +3,10 @@
 import styled from "styled-components";
 import { useEffect } from "react";
 import Kuma from "../assets/images/ojigi_animal_kuma.png";
-import { SecondaryColorSwitch } from "../assets/styles/Styles";
+import {
+  TextShadowSwitch,
+  ParagraphColorSwitch,
+} from "../assets/styles/Styles";
 
 const ErrorPage = styled.div`
   display: flex;
@@ -21,12 +24,13 @@ const StyledP = styled.p`
   line-height: 1.5;
   font-size: 2rem;
   font-family: "Black Ops One", sans-serif;
-  text-shadow: 2px 2px ${SecondaryColorSwitch};
+  color: ${ParagraphColorSwitch};
+  text-shadow: ${TextShadowSwitch};
 `;
 
 const Error = ({ theme }) => {
   useEffect(() => {
-    document.title = "404 ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
+    document.title = "404 ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
 
   return (

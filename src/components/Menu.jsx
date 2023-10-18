@@ -110,7 +110,7 @@ const Menu = ({ theme, menu, toggleMenu }) => {
     color: theme ? "var(--light-tertiary)" : "var(--dark-tertiary)",
     textShadow: theme
       ? "1px 1px var(--light-secondary)"
-      : "1px 1px var(--dark-paragraph)",
+      : "1px 1px transparent",
     textDecoration: "wavy underline",
     textUnderlineOffset: "8px",
   };

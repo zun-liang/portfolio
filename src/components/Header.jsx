@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import SoundSwitch from "./SoundSwitch";
 
 import {
   CursorPointerSwitch,
@@ -11,6 +12,7 @@ import {
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import Menu from "./Menu";
+import LogoutButton from "./LogoutButton";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -24,6 +26,15 @@ const StyledHeader = styled.header`
   @media (min-width: 1350px) {
     padding: 2.5rem 4rem 0;
   }
+`;
+const Wrapper = styled.div`
+  height: 1.5rem;
+  align-self: flex-start;
+  margin-top: 0.2rem;
+  margin-bottom: -1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 `;
 const TitleContainer = styled.div`
   display: flex;
@@ -108,7 +119,7 @@ const ThemeSwitch = styled.p`
   text-shadow: 1px 1px ${SecondaryColorSwitch};
 `;
 
-const Header = ({ theme, setTheme }) => {
+const Header = ({ theme, setTheme, sound, setSound, screenWidth }) => {
   const options = {
     weekday: "short",
     month: "short",
@@ -156,11 +167,16 @@ const Header = ({ theme, setTheme }) => {
   }, []);
 
   const updateTheme = () => setTheme((prev) => !prev);
-
   const [menu, setMenu] = useState(false);
   const toggleMenu = () => setMenu((prev) => !prev);
   return (
     <StyledHeader>
+      <Wrapper>
+        {screenWidth < 1000 && (
+          <SoundSwitch theme={theme} sound={sound} setSound={setSound} />
+        )}
+        {screenWidth < 1000 && <LogoutButton theme={theme} />}
+      </Wrapper>
       <TitleContainer>
         <Title $theme={theme}>ZUN LIANG</Title>
         <SubTitleBlink $theme={theme}> ⊹</SubTitleBlink>

@@ -67,3 +67,4 @@ const Post = ({ theme, draft }) => {
 };
 
 export default Post;
+//should only show up if i posted/saved something

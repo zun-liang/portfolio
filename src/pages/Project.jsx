@@ -134,10 +134,11 @@ export const loader = async ({ params }) => {
   }
 };
 
-const Project = ({ theme }) => {
+const Project = ({ theme, play }) => {
   useEffect(() => {
     document.title = "Project ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
+
   const {
     name: projectName,
     codeURL: codeURL,
@@ -146,7 +147,7 @@ const Project = ({ theme }) => {
   } = useLoaderData();
   return (
     <ProjectContainer>
-      <BackLink to="/projects" $theme={theme}>
+      <BackLink to="/projects" $theme={theme} onClick={play}>
         Back to projects
       </BackLink>
       <StyledH2 $theme={theme}>{projectName}</StyledH2>

@@ -13,7 +13,6 @@ import {
   BasicLink,
   BasicButton,
   CursorPointerSwitch,
-  PrimaryColorSwitch,
   TertiarySecondary,
   TertiaryColorSwitch,
   PrimaryTertiary,
@@ -84,14 +83,18 @@ const StyledLink = styled(BasicLink)`
   align-self: flex-end;
   padding: 0.2rem 0.5rem;
   border-radius: 5px;
+  position: relative;
   &:link,
   &:visited {
-    color: ${TertiaryColorSwitch};
+    color: ${TertiarySecondary};
+    text-shadow: 1px 1px ${SecondaryPrimary};
+    top: 0;
+    transition: top 0.3s ease-out;
   }
   &:hover,
   &:active {
-    color: ${TertiaryColorSwitch};
-    background-color: ${PrimaryColorSwitch};
+    top: 5px;
+    transition: top 0.3s ease-in;
   }
 `;
 

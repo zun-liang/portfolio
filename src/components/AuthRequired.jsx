@@ -9,3 +9,4 @@ const AuthRequired = () => {
 };
 
 export default AuthRequired;
+//if i type in logout in url, this showed, after logged in, it redirects me to editor instead of what i want

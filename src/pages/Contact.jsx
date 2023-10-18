@@ -211,14 +211,14 @@ const Contact = ({ theme }) => {
       <StyledH2 $theme={theme}>Hey, dear visitor!</StyledH2>
       <StyledList>
         <Message $theme={theme}>
-          Got brilliant ideas to share? Shoot me a message! 💭
+          Got brilliant ideas to share? Shoot me a message! 🌟
         </Message>
         <Message $theme={theme}>
           Up for a fantastic collaboration? Go ahead and shoot me a message! 🤝
         </Message>
         <Message $theme={theme}>
           Just looking to connect and have a chat? No doubt, shoot me a message!
-          👋
+          🤗
         </Message>
       </StyledList>
       <StyledLabel htmlFor="name" $theme={theme}>

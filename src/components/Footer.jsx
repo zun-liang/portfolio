@@ -7,25 +7,28 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { ReactComponent as FEM } from "../assets/images/icons/frontend-mentor.svg";
 import {
-  BasicButton,
   CursorPointerSwitch,
   PrimaryColorSwitch,
   TertiarySecondary,
-  SecondaryPrimary,
 } from "../assets/styles/Styles";
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase";
+import SoundSwitch from "./SoundSwitch";
+import LogoutButton from "./LogoutButton";
 
 const StyledFooter = styled.footer`
   width: 100%;
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
   @media (min-width: 1000px) {
-    padding: 1.5rem 1.5rem 2rem;
+    padding: 1.5rem 2.5rem 2rem;
+  }
+  @media (min-width: 1350px) {
+    padding: 1.5rem 4rem 2rem;
   }
 `;
 const StyledList = styled.ul`
@@ -71,33 +74,18 @@ const StyledP = styled.p`
   font-size: 0.8rem;
   color: ${TertiarySecondary};
 `;
-const StyledButton = styled(BasicButton)`
-  position: absolute;
-  left: 1.5rem;
-  bottom: 1.5rem;
-  font-size: 0.8rem;
-  color: ${TertiarySecondary};
-  text-shadow: 1px 1px ${SecondaryPrimary};
-  &:hover,
-  &:active,
-  &:focus {
+const Wrapper = styled.div`
+  align-self: flex-start;
+  display: flex;
+  gap: 5px;
+  @media (min-width: 1000px) {
+    margin-top: -1.3rem;
   }
 `;
 
-const Footer = ({ theme }) => {
-  const authToken = sessionStorage.getItem("Auth Token");
+const Footer = ({ theme, sound, setSound, screenWidth }) => {
   const Year = new Date().getFullYear();
-  const navigate = useNavigate();
-  const logout = () => {
-    signOut(auth)
-      .then(() => {
-        sessionStorage.removeItem("Auth Token");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    navigate("/logout");
-  };
+
   return (
     <StyledFooter $theme={theme}>
       <StyledList>
@@ -142,11 +130,12 @@ const Footer = ({ theme }) => {
         © {Year > 2023 ? `2023 - ${Year}` : "2023"} Zun Liang. All Rights
         Reserved.
       </StyledP>
-      {authToken ? (
-        <StyledButton $theme={theme} onClick={logout}>
-          Log out
-        </StyledButton>
-      ) : null}
+      <Wrapper>
+        {screenWidth > 999 && (
+          <SoundSwitch theme={theme} sound={sound} setSound={setSound} />
+        )}
+        {screenWidth > 999 && <LogoutButton theme={theme} />}
+      </Wrapper>
     </StyledFooter>
   );
 };

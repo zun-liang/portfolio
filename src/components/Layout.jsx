@@ -13,14 +13,25 @@ const LayoutContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-const Layout = ({ theme, setTheme }) => {
+const Layout = ({ theme, setTheme, sound, setSound, screenWidth }) => {
   return (
     <LayoutContainer>
-      <Header theme={theme} setTheme={setTheme} />
+      <Header
+        theme={theme}
+        setTheme={setTheme}
+        sound={sound}
+        setSound={setSound}
+        screenWidth={screenWidth}
+      />
       <main>
         <Outlet />
       </main>
-      <Footer theme={theme} />
+      <Footer
+        theme={theme}
+        sound={sound}
+        setSound={setSound}
+        screenWidth={screenWidth}
+      />
     </LayoutContainer>
   );
 };

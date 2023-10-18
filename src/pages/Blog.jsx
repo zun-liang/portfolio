@@ -87,7 +87,7 @@ export const loader = async ({ params }) => {
   }
 };
 
-const Blog = ({ theme, setBlogToEdit }) => {
+const Blog = ({ theme, setBlogToEdit, play }) => {
   const authToken = sessionStorage.getItem("Auth Token");
   const {
     id: blogID,
@@ -118,7 +118,7 @@ const Blog = ({ theme, setBlogToEdit }) => {
     <>
       <BlogContainer>
         <StyledDiv>
-          <BackLink to={`/blogs${search}`} $theme={theme}>
+          <BackLink to={`/blogs${search}`} $theme={theme} onClick={play}>
             Back to blogs
           </BackLink>
           {authToken ? (

@@ -25,6 +25,11 @@
 - [-webkit-text-stroke](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-text-stroke)
 - [object-position](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position)
 
+#### React
+
+- [use-sound](https://github.com/joshwcomeau/use-sound)
+- [Announcing “use-sound”, a React Hook for Sound Effects](https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/)
+
 #### React Router
 
 - [React Router Version 6 Tutorial – How to Set Up Router and Route to Other Components](https://www.freecodecamp.org/news/how-to-use-react-router-version-6/)

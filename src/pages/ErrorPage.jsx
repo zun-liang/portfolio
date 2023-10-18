@@ -10,7 +10,7 @@ import {
 } from "../assets/styles/Styles";
 import GlobalStyles from "../GlobalStyles";
 
-const ErrorPage = styled.div`
+const ErrorPageContainer = styled.div`
   width: 100%;
   height: var(--app-height);
   background: ${BackgroundSwitch};
@@ -33,18 +33,18 @@ const StyledP = styled.p`
   text-shadow: ${TextShadowSwitch};
 `;
 
-const Error = ({ theme }) => {
+const ErrorPage = ({ theme }) => {
   return (
     <>
       <GlobalStyles />
-      <ErrorPage $theme={theme}>
+      <ErrorPageContainer $theme={theme}>
         <StyledImg src={Kuma} alt="sorry bear picture" />
         <StyledP $theme={theme}>
           Something went wrong, try refreshing the page or come back later.
         </StyledP>
-      </ErrorPage>
+      </ErrorPageContainer>
     </>
   );
 };
 
-export default Error;
+export default ErrorPage;

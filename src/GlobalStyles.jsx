@@ -4,6 +4,8 @@ import {
   BackgroundSwitch,
   CursorAutoSwitch,
   PrimaryColorSwitch,
+  SecondaryColorSwitch,
+  TertiaryPrimary,
 } from "./assets/styles/Styles";
 
 const GlobalStyles = createGlobalStyle`
@@ -45,7 +47,20 @@ const GlobalStyles = createGlobalStyle`
         font-size: 14px;
         color: ${PrimaryColorSwitch}; 
         cursor: ${CursorAutoSwitch};
-        }
+    }
+    ::-webkit-scrollbar {
+        width: 6px; 
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: ${TertiaryPrimary};
+        border-radius: 10px; 
+    }
+
+    ::-webkit-scrollbar-track {
+        background: ${SecondaryColorSwitch}; 
+    }
+
 
     @media (min-width: 800px) {
         html,

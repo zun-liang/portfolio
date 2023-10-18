@@ -24,6 +24,8 @@ import Logout from "./pages/Logout";
 import Post from "./pages/Post";
 import Projects, { loader as projectsLoader } from "./pages/Projects";
 import Project, { loader as projectLoader } from "./pages/Project";
+import useSound from "use-sound";
+import Pick from "./assets/sounds/pick.mp3";
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -35,10 +37,21 @@ const App = () => {
   const [error, setError] = useState(null); //null
   const [blogToEdit, setBlogToEdit] = useState(null);
   const [draft, setDraft] = useState(null);
+  const [sound, setSound] = useState(true);
+  const [play] = useSound(Pick, { soundEnabled: sound });
 
   const Hour = new Date().getHours();
   const isLight = Hour < 18 && Hour >= 6;
   const [theme, setTheme] = useState(false); //isLight
+
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const updateScreenWidth = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", updateScreenWidth);
+    return () => window.removeEventListener("resize", updateScreenWidth);
+  }, [screenWidth]);
 
   /* Automatically ajust app height based on device */
   const setAppHeight = () => {
@@ -71,18 +84,29 @@ const App = () => {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Layout theme={theme} setTheme={setTheme} />}>
+      <Route
+        path="/"
+        element={
+          <Layout
+            theme={theme}
+            setTheme={setTheme}
+            sound={sound}
+            setSound={setSound}
+            screenWidth={screenWidth}
+          />
+        }
+      >
         <Route path="*" element={<Error theme={theme} />} />
         <Route index element={<Home theme={theme} />} />
         <Route path="about" element={<About theme={theme} />} />
         <Route
           path="projects"
-          element={<Projects theme={theme} />}
+          element={<Projects theme={theme} play={play} />}
           loader={projectsLoader}
         />
         <Route
           path="projects/:title"
-          element={<Project theme={theme} />}
+          element={<Project theme={theme} play={play} />}
           loader={projectLoader}
         />
         <Route
@@ -92,7 +116,9 @@ const App = () => {
         />
         <Route
           path="blogs/:title"
-          element={<Blog theme={theme} setBlogToEdit={setBlogToEdit} />}
+          element={
+            <Blog theme={theme} play={play} setBlogToEdit={setBlogToEdit} />
+          }
           loader={blogLoader}
         />
         <Route

@@ -29,6 +29,7 @@ const GlobalStyles = createGlobalStyle`
         --dark-tertiary: #f25688;
         --dark-paragraph: #B3FBE7;
         --dark-hover: #121212;
+        //maybe should change to dot color
 
         --dot-size: 1px;
         --dot-space: 25px;

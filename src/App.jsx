@@ -42,7 +42,7 @@ const App = () => {
 
   const Hour = new Date().getHours();
   const isLight = Hour < 18 && Hour >= 6;
-  const [theme, setTheme] = useState(false); //isLight
+  const [theme, setTheme] = useState(isLight); //isLight
 
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   useEffect(() => {

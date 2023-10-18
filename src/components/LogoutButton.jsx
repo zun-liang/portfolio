@@ -1,26 +1,19 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import {
-  BasicButton,
-  TertiarySecondary,
-  SecondaryPrimary,
-  PrimaryTertiary,
-  SecondaryParagraph,
-} from "../assets/styles/Styles";
+import { BasicButton, PrimarySecondary } from "../assets/styles/Styles";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 
 const StyledButton = styled(BasicButton)`
   width: 4.5rem;
   font-size: 0.8rem;
-  color: ${TertiarySecondary};
-  text-shadow: 1px 1px ${SecondaryPrimary};
+  color: ${({ $theme }) =>
+    $theme ? "var(--light-secondary)" : "var(--dot-color)"};
   &:hover,
   &:active,
   &:focus {
-    color: ${PrimaryTertiary};
-    text-shadow: 1px 1px ${SecondaryParagraph};
+    color: ${PrimarySecondary};
   }
 `;
 const LogoutButton = ({ theme }) => {

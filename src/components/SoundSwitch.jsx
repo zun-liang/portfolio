@@ -2,11 +2,7 @@
 import styled from "styled-components";
 import { ReactComponent as Ear } from "../assets/images/ear.svg";
 import { ReactComponent as EarSlash } from "../assets/images/ear-slash.svg";
-import {
-  CursorPointerSwitch,
-  PrimaryTertiary,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { CursorPointerSwitch, PrimarySecondary } from "../assets/styles/Styles";
 
 const Container = styled.div`
   align-self: flex-start;
@@ -16,17 +12,19 @@ const Container = styled.div`
 const StyledEar = styled(Ear)`
   width: 1.2rem;
   height: 1.2rem;
-  fill: ${TertiarySecondary};
+  fill: ${({ $theme }) =>
+    $theme ? "var(--light-secondary)" : "var(--dot-color)"};
   &:hover {
-    fill: ${PrimaryTertiary};
+    fill: ${PrimarySecondary};
   }
 `;
 const StyledEarSlash = styled(EarSlash)`
   width: 1.2rem;
   height: 1.2rem;
-  fill: ${TertiarySecondary};
+  fill: ${({ $theme }) =>
+    $theme ? "var(--light-secondary)" : "var(--dot-color)"};
   &:hover {
-    fill: ${PrimaryTertiary};
+    fill: ${PrimarySecondary};
   }
 `;
 

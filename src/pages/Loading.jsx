@@ -46,12 +46,15 @@ const StyledP = styled.p`
   color: ${PrimarySecondary};
 `;
 const StyledDiv = styled.div`
-  width: 60%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  @media (min-width: 800px) {
+    width: 70%;
+  }
   @media (min-width: 1000px) {
     width: 40%;
   }
@@ -59,7 +62,7 @@ const StyledDiv = styled.div`
 const StyledButton = styled(BasicButton)`
   padding: 0.5rem 1rem;
   border-radius: 1rem;
-  border: 2px dashed ${PrimaryColorSwitch};
+  border: 1px solid ${PrimaryColorSwitch};
   &:hover,
   &:active,
   &:focus {
@@ -67,7 +70,7 @@ const StyledButton = styled(BasicButton)`
   }
 `;
 const PassButton = styled(StyledButton)`
-  border: 2px dashed ${PrimarySecondary};
+  border: 1px solid ${PrimarySecondary};
   color: ${PrimarySecondary};
   font-size: 1.5rem;
   &:hover,

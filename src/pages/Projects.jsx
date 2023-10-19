@@ -79,7 +79,7 @@ export const loader = async () => {
     console.log(error);
   }
 };
-const Projects = ({ theme, play }) => {
+const Projects = ({ theme, playPick }) => {
   useEffect(() => {
     document.title = "Projects ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
@@ -91,7 +91,7 @@ const Projects = ({ theme, play }) => {
         target="_blank"
         href="https://github.com/zun-liang"
         $theme={theme}
-        onClick={play}
+        onClick={playPick}
       >
         <span>View more</span>
         <View $theme={theme}>(∩◕ᗜ◕)⊃━☆ﾟ.*</View>

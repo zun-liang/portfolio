@@ -1,22 +1,14 @@
 /* eslint-disable react-refresh/only-export-components */
-import { doc, getDoc, deleteDoc } from "firebase/firestore";
+import { deleteDoc, doc, getDoc } from "firebase/firestore";
 import { useEffect } from "react";
 import Markdown from "react-markdown";
 import { useLoaderData, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import BlogContent from "../components/BlogContent";
-import { useNavigate } from "react-router-dom";
 
-import {
-  BasicButton,
-  BasicLink,
-  PrimaryTertiary,
-  SecondaryParagraph,
-  TertiaryColorSwitch,
-  TertiarySecondary,
-  SecondaryPrimary,
-} from "../assets/styles/Styles";
+import { BasicButton, BasicLink, PrimaryTertiary, SecondaryParagraph, SecondaryPrimary, TertiaryColorSwitch, TertiarySecondary } from "../assets/styles/Styles";
+import BlogContent from "../components/BlogContent";
 import { db } from "../firebase";
 
 const BlogContainer = styled.div`
@@ -87,7 +79,7 @@ export const loader = async ({ params }) => {
   }
 };
 
-const Blog = ({ theme, setBlogToEdit, play }) => {
+const Blog = ({ theme, setBlogToEdit, playPick }) => {
   const authToken = sessionStorage.getItem("Auth Token");
   const {
     id: blogID,
@@ -114,11 +106,14 @@ const Blog = ({ theme, setBlogToEdit, play }) => {
     navigate("/blogs");
     //user experience, loading page? error handle
   };
+  useEffect(() => {
+    document.body.scrollTo({ top: 0});
+  }, []);
   return (
     <>
       <BlogContainer>
         <StyledDiv>
-          <BackLink to={`/blogs${search}`} $theme={theme} onClick={play}>
+          <BackLink to={`/blogs${search}`} $theme={theme} onClick={playPick}>
             Back to blogs
           </BackLink>
           {authToken ? (

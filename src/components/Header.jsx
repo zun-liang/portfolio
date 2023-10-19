@@ -3,8 +3,14 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import SoundSwitch from "./SoundSwitch";
+import Time from "./Time";
+import Key from "../assets/sounds/key.mp3";
+import On from "..//assets/sounds/on.mp3";
+import Off from "..//assets/sounds/off.mp3";
+import useSound from "use-sound";
 
 import {
+  CursorAutoSwitch,
   CursorPointerSwitch,
   PrimaryColorSwitch,
   SecondaryColorSwitch,
@@ -55,7 +61,7 @@ const Title = styled.p`
   }
 `;
 const SubTitle = styled.span`
-  cursor: pointer;
+  cursor: ${CursorPointerSwitch};
   font-size: 1.5rem;
   color: ${SecondaryColorSwitch};
   text-shadow: 1px 1px ${PrimaryColorSwitch};
@@ -67,7 +73,7 @@ const SubTitle = styled.span`
     }
   }
   @media (min-width: 800px) {
-    cursor: auto;
+    cursor: ${CursorAutoSwitch};
   }
 `;
 const SubTitleBlink = styled(SubTitle)`
@@ -106,13 +112,6 @@ const Weather = styled.p`
     font-size: 0.9rem;
   }
 `;
-const Time = styled(Weather)`
-  text-align: right;
-  margin: 0.5rem 0;
-  @media (min-width: 800px) {
-    margin: 0.8rem 0;
-  }
-`;
 const ThemeSwitch = styled.p`
   font-size: 1.5rem;
   cursor: ${CursorPointerSwitch};
@@ -120,27 +119,6 @@ const ThemeSwitch = styled.p`
 `;
 
 const Header = ({ theme, setTheme, sound, setSound, screenWidth }) => {
-  const options = {
-    weekday: "short",
-    month: "short",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hourCycle: "h23",
-  };
-  const [current, setCurrent] = useState(
-    new Date().toLocaleString("en-US", options)
-  );
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const updatedCurrent = new Date().toLocaleString("en-US", options);
-      setCurrent(updatedCurrent);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
   const [weather, setWeather] = useState("");
   const [temp, setTemp] = useState("");
   const celsius = parseInt(temp - 273.15);
@@ -166,9 +144,23 @@ const Header = ({ theme, setTheme, sound, setSound, screenWidth }) => {
     });
   }, []);
 
-  const updateTheme = () => setTheme((prev) => !prev);
+  const [playOn] = useSound(On, { soundEnabled: sound });
+  const [playOff] = useSound(Off, { soundEnabled: sound });
+  const updateTheme = () => {
+    setTheme((prev) => !prev);
+    if (theme) {
+      playOff();
+    } else {
+      playOn();
+    }
+  };
+
+  const [playKey] = useSound(Key, { soundEnabled: sound });
   const [menu, setMenu] = useState(false);
-  const toggleMenu = () => setMenu((prev) => !prev);
+  const toggleMenu = () => {
+    setMenu((prev) => !prev);
+    playKey();
+  };
   return (
     <StyledHeader>
       <Wrapper>
@@ -187,7 +179,7 @@ const Header = ({ theme, setTheme, sound, setSound, screenWidth }) => {
           ʚ☕️੭<span>menu</span>
         </SubTitle>
       </TitleContainer>
-      <Menu theme={theme} menu={menu} toggleMenu={toggleMenu} />
+      <Menu theme={theme} menu={menu} setMenu={setMenu} playKey={playKey} />
       <StyledDiv>
         {fetchError ? (
           <Weather $theme={theme}>Wx: Unk, Temp: Unk,</Weather>
@@ -198,7 +190,7 @@ const Header = ({ theme, setTheme, sound, setSound, screenWidth }) => {
             °F,
           </Weather>
         )}
-        <Time $theme={theme}>{current}</Time>
+        <Time theme={theme} />
       </StyledDiv>
       <ThemeSwitch onClick={updateTheme} $theme={theme}>
         {theme ? "✩·͙*̩̩͙˚̩̥̩̥*̩̩͙✩·͙˚̩̥̩̥." : "⁺☁️☼₊☁️⁺₊"}

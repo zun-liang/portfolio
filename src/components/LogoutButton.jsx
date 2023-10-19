@@ -1,15 +1,18 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { BasicButton, PrimarySecondary } from "../assets/styles/Styles";
+import {
+  BasicButton,
+  PrimarySecondary,
+  TertiaryDot,
+} from "../assets/styles/Styles";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 
 const StyledButton = styled(BasicButton)`
   width: 4.5rem;
   font-size: 0.8rem;
-  color: ${({ $theme }) =>
-    $theme ? "var(--light-secondary)" : "var(--dot-color)"};
+  color: ${TertiaryDot};
   &:hover,
   &:active,
   &:focus {

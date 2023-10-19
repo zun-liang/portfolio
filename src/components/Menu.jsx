@@ -105,7 +105,7 @@ const StyledLink = styled(NavLink)`
   cursor: ${CursorPointerSwitch};
 `;
 
-const Menu = ({ theme, menu, toggleMenu }) => {
+const Menu = ({ theme, menu, setMenu, playKey }) => {
   const activeStyle = {
     color: theme ? "var(--light-tertiary)" : "var(--dark-tertiary)",
     textShadow: theme
@@ -113,6 +113,10 @@ const Menu = ({ theme, menu, toggleMenu }) => {
       : "1px 1px transparent",
     textDecoration: "wavy underline",
     textUnderlineOffset: "8px",
+  };
+  const closeMenu = () => {
+    setMenu(false);
+    playKey();
   };
   return (
     <MenuContainer $menu={menu} $theme={theme}>
@@ -123,7 +127,7 @@ const Menu = ({ theme, menu, toggleMenu }) => {
             <StyledLink
               $theme={theme}
               to="."
-              onClick={toggleMenu}
+              onClick={closeMenu}
               style={({ isActive }) => (isActive ? activeStyle : null)}
             >
               Home
@@ -133,7 +137,7 @@ const Menu = ({ theme, menu, toggleMenu }) => {
             <StyledLink
               $theme={theme}
               to="about"
-              onClick={toggleMenu}
+              onClick={closeMenu}
               style={({ isActive }) => (isActive ? activeStyle : null)}
             >
               About Me
@@ -143,7 +147,7 @@ const Menu = ({ theme, menu, toggleMenu }) => {
             <StyledLink
               $theme={theme}
               to="projects"
-              onClick={toggleMenu}
+              onClick={closeMenu}
               style={({ isActive }) => (isActive ? activeStyle : null)}
             >
               Projects
@@ -159,7 +163,7 @@ const Menu = ({ theme, menu, toggleMenu }) => {
             <StyledLink
               $theme={theme}
               to="blogs"
-              onClick={toggleMenu}
+              onClick={closeMenu}
               style={({ isActive }) => (isActive ? activeStyle : null)}
             >
               Blogs
@@ -169,7 +173,7 @@ const Menu = ({ theme, menu, toggleMenu }) => {
             <StyledLink
               $theme={theme}
               to="contact"
-              onClick={toggleMenu}
+              onClick={closeMenu}
               style={({ isActive }) => (isActive ? activeStyle : null)}
             >
               Contact

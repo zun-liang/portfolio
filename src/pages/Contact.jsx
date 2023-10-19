@@ -166,7 +166,7 @@ const StyledTextarea = styled.textarea`
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
-    box-shadow: 0 0 0 1000px white inset;
+    //box-shadow: 0 0 0 1000px white inset;
     -webkit-text-fill-color: ${PrimaryColorSwitch};
   }
 `;

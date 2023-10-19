@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import styled from "styled-components";
+import useSound from "use-sound";
 
+import Pick from "./assets/sounds/pick.mp3";
 import AuthRequired from "./components/AuthRequired";
 import Layout from "./components/Layout";
 import GlobalStyles from "./GlobalStyles";
@@ -22,10 +19,8 @@ import Loading from "./pages/Loading";
 import Login, { action as loginAction } from "./pages/Login";
 import Logout from "./pages/Logout";
 import Post from "./pages/Post";
-import Projects, { loader as projectsLoader } from "./pages/Projects";
 import Project, { loader as projectLoader } from "./pages/Project";
-import useSound from "use-sound";
-import Pick from "./assets/sounds/pick.mp3";
+import Projects, { loader as projectsLoader } from "./pages/Projects";
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -38,7 +33,7 @@ const App = () => {
   const [blogToEdit, setBlogToEdit] = useState(null);
   const [draft, setDraft] = useState(null);
   const [sound, setSound] = useState(true);
-  const [play] = useSound(Pick, { soundEnabled: sound });
+  const [playPick] = useSound(Pick, { soundEnabled: sound });
 
   const Hour = new Date().getHours();
   const isLight = Hour < 18 && Hour >= 6;
@@ -101,12 +96,12 @@ const App = () => {
         <Route path="about" element={<About theme={theme} />} />
         <Route
           path="projects"
-          element={<Projects theme={theme} play={play} />}
+          element={<Projects theme={theme} playPick={playPick} />}
           loader={projectsLoader}
         />
         <Route
           path="projects/:title"
-          element={<Project theme={theme} play={play} />}
+          element={<Project theme={theme} playPick={playPick} />}
           loader={projectLoader}
         />
         <Route
@@ -117,7 +112,11 @@ const App = () => {
         <Route
           path="blogs/:title"
           element={
-            <Blog theme={theme} play={play} setBlogToEdit={setBlogToEdit} />
+            <Blog
+              theme={theme}
+              playPick={playPick}
+              setBlogToEdit={setBlogToEdit}
+            />
           }
           loader={blogLoader}
         />

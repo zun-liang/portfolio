@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import Footer from "./Footer";
 import Header from "./Header";
+import Scroll from "./Scroll";
 
 const LayoutContainer = styled.div`
   width: 100%;
@@ -25,6 +26,7 @@ const Layout = ({ theme, setTheme, sound, setSound, screenWidth }) => {
       />
       <main>
         <Outlet />
+        <Scroll />
       </main>
       <Footer
         theme={theme}

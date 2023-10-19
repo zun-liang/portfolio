@@ -62,6 +62,8 @@ export const TertiaryParagraph = ({ $theme }) =>
   $theme ? "var(--light-tertiary)" : "var(--dark-paragraph)";
 export const TertiaryHover = ({ $theme }) =>
   $theme ? "var(--light-tertiary)" : "var(--dark-hover)";
+export const TertiaryDot = ({ $theme }) =>
+  $theme ? "var(--light-tertiary)" : "var(--dot-color)";
 export const HoverPrimary = ({ $theme }) =>
   $theme ? "var(--light-hover)" : "var(--dark-primary)";
 export const BackgroundSecondary = ({ $theme }) =>

@@ -1,23 +1,14 @@
 /* eslint-disable react/prop-types */
-import {
-  faCodepen,
-  faFreeCodeCamp,
-  faGithub,
-  faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
+import { faCodepen, faFreeCodeCamp, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { ReactComponent as FEM } from "../assets/images/icons/frontend-mentor.svg";
-import {
-  CursorPointerSwitch,
-  PrimaryColorSwitch,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
-import SoundSwitch from "./SoundSwitch";
+import { CursorPointerSwitch, PrimaryColorSwitch, TertiarySecondary } from "../assets/styles/Styles";
 import LogoutButton from "./LogoutButton";
+import SoundSwitch from "./SoundSwitch";
 
 const StyledFooter = styled.footer`
   width: 100%;
@@ -75,9 +66,11 @@ const StyledP = styled.p`
   color: ${TertiarySecondary};
 `;
 const Wrapper = styled.div`
+  height: 1.5rem;
   align-self: flex-start;
   display: flex;
   gap: 5px;
+  //display: none;
   @media (min-width: 1000px) {
     margin-top: -1.3rem;
   }

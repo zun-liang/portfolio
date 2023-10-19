@@ -21,7 +21,7 @@ const GlobalStyles = createGlobalStyle`
         --light-secondary: #ffffff;
         --light-tertiary: #6c7a89;
         --light-paragraph: #181c1f;
-        --light-hover: #f4d3ba;
+        --light-hover: rgba(255, 255, 255, 0.5);
 
         --dark-background: #121212;
         --dark-primary: #ff76a7;
@@ -29,7 +29,6 @@ const GlobalStyles = createGlobalStyle`
         --dark-tertiary: #f25688;
         --dark-paragraph: #B3FBE7;
         --dark-hover: #121212;
-        //maybe should change to dot color
 
         --dot-size: 1px;
         --dot-space: 25px;
@@ -61,6 +60,7 @@ const GlobalStyles = createGlobalStyle`
     ::-webkit-scrollbar-track {
         background: ${SecondaryColorSwitch}; 
     }
+    //works on chrome, safari, not firefox
 
 
     @media (min-width: 800px) {

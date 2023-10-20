@@ -42,7 +42,7 @@ const StyledLink = styled(BasicLink)`
   }
 `;
 
-const Post = ({ theme, draft }) => {
+const Post = ({ theme, draft, playPick }) => {
   useEffect(() => {
     document.title = "Post ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
@@ -55,10 +55,10 @@ const Post = ({ theme, draft }) => {
         <StyledP $theme={theme}>You've successfully posted your blog!</StyledP>
       )}
       <StyledDiv>
-        <StyledLink $theme={theme} to="/editor">
+        <StyledLink $theme={theme} to="/editor" onClick={playPick}>
           Go to Editor
         </StyledLink>
-        <StyledLink $theme={theme} to="/blogs">
+        <StyledLink $theme={theme} to="/blogs" onClick={playPick}>
           Go to Blogs
         </StyledLink>
       </StyledDiv>

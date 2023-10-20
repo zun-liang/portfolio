@@ -38,7 +38,7 @@ const StyledLink = styled(BasicLink)`
   }
 `;
 
-const Logout = ({ theme }) => {
+const Logout = ({ theme, playPick }) => {
   useEffect(() => {
     document.title = "Log Out ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
@@ -46,7 +46,7 @@ const Logout = ({ theme }) => {
     <PostContainer>
       <StyledP $theme={theme}>૮꒰˶ᵕ ༝ᵕ˶꒱აᶻ 𝗓 𐰁ᶻ </StyledP>
       <StyledP $theme={theme}>You've successfully logged out!</StyledP>
-      <StyledLink $theme={theme} to="/">
+      <StyledLink $theme={theme} to="/" onClick={playPick}>
         Go back Home
       </StyledLink>
     </PostContainer>

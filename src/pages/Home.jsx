@@ -17,13 +17,19 @@ const HomeContainer = styled.div`
   grid-template-columns: 5rem 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   align-items: center;
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     width: 65%;
     height: 55%;
     grid-template-columns: 7rem 1fr;
     grid-template-rows: 1fr 2fr 1fr;
   }
-  @media (min-width: 1000px) {
+  @media (min-width: 1024px) {
+    width: 70%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+  @media (min-width: 1200px) {
     width: 50%;
     top: 45%;
     transform: translate(-50%, -45%);
@@ -36,7 +42,7 @@ const StyledH1 = styled.h1`
   font-family: "Black Ops One", sans-serif;
   font-size: 5rem;
   text-shadow: 5px 5px ${SecondaryColorSwitch};
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     font-size: 6.5rem;
   }
 `;
@@ -49,7 +55,7 @@ const StyledH2 = styled.h2`
   -webkit-text-stroke: ${({ $theme }) =>
     $theme ? "1px var(--light-tertiary)" : ""};
   text-shadow: ${({ $theme }) => ($theme ? "" : "2px 2px var(--dark-primary)")};
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     line-height: 1.6;
     font-size: 2.2rem;
   }
@@ -57,7 +63,7 @@ const StyledH2 = styled.h2`
 const StyledImg = styled.img`
   width: 5rem;
   height: 5rem;
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     width: 7rem;
     height: 7rem;
   }
@@ -65,7 +71,7 @@ const StyledImg = styled.img`
 const StyledGif = styled.img`
   align-self: start;
   width: 6rem;
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     width: 7rem;
   }
 `;

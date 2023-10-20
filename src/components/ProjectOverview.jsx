@@ -1,15 +1,16 @@
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { useEffect } from "react";
+
 import {
   CursorPointerSwitch,
-  PrimaryColorSwitch,
-  TertiaryParagraph,
-  SecondaryHover,
-  PrimaryTertiary,
   OpaqueSwitch,
+  PrimaryColorSwitch,
+  PrimaryTertiary,
+  SecondaryHover,
+  TertiaryParagraph,
 } from "../assets/styles/Styles";
-import { Link } from "react-router-dom";
 
 const ProjectLink = styled(Link)`
   width: 100%;
@@ -34,7 +35,7 @@ const StyledH2 = styled.h2`
   font-weight: 700;
   letter-spacing: 1px;
   color: ${PrimaryTertiary};
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     font-size: 1rem;
   }
 `;
@@ -43,7 +44,7 @@ const StyledP = styled.p`
   line-height: 1.5;
 `;
 const ProjectOverviewContainer = styled.div`
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   width: 100%;
   height: 100%;
   background-color: ${OpaqueSwitch};
@@ -60,7 +61,7 @@ const ProjectOverviewContainer = styled.div`
       $theme ? "1px solid transparent" : "1px solid var(--dark-paragraph)"};
     transition: border 0.5s ease-in;
   }
-  @media (min-width: 600px) {
+  @media (min-width: 750px) {
     margin: 0;
   }
 `;
@@ -70,12 +71,17 @@ const StyledImg = styled.img`
   object-position: top center;
 `;
 
-const ProjectOverview = ({ projectsArr, theme }) => {
+const ProjectOverview = ({ projectsArr, theme, playPageTurn }) => {
   useEffect(() => {
     document.title = "Project ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
   }, []);
   const projects = projectsArr.map((project) => (
-    <ProjectLink $theme={theme} to={project.id} key={project.id}>
+    <ProjectLink
+      $theme={theme}
+      to={project.id}
+      key={project.id}
+      onClick={playPageTurn}
+    >
       <ProjectOverviewContainer $theme={theme}>
         <StyledImg
           src={theme ? project.srcLight : project.srcDark}

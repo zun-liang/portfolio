@@ -3,9 +3,11 @@
 import { useForm, ValidationError } from "@formspree/react";
 import { useEffect } from "react";
 import styled from "styled-components";
+import useSound from "use-sound";
 
 import SpeechBubble from "../assets/images/hi.png";
 import Profile from "../assets/images/profile.png";
+import Swoosh from "../assets/sounds/swoosh.mp3";
 import {
   BasicButton,
   CursorAutoSwitch,
@@ -24,12 +26,12 @@ const StyledDiv = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  @media (min-width: 1000px) {
+  @media (min-width: 1200px) {
     width: 50%;
   }
 `;
 const StyledForm = styled.form`
-  width: 80vw;
+  width: 90vw;
   margin: 0.5rem 0 1rem;
   padding: 2rem;
   border-radius: 5px;
@@ -41,10 +43,18 @@ const StyledForm = styled.form`
   justify-content: center;
   align-items: center;
   gap: 0.7rem;
-  @media (min-width: 800px) {
+  @media (min-width: 375px) {
+    width: 85vw;
+  }
+  @media (min-width: 750px) {
     padding: 2.5rem 3rem;
   }
-  @media (min-width: 1000px) {
+
+  @media (min-width: 1024px) {
+    width: 70vw;
+    gap: 1.5rem;
+  }
+  @media (min-width: 1200px) {
     padding: 2.5rem 4rem;
     width: 60vw;
     gap: 1rem;
@@ -53,14 +63,14 @@ const StyledForm = styled.form`
 const StyledImg = styled.img`
   width: 5rem;
   height: 5rem;
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     width: 7rem;
     height: 7rem;
   }
 `;
 const StyledSpeechBubble = styled.img`
   width: 3rem;
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     width: 5rem;
   }
 `;
@@ -71,7 +81,7 @@ const StyledP = styled.p`
   font-family: "Black Ops One", sans-serif;
   font-size: 1.5rem;
   text-shadow: 1px 1px ${SecondaryColorSwitch};
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     font-size: 2rem;
   }
 `;
@@ -80,17 +90,17 @@ const StyledH2 = styled.h2`
   font-size: 1.25rem;
   color: ${PrimaryColorSwitch};
   text-shadow: 1px 1px ${SecondaryColorSwitch};
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     font-size: 1.4rem;
   }
-  @media (min-width: 1000px) {
+  @media (min-width: 1024px) {
     font-size: 1.5rem;
   }
 `;
 const StyledList = styled.ul`
   width: 100%;
   margin-top: 0.5rem;
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     margin-top: 0;
   }
 `;
@@ -101,7 +111,7 @@ const Message = styled.li`
   text-align: center;
   font-size: 0.9rem;
   color: ${TertiarySecondary};
-  @media (min-width: 1000px) {
+  @media (min-width: 1024px) {
     font-size: 1rem;
     line-height: 1.7;
   }
@@ -131,19 +141,22 @@ const StyledInput = styled.input`
   &::placeholder {
     font-weight: 400;
   }
+  &:autofill,
+  &:autofill:hover,
+  &:autofill:focus,
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
     box-shadow: 0 0 0 1000px white inset;
     -webkit-text-fill-color: ${PrimaryColorSwitch};
-    //works for desktop, but not for mobile.
   }
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     height: 2.5rem;
   }
 `;
 const StyledTextarea = styled.textarea`
   width: 100%;
+  min-width: 100%;
   max-width: 100%;
   min-height: 8rem;
   margin-bottom: 1rem;
@@ -163,10 +176,13 @@ const StyledTextarea = styled.textarea`
   &::placeholder {
     font-weight: 400;
   }
+  &:autofill,
+  &:autofill:hover,
+  &:autofill:focus,
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
-    //box-shadow: 0 0 0 1000px white inset;
+    box-shadow: 0 0 0 1000px white inset;
     -webkit-text-fill-color: ${PrimaryColorSwitch};
   }
 `;
@@ -182,13 +198,15 @@ const StyledButton = styled(BasicButton)`
   }
 `;
 
-const Contact = ({ theme }) => {
+const Contact = ({ theme, sound }) => {
+  const [playSwoosh] = useSound(Swoosh, { soundEnabled: sound });
   useEffect(() => {
     document.title = "Contact ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
 
   const [state, handleSubmit] = useForm("mbjvygnp");
   if (state.succeeded) {
+    playSwoosh();
     return (
       <StyledDiv>
         <StyledImg src={Profile} alt="profile picture" />
@@ -199,6 +217,7 @@ const Contact = ({ theme }) => {
         </StyledP>
       </StyledDiv>
     );
+    //error handle
   }
 
   return (

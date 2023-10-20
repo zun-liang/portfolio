@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import styled from "styled-components";
 import useSound from "use-sound";
 
 import Pick from "./assets/sounds/pick.mp3";
+import PageTurn from "./assets/sounds/pageturn.mp3";
 import AuthRequired from "./components/AuthRequired";
 import Layout from "./components/Layout";
 import GlobalStyles from "./GlobalStyles";
@@ -28,12 +34,15 @@ const AppContainer = styled.div`
 `;
 
 const App = () => {
-  const [loading, setLoading] = useState(null); //true
+  const today = new Date().toDateString();
+  const loaded = localStorage.getItem("loading") !== today;
+  const [loading, setLoading] = useState(loaded);
   const [error, setError] = useState(null); //null
   const [blogToEdit, setBlogToEdit] = useState(null);
   const [draft, setDraft] = useState(null);
-  const [sound, setSound] = useState(true);
+  const [sound, setSound] = useState(false);
   const [playPick] = useSound(Pick, { soundEnabled: sound });
+  const [playPageTurn] = useSound(PageTurn, { soundEnabled: sound });
 
   const Hour = new Date().getHours();
   const isLight = Hour < 18 && Hour >= 6;
@@ -88,15 +97,25 @@ const App = () => {
             sound={sound}
             setSound={setSound}
             screenWidth={screenWidth}
+            playPick={playPick}
           />
         }
       >
         <Route path="*" element={<Error theme={theme} />} />
         <Route index element={<Home theme={theme} />} />
-        <Route path="about" element={<About theme={theme} />} />
+        <Route
+          path="about"
+          element={<About theme={theme} playPick={playPick} />}
+        />
         <Route
           path="projects"
-          element={<Projects theme={theme} playPick={playPick} />}
+          element={
+            <Projects
+              theme={theme}
+              playPick={playPick}
+              playPageTurn={playPageTurn}
+            />
+          }
           loader={projectsLoader}
         />
         <Route
@@ -106,7 +125,14 @@ const App = () => {
         />
         <Route
           path="blogs"
-          element={<Blogs theme={theme} setDraft={setDraft} />}
+          element={
+            <Blogs
+              theme={theme}
+              setDraft={setDraft}
+              playPick={playPick}
+              playPageTurn={playPageTurn}
+            />
+          }
           loader={blogsLoader}
         />
         <Route
@@ -122,7 +148,7 @@ const App = () => {
         />
         <Route
           path="login"
-          element={<Login theme={theme} />}
+          element={<Login theme={theme} playPick={playPick} />}
           action={loginAction}
         />
         <Route element={<AuthRequired />}>
@@ -135,18 +161,36 @@ const App = () => {
                 setBlogToEdit={setBlogToEdit}
                 draft={draft}
                 setDraft={setDraft}
+                playPick={playPick}
               />
             }
           />
-          <Route path="post" element={<Post theme={theme} draft={draft} />} />
-          <Route path="logout" element={<Logout theme={theme} />} />
+          <Route
+            path="post"
+            element={<Post theme={theme} draft={draft} playPick={playPick} />}
+          />
+          <Route
+            path="logout"
+            element={<Logout theme={theme} playPick={playPick} />}
+          />
         </Route>
-        <Route path="contact" element={<Contact theme={theme} />} />
+        <Route
+          path="contact"
+          element={<Contact theme={theme} sound={sound} />}
+        />
       </Route>
     )
   );
 
-  if (loading) return <Loading theme={theme} setLoading={setLoading} />;
+  if (loading)
+    return (
+      <Loading
+        theme={theme}
+        setLoading={setLoading}
+        today={today}
+        playPick={playPick}
+      />
+    );
 
   if (error) return <ErrorPage theme={theme} />;
 

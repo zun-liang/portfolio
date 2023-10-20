@@ -11,7 +11,7 @@ const TimeContainer = styled.p`
   color: ${TertiarySecondary};
   text-shadow: 1px 1px ${SecondaryPrimary};
   font-size: 0.8rem;
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     font-size: 0.9rem;
     margin: 0.8rem 0;
   }

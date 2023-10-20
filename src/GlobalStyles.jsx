@@ -44,10 +44,13 @@ const GlobalStyles = createGlobalStyle`
         background: ${BackgroundSwitch};
         overflow-x: hidden;
         font-family: "Roboto", sans-serif;
-        font-size: 14px;
+        font-size: 12px;
         color: ${PrimaryColorSwitch}; 
         cursor: ${CursorAutoSwitch};
+        scrollbar-color: ${TertiaryPrimary} ${SecondaryColorSwitch};
+        scrollbar-width: thin;
     }
+
     ::-webkit-scrollbar {
         width: 6px; 
     }
@@ -60,13 +63,29 @@ const GlobalStyles = createGlobalStyle`
     ::-webkit-scrollbar-track {
         background: ${SecondaryColorSwitch}; 
     }
-    //works on chrome, safari, not firefox
-
-
-    @media (min-width: 800px) {
+    
+    @media (min-width: 375px) {
+        html,
+        body {
+            font-size: 14px;
+        }
+    }
+    @media (min-width: 750px) {
         html,
         body {
             font-size: 16px;
+        }
+    }
+    @media (min-width: 1450px) {
+        html,
+        body {
+            font-size: 18px;
+        }
+    }
+    @media (min-width: 1900px) {
+        html,
+        body {
+            font-size: 20px;
         }
     }
 `;

@@ -29,7 +29,10 @@ const BlogsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  @media (min-width: 1000px) {
+  @media (min-width: 1024px) {
+    width: 70vw;
+  }
+  @media (min-width: 1200px) {
     width: 60vw;
   }
 `;
@@ -104,7 +107,6 @@ export const loader = async () => {
   try {
     const blogsRef = blogsCollection;
     const q = query(blogsRef, orderBy("timestamp", "desc"));
-    //blogs showing order is still werid
     const querySnapshot = await getDocs(q);
     let data = [];
     querySnapshot.forEach((doc) => {
@@ -117,7 +119,7 @@ export const loader = async () => {
 };
 
 //pagination
-const Blogs = ({ theme, setDraft }) => {
+const Blogs = ({ theme, setDraft, playPick, playPageTurn }) => {
   //console.log("blogs rendered");
   useEffect(() => {
     document.title = "Blogs ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
@@ -135,6 +137,7 @@ const Blogs = ({ theme, setDraft }) => {
       to={encodeURIComponent(blog.id)}
       state={{ search: `?${searchParams.toString()}` }}
       $theme={theme}
+      onClick={playPageTurn}
     >
       <BlogContainer>
         <StyledH2 $theme={theme}>
@@ -147,6 +150,7 @@ const Blogs = ({ theme, setDraft }) => {
   ));
 
   const generateSearchParams = (key, value) => {
+    playPick();
     setSearchParams((prev) => {
       if (value === null) {
         prev.delete(key);
@@ -158,6 +162,7 @@ const Blogs = ({ theme, setDraft }) => {
   };
   const navigate = useNavigate();
   const getDraft = async () => {
+    playPick();
     const docSnap = await getDoc(doc(db, "drafts", "draft"));
     const data = docSnap.data();
     setDraft(data);
@@ -217,7 +222,7 @@ const Blogs = ({ theme, setDraft }) => {
           Go to Editor
         </StyledButton>
       ) : (
-        <StyledLink $theme={theme} to="/login">
+        <StyledLink $theme={theme} to="/login" onClick={playPick}>
           Log in to edit
         </StyledLink>
       )}

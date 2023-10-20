@@ -19,6 +19,7 @@ import {
 } from "../assets/styles/Styles";
 import Menu from "./Menu";
 import LogoutButton from "./LogoutButton";
+import MusicPlayer from "./MusicPlayer";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -26,8 +27,11 @@ const StyledHeader = styled.header`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     padding: 2.5rem 2.5rem 0;
+  }
+  @media (min-width: 1024px) {
+    padding: 2.5rem 3rem 0;
   }
   @media (min-width: 1350px) {
     padding: 2.5rem 4rem 0;
@@ -40,7 +44,7 @@ const Wrapper = styled.div`
   margin-bottom: -1.8rem;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 7px;
 `;
 const TitleContainer = styled.div`
   display: flex;
@@ -52,10 +56,10 @@ const Title = styled.p`
   font-size: 1.5rem;
   color: ${PrimaryColorSwitch};
   text-shadow: -2px -2px ${SecondaryColorSwitch};
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     font-size: 1.9rem;
   }
-  @media (min-width: 1000px) {
+  @media (min-width: 1024px) {
     font-size: 1.8rem;
     letter-spacing: 3px;
   }
@@ -68,11 +72,11 @@ const SubTitle = styled.span`
   > span {
     font-family: "Lobster", sans-serif;
     font-size: 1rem;
-    @media (min-width: 1000px) {
+    @media (min-width: 1024px) {
       display: none;
     }
   }
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     cursor: ${CursorAutoSwitch};
   }
 `;
@@ -97,10 +101,10 @@ const StyledDiv = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     gap: 7px;
   }
-  @media (min-width: 1000px) {
+  @media (min-width: 1024px) {
     gap: 9px;
   }
 `;
@@ -108,7 +112,7 @@ const Weather = styled.p`
   color: ${TertiarySecondary};
   text-shadow: 1px 1px ${SecondaryPrimary};
   font-size: 0.8rem;
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     font-size: 0.9rem;
   }
 `;
@@ -163,12 +167,13 @@ const Header = ({ theme, setTheme, sound, setSound, screenWidth }) => {
   };
   return (
     <StyledHeader>
-      <Wrapper>
-        {screenWidth < 1000 && (
+      {screenWidth < 1000 && (
+        <Wrapper>
           <SoundSwitch theme={theme} sound={sound} setSound={setSound} />
-        )}
-        {screenWidth < 1000 && <LogoutButton theme={theme} />}
-      </Wrapper>
+          <MusicPlayer theme={theme} />
+          <LogoutButton theme={theme} />
+        </Wrapper>
+      )}
       <TitleContainer>
         <Title $theme={theme}>ZUN LIANG</Title>
         <SubTitleBlink $theme={theme}> ⊹</SubTitleBlink>

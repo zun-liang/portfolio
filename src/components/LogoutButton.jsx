@@ -10,7 +10,8 @@ import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 
 const StyledButton = styled(BasicButton)`
-  width: 4.5rem;
+  padding: 0;
+  border-radius: 0;
   font-size: 0.8rem;
   color: ${TertiaryDot};
   &:hover,

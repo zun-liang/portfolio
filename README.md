@@ -22,6 +22,7 @@ I was having trouble deciding what colors look good for my website.
 - [Window: location property](https://developer.mozilla.org/en-US/docs/Web/API/Window/location)
 - [Element: scrollTo() method](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo)
 - [Window: location property](https://developer.mozilla.org/en-US/docs/Web/API/Window/location)
+- [audio: The Embed Audio element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio)
 
 #### CSS
 
@@ -32,6 +33,16 @@ I was having trouble deciding what colors look good for my website.
 - [-webkit-text-stroke](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-text-stroke)
 - [object-position](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position)
 - [::-webkit-scrollbar](https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar)
+- [CSS scrollbars styling](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scrollbars_styling)
+
+#### JavaScript
+
+- [Date.prototype.toDateString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toDateString)
+- [Date.prototype.toLocaleString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString)
+- [Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)
+- [encodeURIComponent()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent)
+- [Chrome 80 shows timestamp "24:xx" instead of "00:00".](https://support.google.com/chrome/thread/29828561/chrome-80-shows-timestamp-24-xx-instead-of-00-00?hl=en)
+  spotted only on chrome mac shows 24 instead of 00, fixed by using hourCycle: 23h instead of hour12: false.
 
 #### React
 
@@ -47,14 +58,6 @@ I was having trouble deciding what colors look good for my website.
 - [<ScrollRestoration> with scrolling container other than window #9495](https://github.com/remix-run/react-router/discussions/9495)
 - [index.tsx:24 Uncaught Error: useLocation() may be used only in the context of a <Router> component](https://stackoverflow.com/questions/71979809/index-tsx24-uncaught-error-uselocation-may-be-used-only-in-the-context-of-a)
   i had the same error and was thinking where to put my scroll component for the best. this answer inspired me to add it in layout route and enable to utilize useLocation.
-
-#### JavaScript
-
-- [Date.prototype.toLocaleString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString)
-- [Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)
-- [encodeURIComponent()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent)
-- [Chrome 80 shows timestamp "24:xx" instead of "00:00".](https://support.google.com/chrome/thread/29828561/chrome-80-shows-timestamp-24-xx-instead-of-00-00?hl=en)
-  spotted only on chrome mac shows 24 instead of 00, fixed by using hourCycle: 23h instead of hour12: false.
 
 #### Styled-Components
 

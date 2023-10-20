@@ -1,25 +1,26 @@
+import { faCode } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { doc, getDoc } from "firebase/firestore";
+import { useEffect } from "react";
+import { useLoaderData } from "react-router-dom";
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { useEffect } from "react";
-import { useLoaderData } from "react-router-dom";
+
+import { ReactComponent as Puzzle } from "../assets/images/puzzle.svg";
+import { ReactComponent as Website } from "../assets/images/website.svg";
 import {
   BasicLink,
   CursorPointerSwitch,
   ParagraphColorSwitch,
   PrimaryColorSwitch,
-  SecondaryParagraph,
   PrimaryTertiary,
-  TertiarySecondary,
+  SecondaryParagraph,
   TertiaryPrimary,
+  TertiarySecondary,
 } from "../assets/styles/Styles";
-import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCode } from "@fortawesome/free-solid-svg-icons";
-import { ReactComponent as Website } from "../assets/images/website.svg";
-import { ReactComponent as Puzzle } from "../assets/images/puzzle.svg";
 
 const ProjectContainer = styled.div`
   width: 80vw;
@@ -28,7 +29,10 @@ const ProjectContainer = styled.div`
   flex-direction: column;
   gap: 1rem;
   padding-bottom: 4rem;
-  @media (min-width: 1000px) {
+  @media (min-width: 1024px) {
+    width: 70vw;
+  }
+  @media (min-width: 1200px) {
     width: 60vw;
   }
 `;
@@ -152,13 +156,28 @@ const Project = ({ theme, playPick }) => {
       </BackLink>
       <StyledH2 $theme={theme}>{projectName}</StyledH2>
       <StyledDiv>
-        <StyledLink target="_blank" href={codeURL} $theme={theme}>
+        <StyledLink
+          target="_blank"
+          href={codeURL}
+          $theme={theme}
+          onClick={playPick}
+        >
           <Icon icon={faCode} $theme={theme} />
         </StyledLink>
-        <StyledLink target="_blank" href={liveURL} $theme={theme}>
+        <StyledLink
+          target="_blank"
+          href={liveURL}
+          $theme={theme}
+          onClick={playPick}
+        >
           <WebsiteIcon $theme={theme} />
         </StyledLink>
-        <StyledLink target="_blank" href={femURL} $theme={theme}>
+        <StyledLink
+          target="_blank"
+          href={femURL}
+          $theme={theme}
+          onClick={playPick}
+        >
           <PuzzleIcon $theme={theme} />
         </StyledLink>
       </StyledDiv>

@@ -20,9 +20,10 @@ import { ReactComponent as JestIcon } from "../assets/images/icons/jest.svg";
 import { ReactComponent as NextIcon } from "../assets/images/icons/next-js.svg";
 import { ReactComponent as RRIcon } from "../assets/images/icons/react-router.svg";
 import { ReactComponent as SCIcon } from "../assets/images/icons/styled-components.svg";
+import { ReactComponent as RTLIcon } from "../assets/images/icons/testing-library.svg";
 import { ReactComponent as TSIcon } from "../assets/images/icons/typescript.svg";
 import { ReactComponent as VSCIcon } from "../assets/images/icons/vscode.svg";
-import { ReactComponent as RTLIcon } from "../assets/images/icons/testing-library.svg";
+import { ReactComponent as ReduxIcon } from "../assets/images/icons/redux.svg";
 import {
   CursorPointerSwitch,
   ParagraphColorSwitch,
@@ -32,8 +33,11 @@ import {
 
 const AboutContainer = styled.div`
   width: 80vw;
-  margin: -1rem auto 0;
-  @media (min-width: 1000px) {
+  margin: -1rem 0 auto;
+  @media (min-width: 750px) {
+    margin: 0 auto 0;
+  }
+  @media (min-width: 1200px) {
     margin: 0 auto;
     width: 70vw;
     padding: 0 0 2rem;
@@ -94,7 +98,7 @@ const StyledP = styled.p`
   margin-bottom: 1rem;
   color: ${ParagraphColorSwitch};
   line-height: 1.5;
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     max-width: 800px;
   }
 `;
@@ -180,8 +184,16 @@ const StyledRTLIcon = styled(RTLIcon)`
     fill: ${SecondaryParagraph};
   }
 `;
+const StyledReduxIcon = styled(ReduxIcon)`
+  width: 1rem;
+  height: 1rem;
+  background-color: ${TertiaryColorSwitch};
+  & > path {
+    fill: ${SecondaryParagraph};
+  }
+`;
 
-const About = ({ theme }) => {
+const About = ({ theme, playPick }) => {
   useEffect(() => {
     document.title = "About Me ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
@@ -277,6 +289,7 @@ const About = ({ theme }) => {
             $theme={theme}
             target="_blank"
             href="https://github.com/zun-liang/certificates-achievements-archive"
+            onClick={playPick}
           >
             Achievements
           </StyledLink>
@@ -287,6 +300,7 @@ const About = ({ theme }) => {
               $theme={theme}
               target="_blank"
               href="https://www.freecodecamp.org/certification/zun-liang/responsive-web-design"
+              onClick={playPick}
             >
               <span>✞ </span> Responsive Web Design Certification
             </StyledLink>
@@ -296,6 +310,7 @@ const About = ({ theme }) => {
               $theme={theme}
               target="_blank"
               href="https://www.freecodecamp.org/certification/zun-liang/javascript-algorithms-and-data-structures"
+              onClick={playPick}
             >
               <span>✞ </span> JavaScript Algorithms and Data Structures
               Certification
@@ -306,6 +321,7 @@ const About = ({ theme }) => {
               $theme={theme}
               target="_blank"
               href="https://scrimba.com/certificate/u9enxdu5/greact"
+              onClick={playPick}
             >
               <span>✞ </span> Advanced React Certification
             </StyledLink>
@@ -317,11 +333,15 @@ const About = ({ theme }) => {
         <StyledH2 $theme={theme}>Next Challenges</StyledH2>
         <StyledList>
           <StyledListItem $theme={theme}>
+            <StyledReduxIcon $theme={theme} />
+            <span>Redux</span>
+          </StyledListItem>
+          <StyledListItem $theme={theme}>
             <StyledJestIcon $theme={theme} />
             <span>Jest</span>
           </StyledListItem>
           <StyledListItem $theme={theme}>
-            <StyledRTLIcon icon="logos:testing-library" $theme={theme} />
+            <StyledRTLIcon $theme={theme} />
             <span>React Testing Library</span>
           </StyledListItem>
           <StyledListItem $theme={theme}>

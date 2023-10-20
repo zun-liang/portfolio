@@ -5,12 +5,12 @@ import styled from "styled-components";
 import LoadingImage from "../assets/images/favicon/dark/apple-touch-icon.png";
 import LoadingImageLight from "../assets/images/favicon/light/apple-touch-icon.png";
 import {
-  BasicButton,
   BackgroundSwitch,
+  BasicButton,
   CursorAutoSwitch,
+  OpaqueSwitch,
   PrimaryColorSwitch,
   PrimarySecondary,
-  OpaqueSwitch,
 } from "../assets/styles/Styles.jsx";
 import GlobalStyles from "../GlobalStyles";
 
@@ -36,7 +36,7 @@ const StyledLoadingImage = styled.img`
       transform: rotateY(360deg);
     }
   }
-  @media (min-width: 1000px) {
+  @media (min-width: 1024px) {
     width: 8rem;
   }
 `;
@@ -52,10 +52,13 @@ const StyledDiv = styled.div`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     width: 70%;
   }
-  @media (min-width: 1000px) {
+  @media (min-width: 1024px) {
+    width: 60%;
+  }
+  @media (min-width: 1200px) {
     width: 40%;
   }
 `;
@@ -80,9 +83,11 @@ const PassButton = styled(StyledButton)`
   }
 `;
 
-const Loading = ({ theme, setLoading }) => {
+const Loading = ({ theme, setLoading, today, playPick }) => {
   const handleClick = () => {
     setTimeout(() => setLoading(false), 1000);
+    localStorage.setItem("loading", today);
+    playPick();
   };
   return (
     <>

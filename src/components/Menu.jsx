@@ -20,7 +20,7 @@ const MenuContainer = styled.div`
   top: 0;
   left: 0;
   z-index: 2;
-  @media (min-width: 1000px) {
+  @media (min-width: 1024px) {
     display: ${({ $menu }) => ($menu ? "block" : "block")};
     height: auto;
     background-color: transparent;
@@ -40,7 +40,7 @@ const StyledNav = styled.nav`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  @media (min-width: 1000px) {
+  @media (min-width: 1024px) {
     width: 100%;
     height: auto;
     background: transparent;
@@ -58,7 +58,7 @@ const StyledList = styled.ul`
   justify-content: center;
   align-items: center;
   gap: 28px;
-  @media (min-width: 1000px) {
+  @media (min-width: 1024px) {
     flex-direction: row;
     justify-content: flex-start;
     gap: 2rem;
@@ -69,7 +69,7 @@ const StyledListItem = styled.li`
   font-family: "Black Ops One", sans-serif;
   font-size: 21px;
   color: ${PrimaryColorSwitch};
-  @media (min-width: 1000px) {
+  @media (min-width: 1024px) {
     font-size: 1.3rem;
   }
 `;
@@ -80,7 +80,7 @@ const MenuBorder = styled.li`
   font-family: "Roboto", sans-serif;
   font-weight: 900;
   color: ${PrimaryColorSwitch};
-  @media (min-width: 1000px) {
+  @media (min-width: 1024px) {
     display: none;
   }
 `;

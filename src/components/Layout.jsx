@@ -14,7 +14,14 @@ const LayoutContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-const Layout = ({ theme, setTheme, sound, setSound, screenWidth }) => {
+const Layout = ({
+  theme,
+  setTheme,
+  sound,
+  setSound,
+  screenWidth,
+  playPick,
+}) => {
   return (
     <LayoutContainer>
       <Header
@@ -26,13 +33,14 @@ const Layout = ({ theme, setTheme, sound, setSound, screenWidth }) => {
       />
       <main>
         <Outlet />
-        <Scroll />
+        <Scroll theme={theme} sound={sound} />
       </main>
       <Footer
         theme={theme}
         sound={sound}
         setSound={setSound}
         screenWidth={screenWidth}
+        playPick={playPick}
       />
     </LayoutContainer>
   );

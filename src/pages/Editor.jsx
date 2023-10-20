@@ -31,7 +31,7 @@ const EditorContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  @media (min-width: 1000px) {
+  @media (min-width: 1024px) {
     width: 70vw;
   }
 `;
@@ -69,7 +69,14 @@ const StyledButton = styled(BasicButton)`
   }
 `;
 
-const Editor = ({ theme, blogToEdit, setBlogToEdit, draft, setDraft }) => {
+const Editor = ({
+  theme,
+  blogToEdit,
+  setBlogToEdit,
+  draft,
+  setDraft,
+  playPick,
+}) => {
   const retrievedBlog = blogToEdit?.title + "\n\n" + blogToEdit?.content;
   const retrievedDraft = draft?.title + "\n\n" + draft?.content;
   const initialContent = blogToEdit
@@ -112,6 +119,7 @@ const Editor = ({ theme, blogToEdit, setBlogToEdit, draft, setDraft }) => {
 
   const navigate = useNavigate();
   const post = async () => {
+    playPick();
     if (blogToEdit) {
       await updateDoc(doc(db, "blogs", preBlogId), updatedBlogObject);
       setBlogToEdit(null);
@@ -143,6 +151,7 @@ const Editor = ({ theme, blogToEdit, setBlogToEdit, draft, setDraft }) => {
     tag: tag,
   };
   const saveDraft = async () => {
+    playPick();
     if (draft) {
       await updateDoc(doc(db, "drafts", "draft"), updatedDraftObject);
     } else {
@@ -166,7 +175,7 @@ const Editor = ({ theme, blogToEdit, setBlogToEdit, draft, setDraft }) => {
         }}
       />
       <StyledDiv>
-        <StyledLink $theme={theme} to="/blogs">
+        <StyledLink $theme={theme} to="/blogs" onClick={playPick}>
           Back to Blogs
         </StyledLink>
         <StyledButton $theme={theme} onClick={saveDraft}>

@@ -18,17 +18,23 @@ import {
 import { auth } from "../firebase";
 
 const LoginPage = styled(Form)`
-  width: 70vw;
+  width: 80vw;
   border: 5px ridge ${SecondaryColorSwitch};
   background-color: ${OpacitySwitch};
   border-radius: 5px;
   padding: 2rem;
   display: grid;
   row-gap: 1.5rem;
-  @media (min-width: 800px) {
+  @media (min-width: 375px) {
+    width: 70vw;
+  }
+  @media (min-width: 750px) {
     width: 60vw;
   }
-  @media (min-width: 1000px) {
+  @media (min-width: 1024px) {
+    width: 50vw;
+  }
+  @media (min-width: 1200px) {
     width: 40vw;
   }
 `;
@@ -91,7 +97,7 @@ export const action = async ({ request }) => {
   }
 };
 
-const Login = ({ theme }) => {
+const Login = ({ theme, playPick }) => {
   useEffect(() => {
     document.title = "Log In ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
@@ -121,7 +127,9 @@ const Login = ({ theme }) => {
           $theme={theme}
           required
         />
-        <StyledButton $theme={theme}>Log in</StyledButton>
+        <StyledButton $theme={theme} onClick={playPick}>
+          Log in
+        </StyledButton>
       </LoginPage>
     </>
   );

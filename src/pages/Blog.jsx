@@ -7,7 +7,15 @@ import { useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { BasicButton, BasicLink, PrimaryTertiary, SecondaryParagraph, SecondaryPrimary, TertiaryColorSwitch, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  BasicButton,
+  BasicLink,
+  PrimaryTertiary,
+  SecondaryParagraph,
+  SecondaryPrimary,
+  TertiaryColorSwitch,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import BlogContent from "../components/BlogContent";
 import { db } from "../firebase";
 
@@ -18,7 +26,10 @@ const BlogContainer = styled.div`
   flex-direction: column;
   gap: 1.5rem;
   padding-bottom: 4rem;
-  @media (min-width: 1000px) {
+  @media (min-width: 1024px) {
+    width: 70vw;
+  }
+  @media (min-width: 1200px) {
     width: 60vw;
   }
 `;
@@ -98,16 +109,18 @@ const Blog = ({ theme, setBlogToEdit, playPick }) => {
   const blogData = useLoaderData();
 
   const editBlog = () => {
+    playPick();
     setBlogToEdit(blogData);
     navigate("/editor");
   };
   const deleteBlog = async () => {
+    playPick();
     await deleteDoc(doc(db, "blogs", blogID));
     navigate("/blogs");
     //user experience, loading page? error handle
   };
   useEffect(() => {
-    document.body.scrollTo({ top: 0});
+    document.body.scrollTo({ top: 0 });
   }, []);
   return (
     <>

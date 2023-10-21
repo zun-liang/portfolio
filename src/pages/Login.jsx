@@ -1,7 +1,12 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect } from "react";
 /* eslint-disable react-refresh/only-export-components */
-import { Form, redirect } from "react-router-dom";
+import {
+  Form,
+  useActionData,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
@@ -11,9 +16,9 @@ import {
   OpacitySwitch,
   OutlineSwitch,
   PrimaryColorSwitch,
+  PrimaryTertiary,
   SecondaryColorSwitch,
   TertiarySecondary,
-  PrimaryTertiary,
 } from "../assets/styles/Styles";
 import { auth } from "../firebase";
 
@@ -90,7 +95,7 @@ export const action = async ({ request }) => {
     );
     const user = userCredential.user;
     sessionStorage.setItem("Auth Token", user.accessToken);
-    return redirect("/editor");
+    return user;
   } catch (error) {
     console.error("Error signing in:", error);
     // Handle the error as needed.
@@ -98,6 +103,20 @@ export const action = async ({ request }) => {
 };
 
 const Login = ({ theme, playPick }) => {
+  const location = useLocation(); // Catch ref page.
+  const navigate = useNavigate(); // Redirect to page.
+  const actionData = useActionData(); // Catch action function.
+
+  const userFrom = location.state?.from || "/";
+
+  useEffect(() => {
+    if (actionData?.accessToken) {
+      navigate(userFrom, {
+        replace: true,
+      });
+    }
+  }, [actionData]); // If the action function works.
+
   useEffect(() => {
     document.title = "Log In ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);

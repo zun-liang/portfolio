@@ -62,6 +62,8 @@ I was having trouble deciding what colors look good for my website.
 #### Styled-Components
 
 - [Referring to other components](https://styled-components.com/docs/advanced#referring-to-other-components)
+- [Theming](https://styled-components.com/docs/advanced#theming)
+  tried to switch to themeprovider but it breaks code a lot, will try in the next project.
 
 #### SVGs
 

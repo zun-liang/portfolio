@@ -8,8 +8,8 @@ import {
 import styled from "styled-components";
 import useSound from "use-sound";
 
-import Pick from "./assets/sounds/pick.mp3";
 import PageTurn from "./assets/sounds/pageturn.mp3";
+import Pick from "./assets/sounds/pick.mp3";
 import AuthRequired from "./components/AuthRequired";
 import Layout from "./components/Layout";
 import GlobalStyles from "./GlobalStyles";

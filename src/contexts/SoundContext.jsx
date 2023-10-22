@@ -2,10 +2,9 @@
 import { createContext, useState } from "react";
 
 const SoundContext = createContext();
+
 const SoundContextProvider = ({ children }) => {
-  const Hour = new Date().getHours();
-  const isLight = Hour < 18 && Hour >= 6;
-  const [sound, setSound] = useState(isLight);
+  const [sound, setSound] = useState(false);
   return (
     <SoundContext.Provider value={{ sound, setSound }}>
       {children}

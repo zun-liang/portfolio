@@ -1,11 +1,17 @@
-import { useEffect, useState } from "react";
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import styled from "styled-components";
 import useSound from "use-sound";
 
 import PageTurn from "./assets/sounds/pageturn.mp3";
 import Pick from "./assets/sounds/pick.mp3";
 import { AuthContextProvider } from "./contexts/AuthContext";
+import { SoundContext } from "./contexts/SoundContext";
 import GlobalStyles from "./GlobalStyles";
 import MainLayout from "./layouts/MainLayout";
 import UtilityLayout from "./layouts/UtilityLayout";
@@ -44,7 +50,7 @@ const App = () => {
   const isLight = Hour < 18 && Hour >= 6;
   const [theme, setTheme] = useState(isLight);
 
-  const [sound, setSound] = useState(false);
+  const { sound, setSound } = useContext(SoundContext);
   const [playPick] = useSound(Pick, { soundEnabled: sound });
   const [playPageTurn] = useSound(PageTurn, { soundEnabled: sound });
 
@@ -191,12 +197,12 @@ const App = () => {
 
   return (
     <>
-        <GlobalStyles $theme={theme} />
-        <AuthContextProvider>
-          <AppContainer>
-            <RouterProvider router={router} />
-          </AppContainer>
-        </AuthContextProvider>
+      <GlobalStyles $theme={theme} />
+      <AuthContextProvider>
+        <AppContainer>
+          <RouterProvider router={router} />
+        </AppContainer>
+      </AuthContextProvider>
     </>
   );
 };

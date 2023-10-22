@@ -1,20 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import useSound from "use-sound";
 
 import Off from "..//assets/sounds/off.mp3";
 import On from "..//assets/sounds/on.mp3";
 import Key from "../assets/sounds/key.mp3";
-import {
-  CursorAutoSwitch,
-  CursorPointerSwitch,
-  PrimaryColorSwitch,
-  SecondaryColorSwitch,
-  SecondaryPrimary,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { CursorAutoSwitch, CursorPointerSwitch, PrimaryColorSwitch, SecondaryColorSwitch, SecondaryPrimary, TertiarySecondary } from "../assets/styles/Styles";
+import { SoundContext } from "../contexts/SoundContext";
 import Menu from "./Menu";
 import Time from "./Time";
 
@@ -112,7 +106,8 @@ const ThemeSwitch = styled.p`
 
 //kinda want to use loader here to show weather loading...
 
-const Header = ({ theme, setTheme, sound }) => {
+const Header = ({ theme, setTheme }) => {
+  const { sound} = useContext(SoundContext);
   const [weather, setWeather] = useState("");
   const [temp, setTemp] = useState("");
   const celsius = parseInt(temp - 273.15);

@@ -82,18 +82,13 @@ const App = () => {
     createRoutesFromElements(
       <Route
         element={
-          <UtilityLayout theme={theme} sound={sound} />
+          <UtilityLayout theme={theme} />
         }
       >
         <Route
           path="/"
           element={
-            <MainLayout
-              theme={theme}
-              setTheme={setTheme}
-              sound={sound}
-              playPick={playPick}
-            />
+            <MainLayout theme={theme} setTheme={setTheme} playPick={playPick} />
           }
         >
           <Route path="*" element={<Error theme={theme} />} />
@@ -169,10 +164,7 @@ const App = () => {
               element={<Logout theme={theme} playPick={playPick} />}
             />
           </Route>
-          <Route
-            path="contact"
-            element={<Contact theme={theme} sound={sound} />}
-          />
+          <Route path="contact" element={<Contact theme={theme} />} />
         </Route>
       </Route>
     )

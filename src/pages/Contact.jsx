@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import { useForm, ValidationError } from "@formspree/react";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import styled from "styled-components";
 import useSound from "use-sound";
 
@@ -19,6 +19,7 @@ import {
   SecondaryColorSwitch,
   TertiarySecondary,
 } from "../assets/styles/Styles";
+import { SoundContext } from "../contexts/SoundContext";
 
 const StyledDiv = styled.div`
   width: 70%;
@@ -198,7 +199,8 @@ const StyledButton = styled(BasicButton)`
   }
 `;
 
-const Contact = ({ theme, sound }) => {
+const Contact = ({ theme }) => {
+  const { sound } = useContext(SoundContext);
   const [playSwoosh] = useSound(Swoosh, { soundEnabled: sound });
   useEffect(() => {
     document.title = "Contact ⟡ Zun Liang ♫₊˚.🎧 ✩｡";

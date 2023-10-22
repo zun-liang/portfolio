@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-import SoundSwitch from "../components/SoundSwitch";
-import MusicPlayer from "../components/MusicPlayer";
+
 import LogoutButton from "../components/LogoutButton";
+import MusicPlayer from "../components/MusicPlayer";
+import SoundSwitch from "../components/SoundSwitch";
 import UserProfile from "../components/UserProfile";
 
 const LayoutContainer = styled.div`
@@ -33,16 +34,16 @@ const Wrapper = styled.div`
     margin: -3.3rem 3rem 0;
   }
 `;
-const UtilityLayout = ({ theme, sound, setSound }) => {
+const UtilityLayout = ({ theme }) => {
   return (
     <LayoutContainer>
       <SoundWrapper>
-        <SoundSwitch theme={theme} sound={sound} setSound={setSound} />
+        <SoundSwitch theme={theme}/>
         <MusicPlayer theme={theme} />
       </SoundWrapper>
       <Outlet />
       <Wrapper>
-        <SoundSwitch theme={theme} sound={sound} setSound={setSound} />
+        <SoundSwitch theme={theme}/>
         <MusicPlayer theme={theme} />
         <LogoutButton theme={theme} />
         <UserProfile theme={theme} />

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
@@ -6,6 +6,7 @@ import useSound from "use-sound";
 
 import Sparkle from "../assets/sounds/sparkle.mp3";
 import { CursorPointerSwitch } from "../assets/styles/Styles";
+import { SoundContext } from "../contexts/SoundContext";
 
 const ScrollButton = styled.button`
   position: fixed;
@@ -22,7 +23,8 @@ const ScrollButton = styled.button`
     right: 3rem;
   }
 `;
-const Scroll = ({ theme, sound }) => {
+const Scroll = ({ theme }) => {
+  const { sound } = useContext(SoundContext);
   const [scroll, setScroll] = useState(null);
   const { pathname } = useLocation();
   const [playSparkle] = useSound(Sparkle, { soundEnabled: sound });

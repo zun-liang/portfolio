@@ -1,19 +1,16 @@
 import { useEffect, useState } from "react";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import styled from "styled-components";
 import useSound from "use-sound";
 
 import PageTurn from "./assets/sounds/pageturn.mp3";
 import Pick from "./assets/sounds/pick.mp3";
-import AuthRequired from "./pages/AuthRequired";
-import MainLayout from "./layouts/MainLayout";
+import { AuthContextProvider } from "./contexts/AuthContext";
 import GlobalStyles from "./GlobalStyles";
+import MainLayout from "./layouts/MainLayout";
+import UtilityLayout from "./layouts/UtilityLayout";
 import About from "./pages/About";
+import AuthRequired from "./pages/AuthRequired";
 import Blog, { loader as blogLoader } from "./pages/Blog";
 import Blogs, { loader as blogsLoader } from "./pages/Blogs";
 import Contact from "./pages/Contact";
@@ -27,9 +24,6 @@ import Logout from "./pages/Logout";
 import Post from "./pages/Post";
 import Project, { loader as projectLoader } from "./pages/Project";
 import Projects, { loader as projectsLoader } from "./pages/Projects";
-import UtilityLayout from "./layouts/UtilityLayout";
-import { AuthContextProvider } from "./contexts/AuthContext";
-import { ThemeContextProvider } from "./contexts/ThemeContext";
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -45,6 +39,10 @@ const App = () => {
 
   const [blogToEdit, setBlogToEdit] = useState(null);
   const [draft, setDraft] = useState(null);
+
+  const Hour = new Date().getHours();
+  const isLight = Hour < 18 && Hour >= 6;
+  const [theme, setTheme] = useState(isLight);
 
   const [sound, setSound] = useState(false);
   const [playPick] = useSound(Pick, { soundEnabled: sound });
@@ -64,19 +62,19 @@ const App = () => {
   /* Automatically ajust app height based on device */
 
   /* Toggle favicon based on theme */
-  // const initialFavicon32 = isLight
-  //   ? "./src/assets/images/favicon/light/favicon-32x32.png"
-  //   : "./src/assets/images/favicon/dark/favicon-32x32.png";
-  // const [faviconHref32, setFaviconHref32] = useState(initialFavicon32);
+  const initialFavicon32 = isLight
+    ? "./src/assets/images/favicon/light/favicon-32x32.png"
+    : "./src/assets/images/favicon/dark/favicon-32x32.png";
+  const [faviconHref32, setFaviconHref32] = useState(initialFavicon32);
 
-  // useEffect(() => {
-  //   const favicon32 = document.getElementById("favicon32");
-  //   favicon32.href = faviconHref32;
-  //   const updatedFavicon32 = theme
-  //     ? "./src/assets/images/favicon/light/favicon-32x32.png"
-  //     : "./src/assets/images/favicon/dark/favicon-32x32.png";
-  //   setFaviconHref32(updatedFavicon32);
-  // }, [theme, faviconHref32]);
+  useEffect(() => {
+    const favicon32 = document.getElementById("favicon32");
+    favicon32.href = faviconHref32;
+    const updatedFavicon32 = theme
+      ? "./src/assets/images/favicon/light/favicon-32x32.png"
+      : "./src/assets/images/favicon/dark/favicon-32x32.png";
+    setFaviconHref32(updatedFavicon32);
+  }, [theme, faviconHref32]);
   /* Toggle favicon based on theme */
 
   const router = createBrowserRouter(
@@ -193,14 +191,12 @@ const App = () => {
 
   return (
     <>
-      <ThemeContextProvider>
         <GlobalStyles $theme={theme} />
         <AuthContextProvider>
           <AppContainer>
             <RouterProvider router={router} />
           </AppContainer>
         </AuthContextProvider>
-      </ThemeContextProvider>
     </>
   );
 };

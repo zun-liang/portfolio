@@ -16,7 +16,7 @@ const TimeContainer = styled.p`
     margin: 0.8rem 0;
   }
 `;
-const Time = ({ theme }) => {
+const Time = () => {
   const options = {
     weekday: "short",
     month: "short",
@@ -37,7 +37,7 @@ const Time = ({ theme }) => {
     return () => clearInterval(intId);
   }, []);
 
-  return <TimeContainer $theme={theme}>{current}</TimeContainer>;
+  return <TimeContainer>{current}</TimeContainer>;
 };
 
 export default Time;

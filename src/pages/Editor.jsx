@@ -2,13 +2,25 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import MDEditor from "@uiw/react-md-editor";
-import { deleteDoc, doc, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
+import {
+  deleteDoc,
+  doc,
+  serverTimestamp,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { marked } from "marked";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { BasicButton, BasicLink, PrimarySecondary, SecondaryPrimary, TertiaryParagraph } from "../assets/styles/Styles";
+import {
+  BasicButton,
+  BasicLink,
+  PrimarySecondary,
+  SecondaryPrimary,
+  TertiaryParagraph,
+} from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { db } from "../firebase";
 
@@ -58,13 +70,7 @@ const StyledButton = styled(BasicButton)`
   }
 `;
 
-const Editor = ({
-  theme,
-  blogToEdit,
-  setBlogToEdit,
-  draft,
-  setDraft,
-}) => {
+const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft }) => {
   const playPick = useContext(PlayPickContext);
   const retrievedBlog = blogToEdit?.title + "\n\n" + blogToEdit?.content;
   const retrievedDraft = draft?.title + "\n\n" + draft?.content;
@@ -164,15 +170,11 @@ const Editor = ({
         }}
       />
       <StyledDiv>
-        <StyledLink $theme={theme} to="/blogs" onClick={playPick}>
+        <StyledLink to="/blogs" onClick={playPick}>
           Back to Blogs
         </StyledLink>
-        <StyledButton $theme={theme} onClick={saveDraft}>
-          Save to Draft
-        </StyledButton>
-        <StyledButton $theme={theme} onClick={post}>
-          Post
-        </StyledButton>
+        <StyledButton onClick={saveDraft}>Save to Draft</StyledButton>
+        <StyledButton onClick={post}>Post</StyledButton>
       </StyledDiv>
     </EditorContainer>
   );

@@ -1,21 +1,17 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import {
-  BackgroundSwitch,
-  CursorPointerSwitch,
-  PrimaryColorSwitch,
-  PrimarySecondary,
-  SecondaryPrimary,
-} from "../assets/styles/Styles";
+import { BackgroundSwitch, CursorPointerSwitch, PrimaryColorSwitch, PrimarySecondary, SecondaryPrimary } from "../assets/styles/Styles";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 const MenuContainer = styled.div`
   display: ${({ $menu }) => ($menu ? "block" : "none")};
   width: 100%;
   height: 100%;
-  background-color: ${({ $theme }) =>
-    $theme ? "rgba(0, 0, 0, 0.5)" : "rgba(0, 0, 0, 0.8)"};
+  background-color: ${({ theme }) =>
+    theme.mode ? "rgba(0, 0, 0, 0.5)" : "rgba(0, 0, 0, 0.8)"};
   position: absolute;
   top: 0;
   left: 0;
@@ -105,7 +101,8 @@ const StyledLink = styled(NavLink)`
   cursor: ${CursorPointerSwitch};
 `;
 
-const Menu = ({ theme, menu, setMenu, playKey }) => {
+const Menu = ({ menu, setMenu, playKey }) => {
+  const {theme} = useContext(ThemeContext);
   const activeStyle = {
     color: theme ? "var(--light-tertiary)" : "var(--dark-tertiary)",
     textShadow: theme
@@ -119,13 +116,12 @@ const Menu = ({ theme, menu, setMenu, playKey }) => {
     playKey();
   };
   return (
-    <MenuContainer $menu={menu} $theme={theme}>
-      <StyledNav $theme={theme}>
+    <MenuContainer $menu={menu}>
+      <StyledNav>
         <StyledList>
-          <MenuBorder $theme={theme}>⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜</MenuBorder>
-          <StyledListItem $theme={theme}>
+          <MenuBorder>⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜</MenuBorder>
+          <StyledListItem>
             <StyledLink
-              $theme={theme}
               to="."
               onClick={closeMenu}
               style={({ isActive }) => (isActive ? activeStyle : null)}
@@ -133,9 +129,8 @@ const Menu = ({ theme, menu, setMenu, playKey }) => {
               Home
             </StyledLink>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
+          <StyledListItem>
             <StyledLink
-              $theme={theme}
               to="about"
               onClick={closeMenu}
               style={({ isActive }) => (isActive ? activeStyle : null)}
@@ -143,9 +138,8 @@ const Menu = ({ theme, menu, setMenu, playKey }) => {
               About Me
             </StyledLink>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
+          <StyledListItem>
             <StyledLink
-              $theme={theme}
               to="projects"
               onClick={closeMenu}
               style={({ isActive }) => (isActive ? activeStyle : null)}
@@ -153,15 +147,12 @@ const Menu = ({ theme, menu, setMenu, playKey }) => {
               Projects
             </StyledLink>
           </StyledListItem>
-          <MenuBorderVertical $theme={theme}>
-            ⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣
-          </MenuBorderVertical>
-          <MenuBorderVerticalRight $theme={theme}>
+          <MenuBorderVertical>⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣</MenuBorderVertical>
+          <MenuBorderVerticalRight>
             ⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢⊹⏜⊹⌢
           </MenuBorderVerticalRight>
-          <StyledListItem $theme={theme}>
+          <StyledListItem>
             <StyledLink
-              $theme={theme}
               to="blogs"
               onClick={closeMenu}
               style={({ isActive }) => (isActive ? activeStyle : null)}
@@ -169,9 +160,8 @@ const Menu = ({ theme, menu, setMenu, playKey }) => {
               Blogs
             </StyledLink>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
+          <StyledListItem>
             <StyledLink
-              $theme={theme}
               to="contact"
               onClick={closeMenu}
               style={({ isActive }) => (isActive ? activeStyle : null)}
@@ -179,7 +169,7 @@ const Menu = ({ theme, menu, setMenu, playKey }) => {
               Contact
             </StyledLink>
           </StyledListItem>
-          <MenuBorder $theme={theme}>‌⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝</MenuBorder>
+          <MenuBorder>‌⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝⊹⌣⊹⏝</MenuBorder>
         </StyledList>
       </StyledNav>
     </MenuContainer>

@@ -1,8 +1,7 @@
 import ReactDOM from "react-dom/client";
 
-import App from "./App.jsx";
-import { SoundContextProvider } from "./contexts/SoundContext.jsx";
+import Wrapper from "./Wrapper"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-<SoundContextProvider><App /></SoundContextProvider>
+<Wrapper />
 );

@@ -10,7 +10,16 @@ import styled from "styled-components";
 
 import { ReactComponent as Puzzle } from "../assets/images/puzzle.svg";
 import { ReactComponent as Website } from "../assets/images/website.svg";
-import { BasicLink, CursorPointerSwitch, ParagraphColorSwitch, PrimaryColorSwitch, PrimaryTertiary, SecondaryParagraph, TertiaryPrimary, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  BasicLink,
+  CursorPointerSwitch,
+  ParagraphColorSwitch,
+  PrimaryColorSwitch,
+  PrimaryTertiary,
+  SecondaryParagraph,
+  TertiaryPrimary,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { db } from "../firebase";
 
@@ -130,7 +139,7 @@ export const loader = async ({ params }) => {
   }
 };
 
-const Project = ({ theme }) => {
+const Project = () => {
   const playPick = useContext(PlayPickContext);
   useEffect(() => {
     document.title = "Project ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
@@ -144,91 +153,66 @@ const Project = ({ theme }) => {
   } = useLoaderData();
   return (
     <ProjectContainer>
-      <BackLink to="/projects" $theme={theme} onClick={playPick}>
+      <BackLink to="/projects" onClick={playPick}>
         Back to projects
       </BackLink>
-      <StyledH2 $theme={theme}>{projectName}</StyledH2>
+      <StyledH2>{projectName}</StyledH2>
       <StyledDiv>
-        <StyledLink
-          target="_blank"
-          href={codeURL}
-          $theme={theme}
-          onClick={playPick}
-        >
-          <Icon icon={faCode} $theme={theme} />
+        <StyledLink target="_blank" href={codeURL} onClick={playPick}>
+          <Icon icon={faCode} />
         </StyledLink>
-        <StyledLink
-          target="_blank"
-          href={liveURL}
-          $theme={theme}
-          onClick={playPick}
-        >
-          <WebsiteIcon $theme={theme} />
+        <StyledLink target="_blank" href={liveURL} onClick={playPick}>
+          <WebsiteIcon />
         </StyledLink>
-        <StyledLink
-          target="_blank"
-          href={femURL}
-          $theme={theme}
-          onClick={playPick}
-        >
-          <PuzzleIcon $theme={theme} />
+        <StyledLink target="_blank" href={femURL} onClick={playPick}>
+          <PuzzleIcon />
         </StyledLink>
       </StyledDiv>
-      <StyledH3 $theme={theme}>Introduction</StyledH3>
-      <StyledP $theme={theme}>
+      <StyledH3>Introduction</StyledH3>
+      <StyledP>
         This solo project is the solution to Frontend Mentor Challenge Todo App.
       </StyledP>
-      <StyledH4 $theme={theme}>In this app, users are able to:</StyledH4>
-      <StyledList $theme={theme}>
-        <StyledListItem $theme={theme}>
+      <StyledH4>In this app, users are able to:</StyledH4>
+      <StyledList>
+        <StyledListItem>
           View the optimal layout for the app depending on their device's screen
           size
         </StyledListItem>
-        <StyledListItem $theme={theme}>
+        <StyledListItem>
           See hover states for all interactive elements on the page
         </StyledListItem>
-        <StyledListItem $theme={theme}>
-          Add new todos to the list
-        </StyledListItem>
-        <StyledListItem $theme={theme}>Mark todos as complete</StyledListItem>
-        <StyledListItem $theme={theme}>
-          Delete todos from the list
-        </StyledListItem>
-        <StyledListItem $theme={theme}>
-          Filter by all/active/complete todos
-        </StyledListItem>
-        <StyledListItem $theme={theme}>
-          Clear all completed todos
-        </StyledListItem>
-        <StyledListItem $theme={theme}>
-          Toggle light and dark mode
-        </StyledListItem>
-        <StyledListItem $theme={theme}>
+        <StyledListItem>Add new todos to the list</StyledListItem>
+        <StyledListItem>Mark todos as complete</StyledListItem>
+        <StyledListItem>Delete todos from the list</StyledListItem>
+        <StyledListItem>Filter by all/active/complete todos</StyledListItem>
+        <StyledListItem>Clear all completed todos</StyledListItem>
+        <StyledListItem>Toggle light and dark mode</StyledListItem>
+        <StyledListItem>
           Drag and drop to reorder items on the list
         </StyledListItem>
       </StyledList>
-      <StyledH4 $theme={theme}>Built with:</StyledH4>
-      <StyledList $theme={theme}>
-        <StyledListItem $theme={theme}>HTML</StyledListItem>
-        <StyledListItem $theme={theme}>CSS</StyledListItem>
-        <StyledListItem $theme={theme}>Javascript</StyledListItem>
-        <StyledListItem $theme={theme}>React</StyledListItem>
-        <StyledListItem $theme={theme}>Styled-components</StyledListItem>
-        <StyledListItem $theme={theme}>Vite</StyledListItem>
-        <StyledListItem $theme={theme}>NanoID</StyledListItem>
-        <StyledListItem $theme={theme}>React Beautiful DND</StyledListItem>
-        <StyledListItem $theme={theme}>@hello-pangea/dnd</StyledListItem>
+      <StyledH4>Built with:</StyledH4>
+      <StyledList>
+        <StyledListItem>HTML</StyledListItem>
+        <StyledListItem>CSS</StyledListItem>
+        <StyledListItem>Javascript</StyledListItem>
+        <StyledListItem>React</StyledListItem>
+        <StyledListItem>Styled-components</StyledListItem>
+        <StyledListItem>Vite</StyledListItem>
+        <StyledListItem>NanoID</StyledListItem>
+        <StyledListItem>React Beautiful DND</StyledListItem>
+        <StyledListItem>@hello-pangea/dnd</StyledListItem>
       </StyledList>
-      <StyledH3 $theme={theme}>Purpose and Goal</StyledH3>
-      <StyledP $theme={theme}>
+      <StyledH3>Purpose and Goal</StyledH3>
+      <StyledP>
         My main purpose of doing this project is to pratice working with
         localStorage. At the time of doing this project, I haven't learned how
         to store data except for saving them in localStorage/sessionStorage.
       </StyledP>
-      <StyledH3 $theme={theme}>Spotlight</StyledH3>
-      <StyledP $theme={theme}>spotlight paragraph goes here...</StyledP>
-      <StyledH3 $theme={theme}>What I learned</StyledH3>
-      <StyledP $theme={theme}>
+      <StyledH3>Spotlight</StyledH3>
+      <StyledP>spotlight paragraph goes here...</StyledP>
+      <StyledH3>What I learned</StyledH3>
+      <StyledP>
         In this project, I especially learned how to use NanoID to generate
         React map keys and how to use React Beautiful DND. I used to think that
         NanoID can only generate random IDs which is not helpful for generating
@@ -236,12 +220,10 @@ const Project = ({ theme }) => {
         item's id and use its id as key, then it works perfectly. Moreover, the
         original React Beautiful DND is no longer maintaned...
       </StyledP>
-      <StyledH3 $theme={theme}>Useful Resources</StyledH3>
-      <StyledH4 $theme={theme}>CSS Related</StyledH4>
-      <StyledList $theme={theme}>
-        <StyledListItem $theme={theme}>
-          Border Gradient with Border Radius
-        </StyledListItem>
+      <StyledH3>Useful Resources</StyledH3>
+      <StyledH4>CSS Related</StyledH4>
+      <StyledList>
+        <StyledListItem>Border Gradient with Border Radius</StyledListItem>
       </StyledList>
     </ProjectContainer>
   );

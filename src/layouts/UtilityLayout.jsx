@@ -34,19 +34,19 @@ const Wrapper = styled.div`
     margin: -3.3rem 3rem 0;
   }
 `;
-const UtilityLayout = ({ theme }) => {
+const UtilityLayout = () => {
   return (
     <LayoutContainer>
       <SoundWrapper>
-        <SoundSwitch theme={theme}/>
-        <MusicPlayer theme={theme} />
+        <SoundSwitch />
+        <MusicPlayer />
       </SoundWrapper>
       <Outlet />
       <Wrapper>
-        <SoundSwitch theme={theme}/>
-        <MusicPlayer theme={theme} />
-        <LogoutButton theme={theme} />
-        <UserProfile theme={theme} />
+        <SoundSwitch />
+        <MusicPlayer />
+        <LogoutButton />
+        <UserProfile />
       </Wrapper>
     </LayoutContainer>
   );

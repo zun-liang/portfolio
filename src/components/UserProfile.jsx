@@ -1,10 +1,11 @@
+import { useContext, useEffect, useState } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { auth } from "../firebase";
-import { useState, useEffect, useContext } from "react";
+
 import { ReactComponent as UserDefault } from "../assets/images/user.svg";
 import { TertiaryDot } from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
+import { auth } from "../firebase";
 
 const ProfileContainer = styled.div`
   align-self: flex-start;
@@ -30,7 +31,7 @@ const StyledUserDefault = styled(UserDefault)`
   }
 `;
 
-const UserProfile = ({ theme }) => {
+const UserProfile = () => {
   const [userName, setUserName] = useState("");
   const [userPhoto, setUserPhoto] = useState("");
   const loggedin = useContext(AuthContext);
@@ -50,9 +51,9 @@ const UserProfile = ({ theme }) => {
           {userPhoto ? (
             <StyledImg src={userPhoto} alt="user profile picture" />
           ) : (
-            <StyledUserDefault $theme={theme} />
+            <StyledUserDefault  />
           )}
-          <StyledP $theme={theme}>{userName ? userName : "Admin"}</StyledP>
+          <StyledP >{userName ? userName : "Admin"}</StyledP>
         </ProfileContainer>
       )}
     </>

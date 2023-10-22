@@ -1,4 +1,12 @@
-import { faCss3Alt, faGitAlt, faGithub, faHtml5, faNode, faReact, faSquareJs } from "@fortawesome/free-brands-svg-icons";
+import {
+  faCss3Alt,
+  faGitAlt,
+  faGithub,
+  faHtml5,
+  faNode,
+  faReact,
+  faSquareJs,
+} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect } from "react";
 /* eslint-disable react/prop-types */
@@ -16,7 +24,12 @@ import { ReactComponent as SCIcon } from "../assets/images/icons/styled-componen
 import { ReactComponent as RTLIcon } from "../assets/images/icons/testing-library.svg";
 import { ReactComponent as TSIcon } from "../assets/images/icons/typescript.svg";
 import { ReactComponent as VSCIcon } from "../assets/images/icons/vscode.svg";
-import { CursorPointerSwitch, ParagraphColorSwitch, SecondaryParagraph, TertiaryColorSwitch } from "../assets/styles/Styles";
+import {
+  CursorPointerSwitch,
+  ParagraphColorSwitch,
+  SecondaryParagraph,
+  TertiaryColorSwitch,
+} from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 
 const AboutContainer = styled.div`
@@ -181,7 +194,7 @@ const StyledReduxIcon = styled(ReduxIcon)`
   }
 `;
 
-const About = ({ theme, }) => {
+const About = ({ theme }) => {
   const playPick = useContext(PlayPickContext);
   useEffect(() => {
     document.title = "About Me ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
@@ -190,17 +203,17 @@ const About = ({ theme, }) => {
     <AboutContainer>
       <Section>
         <StyledDiv>
-          <StyledH2 $theme={theme}>Journey</StyledH2>
+          <StyledH2>Journey</StyledH2>
           <StyledImg src={theme ? LogoLight : Logo} alt="decoration logo" />
         </StyledDiv>
-        <StyledP $theme={theme}>
+        <StyledP>
           There are always charming programmers 👨🏻‍💻👩🏻‍💻 portrayed in TV shows and
           movies, but one who truly left a lasting impression on me is Penelope
           Garcia from the series "Criminal Minds." I've always held immense
           admiration for her intelligence 🧠, professionalism, confidence, 💪
           and her bold and vibrant fashion choices.
         </StyledP>
-        <StyledP $theme={theme}>
+        <StyledP>
           Over the "lost" couple of years of the pandemic, I repeatedly asked
           myself the same question: What kind of life do I really want? 🤔 I
           have always been fascinated by programming, but I'd never given it a
@@ -209,7 +222,7 @@ const About = ({ theme, }) => {
           to this, I had minimal experience with coding, having only dabbled in
           Markdown for blogging.
         </StyledP>
-        <StyledP $theme={theme}>
+        <StyledP>
           This journey has been a rollercoaster of excitement and frustration.
           Completing challenges and projects brings a profound sense of
           accomplishment, 🥳 yet being eluded by certain abstract concepts
@@ -222,60 +235,59 @@ const About = ({ theme, }) => {
         </StyledP>
       </Section>
       <Section>
-        <StyledH2 $theme={theme}>Languages</StyledH2>
+        <StyledH2>Languages</StyledH2>
         <StyledList>
-          <StyledListItem $theme={theme}>
-            <Icon $theme={theme} icon={faHtml5} />
+          <StyledListItem>
+            <Icon icon={faHtml5} />
             <span>HTML5</span>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
-            <Icon $theme={theme} icon={faCss3Alt} />
+          <StyledListItem>
+            <Icon icon={faCss3Alt} />
             <span>CSS3</span>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
-            <Icon $theme={theme} icon={faSquareJs} />
+          <StyledListItem>
+            <Icon icon={faSquareJs} />
             <span>JavaScript ES6+</span>
           </StyledListItem>
         </StyledList>
         <StyledList>
-          <StyledH2 $theme={theme}>Libraries</StyledH2>
-          <StyledListItem $theme={theme}>
-            <Icon $theme={theme} icon={faReact} />
+          <StyledH2>Libraries</StyledH2>
+          <StyledListItem>
+            <Icon icon={faReact} />
             <span>React 18</span>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
-            <StyledSCIcon $theme={theme} />
+          <StyledListItem>
+            <StyledSCIcon />
             <span>Styled-Components</span>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
-            <StyledRRIcon $theme={theme} />
+          <StyledListItem>
+            <StyledRRIcon />
             <span>React Router v6</span>
           </StyledListItem>
         </StyledList>
         <StyledList>
-          <StyledH2 $theme={theme}>Tools</StyledH2>
-          <StyledListItem $theme={theme}>
-            <Icon icon={faGitAlt} $theme={theme} />
+          <StyledH2>Tools</StyledH2>
+          <StyledListItem>
+            <Icon icon={faGitAlt} />
             <span>Git</span>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
-            <Icon icon={faGithub} $theme={theme} />
+          <StyledListItem>
+            <Icon icon={faGithub} />
             <span>Github</span>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
-            <StyledVSCIcon $theme={theme} />
+          <StyledListItem>
+            <StyledVSCIcon />
             <span>VS Code</span>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
-            <StyledFBIcon $theme={theme} />
+          <StyledListItem>
+            <StyledFBIcon />
             <span>Firebase 9</span>
           </StyledListItem>
         </StyledList>
       </Section>
       <Section>
-        <StyledH2 $theme={theme}>
+        <StyledH2>
           <StyledLink
-            $theme={theme}
             target="_blank"
             href="https://github.com/zun-liang/certificates-achievements-archive"
             onClick={playPick}
@@ -284,9 +296,8 @@ const About = ({ theme, }) => {
           </StyledLink>
         </StyledH2>
         <StyledList>
-          <StyledListItem $theme={theme}>
+          <StyledListItem>
             <StyledLink
-              $theme={theme}
               target="_blank"
               href="https://www.freecodecamp.org/certification/zun-liang/responsive-web-design"
               onClick={playPick}
@@ -294,9 +305,8 @@ const About = ({ theme, }) => {
               <span>✞ </span> Responsive Web Design Certification
             </StyledLink>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
+          <StyledListItem>
             <StyledLink
-              $theme={theme}
               target="_blank"
               href="https://www.freecodecamp.org/certification/zun-liang/javascript-algorithms-and-data-structures"
               onClick={playPick}
@@ -305,9 +315,8 @@ const About = ({ theme, }) => {
               Certification
             </StyledLink>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
+          <StyledListItem>
             <StyledLink
-              $theme={theme}
               target="_blank"
               href="https://scrimba.com/certificate/u9enxdu5/greact"
               onClick={playPick}
@@ -315,41 +324,41 @@ const About = ({ theme, }) => {
               <span>✞ </span> Advanced React Certification
             </StyledLink>
           </StyledListItem>
-          <StyledListItem $theme={theme}>...</StyledListItem>
+          <StyledListItem>...</StyledListItem>
         </StyledList>
       </Section>
       <Section>
-        <StyledH2 $theme={theme}>Next Challenges</StyledH2>
+        <StyledH2>Next Challenges</StyledH2>
         <StyledList>
-          <StyledListItem $theme={theme}>
-            <StyledReduxIcon $theme={theme} />
+          <StyledListItem>
+            <StyledReduxIcon />
             <span>Redux</span>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
-            <StyledJestIcon $theme={theme} />
+          <StyledListItem>
+            <StyledJestIcon />
             <span>Jest</span>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
-            <StyledRTLIcon $theme={theme} />
+          <StyledListItem>
+            <StyledRTLIcon />
             <span>React Testing Library</span>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
-            <StyledTSIcon $theme={theme} />
+          <StyledListItem>
+            <StyledTSIcon />
             <span>TypeScript</span>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
-            <StyledNextIcon $theme={theme} />
+          <StyledListItem>
+            <StyledNextIcon />
             <span>Next.js</span>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
-            <Icon $theme={theme} icon={faReact} />
+          <StyledListItem>
+            <Icon icon={faReact} />
             <span>React Native</span>
           </StyledListItem>
-          <StyledListItem $theme={theme}>
-            <Icon $theme={theme} icon={faNode} />
+          <StyledListItem>
+            <Icon icon={faNode} />
             <span>Node.js</span>
           </StyledListItem>
-          <StyledListItem $theme={theme}>...</StyledListItem>
+          <StyledListItem>...</StyledListItem>
         </StyledList>
       </Section>
     </AboutContainer>

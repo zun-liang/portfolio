@@ -122,7 +122,7 @@ export const loader = async () => {
 };
 
 //pagination
-const Blogs = ({ theme, setDraft, playPageTurn }) => {
+const Blogs = ({ setDraft, playPageTurn }) => {
   const playPick = useContext(PlayPickContext);
   //console.log("blogs rendered");
   useEffect(() => {
@@ -140,15 +140,12 @@ const Blogs = ({ theme, setDraft, playPageTurn }) => {
       key={blog.id}
       to={encodeURIComponent(blog.id)}
       state={{ search: `?${searchParams.toString()}` }}
-      $theme={theme}
       onClick={playPageTurn}
     >
       <BlogContainer>
-        <StyledH2 $theme={theme}>
-          {blog.title.split(" ").slice(1).join(" ")}
-        </StyledH2>
-        <Time $theme={theme}>{blog.time}</Time>
-        <BlogOverview theme={theme} overview={blog.overview} />
+        <StyledH2>{blog.title.split(" ").slice(1).join(" ")}</StyledH2>
+        <Time>{blog.time}</Time>
+        <BlogOverview overview={blog.overview} />
       </BlogContainer>
     </BlogLink>
   ));
@@ -177,56 +174,33 @@ const Blogs = ({ theme, setDraft, playPageTurn }) => {
   return (
     <BlogsContainer>
       <Filters>
-        <Filter
-          onClick={() => generateSearchParams("language", "html")}
-          $theme={theme}
-        >
+        <Filter onClick={() => generateSearchParams("language", "html")}>
           HTML
         </Filter>
-        <Filter
-          onClick={() => generateSearchParams("language", "css")}
-          $theme={theme}
-        >
+        <Filter onClick={() => generateSearchParams("language", "css")}>
           CSS
         </Filter>
-        <Filter
-          onClick={() => generateSearchParams("language", "javascript")}
-          $theme={theme}
-        >
+        <Filter onClick={() => generateSearchParams("language", "javascript")}>
           Javascript
         </Filter>
-        <Filter
-          onClick={() => generateSearchParams("language", "react")}
-          $theme={theme}
-        >
+        <Filter onClick={() => generateSearchParams("language", "react")}>
           React
         </Filter>
-        <Filter
-          onClick={() => generateSearchParams("language", "router")}
-          $theme={theme}
-        >
+        <Filter onClick={() => generateSearchParams("language", "router")}>
           Router
         </Filter>
-        <Filter
-          onClick={() => generateSearchParams("language", "design")}
-          $theme={theme}
-        >
+        <Filter onClick={() => generateSearchParams("language", "design")}>
           Design
         </Filter>
-        <Filter
-          onClick={() => generateSearchParams("language", null)}
-          $theme={theme}
-        >
+        <Filter onClick={() => generateSearchParams("language", null)}>
           All
         </Filter>
       </Filters>
       {blogs}
       {loggedin ? (
-        <StyledButton $theme={theme} onClick={getDraft}>
-          Go to Editor
-        </StyledButton>
+        <StyledButton onClick={getDraft}>Go to Editor</StyledButton>
       ) : (
-        <StyledLink $theme={theme} to="/login" onClick={playPick}>
+        <StyledLink to="/login" onClick={playPick}>
           Log in to edit
         </StyledLink>
       )}

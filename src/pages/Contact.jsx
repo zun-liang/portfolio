@@ -199,7 +199,7 @@ const StyledButton = styled(BasicButton)`
   }
 `;
 
-const Contact = ({ theme }) => {
+const Contact = () => {
   const { sound } = useContext(SoundContext);
   const [playSwoosh] = useSound(Swoosh, { soundEnabled: sound });
   useEffect(() => {
@@ -213,10 +213,8 @@ const Contact = ({ theme }) => {
       <StyledDiv>
         <StyledImg src={Profile} alt="profile picture" />
         <StyledSpeechBubble src={SpeechBubble} alt="speech bubble picture" />
-        <StyledP $theme={theme}>Thanks for reaching out to me!</StyledP>
-        <StyledP $theme={theme}>
-          I will get back to you as soon as possible!
-        </StyledP>
+        <StyledP>Thanks for reaching out to me!</StyledP>
+        <StyledP>I will get back to you as soon as possible!</StyledP>
       </StyledDiv>
     );
     //error handle
@@ -227,56 +225,44 @@ const Contact = ({ theme }) => {
       onSubmit={handleSubmit}
       action="https://formspree.io/f/mbjvygnp"
       method="post"
-      $theme={theme}
     >
-      <StyledH2 $theme={theme}>Hey, dear visitor!</StyledH2>
+      <StyledH2>Hey, dear visitor!</StyledH2>
       <StyledList>
-        <Message $theme={theme}>
-          Got brilliant ideas to share? Shoot me a message! 🌟
-        </Message>
-        <Message $theme={theme}>
+        <Message>Got brilliant ideas to share? Shoot me a message! 🌟</Message>
+        <Message>
           Up for a fantastic collaboration? Go ahead and shoot me a message! 🤝
         </Message>
-        <Message $theme={theme}>
+        <Message>
           Just looking to connect and have a chat? No doubt, shoot me a message!
           🤗
         </Message>
       </StyledList>
-      <StyledLabel htmlFor="name" $theme={theme}>
-        Full Name
-      </StyledLabel>
+      <StyledLabel htmlFor="name">Full Name</StyledLabel>
       <StyledInput
         id="name"
         type="text"
         name="name"
         placeholder="Enter your name..."
-        $theme={theme}
         required
       />
-      <StyledLabel htmlFor="email" $theme={theme}>
-        Email Address
-      </StyledLabel>
+      <StyledLabel htmlFor="email">Email Address</StyledLabel>
       <StyledInput
         id="email"
         type="email"
         name="email"
         placeholder="Enter your email..."
-        $theme={theme}
         required
       />
       <ValidationError prefix="Email" field="email" errors={state.errors} />
-      <StyledLabel htmlFor="message" $theme={theme}>
-        Message
-      </StyledLabel>
+      <StyledLabel htmlFor="message">Message</StyledLabel>
       <StyledTextarea
         id="message"
         name="message"
         placeholder="Please leave me a message here... (*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ"
-        $theme={theme}
         required
       />
       <ValidationError prefix="Message" field="message" errors={state.errors} />
-      <StyledButton type="submit" disabled={state.submitting} $theme={theme}>
+      <StyledButton type="submit" disabled={state.submitting}>
         Submit
       </StyledButton>
     </StyledForm>

@@ -33,7 +33,7 @@ const OffButton = styled(PlayButton)`
   }
 `;
 
-const MusicPlayer = ({ theme }) => {
+const MusicPlayer = () => {
   const [play, setPlay] = useState(false);
   const music = document.getElementById("music");
   const handleOn = () => {
@@ -51,8 +51,8 @@ const MusicPlayer = ({ theme }) => {
       <audio id="music">
         <source src={MusicBox} type="audio/mpeg" />
       </audio>
-      {play && <OffButton $theme={theme} onClick={handleOff} />}
-      {!play && <PlayButton $theme={theme} onClick={handleOn} />}
+      {play && <OffButton onClick={handleOff} />}
+      {!play && <PlayButton onClick={handleOn} />}
     </>
   );
 };

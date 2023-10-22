@@ -6,11 +6,7 @@ import useSound from "use-sound";
 import { ReactComponent as EarSlash } from "../assets/images/ear-slash.svg";
 import { ReactComponent as Ear } from "../assets/images/ear.svg";
 import Interface from "../assets/sounds/interface.mp3";
-import {
-  CursorPointerSwitch,
-  PrimarySecondary,
-  TertiaryDot,
-} from "../assets/styles/Styles";
+import { CursorPointerSwitch, PrimarySecondary, TertiaryDot } from "../assets/styles/Styles";
 import { SoundContext } from "../contexts/SoundContext";
 
 const Container = styled.div`
@@ -35,7 +31,7 @@ const StyledEarSlash = styled(EarSlash)`
   }
 `;
 
-const SoundSwitch = ({ theme }) => {
+const SoundSwitch = () => {
   const { sound, setSound } = useContext(SoundContext);
   const [playInterface] = useSound(Interface, {
     soundEnabled: !sound,
@@ -46,11 +42,11 @@ const SoundSwitch = ({ theme }) => {
     playInterface();
   };
   return (
-    <Container $theme={theme}>
+    <Container >
       {sound ? (
-        <StyledEarSlash $theme={theme} onClick={toggleSound} />
+        <StyledEarSlash  onClick={toggleSound} />
       ) : (
-        <StyledEar $theme={theme} onClick={toggleSound} />
+        <StyledEar  onClick={toggleSound} />
       )}
     </Container>
   );

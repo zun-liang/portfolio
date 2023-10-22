@@ -3,11 +3,7 @@
 import styled from "styled-components";
 
 import Kuma from "../assets/images/ojigi_animal_kuma.png";
-import {
-  BackgroundSwitch,
-  ParagraphColorSwitch,
-  TextShadowSwitch,
-} from "../assets/styles/Styles";
+import { BackgroundSwitch, ParagraphColorSwitch, TextShadowSwitch } from "../assets/styles/Styles";
 import GlobalStyles from "../GlobalStyles";
 
 const ErrorPageContainer = styled.div`
@@ -33,13 +29,13 @@ const StyledP = styled.p`
   text-shadow: ${TextShadowSwitch};
 `;
 
-const ErrorPage = ({ theme }) => {
+const ErrorPage = () => {
   return (
     <>
       <GlobalStyles />
-      <ErrorPageContainer $theme={theme}>
+      <ErrorPageContainer >
         <StyledImg src={Kuma} alt="sorry bear picture" />
-        <StyledP $theme={theme}>
+        <StyledP >
           Something went wrong, try refreshing the page or come back later.
         </StyledP>
       </ErrorPageContainer>

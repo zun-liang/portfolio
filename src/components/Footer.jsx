@@ -1,5 +1,10 @@
 /* eslint-disable react/prop-types */
-import { faCodepen, faFreeCodeCamp, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import {
+  faCodepen,
+  faFreeCodeCamp,
+  faGithub,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
@@ -7,7 +12,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { ReactComponent as FEM } from "../assets/images/icons/frontend-mentor.svg";
-import { CursorPointerSwitch, PrimaryColorSwitch, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  CursorPointerSwitch,
+  PrimaryColorSwitch,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 
 const StyledFooter = styled.footer`
@@ -66,12 +75,12 @@ const StyledP = styled.p`
   color: ${TertiarySecondary};
 `;
 
-const Footer = ({ theme}) => {
+const Footer = () => {
   const playPick = useContext(PlayPickContext);
   const Year = new Date().getFullYear();
 
   return (
-    <StyledFooter $theme={theme}>
+    <StyledFooter>
       <StyledList>
         <StyledListItem>
           <StyledLink
@@ -79,7 +88,7 @@ const Footer = ({ theme}) => {
             href="https://www.freecodecamp.org/zun-liang"
             onClick={playPick}
           >
-            <Icon icon={faFreeCodeCamp} $theme={theme} />
+            <Icon icon={faFreeCodeCamp} />
           </StyledLink>
         </StyledListItem>
         <StyledListItem>
@@ -88,7 +97,7 @@ const Footer = ({ theme}) => {
             href="https://www.frontendmentor.io/profile/zun-liang"
             onClick={playPick}
           >
-            <FEMIcon $theme={theme} />
+            <FEMIcon />
           </StyledLink>
         </StyledListItem>
         <StyledListItem>
@@ -97,7 +106,7 @@ const Footer = ({ theme}) => {
             href="https://github.com/zun-liang"
             onClick={playPick}
           >
-            <Icon icon={faGithub} $theme={theme} />
+            <Icon icon={faGithub} />
           </StyledLink>
         </StyledListItem>
         <StyledListItem>
@@ -106,7 +115,7 @@ const Footer = ({ theme}) => {
             href="https://codepen.io/zunl"
             onClick={playPick}
           >
-            <Icon icon={faCodepen} $theme={theme} />
+            <Icon icon={faCodepen} />
           </StyledLink>
         </StyledListItem>
         <StyledListItem>
@@ -115,16 +124,16 @@ const Footer = ({ theme}) => {
             href="https://www.linkedin.com"
             onClick={playPick}
           >
-            <Icon icon={faLinkedin} $theme={theme} />
+            <Icon icon={faLinkedin} />
           </StyledLink>
         </StyledListItem>
         <StyledListItem>
           <StyledLinkEn to="/contact" onClick={playPick}>
-            <Icon icon={faEnvelope} $theme={theme} />
+            <Icon icon={faEnvelope} />
           </StyledLinkEn>
         </StyledListItem>
       </StyledList>
-      <StyledP $theme={theme}>
+      <StyledP>
         © {Year > 2023 ? `2023 - ${Year}` : "2023"} Zun Liang. All Rights
         Reserved.
       </StyledP>

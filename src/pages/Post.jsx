@@ -4,7 +4,11 @@ import { useContext, useEffect } from "react";
 import styled from "styled-components";
 
 import { HoverColorSwitch } from "../assets/styles/Styles";
-import { BasicLink, ParagraphColorSwitch, TextShadowSwitch } from "../assets/styles/Styles";
+import {
+  BasicLink,
+  ParagraphColorSwitch,
+  TextShadowSwitch,
+} from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 
 const PostContainer = styled.div`
@@ -40,24 +44,24 @@ const StyledLink = styled(BasicLink)`
   }
 `;
 
-const Post = ({ theme, draft}) => {
+const Post = ({ draft }) => {
   const playPick = useContext(PlayPickContext);
   useEffect(() => {
     document.title = "Post ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
   return (
     <PostContainer>
-      <StyledP $theme={theme}>♡⸜(˶˃ ᵕ ˂˶)⸝♡</StyledP>
+      <StyledP>♡⸜(˶˃ ᵕ ˂˶)⸝♡</StyledP>
       {draft ? (
-        <StyledP $theme={theme}>You've successfully saved your draft!</StyledP>
+        <StyledP>You've successfully saved your draft!</StyledP>
       ) : (
-        <StyledP $theme={theme}>You've successfully posted your blog!</StyledP>
+        <StyledP>You've successfully posted your blog!</StyledP>
       )}
       <StyledDiv>
-        <StyledLink $theme={theme} to="/editor" onClick={playPick}>
+        <StyledLink to="/editor" onClick={playPick}>
           Go to Editor
         </StyledLink>
-        <StyledLink $theme={theme} to="/blogs" onClick={playPick}>
+        <StyledLink to="/blogs" onClick={playPick}>
           Go to Blogs
         </StyledLink>
       </StyledDiv>

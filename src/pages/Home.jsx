@@ -50,11 +50,12 @@ const StyledH2 = styled.h2`
   grid-column: 1 / 3;
   text-align: right;
   font-size: 1.6rem;
-  font-weight: ${({ $theme }) => ($theme ? "900" : "700")};
+  font-weight: ${({ theme }) => (theme.mode ? "900" : "700")};
   color: ${SecondaryColorSwitch};
-  -webkit-text-stroke: ${({ $theme }) =>
-    $theme ? "1px var(--light-tertiary)" : ""};
-  text-shadow: ${({ $theme }) => ($theme ? "" : "2px 2px var(--dark-primary)")};
+  -webkit-text-stroke: ${({ theme }) =>
+    theme.mode ? "1px var(--light-tertiary)" : ""};
+  text-shadow: ${({ theme }) =>
+    theme.mode ? "" : "2px 2px var(--dark-primary)"};
   @media (min-width: 750px) {
     line-height: 1.6;
     font-size: 2.2rem;
@@ -76,7 +77,7 @@ const StyledGif = styled.img`
   }
 `;
 
-const Home = ({ theme }) => {
+const Home = () => {
   useEffect(() => {
     document.title = "Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
@@ -84,8 +85,8 @@ const Home = ({ theme }) => {
     <HomeContainer>
       <StyledImg src={Profile} alt="profile picture" />
       <StyledGif src={SpeechBubble} alt="speech bubble" />
-      <StyledH1 $theme={theme}>ZUN LIANG,</StyledH1>
-      <StyledH2 $theme={theme}>A self-taught front end developer.</StyledH2>
+      <StyledH1>ZUN LIANG,</StyledH1>
+      <StyledH2>A self-taught front end developer.</StyledH2>
     </HomeContainer>
   );
 };

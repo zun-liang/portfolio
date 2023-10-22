@@ -1,86 +1,87 @@
+import { domToReact } from "html-react-parser";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+
 /* eslint-disable react-refresh/only-export-components */
 import Cloud from "../images/cloud.svg";
 import CursorAutoDark from "../images/cursor/cursor-auto-dark.svg";
 import CursorAutoLight from "../images/cursor/cursor-auto-light.svg";
 import CursorPointerDark from "../images/cursor/cursor-pointer-dark.svg";
 import CursorPointerLight from "../images/cursor/cursor-pointer-light.svg";
-import styled from "styled-components";
-import { domToReact } from "html-react-parser";
-import { Link } from "react-router-dom";
 
 // Background setup
-export const BackgroundSwitch = ({ $theme }) =>
-  $theme
+export const BackgroundSwitch = ({ theme }) =>
+  theme.mode
     ? `url(${Cloud}), var(--light-background)`
     : `linear-gradient(90deg, var(--dark-background) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
         linear-gradient(var(--dark-background) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
         var(--dot-color)`;
 
 //Coherent color switch
-export const BackgroundColorSwitch = ({ $theme }) =>
-  $theme ? "var(--light-background)" : "var(--dark-background)";
+export const BackgroundColorSwitch = ({ theme }) =>
+  theme.mode ? "var(--light-background)" : "var(--dark-background)";
 
-export const PrimaryColorSwitch = ({ $theme }) =>
-  $theme ? "var(--light-primary)" : "var(--dark-primary)";
+export const PrimaryColorSwitch = ({ theme }) =>
+  theme.mode ? "var(--light-primary)" : "var(--dark-primary)";
 
-export const SecondaryColorSwitch = ({ $theme }) =>
-  $theme ? "var(--light-secondary)" : "var(--dark-secondary)";
+export const SecondaryColorSwitch = ({ theme }) =>
+  theme.mode ? "var(--light-secondary)" : "var(--dark-secondary)";
 
-export const TertiaryColorSwitch = ({ $theme }) =>
-  $theme ? "var(--light-tertiary)" : "var(--dark-tertiary)";
+export const TertiaryColorSwitch = ({ theme }) =>
+  theme.mode ? "var(--light-tertiary)" : "var(--dark-tertiary)";
 
-export const ParagraphColorSwitch = ({ $theme }) =>
-  $theme ? "var(--light-paragraph)" : "var(--dark-paragraph)";
+export const ParagraphColorSwitch = ({ theme }) =>
+  theme.mode ? "var(--light-paragraph)" : "var(--dark-paragraph)";
 
-export const HoverColorSwitch = ({ $theme }) =>
-  $theme ? "var(--light-hover)" : "var(--dark-hover)";
+export const HoverColorSwitch = ({ theme }) =>
+  theme.mode ? "var(--light-hover)" : "var(--dark-hover)";
 
 //Incoherent color switch
-export const OpacitySwitch = ({ $theme }) =>
-  $theme ? "rgba(255, 255, 255, 0.5)" : "transparent";
-export const OpaqueSwitch = ({ $theme }) =>
-  $theme ? "rgba(255, 255, 255, 0.5)" : "#282828";
-export const PrimarySecondary = ({ $theme }) =>
-  $theme ? "var(--light-primary)" : "var(--dark-secondary)";
-export const PrimaryTertiary = ({ $theme }) =>
-  $theme ? "var(--light-primary)" : "var(--dark-tertiary)";
-export const SecondaryPrimary = ({ $theme }) =>
-  $theme ? "var(--light-secondary)" : "var(--dark-primary)";
-export const SecondaryParagraph = ({ $theme }) =>
-  $theme ? "var(--light-secondary)" : "var(--dark-paragraph)";
-export const SecondaryHover = ({ $theme }) =>
-  $theme ? "var(--light-secondary)" : "var(--dark-hover)";
-export const SecondaryTertiary = ({ $theme }) =>
-  $theme ? "var(--light-secondary)" : "var(--dark-tertiary)";
-export const SecondaryTransparent = ({ $theme }) =>
-  $theme ? "var(--light-secondary)" : "transparent";
-export const TertiaryPrimary = ({ $theme }) =>
-  $theme ? "var(--light-tertiary)" : "var(--dark-primary)";
-export const TertiarySecondary = ({ $theme }) =>
-  $theme ? "var(--light-tertiary)" : "var(--dark-secondary)";
-export const TertiaryParagraph = ({ $theme }) =>
-  $theme ? "var(--light-tertiary)" : "var(--dark-paragraph)";
-export const TertiaryHover = ({ $theme }) =>
-  $theme ? "var(--light-tertiary)" : "var(--dark-hover)";
-export const TertiaryDot = ({ $theme }) =>
-  $theme ? "var(--light-tertiary)" : "var(--dot-color)";
-export const HoverPrimary = ({ $theme }) =>
-  $theme ? "var(--light-hover)" : "var(--dark-primary)";
-export const BackgroundSecondary = ({ $theme }) =>
-  $theme ? "var(--light-background)" : "var(--dark-secondary)";
-export const OutlineSwitch = ({ $theme }) =>
-  $theme ? "none" : "2px solid var(--dark-secondary)";
-export const TextShadowSwitch = ({ $theme }) =>
-  $theme ? "1px 1px var(--light-secondary)" : "1px 1px var(--dark-tertiary)";
+export const OpacitySwitch = ({ theme }) =>
+  theme.mode ? "rgba(255, 255, 255, 0.5)" : "transparent";
+export const OpaqueSwitch = ({ theme }) =>
+  theme.mode ? "rgba(255, 255, 255, 0.5)" : "#282828";
+export const PrimarySecondary = ({ theme }) =>
+  theme.mode ? "var(--light-primary)" : "var(--dark-secondary)";
+export const PrimaryTertiary = ({ theme }) =>
+  theme.mode ? "var(--light-primary)" : "var(--dark-tertiary)";
+export const SecondaryPrimary = ({ theme }) =>
+  theme.mode ? "var(--light-secondary)" : "var(--dark-primary)";
+export const SecondaryParagraph = ({ theme }) =>
+  theme.mode ? "var(--light-secondary)" : "var(--dark-paragraph)";
+export const SecondaryHover = ({ theme }) =>
+  theme.mode ? "var(--light-secondary)" : "var(--dark-hover)";
+export const SecondaryTertiary = ({ theme }) =>
+  theme.mode ? "var(--light-secondary)" : "var(--dark-tertiary)";
+export const SecondaryTransparent = ({ theme }) =>
+  theme.mode ? "var(--light-secondary)" : "transparent";
+export const TertiaryPrimary = ({ theme }) =>
+  theme.mode ? "var(--light-tertiary)" : "var(--dark-primary)";
+export const TertiarySecondary = ({ theme }) =>
+  theme.mode ? "var(--light-tertiary)" : "var(--dark-secondary)";
+export const TertiaryParagraph = ({ theme }) =>
+  theme.mode ? "var(--light-tertiary)" : "var(--dark-paragraph)";
+export const TertiaryHover = ({ theme }) =>
+  theme.mode ? "var(--light-tertiary)" : "var(--dark-hover)";
+export const TertiaryDot = ({ theme }) =>
+  theme.mode ? "var(--light-tertiary)" : "var(--dot-color)";
+export const HoverPrimary = ({ theme }) =>
+  theme.mode ? "var(--light-hover)" : "var(--dark-primary)";
+export const BackgroundSecondary = ({ theme }) =>
+  theme.mode ? "var(--light-background)" : "var(--dark-secondary)";
+export const OutlineSwitch = ({ theme }) =>
+  theme.mode ? "none" : "2px solid var(--dark-secondary)";
+export const TextShadowSwitch = ({ theme }) =>
+  theme.mode ? "1px 1px var(--light-secondary)" : "1px 1px var(--dark-tertiary)";
 
 //Cursor switch
-export const CursorAutoSwitch = ({ $theme }) =>
-  $theme
+export const CursorAutoSwitch = ({ theme }) =>
+  theme.mode
     ? `url(${CursorAutoLight}) 12 12, auto`
     : `url(${CursorAutoDark}) 12 12, auto`;
 
-export const CursorPointerSwitch = ({ $theme }) =>
-  $theme
+export const CursorPointerSwitch = ({ theme }) =>
+  theme.mode
     ? `url(${CursorPointerLight}) 12 12, pointer`
     : `url(${CursorPointerDark}) 12 12, pointer`;
 
@@ -176,51 +177,51 @@ const StyledLink = styled.a`
 `;
 const StyledImg = styled.img``;
 
-export const createMarkdownOptions = (theme) => {
+export const createMarkdownOptions = () => {
   return {
     replace: (domNode) => {
       if (domNode.type === "tag" && domNode.name === "h1") {
         return (
-          <StyledH1 $theme={theme}>{domToReact(domNode.children)}</StyledH1>
+          <StyledH1 >{domToReact(domNode.children)}</StyledH1>
         );
       }
       if (domNode.type === "tag" && domNode.name === "h2") {
         return (
-          <StyledH2 $theme={theme}>{domToReact(domNode.children)}</StyledH2>
+          <StyledH2 >{domToReact(domNode.children)}</StyledH2>
         );
       }
       if (domNode.type === "tag" && domNode.name === "h3") {
         return (
-          <StyledH3 $theme={theme}>{domToReact(domNode.children)}</StyledH3>
+          <StyledH3 >{domToReact(domNode.children)}</StyledH3>
         );
       }
       if (domNode.type === "tag" && domNode.name === "h4") {
         return (
-          <StyledH4 $theme={theme}>{domToReact(domNode.children)}</StyledH4>
+          <StyledH4 >{domToReact(domNode.children)}</StyledH4>
         );
       }
       if (domNode.type === "tag" && domNode.name === "h5") {
         return (
-          <StyledH5 $theme={theme}>{domToReact(domNode.children)}</StyledH5>
+          <StyledH5 >{domToReact(domNode.children)}</StyledH5>
         );
       }
       if (domNode.type === "tag" && domNode.name === "p") {
-        return <StyledP $theme={theme}>{domToReact(domNode.children)}</StyledP>;
+        return <StyledP >{domToReact(domNode.children)}</StyledP>;
       }
       if (domNode.type === "tag" && domNode.name === "ul") {
         return (
-          <StyledList $theme={theme}>{domToReact(domNode.children)}</StyledList>
+          <StyledList >{domToReact(domNode.children)}</StyledList>
         );
       }
       if (domNode.type === "tag" && domNode.name === "a") {
         return (
-          <StyledLink $theme={theme}>{domToReact(domNode.children)}</StyledLink>
+          <StyledLink >{domToReact(domNode.children)}</StyledLink>
         );
       }
       if (domNode.type === "tag" && domNode.name === "img") {
         return (
           <StyledImg
-            $theme={theme}
+            
             src={domNode.attribs.src}
             alt={domNode.attribs.alt}
             width={domNode.attribs.width}

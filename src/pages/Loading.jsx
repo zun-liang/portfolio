@@ -5,7 +5,14 @@ import styled from "styled-components";
 
 import LoadingImage from "../assets/images/favicon/dark/apple-touch-icon.png";
 import LoadingImageLight from "../assets/images/favicon/light/apple-touch-icon.png";
-import { BackgroundSwitch, BasicButton, CursorAutoSwitch, OpaqueSwitch, PrimaryColorSwitch, PrimarySecondary } from "../assets/styles/Styles.jsx";
+import {
+  BackgroundSwitch,
+  BasicButton,
+  CursorAutoSwitch,
+  OpaqueSwitch,
+  PrimaryColorSwitch,
+  PrimarySecondary,
+} from "../assets/styles/Styles.jsx";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import GlobalStyles from "../GlobalStyles";
 
@@ -88,47 +95,29 @@ const Loading = ({ theme, setLoading, today }) => {
   return (
     <>
       <GlobalStyles />
-      <LoadingContainer $theme={theme}>
+      <LoadingContainer>
         <StyledLoadingImage
           src={theme ? LoadingImageLight : LoadingImage}
           alt="loading image"
         />
-        <StyledP $theme={theme}>How are you feeling today?</StyledP>
+        <StyledP>How are you feeling today?</StyledP>
         <StyledDiv>
-          <StyledButton $theme={theme} onClick={handleClick}>
-            Happy ♡⸜(˶˃ ᵕ ˂˶)⸝♡
-          </StyledButton>
-          <StyledButton $theme={theme} onClick={handleClick}>
-            Sad (っ◞‸◟ c)
-          </StyledButton>
-          <StyledButton $theme={theme} onClick={handleClick}>
-            Calm („ᵕᴗᵕ„)
-          </StyledButton>
-          <StyledButton $theme={theme} onClick={handleClick}>
-            Surprised ˶✧｡✧˶
-          </StyledButton>
-          <StyledButton $theme={theme} onClick={handleClick}>
-            Worried (•᷄- •᷅ ;)
-          </StyledButton>
-          <StyledButton $theme={theme} onClick={handleClick}>
-            Scared ૮₍˶Ó﹏Ò ⑅₎ა
-          </StyledButton>
-          <StyledButton $theme={theme} onClick={handleClick}>
-            Bored ( ¬⤙¬ )
-          </StyledButton>
-          <StyledButton $theme={theme} onClick={handleClick}>
+          <StyledButton onClick={handleClick}>Happy ♡⸜(˶˃ ᵕ ˂˶)⸝♡</StyledButton>
+          <StyledButton onClick={handleClick}>Sad (っ◞‸◟ c)</StyledButton>
+          <StyledButton onClick={handleClick}>Calm („ᵕᴗᵕ„)</StyledButton>
+          <StyledButton onClick={handleClick}>Surprised ˶✧｡✧˶</StyledButton>
+          <StyledButton onClick={handleClick}>Worried (•᷄- •᷅ ;)</StyledButton>
+          <StyledButton onClick={handleClick}>Scared ૮₍˶Ó﹏Ò ⑅₎ა</StyledButton>
+          <StyledButton onClick={handleClick}>Bored ( ¬⤙¬ )</StyledButton>
+          <StyledButton onClick={handleClick}>
             Embarrsed (,,&#62;﹏&#60;,,)
           </StyledButton>
-          <StyledButton $theme={theme} onClick={handleClick}>
-            Angry ୧(๑•̀ᗝ•́)૭
-          </StyledButton>
-          <StyledButton $theme={theme} onClick={handleClick}>
+          <StyledButton onClick={handleClick}>Angry ୧(๑•̀ᗝ•́)૭</StyledButton>
+          <StyledButton onClick={handleClick}>
             Confused (｡· v ·｡) ?
           </StyledButton>
         </StyledDiv>
-        <PassButton $theme={theme} onClick={handleClick}>
-          Pass (-_-,)
-        </PassButton>
+        <PassButton onClick={handleClick}>Pass (-_-,)</PassButton>
       </LoadingContainer>
     </>
   );

@@ -9,6 +9,7 @@ import On from "..//assets/sounds/on.mp3";
 import Key from "../assets/sounds/key.mp3";
 import { CursorAutoSwitch, CursorPointerSwitch, PrimaryColorSwitch, SecondaryColorSwitch, SecondaryPrimary, TertiarySecondary } from "../assets/styles/Styles";
 import { SoundContext } from "../contexts/SoundContext";
+import { ThemeContext } from "../contexts/ThemeContext";
 import Menu from "./Menu";
 import Time from "./Time";
 
@@ -106,8 +107,9 @@ const ThemeSwitch = styled.p`
 
 //kinda want to use loader here to show weather loading...
 
-const Header = ({ theme, setTheme }) => {
-  const { sound} = useContext(SoundContext);
+const Header = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
+  const { sound } = useContext(SoundContext);
   const [weather, setWeather] = useState("");
   const [temp, setTemp] = useState("");
   const celsius = parseInt(temp - 273.15);
@@ -154,29 +156,29 @@ const Header = ({ theme, setTheme }) => {
   return (
     <StyledHeader>
       <TitleContainer>
-        <Title $theme={theme}>ZUN LIANG</Title>
-        <SubTitleBlink $theme={theme}> ⊹</SubTitleBlink>
-        <SubTitleBlinkSlow $theme={theme}>˚</SubTitleBlinkSlow>
-        <SubTitleBlink $theme={theme}>₊</SubTitleBlink>
-        <SubTitleBlinkSlow $theme={theme}>⊹</SubTitleBlinkSlow>
-        <SubTitle $theme={theme} onClick={toggleMenu}>
+        <Title>ZUN LIANG</Title>
+        <SubTitleBlink> ⊹</SubTitleBlink>
+        <SubTitleBlinkSlow>˚</SubTitleBlinkSlow>
+        <SubTitleBlink>₊</SubTitleBlink>
+        <SubTitleBlinkSlow>⊹</SubTitleBlinkSlow>
+        <SubTitle onClick={toggleMenu}>
           ʚ☕️੭<span>menu</span>
         </SubTitle>
       </TitleContainer>
-      <Menu theme={theme} menu={menu} setMenu={setMenu} playKey={playKey} />
+      <Menu menu={menu} setMenu={setMenu} playKey={playKey} />
       <StyledDiv>
         {fetchError ? (
-          <Weather $theme={theme}>Wx: Unk, Temp: Unk,</Weather>
+          <Weather>Wx: Unk, Temp: Unk,</Weather>
         ) : (
-          <Weather $theme={theme}>
+          <Weather>
             {weather} {celsius}
             °C/{fahrenheit}
             °F,
           </Weather>
         )}
-        <Time theme={theme} />
+        <Time />
       </StyledDiv>
-      <ThemeSwitch onClick={updateTheme} $theme={theme}>
+      <ThemeSwitch onClick={updateTheme}>
         {theme ? "✩·͙*̩̩͙˚̩̥̩̥*̩̩͙✩·͙˚̩̥̩̥." : "⁺☁️☼₊☁️⁺₊"}
       </ThemeSwitch>
     </StyledHeader>

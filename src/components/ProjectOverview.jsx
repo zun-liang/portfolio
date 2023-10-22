@@ -57,8 +57,8 @@ const ProjectOverviewContainer = styled.div`
   &:hover {
     background-color: ${SecondaryHover};
     transition: background-color 0.5s ease-in;
-    border: ${({ $theme }) =>
-      $theme ? "1px solid transparent" : "1px solid var(--dark-paragraph)"};
+    border: ${({ theme }) =>
+      theme.mode ? "1px solid transparent" : "1px solid var(--dark-paragraph)"};
     transition: border 0.5s ease-in;
   }
   @media (min-width: 750px) {
@@ -76,19 +76,14 @@ const ProjectOverview = ({ projectsArr, theme, playPageTurn }) => {
     document.title = "Project ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
   }, []);
   const projects = projectsArr.map((project) => (
-    <ProjectLink
-      $theme={theme}
-      to={project.id}
-      key={project.id}
-      onClick={playPageTurn}
-    >
-      <ProjectOverviewContainer $theme={theme}>
+    <ProjectLink to={project.id} key={project.id} onClick={playPageTurn}>
+      <ProjectOverviewContainer>
         <StyledImg
           src={theme ? project.srcLight : project.srcDark}
           alt="project preview"
         />
-        <StyledH2 $theme={theme}>{project.name}</StyledH2>
-        <StyledP $theme={theme}>{project.description}</StyledP>
+        <StyledH2>{project.name}</StyledH2>
+        <StyledP>{project.description}</StyledP>
       </ProjectOverviewContainer>
     </ProjectLink>
   ));

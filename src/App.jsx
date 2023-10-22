@@ -1,19 +1,15 @@
 import { useContext, useEffect, useState } from "react";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import styled from "styled-components";
 import useSound from "use-sound";
 
 import PageTurn from "./assets/sounds/pageturn.mp3";
 import { AuthContextProvider } from "./contexts/AuthContext";
+import { PlayPickContextProvider } from "./contexts/PlayPickContext";
 import { SoundContext } from "./contexts/SoundContext";
+import { ThemeContext } from "./contexts/ThemeContext";
 import GlobalStyles from "./GlobalStyles";
 import MainLayout from "./layouts/MainLayout";
-import { PlayPickContextProvider } from "./contexts/PlayPickContext";
 import UtilityLayout from "./layouts/UtilityLayout";
 import About from "./pages/About";
 import AuthRequired from "./pages/AuthRequired";
@@ -46,10 +42,6 @@ const App = () => {
   const [blogToEdit, setBlogToEdit] = useState(null);
   const [draft, setDraft] = useState(null);
 
-  const Hour = new Date().getHours();
-  const isLight = Hour < 18 && Hour >= 6;
-  const [theme, setTheme] = useState(isLight);
-
   const { sound } = useContext(SoundContext);
   const [playPageTurn] = useSound(PageTurn, { soundEnabled: sound });
 
@@ -67,6 +59,7 @@ const App = () => {
   /* Automatically ajust app height based on device */
 
   /* Toggle favicon based on theme */
+  const {theme, isLight} = useContext(ThemeContext);
   const initialFavicon32 = isLight
     ? "./src/assets/images/favicon/light/favicon-32x32.png"
     : "./src/assets/images/favicon/dark/favicon-32x32.png";
@@ -84,51 +77,37 @@ const App = () => {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route element={<UtilityLayout theme={theme} />}>
-        <Route
-          path="/"
-          element={<MainLayout theme={theme} setTheme={setTheme} />}
-        >
-          <Route path="*" element={<Error theme={theme} />} />
-          <Route index element={<Home theme={theme} />} />
-          <Route path="about" element={<About theme={theme} />} />
+      <Route element={<UtilityLayout />}>
+        <Route path="/" element={<MainLayout/>}>
+          <Route path="*" element={<Error />} />
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
           <Route
             path="projects"
-            element={<Projects theme={theme} playPageTurn={playPageTurn} />}
+            element={<Projects playPageTurn={playPageTurn} />}
             loader={projectsLoader}
           />
           <Route
             path="projects/:title"
-            element={<Project theme={theme} />}
+            element={<Project />}
             loader={projectLoader}
           />
           <Route
             path="blogs"
-            element={
-              <Blogs
-                theme={theme}
-                setDraft={setDraft}
-                playPageTurn={playPageTurn}
-              />
-            }
+            element={<Blogs setDraft={setDraft} playPageTurn={playPageTurn} />}
             loader={blogsLoader}
           />
           <Route
             path="blogs/:title"
-            element={<Blog theme={theme} setBlogToEdit={setBlogToEdit} />}
+            element={<Blog setBlogToEdit={setBlogToEdit} />}
             loader={blogLoader}
           />
-          <Route
-            path="login"
-            element={<Login theme={theme} />}
-            action={loginAction}
-          />
+          <Route path="login" element={<Login />} action={loginAction} />
           <Route element={<AuthRequired />}>
             <Route
               path="editor"
               element={
                 <Editor
-                  theme={theme}
                   blogToEdit={blogToEdit}
                   setBlogToEdit={setBlogToEdit}
                   draft={draft}
@@ -136,23 +115,22 @@ const App = () => {
                 />
               }
             />
-            <Route path="post" element={<Post theme={theme} draft={draft} />} />
-            <Route path="logout" element={<Logout theme={theme} />} />
+            <Route path="post" element={<Post draft={draft} />} />
+            <Route path="logout" element={<Logout />} />
           </Route>
-          <Route path="contact" element={<Contact theme={theme} />} />
+          <Route path="contact" element={<Contact />} />
         </Route>
       </Route>
     )
   );
 
-  if (loading)
-    return <Loading theme={theme} setLoading={setLoading} today={today} />;
+  if (loading) return <Loading setLoading={setLoading} today={today} />;
 
-  if (error) return <ErrorPage theme={theme} />;
+  if (error) return <ErrorPage />;
 
   return (
     <>
-      <GlobalStyles $theme={theme} />
+      <GlobalStyles />
       <PlayPickContextProvider>
         <AuthContextProvider>
           <AppContainer>

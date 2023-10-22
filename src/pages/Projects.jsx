@@ -84,7 +84,7 @@ export const loader = async () => {
     console.log(error);
   }
 };
-const Projects = ({ theme, playPageTurn }) => {
+const Projects = ({ playPageTurn }) => {
   const playPick = useContext(PlayPickContext);
   useEffect(() => {
     document.title = "Projects ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
@@ -94,17 +94,15 @@ const Projects = ({ theme, playPageTurn }) => {
     <ProjectsContainer>
       <ProjectOverview
         projectsArr={projectsArr}
-        theme={theme}
         playPageTurn={playPageTurn}
       />
       <StyledLink
         target="_blank"
         href="https://github.com/zun-liang"
-        $theme={theme}
         onClick={playPick}
       >
         <span>View more</span>
-        <View $theme={theme}>(∩◕ᗜ◕)⊃━☆ﾟ.*</View>
+        <View>(∩◕ᗜ◕)⊃━☆ﾟ.*</View>
       </StyledLink>
     </ProjectsContainer>
   );

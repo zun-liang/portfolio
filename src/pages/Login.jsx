@@ -141,7 +141,7 @@ export const action = async ({ request }) => {
   }
 };
 
-const Login = ({ theme }) => {
+const Login = () => {
   const playPick = useContext(PlayPickContext);
   const { state } = useNavigation();
   const errorMessage = useActionData();
@@ -155,42 +155,32 @@ const Login = ({ theme }) => {
     <>
       {loggedin ? (
         <StyledDiv>
-          <StyledH2 $theme={theme}>♡⸜(˶˃ ᵕ ˂˶)⸝♡</StyledH2>
-          <StyledH2 $theme={theme}>You've successfully logged in!</StyledH2>
-          <StyledLink $theme={theme} to="/editor" onClick={playPick}>
+          <StyledH2>♡⸜(˶˃ ᵕ ˂˶)⸝♡</StyledH2>
+          <StyledH2>You've successfully logged in!</StyledH2>
+          <StyledLink to="/editor" onClick={playPick}>
             Go to Editor
           </StyledLink>
         </StyledDiv>
       ) : (
-        <LoginPage method="post" $theme={theme} replace>
-          <StyledLabel htmlFor="email" $theme={theme}>
-            Admin
-          </StyledLabel>
+        <LoginPage method="post" replace>
+          <StyledLabel htmlFor="email">Admin</StyledLabel>
           <StyledInput
             type="email"
             id="email"
             name="email"
             placeholder="Enter admin email..."
-            $theme={theme}
             required
           />
-          <StyledLabel htmlFor="password" $theme={theme}>
-            Password
-          </StyledLabel>
+          <StyledLabel htmlFor="password">Password</StyledLabel>
           <StyledInput
             type="password"
             id="password"
             name="password"
             placeholder="Enter admin password..."
-            $theme={theme}
             required
           />
           {errorMessage && <StyledP>{errorMessage}</StyledP>}
-          <StyledButton
-            $theme={theme}
-            onClick={playPick}
-            disabled={state === "submitting"}
-          >
+          <StyledButton onClick={playPick} disabled={state === "submitting"}>
             {state === "submitting" ? "Logging in..." : "Log in"}
           </StyledButton>
         </LoginPage>

@@ -1,12 +1,10 @@
+import { useEffect } from "react";
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { useEffect } from "react";
+
 import Kuma from "../assets/images/ojigi_animal_kuma.png";
-import {
-  TextShadowSwitch,
-  ParagraphColorSwitch,
-} from "../assets/styles/Styles";
+import { ParagraphColorSwitch, TextShadowSwitch } from "../assets/styles/Styles";
 
 const ErrorPage = styled.div`
   display: flex;
@@ -28,15 +26,15 @@ const StyledP = styled.p`
   text-shadow: ${TextShadowSwitch};
 `;
 
-const Error = ({ theme }) => {
+const Error = () => {
   useEffect(() => {
     document.title = "404 ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
 
   return (
-    <ErrorPage $theme={theme}>
+    <ErrorPage >
       <StyledImg src={Kuma} alt="sorry bear picture" />
-      <StyledP $theme={theme}>
+      <StyledP >
         Sorry, the page you are looking for doesn't seem to exist.
       </StyledP>
     </ErrorPage>

@@ -23,7 +23,7 @@ const ScrollButton = styled.button`
     right: 3rem;
   }
 `;
-const Scroll = ({ theme }) => {
+const Scroll = () => {
   const { sound } = useContext(SoundContext);
   const [scroll, setScroll] = useState(null);
   const { pathname } = useLocation();
@@ -50,14 +50,6 @@ const Scroll = ({ theme }) => {
     playSparkle();
   };
 
-  return (
-    <>
-      {scroll && (
-        <ScrollButton $theme={theme} onClick={scrollToTop}>
-          🦋
-        </ScrollButton>
-      )}
-    </>
-  );
+  return <>{scroll && <ScrollButton onClick={scrollToTop}>🦋</ScrollButton>}</>;
 };
 export default Scroll;

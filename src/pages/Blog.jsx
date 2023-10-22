@@ -84,7 +84,7 @@ export const loader = async ({ params }) => {
   }
 };
 
-const Blog = ({ theme, setBlogToEdit,}) => {
+const Blog = ({ setBlogToEdit }) => {
   const playPick = useContext(PlayPickContext);
   const loggedin = useContext(AuthContext);
   const {
@@ -121,23 +121,19 @@ const Blog = ({ theme, setBlogToEdit,}) => {
     <>
       <BlogContainer>
         <StyledDiv>
-          <BackLink to={`/blogs${search}`} $theme={theme} onClick={playPick}>
+          <BackLink to={`/blogs${search}`} onClick={playPick}>
             Back to blogs
           </BackLink>
           {loggedin ? (
-            <StyledButton $theme={theme} onClick={editBlog}>
-              Edit
-            </StyledButton>
+            <StyledButton onClick={editBlog}>Edit</StyledButton>
           ) : null}
           {loggedin ? (
-            <StyledButton $theme={theme} onClick={deleteBlog}>
-              Delete
-            </StyledButton>
+            <StyledButton onClick={deleteBlog}>Delete</StyledButton>
           ) : null}
         </StyledDiv>
-        <MarkdownTitle $theme={theme}>{blogTitle}</MarkdownTitle>
-        <StyledP $theme={theme}>{blogTime}</StyledP>
-        <BlogContent theme={theme} blogContent={blogContent} />
+        <MarkdownTitle>{blogTitle}</MarkdownTitle>
+        <StyledP>{blogTime}</StyledP>
+        <BlogContent  blogContent={blogContent} />
       </BlogContainer>
     </>
   );

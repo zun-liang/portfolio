@@ -1,16 +1,13 @@
 import { getDocs, orderBy, query } from "firebase/firestore";
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import styled from "styled-components";
 
-import {
-  CursorPointerSwitch,
-  PrimaryColorSwitch,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { CursorPointerSwitch, PrimaryColorSwitch, TertiarySecondary } from "../assets/styles/Styles";
 import ProjectOverview from "../components/ProjectOverview";
+import { PlayPickContext } from "../contexts/PlayPickContext";
 import { projectsCollection } from "../firebase";
 
 const ProjectsContainer = styled.div`
@@ -87,7 +84,8 @@ export const loader = async () => {
     console.log(error);
   }
 };
-const Projects = ({ theme, playPick, playPageTurn }) => {
+const Projects = ({ theme, playPageTurn }) => {
+  const playPick = useContext(PlayPickContext);
   useEffect(() => {
     document.title = "Projects ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);

@@ -1,27 +1,29 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
-import { getDocs, orderBy, query, getDoc, doc } from "firebase/firestore";
-import { memo, useEffect, useMemo, useContext } from "react";
+import { doc, getDoc, getDocs, orderBy, query } from "firebase/firestore";
+import { memo, useContext, useEffect, useMemo } from "react";
 import {
   Link,
   useLoaderData,
-  useSearchParams,
   useNavigate,
+  useSearchParams,
 } from "react-router-dom";
 import styled from "styled-components";
+
 import {
-  BasicLink,
   BasicButton,
+  BasicLink,
   CursorPointerSwitch,
-  TertiarySecondary,
-  TertiaryColorSwitch,
   PrimaryTertiary,
-  SecondaryPrimary,
   SecondaryParagraph,
+  SecondaryPrimary,
+  TertiaryColorSwitch,
+  TertiarySecondary,
 } from "../assets/styles/Styles";
-import { db, blogsCollection } from "../firebase";
 import BlogOverview from "../components/BlogOverview";
 import { AuthContext } from "../contexts/AuthContext";
+import { PlayPickContext } from "../contexts/PlayPickContext";
+import { blogsCollection, db } from "../firebase";
 
 const BlogsContainer = styled.div`
   width: 80vw;
@@ -120,7 +122,8 @@ export const loader = async () => {
 };
 
 //pagination
-const Blogs = ({ theme, setDraft, playPick, playPageTurn }) => {
+const Blogs = ({ theme, setDraft, playPageTurn }) => {
+  const playPick = useContext(PlayPickContext);
   //console.log("blogs rendered");
   useEffect(() => {
     document.title = "Blogs ⟡ Zun Liang ♫₊˚.🎧 ✩｡";

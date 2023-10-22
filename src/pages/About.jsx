@@ -1,14 +1,6 @@
-import {
-  faCss3Alt,
-  faGitAlt,
-  faGithub,
-  faHtml5,
-  faNode,
-  faReact,
-  faSquareJs,
-} from "@fortawesome/free-brands-svg-icons";
+import { faCss3Alt, faGitAlt, faGithub, faHtml5, faNode, faReact, faSquareJs } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 import styled from "styled-components";
@@ -19,17 +11,13 @@ import { ReactComponent as FBIcon } from "../assets/images/icons/firebase.svg";
 import { ReactComponent as JestIcon } from "../assets/images/icons/jest.svg";
 import { ReactComponent as NextIcon } from "../assets/images/icons/next-js.svg";
 import { ReactComponent as RRIcon } from "../assets/images/icons/react-router.svg";
+import { ReactComponent as ReduxIcon } from "../assets/images/icons/redux.svg";
 import { ReactComponent as SCIcon } from "../assets/images/icons/styled-components.svg";
 import { ReactComponent as RTLIcon } from "../assets/images/icons/testing-library.svg";
 import { ReactComponent as TSIcon } from "../assets/images/icons/typescript.svg";
 import { ReactComponent as VSCIcon } from "../assets/images/icons/vscode.svg";
-import { ReactComponent as ReduxIcon } from "../assets/images/icons/redux.svg";
-import {
-  CursorPointerSwitch,
-  ParagraphColorSwitch,
-  SecondaryParagraph,
-  TertiaryColorSwitch,
-} from "../assets/styles/Styles";
+import { CursorPointerSwitch, ParagraphColorSwitch, SecondaryParagraph, TertiaryColorSwitch } from "../assets/styles/Styles";
+import { PlayPickContext } from "../contexts/PlayPickContext";
 
 const AboutContainer = styled.div`
   width: 80vw;
@@ -193,7 +181,8 @@ const StyledReduxIcon = styled(ReduxIcon)`
   }
 `;
 
-const About = ({ theme, playPick }) => {
+const About = ({ theme, }) => {
+  const playPick = useContext(PlayPickContext);
   useEffect(() => {
     document.title = "About Me ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);

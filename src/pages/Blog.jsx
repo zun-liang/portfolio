@@ -1,23 +1,16 @@
 /* eslint-disable react-refresh/only-export-components */
 import { deleteDoc, doc, getDoc } from "firebase/firestore";
-import { useEffect, useContext } from "react";
+import { useContext, useEffect } from "react";
 import Markdown from "react-markdown";
 import { useLoaderData, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { AuthContext } from "../contexts/AuthContext";
 
-import {
-  BasicButton,
-  BasicLink,
-  PrimaryTertiary,
-  SecondaryParagraph,
-  SecondaryPrimary,
-  TertiaryColorSwitch,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { BasicButton, BasicLink, PrimaryTertiary, SecondaryParagraph, SecondaryPrimary, TertiaryColorSwitch, TertiarySecondary } from "../assets/styles/Styles";
 import BlogContent from "../components/BlogContent";
+import { AuthContext } from "../contexts/AuthContext";
+import { PlayPickContext } from "../contexts/PlayPickContext";
 import { db } from "../firebase";
 
 const BlogContainer = styled.div`
@@ -91,7 +84,8 @@ export const loader = async ({ params }) => {
   }
 };
 
-const Blog = ({ theme, setBlogToEdit, playPick }) => {
+const Blog = ({ theme, setBlogToEdit,}) => {
+  const playPick = useContext(PlayPickContext);
   const loggedin = useContext(AuthContext);
   const {
     id: blogID,

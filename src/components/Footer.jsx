@@ -1,21 +1,14 @@
 /* eslint-disable react/prop-types */
-import {
-  faCodepen,
-  faFreeCodeCamp,
-  faGithub,
-  faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
+import { faCodepen, faFreeCodeCamp, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { ReactComponent as FEM } from "../assets/images/icons/frontend-mentor.svg";
-import {
-  CursorPointerSwitch,
-  PrimaryColorSwitch,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { CursorPointerSwitch, PrimaryColorSwitch, TertiarySecondary } from "../assets/styles/Styles";
+import { PlayPickContext } from "../contexts/PlayPickContext";
 
 const StyledFooter = styled.footer`
   width: 100%;
@@ -73,7 +66,8 @@ const StyledP = styled.p`
   color: ${TertiarySecondary};
 `;
 
-const Footer = ({ theme, playPick }) => {
+const Footer = ({ theme}) => {
+  const playPick = useContext(PlayPickContext);
   const Year = new Date().getFullYear();
 
   return (

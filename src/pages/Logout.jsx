@@ -1,13 +1,10 @@
+import { useContext, useEffect } from "react";
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { useEffect } from "react";
-import {
-  BasicLink,
-  HoverColorSwitch,
-  ParagraphColorSwitch,
-  TextShadowSwitch,
-} from "../assets/styles/Styles";
+
+import { BasicLink, HoverColorSwitch, ParagraphColorSwitch, TextShadowSwitch } from "../assets/styles/Styles";
+import { PlayPickContext } from "../contexts/PlayPickContext";
 
 const LogoutContainer = styled.div`
   display: flex;
@@ -38,7 +35,8 @@ const StyledLink = styled(BasicLink)`
   }
 `;
 
-const Logout = ({ theme, playPick }) => {
+const Logout = ({ theme}) => {
+  const playPick = useContext(PlayPickContext);
   useEffect(() => {
     document.title = "Log Out ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);

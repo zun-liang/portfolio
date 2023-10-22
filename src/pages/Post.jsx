@@ -1,13 +1,11 @@
+import { useContext, useEffect } from "react";
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { useEffect } from "react";
+
 import { HoverColorSwitch } from "../assets/styles/Styles";
-import {
-  BasicLink,
-  ParagraphColorSwitch,
-  TextShadowSwitch,
-} from "../assets/styles/Styles";
+import { BasicLink, ParagraphColorSwitch, TextShadowSwitch } from "../assets/styles/Styles";
+import { PlayPickContext } from "../contexts/PlayPickContext";
 
 const PostContainer = styled.div`
   display: flex;
@@ -42,7 +40,8 @@ const StyledLink = styled(BasicLink)`
   }
 `;
 
-const Post = ({ theme, draft, playPick }) => {
+const Post = ({ theme, draft}) => {
+  const playPick = useContext(PlayPickContext);
   useEffect(() => {
     document.title = "Post ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);

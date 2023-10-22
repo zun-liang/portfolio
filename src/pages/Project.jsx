@@ -1,7 +1,7 @@
 import { faCode } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { doc, getDoc } from "firebase/firestore";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/no-unescaped-entities */
@@ -10,16 +10,8 @@ import styled from "styled-components";
 
 import { ReactComponent as Puzzle } from "../assets/images/puzzle.svg";
 import { ReactComponent as Website } from "../assets/images/website.svg";
-import {
-  BasicLink,
-  CursorPointerSwitch,
-  ParagraphColorSwitch,
-  PrimaryColorSwitch,
-  PrimaryTertiary,
-  SecondaryParagraph,
-  TertiaryPrimary,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { BasicLink, CursorPointerSwitch, ParagraphColorSwitch, PrimaryColorSwitch, PrimaryTertiary, SecondaryParagraph, TertiaryPrimary, TertiarySecondary } from "../assets/styles/Styles";
+import { PlayPickContext } from "../contexts/PlayPickContext";
 import { db } from "../firebase";
 
 const ProjectContainer = styled.div`
@@ -138,7 +130,8 @@ export const loader = async ({ params }) => {
   }
 };
 
-const Project = ({ theme, playPick }) => {
+const Project = ({ theme }) => {
+  const playPick = useContext(PlayPickContext);
   useEffect(() => {
     document.title = "Project ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);

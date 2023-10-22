@@ -1,16 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useEffect, useContext } from "react";
+import { useContext, useEffect } from "react";
 /* eslint-disable react-refresh/only-export-components */
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
+
 import {
   BasicLink,
   ParagraphColorSwitch,
   TextShadowSwitch,
 } from "../assets/styles/Styles";
-
 import {
   BasicButton,
   HoverColorSwitch,
@@ -21,8 +21,9 @@ import {
   SecondaryColorSwitch,
   TertiarySecondary,
 } from "../assets/styles/Styles";
-import { auth } from "../firebase";
 import { AuthContext } from "../contexts/AuthContext";
+import { PlayPickContext } from "../contexts/PlayPickContext";
+import { auth } from "../firebase";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -140,7 +141,8 @@ export const action = async ({ request }) => {
   }
 };
 
-const Login = ({ theme, playPick }) => {
+const Login = ({ theme }) => {
+  const playPick = useContext(PlayPickContext);
   const { state } = useNavigation();
   const errorMessage = useActionData();
   const loggedin = useContext(AuthContext);

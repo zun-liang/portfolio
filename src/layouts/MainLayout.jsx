@@ -14,7 +14,7 @@ const LayoutContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-const MainLayout = ({ theme, setTheme, playPick }) => {
+const MainLayout = ({ theme, setTheme }) => {
   return (
     <LayoutContainer>
       <Header theme={theme} setTheme={setTheme} />
@@ -22,7 +22,7 @@ const MainLayout = ({ theme, setTheme, playPick }) => {
         <Outlet />
         <Scroll theme={theme} />
       </main>
-      <Footer theme={theme} playPick={playPick} />
+      <Footer theme={theme} />
     </LayoutContainer>
   );
 };

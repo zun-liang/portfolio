@@ -2,25 +2,14 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import MDEditor from "@uiw/react-md-editor";
-import {
-  doc,
-  setDoc,
-  updateDoc,
-  serverTimestamp,
-  deleteDoc,
-} from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { deleteDoc, doc, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
+import { marked } from "marked";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { marked } from "marked";
 
-import {
-  BasicLink,
-  BasicButton,
-  SecondaryPrimary,
-  PrimarySecondary,
-  TertiaryParagraph,
-} from "../assets/styles/Styles";
+import { BasicButton, BasicLink, PrimarySecondary, SecondaryPrimary, TertiaryParagraph } from "../assets/styles/Styles";
+import { PlayPickContext } from "../contexts/PlayPickContext";
 import { db } from "../firebase";
 
 const EditorContainer = styled.div`
@@ -75,8 +64,8 @@ const Editor = ({
   setBlogToEdit,
   draft,
   setDraft,
-  playPick,
 }) => {
+  const playPick = useContext(PlayPickContext);
   const retrievedBlog = blogToEdit?.title + "\n\n" + blogToEdit?.content;
   const retrievedDraft = draft?.title + "\n\n" + draft?.content;
   const initialContent = blogToEdit

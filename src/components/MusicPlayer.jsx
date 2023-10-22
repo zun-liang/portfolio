@@ -1,13 +1,14 @@
+import { useState } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { useState } from "react";
+
 import { ReactComponent as MusicOn } from "../assets/images/music.svg";
-import {
-  TertiaryDot,
-  PrimarySecondary,
-  CursorPointerSwitch,
-} from "../assets/styles/Styles";
 import MusicBox from "../assets/sounds/music-box.mp3";
+import {
+  CursorPointerSwitch,
+  PrimarySecondary,
+  TertiaryDot,
+} from "../assets/styles/Styles";
 
 const PlayButton = styled(MusicOn)`
   width: 1.2rem;
@@ -16,9 +17,7 @@ const PlayButton = styled(MusicOn)`
   & > path {
     stroke: ${TertiaryDot};
   }
-  &:hover,
-  &:active,
-  &:focus > path {
+  &:hover > path {
     stroke: ${PrimarySecondary};
   }
 `;

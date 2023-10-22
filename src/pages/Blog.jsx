@@ -1,11 +1,12 @@
 /* eslint-disable react-refresh/only-export-components */
 import { deleteDoc, doc, getDoc } from "firebase/firestore";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import Markdown from "react-markdown";
 import { useLoaderData, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
+import { AuthContext } from "../contexts/AuthContext";
 
 import {
   BasicButton,
@@ -91,7 +92,7 @@ export const loader = async ({ params }) => {
 };
 
 const Blog = ({ theme, setBlogToEdit, playPick }) => {
-  const authToken = sessionStorage.getItem("Auth Token");
+  const loggedin = useContext(AuthContext);
   const {
     id: blogID,
     time: blogTime,
@@ -129,12 +130,12 @@ const Blog = ({ theme, setBlogToEdit, playPick }) => {
           <BackLink to={`/blogs${search}`} $theme={theme} onClick={playPick}>
             Back to blogs
           </BackLink>
-          {authToken ? (
+          {loggedin ? (
             <StyledButton $theme={theme} onClick={editBlog}>
               Edit
             </StyledButton>
           ) : null}
-          {authToken ? (
+          {loggedin ? (
             <StyledButton $theme={theme} onClick={deleteBlog}>
               Delete
             </StyledButton>

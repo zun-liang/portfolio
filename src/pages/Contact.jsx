@@ -269,7 +269,7 @@ const Contact = ({ theme, sound }) => {
       <StyledTextarea
         id="message"
         name="message"
-        placeholder="Please leave me a message here ... (*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ"
+        placeholder="Please leave me a message here... (*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ"
         $theme={theme}
         required
       />

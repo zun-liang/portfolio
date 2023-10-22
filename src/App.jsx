@@ -10,8 +10,8 @@ import useSound from "use-sound";
 
 import PageTurn from "./assets/sounds/pageturn.mp3";
 import Pick from "./assets/sounds/pick.mp3";
-import AuthRequired from "./components/AuthRequired";
-import Layout from "./components/Layout";
+import AuthRequired from "./pages/AuthRequired";
+import MainLayout from "./layouts/MainLayout";
 import GlobalStyles from "./GlobalStyles";
 import About from "./pages/About";
 import Blog, { loader as blogLoader } from "./pages/Blog";
@@ -27,6 +27,9 @@ import Logout from "./pages/Logout";
 import Post from "./pages/Post";
 import Project, { loader as projectLoader } from "./pages/Project";
 import Projects, { loader as projectsLoader } from "./pages/Projects";
+import UtilityLayout from "./layouts/UtilityLayout";
+import { AuthContextProvider } from "./contexts/AuthContext";
+import { ThemeContextProvider } from "./contexts/ThemeContext";
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -37,25 +40,15 @@ const App = () => {
   const today = new Date().toDateString();
   const loaded = localStorage.getItem("loading") !== today;
   const [loading, setLoading] = useState(loaded);
+
   const [error, setError] = useState(null); //null
+
   const [blogToEdit, setBlogToEdit] = useState(null);
   const [draft, setDraft] = useState(null);
+
   const [sound, setSound] = useState(false);
   const [playPick] = useSound(Pick, { soundEnabled: sound });
   const [playPageTurn] = useSound(PageTurn, { soundEnabled: sound });
-
-  const Hour = new Date().getHours();
-  const isLight = Hour < 18 && Hour >= 6;
-  const [theme, setTheme] = useState(isLight); //isLight
-
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    const updateScreenWidth = () => {
-      setScreenWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", updateScreenWidth);
-    return () => window.removeEventListener("resize", updateScreenWidth);
-  }, [screenWidth]);
 
   /* Automatically ajust app height based on device */
   const setAppHeight = () => {
@@ -71,113 +64,117 @@ const App = () => {
   /* Automatically ajust app height based on device */
 
   /* Toggle favicon based on theme */
-  const initialFavicon32 = isLight
-    ? "./src/assets/images/favicon/light/favicon-32x32.png"
-    : "./src/assets/images/favicon/dark/favicon-32x32.png";
-  const [faviconHref32, setFaviconHref32] = useState(initialFavicon32);
+  // const initialFavicon32 = isLight
+  //   ? "./src/assets/images/favicon/light/favicon-32x32.png"
+  //   : "./src/assets/images/favicon/dark/favicon-32x32.png";
+  // const [faviconHref32, setFaviconHref32] = useState(initialFavicon32);
 
-  useEffect(() => {
-    const favicon32 = document.getElementById("favicon32");
-    favicon32.href = faviconHref32;
-    const updatedFavicon32 = theme
-      ? "./src/assets/images/favicon/light/favicon-32x32.png"
-      : "./src/assets/images/favicon/dark/favicon-32x32.png";
-    setFaviconHref32(updatedFavicon32);
-  }, [theme, faviconHref32]);
+  // useEffect(() => {
+  //   const favicon32 = document.getElementById("favicon32");
+  //   favicon32.href = faviconHref32;
+  //   const updatedFavicon32 = theme
+  //     ? "./src/assets/images/favicon/light/favicon-32x32.png"
+  //     : "./src/assets/images/favicon/dark/favicon-32x32.png";
+  //   setFaviconHref32(updatedFavicon32);
+  // }, [theme, faviconHref32]);
   /* Toggle favicon based on theme */
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route
-        path="/"
         element={
-          <Layout
-            theme={theme}
-            setTheme={setTheme}
-            sound={sound}
-            setSound={setSound}
-            screenWidth={screenWidth}
-            playPick={playPick}
-          />
+          <UtilityLayout theme={theme} sound={sound} setSound={setSound} />
         }
       >
-        <Route path="*" element={<Error theme={theme} />} />
-        <Route index element={<Home theme={theme} />} />
         <Route
-          path="about"
-          element={<About theme={theme} playPick={playPick} />}
-        />
-        <Route
-          path="projects"
+          path="/"
           element={
-            <Projects
+            <MainLayout
               theme={theme}
+              setTheme={setTheme}
+              sound={sound}
               playPick={playPick}
-              playPageTurn={playPageTurn}
             />
           }
-          loader={projectsLoader}
-        />
-        <Route
-          path="projects/:title"
-          element={<Project theme={theme} playPick={playPick} />}
-          loader={projectLoader}
-        />
-        <Route
-          path="blogs"
-          element={
-            <Blogs
-              theme={theme}
-              setDraft={setDraft}
-              playPick={playPick}
-              playPageTurn={playPageTurn}
-            />
-          }
-          loader={blogsLoader}
-        />
-        <Route
-          path="blogs/:title"
-          element={
-            <Blog
-              theme={theme}
-              playPick={playPick}
-              setBlogToEdit={setBlogToEdit}
-            />
-          }
-          loader={blogLoader}
-        />
-        <Route
-          path="login"
-          element={<Login theme={theme} playPick={playPick} />}
-          action={loginAction}
-        />
-        <Route element={<AuthRequired />}>
+        >
+          <Route path="*" element={<Error theme={theme} />} />
+          <Route index element={<Home theme={theme} />} />
           <Route
-            path="editor"
+            path="about"
+            element={<About theme={theme} playPick={playPick} />}
+          />
+          <Route
+            path="projects"
             element={
-              <Editor
+              <Projects
                 theme={theme}
-                blogToEdit={blogToEdit}
-                setBlogToEdit={setBlogToEdit}
-                draft={draft}
-                setDraft={setDraft}
                 playPick={playPick}
+                playPageTurn={playPageTurn}
               />
             }
+            loader={projectsLoader}
           />
           <Route
-            path="post"
-            element={<Post theme={theme} draft={draft} playPick={playPick} />}
+            path="projects/:title"
+            element={<Project theme={theme} playPick={playPick} />}
+            loader={projectLoader}
           />
           <Route
-            path="logout"
-            element={<Logout theme={theme} playPick={playPick} />}
+            path="blogs"
+            element={
+              <Blogs
+                theme={theme}
+                setDraft={setDraft}
+                playPick={playPick}
+                playPageTurn={playPageTurn}
+              />
+            }
+            loader={blogsLoader}
+          />
+          <Route
+            path="blogs/:title"
+            element={
+              <Blog
+                theme={theme}
+                playPick={playPick}
+                setBlogToEdit={setBlogToEdit}
+              />
+            }
+            loader={blogLoader}
+          />
+          <Route
+            path="login"
+            element={<Login theme={theme} playPick={playPick} />}
+            action={loginAction}
+          />
+          <Route element={<AuthRequired />}>
+            <Route
+              path="editor"
+              element={
+                <Editor
+                  theme={theme}
+                  blogToEdit={blogToEdit}
+                  setBlogToEdit={setBlogToEdit}
+                  draft={draft}
+                  setDraft={setDraft}
+                  playPick={playPick}
+                />
+              }
+            />
+            <Route
+              path="post"
+              element={<Post theme={theme} draft={draft} playPick={playPick} />}
+            />
+            <Route
+              path="logout"
+              element={<Logout theme={theme} playPick={playPick} />}
+            />
+          </Route>
+          <Route
+            path="contact"
+            element={<Contact theme={theme} sound={sound} />}
           />
         </Route>
-        <Route
-          path="contact"
-          element={<Contact theme={theme} sound={sound} />}
-        />
       </Route>
     )
   );
@@ -196,10 +193,14 @@ const App = () => {
 
   return (
     <>
-      <GlobalStyles $theme={theme} />
-      <AppContainer>
-        <RouterProvider router={router} />
-      </AppContainer>
+      <ThemeContextProvider>
+        <GlobalStyles $theme={theme} />
+        <AuthContextProvider>
+          <AppContainer>
+            <RouterProvider router={router} />
+          </AppContainer>
+        </AuthContextProvider>
+      </ThemeContextProvider>
     </>
   );
 };

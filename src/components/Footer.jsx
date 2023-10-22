@@ -16,9 +16,6 @@ import {
   PrimaryColorSwitch,
   TertiarySecondary,
 } from "../assets/styles/Styles";
-import LogoutButton from "./LogoutButton";
-import SoundSwitch from "./SoundSwitch";
-import MusicPlayer from "./MusicPlayer";
 
 const StyledFooter = styled.footer`
   width: 100%;
@@ -75,19 +72,8 @@ const StyledP = styled.p`
   font-size: 0.8rem;
   color: ${TertiarySecondary};
 `;
-const Wrapper = styled.div`
-  height: 1.5rem;
-  align-self: flex-start;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  @media (min-width: 1024px) {
-    margin-top: -1.3rem;
-  }
-`;
 
-const Footer = ({ theme, sound, setSound, screenWidth, playPick }) => {
+const Footer = ({ theme, playPick }) => {
   const Year = new Date().getFullYear();
 
   return (
@@ -148,13 +134,6 @@ const Footer = ({ theme, sound, setSound, screenWidth, playPick }) => {
         © {Year > 2023 ? `2023 - ${Year}` : "2023"} Zun Liang. All Rights
         Reserved.
       </StyledP>
-      {screenWidth > 999 && (
-        <Wrapper>
-          <SoundSwitch theme={theme} sound={sound} setSound={setSound} />
-          <MusicPlayer theme={theme} />
-          <LogoutButton theme={theme} />
-        </Wrapper>
-      )}
     </StyledFooter>
   );
 };

@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
 import { Navigate, Outlet } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 const AuthRequired = () => {
-  const authToken = sessionStorage.getItem("Auth Token");
-  //auth context??
-  if (!authToken) return <Navigate to="/login" replace />;
+  const loggedin = useContext(AuthContext);
+  if (!loggedin) return <Navigate to="/login" replace />;
   return <Outlet />;
 };
 

@@ -35,7 +35,7 @@ const StyledEarSlash = styled(EarSlash)`
 
 const SoundSwitch = ({ theme, sound, setSound }) => {
   const [playInterface] = useSound(Interface, {
-    soundEnabled: !sound,
+    soundEnabled: sound,
     volume: 0.5,
   });
   const toggleSound = () => {

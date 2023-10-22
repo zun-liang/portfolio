@@ -9,7 +9,7 @@ import {
   TextShadowSwitch,
 } from "../assets/styles/Styles";
 
-const PostContainer = styled.div`
+const LogoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,13 +43,13 @@ const Logout = ({ theme, playPick }) => {
     document.title = "Log Out ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
   return (
-    <PostContainer>
+    <LogoutContainer>
       <StyledP $theme={theme}>૮꒰˶ᵕ ༝ᵕ˶꒱აᶻ 𝗓 𐰁ᶻ </StyledP>
       <StyledP $theme={theme}>You've successfully logged out!</StyledP>
       <StyledLink $theme={theme} to="/" onClick={playPick}>
         Go back Home
       </StyledLink>
-    </PostContainer>
+    </LogoutContainer>
   );
 };
 

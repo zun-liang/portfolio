@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { getDocs, orderBy, query, getDoc, doc } from "firebase/firestore";
-import { memo, useEffect, useMemo } from "react";
+import { memo, useEffect, useMemo, useContext } from "react";
 import {
   Link,
   useLoaderData,
@@ -21,6 +21,7 @@ import {
 } from "../assets/styles/Styles";
 import { db, blogsCollection } from "../firebase";
 import BlogOverview from "../components/BlogOverview";
+import { AuthContext } from "../contexts/AuthContext";
 
 const BlogsContainer = styled.div`
   width: 80vw;
@@ -124,7 +125,7 @@ const Blogs = ({ theme, setDraft, playPick, playPageTurn }) => {
   useEffect(() => {
     document.title = "Blogs ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
-  const authToken = sessionStorage.getItem("Auth Token");
+  const loggedin = useContext(AuthContext);
   const [searchParams, setSearchParams] = useSearchParams();
   const languageFilter = searchParams.get("language");
   const blogsArr = useLoaderData();
@@ -217,7 +218,7 @@ const Blogs = ({ theme, setDraft, playPick, playPageTurn }) => {
         </Filter>
       </Filters>
       {blogs}
-      {authToken ? (
+      {loggedin ? (
         <StyledButton $theme={theme} onClick={getDraft}>
           Go to Editor
         </StyledButton>

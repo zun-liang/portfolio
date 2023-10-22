@@ -1,3 +1,7 @@
+### Why this?
+
+I am always longing for my own website and I haven't ready for it until I learned React router because I personally prefer traditional multiple page website in this case. This website a great project for me to pratice my React and React router skills as well.
+
 ### Helpful Resources
 
 #### Designs
@@ -12,6 +16,7 @@
 - [SVG Icons](https://fontawesomeicons.com/svg/icons)
 - [Pixabay](https://pixabay.com/)
 - [AudioMass](https://audiomass.co/)
+- [Material Design Dark Theme](https://m2.material.io/design/color/dark-theme.html)
 
 I was having trouble deciding what colors look good for my website.
 

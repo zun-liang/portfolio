@@ -2,13 +2,11 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import SoundSwitch from "./SoundSwitch";
-import Time from "./Time";
-import Key from "../assets/sounds/key.mp3";
-import On from "..//assets/sounds/on.mp3";
-import Off from "..//assets/sounds/off.mp3";
 import useSound from "use-sound";
 
+import Off from "..//assets/sounds/off.mp3";
+import On from "..//assets/sounds/on.mp3";
+import Key from "../assets/sounds/key.mp3";
 import {
   CursorAutoSwitch,
   CursorPointerSwitch,
@@ -18,8 +16,7 @@ import {
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import Menu from "./Menu";
-import LogoutButton from "./LogoutButton";
-import MusicPlayer from "./MusicPlayer";
+import Time from "./Time";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -36,15 +33,6 @@ const StyledHeader = styled.header`
   @media (min-width: 1350px) {
     padding: 2.5rem 4rem 0;
   }
-`;
-const Wrapper = styled.div`
-  height: 1.5rem;
-  align-self: flex-start;
-  margin-top: 0.2rem;
-  margin-bottom: -1.8rem;
-  display: flex;
-  align-items: center;
-  gap: 7px;
 `;
 const TitleContainer = styled.div`
   display: flex;
@@ -122,7 +110,9 @@ const ThemeSwitch = styled.p`
   text-shadow: 1px 1px ${SecondaryColorSwitch};
 `;
 
-const Header = ({ theme, setTheme, sound, setSound, screenWidth }) => {
+//kinda want to use loader here to show weather loading...
+
+const Header = ({ theme, setTheme, sound }) => {
   const [weather, setWeather] = useState("");
   const [temp, setTemp] = useState("");
   const celsius = parseInt(temp - 273.15);
@@ -151,11 +141,12 @@ const Header = ({ theme, setTheme, sound, setSound, screenWidth }) => {
   const [playOn] = useSound(On, { soundEnabled: sound });
   const [playOff] = useSound(Off, { soundEnabled: sound });
   const updateTheme = () => {
-    setTheme((prev) => !prev);
     if (theme) {
       playOff();
+      setTheme(false);
     } else {
       playOn();
+      setTheme(true);
     }
   };
 
@@ -167,13 +158,6 @@ const Header = ({ theme, setTheme, sound, setSound, screenWidth }) => {
   };
   return (
     <StyledHeader>
-      {screenWidth < 1000 && (
-        <Wrapper>
-          <SoundSwitch theme={theme} sound={sound} setSound={setSound} />
-          <MusicPlayer theme={theme} />
-          <LogoutButton theme={theme} />
-        </Wrapper>
-      )}
       <TitleContainer>
         <Title $theme={theme}>ZUN LIANG</Title>
         <SubTitleBlink $theme={theme}> ⊹</SubTitleBlink>

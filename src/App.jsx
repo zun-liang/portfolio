@@ -1,10 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import styled from "styled-components";
 import useSound from "use-sound";
 
@@ -50,7 +45,7 @@ const App = () => {
   const isLight = Hour < 18 && Hour >= 6;
   const [theme, setTheme] = useState(isLight);
 
-  const { sound, setSound } = useContext(SoundContext);
+  const { sound } = useContext(SoundContext);
   const [playPick] = useSound(Pick, { soundEnabled: sound });
   const [playPageTurn] = useSound(PageTurn, { soundEnabled: sound });
 
@@ -87,7 +82,7 @@ const App = () => {
     createRoutesFromElements(
       <Route
         element={
-          <UtilityLayout theme={theme} sound={sound} setSound={setSound} />
+          <UtilityLayout theme={theme} sound={sound} />
         }
       >
         <Route

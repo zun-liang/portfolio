@@ -8,8 +8,8 @@ import Off from "..//assets/sounds/off.mp3";
 import On from "..//assets/sounds/on.mp3";
 import Key from "../assets/sounds/key.mp3";
 import { CursorAutoSwitch, CursorPointerSwitch, PrimaryColorSwitch, SecondaryColorSwitch, SecondaryPrimary, TertiarySecondary } from "../assets/styles/Styles";
+import { ModeContext } from "../contexts/ModeContext";
 import { SoundContext } from "../contexts/SoundContext";
-import { ThemeContext } from "../contexts/ThemeContext";
 import Menu from "./Menu";
 import Time from "./Time";
 
@@ -99,7 +99,7 @@ const Weather = styled.p`
     font-size: 0.9rem;
   }
 `;
-const ThemeSwitch = styled.p`
+const ModeSwitch = styled.p`
   font-size: 1.5rem;
   cursor: ${CursorPointerSwitch};
   text-shadow: 1px 1px ${SecondaryColorSwitch};
@@ -108,7 +108,7 @@ const ThemeSwitch = styled.p`
 //kinda want to use loader here to show weather loading...
 
 const Header = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { mode, setMode } = useContext(ModeContext);
   const { sound } = useContext(SoundContext);
   const [weather, setWeather] = useState("");
   const [temp, setTemp] = useState("");
@@ -137,13 +137,13 @@ const Header = () => {
 
   const [playOn] = useSound(On, { soundEnabled: sound });
   const [playOff] = useSound(Off, { soundEnabled: sound });
-  const updateTheme = () => {
-    if (theme) {
+  const updateMode = () => {
+    if (mode) {
       playOff();
-      setTheme(false);
+      setMode(false);
     } else {
       playOn();
-      setTheme(true);
+      setMode(true);
     }
   };
 
@@ -178,9 +178,9 @@ const Header = () => {
         )}
         <Time />
       </StyledDiv>
-      <ThemeSwitch onClick={updateTheme}>
-        {theme ? "✩·͙*̩̩͙˚̩̥̩̥*̩̩͙✩·͙˚̩̥̩̥." : "⁺☁️☼₊☁️⁺₊"}
-      </ThemeSwitch>
+      <ModeSwitch onClick={updateMode}>
+        {mode ? "✩·͙*̩̩͙˚̩̥̩̥*̩̩͙✩·͙˚̩̥̩̥." : "⁺☁️☼₊☁️⁺₊"}
+      </ModeSwitch>
     </StyledHeader>
   );
 };

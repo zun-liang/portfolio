@@ -5,9 +5,9 @@ import useSound from "use-sound";
 
 import PageTurn from "./assets/sounds/pageturn.mp3";
 import { AuthContextProvider } from "./contexts/AuthContext";
+import { ModeContext } from "./contexts/ModeContext";
 import { PlayPickContextProvider } from "./contexts/PlayPickContext";
 import { SoundContext } from "./contexts/SoundContext";
-import { ThemeContext } from "./contexts/ThemeContext";
 import GlobalStyles from "./GlobalStyles";
 import MainLayout from "./layouts/MainLayout";
 import UtilityLayout from "./layouts/UtilityLayout";
@@ -58,8 +58,8 @@ const App = () => {
   }, []);
   /* Automatically ajust app height based on device */
 
-  /* Toggle favicon based on theme */
-  const {theme, isLight} = useContext(ThemeContext);
+  /* Toggle favicon based on mode */
+  const { mode, isLight } = useContext(ModeContext);
   const initialFavicon32 = isLight
     ? "./src/assets/images/favicon/light/favicon-32x32.png"
     : "./src/assets/images/favicon/dark/favicon-32x32.png";
@@ -68,17 +68,17 @@ const App = () => {
   useEffect(() => {
     const favicon32 = document.getElementById("favicon32");
     favicon32.href = faviconHref32;
-    const updatedFavicon32 = theme
+    const updatedFavicon32 = mode
       ? "./src/assets/images/favicon/light/favicon-32x32.png"
       : "./src/assets/images/favicon/dark/favicon-32x32.png";
     setFaviconHref32(updatedFavicon32);
-  }, [theme, faviconHref32]);
-  /* Toggle favicon based on theme */
+  }, [mode, faviconHref32]);
+  /* Toggle favicon based on mode */
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route element={<UtilityLayout />}>
-        <Route path="/" element={<MainLayout/>}>
+        <Route path="/" element={<MainLayout />}>
           <Route path="*" element={<Error />} />
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />

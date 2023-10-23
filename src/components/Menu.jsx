@@ -3,8 +3,14 @@ import { NavLink } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { BackgroundSwitch, CursorPointerSwitch, PrimaryColorSwitch, PrimarySecondary, SecondaryPrimary } from "../assets/styles/Styles";
-import { ThemeContext } from "../contexts/ThemeContext";
+import {
+  BackgroundSwitch,
+  CursorPointerSwitch,
+  PrimaryColorSwitch,
+  PrimarySecondary,
+  SecondaryPrimary,
+} from "../assets/styles/Styles";
+import { ModeContext } from "../contexts/ModeContext";
 
 const MenuContainer = styled.div`
   display: ${({ $menu }) => ($menu ? "block" : "none")};
@@ -102,12 +108,10 @@ const StyledLink = styled(NavLink)`
 `;
 
 const Menu = ({ menu, setMenu, playKey }) => {
-  const {theme} = useContext(ThemeContext);
+  const { mode } = useContext(ModeContext);
   const activeStyle = {
-    color: theme ? "var(--light-tertiary)" : "var(--dark-tertiary)",
-    textShadow: theme
-      ? "1px 1px var(--light-secondary)"
-      : "1px 1px transparent",
+    color: mode ? "var(--light-tertiary)" : "var(--dark-tertiary)",
+    textShadow: mode ? "1px 1px var(--light-secondary)" : "1px 1px transparent",
     textDecoration: "wavy underline",
     textUnderlineOffset: "8px",
   };

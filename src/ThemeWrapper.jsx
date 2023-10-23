@@ -2,15 +2,15 @@ import { useContext } from "react";
 import { ThemeProvider } from "styled-components";
 
 import App from "./App.jsx";
+import { ModeContext } from "./contexts/ModeContext.jsx";
 import { SoundContextProvider } from "./contexts/SoundContext.jsx";
-import { ThemeContext } from "./contexts/ThemeContext";
 
-const Wrapper2 = () => {
-  const { theme } = useContext(ThemeContext);
-  const mode = { mode: theme };
+const ThemeWrapper = () => {
+  const { mode } = useContext(ModeContext);
+  const theme = { mode: mode};
 
   return (
-    <ThemeProvider theme={mode}>
+    <ThemeProvider theme={theme}>
       <SoundContextProvider>
         <App />
       </SoundContextProvider>
@@ -18,4 +18,4 @@ const Wrapper2 = () => {
   );
 };
 
-export default Wrapper2;
+export default ThemeWrapper;

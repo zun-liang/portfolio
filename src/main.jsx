@@ -1,7 +1,10 @@
 import ReactDOM from "react-dom/client";
 
-import Wrapper from "./Wrapper"
+import { ModeContextProvider } from "./contexts/ModeContext";
+import ThemeWrapper from "./ThemeWrapper";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-<Wrapper />
+  <ModeContextProvider>
+      <ThemeWrapper />
+    </ModeContextProvider>
 );

@@ -87,6 +87,7 @@ const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft }) => {
   const content = marked.parse(blog.split("\n").slice(1).join("\n") || "");
   const time = new Date().toLocaleString();
   const tag = blog.split("\n")[blog.split("\n").length - 1].replace("#", "");
+  //there is something wrong with the way I get tag
   const blogId =
     blog.split("\n")[0].split(" ").slice(1).join("-").toLowerCase() +
     "-" +

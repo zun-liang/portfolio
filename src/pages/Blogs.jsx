@@ -17,8 +17,8 @@ import {
   PrimaryTertiary,
   SecondaryParagraph,
   SecondaryPrimary,
+  TertiaryPrimary,
   TertiarySecondary,
-  TertiarySwitch,
 } from "../assets/styles/Styles";
 import BlogOverview from "../components/BlogOverview";
 import { AuthContext } from "../contexts/AuthContext";
@@ -72,7 +72,7 @@ const Filter = styled(BasicButton)`
 const Time = styled.p`
   font-size: 0.8rem;
   font-weight: 500;
-  color: ${TertiarySwitch};
+  color: ${TertiaryPrimary};
 `;
 const StyledH2 = styled.h2`
   display: inline;

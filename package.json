@@ -24,7 +24,6 @@
     "react-dom": "^18.2.0",
     "react-markdown": "^9.0.0",
     "react-router-dom": "^6.16.0",
-    "remark-gfm": "^4.0.0",
     "styled-components": "^6.0.7",
     "use-sound": "^4.0.1",
     "vite-plugin-svgr": "^3.2.0"

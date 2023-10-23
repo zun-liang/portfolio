@@ -7,7 +7,15 @@ import { useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { BasicButton, BasicLink, PrimaryTertiary, SecondaryParagraph, SecondaryPrimary, TertiarySecondary, TertiarySwitch } from "../assets/styles/Styles";
+import {
+  BasicButton,
+  BasicLink,
+  PrimaryTertiary,
+  SecondaryParagraph,
+  SecondaryPrimary,
+  TertiaryPrimary,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import BlogContent from "../components/BlogContent";
 import { AuthContext } from "../contexts/AuthContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
@@ -35,7 +43,7 @@ const MarkdownTitle = styled(Markdown)`
 `;
 const StyledP = styled.p`
   font-size: 0.9rem;
-  color: ${TertiarySwitch};
+  color: ${TertiaryPrimary};
   text-align: right;
 `;
 const StyledDiv = styled.div`
@@ -99,6 +107,9 @@ const Blog = ({ setBlogToEdit }) => {
   }, []);
   const location = useLocation();
   const search = location.state?.search;
+  console.log(search);
+  const hash = location.hash;
+  console.log(hash);
 
   const navigate = useNavigate();
   const blogData = useLoaderData();
@@ -133,7 +144,7 @@ const Blog = ({ setBlogToEdit }) => {
         </StyledDiv>
         <MarkdownTitle>{blogTitle}</MarkdownTitle>
         <StyledP>{blogTime}</StyledP>
-        <BlogContent  blogContent={blogContent} />
+        <BlogContent blogContent={blogContent} />
       </BlogContainer>
     </>
   );

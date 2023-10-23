@@ -1,12 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-import {
-  BackgroundSwitch,
-  CursorAutoSwitch,
-  PrimaryColorSwitch,
-  SecondaryColorSwitch,
-  TertiaryPrimary,
-} from "./assets/styles/Styles";
+import { AutoSwitch, BGSwitch, PrimarySwitch, SecondarySwitch, TertiaryPrimary } from "./assets/styles/Styles";
 
 const GlobalStyles = createGlobalStyle`
     * {
@@ -41,13 +35,13 @@ const GlobalStyles = createGlobalStyle`
     body {
         width: 100vw;
         height: 100%;
-        background: ${BackgroundSwitch};
+        background: ${BGSwitch};
         overflow-x: hidden;
         font-family: "Roboto", sans-serif;
         font-size: 12px;
-        color: ${PrimaryColorSwitch}; 
-        cursor: ${CursorAutoSwitch};
-        scrollbar-color: ${TertiaryPrimary} ${SecondaryColorSwitch};
+        color: ${PrimarySwitch}; 
+        cursor: ${AutoSwitch};
+        scrollbar-color: ${TertiaryPrimary} ${SecondarySwitch};
         scrollbar-width: thin;
     }
 
@@ -61,7 +55,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     ::-webkit-scrollbar-track {
-        background: ${SecondaryColorSwitch}; 
+        background: ${SecondarySwitch}; 
     }
     
     @media (min-width: 375px) {

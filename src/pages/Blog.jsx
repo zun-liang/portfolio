@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { BasicButton, BasicLink, PrimaryTertiary, SecondaryParagraph, SecondaryPrimary, TertiaryColorSwitch, TertiarySecondary } from "../assets/styles/Styles";
+import { BasicButton, BasicLink, PrimaryTertiary, SecondaryParagraph, SecondaryPrimary, TertiarySecondary, TertiarySwitch } from "../assets/styles/Styles";
 import BlogContent from "../components/BlogContent";
 import { AuthContext } from "../contexts/AuthContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
@@ -35,7 +35,7 @@ const MarkdownTitle = styled(Markdown)`
 `;
 const StyledP = styled.p`
   font-size: 0.9rem;
-  color: ${TertiaryColorSwitch};
+  color: ${TertiarySwitch};
   text-align: right;
 `;
 const StyledDiv = styled.div`

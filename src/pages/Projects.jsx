@@ -5,7 +5,7 @@ import { useContext, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import styled from "styled-components";
 
-import { CursorPointerSwitch, PrimaryColorSwitch, TertiarySecondary } from "../assets/styles/Styles";
+import { PointerSwitch, PrimarySwitch, TertiarySecondary } from "../assets/styles/Styles";
 import ProjectOverview from "../components/ProjectOverview";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { projectsCollection } from "../firebase";
@@ -46,13 +46,13 @@ const View = styled.p`
 `;
 const StyledLink = styled.a`
   justify-self: end;
-  cursor: ${CursorPointerSwitch};
+  cursor: ${PointerSwitch};
   text-decoration: none;
   &:link,
   &:hover,
   &:active,
   &:visited {
-    color: ${PrimaryColorSwitch};
+    color: ${PrimarySwitch};
   }
   > span {
     font-family: "Black Ops One", sans-serif;
@@ -92,10 +92,7 @@ const Projects = ({ playPageTurn }) => {
   const projectsArr = useLoaderData();
   return (
     <ProjectsContainer>
-      <ProjectOverview
-        projectsArr={projectsArr}
-        playPageTurn={playPageTurn}
-      />
+      <ProjectOverview projectsArr={projectsArr} playPageTurn={playPageTurn} />
       <StyledLink
         target="_blank"
         href="https://github.com/zun-liang"

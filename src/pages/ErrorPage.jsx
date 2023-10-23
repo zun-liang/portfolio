@@ -3,13 +3,13 @@
 import styled from "styled-components";
 
 import Kuma from "../assets/images/ojigi_animal_kuma.png";
-import { BackgroundSwitch, ParagraphColorSwitch, TextShadowSwitch } from "../assets/styles/Styles";
+import { BGSwitch, ParagraphSwitch, SecondaryTertiary } from "../assets/styles/Styles";
 import GlobalStyles from "../GlobalStyles";
 
 const ErrorPageContainer = styled.div`
   width: 100%;
   height: var(--app-height);
-  background: ${BackgroundSwitch};
+  background: ${BGSwitch};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,17 +25,17 @@ const StyledP = styled.p`
   line-height: 1.5;
   font-family: "Black Ops One", sans-serif;
   font-size: 2rem;
-  color: ${ParagraphColorSwitch};
-  text-shadow: ${TextShadowSwitch};
+  color: ${ParagraphSwitch};
+  text-shadow: 1px 1px ${SecondaryTertiary};
 `;
 
 const ErrorPage = () => {
   return (
     <>
       <GlobalStyles />
-      <ErrorPageContainer >
+      <ErrorPageContainer>
         <StyledImg src={Kuma} alt="sorry bear picture" />
-        <StyledP >
+        <StyledP>
           Something went wrong, try refreshing the page or come back later.
         </StyledP>
       </ErrorPageContainer>

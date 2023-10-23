@@ -3,12 +3,7 @@ import { useContext, useEffect } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import {
-  BasicLink,
-  HoverColorSwitch,
-  ParagraphColorSwitch,
-  TextShadowSwitch,
-} from "../assets/styles/Styles";
+import { BasicLink, HoverSwitch, ParagraphSwitch, SecondaryTertiary } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 
 const LogoutContainer = styled.div`
@@ -22,21 +17,21 @@ const StyledP = styled.p`
   text-align: center;
   font-family: "Black Ops One", sans-serif;
   font-size: 2rem;
-  color: ${ParagraphColorSwitch};
-  text-shadow: ${TextShadowSwitch};
+  color: ${ParagraphSwitch};
+  text-shadow: 1px 1px ${SecondaryTertiary};
 `;
 const StyledLink = styled(BasicLink)`
   padding: 0.5rem;
-  border: 2px dashed ${ParagraphColorSwitch};
+  border: 2px dashed ${ParagraphSwitch};
   border-radius: 10px;
   &:link,
   &:visited {
-    color: ${ParagraphColorSwitch};
+    color: ${ParagraphSwitch};
   }
   &:hover,
   &:active {
-    color: ${ParagraphColorSwitch};
-    background-color: ${HoverColorSwitch};
+    color: ${ParagraphSwitch};
+    background-color: ${HoverSwitch};
   }
 `;
 

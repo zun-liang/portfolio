@@ -4,16 +4,12 @@ import styled from "styled-components";
 
 import { ReactComponent as MusicOn } from "../assets/images/music.svg";
 import MusicBox from "../assets/sounds/music-box.mp3";
-import {
-  CursorPointerSwitch,
-  PrimarySecondary,
-  TertiaryDot,
-} from "../assets/styles/Styles";
+import { PointerSwitch, PrimarySecondary, TertiaryDot } from "../assets/styles/Styles";
 
 const PlayButton = styled(MusicOn)`
   width: 1.2rem;
   height: 1.2rem;
-  cursor: ${CursorPointerSwitch};
+  cursor: ${PointerSwitch};
   & > path {
     stroke: ${TertiaryDot};
   }

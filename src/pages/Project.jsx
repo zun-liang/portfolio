@@ -10,16 +10,7 @@ import styled from "styled-components";
 
 import { ReactComponent as Puzzle } from "../assets/images/puzzle.svg";
 import { ReactComponent as Website } from "../assets/images/website.svg";
-import {
-  BasicLink,
-  CursorPointerSwitch,
-  ParagraphColorSwitch,
-  PrimaryColorSwitch,
-  PrimaryTertiary,
-  SecondaryParagraph,
-  TertiaryPrimary,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { BasicLink, ParagraphSwitch, PointerSwitch, PrimarySwitch, PrimaryTertiary, SecondaryParagraph, TertiaryPrimary, TertiarySecondary } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { db } from "../firebase";
 
@@ -89,13 +80,13 @@ const StyledLink = styled.a`
   }
   &:hover,
   &:active {
-    color: ${PrimaryColorSwitch};
-    cursor: ${CursorPointerSwitch};
+    color: ${PrimarySwitch};
+    cursor: ${PointerSwitch};
     ${WebsiteIcon} {
-      fill: ${PrimaryColorSwitch};
+      fill: ${PrimarySwitch};
     }
     ${PuzzleIcon} > g  > path {
-      fill: ${PrimaryColorSwitch};
+      fill: ${PrimarySwitch};
     }
   }
 `;
@@ -113,7 +104,7 @@ const StyledH4 = styled.h4`
   font-family: "Black Ops One", sans-serif;
 `;
 const StyledP = styled.p`
-  color: ${ParagraphColorSwitch};
+  color: ${ParagraphSwitch};
   line-height: 1.5;
 `;
 const StyledList = styled.ul`
@@ -121,7 +112,7 @@ const StyledList = styled.ul`
 `;
 const StyledListItem = styled.li`
   margin: 0.5rem 0;
-  color: ${ParagraphColorSwitch};
+  color: ${ParagraphSwitch};
 `;
 
 export const loader = async ({ params }) => {

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 
 import Kuma from "../assets/images/ojigi_animal_kuma.png";
-import { ParagraphColorSwitch, TextShadowSwitch } from "../assets/styles/Styles";
+import { ParagraphSwitch, SecondaryTertiary } from "../assets/styles/Styles";
 
 const ErrorPage = styled.div`
   display: flex;
@@ -22,8 +22,8 @@ const StyledP = styled.p`
   line-height: 1.5;
   font-size: 2rem;
   font-family: "Black Ops One", sans-serif;
-  color: ${ParagraphColorSwitch};
-  text-shadow: ${TextShadowSwitch};
+  color: ${ParagraphSwitch};
+  text-shadow: 1px 1px ${SecondaryTertiary};
 `;
 
 const Error = () => {
@@ -32,9 +32,9 @@ const Error = () => {
   }, []);
 
   return (
-    <ErrorPage >
+    <ErrorPage>
       <StyledImg src={Kuma} alt="sorry bear picture" />
-      <StyledP >
+      <StyledP>
         Sorry, the page you are looking for doesn't seem to exist.
       </StyledP>
     </ErrorPage>

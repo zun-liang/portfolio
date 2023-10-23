@@ -5,14 +5,18 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { ReactComponent as LogoutIcon } from "../assets/images/log-out.svg";
-import { CursorPointerSwitch, PrimarySecondary, TertiaryDot } from "../assets/styles/Styles";
+import {
+  PointerSwitch,
+  PrimarySecondary,
+  TertiaryDot,
+} from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { auth } from "../firebase";
 
 const StyledLogoutButton = styled(LogoutIcon)`
   width: 1.2rem;
   height: 1.2rem;
-  cursor: ${CursorPointerSwitch};
+  cursor: ${PointerSwitch};
   & > path {
     stroke: ${TertiaryDot};
   }
@@ -34,8 +38,6 @@ const LogoutButton = () => {
       });
     navigate("/logout");
   };
-  return (
-    <>{loggedin && <StyledLogoutButton  onClick={logout} />}</>
-  );
+  return <>{loggedin && <StyledLogoutButton onClick={logout} />}</>;
 };
 export default LogoutButton;

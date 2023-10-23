@@ -13,8 +13,8 @@ import styled from "styled-components";
 
 import { ReactComponent as FEM } from "../assets/images/icons/frontend-mentor.svg";
 import {
-  CursorPointerSwitch,
-  PrimaryColorSwitch,
+  PointerSwitch,
+  PrimarySwitch,
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
@@ -48,24 +48,24 @@ const StyledLink = styled.a`
   &:hover,
   &:active,
   &:visited {
-    color: ${PrimaryColorSwitch};
+    color: ${PrimarySwitch};
   }
 `;
 const StyledLinkEn = styled(Link)``;
 const Icon = styled(FontAwesomeIcon)`
   width: 1.5rem;
   height: 1.5rem;
-  color: ${PrimaryColorSwitch};
-  cursor: ${CursorPointerSwitch};
+  color: ${PrimarySwitch};
+  cursor: ${PointerSwitch};
 `;
 const FEMIcon = styled(FEM)`
   width: 1.5rem;
   height: 1.5rem;
   transform: scale(0.8);
   & > path {
-    fill: ${PrimaryColorSwitch};
+    fill: ${PrimarySwitch};
   }
-  cursor: ${CursorPointerSwitch};
+  cursor: ${PointerSwitch};
 `;
 const StyledP = styled.p`
   margin-top: 0.8rem;

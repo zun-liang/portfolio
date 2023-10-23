@@ -25,10 +25,10 @@ import { ReactComponent as RTLIcon } from "../assets/images/icons/testing-librar
 import { ReactComponent as TSIcon } from "../assets/images/icons/typescript.svg";
 import { ReactComponent as VSCIcon } from "../assets/images/icons/vscode.svg";
 import {
-  CursorPointerSwitch,
-  ParagraphColorSwitch,
+  ParagraphSwitch,
+  PointerSwitch,
   SecondaryParagraph,
-  TertiaryColorSwitch,
+  TertiarySwitch,
 } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
@@ -74,31 +74,31 @@ const StyledImg = styled.img`
 `;
 const StyledLink = styled.a`
   text-decoration: none;
-  cursor: ${CursorPointerSwitch};
+  cursor: ${PointerSwitch};
   &:link,
   &:hover,
   &:active,
   &:visited {
-    color: ${ParagraphColorSwitch};
+    color: ${ParagraphSwitch};
   }
   > span {
-    color: ${TertiaryColorSwitch};
+    color: ${TertiarySwitch};
     text-shadow: -1px -1px ${SecondaryParagraph};
   }
 `;
 const StyledH2 = styled.h2`
   margin: 1rem 0 0.5rem;
   font-family: "Black Ops One", sans-serif;
-  color: ${TertiaryColorSwitch};
+  color: ${TertiarySwitch};
   text-shadow: -1px -1px ${SecondaryParagraph};
   ${StyledLink} {
-    color: ${TertiaryColorSwitch};
+    color: ${TertiarySwitch};
     text-shadow: -1px -1px ${SecondaryParagraph};
   }
 `;
 const StyledP = styled.p`
   margin-bottom: 1rem;
-  color: ${ParagraphColorSwitch};
+  color: ${ParagraphSwitch};
   line-height: 1.5;
   @media (min-width: 750px) {
     max-width: 800px;
@@ -110,7 +110,7 @@ const StyledList = styled.ul`
 const StyledListItem = styled.li`
   list-style: none;
   line-height: 1.7;
-  color: ${ParagraphColorSwitch};
+  color: ${ParagraphSwitch};
   display: flex;
   align-items: center;
   gap: 0.3rem;
@@ -119,13 +119,13 @@ const StyledListItem = styled.li`
 const Icon = styled(FontAwesomeIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${TertiaryColorSwitch};
+  background-color: ${TertiarySwitch};
   color: ${SecondaryParagraph};
 `;
 const StyledRRIcon = styled(RRIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${TertiaryColorSwitch};
+  background-color: ${TertiarySwitch};
   & > g > path {
     fill: ${SecondaryParagraph};
   }
@@ -133,7 +133,7 @@ const StyledRRIcon = styled(RRIcon)`
 const StyledSCIcon = styled(SCIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${TertiaryColorSwitch};
+  background-color: ${TertiarySwitch};
   & > path {
     fill: ${SecondaryParagraph};
   }
@@ -145,7 +145,7 @@ const StyledJestIcon = styled(JestIcon)`
     fill: ${SecondaryParagraph};
   }
   & > g > path:last-child {
-    fill: ${TertiaryColorSwitch};
+    fill: ${TertiarySwitch};
   }
 `;
 const StyledTSIcon = styled(TSIcon)`
@@ -155,19 +155,19 @@ const StyledTSIcon = styled(TSIcon)`
     fill: ${SecondaryParagraph};
   }
   & > path {
-    fill: ${TertiaryColorSwitch};
+    fill: ${TertiarySwitch};
   }
 `;
 const StyledNextIcon = styled(NextIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${TertiaryColorSwitch};
+  background-color: ${TertiarySwitch};
   fill: ${SecondaryParagraph};
 `;
 const StyledVSCIcon = styled(VSCIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${TertiaryColorSwitch};
+  background-color: ${TertiarySwitch};
   & > path {
     fill: ${SecondaryParagraph};
   }
@@ -175,13 +175,13 @@ const StyledVSCIcon = styled(VSCIcon)`
 const StyledFBIcon = styled(FBIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${TertiaryColorSwitch};
+  background-color: ${TertiarySwitch};
   fill: ${SecondaryParagraph};
 `;
 const StyledRTLIcon = styled(RTLIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${TertiaryColorSwitch};
+  background-color: ${TertiarySwitch};
   & > path {
     fill: ${SecondaryParagraph};
   }
@@ -189,7 +189,7 @@ const StyledRTLIcon = styled(RTLIcon)`
 const StyledReduxIcon = styled(ReduxIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${TertiaryColorSwitch};
+  background-color: ${TertiarySwitch};
   & > path {
     fill: ${SecondaryParagraph};
   }

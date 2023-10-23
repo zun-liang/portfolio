@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import LoadingImage from "../assets/images/favicon/dark/apple-touch-icon.png";
 import LoadingImageLight from "../assets/images/favicon/light/apple-touch-icon.png";
-import { BackgroundSwitch, BasicButton, CursorAutoSwitch, OpaqueSwitch, PrimaryColorSwitch, PrimarySecondary } from "../assets/styles/Styles.jsx";
+import { AutoSwitch, BasicButton, BGSwitch, OpaqueSwitch, PrimarySecondary, PrimarySwitch } from "../assets/styles/Styles.jsx";
 import { ModeContext } from "../contexts/ModeContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import GlobalStyles from "../GlobalStyles";
@@ -13,8 +13,8 @@ import GlobalStyles from "../GlobalStyles";
 const LoadingContainer = styled.div`
   width: 100%;
   height: var(--app-height);
-  cursor: ${CursorAutoSwitch};
-  background: ${BackgroundSwitch};
+  cursor: ${AutoSwitch};
+  background: ${BGSwitch};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -61,7 +61,7 @@ const StyledDiv = styled.div`
 const StyledButton = styled(BasicButton)`
   padding: 0.5rem 1rem;
   border-radius: 1rem;
-  border: 1px solid ${PrimaryColorSwitch};
+  border: 1px solid ${PrimarySwitch};
   &:hover,
   &:active,
   &:focus {

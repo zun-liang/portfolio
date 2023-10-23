@@ -8,17 +8,17 @@ import styled from "styled-components";
 
 import {
   BasicLink,
-  ParagraphColorSwitch,
-  TextShadowSwitch,
+  ParagraphSwitch,
+  SecondaryTertiary,
 } from "../assets/styles/Styles";
 import {
   BasicButton,
-  HoverColorSwitch,
+  HoverSwitch,
   OpacitySwitch,
   OutlineSwitch,
-  PrimaryColorSwitch,
+  PrimarySwitch,
   PrimaryTertiary,
-  SecondaryColorSwitch,
+  SecondarySwitch,
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
@@ -36,26 +36,26 @@ const StyledH2 = styled.h2`
   text-align: center;
   font-family: "Black Ops One", sans-serif;
   font-size: 1.8rem;
-  color: ${ParagraphColorSwitch};
-  text-shadow: ${TextShadowSwitch};
+  color: ${ParagraphSwitch};
+  text-shadow: 1px 1px ${SecondaryTertiary};
 `;
 const StyledLink = styled(BasicLink)`
   padding: 0.5rem;
-  border: 2px dashed ${ParagraphColorSwitch};
+  border: 2px dashed ${ParagraphSwitch};
   border-radius: 10px;
   &:link,
   &:visited {
-    color: ${ParagraphColorSwitch};
+    color: ${ParagraphSwitch};
   }
   &:hover,
   &:active {
-    color: ${ParagraphColorSwitch};
-    background-color: ${HoverColorSwitch};
+    color: ${ParagraphSwitch};
+    background-color: ${HoverSwitch};
   }
 `;
 const LoginPage = styled(Form)`
   width: 80vw;
-  border: 5px ridge ${SecondaryColorSwitch};
+  border: 5px ridge ${SecondarySwitch};
   background-color: ${OpacitySwitch};
   border-radius: 5px;
   padding: 2rem;
@@ -77,7 +77,7 @@ const LoginPage = styled(Form)`
 const StyledLabel = styled.label`
   font-family: "Black Ops One", sans-serif;
   font-size: 1rem;
-  color: ${PrimaryColorSwitch};
+  color: ${PrimarySwitch};
   text-align: left;
 `;
 const StyledInput = styled.input`
@@ -101,7 +101,7 @@ const StyledInput = styled.input`
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
     box-shadow: 0 0 0 1000px white inset;
-    -webkit-text-fill-color: ${PrimaryColorSwitch};
+    -webkit-text-fill-color: ${PrimarySwitch};
   }
 `;
 const StyledP = styled.p`
@@ -112,11 +112,11 @@ const StyledButton = styled(BasicButton)`
   justify-self: center;
   width: 100%;
   height: 2rem;
-  border: 2px solid ${PrimaryColorSwitch};
+  border: 2px solid ${PrimarySwitch};
   background-color: ${TertiarySecondary};
   &:hover,
   &:active {
-    background-color: ${HoverColorSwitch};
+    background-color: ${HoverSwitch};
   }
 `;
 

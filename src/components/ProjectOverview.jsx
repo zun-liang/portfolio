@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import {
-  CursorPointerSwitch,
   OpaqueSwitch,
-  PrimaryColorSwitch,
+  PointerSwitch,
+  PrimarySwitch,
   PrimaryTertiary,
   SecondaryHover,
   TertiaryParagraph,
@@ -15,13 +15,13 @@ import { ModeContext } from "../contexts/ModeContext";
 
 const ProjectLink = styled(Link)`
   width: 100%;
-  cursor: ${CursorPointerSwitch};
+  cursor: ${PointerSwitch};
   text-decoration: none;
   &:link,
   &:hover,
   &:active,
   &:visited {
-    color: ${PrimaryColorSwitch};
+    color: ${PrimarySwitch};
   }
   @media (min-width: 600px) {
     width: 300px;

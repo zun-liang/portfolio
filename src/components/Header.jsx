@@ -7,7 +7,7 @@ import useSound from "use-sound";
 import Off from "..//assets/sounds/off.mp3";
 import On from "..//assets/sounds/on.mp3";
 import Key from "../assets/sounds/key.mp3";
-import { CursorAutoSwitch, CursorPointerSwitch, PrimaryColorSwitch, SecondaryColorSwitch, SecondaryPrimary, TertiarySecondary } from "../assets/styles/Styles";
+import { AutoSwitch, PointerSwitch, PrimarySwitch, SecondaryPrimary, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 import { SoundContext } from "../contexts/SoundContext";
 import Menu from "./Menu";
@@ -37,8 +37,8 @@ const Title = styled.p`
   margin-right: 0.5rem;
   font-family: "Black Ops One", sans-serif;
   font-size: 1.5rem;
-  color: ${PrimaryColorSwitch};
-  text-shadow: -2px -2px ${SecondaryColorSwitch};
+  color: ${PrimarySwitch};
+  text-shadow: -2px -2px ${SecondarySwitch};
   @media (min-width: 750px) {
     font-size: 1.9rem;
   }
@@ -48,10 +48,10 @@ const Title = styled.p`
   }
 `;
 const SubTitle = styled.span`
-  cursor: ${CursorPointerSwitch};
+  cursor: ${PointerSwitch};
   font-size: 1.5rem;
-  color: ${SecondaryColorSwitch};
-  text-shadow: 1px 1px ${PrimaryColorSwitch};
+  color: ${SecondarySwitch};
+  text-shadow: 1px 1px ${PrimarySwitch};
   > span {
     font-family: "Lobster", sans-serif;
     font-size: 1rem;
@@ -60,7 +60,7 @@ const SubTitle = styled.span`
     }
   }
   @media (min-width: 750px) {
-    cursor: ${CursorAutoSwitch};
+    cursor: ${AutoSwitch};
   }
 `;
 const SubTitleBlink = styled(SubTitle)`
@@ -101,8 +101,8 @@ const Weather = styled.p`
 `;
 const ModeSwitch = styled.p`
   font-size: 1.5rem;
-  cursor: ${CursorPointerSwitch};
-  text-shadow: 1px 1px ${SecondaryColorSwitch};
+  cursor: ${PointerSwitch};
+  text-shadow: 1px 1px ${SecondarySwitch};
 `;
 
 //kinda want to use loader here to show weather loading...

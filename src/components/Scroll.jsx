@@ -5,7 +5,7 @@ import styled from "styled-components";
 import useSound from "use-sound";
 
 import Sparkle from "../assets/sounds/sparkle.mp3";
-import { CursorPointerSwitch } from "../assets/styles/Styles";
+import { PointerSwitch } from "../assets/styles/Styles";
 import { SoundContext } from "../contexts/SoundContext";
 
 const ScrollButton = styled.button`
@@ -15,7 +15,7 @@ const ScrollButton = styled.button`
   border: none;
   background-color: unset;
   font-size: 3rem;
-  cursor: ${CursorPointerSwitch};
+  cursor: ${PointerSwitch};
   @media (min-width: 375px) {
     right: 1.8rem;
   }

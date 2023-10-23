@@ -4,13 +4,13 @@ import styled from "styled-components";
 
 /* eslint-disable react-refresh/only-export-components */
 import Cloud from "../images/cloud.svg";
-import CursorAutoDark from "../images/cursor/cursor-auto-dark.svg";
-import CursorAutoLight from "../images/cursor/cursor-auto-light.svg";
-import CursorPointerDark from "../images/cursor/cursor-pointer-dark.svg";
-import CursorPointerLight from "../images/cursor/cursor-pointer-light.svg";
+import AutoDark from "../images/cursor/cursor-auto-dark.svg";
+import AutoLight from "../images/cursor/cursor-auto-light.svg";
+import PointerDark from "../images/cursor/cursor-pointer-dark.svg";
+import PointerLight from "../images/cursor/cursor-pointer-light.svg";
 
 // Background setup
-export const BackgroundSwitch = ({ theme }) =>
+export const BGSwitch = ({ theme }) =>
   theme.mode
     ? `url(${Cloud}), var(--light-background)`
     : `linear-gradient(90deg, var(--dark-background) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
@@ -18,22 +18,19 @@ export const BackgroundSwitch = ({ theme }) =>
         var(--dot-color)`;
 
 //Coherent color switch
-export const BackgroundColorSwitch = ({ theme }) =>
-  theme.mode ? "var(--light-background)" : "var(--dark-background)";
-
-export const PrimaryColorSwitch = ({ theme }) =>
+export const PrimarySwitch = ({ theme }) =>
   theme.mode ? "var(--light-primary)" : "var(--dark-primary)";
 
-export const SecondaryColorSwitch = ({ theme }) =>
+export const SecondarySwitch = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "var(--dark-secondary)";
 
-export const TertiaryColorSwitch = ({ theme }) =>
+export const TertiarySwitch = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dark-tertiary)";
 
-export const ParagraphColorSwitch = ({ theme }) =>
+export const ParagraphSwitch = ({ theme }) =>
   theme.mode ? "var(--light-paragraph)" : "var(--dark-paragraph)";
 
-export const HoverColorSwitch = ({ theme }) =>
+export const HoverSwitch = ({ theme }) =>
   theme.mode ? "var(--light-hover)" : "var(--dark-hover)";
 
 //Incoherent color switch
@@ -47,43 +44,31 @@ export const PrimaryTertiary = ({ theme }) =>
   theme.mode ? "var(--light-primary)" : "var(--dark-tertiary)";
 export const SecondaryPrimary = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "var(--dark-primary)";
+export const SecondaryTertiary = ({ theme }) =>
+  theme.mode ? "var(--light-secondary)" : "var(--dark-tertiary)";
 export const SecondaryParagraph = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "var(--dark-paragraph)";
 export const SecondaryHover = ({ theme }) =>
-  theme.mode ? "var(--light-secondary)" : "var(--dark-hover)";
-export const SecondaryTertiary = ({ theme }) =>
-  theme.mode ? "var(--light-secondary)" : "var(--dark-tertiary)";
-export const SecondaryTransparent = ({ theme }) =>
-  theme.mode ? "var(--light-secondary)" : "transparent";
+  theme.mode ? "var(--light-secondary)" : "var(--dark-hover)"; //only once
 export const TertiaryPrimary = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dark-primary)";
 export const TertiarySecondary = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dark-secondary)";
 export const TertiaryParagraph = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dark-paragraph)";
-export const TertiaryHover = ({ theme }) =>
-  theme.mode ? "var(--light-tertiary)" : "var(--dark-hover)";
 export const TertiaryDot = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dot-color)";
-export const HoverPrimary = ({ theme }) =>
-  theme.mode ? "var(--light-hover)" : "var(--dark-primary)";
-export const BackgroundSecondary = ({ theme }) =>
-  theme.mode ? "var(--light-background)" : "var(--dark-secondary)";
 export const OutlineSwitch = ({ theme }) =>
   theme.mode ? "none" : "2px solid var(--dark-secondary)";
-export const TextShadowSwitch = ({ theme }) =>
-  theme.mode ? "1px 1px var(--light-secondary)" : "1px 1px var(--dark-tertiary)";
 
 //Cursor switch
-export const CursorAutoSwitch = ({ theme }) =>
-  theme.mode
-    ? `url(${CursorAutoLight}) 12 12, auto`
-    : `url(${CursorAutoDark}) 12 12, auto`;
+export const AutoSwitch = ({ theme }) =>
+  theme.mode ? `url(${AutoLight}) 12 12, auto` : `url(${AutoDark}) 12 12, auto`;
 
-export const CursorPointerSwitch = ({ theme }) =>
+export const PointerSwitch = ({ theme }) =>
   theme.mode
-    ? `url(${CursorPointerLight}) 12 12, pointer`
-    : `url(${CursorPointerDark}) 12 12, pointer`;
+    ? `url(${PointerLight}) 12 12, pointer`
+    : `url(${PointerDark}) 12 12, pointer`;
 
 //Shared styles
 export const BasicButton = styled.button`
@@ -91,15 +76,15 @@ export const BasicButton = styled.button`
   border-radius: 5px;
   border: none;
   background-color: unset;
-  cursor: ${CursorPointerSwitch};
-  color: ${PrimaryColorSwitch};
+  cursor: ${PointerSwitch};
+  color: ${PrimarySwitch};
   font-family: "Black Ops One", sans-serif;
   font-size: 1rem;
 `;
 
 export const BasicLink = styled(Link)`
   text-decoration: none;
-  cursor: ${CursorPointerSwitch};
+  cursor: ${PointerSwitch};
   font-family: "Black Ops One", sans-serif;
   font-size: 1rem;
 `;
@@ -111,68 +96,68 @@ const StyledH1 = styled.h1`
   text-shadow: 1px 1px ${SecondaryParagraph};
 `;
 const StyledH2 = styled.h2`
-  color: ${TertiaryColorSwitch};
+  color: ${TertiarySwitch};
   text-shadow: 1px 1px ${SecondaryParagraph};
   font-family: "Black Ops One", sans-serif;
 `;
 const StyledH3 = styled.h3`
-  color: ${TertiaryColorSwitch};
+  color: ${TertiarySwitch};
   text-shadow: 1px 1px ${SecondaryParagraph};
   font-family: "Black Ops One", sans-serif;
 `;
 const StyledH4 = styled.h4`
-  color: ${TertiaryColorSwitch};
+  color: ${TertiarySwitch};
   font-family: "Black Ops One", sans-serif;
 `;
 const StyledH5 = styled.h5`
-  color: ${TertiaryColorSwitch};
+  color: ${TertiarySwitch};
   font-family: "Black Ops One", sans-serif;
 `;
 const StyledP = styled.p`
-  color: ${ParagraphColorSwitch};
+  color: ${ParagraphSwitch};
   line-height: 1.5;
   & > a {
     text-underline-offset: 2px;
-    cursor: ${CursorPointerSwitch};
+    cursor: ${PointerSwitch};
     &:link,
     &:hover,
     &:active,
     &:visited {
-      color: ${ParagraphColorSwitch};
+      color: ${ParagraphSwitch};
     }
   }
 `;
 const StyledList = styled.ul`
   & > li > ul > li {
     margin-left: 1rem;
-    color: ${ParagraphColorSwitch};
+    color: ${ParagraphSwitch};
     line-height: 1.5;
   }
   & > li {
     margin-left: 2rem;
-    color: ${ParagraphColorSwitch};
+    color: ${ParagraphSwitch};
     line-height: 1.6;
   }
   & > li > a,
   & > li > ul > li > a {
     text-underline-offset: 2px;
-    cursor: ${CursorPointerSwitch};
+    cursor: ${PointerSwitch};
     &:link,
     &:hover,
     &:active,
     &:visited {
-      color: ${ParagraphColorSwitch};
+      color: ${ParagraphSwitch};
     }
   }
 `;
 const StyledLink = styled.a`
   text-underline-offset: 2px;
-  cursor: ${CursorPointerSwitch};
+  cursor: ${PointerSwitch};
   &:link,
   &:hover,
   &:active,
   &:visited {
-    color: ${ParagraphColorSwitch};
+    color: ${ParagraphSwitch};
   }
 `;
 const StyledImg = styled.img``;
@@ -181,47 +166,32 @@ export const createMarkdownOptions = () => {
   return {
     replace: (domNode) => {
       if (domNode.type === "tag" && domNode.name === "h1") {
-        return (
-          <StyledH1 >{domToReact(domNode.children)}</StyledH1>
-        );
+        return <StyledH1>{domToReact(domNode.children)}</StyledH1>;
       }
       if (domNode.type === "tag" && domNode.name === "h2") {
-        return (
-          <StyledH2 >{domToReact(domNode.children)}</StyledH2>
-        );
+        return <StyledH2>{domToReact(domNode.children)}</StyledH2>;
       }
       if (domNode.type === "tag" && domNode.name === "h3") {
-        return (
-          <StyledH3 >{domToReact(domNode.children)}</StyledH3>
-        );
+        return <StyledH3>{domToReact(domNode.children)}</StyledH3>;
       }
       if (domNode.type === "tag" && domNode.name === "h4") {
-        return (
-          <StyledH4 >{domToReact(domNode.children)}</StyledH4>
-        );
+        return <StyledH4>{domToReact(domNode.children)}</StyledH4>;
       }
       if (domNode.type === "tag" && domNode.name === "h5") {
-        return (
-          <StyledH5 >{domToReact(domNode.children)}</StyledH5>
-        );
+        return <StyledH5>{domToReact(domNode.children)}</StyledH5>;
       }
       if (domNode.type === "tag" && domNode.name === "p") {
-        return <StyledP >{domToReact(domNode.children)}</StyledP>;
+        return <StyledP>{domToReact(domNode.children)}</StyledP>;
       }
       if (domNode.type === "tag" && domNode.name === "ul") {
-        return (
-          <StyledList >{domToReact(domNode.children)}</StyledList>
-        );
+        return <StyledList>{domToReact(domNode.children)}</StyledList>;
       }
       if (domNode.type === "tag" && domNode.name === "a") {
-        return (
-          <StyledLink >{domToReact(domNode.children)}</StyledLink>
-        );
+        return <StyledLink>{domToReact(domNode.children)}</StyledLink>;
       }
       if (domNode.type === "tag" && domNode.name === "img") {
         return (
           <StyledImg
-            
             src={domNode.attribs.src}
             alt={domNode.attribs.alt}
             width={domNode.attribs.width}

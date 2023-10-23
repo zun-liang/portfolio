@@ -8,17 +8,7 @@ import useSound from "use-sound";
 import SpeechBubble from "../assets/images/hi.png";
 import Profile from "../assets/images/profile.png";
 import Swoosh from "../assets/sounds/swoosh.mp3";
-import {
-  BasicButton,
-  CursorAutoSwitch,
-  HoverColorSwitch,
-  OpacitySwitch,
-  OutlineSwitch,
-  PrimaryColorSwitch,
-  PrimaryTertiary,
-  SecondaryColorSwitch,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { AutoSwitch, BasicButton, HoverSwitch, OpacitySwitch, OutlineSwitch, PrimarySwitch, PrimaryTertiary, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
 import { SoundContext } from "../contexts/SoundContext";
 
 const StyledDiv = styled.div`
@@ -36,9 +26,9 @@ const StyledForm = styled.form`
   margin: 0.5rem 0 1rem;
   padding: 2rem;
   border-radius: 5px;
-  border: 5px ridge ${PrimaryColorSwitch};
+  border: 5px ridge ${PrimarySwitch};
   background-color: ${OpacitySwitch};
-  cursor: ${CursorAutoSwitch};
+  cursor: ${AutoSwitch};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -81,7 +71,7 @@ const StyledP = styled.p`
   text-align: left;
   font-family: "Black Ops One", sans-serif;
   font-size: 1.5rem;
-  text-shadow: 1px 1px ${SecondaryColorSwitch};
+  text-shadow: 1px 1px ${SecondarySwitch};
   @media (min-width: 750px) {
     font-size: 2rem;
   }
@@ -89,8 +79,8 @@ const StyledP = styled.p`
 const StyledH2 = styled.h2`
   font-family: "Black Ops One", sans-serif;
   font-size: 1.25rem;
-  color: ${PrimaryColorSwitch};
-  text-shadow: 1px 1px ${SecondaryColorSwitch};
+  color: ${PrimarySwitch};
+  text-shadow: 1px 1px ${SecondarySwitch};
   @media (min-width: 750px) {
     font-size: 1.4rem;
   }
@@ -121,7 +111,7 @@ const StyledLabel = styled.label`
   width: 100%;
   text-align: left;
   font-family: "Black Ops One", sans-serif;
-  color: ${PrimaryColorSwitch};
+  color: ${PrimarySwitch};
 `;
 const StyledInput = styled.input`
   width: 100%;
@@ -149,7 +139,7 @@ const StyledInput = styled.input`
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
     box-shadow: 0 0 0 1000px white inset;
-    -webkit-text-fill-color: ${PrimaryColorSwitch};
+    -webkit-text-fill-color: ${PrimarySwitch};
   }
   @media (min-width: 750px) {
     height: 2.5rem;
@@ -184,18 +174,18 @@ const StyledTextarea = styled.textarea`
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
     box-shadow: 0 0 0 1000px white inset;
-    -webkit-text-fill-color: ${PrimaryColorSwitch};
+    -webkit-text-fill-color: ${PrimarySwitch};
   }
 `;
 const StyledButton = styled(BasicButton)`
   width: 100%;
   height: 2.5rem;
-  border: 2px solid ${PrimaryColorSwitch};
+  border: 2px solid ${PrimarySwitch};
   background-color: ${TertiarySecondary};
   &:hover,
   &:active,
   &:focus {
-    background-color: ${HoverColorSwitch};
+    background-color: ${HoverSwitch};
   }
 `;
 

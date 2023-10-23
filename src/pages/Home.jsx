@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import SpeechBubble from "../assets/images/hey-i-am.gif";
 import Profile from "../assets/images/profile.png";
-import { SecondaryColorSwitch } from "../assets/styles/Styles.jsx";
+import { SecondarySwitch } from "../assets/styles/Styles.jsx";
 
 const HomeContainer = styled.div`
   width: 70%;
@@ -41,7 +41,7 @@ const StyledH1 = styled.h1`
   text-align: center;
   font-family: "Black Ops One", sans-serif;
   font-size: 5rem;
-  text-shadow: 5px 5px ${SecondaryColorSwitch};
+  text-shadow: 5px 5px ${SecondarySwitch};
   @media (min-width: 750px) {
     font-size: 6.5rem;
   }
@@ -51,7 +51,7 @@ const StyledH2 = styled.h2`
   text-align: right;
   font-size: 1.6rem;
   font-weight: ${({ theme }) => (theme.mode ? "900" : "700")};
-  color: ${SecondaryColorSwitch};
+  color: ${SecondarySwitch};
   -webkit-text-stroke: ${({ theme }) =>
     theme.mode ? "1px var(--light-tertiary)" : ""};
   text-shadow: ${({ theme }) =>

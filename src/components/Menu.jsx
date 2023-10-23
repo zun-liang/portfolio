@@ -4,10 +4,10 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 import {
-  BackgroundSwitch,
-  CursorPointerSwitch,
-  PrimaryColorSwitch,
+  BGSwitch,
+  PointerSwitch,
   PrimarySecondary,
+  PrimarySwitch,
   SecondaryPrimary,
 } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
@@ -37,7 +37,7 @@ const StyledNav = styled.nav`
   width: 300px;
   height: 400px;
   border-radius: 14px;
-  background: ${BackgroundSwitch};
+  background: ${BGSwitch};
   position: absolute;
   top: 50%;
   left: 50%;
@@ -70,7 +70,7 @@ const StyledListItem = styled.li`
   list-style: none;
   font-family: "Black Ops One", sans-serif;
   font-size: 21px;
-  color: ${PrimaryColorSwitch};
+  color: ${PrimarySwitch};
   @media (min-width: 1024px) {
     font-size: 1.3rem;
   }
@@ -81,7 +81,7 @@ const MenuBorder = styled.li`
   font-size: 20px;
   font-family: "Roboto", sans-serif;
   font-weight: 900;
-  color: ${PrimaryColorSwitch};
+  color: ${PrimarySwitch};
   @media (min-width: 1024px) {
     display: none;
   }
@@ -104,7 +104,7 @@ const StyledLink = styled(NavLink)`
     color: ${PrimarySecondary};
     text-shadow: 1px 1px ${SecondaryPrimary};
   }
-  cursor: ${CursorPointerSwitch};
+  cursor: ${PointerSwitch};
 `;
 
 const Menu = ({ menu, setMenu, playKey }) => {

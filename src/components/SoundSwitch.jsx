@@ -6,13 +6,17 @@ import useSound from "use-sound";
 import { ReactComponent as EarSlash } from "../assets/images/ear-slash.svg";
 import { ReactComponent as Ear } from "../assets/images/ear.svg";
 import Interface from "../assets/sounds/interface.mp3";
-import { CursorPointerSwitch, PrimarySecondary, TertiaryDot } from "../assets/styles/Styles";
+import {
+  PointerSwitch,
+  PrimarySecondary,
+  TertiaryDot,
+} from "../assets/styles/Styles";
 import { SoundContext } from "../contexts/SoundContext";
 
 const Container = styled.div`
   width: 1.2rem;
   height: 1.2rem;
-  cursor: ${CursorPointerSwitch};
+  cursor: ${PointerSwitch};s
 `;
 const StyledEar = styled(Ear)`
   width: 1.2rem;
@@ -42,11 +46,11 @@ const SoundSwitch = () => {
     playInterface();
   };
   return (
-    <Container >
+    <Container>
       {sound ? (
-        <StyledEarSlash  onClick={toggleSound} />
+        <StyledEarSlash onClick={toggleSound} />
       ) : (
-        <StyledEar  onClick={toggleSound} />
+        <StyledEar onClick={toggleSound} />
       )}
     </Container>
   );

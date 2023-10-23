@@ -13,12 +13,12 @@ import styled from "styled-components";
 import {
   BasicButton,
   BasicLink,
-  CursorPointerSwitch,
+  PointerSwitch,
   PrimaryTertiary,
   SecondaryParagraph,
   SecondaryPrimary,
-  TertiaryColorSwitch,
   TertiarySecondary,
+  TertiarySwitch,
 } from "../assets/styles/Styles";
 import BlogOverview from "../components/BlogOverview";
 import { AuthContext } from "../contexts/AuthContext";
@@ -41,7 +41,7 @@ const BlogsContainer = styled.div`
 `;
 const BlogLink = styled(Link)`
   text-decoration: none;
-  cursor: ${CursorPointerSwitch};
+  cursor: ${PointerSwitch};
 `;
 const BlogContainer = styled.div`
   display: flex;
@@ -72,7 +72,7 @@ const Filter = styled(BasicButton)`
 const Time = styled.p`
   font-size: 0.8rem;
   font-weight: 500;
-  color: ${TertiaryColorSwitch};
+  color: ${TertiarySwitch};
 `;
 const StyledH2 = styled.h2`
   display: inline;

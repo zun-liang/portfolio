@@ -254,15 +254,15 @@ I was having trouble deciding what colors look good for my website.
 
 ## References
 
-- Dark mode colors are inspired by @hidie6136 from [Xiaohongshu](https://www.xiaohongshu.com/explore), [ピノキオピー](https://pinocchiop.com/) and [Material Design Dark Theme](https://m2.material.io/design/color/dark-theme.html)
+- Dark mode colors are inspired by @hidie6136 from [小红书](https://www.xiaohongshu.com/explore), [ピノキオピー](https://pinocchiop.com/) and [Material Design Dark Theme](https://m2.material.io/design/color/dark-theme.html)
 - Dark mode grid background is inspired by [Edmundo Santos CodePen](https://codepen.io/edmundojr/pen/xOYJGw)
 - Svgs are from [Font Awesome](https://fontawesome.com/), [SVG REPO](https://www.svgrepo.com/), and [Font Awesome Icons](https://fontawesomeicons.com/)
-- Favicons are from [favicon.io](https://favicon.io/favicon-generator/)
+- Favicons are created using [favicon.io](https://favicon.io/favicon-generator/)
 - Emojis are from [COOLTEXT](https://cooltext.top/) and [Emoji Combos](https://emojicombos.com/)
 - Profile picture is made by [Pixel Me](https://pixel-me.tokyo/en/)
-- Speech bubbles are from [Pixel Speech Bubble](https://pixelspeechbubble.com/)
-- Sorry bear picture is from [いらすとや](https://www.irasutoya.com/)
-- Sound sources are from [Pixabay](https://pixabay.com/) and edited by [AudioMass](https://audiomass.co/)
+- Speech bubbles are made by [Pixel Speech Bubble](https://pixelspeechbubble.com/)
+- Kuma picture is from [いらすとや](https://www.irasutoya.com/)
+- Sound effects are from [Pixabay](https://pixabay.com/) and edited by [AudioMass](https://audiomass.co/)
 
 ## Author
 

@@ -7,7 +7,7 @@ import { SoundContextProvider } from "./contexts/SoundContext.jsx";
 
 const ThemeWrapper = () => {
   const { mode } = useContext(ModeContext);
-  const theme = { mode: mode};
+  const theme = { mode: mode };
 
   return (
     <ThemeProvider theme={theme}>

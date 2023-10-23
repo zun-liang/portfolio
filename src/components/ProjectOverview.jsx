@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
@@ -11,6 +11,7 @@ import {
   SecondaryHover,
   TertiaryParagraph,
 } from "../assets/styles/Styles";
+import { ModeContext } from "../contexts/ModeContext";
 
 const ProjectLink = styled(Link)`
   width: 100%;
@@ -71,7 +72,8 @@ const StyledImg = styled.img`
   object-position: top center;
 `;
 
-const ProjectOverview = ({ projectsArr, theme, playPageTurn }) => {
+const ProjectOverview = ({ projectsArr, playPageTurn }) => {
+  const { mode } = useContext(ModeContext);
   useEffect(() => {
     document.title = "Project ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
   }, []);
@@ -79,7 +81,7 @@ const ProjectOverview = ({ projectsArr, theme, playPageTurn }) => {
     <ProjectLink to={project.id} key={project.id} onClick={playPageTurn}>
       <ProjectOverviewContainer>
         <StyledImg
-          src={theme ? project.srcLight : project.srcDark}
+          src={mode ? project.srcLight : project.srcDark}
           alt="project preview"
         />
         <StyledH2>{project.name}</StyledH2>

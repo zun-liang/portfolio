@@ -5,14 +5,8 @@ import styled from "styled-components";
 
 import LoadingImage from "../assets/images/favicon/dark/apple-touch-icon.png";
 import LoadingImageLight from "../assets/images/favicon/light/apple-touch-icon.png";
-import {
-  BackgroundSwitch,
-  BasicButton,
-  CursorAutoSwitch,
-  OpaqueSwitch,
-  PrimaryColorSwitch,
-  PrimarySecondary,
-} from "../assets/styles/Styles.jsx";
+import { BackgroundSwitch, BasicButton, CursorAutoSwitch, OpaqueSwitch, PrimaryColorSwitch, PrimarySecondary } from "../assets/styles/Styles.jsx";
+import { ModeContext } from "../contexts/ModeContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import GlobalStyles from "../GlobalStyles";
 
@@ -85,7 +79,8 @@ const PassButton = styled(StyledButton)`
   }
 `;
 
-const Loading = ({ theme, setLoading, today }) => {
+const Loading = ({ setLoading, today }) => {
+  const {mode} = useContext(ModeContext);
   const playPick = useContext(PlayPickContext);
   const handleClick = () => {
     setTimeout(() => setLoading(false), 1000);
@@ -97,7 +92,7 @@ const Loading = ({ theme, setLoading, today }) => {
       <GlobalStyles />
       <LoadingContainer>
         <StyledLoadingImage
-          src={theme ? LoadingImageLight : LoadingImage}
+          src={mode ? LoadingImageLight : LoadingImage}
           alt="loading image"
         />
         <StyledP>How are you feeling today?</StyledP>

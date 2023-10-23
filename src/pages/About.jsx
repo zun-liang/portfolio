@@ -30,6 +30,7 @@ import {
   SecondaryParagraph,
   TertiaryColorSwitch,
 } from "../assets/styles/Styles";
+import { ModeContext } from "../contexts/ModeContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 
 const AboutContainer = styled.div`
@@ -194,7 +195,8 @@ const StyledReduxIcon = styled(ReduxIcon)`
   }
 `;
 
-const About = ({ theme }) => {
+const About = () => {
+  const { mode } = useContext(ModeContext);
   const playPick = useContext(PlayPickContext);
   useEffect(() => {
     document.title = "About Me ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
@@ -204,7 +206,7 @@ const About = ({ theme }) => {
       <Section>
         <StyledDiv>
           <StyledH2>Journey</StyledH2>
-          <StyledImg src={theme ? LogoLight : Logo} alt="decoration logo" />
+          <StyledImg src={mode ? LogoLight : Logo} alt="decoration logo" />
         </StyledDiv>
         <StyledP>
           There are always charming programmers 👨🏻‍💻👩🏻‍💻 portrayed in TV shows and

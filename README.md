@@ -1,6 +1,12 @@
+# Portfolio
+
+## Introduction
+
+In this website,
+
 ### Why this?
 
-I am always longing for my own website and I haven't ready for it until I learned React router because I personally prefer traditional multiple page website in this case. This website a great project for me to pratice my React and React router skills as well.
+I am always longing for my own website and I haven't felt ready for it until I learned React router because I personally prefer traditional multiple pages website in this case. This website a great project for me to pratice my React and React router skills as well.
 
 ### Helpful Resources
 
@@ -53,6 +59,8 @@ I was having trouble deciding what colors look good for my website.
 
 - [use-sound](https://github.com/joshwcomeau/use-sound)
 - [Announcing “use-sound”, a React Hook for Sound Effects](https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/)
+- [useContext](https://react.dev/reference/react/useContext)
+  this is the very first time I used useContext in my project. At first, I keep having bugs of context undefined because I misunderstood that there is no need to import context in the components which need to use it. Second, I didn't realize that i can wrap the main.jsx with context provider as well. My App.jsx needs to use a coupld of context, but I kept importing context while it is aslo wrapped by the same context provider which of course didn't work. I figured these bugs out by googling and reading react documentary.
 
 #### React Router
 
@@ -68,7 +76,7 @@ I was having trouble deciding what colors look good for my website.
 
 - [Referring to other components](https://styled-components.com/docs/advanced#referring-to-other-components)
 - [Theming](https://styled-components.com/docs/advanced#theming)
-  tried to switch to themeprovider but it breaks code a lot, will try in the next project.
+  I used this with useContext to control theme color based on light or dark mode. As I mentioned above, once I figured out how to use context in my project and how to set up providers. Theming worked. But there is one main differece between theming and react context, theming only accepts object as value (which has to be named "theme") while react context accepts all types of values. Apparently, react context is more flexible, but I chose to use theming exspeacially in this project is to avoid mannully passing props to styled components, for example, <StyledH1 ${theme}={theme}>H1</StyledH1>. If I didn't use theming, I have to pass props to every single styled components in my whole project, which will be tons of work. Acutually, I added ${theme}={theme} mannually but it turns out to be a lot of work, then I found this advanced using of styled-components, totally made my day!
 
 #### SVGs
 

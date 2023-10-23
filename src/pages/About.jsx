@@ -25,9 +25,11 @@ import { ReactComponent as RTLIcon } from "../assets/images/icons/testing-librar
 import { ReactComponent as TSIcon } from "../assets/images/icons/typescript.svg";
 import { ReactComponent as VSCIcon } from "../assets/images/icons/vscode.svg";
 import {
+  BackgroundSwitch,
   ParagraphSwitch,
   PointerSwitch,
   SecondaryParagraph,
+  TertiaryPrimary,
   TertiarySwitch,
 } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
@@ -119,79 +121,71 @@ const StyledListItem = styled.li`
 const Icon = styled(FontAwesomeIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${TertiarySwitch};
-  color: ${SecondaryParagraph};
+  color: ${TertiaryPrimary};
 `;
 const StyledRRIcon = styled(RRIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${TertiarySwitch};
   & > g > path {
-    fill: ${SecondaryParagraph};
+    fill: ${TertiaryPrimary};
   }
 `;
 const StyledSCIcon = styled(SCIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${TertiarySwitch};
   & > path {
-    fill: ${SecondaryParagraph};
+    fill: ${TertiaryPrimary};
   }
 `;
 const StyledJestIcon = styled(JestIcon)`
   width: 1rem;
   height: 1rem;
   & > g > path:first-child {
-    fill: ${SecondaryParagraph};
+    fill: transparent;
   }
   & > g > path:last-child {
-    fill: ${TertiarySwitch};
+    fill: ${TertiaryPrimary};
   }
 `;
 const StyledTSIcon = styled(TSIcon)`
   width: 1rem;
   height: 1rem;
   & > rect {
-    fill: ${SecondaryParagraph};
+    fill: ${TertiaryPrimary};
   }
   & > path {
-    fill: ${TertiarySwitch};
+    fill: ${BackgroundSwitch};
   }
 `;
 const StyledNextIcon = styled(NextIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${TertiarySwitch};
-  fill: ${SecondaryParagraph};
+  fill: ${TertiaryPrimary};
 `;
 const StyledVSCIcon = styled(VSCIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${TertiarySwitch};
   & > path {
-    fill: ${SecondaryParagraph};
+    fill: ${TertiaryPrimary};
   }
 `;
 const StyledFBIcon = styled(FBIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${TertiarySwitch};
-  fill: ${SecondaryParagraph};
+  fill: ${TertiaryPrimary};
 `;
 const StyledRTLIcon = styled(RTLIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${TertiarySwitch};
   & > path {
-    fill: ${SecondaryParagraph};
+    fill: ${TertiaryPrimary};
   }
 `;
 const StyledReduxIcon = styled(ReduxIcon)`
   width: 1rem;
   height: 1rem;
-  background-color: ${TertiarySwitch};
   & > path {
-    fill: ${SecondaryParagraph};
+    fill: ${TertiaryPrimary};
   }
 `;
 

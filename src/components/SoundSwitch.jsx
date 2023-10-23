@@ -6,17 +6,13 @@ import useSound from "use-sound";
 import { ReactComponent as EarSlash } from "../assets/images/ear-slash.svg";
 import { ReactComponent as Ear } from "../assets/images/ear.svg";
 import Interface from "../assets/sounds/interface.mp3";
-import {
-  PointerSwitch,
-  PrimarySecondary,
-  TertiaryDot,
-} from "../assets/styles/Styles";
+import { PointerSwitch, PrimarySecondary, TertiaryDot } from "../assets/styles/Styles";
 import { SoundContext } from "../contexts/SoundContext";
 
 const Container = styled.div`
   width: 1.2rem;
   height: 1.2rem;
-  cursor: ${PointerSwitch};s
+  cursor: ${PointerSwitch};
 `;
 const StyledEar = styled(Ear)`
   width: 1.2rem;

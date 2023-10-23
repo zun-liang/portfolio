@@ -1,5 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import styled from "styled-components";
 import useSound from "use-sound";
 
@@ -12,7 +17,7 @@ import GlobalStyles from "./GlobalStyles";
 import MainLayout from "./layouts/MainLayout";
 import UtilityLayout from "./layouts/UtilityLayout";
 import About from "./pages/About";
-import AuthRequired from "./pages/AuthRequired";
+import AuthRequired from "./layouts/AuthRequired";
 import Blog, { loader as blogLoader } from "./pages/Blog";
 import Blogs, { loader as blogsLoader } from "./pages/Blogs";
 import Contact from "./pages/Contact";

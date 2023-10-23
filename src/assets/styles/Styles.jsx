@@ -18,18 +18,16 @@ export const BGSwitch = ({ theme }) =>
         var(--dot-color)`;
 
 //Coherent color switch
+export const BackgroundSwitch = ({ theme }) =>
+  theme.mode ? "var(--light-background)" : "var(--dark-background)";
 export const PrimarySwitch = ({ theme }) =>
   theme.mode ? "var(--light-primary)" : "var(--dark-primary)";
-
 export const SecondarySwitch = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "var(--dark-secondary)";
-
 export const TertiarySwitch = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dark-tertiary)";
-
 export const ParagraphSwitch = ({ theme }) =>
   theme.mode ? "var(--light-paragraph)" : "var(--dark-paragraph)";
-
 export const HoverSwitch = ({ theme }) =>
   theme.mode ? "var(--light-hover)" : "var(--dark-hover)";
 

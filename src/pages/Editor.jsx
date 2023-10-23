@@ -127,6 +127,7 @@ const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft }) => {
       await setDoc(doc(db, "blogs", blogId), blogObject);
     }
     navigate("/post");
+    //error handle
   };
   const initialDraft = {
     timestamp: timestamp,
@@ -154,6 +155,7 @@ const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft }) => {
       await setDoc(doc(db, "drafts", "draft"), initialDraft);
     }
     navigate("/post");
+    //handle error
   };
 
   useEffect(() => {

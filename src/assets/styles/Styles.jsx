@@ -87,7 +87,7 @@ export const BasicLink = styled(Link)`
   font-size: 1rem;
 `;
 
-//HTML parse rules
+//HTML parse rules for blog body
 const StyledH1 = styled.h1`
   color: ${PrimaryTertiary};
   font-family: "Black Ops One", sans-serif;
@@ -121,8 +121,15 @@ const StyledP = styled.p`
     &:hover,
     &:active,
     &:visited {
-      color: ${ParagraphSwitch};
+      color: ${({ theme }) =>
+        theme.mode ? "var(--light-highlight)" : "var(--dark-tertiary)"};
     }
+  }
+  & > code {
+    color: ${SecondaryTertiary};
+    background-color: ${({ theme }) =>
+      theme.mode ? "var(--light-tertiary)" : "var(--dark-backgournd)"};
+    padding: 0.2rem;
   }
 `;
 const StyledList = styled.ul`
@@ -164,32 +171,42 @@ export const createMarkdownOptions = () => {
   return {
     replace: (domNode) => {
       if (domNode.type === "tag" && domNode.name === "h1") {
-        return <StyledH1>{domToReact(domNode.children)}</StyledH1>;
+        const id = domNode.attribs.id;
+        return <StyledH1 id={id}>{domToReact(domNode.children)}</StyledH1>;
       }
       if (domNode.type === "tag" && domNode.name === "h2") {
-        return <StyledH2>{domToReact(domNode.children)}</StyledH2>;
+        const id = domNode.attribs.id;
+        return <StyledH2 id={id}>{domToReact(domNode.children)}</StyledH2>;
       }
       if (domNode.type === "tag" && domNode.name === "h3") {
-        return <StyledH3>{domToReact(domNode.children)}</StyledH3>;
+        const id = domNode.attribs.id;
+        return <StyledH3 id={id}>{domToReact(domNode.children)}</StyledH3>;
       }
       if (domNode.type === "tag" && domNode.name === "h4") {
-        return <StyledH4>{domToReact(domNode.children)}</StyledH4>;
+        const id = domNode.attribs.id;
+        return <StyledH4 id={id}>{domToReact(domNode.children)}</StyledH4>;
       }
       if (domNode.type === "tag" && domNode.name === "h5") {
-        return <StyledH5>{domToReact(domNode.children)}</StyledH5>;
+        const id = domNode.attribs.id;
+        return <StyledH5 id={id}>{domToReact(domNode.children)}</StyledH5>;
       }
       if (domNode.type === "tag" && domNode.name === "p") {
-        return <StyledP>{domToReact(domNode.children)}</StyledP>;
+        const id = domNode.attribs.id;
+        return <StyledP id={id}>{domToReact(domNode.children)}</StyledP>;
       }
       if (domNode.type === "tag" && domNode.name === "ul") {
-        return <StyledList>{domToReact(domNode.children)}</StyledList>;
+        const id = domNode.attribs.id;
+        return <StyledList id={id}>{domToReact(domNode.children)}</StyledList>;
       }
       if (domNode.type === "tag" && domNode.name === "a") {
-        return <StyledLink>{domToReact(domNode.children)}</StyledLink>;
+        const id = domNode.attribs.id;
+        return <StyledLink id={id}>{domToReact(domNode.children)}</StyledLink>;
       }
       if (domNode.type === "tag" && domNode.name === "img") {
+        const id = domNode.attribs.id;
         return (
           <StyledImg
+            id={id}
             src={domNode.attribs.src}
             alt={domNode.attribs.alt}
             width={domNode.attribs.width}

@@ -9,7 +9,7 @@ import UserProfile from "../components/UserProfile";
 
 const LayoutContainer = styled.div`
   width: 100vw;
-  min-height: 100vh;
+  height: var(--app-height);
 `;
 const SoundWrapper = styled.div`
   display: flex;

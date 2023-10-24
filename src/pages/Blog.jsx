@@ -71,9 +71,14 @@ const StyledButton = styled(BasicButton)`
   padding: 0;
   color: ${TertiarySecondary};
   text-shadow: 1px 1px ${SecondaryPrimary};
+  position: relative;
+  top: 0;
+  transition: top 0.3s ease-out;
   &:hover,
   &:active,
   &:focus {
+    top: 5px;
+    transition: top 0.3s ease-in;
   }
 `;
 
@@ -107,9 +112,9 @@ const Blog = ({ setBlogToEdit }) => {
   }, []);
   const location = useLocation();
   const search = location.state?.search;
-  console.log(search);
-  const hash = location.hash;
-  console.log(hash);
+  // console.log(search);
+  // const hash = location.hash;
+  // console.log(hash);
 
   const navigate = useNavigate();
   const blogData = useLoaderData();

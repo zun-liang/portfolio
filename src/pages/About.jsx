@@ -206,28 +206,28 @@ const About = () => {
           There are always charming programmers 👨🏻‍💻👩🏻‍💻 portrayed in TV shows and
           movies, but one who truly left a lasting impression on me is Penelope
           Garcia from the series "Criminal Minds." I've always held immense
-          admiration for her intelligence 🧠, professionalism, confidence, 💪
+          admiration for her intelligence 🧠, professionalism, confidence 💪,
           and her bold and vibrant fashion choices.
         </StyledP>
         <StyledP>
           Over the "lost" couple of years of the pandemic, I repeatedly asked
-          myself the same question: What kind of life do I really want? 🤔 I
+          myself the same question: What kind of life do I really want 🤔? I
           have always been fascinated by programming, but I'd never given it a
           shot. I am so tired of living with a life of regrets. I decided it was
-          time to make a change. 🎯 I started my learning journey in 2022, prior
+          time to make a change 🎯. I started my learning journey in 2022, prior
           to this, I had minimal experience with coding, having only dabbled in
           Markdown for blogging.
         </StyledP>
         <StyledP>
           This journey has been a rollercoaster of excitement and frustration.
           Completing challenges and projects brings a profound sense of
-          accomplishment, 🥳 yet being eluded by certain abstract concepts
-          frustrated me as well. 🤯 Nevertheless, I'm proud of my progress. I've
+          accomplishment 🥳, yet being eluded by certain abstract concepts
+          frustrated me as well 🤯. Nevertheless, I'm proud of my progress. I've
           acquired diverse skills, from HTML, CSS, and JavaScript to React and
-          beyond. 🚀💻🌐 This journey has taught me resilience and the value of
+          beyond 🚀💻🌐. This journey has taught me resilience and the value of
           perseverance. I'm excited to keep pushing forward in the field of web
-          development and share my accomplishments and my sense of contentment
-          with everyone along the way. 🤗
+          development and share my accomplishments and contentment with everyone
+          along the way 🤗.
         </StyledP>
       </Section>
       <Section>

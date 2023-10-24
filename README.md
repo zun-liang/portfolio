@@ -84,6 +84,7 @@ Furthermore, I used [Styled-componnets Theming](https://styled-components.com/do
 What's more, I especially utilized React Router v6 data router and its associated functions, including features such as loader, action, and deferred data processing in this project, to enhance the overall user experience and optimize the website's performance. Loaders can make sure fetched data is ready when page loads. Action makes easier to work with forms in React apps. Derferred data makes a better user experience by ...❓
 
 Transfer Markdown to HTML and Parse HTML in React App❓
+Before I decided to transfer Markdown to HTML and parse HTML when displaying on the web page, I was trying to save Markdown in Firestore directly and retrive its data to display. However things didn't go as I expected, Markdown text can not format normally. Then I googled a lot and figured out it may be a better option to save HTML instead which will require using parser of course. But after I used parser, it displayed with styles but not with the css styles I defined for my whole website. Then I decided to customizing the parsing rules by changing all elements to styled componnets. It worked for the most part! But i also spotted that all the anchor links don't work. I examined the data I saved in Firestore and inspected in developer tools, it turned out that the customized parsing rules made all ids missing. Then I fixed it by adding `const id = domNode.attribs.id` and `id={id}`.
 
 ### Links
 
@@ -266,7 +267,7 @@ I was having trouble deciding what colors look good for my website.
 
 ## Author
 
-- Personal Website - [Zun Liang](https://zun-liang.github.io/)
+- Website - [Zun Liang](https://zun-liang.github.io/)
 - Github - [@zun-liang](https://github.com/zun-liang)
 - Frontend Mentor - [@zun-liang](https://www.frontendmentor.io/profile/zun-liang)
 - freeCodeCamp - [@zun-liang](https://www.freecodecamp.org/zun-liang)

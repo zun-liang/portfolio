@@ -8,7 +8,7 @@ import Scroll from "../components/Scroll";
 
 const LayoutContainer = styled.div`
   width: 100vw;
-  min-height: 100vh;
+  height: var(--app-height);
   display: flex;
   flex-direction: column;
   justify-content: space-between;

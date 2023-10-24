@@ -18,17 +18,33 @@ import {
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
+import LogoutButton from "./LogoutButton";
+import MusicPlayer from "./MusicPlayer";
+import SoundSwitch from "./SoundSwitch";
+import UserProfile from "./UserProfile";
 
 const StyledFooter = styled.footer`
   width: 100%;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  @media (min-width: 750px) {
+    padding: 1.5rem 1.5rem 1.8rem;
+  }
   @media (min-width: 1024px) {
-    padding: 1.5rem 2.5rem 2rem;
+    padding: 1.5rem 2.5rem 1.8rem;
   }
   @media (min-width: 1350px) {
-    padding: 1.5rem 4rem 2rem;
+    padding: 1.5rem 4rem 1.8rem;
+  }
+`;
+const Wrapper = styled.div`
+  display: none;
+  @media (min-width: 1024px) {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 3.2rem 0 -3.2rem;
   }
 `;
 const StyledList = styled.ul`
@@ -81,6 +97,12 @@ const Footer = () => {
 
   return (
     <StyledFooter>
+      <Wrapper>
+        <SoundSwitch />
+        <MusicPlayer />
+        <LogoutButton />
+        <UserProfile />
+      </Wrapper>
       <StyledList>
         <StyledListItem>
           <StyledLink

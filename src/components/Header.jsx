@@ -7,26 +7,47 @@ import useSound from "use-sound";
 import Off from "..//assets/sounds/off.mp3";
 import On from "..//assets/sounds/on.mp3";
 import Key from "../assets/sounds/key.mp3";
-import { AutoSwitch, PointerSwitch, PrimarySwitch, SecondaryPrimary, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  AutoSwitch,
+  PointerSwitch,
+  PrimarySwitch,
+  SecondaryPrimary,
+  SecondarySwitch,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 import { SoundContext } from "../contexts/SoundContext";
 import Menu from "./Menu";
 import Time from "./Time";
+import SoundSwitch from "./SoundSwitch";
+import MusicPlayer from "./MusicPlayer";
 
 const StyledHeader = styled.header`
   width: 100%;
-  padding: 1.8rem;
+  padding: 1.5rem 1.8rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   @media (min-width: 750px) {
-    padding: 2.5rem 2.5rem 0;
+    padding: 1.8rem 2.5rem 0;
   }
   @media (min-width: 1024px) {
-    padding: 2.5rem 3rem 0;
+    padding: 2rem 3rem 0;
   }
   @media (min-width: 1350px) {
-    padding: 2.5rem 4rem 0;
+    padding: 2.3rem 4rem 0;
+  }
+`;
+const Wrapper = styled.div`
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  margin-bottom: -1.6rem;
+  @media (min-width: 750px) {
+    margin-top: 0;
+    margin-bottom: -1.4rem;
   }
 `;
 const TitleContainer = styled.div`
@@ -107,7 +128,7 @@ const ModeSwitch = styled.p`
 
 //kinda want to use loader here to show weather loading...
 
-const Header = () => {
+const Header = ({ screenWidth }) => {
   const { mode, setMode } = useContext(ModeContext);
   const { sound } = useContext(SoundContext);
   const [weather, setWeather] = useState("");
@@ -155,6 +176,12 @@ const Header = () => {
   };
   return (
     <StyledHeader>
+      {screenWidth < 1024 && (
+        <Wrapper>
+          <SoundSwitch />
+          <MusicPlayer />
+        </Wrapper>
+      )}
       <TitleContainer>
         <Title>ZUN LIANG</Title>
         <SubTitleBlink> ⊹</SubTitleBlink>

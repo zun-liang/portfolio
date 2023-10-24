@@ -15,7 +15,6 @@ import { PlayPickContextProvider } from "./contexts/PlayPickContext";
 import { SoundContext } from "./contexts/SoundContext";
 import GlobalStyles from "./GlobalStyles";
 import MainLayout from "./layouts/MainLayout";
-import UtilityLayout from "./layouts/UtilityLayout";
 import About from "./pages/About";
 import AuthRequired from "./layouts/AuthRequired";
 import Blog, { loader as blogLoader } from "./pages/Blog";
@@ -63,6 +62,15 @@ const App = () => {
   }, []);
   /* Automatically ajust app height based on device */
 
+  /* Get screenwith */
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const updateScreenWidth = () => setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", updateScreenWidth);
+    return () => window.removeEventListener("resize", updateScreenWidth);
+  }, [screenWidth]);
+  /* Get screenwith */
+
   /* Toggle favicon based on mode */
   const { mode, isLight } = useContext(ModeContext);
   const initialFavicon32 = isLight
@@ -82,49 +90,47 @@ const App = () => {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route element={<UtilityLayout />}>
-        <Route path="/" element={<MainLayout />}>
-          <Route path="*" element={<Error />} />
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
+      <Route path="/" element={<MainLayout screenWidth={screenWidth} />}>
+        <Route path="*" element={<Error />} />
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route
+          path="projects"
+          element={<Projects playPageTurn={playPageTurn} />}
+          loader={projectsLoader}
+        />
+        <Route
+          path="projects/:title"
+          element={<Project />}
+          loader={projectLoader}
+        />
+        <Route
+          path="blogs"
+          element={<Blogs setDraft={setDraft} playPageTurn={playPageTurn} />}
+          loader={blogsLoader}
+        />
+        <Route
+          path="blogs/:title"
+          element={<Blog setBlogToEdit={setBlogToEdit} />}
+          loader={blogLoader}
+        />
+        <Route path="login" element={<Login />} action={loginAction} />
+        <Route element={<AuthRequired />}>
           <Route
-            path="projects"
-            element={<Projects playPageTurn={playPageTurn} />}
-            loader={projectsLoader}
+            path="editor"
+            element={
+              <Editor
+                blogToEdit={blogToEdit}
+                setBlogToEdit={setBlogToEdit}
+                draft={draft}
+                setDraft={setDraft}
+              />
+            }
           />
-          <Route
-            path="projects/:title"
-            element={<Project />}
-            loader={projectLoader}
-          />
-          <Route
-            path="blogs"
-            element={<Blogs setDraft={setDraft} playPageTurn={playPageTurn} />}
-            loader={blogsLoader}
-          />
-          <Route
-            path="blogs/:title"
-            element={<Blog setBlogToEdit={setBlogToEdit} />}
-            loader={blogLoader}
-          />
-          <Route path="login" element={<Login />} action={loginAction} />
-          <Route element={<AuthRequired />}>
-            <Route
-              path="editor"
-              element={
-                <Editor
-                  blogToEdit={blogToEdit}
-                  setBlogToEdit={setBlogToEdit}
-                  draft={draft}
-                  setDraft={setDraft}
-                />
-              }
-            />
-            <Route path="post" element={<Post draft={draft} />} />
-            <Route path="logout" element={<Logout />} />
-          </Route>
-          <Route path="contact" element={<Contact />} />
+          <Route path="post" element={<Post draft={draft} />} />
+          <Route path="logout" element={<Logout />} />
         </Route>
+        <Route path="contact" element={<Contact />} />
       </Route>
     )
   );

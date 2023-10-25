@@ -16,6 +16,7 @@ import styled from "styled-components";
 
 import {
   BasicButton,
+  BasicInput,
   BasicLink,
   PrimarySecondary,
   SecondaryPrimary,
@@ -40,15 +41,27 @@ const StyledMDEditor = styled(MDEditor)`
   width: 100%;
 `;
 const StyledDiv = styled.div`
+  width: 100%;
   align-self: flex-end;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr 9rem 9rem 5rem;
   align-items: center;
-  gap: 1rem;
+  column-gap: 1rem;
+`;
+const TagLabel = styled.label`
+  font-family: "Black Ops One", sans-serif;
+  color: ${PrimarySecondary};
+  text-shadow: 1px 1px ${SecondaryPrimary};
+`;
+const TagInput = styled(BasicInput)`
+  width: 10rem;
+  height: 1.5rem;
+  padding: 0 5px;
 `;
 const StyledLink = styled(BasicLink)`
   padding: 0.3rem 0.5rem;
   border-radius: 5px;
+  text-align: center;
   &:link,
   &:visited {
     color: ${PrimarySecondary};
@@ -86,8 +99,11 @@ const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft }) => {
   );
   const content = marked.parse(blog.split("\n").slice(1).join("\n") || "");
   const time = new Date().toLocaleString();
-  const tag = blog.split("\n")[blog.split("\n").length - 1].replace("#", "");
-  //there is something wrong with the way I get tag
+
+  const [tagInput, setTagInput] = useState("");
+  const handleTag = (e) => setTagInput(e.target.value);
+  const tag = tagInput.split(" ");
+  console.log(tag);
   const blogId =
     blog.split("\n")[0].split(" ").slice(1).join("-").toLowerCase() +
     "-" +
@@ -168,11 +184,18 @@ const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft }) => {
         value={blog}
         onChange={setBlog}
         textareaProps={{
-          placeholder:
-            "## your title \n\n put your content here... \n\n #your tag",
+          placeholder: "## blog title \n\n blog body...",
         }}
       />
       <StyledDiv>
+        <TagLabel>Tags: </TagLabel>
+        <TagInput
+          id="tag"
+          name="tag"
+          value={tagInput}
+          onChange={handleTag}
+          placeholder="tag end with space..."
+        />
         <StyledLink to="/blogs" onClick={playPick}>
           Back to Blogs
         </StyledLink>

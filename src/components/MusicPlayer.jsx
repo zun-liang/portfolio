@@ -7,14 +7,18 @@ import MusicBox from "../assets/sounds/music-box.mp3";
 import { PointerSwitch, PrimarySecondary, TertiaryDot } from "../assets/styles/Styles";
 
 const PlayButton = styled(MusicOn)`
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1rem;
+  height: 1rem;
   cursor: ${PointerSwitch};
   & > path {
     stroke: ${TertiaryDot};
   }
   &:hover > path {
     stroke: ${PrimarySecondary};
+  }
+  @media (min-width: 350px) {
+    width: 1.2rem;
+    height: 1.2rem;
   }
 `;
 const OffButton = styled(PlayButton)`

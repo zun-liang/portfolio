@@ -7,20 +7,13 @@ import useSound from "use-sound";
 import Off from "..//assets/sounds/off.mp3";
 import On from "..//assets/sounds/on.mp3";
 import Key from "../assets/sounds/key.mp3";
-import {
-  AutoSwitch,
-  PointerSwitch,
-  PrimarySwitch,
-  SecondaryPrimary,
-  SecondarySwitch,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { AutoSwitch, PointerSwitch, PrimarySwitch, SecondaryPrimary, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 import { SoundContext } from "../contexts/SoundContext";
 import Menu from "./Menu";
-import Time from "./Time";
-import SoundSwitch from "./SoundSwitch";
 import MusicPlayer from "./MusicPlayer";
+import SoundSwitch from "./SoundSwitch";
+import Time from "./Time";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -43,8 +36,12 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 0.4rem;
-  margin-bottom: -1.6rem;
+  margin-top: 2.5rem;
+  margin-bottom: -4rem;
+  @media (min-width: 400px) {
+    margin-top: 0.4rem;
+    margin-bottom: -1.6rem;
+  }
   @media (min-width: 750px) {
     margin-top: 0;
     margin-bottom: -1.4rem;

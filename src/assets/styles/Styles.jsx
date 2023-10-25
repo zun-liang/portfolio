@@ -91,6 +91,31 @@ export const BasicLink = styled(Link)`
   font-size: 1rem;
 `;
 
+export const BasicInput = styled.input`
+  border-radius: 5px;
+  border: 2px solid ${TertiarySecondary};
+  font-size: 0.9rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: ${PrimaryTertiary};
+  background-color: white;
+  &:focus {
+    outline: ${OutlineSwitch};
+  }
+  &::placeholder {
+    font-weight: 400;
+  }
+  &:autofill,
+  &:autofill:hover,
+  &:autofill:focus,
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    box-shadow: 0 0 0 1000px white inset;
+    -webkit-text-fill-color: ${PrimarySwitch};
+  }
+`;
+
 //HTML parse rules for blog body
 const StyledH1 = styled.h1`
   color: ${PrimaryTertiary};

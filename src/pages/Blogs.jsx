@@ -130,10 +130,10 @@ const Blogs = ({ setDraft, playPageTurn }) => {
   }, []);
   const loggedin = useContext(AuthContext);
   const [searchParams, setSearchParams] = useSearchParams();
-  const languageFilter = searchParams.get("language");
+  const categoryFilter = searchParams.get("category");
   const blogsArr = useLoaderData();
-  const filteredBlogs = languageFilter
-    ? blogsArr.filter((blog) => blog.tag.toLowerCase() === languageFilter)
+  const filteredBlogs = categoryFilter
+    ? blogsArr.filter((blog) => blog.tag[0].toLowerCase() === categoryFilter)
     : blogsArr;
   const blogs = filteredBlogs.map((blog) => (
     <BlogLink
@@ -174,25 +174,25 @@ const Blogs = ({ setDraft, playPageTurn }) => {
   return (
     <BlogsContainer>
       <Filters>
-        <Filter onClick={() => generateSearchParams("language", "html")}>
+        <Filter onClick={() => generateSearchParams("category", "html")}>
           HTML
         </Filter>
-        <Filter onClick={() => generateSearchParams("language", "css")}>
+        <Filter onClick={() => generateSearchParams("category", "css")}>
           CSS
         </Filter>
-        <Filter onClick={() => generateSearchParams("language", "javascript")}>
+        <Filter onClick={() => generateSearchParams("category", "javascript")}>
           Javascript
         </Filter>
-        <Filter onClick={() => generateSearchParams("language", "react")}>
+        <Filter onClick={() => generateSearchParams("category", "react")}>
           React
         </Filter>
-        <Filter onClick={() => generateSearchParams("language", "router")}>
+        <Filter onClick={() => generateSearchParams("category", "router")}>
           Router
         </Filter>
-        <Filter onClick={() => generateSearchParams("language", "design")}>
+        <Filter onClick={() => generateSearchParams("category", "design")}>
           Design
         </Filter>
-        <Filter onClick={() => generateSearchParams("language", null)}>
+        <Filter onClick={() => generateSearchParams("category", null)}>
           All
         </Filter>
       </Filters>

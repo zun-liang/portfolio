@@ -8,7 +8,7 @@ import useSound from "use-sound";
 import SpeechBubble from "../assets/images/hi.png";
 import Profile from "../assets/images/profile.png";
 import Swoosh from "../assets/sounds/swoosh.mp3";
-import { AutoSwitch, BasicButton, HoverSwitch, OpacitySwitch, OutlineSwitch, PrimarySwitch, PrimaryTertiary, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
+import { AutoSwitch, BasicButton, BasicInput, HoverSwitch, OpacitySwitch, PrimarySwitch, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
 import { SoundContext } from "../contexts/SoundContext";
 
 const StyledDiv = styled.div`
@@ -113,68 +113,27 @@ const StyledLabel = styled.label`
   font-family: "Black Ops One", sans-serif;
   color: ${PrimarySwitch};
 `;
-const StyledInput = styled.input`
+const StyledInput = styled(BasicInput)`
   width: 100%;
   height: 2rem;
   margin-top: -0.3rem;
   margin-bottom: 1rem;
   padding: 0 0.7rem;
-  border-radius: 5px;
-  border: 2px solid ${TertiarySecondary};
-  font-size: 0.9rem;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  color: ${PrimaryTertiary};
-  background-color: white;
-  &:focus {
-    outline: ${OutlineSwitch};
-  }
-  &::placeholder {
-    font-weight: 400;
-  }
-  &:autofill,
-  &:autofill:hover,
-  &:autofill:focus,
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus {
-    box-shadow: 0 0 0 1000px white inset;
-    -webkit-text-fill-color: ${PrimarySwitch};
-  }
   @media (min-width: 750px) {
     height: 2.5rem;
   }
 `;
-const StyledTextarea = styled.textarea`
+const StyledTextarea = styled(BasicInput)`
   width: 100%;
   min-width: 100%;
   max-width: 100%;
   min-height: 8rem;
   margin-bottom: 1rem;
   padding: 0.8rem 1rem;
-  border-radius: 5px;
-  border: 2px solid ${TertiarySecondary};
   line-height: 1.2rem;
   overflow-wrap: break-word;
-  font-family: "Roboto", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: ${PrimaryTertiary};
-  background-color: white;
-  &:focus {
-    outline: ${OutlineSwitch};
-  }
   &::placeholder {
     font-weight: 400;
-  }
-  &:autofill,
-  &:autofill:hover,
-  &:autofill:focus,
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus {
-    box-shadow: 0 0 0 1000px white inset;
-    -webkit-text-fill-color: ${PrimarySwitch};
   }
 `;
 const StyledButton = styled(BasicButton)`
@@ -246,6 +205,7 @@ const Contact = () => {
       <ValidationError prefix="Email" field="email" errors={state.errors} />
       <StyledLabel htmlFor="message">Message</StyledLabel>
       <StyledTextarea
+        as="textarea"
         id="message"
         name="message"
         placeholder="Please leave me a message here... (*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ"

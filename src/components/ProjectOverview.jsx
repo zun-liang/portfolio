@@ -3,14 +3,7 @@ import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import {
-  OpaqueSwitch,
-  PointerSwitch,
-  PrimarySwitch,
-  PrimaryTertiary,
-  SecondaryHover,
-  TertiaryParagraph,
-} from "../assets/styles/Styles";
+import { OpaqueSwitch, PointerSwitch, PrimarySwitch, PrimaryTertiary, SecondaryHover, TertiaryParagraph } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 
 const ProjectLink = styled(Link)`
@@ -32,9 +25,8 @@ const ProjectLink = styled(Link)`
 `;
 const StyledH2 = styled.h2`
   padding: 1.5rem 0 0.5rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-family: "Black Ops One", sans-serif;
+  font-size: 1.1rem;
   color: ${PrimaryTertiary};
   @media (min-width: 750px) {
     font-size: 1rem;

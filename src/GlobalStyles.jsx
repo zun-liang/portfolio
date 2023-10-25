@@ -1,12 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-import {
-  AutoSwitch,
-  BGSwitch,
-  PrimarySwitch,
-  SecondarySwitch,
-  TertiaryPrimary,
-} from "./assets/styles/Styles";
+import { AutoSwitch, BGSwitch, PrimarySwitch, SecondarySwitch, TertiaryPrimary } from "./assets/styles/Styles";
 
 const GlobalStyles = createGlobalStyle`
     * {
@@ -46,7 +40,7 @@ const GlobalStyles = createGlobalStyle`
         background: ${BGSwitch};
         overflow-x: hidden;
         font-family: "Roboto", sans-serif;
-        font-size: 12px;
+        font-size: 14px;
         color: ${PrimarySwitch}; 
         cursor: ${AutoSwitch};
         scrollbar-color: ${TertiaryPrimary} ${SecondarySwitch};
@@ -67,12 +61,6 @@ const GlobalStyles = createGlobalStyle`
     }
     
     @media (min-width: 375px) {
-        html,
-        body {
-            font-size: 15px;
-        }
-    }
-    @media (min-width: 750px) {
         html,
         body {
             font-size: 16px;

@@ -10,24 +10,36 @@ import { PointerSwitch, PrimarySecondary, TertiaryDot } from "../assets/styles/S
 import { SoundContext } from "../contexts/SoundContext";
 
 const Container = styled.div`
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1rem;
+  height: 1rem;
   cursor: ${PointerSwitch};
+  @media (min-width: 350px) {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
 `;
 const StyledEar = styled(Ear)`
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1rem;
+  height: 1rem;
   fill: ${TertiaryDot};
   &:hover {
     fill: ${PrimarySecondary};
   }
+  @media (min-width: 350px) {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
 `;
 const StyledEarSlash = styled(EarSlash)`
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1rem;
+  height: 1rem;
   fill: ${TertiaryDot};
   &:hover {
     fill: ${PrimarySecondary};
+  }
+  @media (min-width: 350px) {
+    width: 1.2rem;
+    height: 1.2rem;
   }
 `;
 

@@ -22,7 +22,7 @@ const GlobalStyles = createGlobalStyle`
         --light-tertiary: #6c7a89;
         --light-paragraph: #181c1f;
         --light-hover: rgba(255, 255, 255, 0.5);
-        --light-highlight: #CF1965;
+        --light-highlight: #6A5A01;
 
         --dark-background: #121212;
         --dark-primary: #ff76a7;
@@ -30,6 +30,7 @@ const GlobalStyles = createGlobalStyle`
         --dark-tertiary: #f25688;
         --dark-paragraph: #B3FBE7;
         --dark-hover: #121212;
+        --dark-highlight: #C3B3FB;
 
         --dot-size: 1px;
         --dot-space: 25px;
@@ -68,7 +69,7 @@ const GlobalStyles = createGlobalStyle`
     @media (min-width: 375px) {
         html,
         body {
-            font-size: 14px;
+            font-size: 15px;
         }
     }
     @media (min-width: 750px) {

@@ -30,6 +30,8 @@ export const ParagraphSwitch = ({ theme }) =>
   theme.mode ? "var(--light-paragraph)" : "var(--dark-paragraph)";
 export const HoverSwitch = ({ theme }) =>
   theme.mode ? "var(--light-hover)" : "var(--dark-hover)";
+export const HighlightSwitch = ({ theme }) =>
+  theme.mode ? "var(--light-highlight)" : "var(--dark-highlight)";
 
 //Incoherent color switch
 export const OpacitySwitch = ({ theme }) =>
@@ -54,6 +56,8 @@ export const TertiarySecondary = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dark-secondary)";
 export const TertiaryParagraph = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dark-paragraph)";
+export const TertiaryBackground = ({ theme }) =>
+  theme.mode ? "var(--light-tertiary)" : "var(--dark-background)";
 export const TertiaryDot = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dot-color)";
 export const OutlineSwitch = ({ theme }) =>
@@ -121,15 +125,13 @@ const StyledP = styled.p`
     &:hover,
     &:active,
     &:visited {
-      color: ${({ theme }) =>
-        theme.mode ? "var(--light-highlight)" : "var(--dark-tertiary)"};
+      color: ${HighlightSwitch};
     }
   }
   & > code {
     color: ${SecondaryTertiary};
-    background-color: ${({ theme }) =>
-      theme.mode ? "var(--light-tertiary)" : "var(--dark-backgournd)"};
-    padding: 0.2rem;
+    background-color: ${TertiaryBackground};
+    padding: 2px;
   }
 `;
 const StyledList = styled.ul`
@@ -144,6 +146,7 @@ const StyledList = styled.ul`
     line-height: 1.6;
   }
   & > li > a,
+  & > li > p > a,
   & > li > ul > li > a {
     text-underline-offset: 2px;
     cursor: ${PointerSwitch};
@@ -151,7 +154,7 @@ const StyledList = styled.ul`
     &:hover,
     &:active,
     &:visited {
-      color: ${ParagraphSwitch};
+      color: ${HighlightSwitch};
     }
   }
 `;

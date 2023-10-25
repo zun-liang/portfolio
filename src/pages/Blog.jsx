@@ -13,7 +13,6 @@ import {
   PrimaryTertiary,
   SecondaryParagraph,
   SecondaryPrimary,
-  TertiaryPrimary,
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import BlogContent from "../components/BlogContent";
@@ -23,7 +22,7 @@ import { db } from "../firebase";
 
 const BlogContainer = styled.div`
   width: 80vw;
-  min-height: 55vh;
+  min-height: 67vh;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -37,13 +36,15 @@ const BlogContainer = styled.div`
 `;
 const MarkdownTitle = styled(Markdown)`
   color: ${PrimaryTertiary};
+  font-size: 1.2rem;
   font-family: "Black Ops One", sans-serif;
   text-shadow: 1px 1px ${SecondaryParagraph};
   text-align: center;
 `;
 const StyledP = styled.p`
   font-size: 0.9rem;
-  color: ${TertiaryPrimary};
+  color: ${TertiarySecondary};
+  text-shadow: 1px 1px ${SecondaryPrimary};
   text-align: right;
 `;
 const StyledDiv = styled.div`

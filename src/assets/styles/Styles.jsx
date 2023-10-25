@@ -65,12 +65,12 @@ export const OutlineSwitch = ({ theme }) =>
 
 //Cursor switch
 export const AutoSwitch = ({ theme }) =>
-  theme.mode ? `url(${AutoLight}) 12 12, auto` : `url(${AutoDark}) 12 12, auto`;
+  theme.mode ? `url(${AutoLight}) 6 6, auto` : `url(${AutoDark}) 6 6, auto`;
 
 export const PointerSwitch = ({ theme }) =>
   theme.mode
-    ? `url(${PointerLight}) 12 12, pointer`
-    : `url(${PointerDark}) 12 12, pointer`;
+    ? `url(${PointerLight}) 6 6, pointer`
+    : `url(${PointerDark}) 6 6, pointer`;
 
 //Shared styles
 export const BasicButton = styled.button`

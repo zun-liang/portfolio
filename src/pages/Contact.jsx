@@ -8,7 +8,16 @@ import useSound from "use-sound";
 import SpeechBubble from "../assets/images/hi.png";
 import Profile from "../assets/images/profile.png";
 import Swoosh from "../assets/sounds/swoosh.mp3";
-import { AutoSwitch, BasicButton, BasicInput, HoverSwitch, OpacitySwitch, PrimarySwitch, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  AutoSwitch,
+  BasicButton,
+  BasicInput,
+  HoverSwitch,
+  OpacitySwitch,
+  PrimarySwitch,
+  SecondarySwitch,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import { SoundContext } from "../contexts/SoundContext";
 
 const StyledDiv = styled.div`
@@ -166,7 +175,6 @@ const Contact = () => {
         <StyledP>I will get back to you as soon as possible!</StyledP>
       </StyledDiv>
     );
-    //error handle
   }
 
   return (

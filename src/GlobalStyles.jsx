@@ -1,6 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
-import { AutoSwitch, BGSwitch, PrimarySwitch, SecondarySwitch, TertiaryPrimary } from "./assets/styles/Styles";
+import {
+  AutoSwitch,
+  BGSwitch,
+  PrimarySwitch,
+  SecondarySwitch,
+  TertiaryPrimary,
+} from "./assets/styles/Styles";
 
 const GlobalStyles = createGlobalStyle`
     * {
@@ -81,4 +87,3 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 export default GlobalStyles;
-//need to set x scrollbar to be thin as well, currently color changed in editor

@@ -41,5 +41,3 @@ const Time = () => {
 };
 
 export default Time;
-//this time is a bit slower than actual time
-//currently separate it from the header to prevent too many re-renders not sure if it is the best practice

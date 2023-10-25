@@ -82,6 +82,9 @@ export const loader = async () => {
     return data;
   } catch (error) {
     console.log(error);
+    throw new Error(
+      "Something went wrong while attempting to retrieve projects data."
+    );
   }
 };
 const Projects = ({ playPageTurn }) => {

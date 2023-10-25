@@ -10,7 +10,16 @@ import styled from "styled-components";
 
 import { ReactComponent as Puzzle } from "../assets/images/puzzle.svg";
 import { ReactComponent as Website } from "../assets/images/website.svg";
-import { BasicLink, ParagraphSwitch, PointerSwitch, PrimarySwitch, PrimaryTertiary, SecondaryParagraph, TertiaryPrimary, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  BasicLink,
+  ParagraphSwitch,
+  PointerSwitch,
+  PrimarySwitch,
+  PrimaryTertiary,
+  SecondaryParagraph,
+  TertiaryPrimary,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { db } from "../firebase";
 
@@ -127,6 +136,9 @@ export const loader = async ({ params }) => {
     }
   } catch (error) {
     console.error("Error fetching document:", error);
+    throw new Error(
+      "Something went wrong while attempting to retrieve project data."
+    );
   }
 };
 

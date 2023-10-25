@@ -5,11 +5,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { ReactComponent as LogoutIcon } from "../assets/images/log-out.svg";
-import {
-  PointerSwitch,
-  PrimarySecondary,
-  TertiaryDot,
-} from "../assets/styles/Styles";
+import { PointerSwitch, PrimarySecondary, TertiaryDot } from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { auth } from "../firebase";
 
@@ -35,6 +31,9 @@ const LogoutButton = () => {
       })
       .catch((error) => {
         console.error(error);
+        throw new Error(
+          "Something went wrong while attempting to log out."
+        );
       });
     navigate("/logout");
   };

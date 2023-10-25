@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { deleteDoc, doc, getDoc } from "firebase/firestore";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import { useLoaderData, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,7 @@ import styled from "styled-components";
 import {
   BasicButton,
   BasicLink,
+  PrimarySecondary,
   PrimaryTertiary,
   SecondaryParagraph,
   SecondaryPrimary,
@@ -82,6 +83,14 @@ const StyledButton = styled(BasicButton)`
     transition: top 0.3s ease-in;
   }
 `;
+const TagsContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+const Tag = styled.p`
+  color: ${PrimarySecondary};
+  text-shadow: 1px 1px ${SecondaryPrimary};
+`;
 
 export const loader = async ({ params }) => {
   const { title } = params;
@@ -95,10 +104,13 @@ export const loader = async ({ params }) => {
     }
   } catch (error) {
     console.error("Error fetching document:", error);
+    throw new Error(
+      "Something went wrong while attempting to retrieve blog data."
+    );
   }
 };
 
-const Blog = ({ setBlogToEdit }) => {
+const Blog = ({ setBlogToEdit, setTagsToEdit }) => {
   const playPick = useContext(PlayPickContext);
   const loggedin = useContext(AuthContext);
   const {
@@ -106,6 +118,7 @@ const Blog = ({ setBlogToEdit }) => {
     time: blogTime,
     title: blogTitle,
     content: blogContent,
+    tag: blogTag,
   } = useLoaderData();
 
   useEffect(() => {
@@ -113,9 +126,7 @@ const Blog = ({ setBlogToEdit }) => {
   }, []);
   const location = useLocation();
   const search = location.state?.search;
-  // console.log(search);
-  // const hash = location.hash;
-  // console.log(hash);
+  const [newSearch, setNewSearch] = useState(search);
 
   const navigate = useNavigate();
   const blogData = useLoaderData();
@@ -123,6 +134,7 @@ const Blog = ({ setBlogToEdit }) => {
   const editBlog = () => {
     playPick();
     setBlogToEdit(blogData);
+    setTagsToEdit(blogTag);
     navigate("/editor");
   };
   const deleteBlog = async () => {
@@ -134,11 +146,27 @@ const Blog = ({ setBlogToEdit }) => {
   useEffect(() => {
     document.body.scrollTo({ top: 0 });
   }, []);
+
+  const tags =
+    typeof blogTag !== "object"
+      ? null
+      : blogTag.map((tag) =>
+          tag ? (
+            <Tag key={tag}>
+              {tag === "html"
+                ? `# ${tag.toUpperCase()}`
+                : tag === "css"
+                ? `# ${tag.toUpperCase()}`
+                : `# ${tag[0].toUpperCase()}${tag.slice(1)}`}
+            </Tag>
+          ) : null
+        );
+
   return (
     <>
       <BlogContainer>
         <StyledDiv>
-          <BackLink to={`/blogs${search}`} onClick={playPick}>
+          <BackLink to={`/blogs${newSearch}`} onClick={playPick}>
             Back to blogs
           </BackLink>
           {loggedin ? (
@@ -151,9 +179,9 @@ const Blog = ({ setBlogToEdit }) => {
         <MarkdownTitle>{blogTitle}</MarkdownTitle>
         <StyledP>{blogTime}</StyledP>
         <BlogContent blogContent={blogContent} />
+        <TagsContainer>{tags}</TagsContainer>
       </BlogContainer>
     </>
   );
 };
 export default Blog;
-//if chose in page link and select back, it will go to blogsundefined, which is 404 of course

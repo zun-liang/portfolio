@@ -1,10 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import styled from "styled-components";
 import useSound from "use-sound";
 
@@ -14,9 +9,9 @@ import { ModeContext } from "./contexts/ModeContext";
 import { PlayPickContextProvider } from "./contexts/PlayPickContext";
 import { SoundContext } from "./contexts/SoundContext";
 import GlobalStyles from "./GlobalStyles";
+import AuthRequired from "./layouts/AuthRequired";
 import MainLayout from "./layouts/MainLayout";
 import About from "./pages/About";
-import AuthRequired from "./layouts/AuthRequired";
 import Blog, { loader as blogLoader } from "./pages/Blog";
 import Blogs, { loader as blogsLoader } from "./pages/Blogs";
 import Contact from "./pages/Contact";
@@ -27,6 +22,7 @@ import Home from "./pages/Home";
 import Loading from "./pages/Loading";
 import Login, { action as loginAction } from "./pages/Login";
 import Logout from "./pages/Logout";
+import NotFound from "./pages/NotFound";
 import Post from "./pages/Post";
 import Project, { loader as projectLoader } from "./pages/Project";
 import Projects, { loader as projectsLoader } from "./pages/Projects";
@@ -45,6 +41,7 @@ const App = () => {
 
   const [blogToEdit, setBlogToEdit] = useState(null);
   const [draft, setDraft] = useState(null);
+  const [tagsToEdit, setTagsToEdit] = useState(null);
 
   const { sound } = useContext(SoundContext);
   const [playPageTurn] = useSound(PageTurn, { soundEnabled: sound });
@@ -90,8 +87,12 @@ const App = () => {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<MainLayout screenWidth={screenWidth} />}>
-        <Route path="*" element={<Error />} />
+      <Route
+        path="/"
+        element={<MainLayout screenWidth={screenWidth} />}
+        errorElement={<Error />}
+      >
+        <Route path="*" element={<NotFound />} />
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
         <Route
@@ -106,12 +107,20 @@ const App = () => {
         />
         <Route
           path="blogs"
-          element={<Blogs setDraft={setDraft} playPageTurn={playPageTurn} />}
+          element={
+            <Blogs
+              setDraft={setDraft}
+              setTagsToEdit={setTagsToEdit}
+              playPageTurn={playPageTurn}
+            />
+          }
           loader={blogsLoader}
         />
         <Route
           path="blogs/:title"
-          element={<Blog setBlogToEdit={setBlogToEdit} />}
+          element={
+            <Blog setBlogToEdit={setBlogToEdit} setTagsToEdit={setTagsToEdit} />
+          }
           loader={blogLoader}
         />
         <Route path="login" element={<Login />} action={loginAction} />
@@ -124,6 +133,7 @@ const App = () => {
                 setBlogToEdit={setBlogToEdit}
                 draft={draft}
                 setDraft={setDraft}
+                tagsToEdit={tagsToEdit}
               />
             }
           />
@@ -154,3 +164,4 @@ const App = () => {
 };
 
 export default App;
+//what is the error page for? for what errors?

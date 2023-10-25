@@ -2,26 +2,13 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import MDEditor from "@uiw/react-md-editor";
-import {
-  deleteDoc,
-  doc,
-  serverTimestamp,
-  setDoc,
-  updateDoc,
-} from "firebase/firestore";
+import { deleteDoc, doc, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
 import { marked } from "marked";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import {
-  BasicButton,
-  BasicInput,
-  BasicLink,
-  PrimarySecondary,
-  SecondaryPrimary,
-  TertiaryParagraph,
-} from "../assets/styles/Styles";
+import { BasicButton, BasicInput, BasicLink, PrimarySecondary, SecondaryPrimary, TertiaryParagraph } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { db } from "../firebase";
 
@@ -83,16 +70,27 @@ const StyledButton = styled(BasicButton)`
   }
 `;
 
-const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft }) => {
-  const playPick = useContext(PlayPickContext);
+const Editor = ({
+  blogToEdit,
+  setBlogToEdit,
+  draft,
+  setDraft,
+  tagsToEdit,
+}) => {
+  /* retrieved draft data */
   const retrievedBlog = blogToEdit?.title + "\n\n" + blogToEdit?.content;
   const retrievedDraft = draft?.title + "\n\n" + draft?.content;
+  const retrievedTags = tagsToEdit?.join(" ");
+
   const initialContent = blogToEdit
     ? retrievedBlog
     : draft
     ? retrievedDraft
     : "";
+
   const [blog, setBlog] = useState(initialContent);
+
+  /* to post a blog or save a draft */
   const title = blog.split("\n")[0];
   const overview = marked.parse(
     blog.split("\n").filter((x) => x !== "")[1] || ""
@@ -100,10 +98,12 @@ const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft }) => {
   const content = marked.parse(blog.split("\n").slice(1).join("\n") || "");
   const time = new Date().toLocaleString();
 
-  const [tagInput, setTagInput] = useState("");
+  const initialTagInput = tagsToEdit ? retrievedTags : "";
+  const [tagInput, setTagInput] = useState(initialTagInput);
   const handleTag = (e) => setTagInput(e.target.value);
-  const tag = tagInput.split(" ");
-  console.log(tag);
+  const tag = tagInput.toString().toLowerCase().split(" ");
+
+  //tags need to be retrived and updated as well
   const blogId =
     blog.split("\n")[0].split(" ").slice(1).join("-").toLowerCase() +
     "-" +
@@ -130,6 +130,10 @@ const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft }) => {
   };
 
   const navigate = useNavigate();
+
+  const playPick = useContext(PlayPickContext);
+
+  /* post an initial/edited blog to firestore */
   const post = async () => {
     playPick();
     if (blogToEdit) {
@@ -145,6 +149,8 @@ const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft }) => {
     navigate("/post");
     //error handle
   };
+
+  /* save an initial or edited draft to firestore */
   const initialDraft = {
     timestamp: timestamp,
     id: "draft",
@@ -154,7 +160,7 @@ const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft }) => {
     time: time,
     tag: tag || "",
   };
-  const updatedDraftObject = {
+  const updatedDraft = {
     timestamp: draft?.timestamp,
     id: "draft",
     title: title,
@@ -163,10 +169,11 @@ const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft }) => {
     time: draft?.time,
     tag: tag,
   };
+
   const saveDraft = async () => {
     playPick();
     if (draft) {
-      await updateDoc(doc(db, "drafts", "draft"), updatedDraftObject);
+      await updateDoc(doc(db, "drafts", "draft"), updatedDraft);
     } else {
       await setDoc(doc(db, "drafts", "draft"), initialDraft);
     }

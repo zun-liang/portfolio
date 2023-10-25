@@ -20,13 +20,20 @@ const StyledImg = styled.img`
   width: 10rem;
 `;
 const StyledP = styled.p`
-  width: 50%;
+  width: 80%;
   text-align: center;
   line-height: 1.5;
+  font-size: 1.5rem;
   font-family: "Black Ops One", sans-serif;
-  font-size: 2rem;
   color: ${ParagraphSwitch};
   text-shadow: 1px 1px ${SecondaryTertiary};
+  @media (min-width: 750px) {
+    font-size: 2rem;
+    width: 70%;
+  }
+  @media (min-width: 1350px) {
+    width: 50%;
+  }
 `;
 
 const ErrorPage = () => {

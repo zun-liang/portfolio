@@ -2,24 +2,10 @@
 /* eslint-disable react/prop-types */
 import { doc, getDoc, getDocs, orderBy, query } from "firebase/firestore";
 import { memo, useContext, useEffect, useMemo } from "react";
-import {
-  Link,
-  useLoaderData,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { Link, useLoaderData, useNavigate, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
-import {
-  BasicButton,
-  BasicLink,
-  PointerSwitch,
-  PrimaryTertiary,
-  SecondaryParagraph,
-  SecondaryPrimary,
-  TertiaryPrimary,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { BasicButton, BasicLink, PointerSwitch, PrimaryTertiary, SecondaryParagraph, SecondaryPrimary, TertiaryPrimary, TertiarySecondary } from "../assets/styles/Styles";
 import BlogOverview from "../components/BlogOverview";
 import { AuthContext } from "../contexts/AuthContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
@@ -63,8 +49,7 @@ const Filter = styled(BasicButton)`
   top: 0;
   transition: top 0.3s ease-out;
   &:hover,
-  &:active,
-  &:focus {
+  &:active {
     top: 5px;
     transition: top 0.3s ease-in;
   }
@@ -85,7 +70,6 @@ const StyledButton = styled(Filter)`
   align-self: flex-end;
 `;
 const StyledLink = styled(BasicLink)`
-  //will take over 100% width
   align-self: flex-end;
   padding: 0.2rem 0.5rem;
   border-radius: 5px;
@@ -106,7 +90,6 @@ const StyledLink = styled(BasicLink)`
 
 //how to cache the data so it doesn't need to get data everytime;
 export const loader = async () => {
-  //console.log("data fetched");
   try {
     const blogsRef = blogsCollection;
     const q = query(blogsRef, orderBy("timestamp", "desc"));
@@ -118,13 +101,15 @@ export const loader = async () => {
     return data;
   } catch (error) {
     console.log(error);
+    throw new Error(
+      "Something went wrong while attempting to retrieve blogs data."
+    );
   }
 };
 
 //pagination
-const Blogs = ({ setDraft, playPageTurn }) => {
+const Blogs = ({ setDraft, playPageTurn, setTagsToEdit }) => {
   const playPick = useContext(PlayPickContext);
-  //console.log("blogs rendered");
   useEffect(() => {
     document.title = "Blogs ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
@@ -133,7 +118,7 @@ const Blogs = ({ setDraft, playPageTurn }) => {
   const categoryFilter = searchParams.get("category");
   const blogsArr = useLoaderData();
   const filteredBlogs = categoryFilter
-    ? blogsArr.filter((blog) => blog.tag[0].toLowerCase() === categoryFilter)
+    ? blogsArr.filter((blog) => blog.tag[0] === categoryFilter)
     : blogsArr;
   const blogs = filteredBlogs.map((blog) => (
     <BlogLink
@@ -167,6 +152,7 @@ const Blogs = ({ setDraft, playPageTurn }) => {
     const docSnap = await getDoc(doc(db, "drafts", "draft"));
     const data = docSnap.data();
     setDraft(data);
+    setTagsToEdit(data.tag);
     navigate("/editor");
     //error handle
   };
@@ -211,3 +197,5 @@ const Blogs = ({ setDraft, playPageTurn }) => {
 export default memo(Blogs);
 //looks like memo can not stop many rerendering;
 // a blog can contain a couple tags, how to work with it
+//how to dynamically set up tags
+//select different tags vs the same blog contain different tags

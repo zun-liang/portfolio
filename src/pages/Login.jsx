@@ -6,21 +6,8 @@ import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import {
-  BasicLink,
-  ParagraphSwitch,
-  SecondaryTertiary,
-} from "../assets/styles/Styles";
-import {
-  BasicButton,
-  HoverSwitch,
-  OpacitySwitch,
-  OutlineSwitch,
-  PrimarySwitch,
-  PrimaryTertiary,
-  SecondarySwitch,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { BasicLink, ParagraphSwitch, SecondaryTertiary } from "../assets/styles/Styles";
+import { BasicButton, HoverSwitch, OpacitySwitch, OutlineSwitch, PrimarySwitch, PrimaryTertiary, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { auth } from "../firebase";
@@ -190,4 +177,3 @@ const Login = () => {
 };
 
 export default Login;
-//if it is already logged in, i can login again, weird

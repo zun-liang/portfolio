@@ -291,6 +291,8 @@ During development, I found that only on chrome mac shows 24 instead of 00, fixe
   ❓
 - [Announcing “use-sound”, a React Hook for Sound Effects](https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/)
 - [useContext](https://react.dev/reference/react/useContext)
+- [Hide Firebase API Keys in ReactJS Project using Environment Variables](https://blogs.ayushdev.com/hide-firebase-api-keys-in-reactjs-project-using-environment-variables)
+- [A Pitfall I Almost Fell Into… Learn how to save your API KEYS](https://medium.com/@oadaramola/a-pitfall-i-almost-fell-into-d1d3461b2fb8)
 
 #### React Router
 
@@ -309,6 +311,13 @@ I had the same error and was thinking where to put my scroll component for the b
 
 - [Referring to other components](https://styled-components.com/docs/advanced#referring-to-other-components)
 - [Theming](https://styled-components.com/docs/advanced#theming)
+
+#### Vite
+
+- [How to use process.env in Vite](https://dev.to/whchi/how-to-use-processenv-in-vite-ho9)
+- [Uncaught ReferenceError: process is not defined](https://dev.to/boostup/uncaught-referenceerror-process-is-not-defined-12kg)
+- [How to load environment variables from .env file using Vite](https://stackoverflow.com/questions/70709987/how-to-load-environment-variables-from-env-file-using-vite)
+- [Env Variables and Modes](https://vitejs.dev/guide/env-and-mode.html)
 
 #### APIs
 

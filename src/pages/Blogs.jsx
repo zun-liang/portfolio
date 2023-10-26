@@ -79,7 +79,7 @@ const StyledH2 = styled.h2`
   font-size: 1.2rem;
   font-family: "Black Ops One", sans-serif;
   color: ${PrimaryTertiary};
-  text-shadow: 1px 1px ${SecondaryParagraph};
+  text-shadow: 1px 0px ${SecondaryParagraph};
 `;
 const StyledButton = styled(Filter)`
   align-self: flex-end;

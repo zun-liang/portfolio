@@ -22,6 +22,9 @@ export default defineConfig(({ mode }) => {
         env.REACT_APP_MESSAGING_SENDER_ID
       ),
       "process.env.REACT_APP_APP_ID": JSON.stringify(env.REACT_APP_APP_ID),
+      "process.env.REACT_APP_WEATHER_APP_ID": JSON.stringify(
+        env.REACT_APP_WEATHER_APP_ID
+      ),
     },
     plugins: [svgr(), react()],
   };

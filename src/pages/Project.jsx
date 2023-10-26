@@ -132,10 +132,10 @@ export const loader = async ({ params }) => {
     if (docSnap.exists()) {
       return docSnap.data();
     } else {
-      console.log("No such document!");
+      console.log("No such project!");
     }
   } catch (error) {
-    console.error("Error fetching document:", error);
+    console.error("Error fetching project:", error);
     throw new Error(
       "Something went wrong while attempting to retrieve project data."
     );

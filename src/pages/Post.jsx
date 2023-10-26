@@ -10,11 +10,17 @@ import {
   SecondaryTertiary,
 } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
+import Party from "../assets/images/party_boygirl.png";
 
 const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 1.5rem;
+`;
+const StyledImg = styled.img`
+  width: 20rem;
 `;
 const StyledP = styled.p`
   text-align: center;
@@ -46,14 +52,13 @@ const StyledLink = styled(BasicLink)`
 
 const Post = ({ draft }) => {
   const playPick = useContext(PlayPickContext);
-
   useEffect(() => {
     document.title = "Post ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
 
   return (
     <PostContainer>
-      <StyledP>♡⸜(˶˃ ᵕ ˂˶)⸝♡</StyledP>
+      <StyledImg src={Party} alt="party boy girl" />
       {draft ? (
         <StyledP>You've successfully saved your draft!</StyledP>
       ) : (

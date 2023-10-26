@@ -115,7 +115,7 @@ export const loader = async () => {
     });
     return data;
   } catch (error) {
-    console.log(error);
+    console.error("Error while retrieving blogs:", error);
     throw new Error(
       "Something went wrong while attempting to retrieve blogs data."
     );
@@ -166,13 +166,17 @@ const Blogs = ({ setDraft, playPageTurn, setTagsToEdit }) => {
   };
 
   const getDraft = async () => {
-    playPick();
-    const docSnap = await getDoc(doc(db, "drafts", "draft"));
-    const data = docSnap.data();
-    setDraft(data);
-    setTagsToEdit(data.tag);
-    navigate("/editor");
-    //error handle
+    try {
+      playPick();
+      const docSnap = await getDoc(doc(db, "drafts", "draft"));
+      const data = docSnap.data();
+      setDraft(data);
+      setTagsToEdit(data?.tag);
+      navigate("/editor");
+    } catch (error) {
+      console.error("Error while retrieving draft", error);
+      throw new Error("Something went wrong while retrieving draft.");
+    }
   };
 
   return (

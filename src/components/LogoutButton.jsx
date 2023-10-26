@@ -32,13 +32,12 @@ const LogoutButton = () => {
   const logout = () => {
     signOut(auth)
       .then(() => {
-        console.log("logged out");
+        navigate("/logout");
       })
       .catch((error) => {
-        console.error(error);
+        console.error("Error while logging out:", error);
         throw new Error("Something went wrong while attempting to log out.");
       });
-    navigate("/logout");
   };
 
   return <>{loggedin && <StyledLogoutButton onClick={logout} />}</>;

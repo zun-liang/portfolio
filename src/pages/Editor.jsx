@@ -84,112 +84,119 @@ const StyledButton = styled(BasicButton)`
 `;
 
 const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft, tagsToEdit }) => {
-  const navigate = useNavigate();
   const playPick = useContext(PlayPickContext);
+  const navigate = useNavigate();
 
-  /* retrieved draft data */
+  /* === blog and tagInput setup === */
   const retrievedBlog = blogToEdit?.title + "\n\n" + blogToEdit?.content;
   const retrievedDraft = draft?.title + "\n\n" + draft?.content;
   const retrievedTags = tagsToEdit?.join(" ");
 
-  const initialContent = blogToEdit
-    ? retrievedBlog
-    : draft
-    ? retrievedDraft
-    : "";
-
-  const [blog, setBlog] = useState(initialContent);
-
-  /* to post a blog or save a draft */
-  const title = blog.split("\n")[0];
-  const overview = marked.parse(
-    blog.split("\n").filter((x) => x !== "")[1] || ""
-  );
-  const content = marked.parse(blog.split("\n").slice(1).join("\n") || "");
-  const time = new Date().toLocaleString();
+  const initialBlog = blogToEdit ? retrievedBlog : draft ? retrievedDraft : "";
+  const [blog, setBlog] = useState(initialBlog);
 
   const initialTagInput = tagsToEdit ? retrievedTags : "";
   const [tagInput, setTagInput] = useState(initialTagInput);
-  const handleTag = (e) => setTagInput(e.target.value);
-  const tag = tagInput.toString().toLowerCase().split(" ");
 
-  //tags need to be retrived and updated as well
-  const blogId =
-    blog.split("\n")[0].split(" ").slice(1).join("-").toLowerCase() +
+  const handleTagInput = (e) => setTagInput(e.target.value);
+
+  /* === blog object setup === */
+  const alphanumeric = /[\w]+/;
+  const blogSplit = blog.split("\n");
+  const title = blogSplit[0];
+  const id =
+    title
+      .split(" ")
+      .filter((x) => alphanumeric.test(x))
+      .join("-")
+      .toLowerCase() +
     "-" +
     new Date().getTime();
-
   const timestamp = serverTimestamp();
+  const overview = marked.parse(blogSplit.filter((x) => x !== "")[1] || "");
+  const time = new Date().toLocaleString();
+  const content = marked.parse(blogSplit.slice(1).join("\n") || "");
+  const tag = tagInput.toString().toLowerCase().split(" ");
 
-  const blogObject = {
+  /* === post a blog to firestore === */
+
+  const blogObj = {
+    id: id,
     timestamp: timestamp,
-    id: blogId,
     title: title,
-    overview: overview,
-    content: content,
     time: time,
-    tag: tag,
-  };
-
-  const preBlogId = blogToEdit?.id;
-
-  const updatedBlogObject = {
-    timestamp: blogToEdit?.timestamp,
-    id: preBlogId,
-    title: title,
     overview: overview,
     content: content,
-    time: blogToEdit?.time,
     tag: tag,
   };
 
-  /* post an initial/edited blog to firestore */
+  const preId = blogToEdit?.id;
+
+  const updatedBlogObj = {
+    id: preId,
+    timestamp: timestamp,
+    title: title,
+    time: time,
+    overview: overview,
+    content: content,
+    tag: tag,
+  };
+
   const post = async () => {
-    playPick();
-    if (blogToEdit) {
-      await updateDoc(doc(db, "blogs", preBlogId), updatedBlogObject);
-      setBlogToEdit(null);
-    } else if (draft) {
-      await setDoc(doc(db, "blogs", blogId), blogObject);
-      await deleteDoc(doc(db, "drafts", "draft"));
-      setDraft(null);
-    } else {
-      await setDoc(doc(db, "blogs", blogId), blogObject);
+    try {
+      playPick();
+      if (blogToEdit) {
+        await updateDoc(doc(db, "blogs", preId), updatedBlogObj);
+        setBlogToEdit(null);
+      } else if (draft) {
+        await setDoc(doc(db, "blogs", id), blogObj);
+        await deleteDoc(doc(db, "drafts", "draft"));
+        setDraft(null);
+      } else {
+        await setDoc(doc(db, "blogs", id), blogObj);
+      }
+      navigate("/post");
+    } catch (error) {
+      console.error("Error while posting blog:", error);
+      throw new Error("Something went wrong while attempting to post blog.");
     }
-    navigate("/post");
-    //error handle
   };
 
-  /* save an initial or edited draft to firestore */
+  /* === save a draft to firestore === */
+
   const initialDraft = {
-    timestamp: timestamp,
     id: "draft",
-    title: title || "",
-    overview: overview || "",
-    content: content || "",
+    timestamp: timestamp,
+    title: title,
     time: time,
-    tag: tag || "",
+    overview: overview,
+    content: content,
+    tag: tag,
   };
 
   const updatedDraft = {
-    timestamp: draft?.timestamp,
     id: "draft",
+    timestamp: timestamp,
     title: title,
+    time: time,
     overview: overview,
     content: content,
-    time: draft?.time,
     tag: tag,
   };
 
   const saveDraft = async () => {
-    playPick();
-    if (draft) {
-      await updateDoc(doc(db, "drafts", "draft"), updatedDraft);
-    } else {
-      await setDoc(doc(db, "drafts", "draft"), initialDraft);
+    try {
+      playPick();
+      if (draft) {
+        await updateDoc(doc(db, "drafts", "draft"), updatedDraft);
+      } else {
+        await setDoc(doc(db, "drafts", "draft"), initialDraft);
+      }
+      navigate("/post");
+    } catch (error) {
+      console.error("Error while saving draft:", error);
+      throw new Error("Something went wrong while attempting to save draft.");
     }
-    navigate("/post");
-    //handle error
   };
 
   useEffect(() => {
@@ -211,7 +218,7 @@ const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft, tagsToEdit }) => {
           id="tag"
           name="tag"
           value={tagInput}
-          onChange={handleTag}
+          onChange={handleTagInput}
           placeholder="tag end with space..."
         />
         <StyledLink to="/blogs" onClick={playPick}>

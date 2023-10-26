@@ -100,10 +100,10 @@ export const loader = async ({ params }) => {
     if (docSnap.exists()) {
       return docSnap.data();
     } else {
-      console.log("No such document!");
+      console.log("No such blog!");
     }
   } catch (error) {
-    console.error("Error fetching document:", error);
+    console.error("Error fetching blog:", error);
     throw new Error(
       "Something went wrong while attempting to retrieve blog data."
     );
@@ -138,10 +138,14 @@ const Blog = ({ setBlogToEdit, setTagsToEdit }) => {
   };
 
   const deleteBlog = async () => {
-    playPick();
-    await deleteDoc(doc(db, "blogs", blogID));
-    navigate("/blogs");
-    //user experience, loading page? error handle
+    try {
+      playPick();
+      await deleteDoc(doc(db, "blogs", blogID));
+      navigate("/blogs");
+    } catch (error) {
+      console.error("Error while deleting blog:", error);
+      throw new Error("Something went wrong while deleting blog");
+    }
   };
 
   useEffect(() => {

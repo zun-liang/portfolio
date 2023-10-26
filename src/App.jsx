@@ -1,5 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import styled from "styled-components";
 import useSound from "use-sound";
 
@@ -46,7 +51,7 @@ const App = () => {
   const { sound } = useContext(SoundContext);
   const [playPageTurn] = useSound(PageTurn, { soundEnabled: sound });
 
-  /* Automatically ajust app height based on device */
+  /* === Automatically adjust app height depending on screen sizes === */
   const setAppHeight = () => {
     const doc = document.documentElement;
     doc.style.setProperty("--app-height", `${window.innerHeight}px`);
@@ -57,18 +62,16 @@ const App = () => {
     setAppHeight();
     return () => window.removeEventListener("resize", setAppHeight);
   }, []);
-  /* Automatically ajust app height based on device */
 
-  /* Get screenwith */
+  /* === Get current screenwith when resizing === */
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   useEffect(() => {
     const updateScreenWidth = () => setScreenWidth(window.innerWidth);
     window.addEventListener("resize", updateScreenWidth);
     return () => window.removeEventListener("resize", updateScreenWidth);
   }, [screenWidth]);
-  /* Get screenwith */
 
-  /* Toggle favicon based on mode */
+  /* === Toggle favicon depending on mode === */
   const { mode, isLight } = useContext(ModeContext);
   const initialFavicon32 = isLight
     ? "./src/assets/images/favicon/light/favicon-32x32.png"
@@ -83,7 +86,6 @@ const App = () => {
       : "./src/assets/images/favicon/dark/favicon-32x32.png";
     setFaviconHref32(updatedFavicon32);
   }, [mode, faviconHref32]);
-  /* Toggle favicon based on mode */
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -145,7 +147,12 @@ const App = () => {
     )
   );
 
-  if (loading) return <Loading setLoading={setLoading} today={today} />;
+  if (loading)
+    return (
+      <PlayPickContextProvider>
+        <Loading setLoading={setLoading} today={today} />
+      </PlayPickContextProvider>
+    );
 
   if (error) return <ErrorPage />;
 

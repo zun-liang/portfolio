@@ -85,7 +85,7 @@ export const loader = async () => {
     });
     return data;
   } catch (error) {
-    console.log(error);
+    console.error("Error while retrieving projects:", error);
     throw new Error(
       "Something went wrong while attempting to retrieve projects data."
     );

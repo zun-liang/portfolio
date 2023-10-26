@@ -49,11 +49,11 @@ const UserProfile = () => {
       {loggedin && (
         <ProfileContainer>
           {userPhoto ? (
-            <StyledImg src={userPhoto} alt="user profile picture" />
+            <StyledImg src={userPhoto} alt="user profile" />
           ) : (
-            <StyledUserDefault  />
+            <StyledUserDefault />
           )}
-          <StyledP >{userName ? userName : "Admin"}</StyledP>
+          <StyledP>{userName ? userName : "Admin"}</StyledP>
         </ProfileContainer>
       )}
     </>

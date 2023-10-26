@@ -169,8 +169,8 @@ const Contact = () => {
     playSwoosh();
     return (
       <StyledDiv>
-        <StyledImg src={Profile} alt="profile picture" />
-        <StyledSpeechBubble src={SpeechBubble} alt="speech bubble picture" />
+        <StyledImg src={Profile} alt="profile" />
+        <StyledSpeechBubble src={SpeechBubble} alt="speech bubble" />
         <StyledP>Thanks for reaching out to me!</StyledP>
         <StyledP>I will get back to you as soon as possible!</StyledP>
       </StyledDiv>

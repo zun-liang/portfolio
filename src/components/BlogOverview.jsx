@@ -33,8 +33,6 @@ const BlogOverview = ({ overview }) => {
       }
     },
   };
-
   return <>{parse(html, options)}</>;
 };
-
 export default BlogOverview;

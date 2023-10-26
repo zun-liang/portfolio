@@ -39,7 +39,7 @@ const NotFound = () => {
 
   return (
     <NotFoundPage>
-      <StyledImg src={Kuma} alt="sorry bear picture" />
+      <StyledImg src={Kuma} alt="sorry bear" />
       <StyledH2>404 Not Found</StyledH2>
       <StyledP>
         Sorry, the page you are looking for doesn't seem to exist.

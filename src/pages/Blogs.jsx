@@ -2,10 +2,24 @@
 /* eslint-disable react/prop-types */
 import { doc, getDoc, getDocs, orderBy, query } from "firebase/firestore";
 import { memo, useContext, useEffect, useMemo } from "react";
-import { Link, useLoaderData, useNavigate, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  useLoaderData,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import styled from "styled-components";
 
-import { BasicButton, BasicLink, PointerSwitch, PrimaryTertiary, SecondaryParagraph, SecondaryPrimary, TertiaryPrimary, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  BasicButton,
+  BasicLink,
+  PointerSwitch,
+  PrimaryTertiary,
+  SecondaryParagraph,
+  SecondaryPrimary,
+  TertiaryPrimary,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import BlogOverview from "../components/BlogOverview";
 import { AuthContext } from "../contexts/AuthContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
@@ -49,7 +63,8 @@ const Filter = styled(BasicButton)`
   top: 0;
   transition: top 0.3s ease-out;
   &:hover,
-  &:active {
+  &:active,
+  &:focus {
     top: 5px;
     transition: top 0.3s ease-in;
   }

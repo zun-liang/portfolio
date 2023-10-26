@@ -66,25 +66,30 @@ Moreover, I envision this website as a reflection of my personality and preferen
 
 ### Spotlight
 
-- Firebase - manage data
-- User authentication - "secret" blog management
-- React - createContext and useContext
-- Styled-components - Theming
-- React router 6 - data router
-- Transfer Markdown to HTML and Parse HTML in React App
+<ul>
+<li style="list-style-type: '✨'">&nbsp;Firebase - Manage Data
+<li style="list-style-type: '✨'">&nbsp;User Authentication - "Secret" Blog Management
+<li style="list-style-type: '✨'">&nbsp;React - createContext and useContext
+<li style="list-style-type: '✨'">&nbsp;Styled-Components - Theming
+<li style="list-style-type: '✨'">&nbsp;React Router 6 - Data Router
+<li style="list-style-type: '✨'">&nbsp;Transfer Markdown to HTML and Parse HTML in React App
+</ul>
 
-At the time I started to build this website, I didn't have the knowledge or experience to work with databases and backend systems. However, I soon discovered that Firebase is a fantastic tool that I could relatively easily grasp and utilize in my project. I utilized Firestore's `getDoc` and `getDocs` to get projects and blogs.
+At the time I started to build this website, I didn't have the knowledge or experience to work with databases and backend systems. However, I soon discovered that Firebase is a fantastic tool that I could relatively easily grasp and utilize in my project 🌟. I utilized Firestore's `getDoc` and `getDocs` to get projects and blogs.
 
-During the process of building this website, I also embarked on my first experience with authentication. While it may not be immediately evident to regular visitors, I utilized Firestore's `auth`, `onAuthStateChanged`, `signIn`, `signOut`, `setDoc`, `deleteDoc`, `updateDoc` to integrate a simple blog management system into this project. This system allows me to exclusivly log in as admin and create, update, and edit blogs, all while securely saving them to Firebase.
+During the process of building this website, I also embarked on my first experience with authentication. While it may not be immediately evident to regular visitors, I utilized Firestore's `auth`, `onAuthStateChanged`, `signIn`, `signOut`, `setDoc`, `deleteDoc`, `updateDoc` to integrate a simple blog management system into this project 💫. This system allows me to exclusivly log in as admin and create, update, and edit blogs, all while securely saving them to Firebase.
 
-Moreover, this is the very first time I used React `createContext` and `useContext` in my project. At first, I kept having bugs of context being "undefined" because I misunderstood that there was no need to import context in the components that needed it. Secondly, I didn't realize that I could wrap the `main.jsx` with the context provider. Although my `App.jsx` required access to a couple of contexts, I continued importing context in it while it was wrapped by the same context provider, which of course didn't work as I expected. It was quite frustrating but I didn't give up. I finally figured out the reasons and fixed the bugs after reading React's documentation and other people's examples.
+Moreover, this is the very first time I used React `createContext` and `useContext` in my project. At first, I kept having bugs of context being "undefined" because I misunderstood that there was no need to import context in the components that needed it 😔. Secondly, I didn't realize that I could wrap the `main.jsx` with the context provider. Although my `App.jsx` required access to a couple of contexts, I continued importing context in it while it was wrapped by the same context provider, which of course didn't work as I expected 😔. It was quite frustrating but I didn't give up. I finally figured out the reasons and fixed the bugs after reading React's documentation and other people's examples 💪.
 
-Furthermore, I used [Styled-componnets Theming](https://styled-components.com/docs/advanced#theming) with React context to manage theme colors based on light or dark mode. As I mentioned above, once I figured out how to set up context providers and use context in my project, Theming became a straightforward approach that I successfully implemented. However, there is one main differece between Theming and React context. Theming only accepts objects as value (which has to be named "theme"), while React context accepts all types of values. Apparently, React context is more flexible, but I chose to use Theming particularly in this project to avoid manually passing props to styled components, for example, `<StyledH1 ${theme}={theme}>Title</StyledH1>`. Without Theming, I would have had to pass `${theme}={theme}` as a prop to every single styled component in my entire project, resulting in a considerable amount of repetitive work in the end.
+Furthermore, I used [Styled-componnets Theming](https://styled-components.com/docs/advanced#theming) with React context to manage theme colors based on light or dark mode. As I mentioned above, once I figured out how to set up context providers and use context in my project, Theming became a straightforward approach that I successfully implemented. However, there is one main differece between Theming and React context 🤔. Theming only accepts objects as value (which has to be named "theme"), while React context accepts all types of values. Apparently, React context is more flexible, but I chose to use Theming particularly in this project to avoid manually passing props to styled components, for example, `<StyledH1 ${theme}={theme}>Title</StyledH1>`. Without Theming, I would have had to pass `${theme}={theme}` as a prop to every single styled component in my entire project, resulting in a considerable amount of repetitive work in the end 🤯.
 
 What's more, I especially utilized React Router v6 data router and its associated functions, including features such as loader, action, and deferred data processing in this project, to enhance the overall user experience and optimize the website's performance. Loaders can make sure fetched data is ready when page loads. Action makes easier to work with forms in React apps. Derferred data makes a better user experience by ...❓
 
-Transfer Markdown to HTML and Parse HTML in React App❓
-Before I decided to transfer Markdown to HTML and parse HTML when displaying on the web page, I was trying to save Markdown in Firestore directly and retrive its data to display. However things didn't go as I expected, Markdown text can not format normally. Then I googled a lot and figured out it may be a better option to save HTML instead which will require using parser of course. But after I used parser, it displayed with styles but not with the css styles I defined for my whole website. Then I decided to customizing the parsing rules by changing all elements to styled componnets. It worked for the most part! But i also spotted that all the anchor links don't work. I examined the data I saved in Firestore and inspected in developer tools, it turned out that the customized parsing rules made all ids missing. Then I fixed it by adding `const id = domNode.attribs.id` and `id={id}`.
+Last but not least, before I decided to convert Markdown to HTML and parse it for display on the web page, I initially attempted to save Markdown directly in Firestore and retrieve its data for display 💭. Unfortunately, I encountered issues with the Markdown formatting, as it couldn't render correctly. After research, I realized that a better approach would be to save HTML instead 🤔, which, in turn, required using a parser to convert the HTML to React elements.
+
+When I applied the parser, it did indeed display the content with styles, but it didn't adhere to the CSS styles I had defined for my entire website. To address this, I decided to customize the parsing rules by transforming all HTML elements into styled components 👩🏻‍💻. This customization worked for most of the content. However, I noticed that all anchor links were non-functional.
+
+Upon investigating the data I had saved in Firestore and inspecting the content in the developer tools 🧐, it became clear that the customized parsing rules had inadvertently removed all the id attributes. To resolve this issue, I made the necessary adjustments by adding `const id = domNode.attribs.id` and ensuring that `id={id}` was included when rendering the elements.
 
 ### Links
 
@@ -115,11 +120,13 @@ Before I decided to transfer Markdown to HTML and parse HTML when displaying on 
 
 - Reading documentation
 
-  I honestly prefer tutorial videos before I found the power of reading documentation. It is mainly because firstly, English is not my first language and learning something new in a second language can be overwhelming at the begining. Secondly, as a newbie, it is easy to feel like speeding my learning and show what I have learned to other people, even though I really don't know that much to be honest. After I realized what is holding me back from reading documentation, I slow down on purpose and read it little by little and it works for me so far.
+  Honestly, I preferred tutorial videos over documentation, especially before I fully appreciated the power of reading and understanding documentation. There were two main reasons for this preference. Firstly, English is not my first language, and initially, learning something new and abstract in a second language could be overwhelming 🤯. Secondly, as a beginner, there's often a strong desire to accelerate the learning process and showcase what I've learned to others, even when my understanding is limited.
+
+  However, as I became aware of the barriers that were holding me back from delving into documentation, I intentionally slowed down my approach. I started to read documentation bit by bit, taking my time to understand the content 📝. Surprisingly, this method has proven to be more effective for my learning journey. It has allowed me to build a more solid foundation of knowledge and comprehension 🎯.
 
 - Git branch - merge and delete
 
-  This project is more complicated than the old projects I workded on before. In such a project, using git smartly is very helpful. I used git branch to work on some new features, such as contexts.
+  This project is more complicated than the previous ones I've workded on. In such a project, using git smartly is very beneficial. I used git branch to work on some new features, such as contexts.❓
 
 - environment varaibles
 
@@ -128,6 +135,7 @@ Before I decided to transfer Markdown to HTML and parse HTML when displaying on 
 ### Continued development
 
 - Time management and estimate
+
   I didn't intend to control time I spent on this project but during the process, I found it is crutial for developers to have a plan. Without planning ahead, it is so easy to get caught by some fancy features which may not be so crutial at that point and spend more time without proceeding.
 
 - ❓
@@ -149,10 +157,6 @@ Before I decided to transfer Markdown to HTML and parse HTML when displaying on 
 - [Pixabay](https://pixabay.com/)
 - [AudioMass](https://audiomass.co/)
 - [Material Design Dark Theme](https://m2.material.io/design/color/dark-theme.html)
-
-I didn't use all the design ressources above to build my wesbite but I do find them very helpful.
-I was having trouble deciding what colors look good for my website.
-❓
 
 #### HTML
 

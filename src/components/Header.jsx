@@ -7,7 +7,14 @@ import useSound from "use-sound";
 import Off from "..//assets/sounds/off.mp3";
 import On from "..//assets/sounds/on.mp3";
 import Key from "../assets/sounds/key.mp3";
-import { AutoSwitch, PointerSwitch, PrimarySwitch, SecondaryPrimary, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  AutoSwitch,
+  PointerSwitch,
+  PrimarySwitch,
+  SecondaryPrimary,
+  SecondarySwitch,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 import { SoundContext } from "../contexts/SoundContext";
 import Menu from "./Menu";
@@ -128,11 +135,15 @@ const ModeSwitch = styled.p`
 const Header = ({ screenWidth }) => {
   const { mode, setMode } = useContext(ModeContext);
   const { sound } = useContext(SoundContext);
+  const [menu, setMenu] = useState(false);
   const [weather, setWeather] = useState("");
   const [temp, setTemp] = useState("");
   const celsius = parseInt(temp - 273.15);
   const fahrenheit = parseInt(((temp - 273.15) * 9) / 5 + 32);
   const [fetchError, setFetchhError] = useState(true);
+  const [playOn] = useSound(On, { soundEnabled: sound });
+  const [playOff] = useSound(Off, { soundEnabled: sound });
+  const [playKey] = useSound(Key, { soundEnabled: sound });
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((pos) => {
@@ -153,8 +164,6 @@ const Header = ({ screenWidth }) => {
     });
   }, []);
 
-  const [playOn] = useSound(On, { soundEnabled: sound });
-  const [playOff] = useSound(Off, { soundEnabled: sound });
   const updateMode = () => {
     if (mode) {
       playOff();
@@ -165,12 +174,11 @@ const Header = ({ screenWidth }) => {
     }
   };
 
-  const [playKey] = useSound(Key, { soundEnabled: sound });
-  const [menu, setMenu] = useState(false);
   const toggleMenu = () => {
     setMenu((prev) => !prev);
     playKey();
   };
+
   return (
     <StyledHeader>
       {screenWidth < 1024 && (

@@ -5,7 +5,11 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { ReactComponent as LogoutIcon } from "../assets/images/log-out.svg";
-import { PointerSwitch, PrimarySecondary, TertiaryDot } from "../assets/styles/Styles";
+import {
+  PointerSwitch,
+  PrimarySecondary,
+  TertiaryDot,
+} from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { auth } from "../firebase";
 
@@ -24,6 +28,7 @@ const StyledLogoutButton = styled(LogoutIcon)`
 const LogoutButton = () => {
   const loggedin = useContext(AuthContext);
   const navigate = useNavigate();
+
   const logout = () => {
     signOut(auth)
       .then(() => {
@@ -31,12 +36,12 @@ const LogoutButton = () => {
       })
       .catch((error) => {
         console.error(error);
-        throw new Error(
-          "Something went wrong while attempting to log out."
-        );
+        throw new Error("Something went wrong while attempting to log out.");
       });
     navigate("/logout");
   };
+
   return <>{loggedin && <StyledLogoutButton onClick={logout} />}</>;
 };
+
 export default LogoutButton;

@@ -3,7 +3,11 @@
 import styled from "styled-components";
 
 import Kuma from "../assets/images/ojigi_animal_kuma.png";
-import { BGSwitch, ParagraphSwitch, SecondaryTertiary } from "../assets/styles/Styles";
+import {
+  BGSwitch,
+  ParagraphSwitch,
+  SecondaryTertiary,
+} from "../assets/styles/Styles";
 import GlobalStyles from "../GlobalStyles";
 
 const ErrorPageContainer = styled.div`
@@ -41,7 +45,7 @@ const ErrorPage = () => {
     <>
       <GlobalStyles />
       <ErrorPageContainer>
-        <StyledImg src={Kuma} alt="sorry bear picture" />
+        <StyledImg src={Kuma} alt="sorry bear" />
         <StyledP>
           Something went wrong, try refreshing the page or come back later.
         </StyledP>

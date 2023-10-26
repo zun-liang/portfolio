@@ -122,19 +122,18 @@ export const loader = async () => {
   }
 };
 
-//pagination
 const Blogs = ({ setDraft, playPageTurn, setTagsToEdit }) => {
   const playPick = useContext(PlayPickContext);
-  useEffect(() => {
-    document.title = "Blogs ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
-  }, []);
   const loggedin = useContext(AuthContext);
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryFilter = searchParams.get("category");
   const blogsArr = useLoaderData();
+
   const filteredBlogs = categoryFilter
     ? blogsArr.filter((blog) => blog.tag[0] === categoryFilter)
     : blogsArr;
+
   const blogs = filteredBlogs.map((blog) => (
     <BlogLink
       key={blog.id}
@@ -150,6 +149,10 @@ const Blogs = ({ setDraft, playPageTurn, setTagsToEdit }) => {
     </BlogLink>
   ));
 
+  useEffect(() => {
+    document.title = "Blogs ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
+  }, []);
+
   const generateSearchParams = (key, value) => {
     playPick();
     setSearchParams((prev) => {
@@ -161,7 +164,7 @@ const Blogs = ({ setDraft, playPageTurn, setTagsToEdit }) => {
       return prev;
     });
   };
-  const navigate = useNavigate();
+
   const getDraft = async () => {
     playPick();
     const docSnap = await getDoc(doc(db, "drafts", "draft"));
@@ -214,3 +217,4 @@ export default memo(Blogs);
 // a blog can contain a couple tags, how to work with it
 //how to dynamically set up tags
 //select different tags vs the same blog contain different tags
+//pagination

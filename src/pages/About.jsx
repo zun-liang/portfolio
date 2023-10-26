@@ -192,9 +192,11 @@ const StyledReduxIcon = styled(ReduxIcon)`
 const About = () => {
   const { mode } = useContext(ModeContext);
   const playPick = useContext(PlayPickContext);
+
   useEffect(() => {
     document.title = "About Me ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
+
   return (
     <AboutContainer>
       <Section>

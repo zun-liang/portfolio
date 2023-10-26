@@ -7,6 +7,7 @@ const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
   const [userStatus, setUserStatus] = useState(null);
+
   useEffect(() => {
     const getUserStatus = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -17,8 +18,10 @@ const AuthContextProvider = ({ children }) => {
     });
     return () => getUserStatus();
   }, []);
+
   return (
     <AuthContext.Provider value={userStatus}>{children}</AuthContext.Provider>
   );
 };
+
 export { AuthContext, AuthContextProvider };

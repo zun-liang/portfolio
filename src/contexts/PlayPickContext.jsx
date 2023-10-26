@@ -9,6 +9,7 @@ const PlayPickContext = createContext();
 const PlayPickContextProvider = ({ children }) => {
   const { sound } = useContext(SoundContext);
   const [playPick] = useSound(Pick, { soundEnabled: sound });
+
   return (
     <PlayPickContext.Provider value={playPick}>
       {children}

@@ -113,6 +113,11 @@ export const loader = async ({ params }) => {
 const Blog = ({ setBlogToEdit, setTagsToEdit }) => {
   const playPick = useContext(PlayPickContext);
   const loggedin = useContext(AuthContext);
+  const location = useLocation();
+  const search = location.state?.search;
+  const [newSearch, setNewSearch] = useState(search);
+  const navigate = useNavigate();
+  const blogData = useLoaderData();
   const {
     id: blogID,
     time: blogTime,
@@ -124,12 +129,6 @@ const Blog = ({ setBlogToEdit, setTagsToEdit }) => {
   useEffect(() => {
     document.title = "Blog ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
-  const location = useLocation();
-  const search = location.state?.search;
-  const [newSearch, setNewSearch] = useState(search);
-
-  const navigate = useNavigate();
-  const blogData = useLoaderData();
 
   const editBlog = () => {
     playPick();
@@ -137,12 +136,14 @@ const Blog = ({ setBlogToEdit, setTagsToEdit }) => {
     setTagsToEdit(blogTag);
     navigate("/editor");
   };
+
   const deleteBlog = async () => {
     playPick();
     await deleteDoc(doc(db, "blogs", blogID));
     navigate("/blogs");
     //user experience, loading page? error handle
   };
+
   useEffect(() => {
     document.body.scrollTo({ top: 0 });
   }, []);
@@ -163,25 +164,22 @@ const Blog = ({ setBlogToEdit, setTagsToEdit }) => {
         );
 
   return (
-    <>
-      <BlogContainer>
-        <StyledDiv>
-          <BackLink to={`/blogs${newSearch}`} onClick={playPick}>
-            Back to blogs
-          </BackLink>
-          {loggedin ? (
-            <StyledButton onClick={editBlog}>Edit</StyledButton>
-          ) : null}
-          {loggedin ? (
-            <StyledButton onClick={deleteBlog}>Delete</StyledButton>
-          ) : null}
-        </StyledDiv>
-        <MarkdownTitle>{blogTitle}</MarkdownTitle>
-        <StyledP>{blogTime}</StyledP>
-        <BlogContent blogContent={blogContent} />
-        <TagsContainer>{tags}</TagsContainer>
-      </BlogContainer>
-    </>
+    <BlogContainer>
+      <StyledDiv>
+        <BackLink to={`/blogs${newSearch}`} onClick={playPick}>
+          Back to blogs
+        </BackLink>
+        {loggedin ? <StyledButton onClick={editBlog}>Edit</StyledButton> : null}
+        {loggedin ? (
+          <StyledButton onClick={deleteBlog}>Delete</StyledButton>
+        ) : null}
+      </StyledDiv>
+      <MarkdownTitle>{blogTitle}</MarkdownTitle>
+      <StyledP>{blogTime}</StyledP>
+      <BlogContent blogContent={blogContent} />
+      <TagsContainer>{tags}</TagsContainer>
+    </BlogContainer>
   );
 };
+
 export default Blog;

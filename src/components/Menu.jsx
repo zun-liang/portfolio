@@ -109,16 +109,19 @@ const StyledLink = styled(NavLink)`
 
 const Menu = ({ menu, setMenu, playKey }) => {
   const { mode } = useContext(ModeContext);
+
   const activeStyle = {
     color: mode ? "var(--light-tertiary)" : "var(--dark-tertiary)",
     textShadow: mode ? "1px 1px var(--light-secondary)" : "1px 1px transparent",
     textDecoration: "wavy underline",
     textUnderlineOffset: "8px",
   };
+
   const closeMenu = () => {
     setMenu(false);
     playKey();
   };
+
   return (
     <MenuContainer $menu={menu}>
       <StyledNav>

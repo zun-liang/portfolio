@@ -2,13 +2,26 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import MDEditor from "@uiw/react-md-editor";
-import { deleteDoc, doc, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
+import {
+  deleteDoc,
+  doc,
+  serverTimestamp,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { marked } from "marked";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { BasicButton, BasicInput, BasicLink, PrimarySecondary, SecondaryPrimary, TertiaryParagraph } from "../assets/styles/Styles";
+import {
+  BasicButton,
+  BasicInput,
+  BasicLink,
+  PrimarySecondary,
+  SecondaryPrimary,
+  TertiaryParagraph,
+} from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { db } from "../firebase";
 
@@ -70,13 +83,10 @@ const StyledButton = styled(BasicButton)`
   }
 `;
 
-const Editor = ({
-  blogToEdit,
-  setBlogToEdit,
-  draft,
-  setDraft,
-  tagsToEdit,
-}) => {
+const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft, tagsToEdit }) => {
+  const navigate = useNavigate();
+  const playPick = useContext(PlayPickContext);
+
   /* retrieved draft data */
   const retrievedBlog = blogToEdit?.title + "\n\n" + blogToEdit?.content;
   const retrievedDraft = draft?.title + "\n\n" + draft?.content;
@@ -108,7 +118,9 @@ const Editor = ({
     blog.split("\n")[0].split(" ").slice(1).join("-").toLowerCase() +
     "-" +
     new Date().getTime();
+
   const timestamp = serverTimestamp();
+
   const blogObject = {
     timestamp: timestamp,
     id: blogId,
@@ -118,7 +130,9 @@ const Editor = ({
     time: time,
     tag: tag,
   };
+
   const preBlogId = blogToEdit?.id;
+
   const updatedBlogObject = {
     timestamp: blogToEdit?.timestamp,
     id: preBlogId,
@@ -128,10 +142,6 @@ const Editor = ({
     time: blogToEdit?.time,
     tag: tag,
   };
-
-  const navigate = useNavigate();
-
-  const playPick = useContext(PlayPickContext);
 
   /* post an initial/edited blog to firestore */
   const post = async () => {
@@ -160,6 +170,7 @@ const Editor = ({
     time: time,
     tag: tag || "",
   };
+
   const updatedDraft = {
     timestamp: draft?.timestamp,
     id: "draft",

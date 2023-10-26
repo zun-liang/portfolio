@@ -5,7 +5,9 @@ import { AuthContext } from "../contexts/AuthContext";
 
 const AuthRequired = () => {
   const loggedin = useContext(AuthContext);
-  if (!loggedin) return <Navigate to="/login" replace />;
+  if (!loggedin) {
+    return <Navigate to="/login" replace />;
+  }
   return <Outlet />;
 };
 

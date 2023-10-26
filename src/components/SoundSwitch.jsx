@@ -54,10 +54,12 @@ const SoundSwitch = () => {
     soundEnabled: !sound,
     volume: 0.5,
   });
+
   const toggleSound = () => {
     setSound((prev) => !prev);
     playInterface();
   };
+
   return (
     <Container>
       {sound ? (
@@ -68,4 +70,5 @@ const SoundSwitch = () => {
     </Container>
   );
 };
+
 export default SoundSwitch;

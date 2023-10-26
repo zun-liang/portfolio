@@ -160,6 +160,7 @@ const StyledButton = styled(BasicButton)`
 const Contact = () => {
   const { sound } = useContext(SoundContext);
   const [playSwoosh] = useSound(Swoosh, { soundEnabled: sound });
+
   useEffect(() => {
     document.title = "Contact ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);

@@ -35,6 +35,7 @@ const UserProfile = () => {
   const [userName, setUserName] = useState("");
   const [userPhoto, setUserPhoto] = useState("");
   const loggedin = useContext(AuthContext);
+
   useEffect(() => {
     const user = auth.currentUser;
     if (user !== null) {
@@ -44,6 +45,7 @@ const UserProfile = () => {
       setUserPhoto(photoURL);
     }
   }, []);
+
   return (
     <>
       {loggedin && (
@@ -59,4 +61,5 @@ const UserProfile = () => {
     </>
   );
 };
+
 export default UserProfile;

@@ -5,7 +5,14 @@ import styled from "styled-components";
 
 import LoadingImage from "../assets/images/favicon/dark/apple-touch-icon.png";
 import LoadingImageLight from "../assets/images/favicon/light/apple-touch-icon.png";
-import { AutoSwitch, BasicButton, BGSwitch, OpaqueSwitch, PrimarySecondary, PrimarySwitch } from "../assets/styles/Styles.jsx";
+import {
+  AutoSwitch,
+  BasicButton,
+  BGSwitch,
+  OpaqueSwitch,
+  PrimarySecondary,
+  PrimarySwitch,
+} from "../assets/styles/Styles.jsx";
 import { ModeContext } from "../contexts/ModeContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import GlobalStyles from "../GlobalStyles";
@@ -80,13 +87,15 @@ const PassButton = styled(StyledButton)`
 `;
 
 const Loading = ({ setLoading, today }) => {
-  const {mode} = useContext(ModeContext);
+  const { mode } = useContext(ModeContext);
   const playPick = useContext(PlayPickContext);
+
   const handleClick = () => {
     setTimeout(() => setLoading(false), 1000);
     localStorage.setItem("loading", today);
     playPick();
   };
+
   return (
     <>
       <GlobalStyles />

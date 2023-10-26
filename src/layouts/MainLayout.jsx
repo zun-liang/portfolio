@@ -14,6 +14,7 @@ const LayoutContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+
 const MainLayout = ({ screenWidth }) => {
   return (
     <LayoutContainer>

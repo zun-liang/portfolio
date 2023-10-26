@@ -3,7 +3,12 @@ import { useContext, useEffect } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { BasicLink, HoverSwitch, ParagraphSwitch, SecondaryTertiary } from "../assets/styles/Styles";
+import {
+  BasicLink,
+  HoverSwitch,
+  ParagraphSwitch,
+  SecondaryTertiary,
+} from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 
 const LogoutContainer = styled.div`
@@ -37,9 +42,11 @@ const StyledLink = styled(BasicLink)`
 
 const Logout = () => {
   const playPick = useContext(PlayPickContext);
+
   useEffect(() => {
     document.title = "Log Out ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
+
   return (
     <LogoutContainer>
       <StyledP>૮꒰˶ᵕ ༝ᵕ˶꒱აᶻ 𝗓 𐰁ᶻ </StyledP>

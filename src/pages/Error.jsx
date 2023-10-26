@@ -56,12 +56,12 @@ const StyledLink = styled(BasicLink)`
 `;
 
 const Error = () => {
+  const error = useRouteError();
+  console.log(error);
+
   useEffect(() => {
     document.title = "Error ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
-
-  const error = useRouteError();
-  console.log(error);
 
   return (
     <ErrorPage>

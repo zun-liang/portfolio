@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { OpaqueSwitch, PointerSwitch, PrimarySwitch, PrimaryTertiary, SecondaryHover, TertiaryParagraph } from "../assets/styles/Styles";
+import {
+  OpaqueSwitch,
+  PointerSwitch,
+  PrimarySwitch,
+  PrimaryTertiary,
+  SecondaryHover,
+  TertiaryParagraph,
+} from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 
 const ProjectLink = styled(Link)`

@@ -81,6 +81,7 @@ const Home = () => {
   useEffect(() => {
     document.title = "Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
+
   return (
     <HomeContainer>
       <StyledImg src={Profile} alt="profile" />

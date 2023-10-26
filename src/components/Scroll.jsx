@@ -23,6 +23,7 @@ const ScrollButton = styled.button`
     right: 3rem;
   }
 `;
+
 const Scroll = () => {
   const { sound } = useContext(SoundContext);
   const [scroll, setScroll] = useState(null);
@@ -52,4 +53,5 @@ const Scroll = () => {
 
   return <>{scroll && <ScrollButton onClick={scrollToTop}>🦋</ScrollButton>}</>;
 };
+
 export default Scroll;

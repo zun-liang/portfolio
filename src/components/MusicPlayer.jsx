@@ -4,7 +4,11 @@ import styled from "styled-components";
 
 import { ReactComponent as MusicOn } from "../assets/images/music.svg";
 import MusicBox from "../assets/sounds/music-box.mp3";
-import { PointerSwitch, PrimarySecondary, TertiaryDot } from "../assets/styles/Styles";
+import {
+  PointerSwitch,
+  PrimarySecondary,
+  TertiaryDot,
+} from "../assets/styles/Styles";
 
 const PlayButton = styled(MusicOn)`
   width: 1rem;
@@ -36,16 +40,19 @@ const OffButton = styled(PlayButton)`
 const MusicPlayer = () => {
   const [play, setPlay] = useState(false);
   const music = document.getElementById("music");
+
   const handleOn = () => {
     setPlay(true);
     music.play();
     music.loop = true;
   };
+
   const handleOff = () => {
     setPlay(false);
     music.pause();
     music.loop = false;
   };
+
   return (
     <>
       <audio id="music">

@@ -8,4 +8,5 @@ const BlogContent = ({ blogContent }) => {
   const options = createMarkdownOptions();
   return <>{parse(html, options)}</>;
 };
+
 export default BlogContent;

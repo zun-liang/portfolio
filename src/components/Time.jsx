@@ -16,6 +16,7 @@ const TimeContainer = styled.p`
     margin: 0.8rem 0;
   }
 `;
+
 const Time = () => {
   const options = {
     weekday: "short",
@@ -26,9 +27,11 @@ const Time = () => {
     second: "2-digit",
     hourCycle: "h23",
   };
+
   const [current, setCurrent] = useState(
     new Date().toLocaleString("en-US", options)
   );
+
   useEffect(() => {
     const intId = setInterval(() => {
       const updatedCurrent = new Date().toLocaleString("en-US", options);

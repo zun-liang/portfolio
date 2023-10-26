@@ -144,16 +144,17 @@ export const loader = async ({ params }) => {
 
 const Project = () => {
   const playPick = useContext(PlayPickContext);
-  useEffect(() => {
-    document.title = "Project ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
-  }, []);
-
   const {
     name: projectName,
     codeURL: codeURL,
     liveURL: liveURL,
     femURL: femURL,
   } = useLoaderData();
+
+  useEffect(() => {
+    document.title = "Project ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
+  }, []);
+
   return (
     <ProjectContainer>
       <BackLink to="/projects" onClick={playPick}>

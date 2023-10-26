@@ -94,6 +94,7 @@ const StyledP = styled.p`
 const Footer = () => {
   const playPick = useContext(PlayPickContext);
   const Year = new Date().getFullYear();
+
   return (
     <StyledFooter>
       <Wrapper>

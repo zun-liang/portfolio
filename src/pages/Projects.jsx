@@ -5,7 +5,11 @@ import { useContext, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import styled from "styled-components";
 
-import { PointerSwitch, PrimarySwitch, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  PointerSwitch,
+  PrimarySwitch,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import ProjectOverview from "../components/ProjectOverview";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { projectsCollection } from "../firebase";
@@ -87,12 +91,15 @@ export const loader = async () => {
     );
   }
 };
+
 const Projects = ({ playPageTurn }) => {
   const playPick = useContext(PlayPickContext);
+  const projectsArr = useLoaderData();
+
   useEffect(() => {
     document.title = "Projects ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
-  const projectsArr = useLoaderData();
+
   return (
     <ProjectsContainer>
       <ProjectOverview projectsArr={projectsArr} playPageTurn={playPageTurn} />

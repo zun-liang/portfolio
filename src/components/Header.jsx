@@ -7,14 +7,7 @@ import useSound from "use-sound";
 import Off from "..//assets/sounds/off.mp3";
 import On from "..//assets/sounds/on.mp3";
 import Key from "../assets/sounds/key.mp3";
-import {
-  AutoSwitch,
-  PointerSwitch,
-  PrimarySwitch,
-  SecondaryPrimary,
-  SecondarySwitch,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { AutoSwitch, PointerSwitch, PrimarySwitch, SecondaryPrimary, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 import { SoundContext } from "../contexts/SoundContext";
 import Menu from "./Menu";
@@ -218,3 +211,4 @@ const Header = ({ screenWidth }) => {
 };
 
 export default Header;
+//i should save this api as well

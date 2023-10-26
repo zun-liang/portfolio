@@ -130,13 +130,110 @@ Upon investigating the data I had saved in Firestore and inspecting the content 
 
 - environment varaibles
 
+  If you are making a vite/react app and want to save some sensitive information in environment varables, it is possible that you will run into an issue using `process.env` directly.
+
+  Both add `VITE_` to env varaibles while use `import.meta.env` and use `loadEnv` to define work for me.
+  The only thing trapped me was I didn't put .env in root but src. Also, don't forget to add .env in .gitignore.
+
+  Option 1: use `loadEnv` to define:
+
+  In my .env, I declared:
+
+  ```
+    REACT_APP_API_KEY = my_api_key
+    REACT_APP_AUTH_DOMAIN = _my_auth_domain
+    REACT_APP_PROJECT_ID = my_project_id
+    REACT_APP_STORAGE_BUCKET = my_storage_bucket
+    REACT_APP_MESSAGING_SENDER_ID = my_messaging_sender_id
+    REACT_APP_APP_ID = _my_app_id
+  ```
+
+  In my firebase.js, I declared:
+
+  ```
+  const firebaseConfig = {
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID,
+  };
+  ```
+
+  In my vite.config.js, I set up like this article said:
+  [Uncaught ReferenceError: process is not defined](https://dev.to/boostup/uncaught-referenceerror-process-is-not-defined-12kg)
+
+  ```
+  import react from "@vitejs/plugin-react";
+  import { defineConfig, loadEnv } from "vite";
+  import svgr from "vite-plugin-svgr";
+
+  //vitejs.dev/config/
+  export default defineConfig(({ mode }) => {
+    const env = loadEnv(mode, process.cwd(), "");
+    return {
+      define: {
+        "process.env.REACT_APP_API_KEY": JSON.stringify(env.REACT_APP_API_KEY),
+        "process.env.REACT_APP_AUTH_DOMAIN": JSON.stringify(
+          env.REACT_APP_AUTH_DOMAIN
+        ),
+        "process.env.REACT_APP_PROJECT_ID": JSON.stringify(
+          env.REACT_APP_PROJECT_ID
+        ),
+        "process.env.REACT_APP_STORAGE_BUCKET": JSON.stringify(
+          env.REACT_APP_STORAGE_BUCKET
+        ),
+        "process.env.REACT_APP_MESSAGING_SENDER_ID": JSON.stringify(
+          env.REACT_APP_MESSAGING_SENDER_ID
+        ),
+        "process.env.REACT_APP_APP_ID": JSON.stringify(env.REACT_APP_APP_ID),
+      },
+      plugins: [svgr(), react()],
+    };
+  });
+
+  ```
+
+  Option 2: use `VITE_` prefix and `import_meta.env`
+
+  In my .env, I declared:
+
+  ```
+    VITE_REACT_APP_API_KEY = my_api_key ...
+  ```
+
+  In my firebase.js, I declared:
+
+  ```
+  const firebaseConfig = {
+    apiKey: import.meta.env.VITE_REACT_APP_API_KEY, ...
+  };
+  ```
+
+  In vite.config.js,
+
+  ```
+  import react from "@vitejs/plugin-react";
+  import { defineConfig } from "vite";
+  import svgr from "vite-plugin-svgr";
+
+  //vitejs.dev/config/
+  export default defineConfig(() => {
+  return {
+    plugins: [svgr(), react()],
+  };
+  });
+
+  ```
+
 - ❓
 
 ### Continued development
 
 - Time management and estimate
 
-  I didn't intend to control time I spent on this project but during the process, I found it is crutial for developers to have a plan. Without planning ahead, it is so easy to get caught by some fancy features which may not be so crutial at that point and spend more time without proceeding.
+I didn't intend to control time I spent on this project but during the process, I found it is crutial for developers to have a plan. Without planning ahead, it is so easy to get caught by some fancy features which may not be so crutial at that point and spend more time without proceeding.
 
 - ❓
 
@@ -186,7 +283,7 @@ Upon investigating the data I had saved in Firestore and inspecting the content 
 - [encodeURIComponent()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent)
 - [Chrome 80 shows timestamp "24:xx" instead of "00:00".](https://support.google.com/chrome/thread/29828561/chrome-80-shows-timestamp-24-xx-instead-of-00-00?hl=en)
 
-  During development, I found that only on chrome mac shows 24 instead of 00, fixed by using hourCycle: 23h instead of hour12: false. ❓
+During development, I found that only on chrome mac shows 24 instead of 00, fixed by using hourCycle: 23h instead of hour12: false. ❓
 
 #### React
 
@@ -201,12 +298,12 @@ Upon investigating the data I had saved in Firestore and inspecting the content 
 - [Scroll Restoration v5](https://v5.reactrouter.com/web/guides/scroll-restoration)
 - [ScrollRestoration v6](https://reactrouter.com/en/main/components/scroll-restoration)
 
-  I was having difficulty creating a "back to top" button and I found a couple things to consider. First, I learned that my scrollable container is not window but body in this case according to Firefox dev tools. Second, my scroll to top button doesn't help to load new page's begining but the position of old page where I was at, then I found scrollRestoration from react router which is very helpful but also "remembers" window.location. ScrollRestoration only works on window level. not working here...
+I was having difficulty creating a "back to top" button and I found a couple things to consider. First, I learned that my scrollable container is not window but body in this case according to Firefox dev tools. Second, my scroll to top button doesn't help to load new page's begining but the position of old page where I was at, then I found scrollRestoration from react router which is very helpful but also "remembers" window.location. ScrollRestoration only works on window level. not working here...
 
 - [<ScrollRestoration> with scrolling container other than window #9495](https://github.com/remix-run/react-router/discussions/9495)
 - [index.tsx:24 Uncaught Error: useLocation() may be used only in the context of a <Router> component](https://stackoverflow.com/questions/71979809/index-tsx24-uncaught-error-uselocation-may-be-used-only-in-the-context-of-a)
 
-  I had the same error and was thinking where to put my scroll component for the best. This answer inspired me to add it in layout route and enable to utilize useLocation.
+I had the same error and was thinking where to put my scroll component for the best. This answer inspired me to add it in layout route and enable to utilize useLocation.
 
 #### Styled-Components
 
@@ -217,25 +314,25 @@ Upon investigating the data I had saved in Firestore and inspecting the content 
 
 - [Open Weather API](https://openweathermap.org/)
 
-  To get local weather and temperature depending on visitor's' location
+To get local weather and temperature depending on visitor's' location
 
 #### Markdown
 
 - [react-md-editor](https://uiwjs.github.io/react-md-editor/)
 
-  I first tried rich text editor (TinyMCE) but later switched to Markdown editor because firstly rich text editor's data can not be stored formatted in Firebase as I expected. Secondly, I am more familiar with Markdown so far. But I will be more than willing to learn more about rich text editor and utilize it in my future projects.
+I first tried rich text editor (TinyMCE) but later switched to Markdown editor because firstly rich text editor's data can not be stored formatted in Firebase as I expected. Secondly, I am more familiar with Markdown so far. But I will be more than willing to learn more about rich text editor and utilize it in my future projects.
 
-  - [How can I set the placeholder value? #154](https://github.com/uiwjs/react-md-editor/issues/154)
+- [How can I set the placeholder value? #154](https://github.com/uiwjs/react-md-editor/issues/154)
 
 - [react-markdown](https://github.com/remarkjs/react-markdown)
 
-  To display markdown in my website
+To display markdown in my website
 
 - [Marked](https://marked.js.org/)
 - [html-react-parser](https://github.com/remarkablemark/html-react-parser)
 - [remark-gfm](https://github.com/remarkjs/remark-gfm)
 
-  Didn't use in this website yet, but seems helpful to display footnotes, strikethrough, tables, tasklists and URLs directly
+Didn't use in this website yet, but seems helpful to display footnotes, strikethrough, tables, tasklists and URLs directly
 
 - [Emoji list markers](https://talk.commonmark.org/t/emoji-list-markers/3560)
 
@@ -243,19 +340,19 @@ Upon investigating the data I had saved in Firestore and inspecting the content 
 
 - [How to Import SVGs in a React and Vite app](https://www.freecodecamp.org/news/how-to-import-svgs-in-react-and-vite/#3importingsvgsasreactcomponents)
 
-  I usually use SVGR to transform svg into React component to work with.
+I usually use SVGR to transform svg into React component to work with.
 
 - [Formspree](https://formspree.io/)
 
-  To create my contact form
+To create my contact form
 
 - [LT Browser](https://www.lambdatest.com/lt-browser)
 
-  To test responsive designs on different devices locally
+To test responsive designs on different devices locally
 
 - [Find scrollable elements](https://phuoc.ng/collection/tips/find-scrollable-elements/)
 
-  To find which elements are scrollable, you can check Firefox inspector
+To find which elements are scrollable, you can check Firefox inspector
 
 ## References
 
@@ -275,3 +372,7 @@ Upon investigating the data I had saved in Firestore and inspecting the content 
 - Github - [@zun-liang](https://github.com/zun-liang)
 - Frontend Mentor - [@zun-liang](https://www.frontendmentor.io/profile/zun-liang)
 - freeCodeCamp - [@zun-liang](https://www.freecodecamp.org/zun-liang)
+
+```
+
+```

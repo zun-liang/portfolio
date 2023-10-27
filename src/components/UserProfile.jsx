@@ -3,7 +3,11 @@ import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { ReactComponent as UserDefault } from "../assets/images/user.svg";
-import { TertiaryDot } from "../assets/styles/Styles";
+import {
+  SecondaryPrimary,
+  TertiaryDot,
+  TertiaryParagraph,
+} from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { auth } from "../firebase";
 
@@ -19,7 +23,8 @@ const ProfileContainer = styled.div`
 `;
 const StyledP = styled.p`
   font-size: 1rem;
-  color: ${TertiaryDot};
+  color: ${TertiaryParagraph};
+  text-shadow: 1px 1px ${SecondaryPrimary};
   font-family: "Black Ops One", sans-serif;
 `;
 const StyledImg = styled.img`

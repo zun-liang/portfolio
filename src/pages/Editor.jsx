@@ -21,8 +21,9 @@ import {
   BasicButton,
   BasicInput,
   BasicLink,
-  PrimarySecondary,
+  PrimarySwitch,
   SecondaryPrimary,
+  SecondarySwitch,
   TertiaryParagraph,
 } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
@@ -60,7 +61,7 @@ const StyledDiv = styled.div`
 `;
 const TagLabel = styled.label`
   font-family: "Black Ops One", sans-serif;
-  color: ${PrimarySecondary};
+  color: ${TertiaryParagraph};
   text-shadow: 1px 1px ${SecondaryPrimary};
 `;
 const TagInput = styled(BasicInput)`
@@ -74,22 +75,24 @@ const StyledLink = styled(BasicLink)`
   text-align: center;
   &:link,
   &:visited {
-    color: ${PrimarySecondary};
+    color: ${TertiaryParagraph};
     text-shadow: 1px 1px ${SecondaryPrimary};
   }
   &:hover,
   &:active {
-    color: ${TertiaryParagraph};
+    color: ${PrimarySwitch};
+    text-shadow: 1px 0px ${SecondarySwitch};
   }
 `;
 const StyledButton = styled(BasicButton)`
-  color: ${PrimarySecondary};
+  color: ${TertiaryParagraph};
   text-shadow: 1px 1px ${SecondaryPrimary};
   padding: 0.3rem 0.5rem;
   &:hover,
   &:active,
   &:focus {
-    color: ${TertiaryParagraph};
+    color: ${PrimarySwitch};
+    text-shadow: 1px 0px ${SecondarySwitch};
   }
 `;
 const ResetButton = styled(StyledButton)``;

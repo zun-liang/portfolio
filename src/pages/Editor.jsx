@@ -8,11 +8,10 @@ import {
   serverTimestamp,
   setDoc,
   updateDoc,
-  getDoc,
 } from "firebase/firestore";
 import { marked } from "marked";
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useLoaderData } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import {
@@ -84,35 +83,9 @@ const StyledButton = styled(BasicButton)`
   }
 `;
 
-export const loader = async () => {
-  const docRef = doc(db, "drafts", "draft");
-  try {
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      return docSnap.data();
-    } else {
-      console.log("No such draft!");
-    }
-  } catch (error) {
-    console.error("Error fetching draft:", error);
-    throw new Error(
-      "Something went wrong while attempting to retrieve draft data."
-    );
-  }
-};
-
 const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft, tagsToEdit }) => {
   const playPick = useContext(PlayPickContext);
   const navigate = useNavigate();
-  const draftData = useLoaderData();
-  const {
-    id: draftID,
-    time: draftTime,
-    title: draftTitle,
-    content: draftContent,
-    tag: draftTag,
-  } = useLoaderData();
-  console.log(draftData);
 
   /* === blog and tagInput setup === */
   const retrievedBlog = blogToEdit?.title + "\n\n" + blogToEdit?.content;

@@ -20,7 +20,7 @@ import About from "./pages/About";
 import Blog, { loader as blogLoader } from "./pages/Blog";
 import Blogs, { loader as blogsLoader } from "./pages/Blogs";
 import Contact from "./pages/Contact";
-import Editor, { loader as editorLoader } from "./pages/Editor";
+import Editor from "./pages/Editor";
 import Error from "./pages/Error";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
@@ -139,7 +139,6 @@ const App = () => {
                 setBlogToEdit={setBlogToEdit}
               />
             }
-            loader={editorLoader}
           />
           <Route path="post" element={<Post draft={draft} />} />
         </Route>

@@ -381,7 +381,3 @@ To find which elements are scrollable, you can check Firefox inspector
 - Github - [@zun-liang](https://github.com/zun-liang)
 - Frontend Mentor - [@zun-liang](https://www.frontendmentor.io/profile/zun-liang)
 - freeCodeCamp - [@zun-liang](https://www.freecodecamp.org/zun-liang)
-
-```
-
-```

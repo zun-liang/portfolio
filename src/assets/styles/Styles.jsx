@@ -156,7 +156,16 @@ const StyledP = styled.p`
   & > code {
     color: ${SecondaryTertiary};
     background-color: ${TertiaryBackground};
+    font-size: 16px;
     padding: 2px;
+  }
+`;
+const StyledPre = styled.pre`
+  background-color: ${TertiaryBackground};
+  padding: 1.5rem;
+  & > code {
+    color: ${SecondaryTertiary};
+    font-size: 16px;
   }
 `;
 const StyledList = styled.ul`
@@ -181,6 +190,14 @@ const StyledList = styled.ul`
     &:visited {
       color: ${HighlightSwitch};
     }
+  }
+  & > li > pre {
+    background-color: ${TertiaryBackground};
+    padding: 1.5rem;
+  }
+  & > li > pre > code {
+    color: ${SecondaryTertiary};
+    font-size: 16px;
   }
 `;
 const StyledLink = styled.a`
@@ -221,6 +238,10 @@ export const createMarkdownOptions = () => {
       if (domNode.type === "tag" && domNode.name === "p") {
         const id = domNode.attribs.id;
         return <StyledP id={id}>{domToReact(domNode.children)}</StyledP>;
+      }
+      if (domNode.type === "tag" && domNode.name === "pre") {
+        const id = domNode.attribs.id;
+        return <StyledPre id={id}>{domToReact(domNode.children)}</StyledPre>;
       }
       if (domNode.type === "tag" && domNode.name === "ul") {
         const id = domNode.attribs.id;

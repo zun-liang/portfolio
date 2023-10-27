@@ -46,8 +46,8 @@ const App = () => {
   const [error, setError] = useState(null); //null
 
   const [blogToEdit, setBlogToEdit] = useState(null);
-  const [draft, setDraft] = useState(null);
   const [tagsToEdit, setTagsToEdit] = useState(null);
+  const [draft, setDraft] = useState(null);
 
   const { sound } = useContext(SoundContext);
   const [playPageTurn] = useSound(PageTurn, { soundEnabled: sound });

@@ -293,6 +293,9 @@ During development, I found that only on chrome mac shows 24 instead of 00, fixe
 - [useContext](https://react.dev/reference/react/useContext)
 - [Hide Firebase API Keys in ReactJS Project using Environment Variables](https://blogs.ayushdev.com/hide-firebase-api-keys-in-reactjs-project-using-environment-variables)
 - [A Pitfall I Almost Fell Into… Learn how to save your API KEYS](https://medium.com/@oadaramola/a-pitfall-i-almost-fell-into-d1d3461b2fb8)
+- [useRef](https://react.dev/reference/react/useRef#referencing-a-value-with-a-ref)
+
+  I found a bug that if I clicked in-page links, then select "back to blogs" or simply click on back button, I will be directed to "/blogsundefined" instead of "/blogs" which of course is invalid. Then I found it was because I wanted user to return to the category filter they selected so I check their location state and add it to url. But after I clicked in-page links, it became undefined. I wanted to use useState to keep it but it will leave setStae unused then I found I can use useRef in this case.❓
 
 #### React Router
 

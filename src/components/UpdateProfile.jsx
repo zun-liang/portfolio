@@ -33,6 +33,7 @@ const UpdateProfile = () => {
       })
       .catch((error) => {
         console.error(error);
+        throw new Error("Something went wrong while updating profile.");
       });
   };
   return <StyledButton onClick={handleClick}>Update Profile</StyledButton>;

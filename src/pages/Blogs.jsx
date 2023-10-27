@@ -1,13 +1,8 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
-import { doc, getDoc, getDocs, orderBy, query } from "firebase/firestore";
+import { getDocs, orderBy, query } from "firebase/firestore";
 import { memo, useContext, useEffect, useMemo } from "react";
-import {
-  Link,
-  useLoaderData,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
 import {
@@ -23,7 +18,7 @@ import {
 import BlogOverview from "../components/BlogOverview";
 import { AuthContext } from "../contexts/AuthContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
-import { blogsCollection, db } from "../firebase";
+import { blogsCollection } from "../firebase";
 
 const BlogsContainer = styled.div`
   width: 80vw;
@@ -81,9 +76,6 @@ const StyledH2 = styled.h2`
   color: ${PrimaryTertiary};
   text-shadow: 1px 0px ${SecondaryParagraph};
 `;
-const StyledButton = styled(Filter)`
-  align-self: flex-end;
-`;
 const StyledLink = styled(BasicLink)`
   align-self: flex-end;
   padding: 0.2rem 0.5rem;
@@ -122,10 +114,9 @@ export const loader = async () => {
   }
 };
 
-const Blogs = ({ setDraft, playPageTurn, setTagsToEdit }) => {
+const Blogs = ({ playPageTurn }) => {
   const playPick = useContext(PlayPickContext);
   const loggedin = useContext(AuthContext);
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryFilter = searchParams.get("category");
   const blogsArr = useLoaderData();
@@ -165,20 +156,6 @@ const Blogs = ({ setDraft, playPageTurn, setTagsToEdit }) => {
     });
   };
 
-  const getDraft = async () => {
-    try {
-      playPick();
-      const docSnap = await getDoc(doc(db, "drafts", "draft"));
-      const data = docSnap.data();
-      setDraft(data);
-      setTagsToEdit(data?.tag);
-      navigate("/editor");
-    } catch (error) {
-      console.error("Error while retrieving draft", error);
-      throw new Error("Something went wrong while retrieving draft.");
-    }
-  };
-
   return (
     <BlogsContainer>
       <Filters>
@@ -206,7 +183,9 @@ const Blogs = ({ setDraft, playPageTurn, setTagsToEdit }) => {
       </Filters>
       {blogs}
       {loggedin ? (
-        <StyledButton onClick={getDraft}>Go to Editor</StyledButton>
+        <StyledLink to="/editor" onClick={playPick}>
+          Go to Editor
+        </StyledLink>
       ) : (
         <StyledLink to="/login" onClick={playPick}>
           Log in to edit

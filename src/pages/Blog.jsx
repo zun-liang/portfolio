@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { deleteDoc, doc, getDoc } from "firebase/firestore";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Markdown from "react-markdown";
 import { useLoaderData, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -115,7 +115,8 @@ const Blog = ({ setBlogToEdit, setTagsToEdit }) => {
   const loggedin = useContext(AuthContext);
   const location = useLocation();
   const search = location.state?.search;
-  const [newSearch, setNewSearch] = useState(search);
+  const ref = useRef(search); //to keep the search value
+  const newSearch = ref.current;
   const navigate = useNavigate();
   const blogData = useLoaderData();
   const {

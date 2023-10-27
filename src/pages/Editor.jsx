@@ -7,6 +7,7 @@ import {
   doc,
   serverTimestamp,
   setDoc,
+  getDoc,
   updateDoc,
 } from "firebase/firestore";
 import { marked } from "marked";
@@ -82,17 +83,30 @@ const StyledButton = styled(BasicButton)`
     color: ${TertiaryParagraph};
   }
 `;
+const UpperDiv = styled.div`
+  align-self: flex-end;
+  display: flex;
+  gap: 1.5rem;
+`;
+const ResetButton = styled(StyledButton)``;
+const RetrieveButton = styled(StyledButton)``;
 
-const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft, tagsToEdit }) => {
+const Editor = ({
+  blogToEdit,
+  setBlogToEdit,
+  draft,
+  setDraft,
+  tagsToEdit,
+  setTagsToEdit,
+}) => {
   const playPick = useContext(PlayPickContext);
   const navigate = useNavigate();
 
   /* === blog and tagInput setup === */
   const retrievedBlog = blogToEdit?.title + "\n\n" + blogToEdit?.content;
-  const retrievedDraft = draft?.title + "\n\n" + draft?.content;
   const retrievedTags = tagsToEdit?.join(" ");
 
-  const initialBlog = blogToEdit ? retrievedBlog : draft ? retrievedDraft : "";
+  const initialBlog = blogToEdit ? retrievedBlog : "";
   const [blog, setBlog] = useState(initialBlog);
 
   const initialTagInput = tagsToEdit ? retrievedTags : "";
@@ -148,6 +162,7 @@ const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft, tagsToEdit }) => {
       if (blogToEdit) {
         await updateDoc(doc(db, "blogs", preId), updatedBlogObj);
         setBlogToEdit(null);
+        setTagsToEdit(null);
       } else if (draft) {
         await setDoc(doc(db, "blogs", id), blogObj);
         await deleteDoc(doc(db, "drafts", "draft"));
@@ -199,12 +214,38 @@ const Editor = ({ blogToEdit, setBlogToEdit, draft, setDraft, tagsToEdit }) => {
     }
   };
 
+  const clearAll = () => {
+    playPick();
+    setBlog("");
+    setTagInput("");
+    setBlogToEdit(null);
+    setTagsToEdit(null);
+  };
+
+  const getDraft = async () => {
+    try {
+      playPick();
+      const docSnap = await getDoc(doc(db, "drafts", "draft"));
+      const data = docSnap.data();
+      const draftData = data.title + "\n\n" + data.content;
+      setBlog(draftData);
+      setTagInput(data.tag);
+    } catch (error) {
+      console.error("Error while retrieving draft", error);
+      throw new Error("Something went wrong while retrieving draft.");
+    }
+  };
+
   useEffect(() => {
     document.title = "Editor ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
 
   return (
     <EditorContainer>
+      <UpperDiv>
+        <ResetButton onClick={clearAll}>Clear All</ResetButton>
+        <RetrieveButton onClick={getDraft}>Retrieve Draft</RetrieveButton>
+      </UpperDiv>
       <StyledMDEditor
         value={blog}
         onChange={setBlog}

@@ -133,10 +133,11 @@ const App = () => {
             element={
               <Editor
                 blogToEdit={blogToEdit}
+                setBlogToEdit={setBlogToEdit}
                 draft={draft}
                 setDraft={setDraft}
                 tagsToEdit={tagsToEdit}
-                setBlogToEdit={setBlogToEdit}
+                setTagsToEdit={setTagsToEdit}
               />
             }
           />

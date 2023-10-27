@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { deleteDoc, doc, getDoc } from "firebase/firestore";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef } from "react";
 import Markdown from "react-markdown";
 import { useLoaderData, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";

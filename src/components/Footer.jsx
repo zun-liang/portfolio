@@ -21,7 +21,6 @@ import { PlayPickContext } from "../contexts/PlayPickContext";
 import LogoutButton from "./LogoutButton";
 import MusicPlayer from "./MusicPlayer";
 import SoundSwitch from "./SoundSwitch";
-import UserProfile from "./UserProfile";
 
 const StyledFooter = styled.footer`
   width: 100%;
@@ -101,7 +100,6 @@ const Footer = () => {
         <SoundSwitch />
         <MusicPlayer />
         <LogoutButton />
-        <UserProfile />
       </Wrapper>
       <StyledList>
         <StyledListItem>

@@ -8,21 +8,24 @@ import { AuthContext } from "../contexts/AuthContext";
 import { auth } from "../firebase";
 
 const ProfileContainer = styled.div`
-  align-self: flex-start;
+  justify-self: start;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   gap: 0.5rem;
   @media (min-width: 1000px) {
     gap: 0.8rem;
   }
 `;
 const StyledP = styled.p`
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: ${TertiaryDot};
   font-family: "Black Ops One", sans-serif;
 `;
-const StyledImg = styled.img``;
+const StyledImg = styled.img`
+  width: 2rem;
+  border-radius: 50%;
+`;
 const StyledUserDefault = styled(UserDefault)`
   width: 1.2rem;
   height: 1.2rem;

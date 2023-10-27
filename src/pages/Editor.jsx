@@ -14,6 +14,8 @@ import { marked } from "marked";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import UpdateProfile from "../components/UpdateProfile";
+import UserProfile from "../components/UserProfile";
 
 import {
   BasicButton,
@@ -40,6 +42,13 @@ const EditorContainer = styled.div`
 `;
 const StyledMDEditor = styled(MDEditor)`
   width: 100%;
+`;
+const UpperDiv = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 9rem 9rem 6rem;
+  align-items: center;
+  column-gap: 1rem;
 `;
 const StyledDiv = styled.div`
   width: 100%;
@@ -82,11 +91,6 @@ const StyledButton = styled(BasicButton)`
   &:focus {
     color: ${TertiaryParagraph};
   }
-`;
-const UpperDiv = styled.div`
-  align-self: flex-end;
-  display: flex;
-  gap: 1.5rem;
 `;
 const ResetButton = styled(StyledButton)``;
 const RetrieveButton = styled(StyledButton)``;
@@ -243,8 +247,10 @@ const Editor = ({
   return (
     <EditorContainer>
       <UpperDiv>
-        <ResetButton onClick={clearAll}>Clear All</ResetButton>
+        <UserProfile />
+        <UpdateProfile />
         <RetrieveButton onClick={getDraft}>Retrieve Draft</RetrieveButton>
+        <ResetButton onClick={clearAll}>Clear All</ResetButton>
       </UpperDiv>
       <StyledMDEditor
         value={blog}

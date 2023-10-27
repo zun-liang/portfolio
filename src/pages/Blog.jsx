@@ -148,10 +148,6 @@ const Blog = ({ setBlogToEdit, setTagsToEdit }) => {
     }
   };
 
-  useEffect(() => {
-    document.body.scrollTo({ top: 0 });
-  }, []);
-
   const tags =
     typeof blogTag !== "object"
       ? null

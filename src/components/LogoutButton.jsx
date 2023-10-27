@@ -12,6 +12,7 @@ import {
 } from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { auth } from "../firebase";
+import { LogoutContext } from "../contexts/LogoutContext";
 
 const StyledLogoutButton = styled(LogoutIcon)`
   width: 1.2rem;
@@ -27,11 +28,13 @@ const StyledLogoutButton = styled(LogoutIcon)`
 
 const LogoutButton = () => {
   const loggedin = useContext(AuthContext);
+  const { setShowLogout } = useContext(LogoutContext);
   const navigate = useNavigate();
 
   const logout = () => {
     signOut(auth)
       .then(() => {
+        setShowLogout(true);
         navigate("/logout");
       })
       .catch((error) => {

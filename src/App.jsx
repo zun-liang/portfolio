@@ -20,7 +20,7 @@ import About from "./pages/About";
 import Blog, { loader as blogLoader } from "./pages/Blog";
 import Blogs, { loader as blogsLoader } from "./pages/Blogs";
 import Contact from "./pages/Contact";
-import Editor from "./pages/Editor";
+import Editor, { loader as editorLoader } from "./pages/Editor";
 import Error from "./pages/Error";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
@@ -31,6 +31,7 @@ import NotFound from "./pages/NotFound";
 import Post from "./pages/Post";
 import Project, { loader as projectLoader } from "./pages/Project";
 import Projects, { loader as projectsLoader } from "./pages/Projects";
+import { LogoutContextProvider } from "./contexts/LogoutContext";
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -132,15 +133,16 @@ const App = () => {
             element={
               <Editor
                 blogToEdit={blogToEdit}
-                setBlogToEdit={setBlogToEdit}
                 draft={draft}
                 setDraft={setDraft}
                 tagsToEdit={tagsToEdit}
+                setBlogToEdit={setBlogToEdit}
               />
             }
+            loader={editorLoader}
           />
+          <Route path="post" element={<Post draft={draft} />} />
         </Route>
-        <Route path="post" element={<Post draft={draft} />} />
         <Route path="logout" element={<Logout />} />
         <Route path="contact" element={<Contact />} />
       </Route>
@@ -161,9 +163,11 @@ const App = () => {
       <GlobalStyles />
       <PlayPickContextProvider>
         <AuthContextProvider>
-          <AppContainer>
-            <RouterProvider router={router} />
-          </AppContainer>
+          <LogoutContextProvider>
+            <AppContainer>
+              <RouterProvider router={router} />
+            </AppContainer>
+          </LogoutContextProvider>
         </AuthContextProvider>
       </PlayPickContextProvider>
     </>

@@ -11,6 +11,8 @@ import {
   SecondaryTertiary,
 } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
+import { LogoutContext } from "../contexts/LogoutContext";
+import { Navigate } from "react-router-dom";
 
 const LogoutContainer = styled.div`
   display: flex;
@@ -46,11 +48,13 @@ const StyledLink = styled(BasicLink)`
 
 const Logout = () => {
   const playPick = useContext(PlayPickContext);
+  const { showLogout } = useContext(LogoutContext);
 
   useEffect(() => {
     document.title = "Log Out ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
 
+  if (!showLogout) return <Navigate to="/404" replace />;
   return (
     <LogoutContainer>
       <StyledImg src={CoffeeNight} alt="gril drinking coffee at night" />
@@ -63,4 +67,3 @@ const Logout = () => {
 };
 
 export default Logout;
-//should only show up after i did action to log out

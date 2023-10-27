@@ -372,7 +372,7 @@ To find which elements are scrollable, you can check Firefox inspector
 - Emojis are from [COOLTEXT](https://cooltext.top/) and [Emoji Combos](https://emojicombos.com/)
 - Profile picture is made by [Pixel Me](https://pixel-me.tokyo/en/)
 - Speech bubbles are made by [Pixel Speech Bubble](https://pixelspeechbubble.com/)
-- Picture ojigi kuma and picture party boy girl are from [いらすとや](https://www.irasutoya.com/)
+- Picture ojigi kuma, picture party boy girl, and picture girl drinking coffee are from [いらすとや](https://www.irasutoya.com/)
 - Sound effects are from [Pixabay](https://pixabay.com/) and edited by [AudioMass](https://audiomass.co/)
 
 ## Author

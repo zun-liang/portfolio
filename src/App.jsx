@@ -139,9 +139,9 @@ const App = () => {
               />
             }
           />
-          <Route path="post" element={<Post draft={draft} />} />
-          <Route path="logout" element={<Logout />} />
         </Route>
+        <Route path="post" element={<Post draft={draft} />} />
+        <Route path="logout" element={<Logout />} />
         <Route path="contact" element={<Contact />} />
       </Route>
     )

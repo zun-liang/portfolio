@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
+import CoffeeNight from "../assets/images/face_night.png";
 
 import {
   BasicLink,
@@ -17,6 +18,9 @@ const LogoutContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2rem;
+`;
+const StyledImg = styled.img`
+  width: 15rem;
 `;
 const StyledP = styled.p`
   text-align: center;
@@ -49,7 +53,7 @@ const Logout = () => {
 
   return (
     <LogoutContainer>
-      <StyledP>૮꒰˶ᵕ ༝ᵕ˶꒱აᶻ 𝗓 𐰁ᶻ </StyledP>
+      <StyledImg src={CoffeeNight} alt="gril drinking coffee at night" />
       <StyledP>You've successfully logged out!</StyledP>
       <StyledLink to="/" onClick={playPick}>
         Go back Home

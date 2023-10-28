@@ -52,6 +52,7 @@ const StyledLink = styled(BasicLink)`
 
 const Post = ({ draft }) => {
   const playPick = useContext(PlayPickContext);
+  console.log(draft);
 
   useEffect(() => {
     document.title = "Post ⟡ Zun Liang ♫₊˚.🎧 ✩｡";

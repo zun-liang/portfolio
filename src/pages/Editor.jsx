@@ -237,6 +237,7 @@ const Editor = ({
       const draftData = data.title + "\n\n" + data.content;
       setBlog(draftData);
       setTagInput(data.tag);
+      setDraft(true);
     } catch (error) {
       console.error("Error while retrieving draft", error);
       throw new Error("Something went wrong while retrieving draft.");

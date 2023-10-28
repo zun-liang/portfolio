@@ -1,24 +1,25 @@
 import styled from "styled-components";
 import {
-  BasicButton,
   PrimarySwitch,
-  SecondaryPrimary,
-  SecondarySwitch,
+  PointerSwitch,
   TertiaryParagraph,
 } from "../assets/styles/Styles";
 import { auth } from "../firebase";
 import { updateProfile } from "firebase/auth";
 import Profile from "../assets/images/profile.png";
+import { ReactComponent as ProfileIcon } from "../assets/images/user-pen.svg";
 
-const StyledButton = styled(BasicButton)`
-  color: ${TertiaryParagraph};
-  text-shadow: 1px 1px ${SecondaryPrimary};
-  padding: 0.3rem 0.5rem;
-  &:hover,
-  &:active,
-  &:focus {
-    color: ${PrimarySwitch};
-    text-shadow: 1px 0px ${SecondarySwitch};
+const StyledProfileIcon = styled(ProfileIcon)`
+  width: 1.5rem;
+  height: 1.5rem;
+  & > path {
+    stroke: ${TertiaryParagraph};
+  }
+  &:hover {
+    cursor: ${PointerSwitch};
+    & > path {
+      stroke: ${PrimarySwitch};
+    }
   }
 `;
 
@@ -36,7 +37,8 @@ const UpdateProfile = () => {
         throw new Error("Something went wrong while updating profile.");
       });
   };
-  return <StyledButton onClick={handleClick}>Update Profile</StyledButton>;
+  return <StyledProfileIcon onClick={handleClick} />;
 };
 
 export default UpdateProfile;
+//should have a interface that i can edit name and photo url

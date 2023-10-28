@@ -3,11 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { ReactComponent as UserDefault } from "../assets/images/user.svg";
-import {
-  SecondaryPrimary,
-  TertiaryDot,
-  TertiaryParagraph,
-} from "../assets/styles/Styles";
+import { PrimaryHighlight, TertiaryDot } from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { auth } from "../firebase";
 
@@ -17,14 +13,11 @@ const ProfileContainer = styled.div`
   justify-content: center;
   align-items: flex-end;
   gap: 0.5rem;
-  @media (min-width: 1000px) {
-    gap: 0.8rem;
-  }
 `;
 const StyledP = styled.p`
-  font-size: 1rem;
-  color: ${TertiaryParagraph};
-  text-shadow: 1px 1px ${SecondaryPrimary};
+  font-size: 0.9rem;
+  color: ${PrimaryHighlight};
+  letter-spacing: 1px;
   font-family: "Black Ops One", sans-serif;
 `;
 const StyledImg = styled.img`
@@ -32,8 +25,8 @@ const StyledImg = styled.img`
   border-radius: 50%;
 `;
 const StyledUserDefault = styled(UserDefault)`
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 2rem;
+  height: 2rem;
   & > path {
     fill: ${TertiaryDot};
   }

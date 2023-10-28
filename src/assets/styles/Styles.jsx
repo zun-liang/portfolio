@@ -42,12 +42,16 @@ export const PrimarySecondary = ({ theme }) =>
   theme.mode ? "var(--light-primary)" : "var(--dark-secondary)";
 export const PrimaryTertiary = ({ theme }) =>
   theme.mode ? "var(--light-primary)" : "var(--dark-tertiary)";
+export const PrimaryHighlight = ({ theme }) =>
+  theme.mode ? "var(--light-primary)" : "var(--dark-highlight)";
 export const SecondaryPrimary = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "var(--dark-primary)";
 export const SecondaryTertiary = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "var(--dark-tertiary)";
 export const SecondaryParagraph = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "var(--dark-paragraph)";
+export const SecondaryTransparent = ({ theme }) =>
+  theme.mode ? "var(--light-secondary)" : "transparent";
 export const SecondaryHover = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "var(--dark-hover)"; //only once
 export const TertiaryPrimary = ({ theme }) =>
@@ -56,6 +60,8 @@ export const TertiarySecondary = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dark-secondary)";
 export const TertiaryParagraph = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dark-paragraph)";
+export const TertiaryHighlight = ({ theme }) =>
+  theme.mode ? "var(--light-tertiary)" : "var(--dark-highlight)";
 export const TertiaryBackground = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dark-background)";
 export const TertiaryDot = ({ theme }) =>

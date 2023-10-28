@@ -1,15 +1,12 @@
 /* eslint-disable react-refresh/only-export-components */
-import { deleteDoc, doc, getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { useContext, useEffect, useRef } from "react";
 import Markdown from "react-markdown";
-import { useLoaderData, useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
 import {
-  BasicButton,
-  BasicLink,
   PrimarySecondary,
   PrimaryTertiary,
   SecondaryParagraph,
@@ -17,9 +14,11 @@ import {
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import BlogContent from "../components/BlogContent";
-import { AuthContext } from "../contexts/AuthContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { db } from "../firebase";
+import EditButton from "../components/EditButton";
+import DeleteButton from "../components/DeleteButton";
+import BackButton from "../components/BackButton";
 
 const BlogContainer = styled.div`
   width: 80vw;
@@ -39,7 +38,7 @@ const MarkdownTitle = styled(Markdown)`
   color: ${PrimaryTertiary};
   font-size: 1.2rem;
   font-family: "Black Ops One", sans-serif;
-  text-shadow: 1px 1px ${SecondaryParagraph};
+  text-shadow: -2px -2px ${SecondaryParagraph};
   text-align: center;
 `;
 const StyledP = styled.p`
@@ -50,39 +49,11 @@ const StyledP = styled.p`
 `;
 const StyledDiv = styled.div`
   display: flex;
+  align-items: center;
   gap: 2rem;
   padding-bottom: 1rem;
 `;
-const BackLink = styled(BasicLink)`
-  position: relative;
-  &:link,
-  &:visited {
-    color: ${TertiarySecondary};
-    text-shadow: 1px 1px ${SecondaryPrimary};
-    top: 0;
-    transition: top 0.3s ease-out;
-  }
-  &:hover,
-  &:active {
-    top: 5px;
-    transition: top 0.3s ease-in;
-  }
-`;
-const StyledButton = styled(BasicButton)`
-  align-self: flex-end;
-  padding: 0;
-  color: ${TertiarySecondary};
-  text-shadow: 1px 1px ${SecondaryPrimary};
-  position: relative;
-  top: 0;
-  transition: top 0.3s ease-out;
-  &:hover,
-  &:active,
-  &:focus {
-    top: 5px;
-    transition: top 0.3s ease-in;
-  }
-`;
+
 const TagsContainer = styled.div`
   display: flex;
   gap: 1rem;
@@ -112,12 +83,11 @@ export const loader = async ({ params }) => {
 
 const Blog = ({ setBlogToEdit, setTagsToEdit }) => {
   const playPick = useContext(PlayPickContext);
-  const loggedin = useContext(AuthContext);
   const location = useLocation();
+  const navigate = useNavigate();
   const search = location.state?.search;
   const ref = useRef(search); //to keep the search value
   const newSearch = ref.current;
-  const navigate = useNavigate();
   const blogData = useLoaderData();
   const {
     id: blogID,
@@ -131,49 +101,37 @@ const Blog = ({ setBlogToEdit, setTagsToEdit }) => {
     document.title = "Blog ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
 
-  const editBlog = () => {
-    playPick();
-    setBlogToEdit(blogData);
-    setTagsToEdit(blogTag);
-    navigate("/editor");
-  };
-
-  const deleteBlog = async () => {
-    try {
-      playPick();
-      await deleteDoc(doc(db, "blogs", blogID));
-      navigate("/blogs");
-    } catch (error) {
-      console.error("Error while deleting blog:", error);
-      throw new Error("Something went wrong while deleting blog");
-    }
-  };
-
   const tags =
     typeof blogTag !== "object"
       ? null
-      : blogTag.map((tag) =>
-          tag ? (
-            <Tag key={tag}>
-              {tag === "html"
-                ? `# ${tag.toUpperCase()}`
-                : tag === "css"
-                ? `# ${tag.toUpperCase()}`
-                : `# ${tag[0].toUpperCase()}${tag.slice(1)}`}
-            </Tag>
-          ) : null
+      : blogTag.map(
+          (tag) =>
+            tag && (
+              <Tag key={tag}>
+                {tag === "html"
+                  ? `# ${tag.toUpperCase()}`
+                  : tag === "css"
+                  ? `# ${tag.toUpperCase()}`
+                  : `# ${tag[0].toUpperCase()}${tag.slice(1)}`}
+              </Tag>
+            )
         );
 
+  const handleClick = () => {
+    navigate(`/blogs${newSearch}`);
+    playPick();
+  };
   return (
     <BlogContainer>
       <StyledDiv>
-        <BackLink to={`/blogs${newSearch}`} onClick={playPick}>
-          Back to blogs
-        </BackLink>
-        {loggedin ? <StyledButton onClick={editBlog}>Edit</StyledButton> : null}
-        {loggedin ? (
-          <StyledButton onClick={deleteBlog}>Delete</StyledButton>
-        ) : null}
+        <BackButton handleClick={handleClick} />
+        <EditButton
+          setBlogToEdit={setBlogToEdit}
+          setTagsToEdit={setTagsToEdit}
+          blogData={blogData}
+          blogTag={blogTag}
+        />
+        <DeleteButton blogID={blogID} />
       </StyledDiv>
       <MarkdownTitle>{blogTitle}</MarkdownTitle>
       <StyledP>{blogTime}</StyledP>

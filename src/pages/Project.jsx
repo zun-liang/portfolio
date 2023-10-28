@@ -2,7 +2,7 @@ import { faCode } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { doc, getDoc } from "firebase/firestore";
 import { useContext, useEffect } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
@@ -11,17 +11,16 @@ import styled from "styled-components";
 import { ReactComponent as Puzzle } from "../assets/images/puzzle.svg";
 import { ReactComponent as Website } from "../assets/images/website.svg";
 import {
-  BasicLink,
   ParagraphSwitch,
   PointerSwitch,
   PrimarySwitch,
   PrimaryTertiary,
   SecondaryParagraph,
-  TertiaryPrimary,
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { db } from "../firebase";
+import BackButton from "../components/BackButton";
 
 const ProjectContainer = styled.div`
   width: 80vw;
@@ -35,24 +34,6 @@ const ProjectContainer = styled.div`
   }
   @media (min-width: 1200px) {
     width: 60vw;
-  }
-`;
-const BackLink = styled(BasicLink)`
-  width: 10rem;
-  margin-bottom: 1rem;
-  border-radius: 5px;
-  position: relative;
-  top: 0;
-  transition: top 0.3s ease-out;
-  &:link,
-  &:visited {
-    color: ${TertiaryPrimary};
-  }
-  &:hover,
-  &:active {
-    color: ${TertiaryPrimary};
-    top: 5px;
-    transition: top 0.3s ease-in;
   }
 `;
 const StyledH2 = styled.h2`
@@ -144,6 +125,7 @@ export const loader = async ({ params }) => {
 
 const Project = () => {
   const playPick = useContext(PlayPickContext);
+  const navigate = useNavigate();
   const {
     name: projectName,
     codeURL: codeURL,
@@ -151,15 +133,17 @@ const Project = () => {
     femURL: femURL,
   } = useLoaderData();
 
+  const handleClick = () => {
+    navigate("/projects");
+    playPick();
+  };
   useEffect(() => {
     document.title = "Project ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
 
   return (
     <ProjectContainer>
-      <BackLink to="/projects" onClick={playPick}>
-        Back to projects
-      </BackLink>
+      <BackButton handleClick={handleClick} />
       <StyledH2>{projectName}</StyledH2>
       <StyledDiv>
         <StyledLink target="_blank" href={codeURL} onClick={playPick}>

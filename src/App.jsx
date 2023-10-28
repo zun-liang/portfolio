@@ -110,7 +110,13 @@ const App = () => {
         />
         <Route
           path="blogs"
-          element={<Blogs playPageTurn={playPageTurn} />}
+          element={
+            <Blogs
+              playPageTurn={playPageTurn}
+              setBlogToEdit={setBlogToEdit}
+              setTagsToEdit={setTagsToEdit}
+            />
+          }
           loader={blogsLoader}
         />
         <Route

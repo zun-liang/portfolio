@@ -18,16 +18,23 @@ import UpdateProfile from "../components/UpdateProfile";
 import UserProfile from "../components/UserProfile";
 
 import {
-  BasicButton,
   BasicInput,
-  BasicLink,
+  PointerSwitch,
+  HighlightSwitch,
+  PrimaryHighlight,
   PrimarySwitch,
-  SecondaryPrimary,
-  SecondarySwitch,
+  TertiarySecondary,
   TertiaryParagraph,
 } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { db } from "../firebase";
+import { nanoid } from "nanoid";
+import BackButton from "../components/BackButton";
+import { ReactComponent as SearchIcon } from "../assets/images/search.svg";
+import { ReactComponent as ResetIcon } from "../assets/images/delete.svg";
+import { ReactComponent as SaveIcon } from "../assets/images/save.svg";
+import { ReactComponent as SendIcon } from "../assets/images/send.svg";
+import { ReactComponent as TagIcon } from "../assets/images/hash.svg";
 
 const EditorContainer = styled.div`
   width: 80vw;
@@ -47,56 +54,92 @@ const StyledMDEditor = styled(MDEditor)`
 const UpperDiv = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 9rem 9rem 6rem;
+  grid-template-columns: 1fr 2rem 2rem 2rem;
+  justify-items: center;
   align-items: center;
   column-gap: 1rem;
+`;
+const StyledSearchIcon = styled(SearchIcon)`
+  width: 1.3rem;
+  height: 1.3rem;
+  & > path {
+    fill: ${TertiaryParagraph};
+  }
+  &:hover {
+    cursor: ${PointerSwitch};
+    & > path {
+      fill: ${PrimarySwitch};
+    }
+  }
+`;
+const StyledResetIcon = styled(ResetIcon)`
+  width: 1.3rem;
+  height: 1.3rem;
+  & > g > g {
+    fill: ${TertiaryParagraph};
+  }
+  &:hover {
+    cursor: ${PointerSwitch};
+    & > g > g {
+      fill: ${PrimarySwitch};
+    }
+  }
 `;
 const StyledDiv = styled.div`
   width: 100%;
   align-self: flex-end;
   display: grid;
-  grid-template-columns: 2.5rem 1fr 9rem 9rem 5rem;
+  grid-template-columns: 1.5rem 1fr 3rem 2rem 2rem;
+  justify-items: center;
   align-items: center;
   column-gap: 1rem;
 `;
-const TagLabel = styled.label`
-  font-family: "Black Ops One", sans-serif;
-  color: ${TertiaryParagraph};
-  text-shadow: 1px 1px ${SecondaryPrimary};
+const StyledTagIcon = styled(TagIcon)`
+  width: 1.2rem;
+  height: 1.2rem;
+  & > path {
+    stroke: ${PrimaryHighlight};
+  }
 `;
 const TagInput = styled(BasicInput)`
+  justify-self: start;
   width: 10rem;
   height: 1.5rem;
   padding: 0 5px;
+  margin-left: -0.7rem;
+  border: 1px solid ${TertiarySecondary};
 `;
-const StyledLink = styled(BasicLink)`
-  padding: 0.3rem 0.5rem;
-  border-radius: 5px;
-  text-align: center;
-  &:link,
-  &:visited {
-    color: ${TertiaryParagraph};
-    text-shadow: 1px 1px ${SecondaryPrimary};
+const StyledSaveIcon = styled(SaveIcon)`
+  width: 1.3rem;
+  height: 1.3rem;
+  & > path {
+    fill: ${TertiaryParagraph};
   }
-  &:hover,
-  &:active {
-    color: ${PrimarySwitch};
-    text-shadow: 1px 0px ${SecondarySwitch};
-  }
-`;
-const StyledButton = styled(BasicButton)`
-  color: ${TertiaryParagraph};
-  text-shadow: 1px 1px ${SecondaryPrimary};
-  padding: 0.3rem 0.5rem;
-  &:hover,
-  &:active,
-  &:focus {
-    color: ${PrimarySwitch};
-    text-shadow: 1px 0px ${SecondarySwitch};
+  &:hover {
+    cursor: ${PointerSwitch};
+    > path {
+      fill: ${PrimarySwitch};
+    }
   }
 `;
-const ResetButton = styled(StyledButton)``;
-const RetrieveButton = styled(StyledButton)``;
+const StyledSendIcon = styled(SendIcon)`
+  width: 1.6rem;
+  height: 1.6rem;
+  & > path {
+    stroke: ${TertiaryParagraph};
+  }
+  &:hover {
+    cursor: ${PointerSwitch};
+    > path {
+      stroke: ${PrimarySwitch};
+    }
+  }
+`;
+const StyledP = styled.p`
+  align-self: flex-end;
+  font-family: "Black Ops One", sans-serif;
+  color: ${HighlightSwitch};
+`;
 
 const Editor = ({
   blogToEdit,
@@ -108,6 +151,7 @@ const Editor = ({
 }) => {
   const playPick = useContext(PlayPickContext);
   const navigate = useNavigate();
+  const [getDraftResponse, setGetDraftResponse] = useState(true);
 
   /* === blog and tagInput setup === */
   const retrievedBlog = blogToEdit?.title + "\n\n" + blogToEdit?.content;
@@ -132,7 +176,7 @@ const Editor = ({
       .join("-")
       .toLowerCase() +
     "-" +
-    new Date().getTime();
+    nanoid();
   const timestamp = serverTimestamp();
   const overview = marked.parse(blogSplit.filter((x) => x !== "")[1] || "");
   const time = new Date().toLocaleString();
@@ -212,6 +256,7 @@ const Editor = ({
       if (draft) {
         await updateDoc(doc(db, "drafts", "draft"), updatedDraft);
       } else {
+        setDraft(true);
         await setDoc(doc(db, "drafts", "draft"), initialDraft);
       }
       navigate("/post");
@@ -237,13 +282,17 @@ const Editor = ({
       const draftData = data.title + "\n\n" + data.content;
       setBlog(draftData);
       setTagInput(data.tag);
-      setDraft(true);
     } catch (error) {
+      setGetDraftResponse(false);
       console.error("Error while retrieving draft", error);
       throw new Error("Something went wrong while retrieving draft.");
     }
   };
 
+  const handleClick = () => {
+    navigate("/blogs");
+    playPick();
+  };
   useEffect(() => {
     document.title = "Editor ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);
@@ -253,8 +302,8 @@ const Editor = ({
       <UpperDiv>
         <UserProfile />
         <UpdateProfile />
-        <RetrieveButton onClick={getDraft}>Retrieve Draft</RetrieveButton>
-        <ResetButton onClick={clearAll}>Clear All</ResetButton>
+        <StyledSearchIcon onClick={getDraft} />
+        <StyledResetIcon onClick={clearAll} />
       </UpperDiv>
       <StyledMDEditor
         value={blog}
@@ -264,7 +313,7 @@ const Editor = ({
         }}
       />
       <StyledDiv>
-        <TagLabel>Tags: </TagLabel>
+        <StyledTagIcon />
         <TagInput
           id="tag"
           name="tag"
@@ -272,12 +321,11 @@ const Editor = ({
           onChange={handleTagInput}
           placeholder="tag end with space..."
         />
-        <StyledLink to="/blogs" onClick={playPick}>
-          Back to Blogs
-        </StyledLink>
-        <StyledButton onClick={saveDraft}>Save to Draft</StyledButton>
-        <StyledButton onClick={post}>Post</StyledButton>
+        <BackButton handleClick={handleClick} />
+        <StyledSaveIcon onClick={saveDraft} />
+        <StyledSendIcon onClick={post} />
       </StyledDiv>
+      {!getDraftResponse && <StyledP>No draft found.</StyledP>}
     </EditorContainer>
   );
 };

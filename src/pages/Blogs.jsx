@@ -1,16 +1,20 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { getDocs, orderBy, query } from "firebase/firestore";
-import { memo, useContext, useEffect, useMemo } from "react";
-import { Link, useLoaderData, useSearchParams } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import {
+  Link,
+  useLoaderData,
+  useSearchParams,
+  useNavigate,
+} from "react-router-dom";
 import styled from "styled-components";
 
 import {
   BasicButton,
-  BasicLink,
   PointerSwitch,
+  PrimarySecondary,
   PrimaryTertiary,
-  SecondaryParagraph,
   SecondaryPrimary,
   TertiaryPrimary,
   TertiarySecondary,
@@ -19,6 +23,10 @@ import BlogOverview from "../components/BlogOverview";
 import { AuthContext } from "../contexts/AuthContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { blogsCollection } from "../firebase";
+import EditButton from "../components/EditButton";
+import DeleteButton from "../components/DeleteButton";
+import { ReactComponent as LoginIcon } from "../assets/images/log-in.svg";
+import { ReactComponent as EditIcon } from "../assets/images/edit.svg";
 
 const BlogsContainer = styled.div`
   width: 80vw;
@@ -34,7 +42,13 @@ const BlogsContainer = styled.div`
     width: 60vw;
   }
 `;
+const StyledDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+`;
 const BlogLink = styled(Link)`
+  width: 100%;
   text-decoration: none;
   cursor: ${PointerSwitch};
 `;
@@ -67,39 +81,49 @@ const Filter = styled(BasicButton)`
 const Time = styled.p`
   font-size: 0.8rem;
   font-weight: 500;
-  color: ${TertiaryPrimary};
+  color: ${TertiarySecondary};
 `;
 const StyledH2 = styled.h2`
   display: inline;
   font-size: 1.2rem;
   font-family: "Black Ops One", sans-serif;
   color: ${PrimaryTertiary};
-  text-shadow: 1px 0px ${SecondaryParagraph};
 `;
-const StyledLink = styled(BasicLink)`
+const StyledLoginIcon = styled(LoginIcon)`
   align-self: flex-end;
-  padding: 0.2rem 0.5rem;
-  border-radius: 5px;
-  position: relative;
-  &:link,
-  &:visited {
-    color: ${TertiarySecondary};
-    text-shadow: 1px 1px ${SecondaryPrimary};
-    top: 0;
-    transition: top 0.3s ease-out;
+  width: 2rem;
+  height: 2rem;
+  & > g > g {
+    fill: ${PrimarySecondary};
   }
-  &:hover,
-  &:active {
-    top: 5px;
-    transition: top 0.3s ease-in;
+  &:hover {
+    cursor: ${PointerSwitch};
+    & > g > g {
+      fill: ${TertiaryPrimary};
+    }
+  }
+`;
+const StyledEditIcon = styled(EditIcon)`
+  align-self: flex-end;
+  width: 2rem;
+  height: 2rem;
+  & > g > g > g > path,
+  & > g > g > g > polygon {
+    stroke: ${PrimarySecondary};
+  }
+  &:hover {
+    cursor: ${PointerSwitch};
+    & > g > g > g > path,
+    & > g > g > g > polygon {
+      stroke: ${TertiaryPrimary};
+    }
   }
 `;
 
 //how to cache the data so it doesn't need to get data everytime;
 export const loader = async () => {
   try {
-    const blogsRef = blogsCollection;
-    const q = query(blogsRef, orderBy("timestamp", "desc"));
+    const q = query(blogsCollection, orderBy("timestamp", "desc"));
     const querySnapshot = await getDocs(q);
     let data = [];
     querySnapshot.forEach((doc) => {
@@ -114,30 +138,39 @@ export const loader = async () => {
   }
 };
 
-const Blogs = ({ playPageTurn }) => {
+const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
   const playPick = useContext(PlayPickContext);
   const loggedin = useContext(AuthContext);
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryFilter = searchParams.get("category");
   const blogsArr = useLoaderData();
+  const navigate = useNavigate();
 
   const filteredBlogs = categoryFilter
     ? blogsArr.filter((blog) => blog.tag[0] === categoryFilter)
     : blogsArr;
 
   const blogs = filteredBlogs.map((blog) => (
-    <BlogLink
-      key={blog.id}
-      to={encodeURIComponent(blog.id)}
-      state={{ search: `?${searchParams.toString()}` }}
-      onClick={playPageTurn}
-    >
-      <BlogContainer>
-        <StyledH2>{blog.title.split(" ").slice(1).join(" ")}</StyledH2>
-        <Time>{blog.time}</Time>
-        <BlogOverview overview={blog.overview} />
-      </BlogContainer>
-    </BlogLink>
+    <StyledDiv key={blog.id}>
+      <BlogLink
+        to={encodeURIComponent(blog.id)}
+        state={{ search: `?${searchParams.toString()}` }}
+        onClick={playPageTurn}
+      >
+        <BlogContainer>
+          <StyledH2>{blog.title.split(" ").slice(1).join(" ")}</StyledH2>
+          <Time>{blog.time}</Time>
+          <BlogOverview overview={blog.overview} />
+        </BlogContainer>
+      </BlogLink>
+      <EditButton
+        blogData={blog}
+        blogTag={blog.tag}
+        setBlogToEdit={setBlogToEdit}
+        setTagsToEdit={setTagsToEdit}
+      />
+      <DeleteButton blogID={blog.id} />
+    </StyledDiv>
   ));
 
   useEffect(() => {
@@ -154,6 +187,15 @@ const Blogs = ({ playPageTurn }) => {
       }
       return prev;
     });
+  };
+
+  const goToEditor = () => {
+    playPick();
+    navigate("/editor");
+  };
+  const login = () => {
+    playPick();
+    navigate("/login");
   };
 
   return (
@@ -183,19 +225,15 @@ const Blogs = ({ playPageTurn }) => {
       </Filters>
       {blogs}
       {loggedin ? (
-        <StyledLink to="/editor" onClick={playPick}>
-          Go to Editor
-        </StyledLink>
+        <StyledEditIcon onClick={goToEditor} />
       ) : (
-        <StyledLink to="/login" onClick={playPick}>
-          Log in to edit
-        </StyledLink>
+        <StyledLoginIcon onClick={login} />
       )}
     </BlogsContainer>
   );
 };
 
-export default memo(Blogs);
+export default Blogs;
 //looks like memo can not stop many rerendering;
 // a blog can contain a couple tags, how to work with it
 //how to dynamically set up tags

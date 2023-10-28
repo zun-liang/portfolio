@@ -328,6 +328,8 @@ I had the same error and was thinking where to put my scroll component for the b
 
 To get local weather and temperature depending on visitor's' location
 
+- [location: reload() method](https://developer.mozilla.org/en-US/docs/Web/API/Location/reload)
+
 #### Markdown
 
 - [react-md-editor](https://uiwjs.github.io/react-md-editor/)

@@ -58,7 +58,7 @@ const ProjectOverviewContainer = styled.div`
     background-color: ${SecondaryHover};
     transition: background-color 0.5s ease-in;
     border: ${({ theme }) =>
-      theme.mode ? "1px solid transparent" : "1px solid var(--dark-paragraph)"};
+      theme.mode ? "1px solid transparent" : "1px solid var(--dot-color)"};
     transition: border 0.5s ease-in;
   }
   @media (min-width: 750px) {

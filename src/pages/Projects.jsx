@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 import {
   PointerSwitch,
-  PrimarySwitch,
+  PrimarySecondary,
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import ProjectOverview from "../components/ProjectOverview";
@@ -43,7 +43,7 @@ const ProjectsContainer = styled.div`
 `;
 const View = styled.p`
   font-size: 0.8rem;
-  color: ${TertiarySecondary};
+  //color: ${TertiarySecondary};
   position: relative;
   left: 0;
   transition: left 0.5s ease-in-out;
@@ -56,7 +56,7 @@ const StyledLink = styled.a`
   &:hover,
   &:active,
   &:visited {
-    color: ${PrimarySwitch};
+    color: ${PrimarySecondary};
   }
   > span {
     font-family: "Black Ops One", sans-serif;

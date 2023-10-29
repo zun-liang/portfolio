@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useContext, useEffect } from "react";
 /* eslint-disable react-refresh/only-export-components */
@@ -160,7 +159,7 @@ const Login = () => {
       {loggedin ? (
         <StyledDiv>
           <StyledImg src={Party} alt="party boy girl" />
-          <StyledH2>You've successfully logged in!</StyledH2>
+          <StyledH2>You&apos;ve successfully logged in!</StyledH2>
           <StyledLink to="/editor" onClick={playPick}>
             Go to Editor
           </StyledLink>

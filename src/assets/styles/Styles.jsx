@@ -35,9 +35,9 @@ export const HighlightSwitch = ({ theme }) =>
 
 //Incoherent color switch
 export const OpacitySwitch = ({ theme }) =>
-  theme.mode ? "rgba(255, 255, 255, 0.5)" : "transparent";
+  theme.mode ? "var(--light-hover)" : "transparent";
 export const OpaqueSwitch = ({ theme }) =>
-  theme.mode ? "rgba(255, 255, 255, 0.5)" : "#282828";
+  theme.mode ? "var(--light-hover)" : "#282828";
 export const PrimarySecondary = ({ theme }) =>
   theme.mode ? "var(--light-primary)" : "var(--dark-secondary)";
 export const PrimaryTertiary = ({ theme }) =>
@@ -50,6 +50,8 @@ export const SecondaryTertiary = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "var(--dark-tertiary)";
 export const SecondaryParagraph = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "var(--dark-paragraph)";
+export const SecondaryHighlight = ({ theme }) =>
+  theme.mode ? "var(--light-secondary)" : "var(--dark-highlight)";
 export const SecondaryTransparent = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "transparent";
 export const SecondaryHover = ({ theme }) =>
@@ -68,6 +70,12 @@ export const TertiaryDot = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dot-color)";
 export const OutlineSwitch = ({ theme }) =>
   theme.mode ? "none" : "2px solid var(--dark-secondary)";
+export const BackgroundTransparent = ({ theme }) =>
+  theme.mode ? "var(--light-background)" : "transparent";
+export const BackgroundDot = ({ theme }) =>
+  theme.mode ? "var(--light-background)" : "var(--dot-color)";
+export const TransparentDot = ({ theme }) =>
+  theme.mode ? "var(--light-transparent)" : "var(--dot-color)";
 
 //Cursor switch
 export const AutoSwitch = ({ theme }) =>

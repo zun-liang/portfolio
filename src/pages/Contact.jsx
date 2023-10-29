@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import { useForm, ValidationError } from "@formspree/react";
 import { useContext, useEffect } from "react";

@@ -1,5 +1,4 @@
 import { useContext, useEffect } from "react";
-/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import CoffeeNight from "../assets/images/face_night.png";
@@ -58,7 +57,7 @@ const Logout = () => {
   return (
     <LogoutContainer>
       <StyledImg src={CoffeeNight} alt="gril drinking coffee at night" />
-      <StyledP>You've successfully logged out!</StyledP>
+      <StyledP>You&apos;ve successfully logged out!</StyledP>
       <StyledLink to="/" onClick={playPick}>
         Go back Home
       </StyledLink>

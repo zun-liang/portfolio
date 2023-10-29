@@ -87,6 +87,7 @@ const Time = styled.p`
   font-size: 0.8rem;
   font-weight: 500;
   color: ${TertiarySecondary};
+  text-shadow: 1px 1px ${SecondaryPrimary};
 `;
 const StyledH2 = styled.h2`
   display: inline;

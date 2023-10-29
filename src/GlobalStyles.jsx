@@ -21,7 +21,7 @@ const GlobalStyles = createGlobalStyle`
         --light-secondary: #ffffff;
         --light-tertiary: #6c7a89;
         --light-paragraph: #181c1f;
-        --light-hover: rgba(255, 255, 255, 0.5);
+        --light-hover: #ffffff80;
         --light-highlight: #6A5A01;
 
         --dark-background: #121212;

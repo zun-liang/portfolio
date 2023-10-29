@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useRouteError } from "react-router-dom";
-/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 

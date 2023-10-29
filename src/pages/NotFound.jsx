@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
@@ -42,7 +41,7 @@ const NotFound = () => {
       <StyledImg src={Kuma} alt="sorry bear" />
       <StyledH2>404 Not Found</StyledH2>
       <StyledP>
-        Sorry, the page you are looking for doesn't seem to exist.
+        Sorry, the page you are looking for doesn&apos;t seem to exist.
       </StyledP>
     </NotFoundPage>
   );

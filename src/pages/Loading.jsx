@@ -1,6 +1,5 @@
 import { useContext } from "react";
 /* eslint-disable react/prop-types */
-/* eslint-disable react/no-unescaped-entities */
 import styled from "styled-components";
 
 import LoadingImage from "../assets/images/favicon/dark/apple-touch-icon.png";

@@ -115,6 +115,7 @@ Upon investigating the data I had saved in Firestore and inspecting the content 
 - [html-react-parser](https://github.com/remarkablemark/html-react-parser)
 - [use-sound](https://github.com/joshwcomeau/use-sound)
 - [SVGR](https://react-svgr.com/)
+- [NanoID](https://github.com/ai/nanoid)
 
 ### What I learned
 
@@ -263,6 +264,7 @@ I didn't intend to control time I spent on this project but during the process, 
 - [Element: scrollTo() method](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo)
 - [Window: location property](https://developer.mozilla.org/en-US/docs/Web/API/Window/location)
 - [audio: The Embed Audio element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio)
+- [HTML ESCAPE CHARACTERS: COMPLETE LIST OF HTML ENTITIES](https://mateam.net/html-escape-characters/)
 
 #### CSS
 

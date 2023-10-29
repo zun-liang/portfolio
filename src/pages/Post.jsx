@@ -1,5 +1,4 @@
 import { useContext, useEffect } from "react";
-/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
@@ -61,9 +60,9 @@ const Post = ({ draft }) => {
     <PostContainer>
       <StyledImg src={Party} alt="party boy girl" />
       {draft ? (
-        <StyledP>You've successfully saved your draft!</StyledP>
+        <StyledP>You&apos;ve successfully saved your draft!</StyledP>
       ) : (
-        <StyledP>You've successfully posted your blog!</StyledP>
+        <StyledP>You&apos;ve successfully posted your blog!</StyledP>
       )}
       <StyledDiv>
         <StyledLink to="/editor" onClick={playPick}>

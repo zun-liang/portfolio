@@ -1,20 +1,20 @@
 import { faCode } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext, useEffect, useParams } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 /* eslint-disable react-refresh/only-export-components */
-/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
 import { ReactComponent as Puzzle } from "../assets/images/puzzle.svg";
 import { ReactComponent as Website } from "../assets/images/website.svg";
 import {
+  PrimaryTertiary,
   ParagraphSwitch,
   PointerSwitch,
   PrimarySwitch,
-  PrimaryTertiary,
   SecondaryParagraph,
+  SecondaryTransparent,
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
@@ -37,6 +37,7 @@ const ProjectContainer = styled.div`
 `;
 const StyledH2 = styled.h2`
   color: ${PrimaryTertiary};
+  font-size: 1.7rem;
   font-family: "Black Ops One", sans-serif;
   text-shadow: 1px 1px ${SecondaryParagraph};
   text-align: center;
@@ -85,11 +86,14 @@ const StyledPuzzleIcon = styled(PuzzleIcon)`
 `;
 const StyledH3 = styled.h3`
   color: ${PrimaryTertiary};
+  font-size: 1.4rem;
   font-family: "Black Ops One", sans-serif;
-  text-shadow: 1px 1px ${SecondaryParagraph};
+  text-shadow: 1px 0px ${SecondaryParagraph};
 `;
 const StyledH4 = styled.h4`
   color: ${PrimaryTertiary};
+  text-shadow: 1px 1px ${SecondaryTransparent};
+  font-size: 1.1rem;
   font-family: "Black Ops One", sans-serif;
 `;
 const StyledP = styled.p`
@@ -107,10 +111,10 @@ const StyledListItem = styled.li`
 const Project = () => {
   const playPick = useContext(PlayPickContext);
   const navigate = useNavigate();
-  const { params } = useParams();
-  console.log(params);
+  const { title } = useParams();
+
   const project = projects
-    .filter((proj) => proj.id === params)
+    .filter((proj) => proj.id === title)
     .map((proj) => (
       <>
         <StyledH2 key={proj.id}>{proj.name}</StyledH2>
@@ -121,16 +125,20 @@ const Project = () => {
           <StyledLink target="_blank" href={proj.liveURL} onClick={playPick}>
             <StyledWebsiteIcon />
           </StyledLink>
-          <StyledLink target="_blank" href={proj.femURL} onClick={playPick}>
-            <StyledPuzzleIcon />
-          </StyledLink>
+          {proj.femURL && (
+            <StyledLink target="_blank" href={proj.femURL} onClick={playPick}>
+              <StyledPuzzleIcon />
+            </StyledLink>
+          )}
         </StyledDiv>
         <StyledH3>Introduction</StyledH3>
-        <StyledP>{proj.introduction}</StyledP>
+        {proj.introduction.map((intro) => (
+          <StyledP key={intro.id}>{intro.text}</StyledP>
+        ))}
         <StyledH4>In this app, users are able to:</StyledH4>
         <StyledList>
           {proj.functions.map((func) => (
-            <StyledListItem key={func}>{func}</StyledListItem>
+            <StyledListItem key={func.id}>{func.text}</StyledListItem>
           ))}
         </StyledList>
         <StyledH4>Built with:</StyledH4>
@@ -140,16 +148,30 @@ const Project = () => {
           ))}
         </StyledList>
         <StyledH3>Purpose and Goal</StyledH3>
-        <StyledP>{proj.purpose}</StyledP>
+        {proj.purpose.map((pur) => (
+          <StyledP key={pur.id}>{pur.text}</StyledP>
+        ))}
         <StyledH3>Spotlight</StyledH3>
-        <StyledP>{proj.spotlight}</StyledP>
+        {proj.spotlight.map((spot) => (
+          <>
+            <StyledH4>{spot.title}</StyledH4>
+            <StyledP key={spot.id}>{spot.text}</StyledP>
+          </>
+        ))}
         <StyledH3>What I learned</StyledH3>
-        <StyledP>{proj.learned}</StyledP>
-        <StyledH3>Useful Resources</StyledH3>
-        <StyledH4>CSS Related</StyledH4>
-        <StyledList>
-          <StyledListItem>Border Gradient with Border Radius</StyledListItem>
-        </StyledList>
+        {proj.learned.map((lea) => (
+          <>
+            <StyledH4>{lea.title}</StyledH4>
+            <StyledP key={lea.id}>{lea.text}</StyledP>
+          </>
+        ))}
+        <StyledH3>Continued Development</StyledH3>
+        {proj.continue.map((con) => (
+          <>
+            <StyledH4>{con.title}</StyledH4>
+            <StyledP key={con.id}>{con.text}</StyledP>
+          </>
+        ))}
       </>
     ));
   const handleClick = () => {

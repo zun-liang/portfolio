@@ -2,10 +2,10 @@
 import parse from "html-react-parser";
 import styled from "styled-components";
 import { domToReact } from "html-react-parser";
-import { ParagraphSwitch } from "../assets/styles/Styles";
+import { PrimarySecondary } from "../assets/styles/Styles";
 
 const StyledOverview = styled.p`
-  color: ${ParagraphSwitch};
+  color: ${PrimarySecondary};
   line-height: 1.5;
   & > a {
     text-decoration: none;
@@ -13,7 +13,7 @@ const StyledOverview = styled.p`
     &:hover,
     &:active,
     &:visited {
-      color: ${ParagraphSwitch};
+      color: ${PrimarySecondary};
     }
   }
 `;

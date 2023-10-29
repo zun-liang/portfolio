@@ -15,6 +15,7 @@ import {
   BasicButton,
   PointerSwitch,
   PrimaryTertiary,
+  SecondaryHighlight,
   SecondaryPrimary,
   TertiarySecondary,
 } from "../assets/styles/Styles";
@@ -72,7 +73,7 @@ const Filters = styled.div`
 const Filter = styled(BasicButton)`
   font-size: 1.1rem;
   color: ${TertiarySecondary};
-  text-shadow: 1px 1px ${SecondaryPrimary};
+  text-shadow: 1px 1px ${SecondaryHighlight};
   position: relative;
   top: 0;
   transition: top 0.3s ease-out;

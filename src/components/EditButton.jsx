@@ -9,7 +9,7 @@ import {
   PointerSwitch,
   TertiaryDot,
 } from "../assets/styles/Styles";
-import { ReactComponent as EditIcon } from "../assets/images/edit.svg";
+import { ReactComponent as EditIcon } from "../assets/images/icons/edit.svg";
 
 const StyledEditIcon = styled(EditIcon)`
   width: 1.2rem;

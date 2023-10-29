@@ -44,8 +44,6 @@ const View = styled.p`
   position: relative;
   left: 0;
   transition: left 0.5s ease-in-out;
-  color: ${PrimarySecondary};
-  text-shadow: 1px 1px ${SecondaryHighlight};
 `;
 const StyledLink = styled.a`
   justify-self: end;
@@ -56,11 +54,10 @@ const StyledLink = styled.a`
   &:active,
   &:visited {
     color: ${PrimarySecondary};
+    text-shadow: 1px 1px ${SecondaryHighlight};
   }
   > span {
     font-family: "Black Ops One", sans-serif;
-    color: ${PrimarySecondary};
-    text-shadow: 1px 1px ${SecondaryHighlight};
   }
   &:hover ${View} {
     left: 1rem;

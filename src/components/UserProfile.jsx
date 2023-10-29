@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { ReactComponent as UserDefault } from "../assets/images/user.svg";
+import { ReactComponent as UserDefault } from "../assets/images/icons/user.svg";
 import { PrimaryHighlight, TertiaryDot } from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { auth } from "../firebase";

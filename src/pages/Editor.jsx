@@ -15,11 +15,11 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { ReactComponent as ResetIcon } from "../assets/images/delete.svg";
-import { ReactComponent as TagIcon } from "../assets/images/hash.svg";
-import { ReactComponent as SaveIcon } from "../assets/images/save.svg";
-import { ReactComponent as SearchIcon } from "../assets/images/search.svg";
-import { ReactComponent as SendIcon } from "../assets/images/send.svg";
+import { ReactComponent as ResetIcon } from "../assets/images/icons/delete.svg";
+import { ReactComponent as TagIcon } from "../assets/images/icons/hash.svg";
+import { ReactComponent as SaveIcon } from "../assets/images/icons/save.svg";
+import { ReactComponent as SearchIcon } from "../assets/images/icons/search.svg";
+import { ReactComponent as SendIcon } from "../assets/images/icons/send.svg";
 import {
   BasicInput,
   HighlightSwitch,

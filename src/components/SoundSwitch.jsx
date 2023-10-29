@@ -3,8 +3,8 @@ import { useContext } from "react";
 import styled from "styled-components";
 import useSound from "use-sound";
 
-import { ReactComponent as EarSlash } from "../assets/images/ear-slash.svg";
-import { ReactComponent as Ear } from "../assets/images/ear.svg";
+import { ReactComponent as EarSlash } from "../assets/images/icons/ear-slash.svg";
+import { ReactComponent as Ear } from "../assets/images/icons/ear.svg";
 import Interface from "../assets/sounds/interface.mp3";
 import {
   PointerSwitch,

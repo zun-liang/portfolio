@@ -6,8 +6,8 @@ import useSound from "use-sound";
 
 import Off from "..//assets/sounds/off.mp3";
 import On from "..//assets/sounds/on.mp3";
-import { ReactComponent as TempIcon } from "../assets/images/temperature.svg";
-import { ReactComponent as WeatherIcon } from "../assets/images/weather.svg";
+import { ReactComponent as TempIcon } from "../assets/images/icons/temperature.svg";
+import { ReactComponent as WeatherIcon } from "../assets/images/icons/weather.svg";
 import Key from "../assets/sounds/key.mp3";
 import {
   AutoSwitch,

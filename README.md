@@ -255,6 +255,7 @@ I didn't intend to control time I spent on this project but during the process, 
 - [Pixabay](https://pixabay.com/)
 - [AudioMass](https://audiomass.co/)
 - [Material Design Dark Theme](https://m2.material.io/design/color/dark-theme.html)
+- [Colormind](http://colormind.io/)
 
 #### HTML
 

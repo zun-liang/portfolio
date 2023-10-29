@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { ReactComponent as BackIcon } from "../assets/images/back.svg";
+import { ReactComponent as BackIcon } from "../assets/images/icons/back.svg";
 import styled from "styled-components";
 import {
   PrimarySwitch,

@@ -2,7 +2,7 @@ import { useState } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { ReactComponent as MusicOn } from "../assets/images/music.svg";
+import { ReactComponent as MusicOn } from "../assets/images/icons/music.svg";
 import MusicBox from "../assets/sounds/music-box.mp3";
 import {
   PointerSwitch,

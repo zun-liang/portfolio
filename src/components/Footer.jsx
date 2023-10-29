@@ -11,7 +11,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { ReactComponent as FEM } from "../assets/images/icons/frontend-mentor.svg";
+import { ReactComponent as FEM } from "../assets/images/brands/frontend-mentor.svg";
 import {
   PointerSwitch,
   PrimarySwitch,

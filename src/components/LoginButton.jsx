@@ -1,8 +1,8 @@
 import { AuthContext } from "../contexts/AuthContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { ReactComponent as EditIcon } from "../assets/images/edit.svg";
-import { ReactComponent as LoginIcon } from "../assets/images/log-in.svg";
+import { ReactComponent as EditIcon } from "../assets/images/icons/edit.svg";
+import { ReactComponent as LoginIcon } from "../assets/images/icons/log-in.svg";
 import styled from "styled-components";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 

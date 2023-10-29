@@ -7,7 +7,7 @@ import {
 import { auth } from "../firebase";
 import { updateProfile } from "firebase/auth";
 import Profile from "../assets/images/profile.png";
-import { ReactComponent as ProfileIcon } from "../assets/images/user-pen.svg";
+import { ReactComponent as ProfileIcon } from "../assets/images/icons/user-pen.svg";
 
 const StyledProfileIcon = styled(ProfileIcon)`
   width: 1.5rem;

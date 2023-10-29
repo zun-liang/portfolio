@@ -9,7 +9,7 @@ import { useContext } from "react";
 import { db } from "../firebase";
 import { deleteDoc, doc } from "firebase/firestore";
 import { PlayPickContext } from "../contexts/PlayPickContext";
-import { ReactComponent as DeleteIcon } from "../assets/images/delete.svg";
+import { ReactComponent as DeleteIcon } from "../assets/images/icons/delete.svg";
 import { AuthContext } from "../contexts/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
 

@@ -7,12 +7,12 @@ import {
   BackgroundDot,
   BackgroundTransparent,
   OpaqueSwitch,
-  ParagraphSwitch,
   PointerSwitch,
   PrimarySwitch,
   SecondaryHover,
   TertiarySecondary,
-  SecondarySwitch,
+  SecondaryPrimary,
+  PrimarySecondary,
 } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 
@@ -74,14 +74,14 @@ const StyledH2 = styled.h2`
   font-family: "Black Ops One", sans-serif;
   font-size: 1.1rem;
   color: ${PrimarySwitch};
-  text-shadow: 1px 0px ${SecondarySwitch};
 `;
 const Time = styled.p`
-  color: ${TertiarySecondary};
   font-size: 0.8rem;
+  color: ${TertiarySecondary};
+  text-shadow: 1px 0px ${SecondaryPrimary};
 `;
 const StyledP = styled.p`
-  color: ${ParagraphSwitch};
+  color: ${PrimarySecondary};
   font-size: 0.9rem;
   line-height: 1.5;
 `;

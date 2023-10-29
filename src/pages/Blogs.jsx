@@ -1,26 +1,13 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { getDocs, orderBy, query } from "firebase/firestore";
-import { useContext, useEffect } from "react";
-import {
-  Link,
-  useLoaderData,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Await, defer, Link, useLoaderData, useNavigate, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
 import { ReactComponent as EditIcon } from "../assets/images/edit.svg";
 import { ReactComponent as LoginIcon } from "../assets/images/log-in.svg";
-import {
-  BasicButton,
-  PointerSwitch,
-  PrimarySecondary,
-  PrimaryTertiary,
-  SecondaryPrimary,
-  TertiaryDot,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { BasicButton, PointerSwitch, PrimaryHighlight, PrimarySecondary, PrimaryTertiary, SecondaryPrimary, TertiaryDot, TertiaryParagraph, TertiarySecondary } from "../assets/styles/Styles";
 import BlogOverview from "../components/BlogOverview";
 import DeleteButton from "../components/DeleteButton";
 import EditButton from "../components/EditButton";
@@ -35,6 +22,31 @@ const BlogsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  @media (min-width: 1024px) {
+    width: 70vw;
+  }
+  @media (min-width: 1200px) {
+    width: 60vw;
+  }
+`;
+const StyledP = styled.p`
+  width: 80vw;
+  line-height: 2;
+  font-family: "Black Ops One", sans-serif;
+  font-size: 1.5rem;
+  color: ${TertiaryParagraph};
+  & > a:link,
+  a:visited {
+    color: ${TertiaryParagraph};
+  }
+  & > a:hover,
+  a:active {
+    cursor: ${PointerSwitch};
+    color: ${PrimaryHighlight};
+  }
+  & > span {
+    font-family: "Roboto", sans-serif;
+  }
   @media (min-width: 1024px) {
     width: 70vw;
   }
@@ -124,12 +136,12 @@ const StyledEditIcon = styled(EditIcon)`
 export const loader = async () => {
   try {
     const q = query(blogsCollection, orderBy("timestamp", "desc"));
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = getDocs(q);
     let data = [];
     querySnapshot.forEach((doc) => {
       data.push(doc.data());
     });
-    return data;
+    return defer(data);
   } catch (error) {
     console.error("Error while retrieving blogs:", error);
     throw new Error(
@@ -229,6 +241,18 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
       ) : (
         <StyledLoginIcon onClick={login} />
       )}
+      <StyledP>
+        If Google services are not available in your area or this page is taking
+        longer than expected, please click on{" "}
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://zun-liang.github.io/alt-blogs/"
+        >
+          this link
+        </a>{" "}
+        to read my blogs <span>(*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ</span>
+      </StyledP>
     </BlogsContainer>
   );
 };

@@ -20,6 +20,5 @@ const analytics = getAnalytics(app);
 
 export const db = getFirestore(app);
 export const blogsCollection = collection(db, "blogs");
-export const projectsCollection = collection(db, "projects");
 export const auth = getAuth();
 //how to use analytics here?

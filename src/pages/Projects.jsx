@@ -1,8 +1,6 @@
-import { getDocs, orderBy, query } from "firebase/firestore";
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { useContext, useEffect } from "react";
-import { useLoaderData } from "react-router-dom";
 import styled from "styled-components";
 
 import {
@@ -12,7 +10,7 @@ import {
 } from "../assets/styles/Styles";
 import ProjectOverview from "../components/ProjectOverview";
 import { PlayPickContext } from "../contexts/PlayPickContext";
-import { projectsCollection } from "../firebase";
+import { projects } from "../projectsData";
 
 const ProjectsContainer = styled.div`
   width: 85vw;
@@ -74,27 +72,9 @@ const StyledLink = styled.a`
   }
 `;
 
-export const loader = async () => {
-  try {
-    const projectsRef = projectsCollection;
-    const q = query(projectsRef, orderBy("order"));
-    const querySnapshot = await getDocs(q);
-    let data = [];
-    querySnapshot.forEach((doc) => {
-      data.push(doc.data());
-    });
-    return data;
-  } catch (error) {
-    console.error("Error while retrieving projects:", error);
-    throw new Error(
-      "Something went wrong while attempting to retrieve projects data."
-    );
-  }
-};
-
 const Projects = ({ playPageTurn }) => {
   const playPick = useContext(PlayPickContext);
-  const projectsArr = useLoaderData();
+  const projectsArr = projects;
 
   useEffect(() => {
     document.title = "Projects ⟡ Zun Liang ♫₊˚.🎧 ✩｡";

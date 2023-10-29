@@ -29,8 +29,8 @@ import Login, { action as loginAction } from "./pages/Login";
 import Logout from "./pages/Logout";
 import NotFound from "./pages/NotFound";
 import Post from "./pages/Post";
-import Project, { loader as projectLoader } from "./pages/Project";
-import Projects, { loader as projectsLoader } from "./pages/Projects";
+import Project from "./pages/Project";
+import Projects from "./pages/Projects";
 import { LogoutContextProvider } from "./contexts/LogoutContext";
 
 const AppContainer = styled.div`
@@ -101,13 +101,8 @@ const App = () => {
         <Route
           path="projects"
           element={<Projects playPageTurn={playPageTurn} />}
-          loader={projectsLoader}
         />
-        <Route
-          path="projects/:title"
-          element={<Project />}
-          loader={projectLoader}
-        />
+        <Route path="projects/:title" element={<Project />} />
         <Route
           path="blogs"
           element={

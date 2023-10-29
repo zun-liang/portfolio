@@ -1,8 +1,7 @@
 import { faCode } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { doc, getDoc } from "firebase/firestore";
 import { useContext, useEffect } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
@@ -19,8 +18,8 @@ import {
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
-import { db } from "../firebase";
 import BackButton from "../components/BackButton";
+import { projects } from "../projectsData";
 
 const ProjectContainer = styled.div`
   width: 80vw;
@@ -58,31 +57,31 @@ const PuzzleIcon = styled(Puzzle)`
 `;
 const StyledLink = styled.a`
   width: 1.6rem;
-  &:link,
-  &:visited {
-    color: ${TertiarySecondary};
-    ${WebsiteIcon} {
-      fill: ${TertiarySecondary};
-    }
-    ${PuzzleIcon} > g > path {
-      fill: ${TertiarySecondary};
-    }
-  }
-  &:hover,
-  &:active {
-    color: ${PrimarySwitch};
-    cursor: ${PointerSwitch};
-    ${WebsiteIcon} {
-      fill: ${PrimarySwitch};
-    }
-    ${PuzzleIcon} > g  > path {
-      fill: ${PrimarySwitch};
-    }
-  }
+  cursor: ${PointerSwitch};
 `;
 const Icon = styled(FontAwesomeIcon)`
   width: 1.5rem;
   height: 1.5rem;
+  color: ${TertiarySecondary};
+  ${StyledLink}:hover & {
+    color: ${PrimarySwitch};
+  }
+`;
+const StyledWebsiteIcon = styled(WebsiteIcon)`
+  fill: ${TertiarySecondary};
+  ${StyledLink}:hover & {
+    fill: ${PrimarySwitch};
+  }
+`;
+const StyledPuzzleIcon = styled(PuzzleIcon)`
+  & > g > path {
+    fill: ${TertiarySecondary};
+  }
+  ${StyledLink}:hover & {
+    & > g > path {
+      fill: ${PrimarySwitch};
+    }
+  }
 `;
 const StyledH3 = styled.h3`
   color: ${PrimaryTertiary};
@@ -105,33 +104,9 @@ const StyledListItem = styled.li`
   color: ${ParagraphSwitch};
 `;
 
-export const loader = async ({ params }) => {
-  const { title } = params;
-  const docRef = doc(db, "projects", title);
-  try {
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      return docSnap.data();
-    } else {
-      console.log("No such project!");
-    }
-  } catch (error) {
-    console.error("Error fetching project:", error);
-    throw new Error(
-      "Something went wrong while attempting to retrieve project data."
-    );
-  }
-};
-
 const Project = () => {
   const playPick = useContext(PlayPickContext);
   const navigate = useNavigate();
-  const {
-    name: projectName,
-    codeURL: codeURL,
-    liveURL: liveURL,
-    femURL: femURL,
-  } = useLoaderData();
 
   const handleClick = () => {
     navigate("/projects");
@@ -144,16 +119,28 @@ const Project = () => {
   return (
     <ProjectContainer>
       <BackButton handleClick={handleClick} />
-      <StyledH2>{projectName}</StyledH2>
+      <StyledH2>{projects[0].name}</StyledH2>
       <StyledDiv>
-        <StyledLink target="_blank" href={codeURL} onClick={playPick}>
+        <StyledLink
+          target="_blank"
+          href={projects[0].codeURL}
+          onClick={playPick}
+        >
           <Icon icon={faCode} />
         </StyledLink>
-        <StyledLink target="_blank" href={liveURL} onClick={playPick}>
-          <WebsiteIcon />
+        <StyledLink
+          target="_blank"
+          href={projects[0].liveURL}
+          onClick={playPick}
+        >
+          <StyledWebsiteIcon />
         </StyledLink>
-        <StyledLink target="_blank" href={femURL} onClick={playPick}>
-          <PuzzleIcon />
+        <StyledLink
+          target="_blank"
+          href={projects[0].femURL}
+          onClick={playPick}
+        >
+          <StyledPuzzleIcon />
         </StyledLink>
       </StyledDiv>
       <StyledH3>Introduction</StyledH3>

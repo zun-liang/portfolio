@@ -6,8 +6,8 @@ import { useNavigate, useParams } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { ReactComponent as Puzzle } from "../assets/images/puzzle.svg";
-import { ReactComponent as Website } from "../assets/images/website.svg";
+import { ReactComponent as Puzzle } from "../assets/images/icons/puzzle.svg";
+import { ReactComponent as Website } from "../assets/images/icons/website.svg";
 import {
   PrimaryTertiary,
   ParagraphSwitch,

@@ -14,15 +14,15 @@ import styled from "styled-components";
 
 import Logo from "../assets/images/favicon/dark/apple-touch-icon.png";
 import LogoLight from "../assets/images/favicon/light/apple-touch-icon.png";
-import { ReactComponent as FBIcon } from "../assets/images/icons/firebase.svg";
-import { ReactComponent as JestIcon } from "../assets/images/icons/jest.svg";
-import { ReactComponent as NextIcon } from "../assets/images/icons/next-js.svg";
-import { ReactComponent as RRIcon } from "../assets/images/icons/react-router.svg";
-import { ReactComponent as ReduxIcon } from "../assets/images/icons/redux.svg";
-import { ReactComponent as SCIcon } from "../assets/images/icons/styled-components.svg";
-import { ReactComponent as RTLIcon } from "../assets/images/icons/testing-library.svg";
-import { ReactComponent as TSIcon } from "../assets/images/icons/typescript.svg";
-import { ReactComponent as VSCIcon } from "../assets/images/icons/vscode.svg";
+import { ReactComponent as FBIcon } from "../assets/images/brands/firebase.svg";
+import { ReactComponent as JestIcon } from "../assets/images/brands/jest.svg";
+import { ReactComponent as NextIcon } from "../assets/images/brands/next-js.svg";
+import { ReactComponent as RRIcon } from "../assets/images/brands/react-router.svg";
+import { ReactComponent as ReduxIcon } from "../assets/images/brands/redux.svg";
+import { ReactComponent as SCIcon } from "../assets/images/brands/styled-components.svg";
+import { ReactComponent as RTLIcon } from "../assets/images/brands/testing-library.svg";
+import { ReactComponent as TSIcon } from "../assets/images/brands/typescript.svg";
+import { ReactComponent as VSCIcon } from "../assets/images/brands/vscode.svg";
 import {
   BackgroundSwitch,
   ParagraphSwitch,

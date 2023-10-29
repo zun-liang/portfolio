@@ -16,10 +16,10 @@ const GlobalStyles = createGlobalStyle`
     }
 
     :root {
-        --light-background: #badbf4;
+        --light-background: #f2f4ba;
         --light-primary: #181c1f;
         --light-secondary: #ffffff;
-        --light-tertiary: #6c7a89;
+        --light-tertiary: #89786c;
         --light-paragraph: #181c1f;
         --light-hover: #ffffff80;
         --light-highlight: #6A5A01;

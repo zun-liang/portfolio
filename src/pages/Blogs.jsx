@@ -5,28 +5,28 @@ import { useContext, useEffect } from "react";
 import {
   Link,
   useLoaderData,
-  useSearchParams,
   useNavigate,
+  useSearchParams,
 } from "react-router-dom";
 import styled from "styled-components";
 
+import { ReactComponent as EditIcon } from "../assets/images/edit.svg";
+import { ReactComponent as LoginIcon } from "../assets/images/log-in.svg";
 import {
   BasicButton,
   PointerSwitch,
   PrimarySecondary,
   PrimaryTertiary,
   SecondaryPrimary,
-  TertiaryPrimary,
+  TertiaryDot,
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import BlogOverview from "../components/BlogOverview";
+import DeleteButton from "../components/DeleteButton";
+import EditButton from "../components/EditButton";
 import { AuthContext } from "../contexts/AuthContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { blogsCollection } from "../firebase";
-import EditButton from "../components/EditButton";
-import DeleteButton from "../components/DeleteButton";
-import { ReactComponent as LoginIcon } from "../assets/images/log-in.svg";
-import { ReactComponent as EditIcon } from "../assets/images/edit.svg";
 
 const BlogsContainer = styled.div`
   width: 80vw;
@@ -94,12 +94,12 @@ const StyledLoginIcon = styled(LoginIcon)`
   width: 2rem;
   height: 2rem;
   & > g > g {
-    fill: ${PrimarySecondary};
+    fill: ${TertiaryDot};
   }
   &:hover {
     cursor: ${PointerSwitch};
     & > g > g {
-      fill: ${TertiaryPrimary};
+      fill: ${PrimarySecondary};
     }
   }
 `;
@@ -109,13 +109,13 @@ const StyledEditIcon = styled(EditIcon)`
   height: 2rem;
   & > g > g > g > path,
   & > g > g > g > polygon {
-    stroke: ${PrimarySecondary};
+    stroke: ${TertiaryDot};
   }
   &:hover {
     cursor: ${PointerSwitch};
     & > g > g > g > path,
     & > g > g > g > polygon {
-      stroke: ${TertiaryPrimary};
+      stroke: ${PrimarySecondary};
     }
   }
 `;

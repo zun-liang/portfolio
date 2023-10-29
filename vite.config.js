@@ -12,6 +12,9 @@ export default defineConfig(({ mode }) => {
       "process.env.REACT_APP_AUTH_DOMAIN": JSON.stringify(
         env.REACT_APP_AUTH_DOMAIN
       ),
+      "process.env.REACT_APP_DATABASE_URL": JSON.stringify(
+        env.REACT_APP_DATABASE_URL
+      ),
       "process.env.REACT_APP_PROJECT_ID": JSON.stringify(
         env.REACT_APP_PROJECT_ID
       ),
@@ -22,6 +25,9 @@ export default defineConfig(({ mode }) => {
         env.REACT_APP_MESSAGING_SENDER_ID
       ),
       "process.env.REACT_APP_APP_ID": JSON.stringify(env.REACT_APP_APP_ID),
+      "process.env.REACT_APP_MEASUREMENT_ID": JSON.stringify(
+        env.REACT_APP_MEASUREMENT_ID
+      ),
       "process.env.REACT_APP_WEATHER_APP_ID": JSON.stringify(
         env.REACT_APP_WEATHER_APP_ID
       ),

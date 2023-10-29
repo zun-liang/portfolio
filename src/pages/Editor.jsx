@@ -5,36 +5,36 @@ import MDEditor from "@uiw/react-md-editor";
 import {
   deleteDoc,
   doc,
+  getDoc,
   serverTimestamp,
   setDoc,
-  getDoc,
   updateDoc,
 } from "firebase/firestore";
 import { marked } from "marked";
+import { nanoid } from "nanoid";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import UpdateProfile from "../components/UpdateProfile";
-import UserProfile from "../components/UserProfile";
 
+import { ReactComponent as ResetIcon } from "../assets/images/delete.svg";
+import { ReactComponent as TagIcon } from "../assets/images/hash.svg";
+import { ReactComponent as SaveIcon } from "../assets/images/save.svg";
+import { ReactComponent as SearchIcon } from "../assets/images/search.svg";
+import { ReactComponent as SendIcon } from "../assets/images/send.svg";
 import {
   BasicInput,
-  PointerSwitch,
   HighlightSwitch,
+  PointerSwitch,
   PrimaryHighlight,
   PrimarySwitch,
-  TertiarySecondary,
   TertiaryParagraph,
+  TertiarySecondary,
 } from "../assets/styles/Styles";
+import BackButton from "../components/BackButton";
+import UpdateProfile from "../components/UpdateProfile";
+import UserProfile from "../components/UserProfile";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { db } from "../firebase";
-import { nanoid } from "nanoid";
-import BackButton from "../components/BackButton";
-import { ReactComponent as SearchIcon } from "../assets/images/search.svg";
-import { ReactComponent as ResetIcon } from "../assets/images/delete.svg";
-import { ReactComponent as SaveIcon } from "../assets/images/save.svg";
-import { ReactComponent as SendIcon } from "../assets/images/send.svg";
-import { ReactComponent as TagIcon } from "../assets/images/hash.svg";
 
 const EditorContainer = styled.div`
   width: 80vw;
@@ -282,6 +282,7 @@ const Editor = ({
       const draftData = data.title + "\n\n" + data.content;
       setBlog(draftData);
       setTagInput(data.tag);
+      setDraft(true);
     } catch (error) {
       setGetDraftResponse(false);
       console.error("Error while retrieving draft", error);
@@ -293,6 +294,7 @@ const Editor = ({
     navigate("/blogs");
     playPick();
   };
+
   useEffect(() => {
     document.title = "Editor ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
   }, []);

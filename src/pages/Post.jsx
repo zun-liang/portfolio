@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
+import Party from "../assets/images/party_boygirl.png";
 import {
   BasicLink,
   HoverSwitch,
@@ -10,7 +11,6 @@ import {
   SecondaryTertiary,
 } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
-import Party from "../assets/images/party_boygirl.png";
 
 const PostContainer = styled.div`
   display: flex;
@@ -52,7 +52,6 @@ const StyledLink = styled(BasicLink)`
 
 const Post = ({ draft }) => {
   const playPick = useContext(PlayPickContext);
-  console.log(draft);
 
   useEffect(() => {
     document.title = "Post ⟡ Zun Liang ♫₊˚.🎧 ✩｡";

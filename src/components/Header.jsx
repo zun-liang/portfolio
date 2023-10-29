@@ -9,7 +9,14 @@ import On from "..//assets/sounds/on.mp3";
 import { ReactComponent as TempIcon } from "../assets/images/temperature.svg";
 import { ReactComponent as WeatherIcon } from "../assets/images/weather.svg";
 import Key from "../assets/sounds/key.mp3";
-import { AutoSwitch, PointerSwitch, PrimarySwitch, SecondaryPrimary, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  AutoSwitch,
+  PointerSwitch,
+  PrimarySwitch,
+  SecondaryPrimary,
+  SecondarySwitch,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 import { SoundContext } from "../contexts/SoundContext";
 import Menu from "./Menu";

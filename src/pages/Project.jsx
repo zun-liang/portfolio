@@ -1,6 +1,6 @@
 import { faCode } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useParams } from "react";
 import { useNavigate } from "react-router-dom";
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/no-unescaped-entities */
@@ -107,7 +107,51 @@ const StyledListItem = styled.li`
 const Project = () => {
   const playPick = useContext(PlayPickContext);
   const navigate = useNavigate();
-
+  const { params } = useParams();
+  console.log(params);
+  const project = projects
+    .filter((proj) => proj.id === params)
+    .map((proj) => (
+      <>
+        <StyledH2 key={proj.id}>{proj.name}</StyledH2>
+        <StyledDiv>
+          <StyledLink target="_blank" href={proj.codeURL} onClick={playPick}>
+            <Icon icon={faCode} />
+          </StyledLink>
+          <StyledLink target="_blank" href={proj.liveURL} onClick={playPick}>
+            <StyledWebsiteIcon />
+          </StyledLink>
+          <StyledLink target="_blank" href={proj.femURL} onClick={playPick}>
+            <StyledPuzzleIcon />
+          </StyledLink>
+        </StyledDiv>
+        <StyledH3>Introduction</StyledH3>
+        <StyledP>{proj.introduction}</StyledP>
+        <StyledH4>In this app, users are able to:</StyledH4>
+        <StyledList>
+          {proj.functions.map((func) => (
+            <StyledListItem key={func}>{func}</StyledListItem>
+          ))}
+        </StyledList>
+        <StyledH4>Built with:</StyledH4>
+        <StyledList>
+          {proj.tools.map((tool) => (
+            <StyledListItem key={tool}>{tool}</StyledListItem>
+          ))}
+        </StyledList>
+        <StyledH3>Purpose and Goal</StyledH3>
+        <StyledP>{proj.purpose}</StyledP>
+        <StyledH3>Spotlight</StyledH3>
+        <StyledP>{proj.spotlight}</StyledP>
+        <StyledH3>What I learned</StyledH3>
+        <StyledP>{proj.learned}</StyledP>
+        <StyledH3>Useful Resources</StyledH3>
+        <StyledH4>CSS Related</StyledH4>
+        <StyledList>
+          <StyledListItem>Border Gradient with Border Radius</StyledListItem>
+        </StyledList>
+      </>
+    ));
   const handleClick = () => {
     navigate("/projects");
     playPick();
@@ -119,87 +163,7 @@ const Project = () => {
   return (
     <ProjectContainer>
       <BackButton handleClick={handleClick} />
-      <StyledH2>{projects[0].name}</StyledH2>
-      <StyledDiv>
-        <StyledLink
-          target="_blank"
-          href={projects[0].codeURL}
-          onClick={playPick}
-        >
-          <Icon icon={faCode} />
-        </StyledLink>
-        <StyledLink
-          target="_blank"
-          href={projects[0].liveURL}
-          onClick={playPick}
-        >
-          <StyledWebsiteIcon />
-        </StyledLink>
-        <StyledLink
-          target="_blank"
-          href={projects[0].femURL}
-          onClick={playPick}
-        >
-          <StyledPuzzleIcon />
-        </StyledLink>
-      </StyledDiv>
-      <StyledH3>Introduction</StyledH3>
-      <StyledP>
-        This solo project is the solution to Frontend Mentor Challenge Todo App.
-      </StyledP>
-      <StyledH4>In this app, users are able to:</StyledH4>
-      <StyledList>
-        <StyledListItem>
-          View the optimal layout for the app depending on their device's screen
-          size
-        </StyledListItem>
-        <StyledListItem>
-          See hover states for all interactive elements on the page
-        </StyledListItem>
-        <StyledListItem>Add new todos to the list</StyledListItem>
-        <StyledListItem>Mark todos as complete</StyledListItem>
-        <StyledListItem>Delete todos from the list</StyledListItem>
-        <StyledListItem>Filter by all/active/complete todos</StyledListItem>
-        <StyledListItem>Clear all completed todos</StyledListItem>
-        <StyledListItem>Toggle light and dark mode</StyledListItem>
-        <StyledListItem>
-          Drag and drop to reorder items on the list
-        </StyledListItem>
-      </StyledList>
-      <StyledH4>Built with:</StyledH4>
-      <StyledList>
-        <StyledListItem>HTML</StyledListItem>
-        <StyledListItem>CSS</StyledListItem>
-        <StyledListItem>Javascript</StyledListItem>
-        <StyledListItem>React</StyledListItem>
-        <StyledListItem>Styled-components</StyledListItem>
-        <StyledListItem>Vite</StyledListItem>
-        <StyledListItem>NanoID</StyledListItem>
-        <StyledListItem>React Beautiful DND</StyledListItem>
-        <StyledListItem>@hello-pangea/dnd</StyledListItem>
-      </StyledList>
-      <StyledH3>Purpose and Goal</StyledH3>
-      <StyledP>
-        My main purpose of doing this project is to pratice working with
-        localStorage. At the time of doing this project, I haven't learned how
-        to store data except for saving them in localStorage/sessionStorage.
-      </StyledP>
-      <StyledH3>Spotlight</StyledH3>
-      <StyledP>spotlight paragraph goes here...</StyledP>
-      <StyledH3>What I learned</StyledH3>
-      <StyledP>
-        In this project, I especially learned how to use NanoID to generate
-        React map keys and how to use React Beautiful DND. I used to think that
-        NanoID can only generate random IDs which is not helpful for generating
-        React map keys. However, I found that if I use NanoID to generate to do
-        item's id and use its id as key, then it works perfectly. Moreover, the
-        original React Beautiful DND is no longer maintaned...
-      </StyledP>
-      <StyledH3>Useful Resources</StyledH3>
-      <StyledH4>CSS Related</StyledH4>
-      <StyledList>
-        <StyledListItem>Border Gradient with Border Radius</StyledListItem>
-      </StyledList>
+      {project}
     </ProjectContainer>
   );
 };

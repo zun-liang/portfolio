@@ -1,17 +1,29 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { getDocs, orderBy, query } from "firebase/firestore";
-import { useContext, useEffect, useState } from "react";
-import { Await, defer, Link, useLoaderData, useNavigate, useSearchParams } from "react-router-dom";
+import { Suspense, useContext, useEffect } from "react";
+import {
+  Await,
+  defer,
+  Link,
+  useLoaderData,
+  useSearchParams,
+} from "react-router-dom";
 import styled from "styled-components";
 
-import { ReactComponent as EditIcon } from "../assets/images/edit.svg";
-import { ReactComponent as LoginIcon } from "../assets/images/log-in.svg";
-import { BasicButton, PointerSwitch, PrimaryHighlight, PrimarySecondary, PrimaryTertiary, SecondaryPrimary, TertiaryDot, TertiaryParagraph, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  BasicButton,
+  PointerSwitch,
+  PrimaryHighlight,
+  PrimaryTertiary,
+  SecondaryPrimary,
+  SecondaryTransparent,
+  TertiaryParagraph,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import BlogOverview from "../components/BlogOverview";
 import DeleteButton from "../components/DeleteButton";
 import EditButton from "../components/EditButton";
-import { AuthContext } from "../contexts/AuthContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { blogsCollection } from "../firebase";
 
@@ -35,6 +47,7 @@ const StyledP = styled.p`
   font-family: "Black Ops One", sans-serif;
   font-size: 1.5rem;
   color: ${TertiaryParagraph};
+  text-shadow: 1px 1px ${SecondaryTransparent};
   & > a:link,
   a:visited {
     color: ${TertiaryParagraph};
@@ -63,6 +76,13 @@ const BlogLink = styled(Link)`
   width: 100%;
   text-decoration: none;
   cursor: ${PointerSwitch};
+`;
+const ButtonsContainer = styled.div`
+  display: none;
+  ${StyledDiv}:hover & {
+    display: flex;
+    gap: 1rem;
+  }
 `;
 const BlogContainer = styled.div`
   display: flex;
@@ -101,47 +121,13 @@ const StyledH2 = styled.h2`
   font-family: "Black Ops One", sans-serif;
   color: ${PrimaryTertiary};
 `;
-const StyledLoginIcon = styled(LoginIcon)`
-  align-self: flex-end;
-  width: 2rem;
-  height: 2rem;
-  & > g > g {
-    fill: ${TertiaryDot};
-  }
-  &:hover {
-    cursor: ${PointerSwitch};
-    & > g > g {
-      fill: ${PrimarySecondary};
-    }
-  }
-`;
-const StyledEditIcon = styled(EditIcon)`
-  align-self: flex-end;
-  width: 2rem;
-  height: 2rem;
-  & > g > g > g > path,
-  & > g > g > g > polygon {
-    stroke: ${TertiaryDot};
-  }
-  &:hover {
-    cursor: ${PointerSwitch};
-    & > g > g > g > path,
-    & > g > g > g > polygon {
-      stroke: ${PrimarySecondary};
-    }
-  }
-`;
 
 //how to cache the data so it doesn't need to get data everytime;
 export const loader = async () => {
   try {
     const q = query(blogsCollection, orderBy("timestamp", "desc"));
     const querySnapshot = getDocs(q);
-    let data = [];
-    querySnapshot.forEach((doc) => {
-      data.push(doc.data());
-    });
-    return defer(data);
+    return defer({ docs: querySnapshot });
   } catch (error) {
     console.error("Error while retrieving blogs:", error);
     throw new Error(
@@ -152,38 +138,9 @@ export const loader = async () => {
 
 const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
   const playPick = useContext(PlayPickContext);
-  const loggedin = useContext(AuthContext);
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryFilter = searchParams.get("category");
-  const blogsArr = useLoaderData();
-  const navigate = useNavigate();
-
-  const filteredBlogs = categoryFilter
-    ? blogsArr.filter((blog) => blog.tag[0] === categoryFilter)
-    : blogsArr;
-
-  const blogs = filteredBlogs.map((blog) => (
-    <StyledDiv key={blog.id}>
-      <BlogLink
-        to={encodeURIComponent(blog.id)}
-        state={{ search: `?${searchParams.toString()}` }}
-        onClick={playPageTurn}
-      >
-        <BlogContainer>
-          <StyledH2>{blog.title.split(" ").slice(1).join(" ")}</StyledH2>
-          <Time>{blog.time}</Time>
-          <BlogOverview overview={blog.overview} />
-        </BlogContainer>
-      </BlogLink>
-      <EditButton
-        blogData={blog}
-        blogTag={blog.tag}
-        setBlogToEdit={setBlogToEdit}
-        setTagsToEdit={setTagsToEdit}
-      />
-      <DeleteButton blogID={blog.id} />
-    </StyledDiv>
-  ));
+  const loaderData = useLoaderData();
 
   useEffect(() => {
     document.title = "Blogs ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
@@ -199,15 +156,6 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
       }
       return prev;
     });
-  };
-
-  const goToEditor = () => {
-    playPick();
-    navigate("/editor");
-  };
-  const login = () => {
-    playPick();
-    navigate("/login");
   };
 
   return (
@@ -235,24 +183,62 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
           All
         </Filter>
       </Filters>
-      {blogs}
-      {loggedin ? (
-        <StyledEditIcon onClick={goToEditor} />
-      ) : (
-        <StyledLoginIcon onClick={login} />
-      )}
-      <StyledP>
-        If Google services are not available in your area or this page is taking
-        longer than expected, please click on{" "}
-        <a
-          target="_blank"
-          rel="noreferrer"
-          href="https://zun-liang.github.io/alt-blogs/"
-        >
-          this link
-        </a>{" "}
-        to read my blogs <span>(*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ</span>
-      </StyledP>
+      <Suspense
+        fallback={
+          <StyledP>
+            If Google services are not available in your area or this page is
+            taking longer than expected, please click on{" "}
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://zun-liang.github.io/alt-blogs/"
+            >
+              this link
+            </a>{" "}
+            to read my blogs <span>(*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ</span>
+          </StyledP>
+        }
+      >
+        <Await resolve={loaderData.docs}>
+          {(docs) => {
+            let blogsArr = [];
+            docs.forEach((doc) => {
+              blogsArr.push(doc.data());
+            });
+            const filteredBlogs = categoryFilter
+              ? blogsArr.filter((blog) => blog.tag[0] === categoryFilter)
+              : blogsArr;
+
+            const blogs = filteredBlogs.map((blog) => (
+              <StyledDiv key={blog.id}>
+                <BlogLink
+                  to={encodeURIComponent(blog.id)}
+                  state={{ search: `?${searchParams.toString()}` }}
+                  onClick={playPageTurn}
+                >
+                  <BlogContainer>
+                    <StyledH2>
+                      {blog.title.split(" ").slice(1).join(" ")}
+                    </StyledH2>
+                    <Time>{blog.time}</Time>
+                    <BlogOverview overview={blog.overview} />
+                  </BlogContainer>
+                </BlogLink>
+                <ButtonsContainer>
+                  <EditButton
+                    blogData={blog}
+                    blogTag={blog.tag}
+                    setBlogToEdit={setBlogToEdit}
+                    setTagsToEdit={setTagsToEdit}
+                  />
+                  <DeleteButton blogID={blog.id} />
+                </ButtonsContainer>
+              </StyledDiv>
+            ));
+            return <>{blogs}</>;
+          }}
+        </Await>
+      </Suspense>
     </BlogsContainer>
   );
 };

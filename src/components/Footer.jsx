@@ -21,6 +21,7 @@ import { PlayPickContext } from "../contexts/PlayPickContext";
 import LogoutButton from "./LogoutButton";
 import MusicPlayer from "./MusicPlayer";
 import SoundSwitch from "./SoundSwitch";
+import LoginButton from "./LoginButton";
 
 const StyledFooter = styled.footer`
   width: 100%;
@@ -42,7 +43,7 @@ const Wrapper = styled.div`
   @media (min-width: 1024px) {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 1rem;
     margin: 3.2rem 0 -3.2rem;
   }
 `;
@@ -99,6 +100,7 @@ const Footer = () => {
       <Wrapper>
         <SoundSwitch />
         <MusicPlayer />
+        <LoginButton />
         <LogoutButton />
       </Wrapper>
       <StyledList>

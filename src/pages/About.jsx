@@ -349,12 +349,12 @@ const About = () => {
             <span>Next.js</span>
           </StyledListItem>
           <StyledListItem>
-            <Icon icon={faReact} />
-            <span>React Native</span>
-          </StyledListItem>
-          <StyledListItem>
             <Icon icon={faNode} />
             <span>Node.js</span>
+          </StyledListItem>
+          <StyledListItem>
+            <Icon icon={faReact} />
+            <span>React Native</span>
           </StyledListItem>
           <StyledListItem>...</StyledListItem>
         </StyledList>

@@ -6,6 +6,8 @@ import useSound from "use-sound";
 
 import Off from "..//assets/sounds/off.mp3";
 import On from "..//assets/sounds/on.mp3";
+import { ReactComponent as TempIcon } from "../assets/images/temperature.svg";
+import { ReactComponent as WeatherIcon } from "../assets/images/weather.svg";
 import Key from "../assets/sounds/key.mp3";
 import {
   AutoSwitch,
@@ -117,11 +119,25 @@ const StyledDiv = styled.div`
   }
 `;
 const Weather = styled.p`
+  display: flex;
+  align-items: center;
   color: ${TertiarySecondary};
   text-shadow: 1px 1px ${SecondaryPrimary};
   font-size: 0.8rem;
   @media (min-width: 750px) {
     font-size: 0.9rem;
+  }
+`;
+const StyledWeatherIcon = styled(WeatherIcon)`
+  width: 1rem;
+  height: 1rem;
+  fill: ${TertiarySecondary};
+`;
+const StyledTempIcon = styled(TempIcon)`
+  width: 1rem;
+  height: 1rem;
+  & > path {
+    stroke: ${TertiarySecondary};
   }
 `;
 const ModeSwitch = styled.p`
@@ -201,7 +217,12 @@ const Header = ({ screenWidth }) => {
       <Menu menu={menu} setMenu={setMenu} playKey={playKey} />
       <StyledDiv>
         {fetchError ? (
-          <Weather>Wx: Unk, Temp: Unk,</Weather>
+          <Weather>
+            <StyledWeatherIcon />
+            &nbsp;&nbsp;n/a&nbsp;&nbsp;
+            <StyledTempIcon />
+            &nbsp;n/a&nbsp;
+          </Weather>
         ) : (
           <Weather>
             {weather} {celsius}

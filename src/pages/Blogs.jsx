@@ -14,14 +14,12 @@ import styled from "styled-components";
 import {
   BasicButton,
   PointerSwitch,
-  PrimaryHighlight,
   PrimaryTertiary,
   SecondaryPrimary,
-  SecondaryTransparent,
-  TertiaryParagraph,
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import BlogOverview from "../components/BlogOverview";
+import BlogsLoading from "../components/BlogsLoading";
 import DeleteButton from "../components/DeleteButton";
 import EditButton from "../components/EditButton";
 import { PlayPickContext } from "../contexts/PlayPickContext";
@@ -30,10 +28,10 @@ import { blogsCollection } from "../firebase";
 const BlogsContainer = styled.div`
   width: 80vw;
   min-height: 55vh;
-  margin: 0 auto 2rem;
+  margin: 0 auto 3rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
   @media (min-width: 1024px) {
     width: 70vw;
   }
@@ -41,32 +39,7 @@ const BlogsContainer = styled.div`
     width: 60vw;
   }
 `;
-const StyledP = styled.p`
-  width: 80vw;
-  line-height: 2;
-  font-family: "Black Ops One", sans-serif;
-  font-size: 1.5rem;
-  color: ${TertiaryParagraph};
-  text-shadow: 1px 1px ${SecondaryTransparent};
-  & > a:link,
-  a:visited {
-    color: ${TertiaryParagraph};
-  }
-  & > a:hover,
-  a:active {
-    cursor: ${PointerSwitch};
-    color: ${PrimaryHighlight};
-  }
-  & > span {
-    font-family: "Roboto", sans-serif;
-  }
-  @media (min-width: 1024px) {
-    width: 70vw;
-  }
-  @media (min-width: 1200px) {
-    width: 60vw;
-  }
-`;
+
 const StyledDiv = styled.div`
   display: flex;
   justify-content: space-between;
@@ -160,45 +133,32 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
 
   return (
     <BlogsContainer>
-      <Filters>
-        <Filter onClick={() => generateSearchParams("category", "html")}>
-          HTML
-        </Filter>
-        <Filter onClick={() => generateSearchParams("category", "css")}>
-          CSS
-        </Filter>
-        <Filter onClick={() => generateSearchParams("category", "javascript")}>
-          Javascript
-        </Filter>
-        <Filter onClick={() => generateSearchParams("category", "react")}>
-          React
-        </Filter>
-        <Filter onClick={() => generateSearchParams("category", "router")}>
-          Router
-        </Filter>
-        <Filter onClick={() => generateSearchParams("category", "design")}>
-          Design
-        </Filter>
-        <Filter onClick={() => generateSearchParams("category", null)}>
-          All
-        </Filter>
-      </Filters>
-      <Suspense
-        fallback={
-          <StyledP>
-            If Google services are not available in your area or this page is
-            taking longer than expected, please click on{" "}
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://zun-liang.github.io/alt-blogs/"
-            >
-              this link
-            </a>{" "}
-            to read my blogs <span>(*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ</span>
-          </StyledP>
-        }
-      >
+      <Suspense fallback={<BlogsLoading />}>
+        <Filters>
+          <Filter onClick={() => generateSearchParams("category", "html")}>
+            HTML
+          </Filter>
+          <Filter onClick={() => generateSearchParams("category", "css")}>
+            CSS
+          </Filter>
+          <Filter
+            onClick={() => generateSearchParams("category", "javascript")}
+          >
+            Javascript
+          </Filter>
+          <Filter onClick={() => generateSearchParams("category", "react")}>
+            React
+          </Filter>
+          <Filter onClick={() => generateSearchParams("category", "router")}>
+            Router
+          </Filter>
+          <Filter onClick={() => generateSearchParams("category", "design")}>
+            Design
+          </Filter>
+          <Filter onClick={() => generateSearchParams("category", null)}>
+            All
+          </Filter>
+        </Filters>
         <Await resolve={loaderData.docs}>
           {(docs) => {
             let blogsArr = [];

@@ -7,11 +7,11 @@ import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import {
-  PrimarySecondary,
+  ParagraphSwitch,
   PrimaryTertiary,
   SecondaryParagraph,
-  SecondaryPrimary,
-  TertiarySecondary,
+  TertiaryParagraph,
+  TertiarySwitch,
 } from "../assets/styles/Styles";
 import BlogContent from "../components/BlogContent";
 import { PlayPickContext } from "../contexts/PlayPickContext";
@@ -43,8 +43,7 @@ const MarkdownTitle = styled(Markdown)`
 `;
 const StyledP = styled.p`
   font-size: 0.9rem;
-  color: ${TertiarySecondary};
-  text-shadow: 1px 1px ${SecondaryPrimary};
+  color: ${TertiaryParagraph};
   text-align: right;
 `;
 const StyledDiv = styled.div`
@@ -53,14 +52,13 @@ const StyledDiv = styled.div`
   gap: 2rem;
   padding-bottom: 1rem;
 `;
-
 const TagsContainer = styled.div`
   display: flex;
   gap: 1rem;
 `;
 const Tag = styled.p`
-  color: ${PrimarySecondary};
-  text-shadow: 1px 1px ${SecondaryPrimary};
+  color: ${ParagraphSwitch};
+  text-shadow: -1px -1px ${TertiarySwitch};
 `;
 
 export const loader = async ({ params }) => {

@@ -7,8 +7,9 @@ import Kuma from "../assets/images/ojigi_animal_kuma.png";
 import {
   BasicLink,
   HoverSwitch,
-  ParagraphSwitch,
-  SecondaryTertiary,
+  PrimarySecondary,
+  PrimarySwitch,
+  SecondaryTransparent,
 } from "../assets/styles/Styles";
 
 const ErrorPage = styled.div`
@@ -29,8 +30,8 @@ const StyledP = styled.p`
   line-height: 1.5;
   font-size: 1.5rem;
   font-family: "Black Ops One", sans-serif;
-  color: ${ParagraphSwitch};
-  text-shadow: 1px 1px ${SecondaryTertiary};
+  color: ${PrimarySwitch};
+  text-shadow: 1px 1px ${SecondaryTransparent};
   @media (min-width: 750px) {
     font-size: 2rem;
     width: 70%;
@@ -41,15 +42,14 @@ const StyledP = styled.p`
 `;
 const StyledLink = styled(BasicLink)`
   padding: 0.5rem;
-  border: 2px dashed ${ParagraphSwitch};
+  border: 2px dashed ${PrimarySecondary};
   border-radius: 10px;
   &:link,
   &:visited {
-    color: ${ParagraphSwitch};
+    color: ${PrimarySecondary};
   }
   &:hover,
   &:active {
-    color: ${ParagraphSwitch};
     background-color: ${HoverSwitch};
   }
 `;

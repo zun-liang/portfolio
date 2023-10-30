@@ -6,8 +6,8 @@ import CoffeeNight from "../assets/images/face_night.png";
 import {
   BasicLink,
   HoverSwitch,
-  ParagraphSwitch,
-  SecondaryTertiary,
+  PrimarySecondary,
+  SecondaryTransparent,
 } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { LogoutContext } from "../contexts/LogoutContext";
@@ -27,20 +27,19 @@ const StyledP = styled.p`
   text-align: center;
   font-family: "Black Ops One", sans-serif;
   font-size: 2rem;
-  color: ${ParagraphSwitch};
-  text-shadow: 1px 1px ${SecondaryTertiary};
+  color: ${PrimarySecondary};
+  text-shadow: 1px 1px ${SecondaryTransparent};
 `;
 const StyledLink = styled(BasicLink)`
   padding: 0.5rem;
-  border: 2px dashed ${ParagraphSwitch};
+  border: 2px dashed ${PrimarySecondary};
   border-radius: 10px;
   &:link,
   &:visited {
-    color: ${ParagraphSwitch};
+    color: ${PrimarySecondary};
   }
   &:hover,
   &:active {
-    color: ${ParagraphSwitch};
     background-color: ${HoverSwitch};
   }
 `;

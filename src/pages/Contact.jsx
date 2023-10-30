@@ -15,6 +15,7 @@ import {
   OpacitySwitch,
   PrimarySwitch,
   SecondarySwitch,
+  SecondaryTertiary,
   TertiaryParagraph,
   TertiarySecondary,
 } from "../assets/styles/Styles";
@@ -78,9 +79,11 @@ const StyledP = styled.p`
   width: 100%;
   margin: 1rem auto;
   text-align: left;
+  line-height: 1.5;
   font-family: "Black Ops One", sans-serif;
   font-size: 1.5rem;
-  text-shadow: 1px 1px ${SecondarySwitch};
+  color: ${TertiaryParagraph};
+  text-shadow: 1px 1px ${SecondaryTertiary};
   @media (min-width: 750px) {
     font-size: 2rem;
   }

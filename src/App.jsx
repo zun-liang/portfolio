@@ -22,7 +22,6 @@ import Blogs, { loader as blogsLoader } from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import Editor from "./pages/Editor";
 import Error from "./pages/Error";
-import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
 import Loading from "./pages/Loading";
 import Login, { action as loginAction } from "./pages/Login";
@@ -42,8 +41,6 @@ const App = () => {
   const today = new Date().toDateString();
   const loaded = localStorage.getItem("loading") !== today;
   const [loading, setLoading] = useState(loaded);
-
-  const [error, setError] = useState(null); //null
 
   const [blogToEdit, setBlogToEdit] = useState(null);
   const [tagsToEdit, setTagsToEdit] = useState(null);
@@ -151,8 +148,6 @@ const App = () => {
       </PlayPickContextProvider>
     );
 
-  if (error) return <ErrorPage />;
-
   return (
     <>
       <GlobalStyles />
@@ -170,4 +165,3 @@ const App = () => {
 };
 
 export default App;
-//what is the error page for? for what errors?

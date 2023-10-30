@@ -7,8 +7,8 @@ import styled from "styled-components";
 
 import {
   BasicLink,
-  ParagraphSwitch,
-  SecondaryTertiary,
+  PrimarySecondary,
+  SecondaryTransparent,
 } from "../assets/styles/Styles";
 import {
   BasicButton,
@@ -36,23 +36,22 @@ const StyledH2 = styled.h2`
   text-align: center;
   font-family: "Black Ops One", sans-serif;
   font-size: 1.8rem;
-  color: ${ParagraphSwitch};
-  text-shadow: 1px 1px ${SecondaryTertiary};
+  color: ${PrimarySwitch};
+  text-shadow: 1px 1px ${SecondaryTransparent};
 `;
 const StyledImg = styled.img`
   width: 20rem;
 `;
 const StyledLink = styled(BasicLink)`
   padding: 0.5rem;
-  border: 2px dashed ${ParagraphSwitch};
+  border: 2px dashed ${PrimarySecondary};
   border-radius: 10px;
   &:link,
   &:visited {
-    color: ${ParagraphSwitch};
+    color: ${PrimarySecondary};
   }
   &:hover,
   &:active {
-    color: ${ParagraphSwitch};
     background-color: ${HoverSwitch};
   }
 `;

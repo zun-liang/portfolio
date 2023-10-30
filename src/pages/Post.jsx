@@ -6,8 +6,9 @@ import Party from "../assets/images/party_boygirl.png";
 import {
   BasicLink,
   HoverSwitch,
-  ParagraphSwitch,
-  SecondaryTertiary,
+  PrimarySecondary,
+  PrimarySwitch,
+  SecondaryTransparent,
 } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 
@@ -26,8 +27,8 @@ const StyledP = styled.p`
   grid-column: 1 /4;
   font-family: "Black Ops One", sans-serif;
   font-size: 1.8rem;
-  color: ${ParagraphSwitch};
-  text-shadow: 1px 1px ${SecondaryTertiary};
+  color: ${PrimarySwitch};
+  text-shadow: 1px 1px ${SecondaryTransparent};
 `;
 const StyledDiv = styled.div`
   display: flex;
@@ -36,15 +37,14 @@ const StyledDiv = styled.div`
 `;
 const StyledLink = styled(BasicLink)`
   padding: 0.5rem;
-  border: 2px dashed ${ParagraphSwitch};
+  border: 2px dashed ${PrimarySecondary};
   border-radius: 10px;
   &:link,
   &:visited {
-    color: ${ParagraphSwitch};
+    color: ${PrimarySecondary};
   }
   &:hover,
   &:active {
-    color: ${ParagraphSwitch};
     background-color: ${HoverSwitch};
   }
 `;

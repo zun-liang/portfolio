@@ -5,10 +5,9 @@ import Logo from "../assets/images/favicon/dark/apple-touch-icon.png";
 import LogoLight from "../assets/images/favicon/light/apple-touch-icon.png";
 import {
   PointerSwitch,
-  SecondarySwitch,
   TertiarySecondary,
-  SecondaryPrimary,
   TertiaryPrimary,
+  SecondaryTransparent,
 } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 
@@ -46,17 +45,19 @@ const StyledP = styled.p`
   font-family: "Black Ops One", sans-serif;
   font-size: 1.5rem;
   color: ${TertiarySecondary};
-  text-shadow: 1px 1px ${SecondaryPrimary};
+  text-shadow: 1px 1px ${SecondaryTransparent};
   & > a:link,
   a:visited {
     color: ${TertiarySecondary};
-    text-shadow: 1px 1px ${SecondaryPrimary};
+    text-shadow: 1px 1px ${SecondaryTransparent};
+    text-decoration: underline wavy;
+    text-underline-offset: 10px;
   }
   & > a:hover,
   a:active {
     cursor: ${PointerSwitch};
     color: ${TertiaryPrimary};
-    text-shadow: 1px 1px ${SecondarySwitch};
+    text-shadow: 1px 1px ${SecondaryTransparent};
   }
   & > span {
     font-family: "Roboto", sans-serif;

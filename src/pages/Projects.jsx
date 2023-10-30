@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import {
   PointerSwitch,
-  SecondaryPrimary,
+  SecondaryTransparent,
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import ProjectOverview from "../components/ProjectOverview";
@@ -54,7 +54,7 @@ const StyledLink = styled.a`
   &:active,
   &:visited {
     color: ${TertiarySecondary};
-    text-shadow: 1px 1px ${SecondaryPrimary};
+    text-shadow: 1px 1px ${SecondaryTransparent};
   }
   > span {
     font-family: "Black Ops One", sans-serif;

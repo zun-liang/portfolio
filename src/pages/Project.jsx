@@ -12,10 +12,10 @@ import {
   PrimaryTertiary,
   ParagraphSwitch,
   PointerSwitch,
-  PrimarySwitch,
   SecondaryParagraph,
   SecondaryTransparent,
-  TertiarySecondary,
+  TertiaryHighlight,
+  PrimarySecondary,
 } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import BackButton from "../components/BackButton";
@@ -39,7 +39,7 @@ const StyledH2 = styled.h2`
   color: ${PrimaryTertiary};
   font-size: 1.7rem;
   font-family: "Black Ops One", sans-serif;
-  text-shadow: 1px 1px ${SecondaryParagraph};
+  text-shadow: -1px -1px ${SecondaryParagraph};
   text-align: center;
 `;
 const StyledDiv = styled.div`
@@ -63,24 +63,24 @@ const StyledLink = styled.a`
 const Icon = styled(FontAwesomeIcon)`
   width: 1.5rem;
   height: 1.5rem;
-  color: ${TertiarySecondary};
+  color: ${TertiaryHighlight};
   ${StyledLink}:hover & {
-    color: ${PrimarySwitch};
+    color: ${PrimarySecondary};
   }
 `;
 const StyledWebsiteIcon = styled(WebsiteIcon)`
-  fill: ${TertiarySecondary};
+  fill: ${TertiaryHighlight};
   ${StyledLink}:hover & {
-    fill: ${PrimarySwitch};
+    fill: ${PrimarySecondary};
   }
 `;
 const StyledPuzzleIcon = styled(PuzzleIcon)`
   & > g > path {
-    fill: ${TertiarySecondary};
+    fill: ${TertiaryHighlight};
   }
   ${StyledLink}:hover & {
     & > g > path {
-      fill: ${PrimarySwitch};
+      fill: ${PrimarySecondary};
     }
   }
 `;
@@ -88,11 +88,11 @@ const StyledH3 = styled.h3`
   color: ${PrimaryTertiary};
   font-size: 1.4rem;
   font-family: "Black Ops One", sans-serif;
-  text-shadow: 1px 0px ${SecondaryParagraph};
+  text-shadow: -1px -1px ${SecondaryParagraph};
 `;
 const StyledH4 = styled.h4`
   color: ${PrimaryTertiary};
-  text-shadow: 1px 1px ${SecondaryTransparent};
+  text-shadow: -1px -1px ${SecondaryTransparent};
   font-size: 1.1rem;
   font-family: "Black Ops One", sans-serif;
 `;

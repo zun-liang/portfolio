@@ -134,16 +134,16 @@ export const BasicInput = styled.input`
 const StyledH1 = styled.h1`
   color: ${PrimaryTertiary};
   font-family: "Black Ops One", sans-serif;
-  text-shadow: 1px 1px ${SecondaryParagraph};
+  text-shadow: -2px -2px ${SecondaryParagraph};
 `;
 const StyledH2 = styled.h2`
   color: ${TertiarySwitch};
-  text-shadow: 1px 1px ${SecondaryParagraph};
+  text-shadow: -1px -1px ${SecondaryParagraph};
   font-family: "Black Ops One", sans-serif;
 `;
 const StyledH3 = styled.h3`
   color: ${TertiarySwitch};
-  text-shadow: 1px 1px ${SecondaryParagraph};
+  text-shadow: -1px -1px ${SecondaryParagraph};
   font-family: "Black Ops One", sans-serif;
 `;
 const StyledH4 = styled.h4`
@@ -177,6 +177,7 @@ const StyledP = styled.p`
 const StyledPre = styled.pre`
   background-color: ${TertiaryBackground};
   padding: 1.5rem;
+  white-space: pre-line;
   & > code {
     color: ${SecondaryTertiary};
     font-size: 16px;

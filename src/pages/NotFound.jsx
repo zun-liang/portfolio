@@ -3,7 +3,11 @@ import { useEffect } from "react";
 import styled from "styled-components";
 
 import Kuma from "../assets/images/ojigi_animal_kuma.png";
-import { ParagraphSwitch, SecondaryTertiary } from "../assets/styles/Styles";
+import {
+  PrimarySecondary,
+  PrimarySwitch,
+  SecondaryTransparent,
+} from "../assets/styles/Styles";
 
 const NotFoundPage = styled.div`
   display: flex;
@@ -19,16 +23,16 @@ const StyledImg = styled.img`
 const StyledH2 = styled.h2`
   font-size: 2rem;
   font-family: "Black Ops One", sans-serif;
-  color: ${ParagraphSwitch};
-  text-shadow: 1px 1px ${SecondaryTertiary};
+  color: ${PrimarySwitch};
+  text-shadow: 1px 1px ${SecondaryTransparent};
 `;
 const StyledP = styled.p`
   width: 70%;
   text-align: center;
   font-size: 1.5rem;
   font-family: "Black Ops One", sans-serif;
-  color: ${ParagraphSwitch};
-  text-shadow: 1px 1px ${SecondaryTertiary};
+  color: ${PrimarySecondary};
+  text-shadow: 1px 1px ${SecondaryTransparent};
 `;
 
 const NotFound = () => {

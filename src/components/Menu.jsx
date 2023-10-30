@@ -8,7 +8,7 @@ import {
   PointerSwitch,
   PrimarySecondary,
   PrimarySwitch,
-  SecondaryPrimary,
+  SecondaryTransparent,
 } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 
@@ -102,7 +102,7 @@ const StyledLink = styled(NavLink)`
   &:active,
   &:visited {
     color: ${PrimarySecondary};
-    text-shadow: 1px 1px ${SecondaryPrimary};
+    text-shadow: 1px 1px ${SecondaryTransparent};
   }
   cursor: ${PointerSwitch};
 `;
@@ -112,9 +112,7 @@ const Menu = ({ menu, setMenu, playKey }) => {
 
   const activeStyle = {
     color: mode ? "var(--light-tertiary)" : "var(--dark-primary)",
-    textShadow: mode
-      ? "1px 1px var(--light-secondary)"
-      : "1px 1px var(--dark-secondary)",
+    textShadow: mode ? "1px 1px var(--light-secondary)" : "1px 1px transparent",
     textDecoration: "wavy underline",
     textUnderlineOffset: "8px",
   };

@@ -15,9 +15,11 @@ import {
   BasicButton,
   OpaqueSwitch,
   PointerSwitch,
+  PrimarySecondary,
   PrimarySwitch,
-  PrimaryTertiary,
   SecondaryPrimary,
+  SecondaryTransparent,
+  TertiaryPrimary,
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import BlogOverview from "../components/BlogOverview";
@@ -38,7 +40,7 @@ const BlogsContainer = styled.div`
     width: 70vw;
   }
   @media (min-width: 1200px) {
-    width: 60vw;
+    width: 55vw;
     gap: 3rem;
   }
 `;
@@ -74,7 +76,7 @@ const Filters = styled.div`
 const Filter = styled(BasicButton)`
   font-size: 1.1rem;
   color: ${TertiarySecondary};
-  text-shadow: 1px 1px ${SecondaryPrimary};
+  text-shadow: 1px 1px ${SecondaryTransparent};
   position: relative;
   top: 0;
   transition: top 0.3s ease-out;
@@ -95,23 +97,26 @@ const StyledH2 = styled.h2`
   display: inline;
   font-size: 1.2rem;
   font-family: "Black Ops One", sans-serif;
-  color: ${PrimaryTertiary};
+  color: ${PrimarySwitch};
 `;
 const StyledP = styled.p`
   font-size: 1rem;
   line-height: 1.5;
-  color: ${TertiarySecondary};
+  color: ${TertiaryPrimary};
+  font-weight: 700;
   background-color: ${OpaqueSwitch};
   border-radius: 1rem;
   padding: 1.5rem;
   & > a:link,
   a:visited {
-    color: ${TertiarySecondary};
+    color: ${TertiaryPrimary};
+    text-decoration: underline wavy;
+    text-underline-offset: 4px;
   }
   & a:hover,
   a:active {
     cursor: ${PointerSwitch};
-    color: ${PrimarySwitch};
+    color: ${PrimarySecondary};
   }
   @media (min-width: 1350px) {
     line-height: 2;

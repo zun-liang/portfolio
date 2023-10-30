@@ -111,8 +111,10 @@ const Menu = ({ menu, setMenu, playKey }) => {
   const { mode } = useContext(ModeContext);
 
   const activeStyle = {
-    color: mode ? "var(--light-tertiary)" : "var(--dark-tertiary)",
-    textShadow: mode ? "1px 1px var(--light-secondary)" : "1px 1px transparent",
+    color: mode ? "var(--light-tertiary)" : "var(--dark-primary)",
+    textShadow: mode
+      ? "1px 1px var(--light-secondary)"
+      : "1px 1px var(--dark-secondary)",
     textDecoration: "wavy underline",
     textUnderlineOffset: "8px",
   };

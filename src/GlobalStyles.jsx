@@ -16,25 +16,25 @@ const GlobalStyles = createGlobalStyle`
     }
 
     :root {
-        --light-background: #f2f4ba;
-        --light-primary: #181c1f;
+        --light-background: #f7f8d4;
+        --light-primary: #000000;
         --light-secondary: #ffffff;
-        --light-tertiary: #89786c;
-        --light-paragraph: #181c1f;
-        --light-hover: #ffffff80;
-        --light-highlight: #6A5A01;
+        --light-tertiary: #7f6f64;
+        --light-paragraph: #000000;
+        --light-hover: rgba(255, 255, 255, 0.5);
+        --light-highlight: #4f7660;
 
         --dark-background: #121212;
         --dark-primary: #ff76a7;
         --dark-secondary: #d6ffc3;
         --dark-tertiary: #f25688;
-        --dark-paragraph: #B3FBE7;
+        --dark-paragraph: #b3fbe7;
         --dark-hover: #121212;
         --dark-highlight: #C3B3FB;
 
         --dot-size: 1px;
         --dot-space: 25px;
-        --dot-color: #8b8b8b;
+        --dot-color: #8b8b8b95;
 
         --app-height: 100%;
     }

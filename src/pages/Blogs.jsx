@@ -13,7 +13,11 @@ import styled from "styled-components";
 
 import {
   BasicButton,
+  HoverSwitch,
+  OpacitySwitch,
+  OpaqueSwitch,
   PointerSwitch,
+  PrimarySwitch,
   PrimaryTertiary,
   SecondaryHighlight,
   SecondaryPrimary,
@@ -32,15 +36,15 @@ const BlogsContainer = styled.div`
   margin: 0 auto 3rem;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
   @media (min-width: 1024px) {
     width: 70vw;
   }
   @media (min-width: 1200px) {
     width: 60vw;
+    gap: 3rem;
   }
 `;
-
 const StyledDiv = styled.div`
   display: flex;
   justify-content: space-between;
@@ -73,7 +77,7 @@ const Filters = styled.div`
 const Filter = styled(BasicButton)`
   font-size: 1.1rem;
   color: ${TertiarySecondary};
-  text-shadow: 1px 1px ${SecondaryHighlight};
+  text-shadow: 1px 1px ${SecondaryPrimary};
   position: relative;
   top: 0;
   transition: top 0.3s ease-out;
@@ -95,6 +99,26 @@ const StyledH2 = styled.h2`
   font-size: 1.2rem;
   font-family: "Black Ops One", sans-serif;
   color: ${PrimaryTertiary};
+`;
+const StyledP = styled.p`
+  font-size: 1rem;
+  line-height: 1.5;
+  color: ${TertiarySecondary};
+  background-color: ${OpaqueSwitch};
+  border-radius: 1rem;
+  padding: 1.5rem;
+  & > a:link,
+  a:visited {
+    color: ${TertiarySecondary};
+  }
+  & a:hover,
+  a:active {
+    cursor: ${PointerSwitch};
+    color: ${PrimarySwitch};
+  }
+  @media (min-width: 1350px) {
+    line-height: 2;
+  }
 `;
 
 //how to cache the data so it doesn't need to get data everytime;
@@ -200,6 +224,18 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
             return <>{blogs}</>;
           }}
         </Await>
+        <StyledP>
+          If Google services are not available in your area or this page is
+          taking longer than expected, please click on{" "}
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://zun-liang.github.io/alt-blogs/"
+          >
+            this link
+          </a>{" "}
+          to read my blogs <span>(*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ</span>
+        </StyledP>
       </Suspense>
     </BlogsContainer>
   );

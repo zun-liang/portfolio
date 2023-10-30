@@ -5,8 +5,8 @@ import styled from "styled-components";
 
 import {
   PointerSwitch,
-  PrimarySecondary,
-  SecondaryHighlight,
+  SecondaryPrimary,
+  TertiarySecondary,
 } from "../assets/styles/Styles";
 import ProjectOverview from "../components/ProjectOverview";
 import { PlayPickContext } from "../contexts/PlayPickContext";
@@ -53,8 +53,8 @@ const StyledLink = styled.a`
   &:hover,
   &:active,
   &:visited {
-    color: ${PrimarySecondary};
-    text-shadow: 1px 1px ${SecondaryHighlight};
+    color: ${TertiarySecondary};
+    text-shadow: 1px 1px ${SecondaryPrimary};
   }
   > span {
     font-family: "Black Ops One", sans-serif;

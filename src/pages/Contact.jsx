@@ -15,6 +15,7 @@ import {
   OpacitySwitch,
   PrimarySwitch,
   SecondarySwitch,
+  TertiaryParagraph,
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import { SoundContext } from "../contexts/SoundContext";
@@ -109,7 +110,7 @@ const Message = styled.li`
   line-height: 1.5;
   text-align: center;
   font-size: 0.9rem;
-  color: ${TertiarySecondary};
+  color: ${TertiaryParagraph};
   @media (min-width: 1024px) {
     font-size: 1rem;
     line-height: 1.7;

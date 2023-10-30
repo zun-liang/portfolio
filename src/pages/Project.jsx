@@ -131,45 +131,38 @@ const Project = () => {
             </StyledLink>
           )}
         </StyledDiv>
-        <StyledH3>Introduction</StyledH3>
+        <StyledH3>Introduction⋆｡°✩</StyledH3>
         {proj.introduction.map((intro) => (
           <StyledP key={intro.id}>{intro.text}</StyledP>
         ))}
-        <StyledH4>In this app, users are able to:</StyledH4>
+        <StyledH4>In this app, users are able to:⋆˙⟡</StyledH4>
         <StyledList>
           {proj.functions.map((func) => (
             <StyledListItem key={func.id}>{func.text}</StyledListItem>
           ))}
         </StyledList>
-        <StyledH4>Built with:</StyledH4>
+        <StyledH4>Built with:⋆˙⟡</StyledH4>
         <StyledList>
           {proj.tools.map((tool) => (
             <StyledListItem key={tool}>{tool}</StyledListItem>
           ))}
         </StyledList>
-        <StyledH3>Purpose and Goal</StyledH3>
+        <StyledH3>Purpose and Goal⋆｡°✩</StyledH3>
         {proj.purpose.map((pur) => (
           <StyledP key={pur.id}>{pur.text}</StyledP>
         ))}
-        <StyledH3>Spotlight</StyledH3>
+        <StyledH3>Spotlight⋆｡°✩</StyledH3>
         {proj.spotlight.map((spot) => (
           <>
             <StyledH4>{spot.title}</StyledH4>
             <StyledP key={spot.id}>{spot.text}</StyledP>
           </>
         ))}
-        <StyledH3>What I learned</StyledH3>
+        <StyledH3>What I learned⋆｡°✩</StyledH3>
         {proj.learned.map((lea) => (
           <>
             <StyledH4>{lea.title}</StyledH4>
             <StyledP key={lea.id}>{lea.text}</StyledP>
-          </>
-        ))}
-        <StyledH3>Continued Development</StyledH3>
-        {proj.continue.map((con) => (
-          <>
-            <StyledH4>{con.title}</StyledH4>
-            <StyledP key={con.id}>{con.text}</StyledP>
           </>
         ))}
       </>

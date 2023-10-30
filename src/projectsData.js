@@ -2,7 +2,7 @@ export const projects = [
   {
     id: "portfolio",
     name: "Secret Blog Management in Portfolio",
-    period: "September - October 2023",
+    period: "November 2023",
     description:
       "A hidden blog management system built with React, React Router, Markdown, and Firebase.",
     codeURL: "https://github.com/zun-liang/zun-liang.github.io",
@@ -69,32 +69,32 @@ export const projects = [
     spotlight: [
       {
         id: "spot1",
-        title: "Firebase - Manage Data",
+        title: "Firebase - Manage Data⋆˙⟡",
         text: 'At the time I started to build this website, I didn\'t have the knowledge or experience to work with databases and backend systems. However, I soon discovered that Firebase is a fantastic tool that I could relatively easily grasp and utilize in my project 🌟. I utilized Firestore\'s "getDoc" and "getDocs" to get projects and blogs.',
       },
       {
         id: "spot2",
-        title: "User Authentication - 'Secret' Blog Management",
+        title: "User Authentication - 'Secret' Blog Management⋆˙⟡",
         text: 'During the process of building this website, I also embarked on my first experience with authentication. While it may not be immediately evident to regular visitors, I utilized Firestore\'s "auth", "onAuthStateChanged", "signIn", "signOut", "setDoc", "deleteDoc", "updateDoc" to integrate a simple blog management system into this project 💫. This system allows me to exclusivly log in as admin and create, update, and edit blogs, all while securely saving them to Firebase.',
       },
       {
         id: "spot3",
-        title: "React - createContext and useContext",
+        title: "React - createContext and useContext⋆˙⟡",
         text: 'Moreover, this is the very first time I used React "createContext" and "useContext" in my project. At first, I kept having bugs of context being "undefined" because I misunderstood that there was no need to import context in the components that needed it 😔. Secondly, I didn\'t realize that I could wrap the "main.jsx" with the context provider. Although my "App.jsx" required access to a couple of contexts, I continued importing context in it while it was wrapped by the same context provider, which of course didn\'t work as I expected 😔. It was quite frustrating but I didn\'t give up. I finally figured out the reasons and fixed the bugs after reading React\'s documentation and other people\'s examples 💪.',
       },
       {
         id: "spot4",
-        title: "Styled-Components - Theming",
+        title: "Styled-Components - Theming⋆˙⟡",
         text: 'Furthermore, I used [Styled-componnets Theming](https://styled-components.com/docs/advanced#theming) with React context to manage theme colors based on light or dark mode. As I mentioned above, once I figured out how to set up context providers and use context in my project, Theming became a straightforward approach that I successfully implemented. However, there is one main differece between Theming and React context 🤔. Theming only accepts objects as value (which has to be named "theme"), while React context accepts all types of values. Apparently, React context is more flexible, but I chose to use Theming particularly in this project to avoid manually passing props to styled components, for example, "<StyledH1 ${theme}={theme}>Title</StyledH1>". Without Theming, I would have had to pass "${theme}={theme}" as a prop to every single styled component in my entire project, resulting in a considerable amount of repetitive work in the end 🤯.',
       },
       {
         id: "spot5",
-        title: "React Router 6 - Data Router",
+        title: "React Router 6 - Data Router⋆˙⟡",
         text: 'What\'s more, I especially utilized React Router v6 data router and its associated functions, including features such as "loader", "action", "defer", "Await", and "React.Suspense" in this project, to enhance the overall user experience and optimize the website\'s performance. Loader makes sure fetched data is ready when page loads. Action makes easier to work with forms in React apps. Defer, Await and React.Suspense data create a better user experience by providing a fallback user interface before data is ready to load. This is especially helpful since I am using Google services to display my blogs but it is not avaiable in some areas. I provided a backup link for visitors who are intertesd in my blogs.',
       },
       {
         id: "spot6",
-        title: "Transfer Markdown to HTML and Parse HTML in React App",
+        title: "Transfer Markdown to HTML and Parse HTML in React App⋆˙⟡",
         text: "Last but not least, before I decided to convert Markdown to HTML and parse it for display on the web page, I initially attempted to save Markdown directly in Firestore and retrieve its data for display 💭. Unfortunately, I encountered issues with the Markdown formatting, as it couldn't render correctly. After research, I realized that a better approach would be to save HTML instead 🤔, which, in turn, required using a parser to convert the HTML to React elements.",
       },
       {
@@ -109,21 +109,20 @@ export const projects = [
     learned: [
       {
         id: "learn1",
-        title: "Reading documentation",
+        title: "Reading documentation⋆˙⟡",
         text: "Honestly, I preferred tutorial videos over documentation, especially before I fully appreciated the power of reading and understanding documentation. There were two main reasons for this preference. Firstly, English is not my first language, and initially, learning something new and abstract in a second language could be overwhelming 🤯. Secondly, as a beginner, there's often a strong desire to accelerate the learning process and showcase what I've learned to others, even when my understanding is limited.",
       },
       {
         id: "learn2",
-        title: "Git branch",
+        title: "Git branch⋆˙⟡",
         text: "This project is more complicated than the previous ones I've workded on. In such a project, using git smartly is very beneficial. I used git branch to work on some new features, such as contexts.❓",
       },
       {
         id: "learn3",
-        title: "Envirnment varaibles",
+        title: "Envirnment varaibles⋆˙⟡",
         text: 'If you are making a vite/react app and want to save some sensitive information in environment varables, it is possible that you will run into an issue using "process.env" directly.',
       },
     ],
-    continue: [{ id: "con1", title: "", text: "" }],
   },
   {
     id: "todo-app",
@@ -186,22 +185,15 @@ export const projects = [
     spotlight: [
       {
         id: "spot1",
-        title: "DND",
+        title: "DND⋆˙⟡",
         text: 'This is the first time I worked on a project requiring for drag and drop feature. After some research, I found React Beautiful DND is a solid candidate for this challenge. However, after I implented DND in my project, my project keeps reporting an issue "Invariant failed: Draggable: requires an iteger index prop". I started research right away and found out that the original React Beautiful DND is no longer maintaned. A new DND called @hello/pangea/DND is active now. Then I switched to this one and made some updates to make it work.',
       },
     ],
     learned: [
       {
         id: "learn1",
-        title: "Using NanoID to generate React map keys",
+        title: "Using NanoID to generate React map keys⋆˙⟡",
         text: "In this project, I especially learned how to use NanoID to generate React map keys and how to use React Beautiful DND. I used to think that NanoID can only generate random IDs which is not helpful for generating React map keys. However, I found that if I use NanoID to generate to do item's id and use its id as key, then it works perfectly.",
-      },
-    ],
-    continue: [
-      {
-        id: "con1",
-        title: "Use Firebase to manage data",
-        text: "At the time I finished my portfolio, I have been familiar with how to interact with Firestore to manage data. For a todo app like this, having Firebase to store data will make it a better app.",
       },
     ],
   },

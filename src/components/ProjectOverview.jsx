@@ -12,7 +12,7 @@ import {
   SecondaryHover,
   TertiarySecondary,
   SecondaryPrimary,
-  PrimarySecondary,
+  TertiaryPrimary,
 } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 
@@ -73,7 +73,7 @@ const StyledH2 = styled.h2`
   margin-top: 0.5rem;
   font-family: "Black Ops One", sans-serif;
   font-size: 1.1rem;
-  color: ${PrimarySwitch};
+  color: ${TertiaryPrimary};
 `;
 const Time = styled.p`
   font-size: 0.8rem;
@@ -81,7 +81,7 @@ const Time = styled.p`
   text-shadow: 1px 0px ${SecondaryPrimary};
 `;
 const StyledP = styled.p`
-  color: ${PrimarySecondary};
+  color: ${TertiarySecondary};
   font-size: 0.9rem;
   line-height: 1.5;
 `;

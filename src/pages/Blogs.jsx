@@ -13,13 +13,10 @@ import styled from "styled-components";
 
 import {
   BasicButton,
-  HoverSwitch,
-  OpacitySwitch,
   OpaqueSwitch,
   PointerSwitch,
   PrimarySwitch,
   PrimaryTertiary,
-  SecondaryHighlight,
   SecondaryPrimary,
   TertiarySecondary,
 } from "../assets/styles/Styles";

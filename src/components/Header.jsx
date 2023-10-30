@@ -242,4 +242,3 @@ const Header = ({ screenWidth }) => {
 };
 
 export default Header;
-//i should save this api as well

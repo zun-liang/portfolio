@@ -3,8 +3,8 @@ import { createGlobalStyle } from "styled-components";
 import {
   AutoSwitch,
   BGSwitch,
+  BackgroundSwitch,
   PrimarySwitch,
-  SecondarySwitch,
   TertiaryPrimary,
 } from "./assets/styles/Styles";
 
@@ -49,12 +49,13 @@ const GlobalStyles = createGlobalStyle`
         font-size: 14px;
         color: ${PrimarySwitch}; 
         cursor: ${AutoSwitch};
-        scrollbar-color: ${TertiaryPrimary} ${SecondarySwitch};
+        scrollbar-color: ${TertiaryPrimary} ${BackgroundSwitch};
         scrollbar-width: thin;
     }
 
     ::-webkit-scrollbar {
-        width: 6px; 
+        width: 5px;
+        height: 5px;
     }
 
     ::-webkit-scrollbar-thumb {
@@ -63,7 +64,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     ::-webkit-scrollbar-track {
-        background: ${SecondarySwitch}; 
+        background: ${BackgroundSwitch}; 
     }
     
     @media (min-width: 375px) {

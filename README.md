@@ -277,6 +277,7 @@ I didn't intend to control time I spent on this project but during the process, 
 - [object-position](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position)
 - [::-webkit-scrollbar](https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar)
 - [CSS scrollbars styling](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scrollbars_styling)
+- [How can I style horizontal scrollbar by CSS?](https://stackoverflow.com/questions/44334106/how-can-i-style-horizontal-scrollbar-by-css)
 
 #### JavaScript
 

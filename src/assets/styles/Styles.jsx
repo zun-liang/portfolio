@@ -9,7 +9,7 @@ import AutoLight from "../images/cursor/cursor-auto-light.svg";
 import PointerDark from "../images/cursor/cursor-pointer-dark.svg";
 import PointerLight from "../images/cursor/cursor-pointer-light.svg";
 
-// Background setup
+/* ===  Background setup === */
 export const BGSwitch = ({ theme }) =>
   theme.mode
     ? `url(${Cloud}), var(--light-background)`
@@ -17,7 +17,7 @@ export const BGSwitch = ({ theme }) =>
         linear-gradient(var(--dark-background) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
         var(--dot-color)`;
 
-//Coherent color switch
+/* ===  Coherent color switch === */
 export const BackgroundSwitch = ({ theme }) =>
   theme.mode ? "var(--light-background)" : "var(--dark-background)";
 export const PrimarySwitch = ({ theme }) =>
@@ -33,7 +33,7 @@ export const HoverSwitch = ({ theme }) =>
 export const HighlightSwitch = ({ theme }) =>
   theme.mode ? "var(--light-highlight)" : "var(--dark-highlight)";
 
-//Incoherent color switch
+/* ===  Incoherent color switch === */
 export const OpacitySwitch = ({ theme }) =>
   theme.mode ? "var(--light-hover)" : "transparent";
 export const OpaqueSwitch = ({ theme }) =>
@@ -55,7 +55,7 @@ export const SecondaryHighlight = ({ theme }) =>
 export const SecondaryTransparent = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "transparent";
 export const SecondaryHover = ({ theme }) =>
-  theme.mode ? "var(--light-secondary)" : "var(--dark-hover)"; //only once
+  theme.mode ? "var(--light-secondary)" : "var(--dark-hover)";
 export const TertiaryPrimary = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dark-primary)";
 export const TertiarySecondary = ({ theme }) =>
@@ -77,7 +77,7 @@ export const BackgroundDot = ({ theme }) =>
 export const TransparentDot = ({ theme }) =>
   theme.mode ? "var(--light-transparent)" : "var(--dot-color)";
 
-//Cursor switch
+/* ===  Cursor switch === */
 export const AutoSwitch = ({ theme }) =>
   theme.mode ? `url(${AutoLight}) 6 6, auto` : `url(${AutoDark}) 6 6, auto`;
 
@@ -86,7 +86,7 @@ export const PointerSwitch = ({ theme }) =>
     ? `url(${PointerLight}) 6 6, pointer`
     : `url(${PointerDark}) 6 6, pointer`;
 
-//Shared styles
+/* ===  Shared styles === */
 export const BasicButton = styled.button`
   padding: 0.2rem 0.5rem;
   border-radius: 5px;
@@ -130,7 +130,7 @@ export const BasicInput = styled.input`
   }
 `;
 
-//HTML parse rules for blog body
+/* ===  HTML parse rules for blog body === */
 const StyledH1 = styled.h1`
   color: ${PrimaryTertiary};
   font-family: "Black Ops One", sans-serif;
@@ -177,7 +177,7 @@ const StyledP = styled.p`
 const StyledPre = styled.pre`
   background-color: ${TertiaryBackground};
   padding: 1.5rem;
-  white-space: pre-line;
+  overflow-x: scroll;
   & > code {
     color: ${SecondaryTertiary};
     font-size: 16px;
@@ -209,6 +209,7 @@ const StyledList = styled.ul`
   & > li > pre {
     background-color: ${TertiaryBackground};
     padding: 1.5rem;
+    overflow-x: scroll;
   }
   & > li > pre > code {
     color: ${SecondaryTertiary};

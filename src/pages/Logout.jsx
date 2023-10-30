@@ -50,7 +50,7 @@ const Logout = () => {
   const { showLogout } = useContext(LogoutContext);
 
   useEffect(() => {
-    document.title = "Log Out ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
+    document.title = "Log Out ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
   }, []);
 
   if (!showLogout) return <Navigate to="/404" replace />;

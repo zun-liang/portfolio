@@ -162,7 +162,7 @@ const Contact = () => {
   const [playSwoosh] = useSound(Swoosh, { soundEnabled: sound });
 
   useEffect(() => {
-    document.title = "Contact ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
+    document.title = "Contact ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
   }, []);
 
   const [state, handleSubmit] = useForm("mbjvygnp");

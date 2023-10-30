@@ -139,7 +139,7 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
   const loaderData = useLoaderData();
 
   useEffect(() => {
-    document.title = "Blogs ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
+    document.title = "Blogs ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
   }, []);
 
   const generateSearchParams = (key, value) => {

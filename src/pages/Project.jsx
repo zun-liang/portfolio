@@ -172,7 +172,7 @@ const Project = () => {
     playPick();
   };
   useEffect(() => {
-    document.title = "Project ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
+    document.title = "Project ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
   }, []);
 
   return (

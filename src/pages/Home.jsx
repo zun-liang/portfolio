@@ -79,7 +79,7 @@ const StyledGif = styled.img`
 
 const Home = () => {
   useEffect(() => {
-    document.title = "Zun Liang ♫₊˚.🎧 ✩｡";
+    document.title = "Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
   }, []);
 
   return (

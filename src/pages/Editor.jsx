@@ -295,7 +295,7 @@ const Editor = ({
   };
 
   useEffect(() => {
-    document.title = "Editor ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
+    document.title = "Editor ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
   }, []);
 
   return (

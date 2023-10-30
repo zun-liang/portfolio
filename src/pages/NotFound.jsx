@@ -33,7 +33,7 @@ const StyledP = styled.p`
 
 const NotFound = () => {
   useEffect(() => {
-    document.title = "404 ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
+    document.title = "404 ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
   }, []);
 
   return (

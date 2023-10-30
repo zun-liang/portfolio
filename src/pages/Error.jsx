@@ -58,7 +58,7 @@ const Error = () => {
   const error = useRouteError();
 
   useEffect(() => {
-    document.title = "Error ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
+    document.title = "Error ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
   }, []);
 
   return (

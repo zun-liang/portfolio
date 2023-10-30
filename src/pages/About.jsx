@@ -193,7 +193,7 @@ const About = () => {
   const playPick = useContext(PlayPickContext);
 
   useEffect(() => {
-    document.title = "About Me ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
+    document.title = "About Me ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
   }, []);
 
   return (

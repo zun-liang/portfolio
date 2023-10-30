@@ -98,7 +98,7 @@ const Blog = ({ setBlogToEdit, setTagsToEdit }) => {
   } = useLoaderData();
 
   useEffect(() => {
-    document.title = "Blog ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
+    document.title = "Blog ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
   }, []);
 
   const tags =

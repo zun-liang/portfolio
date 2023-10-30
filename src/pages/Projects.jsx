@@ -77,7 +77,7 @@ const Projects = ({ playPageTurn }) => {
   const projectsArr = projects;
 
   useEffect(() => {
-    document.title = "Projects ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
+    document.title = "Projects ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
   }, []);
 
   return (

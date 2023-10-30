@@ -53,7 +53,7 @@ const Post = ({ draft }) => {
   const playPick = useContext(PlayPickContext);
 
   useEffect(() => {
-    document.title = "Post ⟡ Zun Liang ♫₊˚.🎧 ✩｡";
+    document.title = "Post ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
   }, []);
 
   return (

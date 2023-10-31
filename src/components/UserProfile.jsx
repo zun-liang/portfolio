@@ -22,6 +22,8 @@ const StyledP = styled.p`
 `;
 const StyledImg = styled.img`
   width: 2rem;
+  height: 2rem;
+  object-fit: cover;
   border-radius: 50%;
 `;
 const StyledUserDefault = styled(UserDefault)`

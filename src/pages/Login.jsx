@@ -127,13 +127,7 @@ export const action = async ({ request }) => {
   const email = formData.get("email");
   const password = formData.get("password");
   try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const user = userCredential.user;
-    sessionStorage.setItem("Auth Token", user.accessToken);
+    await signInWithEmailAndPassword(auth, email, password);
     formData.set("email", "");
     formData.set("password", "");
     return redirect("/editor");

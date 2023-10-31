@@ -177,6 +177,7 @@ const StyledP = styled.p`
 const StyledPre = styled.pre`
   background-color: ${TertiaryBackground};
   padding: 1.5rem;
+  border-radius: 1rem;
   overflow-x: scroll;
   & > code {
     color: ${SecondaryTertiary};
@@ -209,6 +210,7 @@ const StyledList = styled.ul`
   & > li > pre {
     background-color: ${TertiaryBackground};
     padding: 1.5rem;
+    border-radius: 1rem;
     overflow-x: scroll;
   }
   & > li > pre > code {

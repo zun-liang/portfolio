@@ -165,7 +165,10 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
             docs.forEach((doc) => {
               blogsArr.push(doc.data());
             });
-            const filters = blogsArr.map((blog) => blog.tag[0]).sort();
+            const filters = blogsArr
+              .map((blog) => blog.tag)
+              .flat()
+              .sort();
             const distinctFilters = [];
             for (let i = 0; i < filters.length; i++) {
               if (filters.indexOf(filters[i]) === i) {
@@ -185,7 +188,7 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
               </Filter>
             ));
             const filteredBlogs = categoryFilter
-              ? blogsArr.filter((blog) => blog.tag[0] === categoryFilter)
+              ? blogsArr.filter((blog) => blog.tag.includes(categoryFilter))
               : blogsArr;
             const blogs = filteredBlogs.map((blog) => (
               <StyledDiv key={blog.id}>
@@ -248,6 +251,4 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
 
 export default Blogs;
 //looks like memo can not stop many rerendering;
-// a blog can contain a couple tags, how to work with it
-//select different tags vs the same blog contain different tags
 //pagination -> can be done either by router or firebase

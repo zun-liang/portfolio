@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import Party from "../assets/images/party_boygirl.png";
 import {
+  BasicButton,
   BasicLink,
   HoverSwitch,
   PrimarySecondary,
@@ -35,6 +36,17 @@ const StyledDiv = styled.div`
   justify-content: center;
   gap: 2rem;
 `;
+const StyledButton = styled(BasicButton)`
+  padding: 0.5rem;
+  color: ${PrimarySecondary};
+  border: 2px dashed ${PrimarySecondary};
+  border-radius: 10px;
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: ${HoverSwitch};
+  }
+`;
 const StyledLink = styled(BasicLink)`
   padding: 0.5rem;
   border: 2px dashed ${PrimarySecondary};
@@ -49,8 +61,9 @@ const StyledLink = styled(BasicLink)`
   }
 `;
 
-const Post = ({ draft }) => {
+const Post = ({ draft, setShowPost }) => {
   const playPick = useContext(PlayPickContext);
+  const goToEditor = () => setShowPost(false);
 
   useEffect(() => {
     document.title = "Post ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
@@ -65,9 +78,7 @@ const Post = ({ draft }) => {
         <StyledP>You&apos;ve successfully posted your blog!</StyledP>
       )}
       <StyledDiv>
-        <StyledLink to="/editor" onClick={playPick}>
-          Go to Editor
-        </StyledLink>
+        <StyledButton onClick={goToEditor}>Go to Editor</StyledButton>
         <StyledLink to="/blogs" onClick={playPick}>
           Go to Blogs
         </StyledLink>

@@ -10,6 +10,7 @@ import useSound from "use-sound";
 
 import PageTurn from "./assets/sounds/pageturn.mp3";
 import { AuthContextProvider } from "./contexts/AuthContext";
+import { LogoutContextProvider } from "./contexts/LogoutContext";
 import { ModeContext } from "./contexts/ModeContext";
 import { PlayPickContextProvider } from "./contexts/PlayPickContext";
 import { SoundContext } from "./contexts/SoundContext";
@@ -27,10 +28,8 @@ import Loading from "./pages/Loading";
 import Login, { action as loginAction } from "./pages/Login";
 import Logout from "./pages/Logout";
 import NotFound from "./pages/NotFound";
-import Post from "./pages/Post";
 import Project from "./pages/Project";
 import Projects from "./pages/Projects";
-import { LogoutContextProvider } from "./contexts/LogoutContext";
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -133,7 +132,6 @@ const App = () => {
               />
             }
           />
-          <Route path="post" element={<Post draft={draft} />} />
         </Route>
         <Route path="logout" element={<Logout />} />
         <Route path="contact" element={<Contact />} />

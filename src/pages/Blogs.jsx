@@ -2,26 +2,10 @@
 /* eslint-disable react/prop-types */
 import { getDocs, orderBy, query } from "firebase/firestore";
 import { Suspense, useContext, useEffect } from "react";
-import {
-  Await,
-  defer,
-  Link,
-  useLoaderData,
-  useSearchParams,
-} from "react-router-dom";
+import { Await, defer, Link, useLoaderData, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
-import {
-  BasicButton,
-  OpaqueSwitch,
-  PointerSwitch,
-  PrimarySecondary,
-  PrimarySwitch,
-  SecondaryPrimary,
-  SecondaryTransparent,
-  TertiaryPrimary,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { BasicButton, OpaqueSwitch, PointerSwitch, PrimarySecondary, PrimarySwitch, SecondaryPrimary, SecondaryTransparent, TertiaryPrimary, TertiarySecondary } from "../assets/styles/Styles";
 import BlogOverview from "../components/BlogOverview";
 import BlogsLoading from "../components/BlogsLoading";
 import DeleteButton from "../components/DeleteButton";
@@ -79,7 +63,9 @@ const Filter = styled(BasicButton)`
   text-shadow: 1px 1px ${SecondaryTransparent};
   border: 1px solid transparent;
   &:hover,
-  &:active,
+  &:active {
+    border: 1px dashed ${PrimarySwitch};
+  }
   &:focus {
     border: 1px dashed ${TertiarySecondary};
   }
@@ -120,7 +106,6 @@ const StyledP = styled.p`
   }
 `;
 
-//how to cache the data so it doesn't need to get data everytime;
 export const loader = async () => {
   try {
     const q = query(blogsCollection, orderBy("timestamp", "desc"));
@@ -184,7 +169,7 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
                   ? "HTML"
                   : filter === "css"
                   ? "CSS"
-                  : `${filter[0].toUpperCase()}${filter.slice(1)}`}
+                  : `${filter[0]?.toUpperCase()}${filter.slice(1)}`}
               </Filter>
             ));
             const filteredBlogs = categoryFilter
@@ -250,5 +235,6 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
 };
 
 export default Blogs;
+//how to cache the data so it doesn't need to get data everytime;
 //looks like memo can not stop many rerendering;
 //pagination -> can be done either by router or firebase

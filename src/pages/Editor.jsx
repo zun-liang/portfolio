@@ -34,6 +34,7 @@ import UpdateProfile from "../components/UpdateProfile";
 import UserProfile from "../components/UserProfile";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { db } from "../firebase";
+import Post from "./Post";
 
 const EditorContainer = styled.div`
   width: 80vw;
@@ -102,7 +103,7 @@ const StyledTagIcon = styled(TagIcon)`
 `;
 const TagInput = styled(BasicInput)`
   justify-self: start;
-  width: 10rem;
+  width: 12rem;
   height: 1.5rem;
   padding: 0 5px;
   margin-left: -0.7rem;
@@ -150,6 +151,7 @@ const Editor = ({
 }) => {
   const playPick = useContext(PlayPickContext);
   const navigate = useNavigate();
+  const [showPost, setShowPost] = useState(false);
   const [getDraftResponse, setGetDraftResponse] = useState(true);
 
   /* === blog and tagInput setup === */
@@ -206,6 +208,14 @@ const Editor = ({
     tag: tag,
   };
 
+  const clearAll = () => {
+    setBlog("");
+    setTagInput("");
+    setBlogToEdit(null);
+    setTagsToEdit(null);
+    setGetDraftResponse(true);
+  };
+
   const post = async () => {
     try {
       playPick();
@@ -220,7 +230,8 @@ const Editor = ({
       } else {
         await setDoc(doc(db, "blogs", id), blogObj);
       }
-      navigate("/post");
+      setShowPost(true);
+      clearAll();
     } catch (error) {
       console.error("Error while posting blog:", error);
       throw new Error("Something went wrong while attempting to post blog.");
@@ -258,19 +269,12 @@ const Editor = ({
         setDraft(true);
         await setDoc(doc(db, "drafts", "draft"), initialDraft);
       }
-      navigate("/post");
+      setShowPost(true);
+      clearAll();
     } catch (error) {
       console.error("Error while saving draft:", error);
       throw new Error("Something went wrong while attempting to save draft.");
     }
-  };
-
-  const clearAll = () => {
-    playPick();
-    setBlog("");
-    setTagInput("");
-    setBlogToEdit(null);
-    setTagsToEdit(null);
   };
 
   const getDraft = async () => {
@@ -298,6 +302,7 @@ const Editor = ({
     document.title = "Editor ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
   }, []);
 
+  if (showPost) return <Post draft={draft} setShowPost={setShowPost} />;
   return (
     <EditorContainer>
       <UpperDiv>
@@ -320,7 +325,7 @@ const Editor = ({
           name="tag"
           value={tagInput}
           onChange={handleTagInput}
-          placeholder="tag end with space..."
+          placeholder="tags separate by space..."
         />
         <BackButton handleClick={handleClick} />
         <StyledSaveIcon onClick={saveDraft} />
@@ -332,3 +337,5 @@ const Editor = ({
 };
 
 export default Editor;
+//trash sound
+//can not post if there is no title, no content, if click on post, get alert

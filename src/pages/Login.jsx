@@ -1,29 +1,16 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useContext, useEffect } from "react";
 /* eslint-disable react-refresh/only-export-components */
-import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
+import { Form, useActionData, useNavigation } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import {
-  BasicLink,
-  PrimarySecondary,
-  SecondaryTransparent,
-} from "../assets/styles/Styles";
-import {
-  BasicButton,
-  HoverSwitch,
-  OpacitySwitch,
-  OutlineSwitch,
-  PrimarySwitch,
-  PrimaryTertiary,
-  SecondarySwitch,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import Party from "../assets/images/party_boygirl.png";
+import { BasicLink, PrimarySecondary, SecondaryTransparent } from "../assets/styles/Styles";
+import { BasicButton, HoverSwitch, OpacitySwitch, OutlineSwitch, PrimarySwitch, PrimaryTertiary, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { auth } from "../firebase";
-import Party from "../assets/images/party_boygirl.png";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -126,11 +113,12 @@ export const action = async ({ request }) => {
   const formData = await request.formData();
   const email = formData.get("email");
   const password = formData.get("password");
+  console.log(request);
   try {
     await signInWithEmailAndPassword(auth, email, password);
     formData.set("email", "");
     formData.set("password", "");
-    return redirect("/editor");
+    return null;
   } catch (error) {
     console.error("Error signing in:", error);
     return "Sorry, the account or password you entered is invalid.";

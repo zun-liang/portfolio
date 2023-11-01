@@ -259,13 +259,17 @@ I didn't intend to control time I spent on this project but during the process, 
 
 #### HTML
 
+- [HTML ESCAPE CHARACTERS: COMPLETE LIST OF HTML ENTITIES](https://mateam.net/html-escape-characters/)
+
+#### Web APIs
+
 - [Geolocation: getCurrentPosition() method](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition)
 - [Document: title property](https://developer.mozilla.org/en-US/docs/Web/API/Document/title)
 - [Window: location property](https://developer.mozilla.org/en-US/docs/Web/API/Window/location)
 - [Element: scrollTo() method](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo)
 - [Window: location property](https://developer.mozilla.org/en-US/docs/Web/API/Window/location)
 - [audio: The Embed Audio element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio)
-- [HTML ESCAPE CHARACTERS: COMPLETE LIST OF HTML ENTITIES](https://mateam.net/html-escape-characters/)
+- [Using files from web applications](https://developer.mozilla.org/en-US/docs/Web/API/File_API/Using_files_from_web_applications)
 
 #### CSS
 

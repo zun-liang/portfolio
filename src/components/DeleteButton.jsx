@@ -1,17 +1,14 @@
+import { deleteDoc, doc } from "firebase/firestore";
+import { useContext } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import {
-  PrimarySwitch,
-  PointerSwitch,
-  TertiaryDot,
-} from "../assets/styles/Styles";
-import { useContext } from "react";
-import { db } from "../firebase";
-import { deleteDoc, doc } from "firebase/firestore";
-import { PlayPickContext } from "../contexts/PlayPickContext";
+
 import { ReactComponent as DeleteIcon } from "../assets/images/icons/delete.svg";
+import { PointerSwitch, PrimarySwitch, TertiaryDot } from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
-import { useLocation, useNavigate } from "react-router-dom";
+import { PlayPickContext } from "../contexts/PlayPickContext";
+import { db } from "../firebase";
 
 const StyledDeleteIcon = styled(DeleteIcon)`
   width: 1.2rem;
@@ -32,6 +29,7 @@ const DeleteButton = ({ blogID }) => {
   const playPick = useContext(PlayPickContext);
   const { pathname } = useLocation();
   const navigate = useNavigate();
+
   const deleteBlog = async () => {
     try {
       playPick();
@@ -46,6 +44,7 @@ const DeleteButton = ({ blogID }) => {
       throw new Error("Something went wrong while deleting blog");
     }
   };
+
   return <>{loggedin && <StyledDeleteIcon onClick={deleteBlog} />}</>;
 };
 

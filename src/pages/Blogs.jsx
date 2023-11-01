@@ -77,14 +77,11 @@ const Filter = styled(BasicButton)`
   font-size: 1.1rem;
   color: ${TertiarySecondary};
   text-shadow: 1px 1px ${SecondaryTransparent};
-  position: relative;
-  top: 0;
-  transition: top 0.3s ease-out;
+  border: 1px solid transparent;
   &:hover,
   &:active,
   &:focus {
-    top: 5px;
-    transition: top 0.3s ease-in;
+    border: 1px dashed ${TertiarySecondary};
   }
 `;
 const Time = styled.p`
@@ -162,41 +159,34 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
   return (
     <BlogsContainer>
       <Suspense fallback={<BlogsLoading />}>
-        <Filters>
-          <Filter onClick={() => generateSearchParams("category", "html")}>
-            HTML
-          </Filter>
-          <Filter onClick={() => generateSearchParams("category", "css")}>
-            CSS
-          </Filter>
-          <Filter
-            onClick={() => generateSearchParams("category", "javascript")}
-          >
-            Javascript
-          </Filter>
-          <Filter onClick={() => generateSearchParams("category", "react")}>
-            React
-          </Filter>
-          <Filter onClick={() => generateSearchParams("category", "router")}>
-            Router
-          </Filter>
-          <Filter onClick={() => generateSearchParams("category", "design")}>
-            Design
-          </Filter>
-          <Filter onClick={() => generateSearchParams("category", null)}>
-            All
-          </Filter>
-        </Filters>
         <Await resolve={loaderData.docs}>
           {(docs) => {
             let blogsArr = [];
             docs.forEach((doc) => {
               blogsArr.push(doc.data());
             });
+            const filters = blogsArr.map((blog) => blog.tag[0]).sort();
+            const distinctFilters = [];
+            for (let i = 0; i < filters.length; i++) {
+              if (filters.indexOf(filters[i]) === i) {
+                distinctFilters.push(filters[i]);
+              }
+            }
+            const filtersToDisplay = distinctFilters.map((filter) => (
+              <Filter
+                key={filter}
+                onClick={() => generateSearchParams("category", filter)}
+              >
+                {filter === "html"
+                  ? "HTML"
+                  : filter === "css"
+                  ? "CSS"
+                  : `${filter[0].toUpperCase()}${filter.slice(1)}`}
+              </Filter>
+            ));
             const filteredBlogs = categoryFilter
               ? blogsArr.filter((blog) => blog.tag[0] === categoryFilter)
               : blogsArr;
-
             const blogs = filteredBlogs.map((blog) => (
               <StyledDiv key={blog.id}>
                 <BlogLink
@@ -223,7 +213,20 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
                 </ButtonsContainer>
               </StyledDiv>
             ));
-            return <>{blogs}</>;
+            return (
+              <>
+                <Filters>
+                  {filtersToDisplay}
+                  <Filter
+                    onClick={() => generateSearchParams("category", null)}
+                  >
+                    All
+                  </Filter>
+                </Filters>
+
+                {blogs}
+              </>
+            );
           }}
         </Await>
         <StyledP>
@@ -246,6 +249,5 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
 export default Blogs;
 //looks like memo can not stop many rerendering;
 // a blog can contain a couple tags, how to work with it
-//how to dynamically set up tags
 //select different tags vs the same blog contain different tags
-//pagination
+//pagination -> can be done either by router or firebase

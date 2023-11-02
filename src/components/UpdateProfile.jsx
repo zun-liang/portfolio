@@ -5,9 +5,10 @@ import styled from "styled-components";
 
 import { ReactComponent as ProfileIcon } from "../assets/images/icons/user-pen.svg";
 import {
+  ActionDiv,
+  BackContainer,
   BasicButton,
   BasicInput,
-  BGSwitch,
   PointerSwitch,
   PrimarySwitch,
   TertiaryParagraph,
@@ -28,30 +29,8 @@ const StyledProfileIcon = styled(ProfileIcon)`
     }
   }
 `;
-const BackContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-`;
-const StyledDiv = styled.div`
+const StyledDiv = styled(ActionDiv)`
   width: 400px;
-  background: ${BGSwitch};
-  border-radius: 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1rem;
 `;
 const StyledLabel = styled.label`
   font-family: "Black Ops One", sans-serif;

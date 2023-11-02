@@ -63,7 +63,7 @@ const App = () => {
     return () => window.removeEventListener("resize", setAppHeight);
   }, []);
 
-  /* === Get current screenwith when resizing === */
+  /* === Get current screen width when resizing === */
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   useEffect(() => {
     const updateScreenWidth = () => setScreenWidth(window.innerWidth);

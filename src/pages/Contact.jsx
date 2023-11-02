@@ -5,7 +5,18 @@ import styled from "styled-components";
 
 import SpeechBubble from "../assets/images/hi.png";
 import Profile from "../assets/images/profile.png";
-import { AutoSwitch, BasicButton, BasicInput, HoverSwitch, OpacitySwitch, PrimarySwitch, SecondarySwitch, SecondaryTertiary, TertiaryParagraph, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  AutoSwitch,
+  BasicButton,
+  BasicInput,
+  HoverSwitch,
+  OpacitySwitch,
+  PrimarySwitch,
+  SecondarySwitch,
+  SecondaryTertiary,
+  TertiaryParagraph,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 
 const StyledDiv = styled.div`
   width: 70%;
@@ -146,7 +157,7 @@ const StyledButton = styled(BasicButton)`
   }
 `;
 
-const Contact = ({playSwoosh}) => {
+const Contact = ({ playSwoosh }) => {
   useEffect(() => {
     document.title = "Contact ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
   }, []);

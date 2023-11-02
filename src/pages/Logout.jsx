@@ -4,7 +4,12 @@ import { Navigate } from "react-router-dom";
 import styled from "styled-components";
 
 import CoffeeNight from "../assets/images/face_night.png";
-import { BasicLink, HoverSwitch, PrimarySecondary, SecondaryTransparent } from "../assets/styles/Styles";
+import {
+  BasicLink,
+  HoverSwitch,
+  PrimarySecondary,
+  SecondaryTransparent,
+} from "../assets/styles/Styles";
 import { LogoutContext } from "../contexts/LogoutContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 
@@ -51,7 +56,7 @@ const Logout = () => {
   if (!showLogout) return <Navigate to="/404" replace />;
   return (
     <LogoutContainer>
-      <StyledImg src={CoffeeNight} alt="gril drinking coffee at night" />
+      <StyledImg src={CoffeeNight} alt="girl drinking coffee at night" />
       <StyledP>You&apos;ve successfully logged out!</StyledP>
       <StyledLink to="/" onClick={playPick}>
         Go back Home

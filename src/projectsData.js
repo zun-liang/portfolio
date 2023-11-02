@@ -15,7 +15,7 @@ export const projects = [
     introduction: [
       {
         id: "intro1",
-        text: "I'm super excited to introduce my portfolio v1.0 🥳, a project that's been a dream come true for me 💫! I've always longed for my own website, but it wasn't until I became comfortable using React router that I felt ready to build this 💪. Personally, I've always favored a traditional multipage website for a portfolio. Beyond being a significant personal milestone, this website has proven to be an excellent project for practicing my frontend skills. Not only have I sharpened my existing skills, but I've also achieved and learned a great deal throughout this exciting process ✨!",
+        text: "I'm super excited to introduce my portfolio v1.0 🥳, a project that's been a dream come true for me 💫! I've always longed for my own website, but it wasn't until I became comfortable using React router that I felt ready to build this 💪. Personally, I've always favored a traditional multi page website for a portfolio. Beyond being a significant personal milestone, this website has proven to be an excellent project for practicing my frontend skills. Not only have I sharpened my existing skills, but I've also achieved and learned a great deal throughout this exciting process ✨!",
       },
     ],
     functions: [
@@ -75,7 +75,7 @@ export const projects = [
       {
         id: "spot2",
         title: "User Authentication - 'Secret' Blog Management⋆˙⟡",
-        text: 'During the process of building this website, I also embarked on my first experience with authentication. While it may not be immediately evident to regular visitors, I utilized Firestore\'s "auth", "onAuthStateChanged", "signIn", "signOut", "setDoc", "deleteDoc", "updateDoc" to integrate a simple blog management system into this project 💫. This system allows me to exclusivly log in as admin and create, update, and edit blogs, all while securely saving them to Firebase.',
+        text: 'During the process of building this website, I also embarked on my first experience with authentication. While it may not be immediately evident to regular visitors, I utilized Firestore\'s "auth", "onAuthStateChanged", "signIn", "signOut", "setDoc", "deleteDoc", "updateDoc" to integrate a simple blog management system into this project 💫. This system allows me to exclusively log in as admin and create, update, and edit blogs, all while securely saving them to Firebase.',
       },
       {
         id: "spot3",
@@ -85,12 +85,12 @@ export const projects = [
       {
         id: "spot4",
         title: "Styled-Components - Theming⋆˙⟡",
-        text: 'Furthermore, I used [Styled-componnets Theming](https://styled-components.com/docs/advanced#theming) with React context to manage theme colors based on light or dark mode. As I mentioned above, once I figured out how to set up context providers and use context in my project, Theming became a straightforward approach that I successfully implemented. However, there is one main differece between Theming and React context 🤔. Theming only accepts objects as value (which has to be named "theme"), while React context accepts all types of values. Apparently, React context is more flexible, but I chose to use Theming particularly in this project to avoid manually passing props to styled components, for example, "<StyledH1 ${theme}={theme}>Title</StyledH1>". Without Theming, I would have had to pass "${theme}={theme}" as a prop to every single styled component in my entire project, resulting in a considerable amount of repetitive work in the end 🤯.',
+        text: 'Furthermore, I used [Styled-components Theming](https://styled-components.com/docs/advanced#theming) with React context to manage theme colors based on light or dark mode. As I mentioned above, once I figured out how to set up context providers and use context in my project, Theming became a straightforward approach that I successfully implemented. However, there is one main difference between Theming and React context 🤔. Theming only accepts objects as value (which has to be named "theme"), while React context accepts all types of values. Apparently, React context is more flexible, but I chose to use Theming particularly in this project to avoid manually passing props to styled components, for example, "<StyledH1 ${theme}={theme}>Title</StyledH1>". Without Theming, I would have had to pass "${theme}={theme}" as a prop to every single styled component in my entire project, resulting in a considerable amount of repetitive work in the end 🤯.',
       },
       {
         id: "spot5",
         title: "React Router 6 - Data Router⋆˙⟡",
-        text: 'What\'s more, I especially utilized React Router v6 data router and its associated functions, including features such as "loader", "action", "defer", "Await", and "React.Suspense" in this project, to enhance the overall user experience and optimize the website\'s performance. Loader makes sure fetched data is ready when page loads. Action makes easier to work with forms in React apps. Defer, Await and React.Suspense data create a better user experience by providing a fallback user interface before data is ready to load. This is especially helpful since I am using Google services to display my blogs but it is not avaiable in some areas. I provided a backup link for visitors who are intertesd in my blogs.',
+        text: 'What\'s more, I especially utilized React Router v6 data router and its associated functions, including features such as "loader", "action", "defer", "Await", and "React.Suspense" in this project, to enhance the overall user experience and optimize the website\'s performance. Loader makes sure fetched data is ready when page loads. Action makes easier to work with forms in React apps. Defer, Await and React.Suspense data create a better user experience by providing a fallback user interface before data is ready to load. This is especially helpful since I am using Google services to display my blogs but it is not available in some areas. I provided a backup link for visitors who are interested in my blogs.',
       },
       {
         id: "spot6",
@@ -115,12 +115,12 @@ export const projects = [
       {
         id: "learn2",
         title: "Git branch⋆˙⟡",
-        text: "This project is more complicated than the previous ones I've workded on. In such a project, using git smartly is very beneficial. I used git branch to work on some new features, such as contexts.❓",
+        text: "This project is more complicated than the previous ones I've worked on. In such a project, using git smartly is very beneficial. I used git branch to work on some new features, such as contexts.❓",
       },
       {
         id: "learn3",
-        title: "Envirnment varaibles⋆˙⟡",
-        text: 'If you are making a vite/react app and want to save some sensitive information in environment varables, it is possible that you will run into an issue using "process.env" directly.',
+        title: "Environment variables⋆˙⟡",
+        text: 'If you are making a vite/react app and want to save some sensitive information in environment variables, it is possible that you will run into an issue using "process.env" directly.',
       },
     ],
   },
@@ -174,11 +174,11 @@ export const projects = [
     purpose: [
       {
         id: "pur1",
-        text: "My main purpose of doing this project is to pratice working with localStorage. At the time of doing this project, I haven't learned how to store data except for saving them in localStorage or sessionStorage.",
+        text: "My main purpose of doing this project is to practice working with localStorage. At the time of doing this project, I haven't learned how to store data except for saving them in localStorage or sessionStorage.",
       },
       {
         id: "pur2",
-        text: "What's more, when I was looking for next challenges, this challenge's bonas feature \"drag and drop\" caught my eyes. I think it must be a very interesting feature to work on. It turned out to be true.",
+        text: "What's more, when I was looking for next challenges, this challenge's bonus feature \"drag and drop\" caught my eyes. I think it must be a very interesting feature to work on. It turned out to be true.",
       },
     ],
 
@@ -186,7 +186,7 @@ export const projects = [
       {
         id: "spot1",
         title: "DND⋆˙⟡",
-        text: 'This is the first time I worked on a project requiring for drag and drop feature. After some research, I found React Beautiful DND is a solid candidate for this challenge. However, after I implented DND in my project, my project keeps reporting an issue "Invariant failed: Draggable: requires an iteger index prop". I started research right away and found out that the original React Beautiful DND is no longer maintaned. A new DND called @hello/pangea/DND is active now. Then I switched to this one and made some updates to make it work.',
+        text: 'This is the first time I worked on a project requiring for drag and drop feature. After some research, I found React Beautiful DND is a solid candidate for this challenge. However, after I implemented DND in my project, my project keeps reporting an issue "Invariant failed: Draggable: requires an iteger index prop". I started research right away and found out that the original React Beautiful DND is no longer maintaned. A new DND called @hello/pangea/DND is active now. Then I switched to this one and made some updates to make it work.',
       },
     ],
     learned: [

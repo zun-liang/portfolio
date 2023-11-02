@@ -113,7 +113,7 @@ const Loading = ({ setLoading, today }) => {
           <StyledButton onClick={handleClick}>Scared ૮₍˶Ó﹏Ò ⑅₎ა</StyledButton>
           <StyledButton onClick={handleClick}>Bored ( ¬⤙¬ )</StyledButton>
           <StyledButton onClick={handleClick}>
-            Embarrsed (,,&#62;﹏&#60;,,)
+            Embarrassed (,,&#62;﹏&#60;,,)
           </StyledButton>
           <StyledButton onClick={handleClick}>Angry ୧(๑•̀ᗝ•́)૭</StyledButton>
           <StyledButton onClick={handleClick}>

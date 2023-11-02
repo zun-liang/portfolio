@@ -9,7 +9,14 @@ import On from "..//assets/sounds/on.mp3";
 import { ReactComponent as TempIcon } from "../assets/images/icons/temperature.svg";
 import { ReactComponent as WeatherIcon } from "../assets/images/icons/weather.svg";
 import Key from "../assets/sounds/key.mp3";
-import { AutoSwitch, PointerSwitch, PrimarySwitch, SecondaryPrimary, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  AutoSwitch,
+  PointerSwitch,
+  PrimarySwitch,
+  SecondaryPrimary,
+  SecondarySwitch,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 import { SoundContext } from "../contexts/SoundContext";
 import Menu from "./Menu";
@@ -149,7 +156,7 @@ const Header = ({ screenWidth }) => {
   const [temp, setTemp] = useState("");
   const celsius = parseInt(temp - 273.15);
   const fahrenheit = parseInt(((temp - 273.15) * 9) / 5 + 32);
-  const [fetchError, setFetchhError] = useState(true);
+  const [fetchError, setFetchError] = useState(true);
   const [playOn] = useSound(On, { soundEnabled: sound });
   const [playOff] = useSound(Off, { soundEnabled: sound });
   const [playKey] = useSound(Key, { soundEnabled: sound });
@@ -164,12 +171,12 @@ const Header = ({ screenWidth }) => {
       )
         .then((res) => res.json())
         .then((data) => {
-          setFetchhError(false);
+          setFetchError(false);
           setWeather(data.weather[0].main);
           setTemp(data.main.temp);
         })
         .catch(() => {
-          setFetchhError(true);
+          setFetchError(true);
         });
     });
   }, []);

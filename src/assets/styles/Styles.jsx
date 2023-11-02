@@ -126,6 +126,32 @@ export const BasicInput = styled.input`
   }
 `;
 
+export const BackContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+`;
+
+export const ActionDiv = styled.div`
+  background: ${BGSwitch};
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+`;
+
 /* ===  HTML parse rules for blog body === */
 const StyledH1 = styled.h1`
   color: ${PrimaryTertiary};

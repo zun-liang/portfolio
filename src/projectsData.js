@@ -15,7 +15,7 @@ export const projects = [
     introduction: [
       {
         id: "intro1",
-        text: "I'm super excited to introduce my portfolio v1.0 🥳, a project that's been a dream come true for me 💫! I've always longed for my own website, but it wasn't until I became comfortable using React router that I felt ready to build this 💪. Personally, I've always favored a traditional multi page website for a portfolio. Beyond being a significant personal milestone, this website has proven to be an excellent project for practicing my frontend skills. Not only have I sharpened my existing skills, but I've also achieved and learned a great deal throughout this exciting process ✨!",
+        text: 'This is the "secret" blog management system in my portfolio website. In it, users are able to create, edit, delete, post blogs, retrieve drafts, save drafts, and update user name and photos.',
       },
     ],
     functions: [
@@ -186,7 +186,7 @@ export const projects = [
       {
         id: "spot1",
         title: "DND⋆˙⟡",
-        text: 'This is the first time I worked on a project requiring for drag and drop feature. After some research, I found React Beautiful DND is a solid candidate for this challenge. However, after I implemented DND in my project, my project keeps reporting an issue "Invariant failed: Draggable: requires an iteger index prop". I started research right away and found out that the original React Beautiful DND is no longer maintaned. A new DND called @hello/pangea/DND is active now. Then I switched to this one and made some updates to make it work.',
+        text: 'This is the first time I worked on a project requiring for drag and drop feature. After some research, I found React Beautiful DND is a solid candidate for this challenge. However, after I implemented DND in my project, my project keeps reporting an issue "Invariant failed: Draggable: requires an integer index prop". I started research right away and found out that the original React Beautiful DND is no longer maintained. A new DND called @hello/pangea/DND is active now. Then I switched to this one and made some updates to make it work.',
       },
     ],
     learned: [

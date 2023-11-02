@@ -179,7 +179,8 @@ const StyledPre = styled.pre`
   padding: 1.5rem;
   border-radius: 1rem;
   overflow-x: scroll;
-  & > code {
+  & > code,
+  & > p > code {
     color: ${SecondaryTertiary};
     font-size: 16px;
   }
@@ -213,7 +214,8 @@ const StyledList = styled.ul`
     border-radius: 1rem;
     overflow-x: scroll;
   }
-  & > li > pre > code {
+  & > li > pre > code,
+  & > li > pre > p > code {
     color: ${SecondaryTertiary};
     font-size: 16px;
   }

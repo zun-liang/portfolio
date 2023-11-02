@@ -3,11 +3,17 @@ import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
+import useSound from "use-sound";
 
 import { ReactComponent as DeleteIcon } from "../assets/images/icons/delete.svg";
-import { PointerSwitch, PrimarySwitch, TertiaryDot } from "../assets/styles/Styles";
+import Crumple from "../assets/sounds/crumple.mp3";
+import {
+  PointerSwitch,
+  PrimarySwitch,
+  TertiaryDot,
+} from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
-import { PlayPickContext } from "../contexts/PlayPickContext";
+import { SoundContext } from "../contexts/SoundContext";
 import { db } from "../firebase";
 
 const StyledDeleteIcon = styled(DeleteIcon)`
@@ -26,13 +32,14 @@ const StyledDeleteIcon = styled(DeleteIcon)`
 
 const DeleteButton = ({ blogID }) => {
   const loggedin = useContext(AuthContext);
-  const playPick = useContext(PlayPickContext);
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { sound } = useContext(SoundContext);
+  const [playCrumple] = useSound(Crumple, { soundEnabled: sound });
 
   const deleteBlog = async () => {
     try {
-      playPick();
+      playCrumple();
       await deleteDoc(doc(db, "blogs", blogID));
       if (pathname === "/blogs") {
         location.reload();

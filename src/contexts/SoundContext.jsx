@@ -4,7 +4,7 @@ import { createContext, useState } from "react";
 const SoundContext = createContext();
 
 const SoundContextProvider = ({ children }) => {
-  const [sound, setSound] = useState(false);
+  const [sound, setSound] = useState(true);
 
   return (
     <SoundContext.Provider value={{ sound, setSound }}>

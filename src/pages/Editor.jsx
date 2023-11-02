@@ -14,12 +14,14 @@ import { nanoid } from "nanoid";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import useSound from "use-sound";
 
 import { ReactComponent as ResetIcon } from "../assets/images/icons/delete.svg";
 import { ReactComponent as TagIcon } from "../assets/images/icons/hash.svg";
 import { ReactComponent as SaveIcon } from "../assets/images/icons/save.svg";
 import { ReactComponent as SearchIcon } from "../assets/images/icons/search.svg";
 import { ReactComponent as SendIcon } from "../assets/images/icons/send.svg";
+import Crumple from "../assets/sounds/crumple.mp3";
 import {
   BasicInput,
   HighlightSwitch,
@@ -33,6 +35,7 @@ import BackButton from "../components/BackButton";
 import UpdateProfile from "../components/UpdateProfile";
 import UserProfile from "../components/UserProfile";
 import { PlayPickContext } from "../contexts/PlayPickContext";
+import { SoundContext } from "../contexts/SoundContext";
 import { db } from "../firebase";
 import Post from "./Post";
 
@@ -148,11 +151,15 @@ const Editor = ({
   setDraft,
   tagsToEdit,
   setTagsToEdit,
+  playSwoosh,
 }) => {
   const playPick = useContext(PlayPickContext);
+  const sound = useContext(SoundContext);
+  const [playCrumple] = useSound(Crumple, { soundEnabled: sound });
   const navigate = useNavigate();
   const [showPost, setShowPost] = useState(false);
   const [getDraftResponse, setGetDraftResponse] = useState(true);
+  const [invalidPost, setInvalidPost] = useState(false);
 
   /* === blog and tagInput setup === */
   const retrievedBlog = blogToEdit?.title + "\n\n" + blogToEdit?.content;
@@ -214,24 +221,29 @@ const Editor = ({
     setBlogToEdit(null);
     setTagsToEdit(null);
     setGetDraftResponse(true);
+    setInvalidPost(false);
   };
 
   const post = async () => {
     try {
-      playPick();
-      if (blogToEdit) {
-        await updateDoc(doc(db, "blogs", preId), updatedBlogObj);
-        setBlogToEdit(null);
-        setTagsToEdit(null);
-      } else if (draft) {
-        await setDoc(doc(db, "blogs", id), blogObj);
-        await deleteDoc(doc(db, "drafts", "draft"));
-        setDraft(null);
+      if (title.trim() !== "" && content.trim() !== "") {
+        playSwoosh();
+        if (blogToEdit) {
+          await updateDoc(doc(db, "blogs", preId), updatedBlogObj);
+          setBlogToEdit(null);
+          setTagsToEdit(null);
+        } else if (draft) {
+          await setDoc(doc(db, "blogs", id), blogObj);
+          await deleteDoc(doc(db, "drafts", "draft"));
+          setDraft(null);
+        } else {
+          await setDoc(doc(db, "blogs", id), blogObj);
+        }
+        setShowPost(true);
+        clearAll();
       } else {
-        await setDoc(doc(db, "blogs", id), blogObj);
+        setInvalidPost(true);
       }
-      setShowPost(true);
-      clearAll();
     } catch (error) {
       console.error("Error while posting blog:", error);
       throw new Error("Something went wrong while attempting to post blog.");
@@ -293,6 +305,11 @@ const Editor = ({
     }
   };
 
+  const reset = () => {
+    playCrumple();
+    clearAll();
+  };
+
   const handleClick = () => {
     navigate("/blogs");
     playPick();
@@ -309,7 +326,7 @@ const Editor = ({
         <UserProfile />
         <UpdateProfile />
         <StyledSearchIcon onClick={getDraft} />
-        <StyledResetIcon onClick={clearAll} />
+        <StyledResetIcon onClick={reset} />
       </UpperDiv>
       <StyledMDEditor
         value={blog}
@@ -332,10 +349,11 @@ const Editor = ({
         <StyledSendIcon onClick={post} />
       </StyledDiv>
       {!getDraftResponse && <StyledP>No draft found.</StyledP>}
+      {invalidPost && (
+        <StyledP>Please fill in blog title and blog body before post.</StyledP>
+      )}
     </EditorContainer>
   );
 };
 
 export default Editor;
-//trash sound
-//can not post if there is no title, no content, if click on post, get alert

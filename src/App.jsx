@@ -9,6 +9,7 @@ import styled from "styled-components";
 import useSound from "use-sound";
 
 import PageTurn from "./assets/sounds/pageturn.mp3";
+import Swoosh from "./assets/sounds/swoosh.mp3";
 import { AuthContextProvider } from "./contexts/AuthContext";
 import { LogoutContextProvider } from "./contexts/LogoutContext";
 import { ModeContext } from "./contexts/ModeContext";
@@ -45,8 +46,10 @@ const App = () => {
   const [tagsToEdit, setTagsToEdit] = useState(null);
   const [draft, setDraft] = useState(null);
 
+  /* === Sound effects setup === */
   const { sound } = useContext(SoundContext);
   const [playPageTurn] = useSound(PageTurn, { soundEnabled: sound });
+  const [playSwoosh] = useSound(Swoosh, { soundEnabled: sound });
 
   /* === Automatically adjust app height depending on screen sizes === */
   const setAppHeight = () => {
@@ -129,12 +132,13 @@ const App = () => {
                 setDraft={setDraft}
                 tagsToEdit={tagsToEdit}
                 setTagsToEdit={setTagsToEdit}
+                playSwoosh={playSwoosh}
               />
             }
           />
         </Route>
         <Route path="logout" element={<Logout />} />
-        <Route path="contact" element={<Contact />} />
+        <Route path="contact" element={<Contact playSwoosh={playSwoosh} />} />
       </Route>
     )
   );

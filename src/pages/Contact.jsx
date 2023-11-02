@@ -1,25 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useForm, ValidationError } from "@formspree/react";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
-import useSound from "use-sound";
 
 import SpeechBubble from "../assets/images/hi.png";
 import Profile from "../assets/images/profile.png";
-import Swoosh from "../assets/sounds/swoosh.mp3";
-import {
-  AutoSwitch,
-  BasicButton,
-  BasicInput,
-  HoverSwitch,
-  OpacitySwitch,
-  PrimarySwitch,
-  SecondarySwitch,
-  SecondaryTertiary,
-  TertiaryParagraph,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
-import { SoundContext } from "../contexts/SoundContext";
+import { AutoSwitch, BasicButton, BasicInput, HoverSwitch, OpacitySwitch, PrimarySwitch, SecondarySwitch, SecondaryTertiary, TertiaryParagraph, TertiarySecondary } from "../assets/styles/Styles";
 
 const StyledDiv = styled.div`
   width: 70%;
@@ -160,10 +146,7 @@ const StyledButton = styled(BasicButton)`
   }
 `;
 
-const Contact = () => {
-  const { sound } = useContext(SoundContext);
-  const [playSwoosh] = useSound(Swoosh, { soundEnabled: sound });
-
+const Contact = ({playSwoosh}) => {
   useEffect(() => {
     document.title = "Contact ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
   }, []);

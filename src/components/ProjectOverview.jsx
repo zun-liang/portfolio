@@ -3,17 +3,7 @@ import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import {
-  BackgroundDot,
-  BackgroundTransparent,
-  OpaqueSwitch,
-  PointerSwitch,
-  PrimarySwitch,
-  SecondaryHover,
-  TertiarySecondary,
-  SecondaryPrimary,
-  TertiaryPrimary,
-} from "../assets/styles/Styles";
+import { BackgroundDot, BackgroundTransparent, OpaqueSwitch, PointerSwitch, PrimarySwitch, SecondaryHover, SecondaryTransparent, TertiaryHighlight, TertiaryPrimary, TertiarySecondary } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 
 const ProjectLink = styled(Link)`
@@ -77,8 +67,8 @@ const StyledH2 = styled.h2`
 `;
 const Time = styled.p`
   font-size: 0.8rem;
-  color: ${TertiarySecondary};
-  text-shadow: 1px 0px ${SecondaryPrimary};
+  color: ${TertiaryHighlight};
+  text-shadow: 1px 0px ${SecondaryTransparent};
 `;
 const StyledP = styled.p`
   color: ${TertiarySecondary};

@@ -5,7 +5,7 @@ import { Suspense, useContext, useEffect } from "react";
 import { Await, defer, Link, useLoaderData, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
-import { BasicButton, OpaqueSwitch, PointerSwitch, PrimarySecondary, PrimarySwitch, SecondaryPrimary, SecondaryTransparent, TertiaryPrimary, TertiarySecondary } from "../assets/styles/Styles";
+import { BasicButton, OpaqueSwitch, PointerSwitch, PrimarySecondary, PrimarySwitch, SecondaryTransparent, TertiaryHighlight, TertiarySecondary } from "../assets/styles/Styles";
 import BlogOverview from "../components/BlogOverview";
 import BlogsLoading from "../components/BlogsLoading";
 import DeleteButton from "../components/DeleteButton";
@@ -63,18 +63,22 @@ const Filter = styled(BasicButton)`
   text-shadow: 1px 1px ${SecondaryTransparent};
   border: 1px solid transparent;
   &:hover,
-  &:active {
-    border: 1px dashed ${PrimarySwitch};
-  }
+  &:active,
   &:focus {
     border: 1px dashed ${TertiarySecondary};
+  }
+  @media (min-width: 1024px) {
+    &:hover,
+    &:active {
+      border: 1px dashed ${PrimarySwitch};
+    }
   }
 `;
 const Time = styled.p`
   font-size: 0.8rem;
   font-weight: 500;
-  color: ${TertiarySecondary};
-  text-shadow: 1px 1px ${SecondaryPrimary};
+  color: ${TertiaryHighlight};
+  text-shadow: 1px 1px ${SecondaryTransparent};
 `;
 const StyledH2 = styled.h2`
   display: inline;
@@ -85,14 +89,14 @@ const StyledH2 = styled.h2`
 const StyledP = styled.p`
   font-size: 1rem;
   line-height: 1.5;
-  color: ${TertiaryPrimary};
+  color: ${TertiaryHighlight};
   font-weight: 700;
   background-color: ${OpaqueSwitch};
   border-radius: 1rem;
   padding: 1.5rem;
   & > a:link,
   a:visited {
-    color: ${TertiaryPrimary};
+    color: ${TertiaryHighlight};
     text-decoration: underline wavy;
     text-underline-offset: 4px;
   }

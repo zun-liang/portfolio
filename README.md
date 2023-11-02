@@ -256,6 +256,7 @@ I didn't intend to control time I spent on this project but during the process, 
 - [AudioMass](https://audiomass.co/)
 - [Material Design Dark Theme](https://m2.material.io/design/color/dark-theme.html)
 - [Colormind](http://colormind.io/)
+- [Material Design Color Palettes](https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors)
 
 #### HTML
 

@@ -16,7 +16,7 @@ const GlobalStyles = createGlobalStyle`
         --light-tertiary: #7f6f64;
         --light-paragraph: #000000;
         --light-hover: rgba(255, 255, 255, 0.5);
-        --light-highlight: #4f7660;
+        --light-highlight: #623600;
 
         --dark-background: #121212;
         --dark-primary: #ff76a7;
@@ -33,8 +33,7 @@ const GlobalStyles = createGlobalStyle`
         --app-height: 100%;
     }
 
-    html,
-    body {
+    html, body {
         width: 100vw;
         height: 100%;
         background: ${BGSwitch};

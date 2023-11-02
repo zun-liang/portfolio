@@ -54,7 +54,7 @@ const BlogLink = styled(Link)`
   cursor: ${PointerSwitch};
 `;
 const ButtonsContainer = styled.div`
-  display: flex;
+  display: none;
   ${StyledDiv}:hover & {
     display: flex;
     gap: 1rem;
@@ -175,7 +175,7 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
               .sort();
             const distinctFilters = [];
             for (let i = 0; i < filters.length; i++) {
-              if (filters.indexOf(filters[i]) === i) {
+              if (filters.indexOf(filters[i]) === i && filters[i] !== "") {
                 distinctFilters.push(filters[i]);
               }
             }

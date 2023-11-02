@@ -1,17 +1,12 @@
 import { useContext, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import CoffeeNight from "../assets/images/face_night.png";
 
-import {
-  BasicLink,
-  HoverSwitch,
-  PrimarySecondary,
-  SecondaryTransparent,
-} from "../assets/styles/Styles";
-import { PlayPickContext } from "../contexts/PlayPickContext";
+import CoffeeNight from "../assets/images/face_night.png";
+import { BasicLink, HoverSwitch, PrimarySecondary, SecondaryTransparent } from "../assets/styles/Styles";
 import { LogoutContext } from "../contexts/LogoutContext";
-import { Navigate } from "react-router-dom";
+import { PlayPickContext } from "../contexts/PlayPickContext";
 
 const LogoutContainer = styled.div`
   display: flex;
@@ -47,6 +42,7 @@ const StyledLink = styled(BasicLink)`
 const Logout = () => {
   const playPick = useContext(PlayPickContext);
   const { showLogout } = useContext(LogoutContext);
+  console.log(showLogout);
 
   useEffect(() => {
     document.title = "Log Out ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";

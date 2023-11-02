@@ -39,7 +39,7 @@ const BlogLink = styled(Link)`
   cursor: ${PointerSwitch};
 `;
 const ButtonsContainer = styled.div`
-  display: none;
+  display: flex;
   ${StyledDiv}:hover & {
     display: flex;
     gap: 1rem;

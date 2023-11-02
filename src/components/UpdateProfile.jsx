@@ -1,18 +1,19 @@
+import { updateProfile } from "firebase/auth";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import { useState } from "react";
 import styled from "styled-components";
+
+import { ReactComponent as ProfileIcon } from "../assets/images/icons/user-pen.svg";
 import {
-  PrimarySwitch,
-  PointerSwitch,
-  TertiaryParagraph,
-  BackgroundSwitch,
-  BasicInput,
   BasicButton,
+  BasicInput,
+  BGSwitch,
+  PointerSwitch,
+  PrimarySwitch,
+  TertiaryParagraph,
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import { auth } from "../firebase";
-import { updateProfile } from "firebase/auth";
-import { ReactComponent as ProfileIcon } from "../assets/images/icons/user-pen.svg";
-import { useState } from "react";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const StyledProfileIcon = styled(ProfileIcon)`
   width: 1.5rem;
@@ -39,7 +40,7 @@ const BackContainer = styled.div`
 `;
 const StyledDiv = styled.div`
   width: 400px;
-  background-color: ${BackgroundSwitch};
+  background: ${BGSwitch};
   border-radius: 10px;
   position: absolute;
   top: 50%;

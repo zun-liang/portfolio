@@ -6,8 +6,21 @@ import { Form, useActionData, useNavigation } from "react-router-dom";
 import styled from "styled-components";
 
 import Party from "../assets/images/party_boygirl.png";
-import { BasicLink, PrimarySecondary, SecondaryTransparent } from "../assets/styles/Styles";
-import { BasicButton, HoverSwitch, OpacitySwitch, OutlineSwitch, PrimarySwitch, PrimaryTertiary, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  BasicLink,
+  PrimarySecondary,
+  SecondaryTransparent,
+} from "../assets/styles/Styles";
+import {
+  BasicButton,
+  HoverSwitch,
+  OpacitySwitch,
+  OutlineSwitch,
+  PrimarySwitch,
+  PrimaryTertiary,
+  SecondarySwitch,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { auth } from "../firebase";
@@ -173,3 +186,4 @@ const Login = () => {
 };
 
 export default Login;
+//after shows sucessfully logged in for a couple seconds, redirect users to previous page

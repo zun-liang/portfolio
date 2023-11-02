@@ -2,10 +2,25 @@
 /* eslint-disable react/prop-types */
 import { getDocs, orderBy, query } from "firebase/firestore";
 import { Suspense, useContext, useEffect } from "react";
-import { Await, defer, Link, useLoaderData, useSearchParams } from "react-router-dom";
+import {
+  Await,
+  defer,
+  Link,
+  useLoaderData,
+  useSearchParams,
+} from "react-router-dom";
 import styled from "styled-components";
 
-import { BasicButton, OpaqueSwitch, PointerSwitch, PrimarySecondary, PrimarySwitch, SecondaryTransparent, TertiaryHighlight, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  BasicButton,
+  OpaqueSwitch,
+  PointerSwitch,
+  PrimarySecondary,
+  PrimarySwitch,
+  SecondaryTransparent,
+  TertiaryHighlight,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import BlogOverview from "../components/BlogOverview";
 import BlogsLoading from "../components/BlogsLoading";
 import DeleteButton from "../components/DeleteButton";

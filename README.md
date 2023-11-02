@@ -19,7 +19,7 @@
 
 ### Introduction
 
-I'm super excited to introduce my portfolio v1.0 🥳, a project that's been a dream come true for me 💫! I've always longed for my own website, but it wasn't until I became comfortable using React router that I felt ready to build this 💪. Personally, I've always favored a traditional multipage website for a portfolio. Beyond being a significant personal milestone, this website has proven to be an excellent project for practicing my frontend skills. Not only have I sharpened my existing skills, but I've also achieved and learned a great deal throughout this exciting process ✨!
+I'm super excited to introduce my portfolio v1.0 🥳, a project that's been a dream come true for me ✨! I've always longed for my own website, but it wasn't until I became comfortable using React router that I felt ready to build this 💪. Personally, I've always favored a traditional multi page website for a portfolio. Beyond being a significant personal milestone, this website has proven to be an excellent project for practicing my frontend skills. Not only have I sharpened my existing skills, but I've also achieved and learned a great deal throughout this exciting process ✨!
 
 This website contains five sections:
 
@@ -33,7 +33,7 @@ This website contains five sections:
 
 - Projects 🛠️
 
-  This page showcases the best projects I've worked on, which are updated regularly. Visitors can click on each project to dive into it backstory and details.
+  This page showcases the best projects I've worked on, which are updated regularly. Visitors can click on each project to dive into its backstory and details.
 
 - Blogs 📓
 
@@ -57,8 +57,10 @@ In building and designing this website, I've put a strong emphasis on **user exp
 
 ### Purpose and Goal
 
-- Professional connection
-- Personal connection
+<ul>
+<li style="list-style-type: '✨'">&nbsp;Professional Connection
+<li style="list-style-type: '✨'">&nbsp;Personal Connection
+</ul>
 
 The primary purpose behind creating this portfolio website is to establish a unique online space where I can share my ideas 💡, communicate my skills 💻, and connect with other developers 👩‍💻👨‍💻. Having observed numerous impressive portfolio websites out there, it's an immense source of pride and satisfaction to finally have one of my own 🚀.
 
@@ -67,7 +69,7 @@ Moreover, I envision this website as a reflection of my personality and preferen
 ### Spotlight
 
 <ul>
-<li style="list-style-type: '✨'">&nbsp;Firebase - Manage Data
+<li style="list-style-type: '✨'">&nbsp;Firebase - Retrieve and Manage Data
 <li style="list-style-type: '✨'">&nbsp;User Authentication - "Secret" Blog Management
 <li style="list-style-type: '✨'">&nbsp;React - createContext and useContext
 <li style="list-style-type: '✨'">&nbsp;Styled-Components - Theming
@@ -75,15 +77,17 @@ Moreover, I envision this website as a reflection of my personality and preferen
 <li style="list-style-type: '✨'">&nbsp;Transfer Markdown to HTML and Parse HTML in React App
 </ul>
 
-At the time I started to build this website, I didn't have the knowledge or experience to work with databases and backend systems. However, I soon discovered that Firebase is a fantastic tool that I could relatively easily grasp and utilize in my project 🌟. I utilized Firestore's `getDoc` and `getDocs` to get projects and blogs.
+At the time I started to build this website, I didn't have the knowledge or experience to work with databases and backend systems. However, I soon discovered that Firebase is a fantastic tool that I could relatively easily grasp and utilize in my project ✨. I utilized Firestore's `getDoc`, `getDocs`, `ref`, `doc`, `orderBy`, and `query` to retrieve and display blogs data.
 
-During the process of building this website, I also embarked on my first experience with authentication. While it may not be immediately evident to regular visitors, I utilized Firestore's `auth`, `onAuthStateChanged`, `signIn`, `signOut`, `setDoc`, `deleteDoc`, `updateDoc` to integrate a simple blog management system into this project 💫. This system allows me to exclusivly log in as admin and create, update, and edit blogs, all while securely saving them to Firebase.
+During the process of building this website, I also embarked on my first experience with user authentication. While it may not be immediately evident to regular visitors, I utilized Firestore's `auth`, `onAuthStateChanged`, `signIn`, `signOut`, `setDoc`, `deleteDoc`, `updateDoc`, and `updateProfile` to integrate a simple blog management system into this project ✨. This system allows me to exclusively log in as admin, create, update, and edit blogs, and update user profile all while securely saving them to Firebase.
+
+Especially, while working with Firestore's `updateProfile` to update user names and photos, I found that it only supports updating a URL for photos, rather than the commonly supported method of uploading pictures directly from local devices. After conducting some research, I discovered that the combination of Firestore and Firebase Cloud Storage can achieve this feature. I accomplished this by using `getStorage`, `ref`, `uploadBytes`, and `getDownloadURL` to store locally uploaded images and provide a URL for downloading. I then utilized this url to update user profiles.
 
 Moreover, this is the very first time I used React `createContext` and `useContext` in my project. At first, I kept having bugs of context being "undefined" because I misunderstood that there was no need to import context in the components that needed it 😔. Secondly, I didn't realize that I could wrap the `main.jsx` with the context provider. Although my `App.jsx` required access to a couple of contexts, I continued importing context in it while it was wrapped by the same context provider, which of course didn't work as I expected 😔. It was quite frustrating but I didn't give up. I finally figured out the reasons and fixed the bugs after reading React's documentation and other people's examples 💪.
 
-Furthermore, I used [Styled-componnets Theming](https://styled-components.com/docs/advanced#theming) with React context to manage theme colors based on light or dark mode. As I mentioned above, once I figured out how to set up context providers and use context in my project, Theming became a straightforward approach that I successfully implemented. However, there is one main differece between Theming and React context 🤔. Theming only accepts objects as value (which has to be named "theme"), while React context accepts all types of values. Apparently, React context is more flexible, but I chose to use Theming particularly in this project to avoid manually passing props to styled components, for example, `<StyledH1 ${theme}={theme}>Title</StyledH1>`. Without Theming, I would have had to pass `${theme}={theme}` as a prop to every single styled component in my entire project, resulting in a considerable amount of repetitive work in the end 🤯.
+Furthermore, I used [Styled-components Theming](https://styled-components.com/docs/advanced#theming) with React context to manage theme colors based on light or dark mode. As I mentioned above, once I figured out how to set up context providers and use context in my project, Theming became a straightforward approach that I successfully implemented. However, there is one main difference between Theming and React context 🤔. Theming only accepts objects as value (which has to be named "theme"), while React context accepts all types of values. Apparently, React context is more flexible, but I chose to use Theming particularly in this project to avoid manually passing props to styled components, for example, `<StyledH1 ${theme}={theme}>Title</StyledH1>`. Without Theming, I would have had to pass `${theme}={theme}` as a prop to every single styled component in my entire project, resulting in a considerable amount of repetitive work in the end 🤯.
 
-What's more, I especially utilized React Router v6 data router and its associated functions, including features such as `loader`, `action`, `defer`, `Await`, and `React.Suspense` in this project, to enhance the overall user experience and optimize the website's performance. Loader makes sure fetched data is ready when page loads. Action makes easier to work with forms in React apps. Defer, Await and React.Suspense data create a better user experience by providing a fallback user interface before data is ready to load. This is especially helpful since I am using Google services to display my blogs but it is not avaiable in some areas. I provided a backup link for visitors who are intertesd in my blogs.
+What's more, I especially utilized React Router v6 data router and its associated functions, including features such as `loader`, `action`, `defer`, `Await`, and `React.Suspense` in this project, to enhance the overall user experience and optimize the website's performance. Loader ensured that fetched data was readily available when a page loaded. Action simplified the handling of forms in React applications. Defer, Await and React.Suspense collectively improved the user experience by providing a fallback user interface while the data was being loaded. This proved to be particularly valuable since I relied on Google services to display my blogs, which may not be available in some regions. To accommodate all visitors, I also provided a backup link for those interested in my blogs.
 
 Last but not least, before I decided to convert Markdown to HTML and parse it for display on the web page, I initially attempted to save Markdown directly in Firestore and retrieve its data for display 💭. Unfortunately, I encountered issues with the Markdown formatting, as it couldn't render correctly. After research, I realized that a better approach would be to save HTML instead 🤔, which, in turn, required using a parser to convert the HTML to React elements.
 
@@ -119,56 +123,78 @@ Upon investigating the data I had saved in Firestore and inspecting the content 
 
 ### What I learned
 
-- Reading documentation
+- Reading Documentation 📖👩‍💻
 
   Honestly, I preferred tutorial videos over documentation, especially before I fully appreciated the power of reading and understanding documentation. There were two main reasons for this preference. Firstly, English is not my first language, and initially, learning something new and abstract in a second language could be overwhelming 🤯. Secondly, as a beginner, there's often a strong desire to accelerate the learning process and showcase what I've learned to others, even when my understanding is limited.
 
   However, as I became aware of the barriers that were holding me back from delving into documentation, I intentionally slowed down my approach. I started to read documentation bit by bit, taking my time to understand the content 📝. Surprisingly, this method has proven to be more effective for my learning journey. It has allowed me to build a more solid foundation of knowledge and comprehension 🎯.
 
-- Git branch - merge and delete
+- Git Branch - Merge and Delete 🔀
 
-  This project is more complicated than the previous ones I've workded on. In such a project, using git smartly is very beneficial. I used git branch to work on some new features, such as contexts.❓
+  This project is more complicated than the previous ones I've worked on. In such complex projects, using Git intelligently can be very beneficial. In this project, I utilized `git branch <branch name>`, `git checkout <branch name>`, `git merge <branch name>`, `git branch -d <branch name>`, and `git branch -D <branch name>` to experiment with fresh ideas and alternative approaches, ensuring that I can explore these concepts without jeopardizing the well-functioning codebase I've already established. If these new ideas or approaches prove successful, I seamlessly merge them into the "master" branch.
 
-- environment varaibles
+- Environment Variables 🔐
 
-  If you are making a vite/react app and want to save some sensitive information in environment varables, it is possible that you will run into an issue using `process.env` directly.
+  In this project, I integrated API services from both Firebase and Open Weather, each requiring a private API key. Committing these keys to a public GitHub repository would expose my accounts to potential security risks. In addressing this concern, I explored a common solution—storing sensitive information in environment variables and configuring Git to ignore the file containing these variables. This way, when I push my local repository to GitHub, I can set up these variables on the remote platform.
 
-  Both add `VITE_` to env varaibles while use `import.meta.env` and use `loadEnv` to define work for me.
-  The only thing trapped me was I didn't put .env in root but src. Also, don't forget to add .env in .gitignore.
+  However, during the process of implementing environment variables in my project, I encountered some issues related to Vite. Specifically, when I attempted to use `process.env` directly in Vite, Vite couldn't access environment variables' values.
 
-  Option 1: use `loadEnv` to define:
+  After further research, I identified two effective solutions. I could either add a `VITE_` prefix to my environment variables and access them using `import.meta.env`, or I could use `loadEnv` to define and utilize these variables. Both methods proved successful for my project.
 
-  In my .env, I declared:
+  The only stumbling block that gave me some trouble was initially placing the `.env` file in the `src` folder instead of the `root` directory. This caused persistent bugs and confusion until I corrected the file location.
+
+  Option 1: Using the `VITE_` Prefix and `import.meta.env`
+
+  In my `.env` file, I specified:
+
+  ```
+    VITE_REACT_APP_API_KEY = my_api_key
+  ```
+
+  Within my `firebase.js`, I defined the firebaseConfig as follows:
+
+  ```
+  const firebaseConfig = {
+    apiKey: import.meta.env.VITE_REACT_APP_API_KEY,
+  };
+  ```
+
+  For the `vite.config.js`, it was configured like this:
+
+  ```
+  import react from "@vitejs/plugin-react";
+  import { defineConfig } from "vite";
+
+  export default defineConfig(() => {
+  return {
+    plugins: [react()],
+  };
+  });
+
+  ```
+
+  Option 2: Using `loadEnv` for Configuration
+
+  In my `.env`, I specified:
 
   ```
     REACT_APP_API_KEY = my_api_key
-    REACT_APP_AUTH_DOMAIN = _my_auth_domain
-    REACT_APP_PROJECT_ID = my_project_id
-    REACT_APP_STORAGE_BUCKET = my_storage_bucket
-    REACT_APP_MESSAGING_SENDER_ID = my_messaging_sender_id
-    REACT_APP_APP_ID = _my_app_id
   ```
 
-  In my firebase.js, I declared:
+  Within my `firebase.js`, I defined the firebaseConfig as follows:
 
   ```
   const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
-    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-    projectId: process.env.REACT_APP_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-    appId: process.env.REACT_APP_APP_ID,
   };
   ```
 
-  In my vite.config.js, I set up like this article said:
+  For the `vite.config.js`, I configured it as suggested in this article:
   [Uncaught ReferenceError: process is not defined](https://dev.to/boostup/uncaught-referenceerror-process-is-not-defined-12kg)
 
   ```
   import react from "@vitejs/plugin-react";
   import { defineConfig, loadEnv } from "vite";
-  import svgr from "vite-plugin-svgr";
 
   //vitejs.dev/config/
   export default defineConfig(({ mode }) => {
@@ -176,101 +202,50 @@ Upon investigating the data I had saved in Firestore and inspecting the content 
     return {
       define: {
         "process.env.REACT_APP_API_KEY": JSON.stringify(env.REACT_APP_API_KEY),
-        "process.env.REACT_APP_AUTH_DOMAIN": JSON.stringify(
-          env.REACT_APP_AUTH_DOMAIN
-        ),
-        "process.env.REACT_APP_PROJECT_ID": JSON.stringify(
-          env.REACT_APP_PROJECT_ID
-        ),
-        "process.env.REACT_APP_STORAGE_BUCKET": JSON.stringify(
-          env.REACT_APP_STORAGE_BUCKET
-        ),
-        "process.env.REACT_APP_MESSAGING_SENDER_ID": JSON.stringify(
-          env.REACT_APP_MESSAGING_SENDER_ID
-        ),
-        "process.env.REACT_APP_APP_ID": JSON.stringify(env.REACT_APP_APP_ID),
       },
-      plugins: [svgr(), react()],
+      plugins: [react()],
     };
   });
 
   ```
 
-  Option 2: use `VITE_` prefix and `import_meta.env`
-
-  In my .env, I declared:
-
-  ```
-    VITE_REACT_APP_API_KEY = my_api_key ...
-  ```
-
-  In my firebase.js, I declared:
-
-  ```
-  const firebaseConfig = {
-    apiKey: import.meta.env.VITE_REACT_APP_API_KEY, ...
-  };
-  ```
-
-  In vite.config.js,
-
-  ```
-  import react from "@vitejs/plugin-react";
-  import { defineConfig } from "vite";
-  import svgr from "vite-plugin-svgr";
-
-  //vitejs.dev/config/
-  export default defineConfig(() => {
-  return {
-    plugins: [svgr(), react()],
-  };
-  });
-
-  ```
-
-- ❓
-
 ### Continued development
 
-- Time management and estimate
+- Effective Time Management and Estimation 📅✅
 
-I didn't intend to control time I spent on this project but during the process, I found it is crutial for developers to have a plan. Without planning ahead, it is so easy to get caught by some fancy features which may not be so crutial at that point and spend more time without proceeding.
+  Initially, I didn't have a strict time management strategy in mind for this project. However, as I delved into the development process, I realized the significance of having a well-structured plan. Without proactive planning, it's easy to get sidetracked by appealing yet unimportant features, resulting in wasted time and limited progress.
 
-- ❓
+- Pagination 📄1️⃣
+
+  At the moment, I have a limited number of blogs listed on the "Blogs" page, making pagination appear unnecessary. However, as my blog collection grows, I will definitely contemplate the implementation of pagination. From what I understand, this feature can be achieved using either React Router or Firebase, and I look forward to incorporating it as the need arises.
+
+- Real-time Updates with onSnapshot 🔄⚡
+
+  Currently, I retrieve blogs data using getDocs() to gain hands-on experience with Data Router's functionalities, including features like loaders, defer, Await, and React Suspense. However, I've observed that when I click the "delete" button on the "Blogs" page, the page doesn't update in real-time, primarily because it doesn't utilize onSnapshot. In the future, I'm eager to address this and ensure real-time updates for a more responsive user experience.
+
+- Optimizing with useMemo and memo ♻️
+
+  In the current project, I haven't employed useMemo or memo because I think it is not necessary as some states or props are bound to change rapidly and there are no expensive computations. However, I acknowledge the possibility that I might have overlooked some opportunities to utilize them in my project. I'm excited about gaining more experience in using them in the future.
+
+- Post-Login Redirection 🔀
+
+  In the current version of my website, once a user logs in successfully, a confirmation page is displayed without automatic redirection. While in a small-scale application, this might not appear crucial or inconvenient, particularly when access is limited to just me. However, improving this functionality holds the potential for a more seamless user experience. Redirection after login is a commonly expected feature in most websites, and I'm excited about implementing it to practice and enhance the overall user experience.
+
+- Real-time User Profile Updates ⚡
+
+  At present, when I make changes to the user's profile, it requires an additional page refresh to display the updated username and photo. My goal for the new version of the website is to seamlessly reflect these changes in real-time.
+
+- Exploring Color Theory 🎨
+
+  One of the primary challenges I encountered while working on this project was the selection of colors for both light and dark modes. Overall, I'm satisfied with the colors I ultimately chose. However, I am fully aware that there is a lot of knowledge to be gained in the realm of color theory, especially in the context of creating visually appealing, user-friendly, and accessible websites and applications.
 
 ### Helpful Resources
 
-#### Designs
+#### APIs
 
-- [favicon.io](https://favicon.io/favicon-generator/)
-- [COOLTEXT](https://cooltext.top/)
-- [Emoji Combos](https://emojicombos.com/)
-- [Pixel Me](https://pixel-me.tokyo/en/)
-- [Pixel Speech Bubble](https://pixelspeechbubble.com/)
-- [いらすとや](https://www.irasutoya.com/)
-- [ColorSpace](https://mycolor.space/)
-- [SVG REPO](https://www.svgrepo.com/)
-- [icons8](https://icons8.com/icons)
-- [Font Awesome Icons](https://fontawesomeicons.com/svg/icons)
-- [Pixabay](https://pixabay.com/)
-- [AudioMass](https://audiomass.co/)
-- [Material Design Dark Theme](https://m2.material.io/design/color/dark-theme.html)
-- [Colormind](http://colormind.io/)
-- [Material Design Color Palettes](https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors)
+- [Open Weather API](https://openweathermap.org/)
 
-#### HTML
-
-- [HTML ESCAPE CHARACTERS: COMPLETE LIST OF HTML ENTITIES](https://mateam.net/html-escape-characters/)
-
-#### Web APIs
-
-- [Geolocation: getCurrentPosition() method](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition)
-- [Document: title property](https://developer.mozilla.org/en-US/docs/Web/API/Document/title)
-- [Window: location property](https://developer.mozilla.org/en-US/docs/Web/API/Window/location)
-- [Element: scrollTo() method](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo)
-- [Window: location property](https://developer.mozilla.org/en-US/docs/Web/API/Window/location)
-- [audio: The Embed Audio element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio)
-- [Using files from web applications](https://developer.mozilla.org/en-US/docs/Web/API/File_API/Using_files_from_web_applications)
+  To get local weather and temperature depending on visitor's' location.
 
 #### CSS
 
@@ -285,6 +260,54 @@ I didn't intend to control time I spent on this project but during the process, 
 - [How can I style horizontal scrollbar by CSS?](https://stackoverflow.com/questions/44334106/how-can-i-style-horizontal-scrollbar-by-css)
 - [text-decoration-skip-ink](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-skip-ink)
 
+#### Designs
+
+##### Colors
+
+- [Material Design Dark Theme](https://m2.material.io/design/color/dark-theme.html)
+- [Material Design Color Palettes](https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors)
+- [ColorSpace](https://mycolor.space/)
+- [Colormind](http://colormind.io/)
+- [Canva Color Wheel](https://www.canva.com/colors/color-wheel/)
+- [Accessible color palette generator](https://venngage.com/tools/accessible-color-palette-generator)
+- [WebAIM](https://webaim.org/resources/contrastchecker/)
+- [Coolors](https://coolors.co/)
+- [Huemint](https://huemint.com/website-1/)
+
+##### Emojis
+
+- [COOLTEXT](https://cooltext.top/)
+- [Emoji Combos](https://emojicombos.com/)
+
+##### Favicons
+
+- [favicon.io](https://favicon.io/favicon-generator/)
+
+##### Icons
+
+- [SVG REPO](https://www.svgrepo.com/)
+- [icons8](https://icons8.com/icons)
+- [iconmonstr](https://iconmonstr.com/)
+- [Font Awesome Icons](https://fontawesomeicons.com/svg/icons)
+
+##### Illustrations
+
+- [いらすとや](https://www.irasutoya.com/)
+
+##### Pixel
+
+- [Pixel Me](https://pixel-me.tokyo/en/)
+- [Pixel Speech Bubble](https://pixelspeechbubble.com/)
+
+##### Sound
+
+- [Pixabay](https://pixabay.com/)
+- [AudioMass](https://audiomass.co/)
+
+#### HTML
+
+- [HTML ESCAPE CHARACTERS: COMPLETE LIST OF HTML ENTITIES](https://mateam.net/html-escape-characters/)
+
 #### JavaScript
 
 - [Date.prototype.toDateString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toDateString)
@@ -293,19 +316,43 @@ I didn't intend to control time I spent on this project but during the process, 
 - [encodeURIComponent()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent)
 - [Chrome 80 shows timestamp "24:xx" instead of "00:00".](https://support.google.com/chrome/thread/29828561/chrome-80-shows-timestamp-24-xx-instead-of-00-00?hl=en)
 
-During development, I found that only on chrome mac shows 24 instead of 00, fixed by using hourCycle: 23h instead of hour12: false. ❓
+  While in the development process, I encountered an issue specific to Chrome on macOS. The problem was that when displaying the time for 12:00 AM, it appeared as 24 instead of 00. I managed to resolve this issue by using `hourCycle: 23h` instead of `hour12: false`.
+
+#### Markdown
+
+- [react-md-editor](https://uiwjs.github.io/react-md-editor/)
+
+  I first tried rich text editor (TinyMCE) but later switched to Markdown editor because firstly rich text editor's data can not be stored formatted in Firebase as I expected. Secondly, I am more familiar with Markdown so far. However, I will be more than willing to learn more about rich text editors and utilize them in my future projects.
+
+- [How can I set the placeholder value? #154](https://github.com/uiwjs/react-md-editor/issues/154)
+
+- [react-markdown](https://github.com/remarkjs/react-markdown)
+
+  To display Markdown in my website.
+
+- [Marked](https://marked.js.org/)
+- [html-react-parser](https://github.com/remarkablemark/html-react-parser)
+- [remark-gfm](https://github.com/remarkjs/remark-gfm)
+
+  Didn't use in this website yet, but seems helpful to display footnotes, strike through, tables, task lists and URLs directly.
+
+- [Emoji list markers](https://talk.commonmark.org/t/emoji-list-markers/3560)
 
 #### React
 
 - [use-sound](https://github.com/joshwcomeau/use-sound)
-  ❓
+
+  This is a very helpful React custom hook created by Josh Comeau that makes it very easy to work with sound.
+
 - [Announcing “use-sound”, a React Hook for Sound Effects](https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/)
 - [useContext](https://react.dev/reference/react/useContext)
 - [Hide Firebase API Keys in ReactJS Project using Environment Variables](https://blogs.ayushdev.com/hide-firebase-api-keys-in-reactjs-project-using-environment-variables)
 - [A Pitfall I Almost Fell Into… Learn how to save your API KEYS](https://medium.com/@oadaramola/a-pitfall-i-almost-fell-into-d1d3461b2fb8)
 - [useRef](https://react.dev/reference/react/useRef#referencing-a-value-with-a-ref)
 
-  I found a bug that if I clicked in-page links, then select "back to blogs" or simply click on back button, I will be directed to "/blogsundefined" instead of "/blogs" which of course is invalid. Then I found it was because I wanted user to return to the category filter they selected so I check their location state and add it to url. But after I clicked in-page links, it became undefined. I wanted to use useState to keep it but it will leave setStae unused then I found I can use useRef in this case.❓
+  I came across a bug in my project where, if I clicked on in-page links and then chose to navigate "back to blogs" or simply used the browser's back button, I was unexpectedly directed to "/blogsundefined" instead of the intended "/blogs" route. It turned out that this issue stemmed from my desire to have users return to the previously selected category filter, and I was checking the location state to achieve this. However, after clicking in-page links, the location state became undefined.
+
+  My initial approach involved using useState to preserve this information, but it left me with an unused setState and felt like an unnecessary workaround. Upon further exploration, I realized that I could effectively handle this scenario using useRef, which provided the desired solution without the complications. This adjustment resolved the bug, ensuring the correct URL redirection and retaining the desired category filter selection.
 
 #### React Router
 
@@ -313,17 +360,41 @@ During development, I found that only on chrome mac shows 24 instead of 00, fixe
 - [Scroll Restoration v5](https://v5.reactrouter.com/web/guides/scroll-restoration)
 - [ScrollRestoration v6](https://reactrouter.com/en/main/components/scroll-restoration)
 
-I was having difficulty creating a "back to top" button and I found a couple things to consider. First, I learned that my scrollable container is not window but body in this case according to Firefox dev tools. Second, my scroll to top button doesn't help to load new page's begining but the position of old page where I was at, then I found scrollRestoration from react router which is very helpful but also "remembers" window.location. ScrollRestoration only works on window level. not working here...
+  I encountered challenges while implementing a "back to top" button, and two important factors came to my attention during the process.
+
+  Firstly, I discovered that my scrollable container was the body element, as indicated by Firefox's developer tools, rather than the browser window itself. This distinction was crucial for tailoring the button's functionality.
+
+  Secondly, I observed that my "back to top" button did not reset the scroll position to the new page's beginning; instead, it retained the old page's scroll position. To address this issue, I explored the use of scrollRestoration provided by React Router, which was beneficial for managing scroll behavior during navigation. However, it's worth noting that the scrollRestoration feature primarily operates at the window level, which didn't fully address my needs.
+
+  To resolve this, I implemented a workaround by refreshing the "scroll to top" function based on the current pathname using useLocation. This approach allowed me to regain control over the scroll position and ensure that the page starts from the top when navigating to a new location.
 
 - [<ScrollRestoration> with scrolling container other than window #9495](https://github.com/remix-run/react-router/discussions/9495)
 - [index.tsx:24 Uncaught Error: useLocation() may be used only in the context of a <Router> component](https://stackoverflow.com/questions/71979809/index-tsx24-uncaught-error-uselocation-may-be-used-only-in-the-context-of-a)
 
-I had the same error and was thinking where to put my scroll component for the best. This answer inspired me to add it in layout route and enable to utilize useLocation.
+  I encountered the same error and was considering where to put my scroll component for the best practice. This answer inspired me to add it to the layout route and enable the utilization of useLocation.
 
 #### Styled-Components
 
 - [Referring to other components](https://styled-components.com/docs/advanced#referring-to-other-components)
 - [Theming](https://styled-components.com/docs/advanced#theming)
+
+#### Tools
+
+- [How to Import SVGs in a React and Vite app](https://www.freecodecamp.org/news/how-to-import-svgs-in-react-and-vite/#3importingsvgsasreactcomponents)
+
+  I usually use SVGR to transform SVGs into React components to work with.
+
+- [Formspree](https://formspree.io/)
+
+  To create my contact form.
+
+- [LT Browser](https://www.lambdatest.com/lt-browser)
+
+  To test responsive designs on different devices locally.
+
+- [Find scrollable elements](https://phuoc.ng/collection/tips/find-scrollable-elements/)
+
+  To find which elements are scrollable, you can check the Firefox inspector.
 
 #### Vite
 
@@ -332,57 +403,22 @@ I had the same error and was thinking where to put my scroll component for the b
 - [How to load environment variables from .env file using Vite](https://stackoverflow.com/questions/70709987/how-to-load-environment-variables-from-env-file-using-vite)
 - [Env Variables and Modes](https://vitejs.dev/guide/env-and-mode.html)
 
-#### APIs
-
-- [Open Weather API](https://openweathermap.org/)
-
-To get local weather and temperature depending on visitor's' location
+#### Web APIs
 
 - [location: reload() method](https://developer.mozilla.org/en-US/docs/Web/API/Location/reload)
-
-#### Markdown
-
-- [react-md-editor](https://uiwjs.github.io/react-md-editor/)
-
-I first tried rich text editor (TinyMCE) but later switched to Markdown editor because firstly rich text editor's data can not be stored formatted in Firebase as I expected. Secondly, I am more familiar with Markdown so far. But I will be more than willing to learn more about rich text editor and utilize it in my future projects.
-
-- [How can I set the placeholder value? #154](https://github.com/uiwjs/react-md-editor/issues/154)
-
-- [react-markdown](https://github.com/remarkjs/react-markdown)
-
-To display markdown in my website
-
-- [Marked](https://marked.js.org/)
-- [html-react-parser](https://github.com/remarkablemark/html-react-parser)
-- [remark-gfm](https://github.com/remarkjs/remark-gfm)
-
-Didn't use in this website yet, but seems helpful to display footnotes, strikethrough, tables, tasklists and URLs directly
-
-- [Emoji list markers](https://talk.commonmark.org/t/emoji-list-markers/3560)
-
-#### Tools
-
-- [How to Import SVGs in a React and Vite app](https://www.freecodecamp.org/news/how-to-import-svgs-in-react-and-vite/#3importingsvgsasreactcomponents)
-
-I usually use SVGR to transform svg into React component to work with.
-
-- [Formspree](https://formspree.io/)
-
-To create my contact form
-
-- [LT Browser](https://www.lambdatest.com/lt-browser)
-
-To test responsive designs on different devices locally
-
-- [Find scrollable elements](https://phuoc.ng/collection/tips/find-scrollable-elements/)
-
-To find which elements are scrollable, you can check Firefox inspector
+- [Geolocation: getCurrentPosition() method](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition)
+- [Document: title property](https://developer.mozilla.org/en-US/docs/Web/API/Document/title)
+- [Window: location property](https://developer.mozilla.org/en-US/docs/Web/API/Window/location)
+- [Element: scrollTo() method](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo)
+- [Window: location property](https://developer.mozilla.org/en-US/docs/Web/API/Window/location)
+- [audio: The Embed Audio element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio)
+- [Using files from web applications](https://developer.mozilla.org/en-US/docs/Web/API/File_API/Using_files_from_web_applications)
 
 ## References
 
-- Dark mode colors are inspired by @hidie6136 from [小红书](https://www.xiaohongshu.com/explore), [ピノキオピー](https://pinocchiop.com/) and [Material Design Dark Theme](https://m2.material.io/design/color/dark-theme.html)
+- Dark mode colors are inspired by @hidie6136 from [小红书](https://www.xiaohongshu.com/explore), and [Material Design Dark Theme](https://m2.material.io/design/color/dark-theme.html)
 - Dark mode grid background is inspired by [Edmundo Santos CodePen](https://codepen.io/edmundojr/pen/xOYJGw)
-- Svgs are from [Font Awesome](https://fontawesome.com/), [SVG REPO](https://www.svgrepo.com/), and [Font Awesome Icons](https://fontawesomeicons.com/)
+- SVGs are from [Font Awesome](https://fontawesome.com/), [SVG REPO](https://www.svgrepo.com/), and [Font Awesome Icons](https://fontawesomeicons.com/)
 - Favicons are created using [favicon.io](https://favicon.io/favicon-generator/)
 - Emojis are from [COOLTEXT](https://cooltext.top/) and [Emoji Combos](https://emojicombos.com/)
 - Profile picture is made by [Pixel Me](https://pixel-me.tokyo/en/)
@@ -393,6 +429,6 @@ To find which elements are scrollable, you can check Firefox inspector
 ## Author
 
 - Website - [Zun Liang](https://zun-liang.github.io/)
-- Github - [@zun-liang](https://github.com/zun-liang)
+- GitHub - [@zun-liang](https://github.com/zun-liang)
 - Frontend Mentor - [@zun-liang](https://www.frontendmentor.io/profile/zun-liang)
 - freeCodeCamp - [@zun-liang](https://www.freecodecamp.org/zun-liang)

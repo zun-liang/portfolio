@@ -156,4 +156,3 @@ const UpdateProfile = () => {
 };
 
 export default UpdateProfile;
-//want to reflect on page once profile updated;

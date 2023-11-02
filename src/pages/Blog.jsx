@@ -6,19 +6,13 @@ import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import {
-  ParagraphSwitch,
-  PrimaryTertiary,
-  SecondaryParagraph,
-  TertiaryParagraph,
-  TertiarySwitch,
-} from "../assets/styles/Styles";
+import { HighlightSwitch, PrimaryTertiary, SecondaryParagraph, TertiaryParagraph } from "../assets/styles/Styles";
+import BackButton from "../components/BackButton";
 import BlogContent from "../components/BlogContent";
+import DeleteButton from "../components/DeleteButton";
+import EditButton from "../components/EditButton";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { db } from "../firebase";
-import EditButton from "../components/EditButton";
-import DeleteButton from "../components/DeleteButton";
-import BackButton from "../components/BackButton";
 
 const BlogContainer = styled.div`
   width: 80vw;
@@ -57,8 +51,7 @@ const TagsContainer = styled.div`
   gap: 1rem;
 `;
 const Tag = styled.p`
-  color: ${ParagraphSwitch};
-  text-shadow: -1px -1px ${TertiarySwitch};
+  color: ${HighlightSwitch};
 `;
 
 export const loader = async ({ params }) => {

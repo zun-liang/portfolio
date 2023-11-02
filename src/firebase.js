@@ -1,4 +1,3 @@
-import { getAnalytics } from "firebase/analytics";
 /* eslint-disable no-undef */
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
@@ -16,9 +15,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
 export const db = getFirestore(app);
 export const blogsCollection = collection(db, "blogs");
 export const auth = getAuth();
-//how to use analytics here?

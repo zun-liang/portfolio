@@ -186,4 +186,3 @@ const Login = () => {
 };
 
 export default Login;
-//after shows sucessfully logged in for a couple seconds, redirect users to previous page

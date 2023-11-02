@@ -50,8 +50,6 @@ export const SecondaryTertiary = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "var(--dark-tertiary)";
 export const SecondaryParagraph = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "var(--dark-paragraph)";
-export const SecondaryHighlight = ({ theme }) =>
-  theme.mode ? "var(--light-secondary)" : "var(--dark-highlight)";
 export const SecondaryTransparent = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "transparent";
 export const SecondaryHover = ({ theme }) =>
@@ -74,8 +72,6 @@ export const BackgroundTransparent = ({ theme }) =>
   theme.mode ? "var(--light-background)" : "transparent";
 export const BackgroundDot = ({ theme }) =>
   theme.mode ? "var(--light-background)" : "var(--dot-color)";
-export const TransparentDot = ({ theme }) =>
-  theme.mode ? "var(--light-transparent)" : "var(--dot-color)";
 
 /* ===  Cursor switch === */
 export const AutoSwitch = ({ theme }) =>

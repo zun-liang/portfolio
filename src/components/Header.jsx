@@ -9,14 +9,7 @@ import On from "..//assets/sounds/on.mp3";
 import { ReactComponent as TempIcon } from "../assets/images/icons/temperature.svg";
 import { ReactComponent as WeatherIcon } from "../assets/images/icons/weather.svg";
 import Key from "../assets/sounds/key.mp3";
-import {
-  AutoSwitch,
-  PointerSwitch,
-  PrimarySwitch,
-  SecondaryPrimary,
-  SecondarySwitch,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { AutoSwitch, PointerSwitch, PrimarySwitch, SecondaryPrimary, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 import { SoundContext } from "../contexts/SoundContext";
 import Menu from "./Menu";
@@ -147,8 +140,6 @@ const ModeSwitch = styled.p`
   cursor: ${PointerSwitch};
   text-shadow: 1px 1px ${SecondarySwitch};
 `;
-
-//kinda want to use loader here to show weather loading...
 
 const Header = ({ screenWidth }) => {
   const { mode, setMode } = useContext(ModeContext);

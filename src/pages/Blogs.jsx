@@ -254,6 +254,3 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
 };
 
 export default Blogs;
-//how to cache the data so it doesn't need to get data everytime;
-//looks like memo can not stop many rerendering;
-//pagination -> can be done either by router or firebase

@@ -28,7 +28,7 @@ const GlobalStyles = createGlobalStyle`
 
         --dot-size: 1px;
         --dot-space: 25px;
-        --dot-color: #8b8b8b95;
+        --dot-color: #8b8b8b7c;
 
         --app-height: 100%;
     }

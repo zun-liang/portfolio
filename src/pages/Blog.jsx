@@ -6,23 +6,18 @@ import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import {
-  HighlightSwitch,
-  PrimaryTertiary,
-  SecondaryParagraph,
-  TertiaryParagraph,
-} from "../assets/styles/Styles";
+import { HighlightSwitch, PrimaryTertiary, SecondaryParagraph, TertiaryParagraph } from "../assets/styles/Styles";
 import BackButton from "../components/BackButton";
 import BlogContent from "../components/BlogContent";
+import CommentButton from "../components/CommentButton";
+import CommentInterface from "../components/CommentInterface";
+import Comments from "../components/Comments";
 import DeleteButton from "../components/DeleteButton";
 import EditButton from "../components/EditButton";
+import LikeButton from "../components/LikeButton";
+import ShareButton from "../components/ShareButton";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { db } from "../firebase";
-import LikeButton from "../components/LikeButton";
-import CommentButton from "../components/CommentButton";
-import ShareButton from "../components/ShareButton";
-import Comments from "../components/Comments";
-import CommentInterface from "../components/CommentInterface";
 
 const BlogContainer = styled.div`
   width: 80vw;
@@ -107,7 +102,6 @@ const Blog = ({ setBlogToEdit, setTagsToEdit, playSwoosh }) => {
     content: blogContent,
     tag: blogTag,
     likes: blogLikes,
-    comments: blogComments,
   } = useLoaderData();
 
   useEffect(() => {
@@ -159,10 +153,10 @@ const Blog = ({ setBlogToEdit, setTagsToEdit, playSwoosh }) => {
         <CommentInterface
           setComment={setComment}
           playSwoosh={playSwoosh}
-          blogComments={blogComments}
+          blogID={blogID}
         />
       )}
-      <Comments />
+      <Comments blogID={blogID} />
     </BlogContainer>
   );
 };

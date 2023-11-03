@@ -1,16 +1,13 @@
+import { doc, increment, updateDoc } from "firebase/firestore";
+import { useContext, useState } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { ReactComponent as LikeIcon } from "../assets/images/icons/like.svg";
-import { useState, useContext } from "react";
-import { SoundContext } from "../contexts/SoundContext";
-import {
-  PointerSwitch,
-  PrimarySecondary,
-  TertiaryHighlight,
-} from "../assets/styles/Styles";
-import Poit from "../assets/sounds/poit.mp3";
 import useSound from "use-sound";
-import { doc, updateDoc, increment } from "firebase/firestore";
+
+import { ReactComponent as LikeIcon } from "../assets/images/icons/like.svg";
+import Poit from "../assets/sounds/poit.mp3";
+import { PointerSwitch, PrimarySecondary, TertiaryHighlight } from "../assets/styles/Styles";
+import { SoundContext } from "../contexts/SoundContext";
 import { db } from "../firebase";
 
 const StyledDiv = styled.div`
@@ -19,7 +16,6 @@ const StyledDiv = styled.div`
   display: flex;
   align-items: center;
   gap: 3px;
-  //border: 1px solid red;
 `;
 const StyledLikeIcon = styled(LikeIcon)`
   width: 1.6rem;
@@ -77,13 +73,26 @@ const LikeButton = ({ blogLikes, blogID }) => {
     if (like) {
       setLike(false);
       setLikeNum((prev) => prev - 1);
+      try {
+        await updateDoc(likesRef, {
+          likes: increment(-1),
+        });
+      } catch (error) {
+        console.error("Error while updating like number:", error);
+        throw new Error("Something went wrong while updating like number");
+      }
     } else {
       playPoit();
       setLike(true);
       setLikeNum((prev) => prev + 1);
-      await updateDoc(likesRef, {
-        likes: increment(1),
-      });
+      try {
+        await updateDoc(likesRef, {
+          likes: increment(1),
+        });
+      } catch (error) {
+        console.error("Error while updating like number:", error);
+        throw new Error("Something went wrong while updating like number");
+      }
     }
   };
 

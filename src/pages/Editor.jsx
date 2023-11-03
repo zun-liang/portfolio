@@ -187,7 +187,6 @@ const Editor = ({
     nanoid();
   const timestamp = serverTimestamp();
   const overview = marked.parse(blogSplit.filter((x) => x !== "")[1] || "");
-  const time = new Date().toLocaleString();
   const content = marked.parse(blogSplit.slice(1).join("\n") || "");
   const tag = tagInput.toString().toLowerCase().split(" ");
 
@@ -197,28 +196,23 @@ const Editor = ({
     id: id,
     timestamp: timestamp,
     title: title,
-    time: time,
     overview: overview,
     content: content,
     tag: tag,
     likes: 0,
-    comments: [],
   };
 
   const retrievedId = blogToEdit?.id;
   const retrievedLikes = blogToEdit?.likes;
-  const retrievedComment = blogToEdit?.comment;
 
   const updatedBlogObj = {
     id: retrievedId,
     timestamp: timestamp,
     title: title,
-    time: time,
     overview: overview,
     content: content,
     tag: tag,
     likes: retrievedLikes,
-    comments: retrievedComment,
   };
 
   const clearAll = () => {
@@ -262,24 +256,20 @@ const Editor = ({
     id: "draft",
     timestamp: timestamp,
     title: title,
-    time: time,
     overview: overview,
     content: content,
     tag: tag,
     likes: 0,
-    comments: [],
   };
 
   const updatedDraft = {
     id: "draft",
     timestamp: timestamp,
     title: title,
-    time: time,
     overview: overview,
     content: content,
     tag: tag,
     likes: 0,
-    comments: [],
   };
 
   const saveDraft = async () => {

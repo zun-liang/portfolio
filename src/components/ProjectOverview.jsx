@@ -3,8 +3,20 @@ import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { BackgroundDot, BackgroundTransparent, OpaqueSwitch, PointerSwitch, PrimarySwitch, SecondaryHover, SecondaryTransparent, TertiaryHighlight, TertiaryPrimary, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  BackgroundDot,
+  BackgroundTransparent,
+  OpaqueSwitch,
+  PointerSwitch,
+  PrimarySwitch,
+  SecondaryHover,
+  SecondaryTransparent,
+  TertiaryHighlight,
+  TertiaryPrimary,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
+import ProjectLinks from "./ProjectLinks";
 
 const ProjectLink = styled(Link)`
   width: 100%;
@@ -62,13 +74,21 @@ const StyledImg = styled.img`
 const StyledH2 = styled.h2`
   margin-top: 0.5rem;
   font-family: "Black Ops One", sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: ${TertiaryPrimary};
 `;
 const Time = styled.p`
   font-size: 0.8rem;
   color: ${TertiaryHighlight};
   text-shadow: 1px 0px ${SecondaryTransparent};
+`;
+const StyledDiv = styled.div`
+  margin-top: -2rem;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
 `;
 const StyledP = styled.p`
   color: ${TertiarySecondary};
@@ -90,6 +110,9 @@ const ProjectOverview = ({ projectsArr, playPageTurn }) => {
         />
         <StyledH2>{project.name}</StyledH2>
         <Time>{project.period}</Time>
+        <StyledDiv>
+          <ProjectLinks proj={project} />
+        </StyledDiv>
         <StyledP>{project.description}</StyledP>
       </ProjectOverviewContainer>
     </ProjectLink>
@@ -98,3 +121,4 @@ const ProjectOverview = ({ projectsArr, playPageTurn }) => {
 };
 
 export default ProjectOverview;
+//currently links are functioning weirdly

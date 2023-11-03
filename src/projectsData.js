@@ -1,7 +1,7 @@
 export const projects = [
   {
     id: "portfolio",
-    name: "Secret Blog Management in Portfolio",
+    name: "Secret Blog Management System in Portfolio",
     period: "November 2023",
     description:
       "A hidden blog management system built with React, React Router, Markdown, and Firebase.",
@@ -15,29 +15,25 @@ export const projects = [
     introduction: [
       {
         id: "intro1",
-        text: 'This is the "secret" blog management system in my portfolio website. In it, users are able to create, edit, delete, post blogs, retrieve drafts, save drafts, and update user name and photos.',
+        text: 'This is the "secret" blog management system in my portfolio website. Visitors can read my blogs in my website but only I (the admin) have access to the management system, that is why it is called "secret".',
       },
     ],
     functions: [
       {
         id: "func1",
-        text: "View the optimal layout for the website depending on their device's screen size",
+        text: "Log in and log out the management system",
       },
       {
         id: "func2",
-        text: "See hover/active/focus states for all interactive elements on the page",
+        text: "Retrieve drafts and save drafts to Firestore",
       },
       {
         id: "func3",
-        text: "Toggle light and dark mode (default based on day/night)",
+        text: "Update user name and profile photo locally",
       },
-      { id: "func4", text: "Toggle sound effects (default mute)" },
-      { id: "func5", text: "Toggle background music (default mute)" },
-      {
-        id: "func6",
-        text: "Get weather and temperature information depending on their location",
-      },
-      { id: "func7", text: "Get current time depending on their time zone" },
+      { id: "func4", text: "Create and edit blogs in Markdown" },
+      { id: "func5", text: "Delete or post blogs supported" },
+      { id: "func6", text: "Tag blogs" },
     ],
     tools: [
       "HTML",
@@ -59,11 +55,11 @@ export const projects = [
     purpose: [
       {
         id: "pur1",
-        text: "The primary purpose behind creating this portfolio website is to establish a unique online space where I can share my ideas 💡, communicate my skills 💻, and connect with other developers 👩‍💻👨‍💻. Having observed numerous impressive portfolio websites out there, it's an immense source of pride and satisfaction to finally have one of my own 🚀.",
+        text: "Before creating this blog management system, I was considering using other platforms to save my blogs. Then I realized if I use other platforms, which means that I can only put a link for my blogs page. Visitors will be directed to another website. I am not saying this is not good, but it does look a little inconsistent. Plus, as a front end developer, it feels like cheating in my opinion. I know there are a lot of discussions about whether developers should spend a lot of time building a portfolio website, but I personally found it is a good idea, especially because I regard it as an excellent opportunity to practice my existing skills and learn more. ",
       },
       {
         id: "pur2",
-        text: "Moreover, I envision this website as a reflection of my personality and preferences 🌈. It's not just a professional showcase; it's a personal space where visitors can get to know the person behind the work 👩‍💻. Through this platform, I aim to inspire and foster connections with those who share my interests and passions 💖.",
+        text: "Moreover, I envision this website as a reflection of my personality and preferences 🌈. It's not just a professional showcase; it's a personal space where visitors can get to know the person behind the work 👩‍💻. A built in blog management system gives me more flexibility to personalize my blogs💖.",
       },
     ],
     spotlight: [

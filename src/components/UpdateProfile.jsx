@@ -38,7 +38,7 @@ const StyledLabel = styled.label`
 `;
 const StyledInput = styled(BasicInput)`
   margin-top: -0.5rem;
-  height: 1.5rem;
+  height: 1.8rem;
   padding: 0 10px;
 `;
 const FileInput = styled.input`

@@ -64,12 +64,18 @@ export const TertiaryHighlight = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dark-highlight)";
 export const TertiaryBackground = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dark-background)";
+export const TertiaryTransparent = ({ theme }) =>
+  theme.mode ? "var(--light-tertiary)" : "transparent";
 export const TertiaryDot = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dot-color)";
+export const HighlightPrimary = ({ theme }) =>
+  theme.mode ? "var(--light-highlight)" : "var(--dark-primary)";
 export const OutlineSwitch = ({ theme }) =>
   theme.mode ? "none" : "2px solid var(--dark-secondary)";
 export const BackgroundTransparent = ({ theme }) =>
   theme.mode ? "var(--light-background)" : "transparent";
+export const BackgroundSecondary = ({ theme }) =>
+  theme.mode ? "var(--light-background)" : "var(--dark-secondary)";
 export const BackgroundDot = ({ theme }) =>
   theme.mode ? "var(--light-background)" : "var(--dot-color)";
 

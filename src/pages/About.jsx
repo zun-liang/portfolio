@@ -270,7 +270,7 @@ const About = () => {
           </StyledListItem>
           <StyledListItem>
             <Icon icon={faGithub} />
-            <span>Github</span>
+            <span>GitHub</span>
           </StyledListItem>
           <StyledListItem>
             <StyledVSCIcon />

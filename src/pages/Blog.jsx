@@ -1,18 +1,28 @@
 /* eslint-disable react-refresh/only-export-components */
 import { doc, getDoc } from "firebase/firestore";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Markdown from "react-markdown";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { HighlightSwitch, PrimaryTertiary, SecondaryParagraph, TertiaryParagraph } from "../assets/styles/Styles";
+import {
+  HighlightSwitch,
+  PrimaryTertiary,
+  SecondaryParagraph,
+  TertiaryParagraph,
+} from "../assets/styles/Styles";
 import BackButton from "../components/BackButton";
 import BlogContent from "../components/BlogContent";
 import DeleteButton from "../components/DeleteButton";
 import EditButton from "../components/EditButton";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { db } from "../firebase";
+import LikeButton from "../components/LikeButton";
+import CommentButton from "../components/CommentButton";
+import ShareButton from "../components/ShareButton";
+import Comments from "../components/Comments";
+import CommentInterface from "../components/CommentInterface";
 
 const BlogContainer = styled.div`
   width: 80vw;
@@ -53,6 +63,15 @@ const TagsContainer = styled.div`
 const Tag = styled.p`
   color: ${HighlightSwitch};
 `;
+const IconsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  @media (min-width: 1350px) {
+    gap: 3rem;
+  }
+`;
 
 export const loader = async ({ params }) => {
   const { title } = params;
@@ -79,7 +98,9 @@ const Blog = ({ setBlogToEdit, setTagsToEdit }) => {
   const search = location.state?.search;
   const ref = useRef(search); //to keep the search value
   const newSearch = ref.current;
+  const [comment, setComment] = useState(false);
   const blogData = useLoaderData();
+
   const {
     id: blogID,
     time: blogTime,
@@ -128,6 +149,13 @@ const Blog = ({ setBlogToEdit, setTagsToEdit }) => {
       <StyledP>{blogTime}</StyledP>
       <BlogContent blogContent={blogContent} />
       <TagsContainer>{tags}</TagsContainer>
+      <IconsContainer>
+        <LikeButton />
+        <CommentButton comment={comment} setComment={setComment} />
+        <ShareButton />
+      </IconsContainer>
+      {comment && <CommentInterface setComment={setComment} />}
+      <Comments />
     </BlogContainer>
   );
 };

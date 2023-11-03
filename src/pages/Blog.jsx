@@ -62,15 +62,14 @@ const TagsContainer = styled.div`
 `;
 const Tag = styled.p`
   color: ${HighlightSwitch};
+  font-family: "Black Ops One", sans-serif;
 `;
 const IconsContainer = styled.div`
   width: 100%;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  gap: 2.5rem;
-  @media (min-width: 1350px) {
-    gap: 3rem;
-  }
+  gap: 2rem;
 `;
 
 export const loader = async ({ params }) => {
@@ -91,7 +90,7 @@ export const loader = async ({ params }) => {
   }
 };
 
-const Blog = ({ setBlogToEdit, setTagsToEdit }) => {
+const Blog = ({ setBlogToEdit, setTagsToEdit, playSwoosh }) => {
   const playPick = useContext(PlayPickContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -107,6 +106,8 @@ const Blog = ({ setBlogToEdit, setTagsToEdit }) => {
     title: blogTitle,
     content: blogContent,
     tag: blogTag,
+    likes: blogLikes,
+    comments: blogComments,
   } = useLoaderData();
 
   useEffect(() => {
@@ -150,11 +151,17 @@ const Blog = ({ setBlogToEdit, setTagsToEdit }) => {
       <BlogContent blogContent={blogContent} />
       <TagsContainer>{tags}</TagsContainer>
       <IconsContainer>
-        <LikeButton />
+        <LikeButton blogLikes={blogLikes} blogID={blogID} />
         <CommentButton comment={comment} setComment={setComment} />
         <ShareButton />
       </IconsContainer>
-      {comment && <CommentInterface setComment={setComment} />}
+      {comment && (
+        <CommentInterface
+          setComment={setComment}
+          playSwoosh={playSwoosh}
+          blogComments={blogComments}
+        />
+      )}
       <Comments />
     </BlogContainer>
   );

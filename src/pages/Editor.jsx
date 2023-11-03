@@ -201,18 +201,24 @@ const Editor = ({
     overview: overview,
     content: content,
     tag: tag,
+    likes: 0,
+    comments: [],
   };
 
-  const preId = blogToEdit?.id;
+  const retrievedId = blogToEdit?.id;
+  const retrievedLikes = blogToEdit?.likes;
+  const retrievedComment = blogToEdit?.comment;
 
   const updatedBlogObj = {
-    id: preId,
+    id: retrievedId,
     timestamp: timestamp,
     title: title,
     time: time,
     overview: overview,
     content: content,
     tag: tag,
+    likes: retrievedLikes,
+    comments: retrievedComment,
   };
 
   const clearAll = () => {
@@ -229,7 +235,7 @@ const Editor = ({
       if (title.trim() !== "" && content.trim() !== "") {
         playSwoosh();
         if (blogToEdit) {
-          await updateDoc(doc(db, "blogs", preId), updatedBlogObj);
+          await updateDoc(doc(db, "blogs", retrievedId), updatedBlogObj);
           setBlogToEdit(null);
           setTagsToEdit(null);
         } else if (draft) {
@@ -260,6 +266,8 @@ const Editor = ({
     overview: overview,
     content: content,
     tag: tag,
+    likes: 0,
+    comments: [],
   };
 
   const updatedDraft = {
@@ -270,6 +278,8 @@ const Editor = ({
     overview: overview,
     content: content,
     tag: tag,
+    likes: 0,
+    comments: [],
   };
 
   const saveDraft = async () => {

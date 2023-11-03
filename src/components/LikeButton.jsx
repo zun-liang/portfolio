@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { ReactComponent as LikeIcon } from "../assets/images/icons/like.svg";
 import { useState, useContext } from "react";
@@ -9,6 +10,8 @@ import {
 } from "../assets/styles/Styles";
 import Poit from "../assets/sounds/poit.mp3";
 import useSound from "use-sound";
+import { doc, updateDoc, increment } from "firebase/firestore";
+import { db } from "../firebase";
 
 const StyledDiv = styled.div`
   width: 5rem;
@@ -63,13 +66,14 @@ const StyledLikeNumber = styled.p`
   color: ${TertiaryHighlight};
 `;
 
-const LikeButton = () => {
+const LikeButton = ({ blogLikes, blogID }) => {
   const [like, setLike] = useState(false);
-  const [likeNum, setLikeNum] = useState(0);
+  const [likeNum, setLikeNum] = useState(blogLikes);
   const { sound } = useContext(SoundContext);
   const [playPoit] = useSound(Poit, { soundEnabled: sound });
+  const likesRef = doc(db, "blogs", blogID);
 
-  const handleLike = () => {
+  const handleLike = async () => {
     if (like) {
       setLike(false);
       setLikeNum((prev) => prev - 1);
@@ -77,6 +81,9 @@ const LikeButton = () => {
       playPoit();
       setLike(true);
       setLikeNum((prev) => prev + 1);
+      await updateDoc(likesRef, {
+        likes: increment(1),
+      });
     }
   };
 

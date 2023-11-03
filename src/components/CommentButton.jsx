@@ -2,6 +2,8 @@
 import styled from "styled-components";
 import { ReactComponent as CommentIcon } from "../assets/images/icons/comment.svg";
 import { PrimarySecondary, PointerSwitch } from "../assets/styles/Styles";
+import { useContext } from "react";
+import { PlayPickContext } from "../contexts/PlayPickContext";
 
 const StyledCommentIcon = styled(CommentIcon)`
   width: 1.5rem;
@@ -28,7 +30,11 @@ const StyledCommentIcon = styled(CommentIcon)`
   }
 `;
 const CommentButton = ({ comment, setComment }) => {
-  const handleComment = () => setComment((prev) => !prev);
+  const playPick = useContext(PlayPickContext);
+  const handleComment = () => {
+    playPick();
+    setComment((prev) => !prev);
+  };
   return <StyledCommentIcon onClick={handleComment} $comment={comment} />;
 };
 

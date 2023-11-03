@@ -56,8 +56,9 @@ const StyledButton = styled(BasicButton)`
   }
 `;
 
-const CommentInterface = ({ setComment }) => {
+const CommentInterface = ({ setComment, playSwoosh }) => {
   const handleComment = () => setComment(false);
+  const handleSubmit = () => playSwoosh();
   return (
     <StyledForm method="post">
       <StyledLabel>Nickname:</StyledLabel>
@@ -67,7 +68,7 @@ const CommentInterface = ({ setComment }) => {
         as="textarea"
         placeholder="Leave your comment here..."
       ></StyledTextarea>
-      <StyledButton>Submit</StyledButton>
+      <StyledButton onClick={handleSubmit}>Submit</StyledButton>
       <StyledButton onClick={handleComment}>Cancel</StyledButton>
     </StyledForm>
   );

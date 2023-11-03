@@ -116,7 +116,11 @@ const App = () => {
         <Route
           path="blogs/:title"
           element={
-            <Blog setBlogToEdit={setBlogToEdit} setTagsToEdit={setTagsToEdit} />
+            <Blog
+              setBlogToEdit={setBlogToEdit}
+              setTagsToEdit={setTagsToEdit}
+              playSwoosh={playSwoosh}
+            />
           }
           loader={blogLoader}
         />

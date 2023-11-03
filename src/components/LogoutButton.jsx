@@ -1,28 +1,26 @@
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signOut } from "firebase/auth";
 import { useContext } from "react";
 /* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { ReactComponent as LogoutIcon } from "../assets/images/icons/log-out.svg";
 import {
   PointerSwitch,
   PrimarySecondary,
   TertiaryDot,
 } from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
-import { auth } from "../firebase";
 import { LogoutContext } from "../contexts/LogoutContext";
+import { auth } from "../firebase";
 
-const StyledLogoutButton = styled(LogoutIcon)`
-  width: 1.2rem;
-  height: 1.2rem;
-  cursor: ${PointerSwitch};
-  & > path {
-    stroke: ${TertiaryDot};
-  }
-  &:hover > path {
-    stroke: ${PrimarySecondary};
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  font-size: 1.2rem;
+  color: ${TertiaryDot};
+  &:hover {
+    cursor: ${PointerSwitch};
+    color: ${PrimarySecondary};
   }
 `;
 
@@ -43,7 +41,13 @@ const LogoutButton = () => {
       });
   };
 
-  return <>{loggedin && <StyledLogoutButton onClick={logout} />}</>;
+  return (
+    <>
+      {loggedin && (
+        <StyledFontAwesomeIcon icon={faRightFromBracket} onClick={logout} />
+      )}
+    </>
+  );
 };
 
 export default LogoutButton;

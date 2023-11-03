@@ -47,7 +47,6 @@ const StyledLink = styled(BasicLink)`
 const Logout = () => {
   const playPick = useContext(PlayPickContext);
   const { showLogout } = useContext(LogoutContext);
-  console.log(showLogout);
 
   useEffect(() => {
     document.title = "Log Out ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";

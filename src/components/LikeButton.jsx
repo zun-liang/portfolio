@@ -1,12 +1,17 @@
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { doc, increment, updateDoc } from "firebase/firestore";
 import { useContext, useState } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import useSound from "use-sound";
 
-import { ReactComponent as LikeIcon } from "../assets/images/icons/like.svg";
 import Poit from "../assets/sounds/poit.mp3";
-import { PointerSwitch, PrimarySecondary, TertiaryHighlight } from "../assets/styles/Styles";
+import {
+  PointerSwitch,
+  PrimarySecondary,
+  TertiaryHighlight,
+} from "../assets/styles/Styles";
 import { SoundContext } from "../contexts/SoundContext";
 import { db } from "../firebase";
 
@@ -17,10 +22,9 @@ const StyledDiv = styled.div`
   align-items: center;
   gap: 3px;
 `;
-const StyledLikeIcon = styled(LikeIcon)`
-  width: 1.6rem;
-  height: 1.6rem;
-  fill: ${({ $like, theme }) =>
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  font-size: 1.5rem;
+  color: ${({ $like, theme }) =>
     $like && theme.mode
       ? "var(--light-primary)"
       : $like && !theme.mode
@@ -29,10 +33,9 @@ const StyledLikeIcon = styled(LikeIcon)`
       ? "var(--light-tertiary)"
       : "var(--dark-highlight)"};
   @media (min-width: 1350px) {
-    width: 1.5rem;
-    height: 1.5rem;
+    font-size: 1.3rem;
     &:hover {
-      fill: ${PrimarySecondary};
+      color: ${PrimarySecondary};
       cursor: ${PointerSwitch};
     }
   }
@@ -57,7 +60,7 @@ const StyledPlus = styled.p`
 `;
 const StyledLikeNumber = styled.p`
   width: 5rem;
-  margin-right: -2rem;
+  margin-right: -2.2rem;
   font-family: "Black Ops One", sans-serif;
   color: ${TertiaryHighlight};
 `;
@@ -98,9 +101,17 @@ const LikeButton = ({ blogLikes, blogID }) => {
 
   return (
     <>
-      <StyledLikeNumber>{likeNum} likes</StyledLikeNumber>
+      {likeNum > 0 && (
+        <StyledLikeNumber>
+          {likeNum} {likeNum > 1 ? "likes" : "like"}
+        </StyledLikeNumber>
+      )}
       <StyledDiv>
-        <StyledLikeIcon onClick={handleLike} $like={like} />
+        <StyledFontAwesomeIcon
+          icon={faHeart}
+          onClick={handleLike}
+          $like={like}
+        />
         {like && <StyledPlus>+1</StyledPlus>}
       </StyledDiv>
     </>

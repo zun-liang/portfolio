@@ -1,3 +1,11 @@
+import {
+  faFileImport,
+  faFloppyDisk,
+  faHashtag,
+  faPaperPlane,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import MDEditor from "@uiw/react-md-editor";
@@ -16,18 +24,13 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import useSound from "use-sound";
 
-import { ReactComponent as ResetIcon } from "../assets/images/icons/delete.svg";
-import { ReactComponent as TagIcon } from "../assets/images/icons/hash.svg";
-import { ReactComponent as SaveIcon } from "../assets/images/icons/save.svg";
-import { ReactComponent as SearchIcon } from "../assets/images/icons/search.svg";
-import { ReactComponent as SendIcon } from "../assets/images/icons/send.svg";
 import Crumple from "../assets/sounds/crumple.mp3";
 import {
   BasicInput,
   HighlightSwitch,
   PointerSwitch,
   PrimaryHighlight,
-  PrimarySwitch,
+  TertiaryHighlight,
   TertiaryParagraph,
   TertiarySecondary,
 } from "../assets/styles/Styles";
@@ -62,30 +65,12 @@ const UpperDiv = styled.div`
   align-items: center;
   column-gap: 1rem;
 `;
-const StyledSearchIcon = styled(SearchIcon)`
-  width: 1.3rem;
-  height: 1.3rem;
-  & > path {
-    fill: ${TertiaryParagraph};
-  }
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  font-size: 1.2rem;
+  color: ${TertiaryParagraph};
   &:hover {
     cursor: ${PointerSwitch};
-    & > path {
-      fill: ${PrimarySwitch};
-    }
-  }
-`;
-const StyledResetIcon = styled(ResetIcon)`
-  width: 1.3rem;
-  height: 1.3rem;
-  & > g > g {
-    fill: ${TertiaryParagraph};
-  }
-  &:hover {
-    cursor: ${PointerSwitch};
-    & > g > g {
-      fill: ${PrimarySwitch};
-    }
+    color: ${PrimaryHighlight};
   }
 `;
 const StyledDiv = styled.div`
@@ -97,12 +82,9 @@ const StyledDiv = styled.div`
   align-items: center;
   column-gap: 1rem;
 `;
-const StyledTagIcon = styled(TagIcon)`
-  width: 1.2rem;
-  height: 1.2rem;
-  & > path {
-    stroke: ${PrimaryHighlight};
-  }
+const StyledTagIcon = styled(FontAwesomeIcon)`
+  font-size: 1.2rem;
+  color: ${TertiaryHighlight};
 `;
 const TagInput = styled(BasicInput)`
   justify-self: start;
@@ -112,30 +94,12 @@ const TagInput = styled(BasicInput)`
   margin-left: -0.7rem;
   border: 1px solid ${TertiarySecondary};
 `;
-const StyledSaveIcon = styled(SaveIcon)`
-  width: 1.3rem;
-  height: 1.3rem;
-  & > path {
-    fill: ${TertiaryParagraph};
-  }
+const StyledSaveIcon = styled(FontAwesomeIcon)`
+  font-size: 1.3rem;
+  color: ${TertiaryParagraph};
   &:hover {
     cursor: ${PointerSwitch};
-    > path {
-      fill: ${PrimarySwitch};
-    }
-  }
-`;
-const StyledSendIcon = styled(SendIcon)`
-  width: 1.6rem;
-  height: 1.6rem;
-  & > path {
-    stroke: ${TertiaryParagraph};
-  }
-  &:hover {
-    cursor: ${PointerSwitch};
-    > path {
-      stroke: ${PrimarySwitch};
-    }
+    color: ${PrimaryHighlight};
   }
 `;
 const StyledP = styled.p`
@@ -325,8 +289,8 @@ const Editor = ({
       <UpperDiv>
         <UserProfile />
         <UpdateProfile />
-        <StyledSearchIcon onClick={getDraft} />
-        <StyledResetIcon onClick={reset} />
+        <StyledFontAwesomeIcon icon={faFileImport} onClick={getDraft} />
+        <StyledFontAwesomeIcon icon={faTrash} onClick={reset} />
       </UpperDiv>
       <StyledMDEditor
         value={blog}
@@ -336,7 +300,7 @@ const Editor = ({
         }}
       />
       <StyledDiv>
-        <StyledTagIcon />
+        <StyledTagIcon icon={faHashtag} />
         <TagInput
           id="tag"
           name="tag"
@@ -345,8 +309,8 @@ const Editor = ({
           placeholder="tags separate by space..."
         />
         <BackButton handleClick={handleClick} />
-        <StyledSaveIcon onClick={saveDraft} />
-        <StyledSendIcon onClick={post} />
+        <StyledSaveIcon icon={faFloppyDisk} onClick={saveDraft} />
+        <StyledFontAwesomeIcon icon={faPaperPlane} onClick={post} />
       </StyledDiv>
       {!getDraftResponse && <StyledP>No draft found.</StyledP>}
       {invalidPost && (

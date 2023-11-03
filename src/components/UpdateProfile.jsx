@@ -1,32 +1,29 @@
+import { faUserPen } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { updateProfile } from "firebase/auth";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { useState } from "react";
 import styled from "styled-components";
 
-import { ReactComponent as ProfileIcon } from "../assets/images/icons/user-pen.svg";
 import {
   ActionDiv,
   BackContainer,
   BasicButton,
   BasicInput,
   PointerSwitch,
+  PrimaryHighlight,
   PrimarySwitch,
   TertiaryParagraph,
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import { auth } from "../firebase";
 
-const StyledProfileIcon = styled(ProfileIcon)`
-  width: 1.5rem;
-  height: 1.5rem;
-  & > path {
-    stroke: ${TertiaryParagraph};
-  }
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  font-size: 1.2rem;
+  color: ${TertiaryParagraph};
   &:hover {
     cursor: ${PointerSwitch};
-    & > path {
-      stroke: ${PrimarySwitch};
-    }
+    color: ${PrimaryHighlight};
   }
 `;
 const StyledDiv = styled(ActionDiv)`
@@ -104,7 +101,7 @@ const UpdateProfile = () => {
 
   return (
     <>
-      <StyledProfileIcon onClick={handleClick} />
+      <StyledFontAwesomeIcon icon={faUserPen} onClick={handleClick} />
       {edit && (
         <BackContainer>
           <StyledDiv>

@@ -1,43 +1,19 @@
-import { AuthContext } from "../contexts/AuthContext";
+import { faPenNib, faRightToBracket } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { ReactComponent as EditIcon } from "../assets/images/icons/edit.svg";
-import { ReactComponent as LoginIcon } from "../assets/images/icons/log-in.svg";
 import styled from "styled-components";
+
+import { PointerSwitch, PrimarySecondary, TertiaryDot } from "../assets/styles/Styles";
+import { AuthContext } from "../contexts/AuthContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 
-import {
-  PointerSwitch,
-  PrimarySecondary,
-  TertiaryDot,
-} from "../assets/styles/Styles";
-
-const StyledLoginIcon = styled(LoginIcon)`
-  width: 1.2rem;
-  height: 1.2rem;
-  & > g > g {
-    fill: ${TertiaryDot};
-  }
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  font-size: 1.2rem;
+  color: ${TertiaryDot};
   &:hover {
     cursor: ${PointerSwitch};
-    & > g > g {
-      fill: ${PrimarySecondary};
-    }
-  }
-`;
-const StyledEditIcon = styled(EditIcon)`
-  width: 1.2rem;
-  height: 1.2rem;
-  & > g > g > g > path,
-  & > g > g > g > polygon {
-    stroke: ${TertiaryDot};
-  }
-  &:hover {
-    cursor: ${PointerSwitch};
-    & > g > g > g > path,
-    & > g > g > g > polygon {
-      stroke: ${PrimarySecondary};
-    }
+    color: ${PrimarySecondary};
   }
 `;
 
@@ -57,9 +33,9 @@ const LoginButton = () => {
   return (
     <>
       {loggedin ? (
-        <StyledEditIcon onClick={goToEditor} />
+        <StyledFontAwesomeIcon icon={faPenNib} onClick={goToEditor} />
       ) : (
-        <StyledLoginIcon onClick={login} />
+        <StyledFontAwesomeIcon icon={faRightToBracket} onClick={login} />
       )}
     </>
   );

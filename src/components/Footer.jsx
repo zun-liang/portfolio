@@ -18,10 +18,10 @@ import {
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
+import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 import MusicPlayer from "./MusicPlayer";
 import SoundSwitch from "./SoundSwitch";
-import LoginButton from "./LoginButton";
 
 const StyledFooter = styled.footer`
   width: 100%;
@@ -43,7 +43,7 @@ const Wrapper = styled.div`
   @media (min-width: 1024px) {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.2rem;
     margin: 3.2rem 0 -3.2rem;
   }
 `;

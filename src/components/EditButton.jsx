@@ -1,29 +1,20 @@
+import { faPenNib } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { useContext } from "react";
+
+import { PointerSwitch, PrimarySecondary, TertiaryDot } from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
-import { useNavigate } from "react-router-dom";
-import {
-  PrimarySwitch,
-  PointerSwitch,
-  TertiaryDot,
-} from "../assets/styles/Styles";
-import { ReactComponent as EditIcon } from "../assets/images/icons/edit.svg";
 
-const StyledEditIcon = styled(EditIcon)`
-  width: 1.2rem;
-  height: 1.2rem;
-  & > g > g > g > path,
-  & > g > g > g > polygon {
-    stroke: ${TertiaryDot};
-  }
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  font-size: 1.2rem;
+  color: ${TertiaryDot};
   &:hover {
     cursor: ${PointerSwitch};
-    & > g > g > g > path,
-    & > g > g > g > polygon {
-      stroke: ${PrimarySwitch};
-    }
+    color: ${PrimarySecondary};
   }
 `;
 
@@ -39,7 +30,11 @@ const EditButton = ({ setBlogToEdit, setTagsToEdit, blogData, blogTag }) => {
     navigate("/editor");
   };
 
-  return <>{loggedin && <StyledEditIcon onClick={editBlog} />}</>;
+  return (
+    <>
+      {loggedin && <StyledFontAwesomeIcon icon={faPenNib} onClick={editBlog} />}
+    </>
+  );
 };
 
 export default EditButton;

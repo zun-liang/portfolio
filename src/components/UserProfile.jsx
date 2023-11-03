@@ -1,9 +1,10 @@
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useState } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { ReactComponent as UserDefault } from "../assets/images/icons/user.svg";
-import { PrimaryHighlight, TertiaryDot } from "../assets/styles/Styles";
+import { PrimaryHighlight } from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { auth } from "../firebase";
 
@@ -26,12 +27,9 @@ const StyledImg = styled.img`
   object-fit: cover;
   border-radius: 50%;
 `;
-const StyledUserDefault = styled(UserDefault)`
-  width: 2rem;
-  height: 2rem;
-  & > path {
-    fill: ${TertiaryDot};
-  }
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  font-size: 2rem;
+  color: ${PrimaryHighlight};
 `;
 
 const UserProfile = () => {
@@ -56,7 +54,7 @@ const UserProfile = () => {
           {userPhoto ? (
             <StyledImg src={userPhoto} alt="user profile" />
           ) : (
-            <StyledUserDefault />
+            <StyledFontAwesomeIcon icon={faUser} />
           )}
           <StyledP>{userName ? userName : "Admin"}</StyledP>
         </ProfileContainer>

@@ -1,8 +1,9 @@
+import { faMusic } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { ReactComponent as MusicOn } from "../assets/images/icons/music.svg";
 import MusicBox from "../assets/sounds/music-box.mp3";
 import {
   PointerSwitch,
@@ -10,19 +11,15 @@ import {
   TertiaryDot,
 } from "../assets/styles/Styles";
 
-const PlayButton = styled(MusicOn)`
-  width: 1rem;
-  height: 1rem;
+const PlayButton = styled(FontAwesomeIcon)`
+  font-size: 1rem;
   cursor: ${PointerSwitch};
-  & > path {
-    stroke: ${TertiaryDot};
-  }
-  &:hover > path {
-    stroke: ${PrimarySecondary};
+  color: ${TertiaryDot};
+  &:hover {
+    color: ${PrimarySecondary};
   }
   @media (min-width: 350px) {
-    width: 1.2rem;
-    height: 1.2rem;
+    font-size: 1.1rem;
   }
 `;
 const OffButton = styled(PlayButton)`
@@ -58,8 +55,8 @@ const MusicPlayer = () => {
       <audio id="music">
         <source src={MusicBox} type="audio/mpeg" />
       </audio>
-      {play && <OffButton onClick={handleOff} />}
-      {!play && <PlayButton onClick={handleOn} />}
+      {play && <OffButton icon={faMusic} onClick={handleOff} />}
+      {!play && <PlayButton icon={faMusic} onClick={handleOn} />}
     </>
   );
 };

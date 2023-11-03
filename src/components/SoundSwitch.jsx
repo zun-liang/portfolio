@@ -1,10 +1,10 @@
+import { faVolumeHigh, faVolumeOff } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import useSound from "use-sound";
 
-import { ReactComponent as EarSlash } from "../assets/images/icons/ear-slash.svg";
-import { ReactComponent as Ear } from "../assets/images/icons/ear.svg";
 import Interface from "../assets/sounds/interface.mp3";
 import {
   PointerSwitch,
@@ -21,37 +21,22 @@ const Container = styled.div`
     height: 1.2rem;
   }
 `;
-const StyledEar = styled(Ear)`
-  width: 1rem;
-  height: 1rem;
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  font-size: 1rem;
   cursor: ${PointerSwitch};
-  fill: ${TertiaryDot};
+  color: ${TertiaryDot};
   &:hover {
-    fill: ${PrimarySecondary};
+    color: ${PrimarySecondary};
   }
   @media (min-width: 350px) {
-    width: 1.2rem;
-    height: 1.2rem;
-  }
-`;
-const StyledEarSlash = styled(EarSlash)`
-  width: 1rem;
-  height: 1rem;
-  cursor: ${PointerSwitch};
-  fill: ${TertiaryDot};
-  &:hover {
-    fill: ${PrimarySecondary};
-  }
-  @media (min-width: 350px) {
-    width: 1.2rem;
-    height: 1.2rem;
+    font-size: 1.2rem;
   }
 `;
 
 const SoundSwitch = () => {
   const { sound, setSound } = useContext(SoundContext);
   const [playInterface] = useSound(Interface, {
-    soundEnabled: !sound,
+    soundEnabled: sound,
     volume: 0.5,
   });
 
@@ -63,9 +48,9 @@ const SoundSwitch = () => {
   return (
     <Container>
       {sound ? (
-        <StyledEarSlash onClick={toggleSound} />
+        <StyledFontAwesomeIcon icon={faVolumeOff} onClick={toggleSound} />
       ) : (
-        <StyledEar onClick={toggleSound} />
+        <StyledFontAwesomeIcon icon={faVolumeHigh} onClick={toggleSound} />
       )}
     </Container>
   );

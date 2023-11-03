@@ -6,7 +6,12 @@ import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { HighlightSwitch, PrimaryTertiary, SecondaryParagraph, TertiaryParagraph } from "../assets/styles/Styles";
+import {
+  HighlightSwitch,
+  PrimaryTertiary,
+  SecondaryParagraph,
+  TertiaryParagraph,
+} from "../assets/styles/Styles";
 import BackButton from "../components/BackButton";
 import BlogContent from "../components/BlogContent";
 import CommentButton from "../components/CommentButton";
@@ -147,7 +152,7 @@ const Blog = ({ setBlogToEdit, setTagsToEdit, playSwoosh }) => {
       <IconsContainer>
         <LikeButton blogLikes={blogLikes} blogID={blogID} />
         <CommentButton comment={comment} setComment={setComment} />
-        <ShareButton />
+        <ShareButton title={blogTitle} text={blogContent} url={blogID} />
       </IconsContainer>
       {comment && (
         <CommentInterface

@@ -1,3 +1,5 @@
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { deleteDoc, doc } from "firebase/firestore";
 import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -5,16 +7,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import useSound from "use-sound";
 
-import { ReactComponent as DeleteIcon } from "../assets/images/icons/delete.svg";
 import Crumple from "../assets/sounds/crumple.mp3";
 import {
-  BasicButton,
+  ActionDiv,
   BackContainer,
+  BasicButton,
   PointerSwitch,
+  PrimarySecondary,
   PrimarySwitch,
   TertiaryDot,
   TertiarySecondary,
-  ActionDiv,
 } from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { SoundContext } from "../contexts/SoundContext";
@@ -40,17 +42,12 @@ const StyledP = styled.p`
   font-family: "Black Ops One", sans-serif;
   color: ${TertiarySecondary};
 `;
-const StyledDeleteIcon = styled(DeleteIcon)`
-  width: 1.2rem;
-  height: 1.2rem;
-  & > g > g {
-    fill: ${TertiaryDot};
-  }
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  font-size: 1.2rem;
+  color: ${TertiaryDot};
   &:hover {
     cursor: ${PointerSwitch};
-    & > g > g {
-      fill: ${PrimarySwitch};
-    }
+    color: ${PrimarySecondary};
   }
 `;
 
@@ -90,7 +87,7 @@ const DeleteButton = ({ blogID }) => {
               </StyledDiv>
             </BackContainer>
           )}
-          <StyledDeleteIcon onClick={deleteBlog} />
+          <StyledFontAwesomeIcon icon={faTrash} onClick={deleteBlog} />
         </>
       )}
     </>

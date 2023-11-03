@@ -1,3 +1,8 @@
+import {
+  faTemperatureLow,
+  faUmbrella,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useContext, useEffect, useState } from "react";
@@ -6,8 +11,6 @@ import useSound from "use-sound";
 
 import Off from "..//assets/sounds/off.mp3";
 import On from "..//assets/sounds/on.mp3";
-import { ReactComponent as TempIcon } from "../assets/images/icons/temperature.svg";
-import { ReactComponent as WeatherIcon } from "../assets/images/icons/weather.svg";
 import Key from "../assets/sounds/key.mp3";
 import {
   AutoSwitch,
@@ -128,19 +131,9 @@ const Weather = styled.p`
     font-size: 0.9rem;
   }
 `;
-const StyledWeatherIcon = styled(WeatherIcon)`
-  width: 1rem;
-  height: 1rem;
-  & > path {
-    stroke: ${TertiarySecondary};
-  }
-`;
-const StyledTempIcon = styled(TempIcon)`
-  width: 1rem;
-  height: 1rem;
-  & > path {
-    stroke: ${TertiarySecondary};
-  }
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  font-size: 0.8rem;
+  color: ${TertiarySecondary};
 `;
 const ModeSwitch = styled.p`
   font-size: 1.5rem;
@@ -167,7 +160,7 @@ const Header = ({ screenWidth }) => {
       const log = pos.coords.longitude;
       fetch(
         // eslint-disable-next-line no-undef
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${log}&appid=${process.env.REACT_APP_WEATHER_APP_ID}`
+        `https://api.openweathermap.org/data/2.5/wather?lat=${lat}&lon=${log}&appid=${process.env.REACT_APP_WEATHER_APP_ID}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -218,9 +211,9 @@ const Header = ({ screenWidth }) => {
       <StyledDiv>
         {fetchError ? (
           <Weather>
-            <StyledWeatherIcon />
+            <StyledFontAwesomeIcon icon={faUmbrella} />
             &nbsp;&nbsp;n/a&nbsp;&nbsp;
-            <StyledTempIcon />
+            <StyledFontAwesomeIcon icon={faTemperatureLow} />
             &nbsp;n/a&nbsp;
           </Weather>
         ) : (

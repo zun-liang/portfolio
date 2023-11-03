@@ -95,7 +95,7 @@ When I applied the parser, it did indeed display the content with styles, but it
 
 Upon investigating the data I had saved in Firestore and inspecting the content in the developer tools 🧐, it became clear that the customized parsing rules had inadvertently removed all the id attributes. To resolve this issue, I made the necessary adjustments by adding `const id = domNode.attribs.id` and ensuring that `id={id}` was included when rendering the elements.🛠👩🏻‍💻
 
-❓ firestore doesn't accept the way of pushing new item to array, instead created a new subcollection under the same blog item and access use collection, collection() and doc() are different, but add new comment is also adding doc, leanr the structure
+❓ firestore doesn't accept the way of pushing new item to array, instead created a new sub collection under the same blog item and access use collection, collection() and doc() are different, but add new comment is also adding doc, learn the structure
 
 ### Links
 

@@ -1,8 +1,18 @@
-import { collection, doc, onSnapshot, orderBy, query } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { OpaqueSwitch, PrimarySecondary, TertiaryHighlight } from "../assets/styles/Styles";
+import {
+  OpaqueSwitch,
+  PrimarySecondary,
+  TertiaryHighlight,
+} from "../assets/styles/Styles";
 /* eslint-disable react/prop-types */
 
 import { db } from "../firebase";
@@ -10,7 +20,7 @@ import { db } from "../firebase";
 const CommentsContainer = styled.div`
   background-color: ${OpaqueSwitch};
   border-radius: 1rem;
-  padding: 2rem;
+  padding: 3rem 3rem 4rem 3rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -61,7 +71,6 @@ const Comments = ({ blogID }) => {
     });
     return () => unsub();
   }, []);
-  console.log(comments.length);
 
   const displayComments = comments.map((comment) => (
     <CommentContainer key={comment.id}>

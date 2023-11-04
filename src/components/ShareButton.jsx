@@ -1,8 +1,7 @@
 import {
-  faDiscord,
   faFacebook,
-  faLinkedin,
-  faSlack,
+  faRedditAlien,
+  faTelegram,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { faShare, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -10,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 /* eslint-disable react/prop-types */
 import { useContext, useState } from "react";
 import styled from "styled-components";
+import { RedditShareButton } from "react-share";
 
 import {
   BackgroundDot,
@@ -102,9 +102,10 @@ const ShareButton = ({ title, text, url }) => {
   const playPick = useContext(PlayPickContext);
   const [share, setShare] = useState(false);
   const [showCustom, setShowCustom] = useState(false);
-  const updatedTitle = title.split(" ")[1].toString();
+  const updatedTitle = title.split(" ").slice(1).join(" ");
   const updatedText = text.replace(/<[^>]*>/g, "");
   const updatedURL = `https://zun-liang.github.io/blogs/${url}`;
+
   const handleXMark = () => {
     setShowCustom(false);
     setShare(false);
@@ -142,10 +143,26 @@ const ShareButton = ({ title, text, url }) => {
           >
             <StyledFontAwesomeIcon icon={faTwitter} />
           </a>
-          <StyledFontAwesomeIcon icon={faFacebook} />
-          <StyledFontAwesomeIcon icon={faLinkedin} />
-          <StyledFontAwesomeIcon icon={faDiscord} />
-          <StyledFontAwesomeIcon icon={faSlack} />
+          <div className="fb-share-button" data-href={`${updatedURL}`}>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={`https://www.facebook.com/sharer/sharer.php?u=${updatedURL}`}
+              className="fb-xfbml-parse-ignore"
+            >
+              <StyledFontAwesomeIcon icon={faFacebook} />
+            </a>
+          </div>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href={`https://t.me/share/url?url=${updatedURL}&text=${updatedText}`}
+          >
+            <StyledFontAwesomeIcon icon={faTelegram} />
+          </a>
+          <RedditShareButton url={updatedURL} title={updatedTitle}>
+            <StyledFontAwesomeIcon icon={faRedditAlien} />
+          </RedditShareButton>
           <XMarkContainer onClick={handleXMark}>
             <StyledXMark icon={faXmark} />
           </XMarkContainer>

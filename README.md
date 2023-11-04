@@ -97,6 +97,8 @@ Upon investigating the data I had saved in Firestore and inspecting the content 
 
 ❓ firestore doesn't accept the way of pushing new item to array, instead created a new sub collection under the same blog item and access use collection, collection() and doc() are different, but add new comment is also adding doc, learn the structure
 
+❓ Not all browsers support navigator.share, so created custom share, tried to make by myself but got help from react share as well
+
 ### Links
 
 - Github URL: [click here](https://github.com/zun-liang/zun-liang.github.io)
@@ -122,6 +124,7 @@ Upon investigating the data I had saved in Firestore and inspecting the content 
 - [use-sound](https://github.com/joshwcomeau/use-sound)
 - [SVGR](https://react-svgr.com/)
 - [NanoID](https://github.com/ai/nanoid)
+- [react-share](https://github.com/nygardk/react-share)
 
 ### What I learned
 
@@ -250,6 +253,9 @@ Upon investigating the data I had saved in Firestore and inspecting the content 
   To get local weather and temperature depending on visitor's' location.
 
 - [Tweet Button](https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/overview)
+- [Facebook Share Button](https://developers.facebook.com/docs/plugins/share-button/)
+- [Reddit Share Button HTML](https://www.reddit.com/r/webdev/comments/os7sw9/reddit_share_button_html/)
+- [Telegram Sharing Button](https://core.telegram.org/widgets/share)
 
 #### CSS
 
@@ -350,6 +356,7 @@ Upon investigating the data I had saved in Firestore and inspecting the content 
 
   This is a very helpful React custom hook created by Josh Comeau that makes it very easy to work with sound.
 
+- [react-share](https://github.com/nygardk/react-share)
 - [Announcing “use-sound”, a React Hook for Sound Effects](https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/)
 - [useContext](https://react.dev/reference/react/useContext)
 - [Hide Firebase API Keys in ReactJS Project using Environment Variables](https://blogs.ayushdev.com/hide-firebase-api-keys-in-reactjs-project-using-environment-variables)

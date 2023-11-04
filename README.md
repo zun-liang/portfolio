@@ -99,7 +99,7 @@ Upon investigating the data I had saved in Firestore and inspecting the content 
 
 ❓ Not all browsers support navigator.share, so created custom share, tried to make by myself but got help from react share as well
 
-❓ different security rules for blogs vs likes and comments.
+❓ different security rules for blogs vs likes and comments. I found this bug when I was testing comments on mobile devices. At first, I thought it was due to mobile devices setup and I can not submit form, then I realized it was because I didn't login as admin. At that point, only admin has access to like or comment. Then i did research to update the security rules based on data and also restructured likes, removed it from fields but as a sub collection. actually i don't have to do this, but did it anyway
 
 ### Links
 

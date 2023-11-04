@@ -73,6 +73,7 @@ const Comments = ({ blogID }) => {
       setComments(updatedComments);
     });
     return () => unsub();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const displayComments = comments.map((comment) => (

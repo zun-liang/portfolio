@@ -8,6 +8,7 @@ import styled from "styled-components";
 import Party from "../assets/images/party_boygirl.png";
 import {
   BasicLink,
+  ErrorSwitch,
   PrimarySecondary,
   SecondaryTransparent,
 } from "../assets/styles/Styles";
@@ -109,6 +110,7 @@ const StyledInput = styled.input`
 const StyledP = styled.p`
   margin: -0.5rem 0;
   font-family: "Black Ops One", sans-serif;
+  color: ${ErrorSwitch};
 `;
 const StyledButton = styled(BasicButton)`
   justify-self: center;

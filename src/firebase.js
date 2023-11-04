@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { collection, getFirestore } from "firebase/firestore";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -15,6 +16,11 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+logEvent(analytics, "search");
+logEvent(analytics, "select_content");
+logEvent(analytics, "share");
 
 export const db = getFirestore(app);
 export const blogsCollection = collection(db, "blogs");

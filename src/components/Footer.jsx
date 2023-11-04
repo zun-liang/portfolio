@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 import {
-  faCodepen,
   faFreeCodeCamp,
   faGithub,
-  faLinkedin,
+  //faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -131,16 +130,7 @@ const Footer = () => {
             <Icon icon={faGithub} />
           </StyledLink>
         </StyledListItem>
-        <StyledListItem>
-          <StyledLink
-            target="_blank"
-            href="https://codepen.io/zunl"
-            onClick={playPick}
-          >
-            <Icon icon={faCodepen} />
-          </StyledLink>
-        </StyledListItem>
-        <StyledListItem>
+        {/*<StyledListItem>
           <StyledLink
             target="_blank"
             href="https://www.linkedin.com"
@@ -148,7 +138,7 @@ const Footer = () => {
           >
             <Icon icon={faLinkedin} />
           </StyledLink>
-        </StyledListItem>
+        </StyledListItem> */}
         <StyledListItem>
           <StyledLinkEn to="/contact" onClick={playPick}>
             <Icon icon={faEnvelope} />

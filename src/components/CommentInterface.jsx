@@ -4,7 +4,18 @@ import { useState } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { BackgroundSecondary, BasicButton, BasicInput, HighlightPrimary, OpaqueSwitch, SecondaryPrimary, TertiaryPrimary, TertiarySecondary, TertiaryTransparent } from "../assets/styles/Styles";
+import {
+  BackgroundSecondary,
+  BasicButton,
+  BasicInput,
+  ErrorSwitch,
+  HighlightPrimary,
+  OpaqueSwitch,
+  SecondaryPrimary,
+  TertiaryPrimary,
+  TertiarySecondary,
+  TertiaryTransparent,
+} from "../assets/styles/Styles";
 import { db } from "../firebase";
 
 const StyledForm = styled.div`
@@ -16,6 +27,12 @@ const StyledForm = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
+`;
+const InvalidMessage = styled.p`
+  margin-top: -0.6rem;
+  font-family: "Black Ops One", sans-serif;
+  color: ${ErrorSwitch};
+  font-size: 0.8rem;
 `;
 const StyledLabel = styled.label`
   font-family: "Black Ops One", sans-serif;
@@ -56,23 +73,34 @@ const CommentInterface = ({ setComment, playSwoosh, blogID }) => {
   const commentsRef = collection(blogRef, "comments");
   const [name, setName] = useState("");
   const [text, setText] = useState("");
+  const [invalidComment, setInvalidComment] = useState(false);
   const handleName = (e) => setName(e.target.value);
   const handleText = (e) => setText(e.target.value);
-  const handleComment = () => setComment(false);
 
   const handleSubmit = async () => {
     playSwoosh();
-    try {
-      await addDoc(commentsRef, {
-        id: nanoid(),
-        name: name,
-        timestamp: serverTimestamp(),
-        text: text,
-      });
-    } catch (error) {
-      console.error("Error while submitting comment:", error);
-      throw new Error("Something went wrong while submitting comment");
+    if (name.trim() !== "" && text.trim() !== "") {
+      try {
+        await addDoc(commentsRef, {
+          id: nanoid(),
+          name: name,
+          timestamp: serverTimestamp(),
+          text: text,
+        });
+        setComment(false);
+      } catch (error) {
+        console.error("Error while submitting comment:", error);
+        throw new Error("Something went wrong while submitting comment");
+      }
+    } else {
+      setInvalidComment(true);
     }
+  };
+
+  const handleCancel = () => {
+    setName("");
+    setText("");
+    setInvalidComment(false);
     setComment(false);
   };
 
@@ -86,7 +114,9 @@ const CommentInterface = ({ setComment, playSwoosh, blogID }) => {
         value={name}
         onChange={handleName}
         placeholder="Your nickname..."
+        required
       />
+      {invalidComment && <InvalidMessage>Nickname is required.</InvalidMessage>}
       <StyledLabel>Comment:</StyledLabel>
       <StyledTextarea
         as="textarea"
@@ -95,9 +125,11 @@ const CommentInterface = ({ setComment, playSwoosh, blogID }) => {
         value={text}
         onChange={handleText}
         placeholder="Leave your comment here..."
+        required
       ></StyledTextarea>
+      {invalidComment && <InvalidMessage>Comment is required.</InvalidMessage>}
       <StyledButton onClick={handleSubmit}>Submit</StyledButton>
-      <StyledButton onClick={handleComment}>Cancel</StyledButton>
+      <StyledButton onClick={handleCancel}>Cancel</StyledButton>
     </StyledForm>
   );
 };

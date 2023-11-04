@@ -32,6 +32,8 @@ export const HoverSwitch = ({ theme }) =>
   theme.mode ? "var(--light-hover)" : "var(--dark-hover)";
 export const HighlightSwitch = ({ theme }) =>
   theme.mode ? "var(--light-highlight)" : "var(--dark-highlight)";
+export const ErrorSwitch = ({ theme }) =>
+  theme.mode ? "var(--light-error)" : "var(--dark-error)";
 
 /* ===  Incoherent color switch === */
 export const OpacitySwitch = ({ theme }) =>

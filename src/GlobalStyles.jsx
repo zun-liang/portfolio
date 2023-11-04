@@ -24,6 +24,7 @@ const GlobalStyles = createGlobalStyle`
         --light-hover: rgba(255, 255, 255, 0.5);
         --light-highlight: #623600;
         --light-shadow-color: 62deg 28% 60%;
+        --light-error: #d32f2f;
 
         --dark-background: #121212;
         --dark-primary: #ff76a7;
@@ -33,6 +34,7 @@ const GlobalStyles = createGlobalStyle`
         --dark-hover: #121212;
         --dark-highlight: #FFCEC3;
         --dark-shadow-color: 0deg 0% 0%;
+        --dark-error: #ef5350;
 
         --dot-size: 1px;
         --dot-space: 25px;

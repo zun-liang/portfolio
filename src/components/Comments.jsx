@@ -20,7 +20,7 @@ import { db } from "../firebase";
 const CommentsContainer = styled.div`
   background-color: ${OpaqueSwitch};
   border-radius: 1rem;
-  padding: 3rem 3rem 4rem 3rem;
+  padding: 1.5rem 1.5rem 2rem 1.5rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -30,6 +30,9 @@ const CommentsContainer = styled.div`
     border-bottom: 1px dashed
       ${({ theme }) =>
         theme.mode ? "var(--light-tertiary)" : "rgba(0, 0, 0, 0.8)"};
+  }
+  @media (min-width: 1024px) {
+    padding: 2rem 2rem 3rem 2rem;
   }
 `;
 const StyledP = styled.p`

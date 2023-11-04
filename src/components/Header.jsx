@@ -47,7 +47,7 @@ const Wrapper = styled.div`
   align-self: flex-start;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
   margin-top: 2.5rem;
   margin-bottom: -4rem;
   @media (min-width: 400px) {

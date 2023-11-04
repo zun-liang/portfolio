@@ -106,7 +106,6 @@ const Blog = ({ setBlogToEdit, setTagsToEdit, playSwoosh }) => {
     title: blogTitle,
     content: blogContent,
     tag: blogTag,
-    likes: blogLikes,
   } = useLoaderData();
 
   useEffect(() => {
@@ -150,7 +149,7 @@ const Blog = ({ setBlogToEdit, setTagsToEdit, playSwoosh }) => {
       <BlogContent blogContent={blogContent} />
       <TagsContainer>{tags}</TagsContainer>
       <IconsContainer>
-        <LikeButton blogLikes={blogLikes} blogID={blogID} />
+        <LikeButton blogID={blogID} />
         <CommentButton comment={comment} setComment={setComment} />
         <ShareButton title={blogTitle} text={blogContent} url={blogID} />
       </IconsContainer>

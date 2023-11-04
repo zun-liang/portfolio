@@ -1,7 +1,15 @@
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { doc, increment, updateDoc } from "firebase/firestore";
-import { useContext, useState } from "react";
+import {
+  doc,
+  increment,
+  updateDoc,
+  collection,
+  onSnapshot,
+  query,
+  setDoc,
+} from "firebase/firestore";
+import { useContext, useEffect, useState } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import useSound from "use-sound";
@@ -65,36 +73,61 @@ const StyledLikeNumber = styled.p`
   color: ${TertiaryHighlight};
 `;
 
-const LikeButton = ({ blogLikes, blogID }) => {
+const LikeButton = ({ blogID }) => {
   const [like, setLike] = useState(false);
-  const [likeNum, setLikeNum] = useState(blogLikes);
+  const [likeNum, setLikeNum] = useState(0);
   const { sound } = useContext(SoundContext);
   const [playPoit] = useSound(Poit, { soundEnabled: sound });
-  const likesRef = doc(db, "blogs", blogID);
+  const blogRef = doc(db, "blogs", blogID);
+  const likesRef = collection(blogRef, "likes");
+  const likesDocRef = doc(likesRef, "likes");
+  const q = query(likesRef);
+
+  useEffect(() => {
+    const unsub = onSnapshot(q, (querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        setLikeNum(doc.data().likes);
+      });
+    });
+    return () => unsub();
+  }, []);
 
   const handleLike = async () => {
-    if (like) {
-      setLike(false);
-      setLikeNum((prev) => prev - 1);
-      try {
-        await updateDoc(likesRef, {
-          likes: increment(-1),
-        });
-      } catch (error) {
-        console.error("Error while updating like number:", error);
-        throw new Error("Something went wrong while updating like number");
-      }
-    } else {
+    if (likeNum === 0) {
       playPoit();
       setLike(true);
-      setLikeNum((prev) => prev + 1);
       try {
-        await updateDoc(likesRef, {
-          likes: increment(1),
+        await setDoc(likesDocRef, {
+          likes: 1,
         });
       } catch (error) {
-        console.error("Error while updating like number:", error);
-        throw new Error("Something went wrong while updating like number");
+        console.error("Error while creating likes doc:", error);
+        throw new Error("Something went wrong while creating likes doc");
+      }
+    } else {
+      if (like) {
+        setLike(false);
+        setLikeNum((prev) => prev - 1);
+        try {
+          await updateDoc(likesDocRef, {
+            likes: increment(-1),
+          });
+        } catch (error) {
+          console.error("Error while updating like number:", error);
+          throw new Error("Something went wrong while updating like number");
+        }
+      } else {
+        playPoit();
+        setLike(true);
+        setLikeNum((prev) => prev + 1);
+        try {
+          await updateDoc(likesDocRef, {
+            likes: increment(1),
+          });
+        } catch (error) {
+          console.error("Error while updating like number:", error);
+          throw new Error("Something went wrong while updating like number");
+        }
       }
     }
   };

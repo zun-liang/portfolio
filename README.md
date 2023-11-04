@@ -99,6 +99,8 @@ Upon investigating the data I had saved in Firestore and inspecting the content 
 
 ❓ Not all browsers support navigator.share, so created custom share, tried to make by myself but got help from react share as well
 
+❓ different security rules for blogs vs likes and comments.
+
 ### Links
 
 - Github URL: [click here](https://github.com/zun-liang/zun-liang.github.io)

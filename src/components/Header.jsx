@@ -160,7 +160,7 @@ const Header = ({ screenWidth }) => {
       const log = pos.coords.longitude;
       fetch(
         // eslint-disable-next-line no-undef
-        `https://api.openweathermap.org/data/2.5/wather?lat=${lat}&lon=${log}&appid=${process.env.REACT_APP_WEATHER_APP_ID}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${log}&appid=${process.env.REACT_APP_WEATHER_APP_ID}`
       )
         .then((res) => res.json())
         .then((data) => {

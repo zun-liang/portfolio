@@ -54,6 +54,8 @@ export const SecondaryTransparent = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "transparent";
 export const SecondaryHover = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "var(--dark-hover)";
+export const SecondaryDot = ({ theme }) =>
+  theme.mode ? "var(--light-secondary)" : "var(--dark-dot)";
 export const TertiaryPrimary = ({ theme }) =>
   theme.mode ? "var(--light-tertiary)" : "var(--dark-primary)";
 export const TertiarySecondary = ({ theme }) =>

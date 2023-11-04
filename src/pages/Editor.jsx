@@ -1,22 +1,9 @@
-import {
-  faFileImport,
-  faFloppyDisk,
-  faHashtag,
-  faPaperPlane,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
+import { faFileImport, faFloppyDisk, faHashtag, faPaperPlane, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import MDEditor from "@uiw/react-md-editor";
-import {
-  deleteDoc,
-  doc,
-  getDoc,
-  serverTimestamp,
-  setDoc,
-  updateDoc,
-} from "firebase/firestore";
+import { deleteDoc, doc, getDoc, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
 import { marked } from "marked";
 import { nanoid } from "nanoid";
 import { useContext, useEffect, useState } from "react";
@@ -25,22 +12,14 @@ import styled from "styled-components";
 import useSound from "use-sound";
 
 import Crumple from "../assets/sounds/crumple.mp3";
-import {
-  BasicInput,
-  HighlightSwitch,
-  PointerSwitch,
-  PrimaryHighlight,
-  TertiaryHighlight,
-  TertiaryParagraph,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { BasicInput, HighlightSwitch, PointerSwitch, PrimaryHighlight, TertiaryHighlight, TertiaryParagraph, TertiarySecondary } from "../assets/styles/Styles";
 import BackButton from "../components/BackButton";
+import Post from "../components/Post";
 import UpdateProfile from "../components/UpdateProfile";
 import UserProfile from "../components/UserProfile";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { SoundContext } from "../contexts/SoundContext";
 import { db } from "../firebase";
-import Post from "./Post";
 
 const EditorContainer = styled.div`
   width: 80vw;

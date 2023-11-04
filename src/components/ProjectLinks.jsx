@@ -15,6 +15,11 @@ import {
 } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 
+const StyledDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+`;
 const WebsiteIcon = styled(Website)`
   width: 1.5rem;
   height: 1.5rem;
@@ -55,7 +60,7 @@ const StyledPuzzleIcon = styled(PuzzleIcon)`
 const ProjectLinks = ({ proj }) => {
   const playPick = useContext(PlayPickContext);
   return (
-    <>
+    <StyledDiv>
       <StyledLink target="_blank" href={proj.codeURL} onClick={playPick}>
         <Icon icon={faCode} />
       </StyledLink>
@@ -67,7 +72,7 @@ const ProjectLinks = ({ proj }) => {
           <StyledPuzzleIcon />
         </StyledLink>
       )}
-    </>
+    </StyledDiv>
   );
 };
 export default ProjectLinks;

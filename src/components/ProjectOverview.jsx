@@ -1,4 +1,6 @@
-import { useContext, useEffect } from "react";
+import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
@@ -12,28 +14,17 @@ import {
   SecondaryHover,
   SecondaryTransparent,
   TertiaryHighlight,
-  TertiaryPrimary,
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 import ProjectLinks from "./ProjectLinks";
 
-const ProjectLink = styled(Link)`
-  width: 100%;
-  cursor: ${PointerSwitch};
-  text-decoration: none;
-  &:link,
-  &:hover,
-  &:active,
-  &:visited {
-    color: ${PrimarySwitch};
-  }
-  @media (min-width: 600px) {
-    width: 300px;
-  }
-  @media (min-width: 1400px) {
-    width: 350px;
-  }
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  font-size: 1rem;
+  color: ${TertiarySecondary};
+  position: relative;
+  left: 0;
+  transition: left 0.5s ease-in-out;
 `;
 const ProjectOverviewContainer = styled.div`
   margin: 1.5rem 0;
@@ -55,8 +46,18 @@ const ProjectOverviewContainer = styled.div`
     border: 1px solid ${BackgroundDot};
     transition: border 0.5s ease-in;
   }
+  &:hover ${StyledFontAwesomeIcon} {
+    left: 0.7rem;
+    transition: left 0.5s ease-in-out;
+  }
+  @media (min-width: 600px) {
+    width: 300px;
+  }
   @media (min-width: 750px) {
     margin: 0;
+  }
+  @media (min-width: 1400px) {
+    width: 350px;
   }
 `;
 const StyledImg = styled.img`
@@ -75,7 +76,7 @@ const StyledH2 = styled.h2`
   margin-top: 0.5rem;
   font-family: "Black Ops One", sans-serif;
   font-size: 1.2rem;
-  color: ${TertiaryPrimary};
+  color: ${PrimarySwitch};
 `;
 const Time = styled.p`
   font-size: 0.8rem;
@@ -83,11 +84,9 @@ const Time = styled.p`
   text-shadow: 1px 0px ${SecondaryTransparent};
 `;
 const StyledDiv = styled.div`
-  margin-top: -2rem;
-  position: relative;
-  z-index: 2;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   gap: 1rem;
 `;
 const StyledP = styled.p`
@@ -95,30 +94,47 @@ const StyledP = styled.p`
   font-size: 0.9rem;
   line-height: 1.5;
 `;
+const ProjectLink = styled(Link)`
+  width: 100%;
+  cursor: ${PointerSwitch};
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  &:link,
+  &:hover,
+  &:active,
+  &:visited {
+    color: ${PrimarySwitch};
+  }
+`;
+const Read = styled.p`
+  font-family: "Black Ops One", sans-serif;
+  color: ${TertiarySecondary};
+  font-size: 0.9rem;
+`;
 
 const ProjectOverview = ({ projectsArr, playPageTurn }) => {
   const { mode } = useContext(ModeContext);
-  useEffect(() => {
-    document.title = "Project ⟡ Zun Liang ༉‧₊˚🕯️🖤❀༉‧₊˚.";
-  }, []);
   const projects = projectsArr.map((project) => (
-    <ProjectLink to={project.id} key={project.id} onClick={playPageTurn}>
-      <ProjectOverviewContainer>
-        <StyledImg
-          src={mode ? project.srcLight : project.srcDark}
-          alt="project preview"
-        />
-        <StyledH2>{project.name}</StyledH2>
+    <ProjectOverviewContainer key={project.id}>
+      <StyledImg
+        src={mode ? project.srcLight : project.srcDark}
+        alt="project preview"
+      />
+      <StyledH2>{project.name}</StyledH2>
+      <StyledDiv>
         <Time>{project.period}</Time>
-        <StyledDiv>
-          <ProjectLinks proj={project} />
-        </StyledDiv>
-        <StyledP>{project.description}</StyledP>
-      </ProjectOverviewContainer>
-    </ProjectLink>
+        <ProjectLinks proj={project} />
+      </StyledDiv>
+      <StyledP>{project.description}</StyledP>
+      <ProjectLink to={project.id} onClick={playPageTurn}>
+        <Read>Read More</Read>
+        <StyledFontAwesomeIcon icon={faAngleDoubleRight} />
+      </ProjectLink>
+    </ProjectOverviewContainer>
   ));
   return <>{projects}</>;
 };
 
 export default ProjectOverview;
-//currently links are functioning weirdly

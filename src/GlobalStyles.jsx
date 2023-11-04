@@ -1,6 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
-import { AutoSwitch, BackgroundSwitch, BGSwitch, PrimarySwitch, TertiaryHighlight } from "./assets/styles/Styles";
+import {
+  AutoSwitch,
+  BackgroundSwitch,
+  BGSwitch,
+  PrimarySwitch,
+  TertiaryHighlight,
+} from "./assets/styles/Styles";
 
 const GlobalStyles = createGlobalStyle`
     * {
@@ -17,6 +23,7 @@ const GlobalStyles = createGlobalStyle`
         --light-paragraph: #000000;
         --light-hover: rgba(255, 255, 255, 0.5);
         --light-highlight: #623600;
+        --light-shadow-color: 62deg 28% 60%;
 
         --dark-background: #121212;
         --dark-primary: #ff76a7;
@@ -25,6 +32,7 @@ const GlobalStyles = createGlobalStyle`
         --dark-paragraph: #d6ffc3;
         --dark-hover: #121212;
         --dark-highlight: #FFCEC3;
+        --dark-shadow-color: 0deg 0% 0%;
 
         --dot-size: 1px;
         --dot-space: 25px;

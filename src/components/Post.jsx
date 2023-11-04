@@ -1,16 +1,9 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
 import Party from "../assets/images/party_boygirl.png";
-import {
-  BasicButton,
-  BasicLink,
-  HoverSwitch,
-  PrimarySecondary,
-  PrimarySwitch,
-  SecondaryTransparent,
-} from "../assets/styles/Styles";
+import { BasicButton, BasicLink, HoverSwitch, PrimarySecondary, PrimarySwitch, SecondaryTransparent } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 
 const PostContainer = styled.div`
@@ -64,10 +57,6 @@ const StyledLink = styled(BasicLink)`
 const Post = ({ draft, setShowPost }) => {
   const playPick = useContext(PlayPickContext);
   const goToEditor = () => setShowPost(false);
-
-  useEffect(() => {
-    document.title = "Post ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
-  }, []);
 
   return (
     <PostContainer>

@@ -2,14 +2,16 @@
 /* eslint-disable react/prop-types */
 import { useContext, useEffect } from "react";
 import styled from "styled-components";
+import useSound from "use-sound";
 
+import Magic from "../assets/sounds/magic-mallet.mp3";
 import {
   PointerSwitch,
   SecondaryTransparent,
-  TertiarySecondary,
+  TertiaryHighlight,
 } from "../assets/styles/Styles";
 import ProjectOverview from "../components/ProjectOverview";
-import { PlayPickContext } from "../contexts/PlayPickContext";
+import { SoundContext } from "../contexts/SoundContext";
 import { projects } from "../projectsData";
 
 const ProjectsContainer = styled.div`
@@ -41,9 +43,11 @@ const ProjectsContainer = styled.div`
 `;
 const View = styled.p`
   font-size: 0.8rem;
-  position: relative;
-  left: 0;
-  transition: left 0.5s ease-in-out;
+`;
+const View2 = styled(View)`
+  transform: rotate(-30deg);
+  transform-origin: center left;
+  transition: transform 0.5s ease-in-out;
 `;
 const StyledLink = styled.a`
   justify-self: end;
@@ -53,19 +57,19 @@ const StyledLink = styled.a`
   &:hover,
   &:active,
   &:visited {
-    color: ${TertiarySecondary};
+    color: ${TertiaryHighlight};
     text-shadow: 1px 1px ${SecondaryTransparent};
   }
   > span {
     font-family: "Black Ops One", sans-serif;
+    margin-right: 0.3rem;
   }
-  &:hover ${View} {
-    left: 1rem;
-    transition: left 0.5s ease-in-out;
+  &:hover ${View2} {
+    transform: rotate(0deg);
+    transition: transform 0.5s ease-in-out;
   }
   display: flex;
   align-items: center;
-  gap: 0.3rem;
   @media (min-width: 750px) {
     grid-column: 1 / -1;
     padding-left: 0.5rem;
@@ -73,8 +77,9 @@ const StyledLink = styled.a`
 `;
 
 const Projects = ({ playPageTurn }) => {
-  const playPick = useContext(PlayPickContext);
   const projectsArr = projects;
+  const { sound } = useContext(SoundContext);
+  const [playMagic] = useSound(Magic, { soundEnabled: sound });
 
   useEffect(() => {
     document.title = "Projects ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
@@ -86,10 +91,11 @@ const Projects = ({ playPageTurn }) => {
       <StyledLink
         target="_blank"
         href="https://github.com/zun-liang"
-        onClick={playPick}
+        onClick={playMagic}
       >
         <span>View more</span>
-        <View>(∩◕ᗜ◕)⊃━☆ﾟ.*</View>
+        <View>(∩◕ᗜ◕)⊃</View>
+        <View2>━☆ﾟ.*</View2>
       </StyledLink>
     </ProjectsContainer>
   );

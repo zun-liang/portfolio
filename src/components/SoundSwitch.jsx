@@ -36,7 +36,7 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 const SoundSwitch = () => {
   const { sound, setSound } = useContext(SoundContext);
   const [playInterface] = useSound(Interface, {
-    soundEnabled: sound,
+    soundEnabled: !sound,
     volume: 0.5,
   });
 
@@ -48,9 +48,9 @@ const SoundSwitch = () => {
   return (
     <Container>
       {sound ? (
-        <StyledFontAwesomeIcon icon={faVolumeOff} onClick={toggleSound} />
-      ) : (
         <StyledFontAwesomeIcon icon={faVolumeHigh} onClick={toggleSound} />
+      ) : (
+        <StyledFontAwesomeIcon icon={faVolumeOff} onClick={toggleSound} />
       )}
     </Container>
   );

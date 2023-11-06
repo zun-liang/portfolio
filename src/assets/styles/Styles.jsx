@@ -92,6 +92,19 @@ export const PointerSwitch = ({ theme }) =>
     ? `url(${PointerLight}) 6 6, pointer`
     : `url(${PointerDark}) 6 6, pointer`;
 
+/* ===  Box Shadow switch === */
+
+export const BoxShadowSwitch = ({ theme }) =>
+  theme.mode
+    ? `0.3px 0.5px 0.7px hsl(var(--light-shadow-color) / 0.23),
+  0.9px 1.8px 2.5px -0.6px hsl(var(--light-shadow-color) / 0.28),
+  2.1px 4.1px 5.7px -1.2px hsl(var(--light-shadow-color) / 0.32),
+  4.8px 9.5px 13.1px -1.8px hsl(var(--light-shadow-color) / 0.37)`
+    : `0.3px 0.5px 0.9px hsl(var(--dark-shadow-color) / 0),
+  1.5px 2.9px 4.9px hsl(var(--dark-shadow-color) / 0.27),
+  3px 6.1px 10.2px hsl(var(--dark-shadow-color) / 0.55),
+  6.3px 12.5px 21px hsl(var(--dark-shadow-color) / 0.82)`;
+
 /* ===  Shared styles === */
 export const BasicButton = styled.button`
   padding: 0.2rem 0.5rem;
@@ -172,23 +185,28 @@ const StyledH2 = styled.h2`
   color: ${TertiarySwitch};
   text-shadow: -1px -1px ${SecondaryParagraph};
   font-family: "Black Ops One", sans-serif;
+  font-size: 1.6rem;
 `;
 const StyledH3 = styled.h3`
   color: ${TertiarySwitch};
   text-shadow: -1px -1px ${SecondaryParagraph};
   font-family: "Black Ops One", sans-serif;
+  font-size: 1.3rem;
 `;
 const StyledH4 = styled.h4`
   color: ${TertiarySwitch};
   font-family: "Black Ops One", sans-serif;
+  font-size: 1.2rem;
 `;
 const StyledH5 = styled.h5`
   color: ${TertiarySwitch};
   font-family: "Black Ops One", sans-serif;
+  font-size: 1.1rem;
 `;
 const StyledP = styled.p`
   color: ${ParagraphSwitch};
   line-height: 1.5;
+  font-size: 1rem;
   & > a {
     text-underline-offset: 2px;
     cursor: ${PointerSwitch};
@@ -218,21 +236,24 @@ const StyledPre = styled.pre`
   }
 `;
 const StyledList = styled.ul`
-  & > li > ul > li {
-    margin-left: 1rem;
-    color: ${ParagraphSwitch};
-    line-height: 1.5;
-  }
   & > li {
     margin-left: 2rem;
     color: ${ParagraphSwitch};
     line-height: 1.6;
+    font-size: 1rem;
+  }
+  & > li > ul > li {
+    margin-left: 1rem;
+    color: ${ParagraphSwitch};
+    line-height: 1.5;
+    font-size: 1rem;
   }
   & > li > a,
   & > li > p > a,
   & > li > ul > li > a {
     text-underline-offset: 2px;
     cursor: ${PointerSwitch};
+    font-size: 1rem;
     &:link,
     &:hover,
     &:active,
@@ -253,10 +274,12 @@ const StyledList = styled.ul`
   }
   & > li > p {
     margin-bottom: 1rem;
+    font-size: 1rem;
   }
 `;
 const StyledLink = styled.a`
   text-underline-offset: 2px;
+  font-size: 1rem;
   cursor: ${PointerSwitch};
   &:link,
   &:hover,

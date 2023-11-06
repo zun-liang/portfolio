@@ -8,6 +8,7 @@ import {
   BasicLink,
   HoverSwitch,
   PrimarySecondary,
+  PrimarySwitch,
   SecondaryTransparent,
 } from "../assets/styles/Styles";
 import { LogoutContext } from "../contexts/LogoutContext";
@@ -27,7 +28,7 @@ const StyledP = styled.p`
   text-align: center;
   font-family: "Black Ops One", sans-serif;
   font-size: 2rem;
-  color: ${PrimarySecondary};
+  color: ${PrimarySwitch};
   text-shadow: 1px 1px ${SecondaryTransparent};
 `;
 const StyledLink = styled(BasicLink)`
@@ -49,7 +50,7 @@ const Logout = () => {
   const { showLogout } = useContext(LogoutContext);
 
   useEffect(() => {
-    document.title = "Log Out ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
+    document.title = "Log out ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
   }, []);
 
   if (!showLogout) return <Navigate to="/404" replace />;

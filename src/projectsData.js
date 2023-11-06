@@ -15,25 +15,37 @@ export const projects = [
     introduction: [
       {
         id: "intro1",
-        text: 'This is the "secret" blog management system in my portfolio website. Visitors can read my blogs in my website but only I (the admin) have access to the management system, that is why it is called "secret".',
+        text: 'Welcome to the heart of my portfolio website – the "secret" blog management system. While visitors to my website can enjoy reading my blogs, I, as the admin, hold the exclusive key to this intriguing realm, which is aptly named "secret."',
       },
     ],
+    funcTitle: "In this secret management system, I am able to:⋆˙⟡",
     functions: [
       {
         id: "func1",
-        text: "Log in and log out the management system",
+        text: "Seamlessly log in and out",
       },
       {
         id: "func2",
-        text: "Retrieve drafts and save drafts to Firestore",
+        text: "Retrieve drafts and securely save them to Firestore",
       },
       {
         id: "func3",
-        text: "Update user name and profile photo locally",
+        text: "Effortlessly update my user name and profile photo locally",
       },
       { id: "func4", text: "Create and edit blogs in Markdown" },
-      { id: "func5", text: "Delete or post blogs supported" },
-      { id: "func6", text: "Tag blogs" },
+      { id: "func5", text: "Delete or post blogs" },
+      {
+        id: "func6",
+        text: "Dynamically showcase tags to categorize and organize blog posts",
+      },
+    ],
+    funcImages: [
+      {
+        id: "image1",
+        title: "Editor",
+        srcLight: "../src/assets/images/screenshots/portfolio/editor-light.png",
+        srcDark: "../src/assets/images/screenshots/portfolio/editor-dark.png",
+      },
     ],
     tools: [
       "HTML",
@@ -55,51 +67,155 @@ export const projects = [
     purpose: [
       {
         id: "pur1",
-        text: "Before creating this blog management system, I was considering using other platforms to save my blogs. Then I realized if I use other platforms, which means that I can only put a link for my blogs page. Visitors will be directed to another website. I am not saying this is not good, but it does look a little inconsistent. Plus, as a front end developer, it feels like cheating in my opinion. I know there are a lot of discussions about whether developers should spend a lot of time building a portfolio website, but I personally found it is a good idea, especially because I regard it as an excellent opportunity to practice my existing skills and learn more. ",
+        text: "Before creating this blog management system, I was considering using external platforms to host my blogs. However, I soon realized that this approach would limit me to just providing links to my blog page, redirecting visitors to another website. While this isn't a bad option, it felt somewhat inconsistent with the vibe I wanted for my website. As a front-end developer, it also felt like I'd be taking a shortcut.",
       },
       {
         id: "pur2",
-        text: "Moreover, I envision this website as a reflection of my personality and preferences 🌈. It's not just a professional showcase; it's a personal space where visitors can get to know the person behind the work 👩‍💻. A built in blog management system gives me more flexibility to personalize my blogs💖.",
+        text: "I’ve seen some discussions about whether developers should invest a significant amount of time in building their own portfolio websites. Some argue that it's not worthwhile unless you're actively job-seeking, while others emphasize its value as a skill-building exercise. But for me, it's about much more than that. I envision this website as a reflection of my personality and preferences 🌈. It's not just a professional showcase; it's a personal space where visitors can get to know the person behind the work 👩‍💻.",
+      },
+      {
+        id: "pur3",
+        text: "In a nutshell, the integrated blog management system empowers me to infuse my blogs with creativity and personalization, making it far more than just a time sink or a simple job showcase. Instead, it represents an incredible chance to refine my current skills, embark on thrilling new learning journeys, and build a one-of-a-kind, engaging digital space. 💖",
       },
     ],
     spotlight: [
       {
         id: "spot1",
-        title: "Firebase - Manage Data⋆˙⟡",
-        text: 'At the time I started to build this website, I didn\'t have the knowledge or experience to work with databases and backend systems. However, I soon discovered that Firebase is a fantastic tool that I could relatively easily grasp and utilize in my project 🌟. I utilized Firestore\'s "getDoc" and "getDocs" to get projects and blogs.',
+        title: "Firebase - Retrieve and Manage Data ୧ ‧₊˚🗂️🔎 ⋆｡°✩",
+        text: [
+          {
+            id: "spot-text-1",
+            text: "At the time I started to build this website, I didn't have the knowledge or experience to work with databases and backend systems. However, I soon discovered that Firebase is a fantastic tool that I could relatively easily grasp and utilize in my project ✨. I utilized Firestore's `getDoc`, `getDocs`, `ref`, `doc`, `orderBy`, and `query` to retrieve and display blogs data.",
+          },
+        ],
+        images: [
+          {
+            id: "image",
+            title: "",
+            srcLight: "",
+            srcDark: "",
+          },
+        ],
       },
       {
         id: "spot2",
-        title: "User Authentication - 'Secret' Blog Management⋆˙⟡",
-        text: 'During the process of building this website, I also embarked on my first experience with authentication. While it may not be immediately evident to regular visitors, I utilized Firestore\'s "auth", "onAuthStateChanged", "signIn", "signOut", "setDoc", "deleteDoc", "updateDoc" to integrate a simple blog management system into this project 💫. This system allows me to exclusively log in as admin and create, update, and edit blogs, all while securely saving them to Firebase.',
+        title: 'User Authentication - "Secret" Blog Management ୧ ‧₊˚ 📁🗝 ⋆｡°✩',
+        text: [
+          {
+            id: "spot-text-1",
+            text: "During the process of building this website, I also embarked on my first experience with user authentication. While it may not be immediately evident to regular visitors, I utilized Firestore's `auth`, `onAuthStateChanged`, `signIn`, `signOut`, `setDoc`, `deleteDoc`, `updateDoc`, and `updateProfile` to integrate a simple blog management system into this project ✨. This system allows me to exclusively log in as admin, create, update, and edit blogs, and update user profile all while securely saving them to Firebase.",
+          },
+          {
+            id: "spot-text-2",
+            text: "Especially, while working with Firestore's `updateProfile` to update user names and photos, I found that it only supports updating a URL for photos, rather than the commonly supported method of uploading pictures directly from local devices. After conducting some research, I discovered that the combination of Firestore and Firebase Cloud Storage can achieve this feature. I accomplished this by using `getStorage`, `ref`, `uploadBytes`, and `getDownloadURL` to store locally uploaded images and provide a URL for downloading. I then utilized this url to update user profiles 📸 🔁.",
+          },
+        ],
+        images: [
+          {
+            id: "image1",
+            title: "Log in Form",
+            srcLight:
+              "../src/assets/images/screenshots/portfolio/login-light.png",
+            srcDark:
+              "../src/assets/images/screenshots/portfolio/login-dark.png",
+          },
+          {
+            id: "image2",
+            title: "Log in Confirmation Message",
+            srcLight:
+              "../src/assets/images/screenshots/portfolio/loggedin-light.png",
+            srcDark:
+              "../src/assets/images/screenshots/portfolio/loggedin-dark.png",
+          },
+          {
+            id: "image3",
+            title: "Log out Confirmation Message",
+            srcLight:
+              "../src/assets/images/screenshots/portfolio/loggedout-light.png",
+            srcDark:
+              "../src/assets/images/screenshots/portfolio/loggedout-dark.png",
+          },
+        ],
       },
       {
         id: "spot3",
         title: "React - createContext and useContext⋆˙⟡",
-        text: 'Moreover, this is the very first time I used React "createContext" and "useContext" in my project. At first, I kept having bugs of context being "undefined" because I misunderstood that there was no need to import context in the components that needed it 😔. Secondly, I didn\'t realize that I could wrap the "main.jsx" with the context provider. Although my "App.jsx" required access to a couple of contexts, I continued importing context in it while it was wrapped by the same context provider, which of course didn\'t work as I expected 😔. It was quite frustrating but I didn\'t give up. I finally figured out the reasons and fixed the bugs after reading React\'s documentation and other people\'s examples 💪.',
+        text: [
+          {
+            id: "spot-text-1",
+            text: 'Moreover, this is the very first time I used React "createContext" and "useContext" in my project. At first, I kept having bugs of context being "undefined" because I misunderstood that there was no need to import context in the components that needed it 😔. Secondly, I didn\'t realize that I could wrap the "main.jsx" with the context provider. Although my "App.jsx" required access to a couple of contexts, I continued importing context in it while it was wrapped by the same context provider, which of course didn\'t work as I expected 😔. It was quite frustrating but I didn\'t give up. I finally figured out the reasons and fixed the bugs after reading React\'s documentation and other people\'s examples 💪.',
+          },
+        ],
+        images: [
+          {
+            id: "image",
+            title: "",
+            srcLight: "",
+            srcDark: "",
+          },
+        ],
       },
       {
         id: "spot4",
         title: "Styled-Components - Theming⋆˙⟡",
-        text: 'Furthermore, I used [Styled-components Theming](https://styled-components.com/docs/advanced#theming) with React context to manage theme colors based on light or dark mode. As I mentioned above, once I figured out how to set up context providers and use context in my project, Theming became a straightforward approach that I successfully implemented. However, there is one main difference between Theming and React context 🤔. Theming only accepts objects as value (which has to be named "theme"), while React context accepts all types of values. Apparently, React context is more flexible, but I chose to use Theming particularly in this project to avoid manually passing props to styled components, for example, "<StyledH1 ${theme}={theme}>Title</StyledH1>". Without Theming, I would have had to pass "${theme}={theme}" as a prop to every single styled component in my entire project, resulting in a considerable amount of repetitive work in the end 🤯.',
+        text: [
+          {
+            id: "spot-text-1",
+            text: 'Furthermore, I used [Styled-components Theming](https://styled-components.com/docs/advanced#theming) with React context to manage theme colors based on light or dark mode. As I mentioned above, once I figured out how to set up context providers and use context in my project, Theming became a straightforward approach that I successfully implemented. However, there is one main difference between Theming and React context 🤔. Theming only accepts objects as value (which has to be named "theme"), while React context accepts all types of values. Apparently, React context is more flexible, but I chose to use Theming particularly in this project to avoid manually passing props to styled components, for example, "<StyledH1 ${theme}={theme}>Title</StyledH1>". Without Theming, I would have had to pass "${theme}={theme}" as a prop to every single styled component in my entire project, resulting in a considerable amount of repetitive work in the end 🤯.',
+          },
+        ],
+        images: [
+          {
+            id: "image",
+            title: "",
+            srcLight: "",
+            srcDark: "",
+          },
+        ],
       },
       {
         id: "spot5",
         title: "React Router 6 - Data Router⋆˙⟡",
-        text: 'What\'s more, I especially utilized React Router v6 data router and its associated functions, including features such as "loader", "action", "defer", "Await", and "React.Suspense" in this project, to enhance the overall user experience and optimize the website\'s performance. Loader makes sure fetched data is ready when page loads. Action makes easier to work with forms in React apps. Defer, Await and React.Suspense data create a better user experience by providing a fallback user interface before data is ready to load. This is especially helpful since I am using Google services to display my blogs but it is not available in some areas. I provided a backup link for visitors who are interested in my blogs.',
+        text: [
+          {
+            id: "spot-text-1",
+            text: 'What\'s more, I especially utilized React Router v6 data router and its associated functions, including features such as "loader", "action", "defer", "Await", and "React.Suspense" in this project, to enhance the overall user experience and optimize the website\'s performance. Loader makes sure fetched data is ready when page loads. Action makes easier to work with forms in React apps. Defer, Await and React.Suspense data create a better user experience by providing a fallback user interface before data is ready to load. This is especially helpful since I am using Google services to display my blogs but it is not available in some areas. I provided a backup link for visitors who are interested in my blogs.',
+          },
+        ],
+        images: [
+          {
+            id: "image",
+            title: "",
+            srcLight: "",
+            srcDark: "",
+          },
+        ],
       },
       {
         id: "spot6",
         title: "Transfer Markdown to HTML and Parse HTML in React App⋆˙⟡",
-        text: "Last but not least, before I decided to convert Markdown to HTML and parse it for display on the web page, I initially attempted to save Markdown directly in Firestore and retrieve its data for display 💭. Unfortunately, I encountered issues with the Markdown formatting, as it couldn't render correctly. After research, I realized that a better approach would be to save HTML instead 🤔, which, in turn, required using a parser to convert the HTML to React elements.",
-      },
-      {
-        id: "spot7",
-        text: "When I applied the parser, it did indeed display the content with styles, but it didn't adhere to the CSS styles I had defined for my entire website. To address this, I decided to customize the parsing rules by transforming all HTML elements into styled components 👩🏻‍💻. This customization worked for most of the content. However, I noticed that all anchor links were non-functional.",
-      },
-      {
-        id: "spot8",
-        text: 'Upon investigating the data I had saved in Firestore and inspecting the content in the developer tools 🧐, it became clear that the customized parsing rules had inadvertently removed all the id attributes. To resolve this issue, I made the necessary adjustments by adding "const id = domNode.attribs.id" and ensuring that "id={id}" was included when rendering the elements.',
+        text: [
+          {
+            id: "spot-text-1",
+            text: "Last but not least, before I decided to convert Markdown to HTML and parse it for display on the web page, I initially attempted to save Markdown directly in Firestore and retrieve its data for display 💭. Unfortunately, I encountered issues with the Markdown formatting, as it couldn't render correctly. After research, I realized that a better approach would be to save HTML instead 🤔, which, in turn, required using a parser to convert the HTML to React elements.",
+          },
+          {
+            id: "spot-text-2",
+            text: "When I applied the parser, it did indeed display the content with styles, but it didn't adhere to the CSS styles I had defined for my entire website. To address this, I decided to customize the parsing rules by transforming all HTML elements into styled components 👩🏻‍💻. This customization worked for most of the content. However, I noticed that all anchor links were non-functional.",
+          },
+          {
+            id: "spot-text-3",
+            text: 'Upon investigating the data I had saved in Firestore and inspecting the content in the developer tools 🧐, it became clear that the customized parsing rules had inadvertently removed all the id attributes. To resolve this issue, I made the necessary adjustments by adding "const id = domNode.attribs.id" and ensuring that "id={id}" was included when rendering the elements.',
+          },
+        ],
+        images: [
+          {
+            id: "image",
+            title: "",
+            srcLight: "",
+            srcDark: "",
+          },
+        ],
       },
     ],
     learned: [
@@ -117,6 +233,14 @@ export const projects = [
         id: "learn3",
         title: "Environment variables⋆˙⟡",
         text: 'If you are making a vite/react app and want to save some sensitive information in environment variables, it is possible that you will run into an issue using "process.env" directly.',
+      },
+    ],
+    learnedImages: [
+      {
+        id: "image",
+        title: "",
+        srcLight: "",
+        srcDark: "",
       },
     ],
   },
@@ -139,6 +263,7 @@ export const projects = [
         text: "This solo project is the solution to Frontend Mentor Challenge Todo App. Frontend Mentor provides app designs and I create the app from scratch to make it match its designs as much as possible.",
       },
     ],
+    funcTitle: "In this app, users are able to:⋆˙⟡",
     functions: [
       {
         id: "func1",
@@ -182,7 +307,12 @@ export const projects = [
       {
         id: "spot1",
         title: "DND⋆˙⟡",
-        text: 'This is the first time I worked on a project requiring for drag and drop feature. After some research, I found React Beautiful DND is a solid candidate for this challenge. However, after I implemented DND in my project, my project keeps reporting an issue "Invariant failed: Draggable: requires an integer index prop". I started research right away and found out that the original React Beautiful DND is no longer maintained. A new DND called @hello/pangea/DND is active now. Then I switched to this one and made some updates to make it work.',
+        text: [
+          {
+            id: "spot-text-1",
+            text: 'This is the first time I worked on a project requiring for drag and drop feature. After some research, I found React Beautiful DND is a solid candidate for this challenge. However, after I implemented DND in my project, my project keeps reporting an issue "Invariant failed: Draggable: requires an integer index prop". I started research right away and found out that the original React Beautiful DND is no longer maintained. A new DND called @hello/pangea/DND is active now. Then I switched to this one and made some updates to make it work.',
+          },
+        ],
       },
     ],
     learned: [

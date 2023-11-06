@@ -29,9 +29,8 @@ import {
   BasicInput,
   HighlightSwitch,
   PointerSwitch,
-  PrimaryHighlight,
+  PrimarySecondary,
   TertiaryHighlight,
-  TertiaryParagraph,
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import BackButton from "../components/BackButton";
@@ -67,10 +66,10 @@ const UpperDiv = styled.div`
 `;
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   font-size: 1.2rem;
-  color: ${TertiaryParagraph};
+  color: ${TertiaryHighlight};
   &:hover {
     cursor: ${PointerSwitch};
-    color: ${PrimaryHighlight};
+    color: ${PrimarySecondary};
   }
 `;
 const StyledDiv = styled.div`
@@ -96,10 +95,10 @@ const TagInput = styled(BasicInput)`
 `;
 const StyledSaveIcon = styled(FontAwesomeIcon)`
   font-size: 1.3rem;
-  color: ${TertiaryParagraph};
+  color: ${TertiaryHighlight};
   &:hover {
     cursor: ${PointerSwitch};
-    color: ${PrimaryHighlight};
+    color: ${PrimarySecondary};
   }
 `;
 const StyledP = styled.p`

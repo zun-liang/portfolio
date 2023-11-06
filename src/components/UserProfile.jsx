@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { PrimaryHighlight } from "../assets/styles/Styles";
+import { TertiaryHighlight } from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { auth } from "../firebase";
 
@@ -17,7 +17,7 @@ const ProfileContainer = styled.div`
 `;
 const StyledP = styled.p`
   font-size: 0.9rem;
-  color: ${PrimaryHighlight};
+  color: ${TertiaryHighlight};
   letter-spacing: 1px;
   font-family: "Black Ops One", sans-serif;
 `;
@@ -29,7 +29,7 @@ const StyledImg = styled.img`
 `;
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   font-size: 1.5rem;
-  color: ${PrimaryHighlight};
+  color: ${TertiaryHighlight};
 `;
 
 const UserProfile = () => {

@@ -11,19 +11,19 @@ import {
   BasicButton,
   BasicInput,
   PointerSwitch,
-  PrimaryHighlight,
+  PrimarySecondary,
   PrimarySwitch,
-  TertiaryParagraph,
+  TertiaryHighlight,
   TertiarySecondary,
 } from "../assets/styles/Styles";
 import { auth } from "../firebase";
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   font-size: 1.2rem;
-  color: ${TertiaryParagraph};
+  color: ${TertiaryHighlight};
   &:hover {
     cursor: ${PointerSwitch};
-    color: ${PrimaryHighlight};
+    color: ${PrimarySecondary};
   }
 `;
 const StyledDiv = styled(ActionDiv)`

@@ -14,6 +14,7 @@ import { RedditShareButton } from "react-share";
 import {
   BackgroundDot,
   BackgroundSwitch,
+  BoxShadowSwitch,
   PointerSwitch,
   PrimarySecondary,
   TertiaryHighlight,
@@ -32,17 +33,7 @@ const CustomizedShare = styled.div`
   position: absolute;
   top: 3rem;
   right: 0;
-  box-shadow: ${({ theme }) =>
-    theme.mode
-      ? `0.3px 0.5px 0.7px hsl(var(--light-shadow-color) / 0.23),
-        0.9px 1.8px 2.5px -0.6px hsl(var(--light-shadow-color) / 0.28),
-        2.1px 4.1px 5.7px -1.2px hsl(var(--light-shadow-color) / 0.32),
-        4.8px 9.5px 13.1px -1.8px hsl(var(--light-shadow-color) / 0.37)
-        `
-      : `0.3px 0.5px 0.9px hsl(var(--dark-shadow-color) / 0),
-        1.5px 2.9px 4.9px hsl(var(--dark-shadow-color) / 0.27),
-        3px 6.1px 10.2px hsl(var(--dark-shadow-color) / 0.55),
-        6.3px 12.5px 21px hsl(var(--dark-shadow-color) / 0.82)`};
+  box-shadow: ${BoxShadowSwitch};
 `;
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   color: ${TertiaryHighlight};

@@ -5,6 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 import {
+  BoxShadowSwitch,
+  HighlightSwitch,
   ParagraphSwitch,
   PrimaryTertiary,
   SecondaryParagraph,
@@ -14,6 +16,7 @@ import BackButton from "../components/BackButton";
 import ProjectLinks from "../components/ProjectLinks";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { projects } from "../projectsData";
+import { ModeContext } from "../contexts/ModeContext";
 
 const ProjectContainer = styled.div`
   width: 80vw;
@@ -64,8 +67,33 @@ const StyledListItem = styled.li`
   margin: 0.5rem 0;
   color: ${ParagraphSwitch};
 `;
+const FiguresContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+const StyledFigure = styled.figure`
+  margin: 1.5rem auto;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const StyledImg = styled.img`
+  margin: 0 auto;
+  height: 150px;
+  border-radius: 1rem;
+  box-shadow: ${BoxShadowSwitch};
+`;
+const StyledFigureCaption = styled.figcaption`
+  margin: 0.5rem 0;
+  text-align: center;
+  font-family: "Black Ops One", sans-serif;
+  font-size: 0.9rem;
+  color: ${HighlightSwitch};
+`;
 
 const Project = () => {
+  const { mode } = useContext(ModeContext);
   const playPick = useContext(PlayPickContext);
   const navigate = useNavigate();
   const { title } = useParams();
@@ -82,12 +110,21 @@ const Project = () => {
         {proj.introduction.map((intro) => (
           <StyledP key={intro.id}>{intro.text}</StyledP>
         ))}
-        <StyledH4>In this app, users are able to:⋆˙⟡</StyledH4>
+        <StyledH4>{proj.funcTitle}</StyledH4>
         <StyledList>
           {proj.functions.map((func) => (
             <StyledListItem key={func.id}>{func.text}</StyledListItem>
           ))}
         </StyledList>
+        {proj.funcImages.map((img) => (
+          <StyledFigure key={img.id}>
+            <StyledImg
+              src={mode ? `${img.srcLight}` : `${img.srcDark}`}
+              alt={img.title}
+            />
+            <StyledFigureCaption>{img.title}</StyledFigureCaption>
+          </StyledFigure>
+        ))}
         <StyledH4>Built with:⋆˙⟡</StyledH4>
         <StyledList>
           {proj.tools.map((tool) => (
@@ -101,8 +138,21 @@ const Project = () => {
         <StyledH3>Spotlight⋆｡°✩</StyledH3>
         {proj.spotlight.map((spot) => (
           <>
-            <StyledH4>{spot.title}</StyledH4>
-            <StyledP key={spot.id}>{spot.text}</StyledP>
+            <StyledH4 key={spot.id}>{spot.title}</StyledH4>
+            {spot.text.map((p) => (
+              <StyledP key={p.id}>{p.text}</StyledP>
+            ))}
+            <FiguresContainer>
+              {spot.images.map((img) => (
+                <StyledFigure key={img.id}>
+                  <StyledImg
+                    src={mode ? `${img.srcLight}` : `${img.srcDark}`}
+                    alt={img.title}
+                  />
+                  <StyledFigureCaption>{img.title}</StyledFigureCaption>
+                </StyledFigure>
+              ))}
+            </FiguresContainer>
           </>
         ))}
         <StyledH3>What I learned⋆｡°✩</StyledH3>
@@ -114,6 +164,7 @@ const Project = () => {
         ))}
       </>
     ));
+
   const handleClick = () => {
     navigate("/projects");
     playPick();

@@ -146,7 +146,7 @@ const Login = () => {
   const loggedin = useContext(AuthContext);
 
   useEffect(() => {
-    document.title = "Log In ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
+    document.title = "Log in ⟡ Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹";
   }, []);
 
   return (

@@ -97,7 +97,44 @@ Moreover, I envision this website as a reflection of my personality and preferen
 
   Last but not least, when I was on the verge of completing the initial version of my website, I realized that incorporating interactive elements into the blog section could make the experience much more engaging. Consequently, I introduced features for liking 🤍, commenting 💬, and sharing 🔗. During the course of this development, I encountered a few noteworthy insights.
 
-  Initially, my blog data structure was rather straightforward, with "likes" and "comments" treated as fields within each blog document. This approach seemed logical at first. However, I soon encountered an issue with Firestore's inability to accommodate updates to comments, as it doesn't support `push`ing new values (new comments) to an array 🤔. After delving into some research, I discovered the flexibility of adding subcollections within any document. This structure resembles a JSON tree, with layers of hierarchy: `collection => doc1, doc2, doc3... => within each doc {{field1, field2, field3...}, subcollection1, subcollection2, subcollection3...} => within each subcollection {doc, doc2, doc3...} => ....` This revelation led me to reorganize the data, storing "comments" as a subcollection, allowing each comment to have its own set of fields, including `id`, `name`, `text`, and `timestamp`.
+  Initially, my blog data structure was rather straightforward, with "likes" and "comments" treated as fields within each blog document. This approach seemed logical at first. However, I soon encountered an issue with Firestore's inability to accommodate updates to comments, as it doesn't support `push`ing new values (new comments) to an array 🤔. After delving into some research, I discovered the flexibility of adding subcollections within any document. This structure resembles a JSON tree, with layers of hierarchy:
+
+  ```
+  collection = [
+    doc1 {
+        field1: data,
+        field2: data,
+        field3: data,
+        ...
+        subcollection1 {
+            doc1 {
+                field1: data,
+                field2: data,
+                ...
+                subcollection{
+                    ...
+                }
+            },
+            doc2 {
+                ...
+            }
+        },
+        subcollection2 {
+            ...
+        }
+    },
+    doc2 {
+        ...
+    },
+    doc3 {
+        ...
+    }
+    ...
+  ]
+
+  ```
+
+  This revelation led me to reorganize the data, storing "comments" as a subcollection, allowing each comment to have its own set of fields, including `id`, `name`, `text`, and `timestamp`.
 
   Additionally, I decided to create a "likes" subcollection within each blog document to address security concerns related to controlled access for reading and writing. This decision stemmed from an issue I encountered while testing comments on mobile devices. Initially, I attributed the problem to mobile device settings, assuming I couldn't submit forms. However, I soon realized that the issue was tied to permissions, and only an admin had the privilege to like or comment, as these features were initially included as fields within each blog document. I conducted research and adjusted the security rules based on the revised data structure, effectively resolving this access issue 🗝.
 
@@ -134,119 +171,129 @@ Moreover, I envision this website as a reflection of my personality and preferen
 
 - Reading Documentation ୧ ‧₊˚📖👩‍💻 ⋆｡°✩
 
-  Honestly, I preferred tutorial videos over documentation, especially before I fully appreciated the power of reading and understanding documentation. There were two main reasons for this preference. Firstly, English is not my first language, and initially, learning something new and abstract in a second language could be overwhelming. Secondly, as a beginner, there's often a strong desire to accelerate the learning process and showcase what I've learned to others, even when my understanding is limited.
+Honestly, I preferred tutorial videos over documentation, especially before I fully appreciated the power of reading and understanding documentation. There were two main reasons for this preference. Firstly, English is not my first language, and initially, learning something new and abstract in a second language could be overwhelming. Secondly, as a beginner, there's often a strong desire to accelerate the learning process and showcase what I've learned to others, even when my understanding is limited.
 
-  However, as I became aware of the barriers that were holding me back from delving into documentation, I intentionally slowed down my approach. I started to read documentation bit by bit, taking my time to understand the content. Surprisingly, this method has proven to be more effective for my learning journey. It has allowed me to build a more solid foundation of knowledge and comprehension .
+However, as I became aware of the barriers that were holding me back from delving into documentation, I intentionally slowed down my approach. I started to read documentation bit by bit, taking my time to understand the content. Surprisingly, this method has proven to be more effective for my learning journey. It has allowed me to build a more solid foundation of knowledge and comprehension .
 
 - Git Branch - Merge and Delete ୧ ‧₊˚ 🔀 ⋆｡°✩
 
-  This project is more complicated than the previous ones I've worked on. In such complex projects, using Git intelligently can be very beneficial. In this project, I utilized `git branch <branch name>`, `git checkout <branch name>`, `git merge <branch name>`, `git branch -d <branch name>`, and `git branch -D <branch name>` to experiment with fresh ideas and alternative approaches, ensuring that I can explore these concepts without jeopardizing the well-functioning codebase I've already established. If these new ideas or approaches prove successful, I seamlessly merge them into the "master" branch.
+This project is more complicated than the previous ones I've worked on. In such complex projects, using Git intelligently can be very beneficial. In this project, I utilized `git branch <branch name>`, `git checkout <branch name>`, `git merge <branch name>`, `git branch -d <branch name>`, and `git branch -D <branch name>` to experiment with fresh ideas and alternative approaches, ensuring that I can explore these concepts without jeopardizing the well-functioning codebase I've already established. If these new ideas or approaches prove successful, I seamlessly merge them into the "master" branch.
 
 - Environment Variables ୧ ‧₊˚ 🔐🔗 ⋆｡°✩
 
-  In this project, I integrated API services from both Firebase and Open Weather, each requiring a private API key. Committing these keys to a public GitHub repository would expose my accounts to potential security risks. In addressing this concern, I explored a common solution—storing sensitive information in environment variables and configuring Git to ignore the file containing these variables. This way, when I push my local repository to GitHub, I can set up these variables on the remote platform.
+In this project, I integrated API services from both Firebase and Open Weather, each requiring a private API key. Committing these keys to a public GitHub repository would expose my accounts to potential security risks. In addressing this concern, I explored a common solution—storing sensitive information in environment variables and configuring Git to ignore the file containing these variables. This way, when I push my local repository to GitHub, I can set up these variables on the remote platform.
 
-  However, during the process of implementing environment variables in my project, I encountered some issues related to Vite. Specifically, when I attempted to use `process.env` directly in Vite, Vite couldn't access environment variables' values.
+However, during the process of implementing environment variables in my project, I encountered some issues related to Vite. Specifically, when I attempted to use `process.env` directly in Vite, Vite couldn't access environment variables' values.
 
-  After further research, I identified two effective solutions. I could either add a `VITE_` prefix to my environment variables and access them using `import.meta.env`, or I could use `loadEnv` to define and utilize these variables. Both methods proved successful for my project.
+After further research, I identified two effective solutions. I could either add a `VITE_` prefix to my environment variables and access them using `import.meta.env`, or I could use `loadEnv` to define and utilize these variables. Both methods proved successful for my project.
 
-  The only stumbling block that gave me some trouble was initially placing the `.env` file in the `src` folder instead of the `root` directory. This caused persistent bugs and confusion until I corrected the file location.
+The only stumbling block that gave me some trouble was initially placing the `.env` file in the `src` folder instead of the `root` directory. This caused persistent bugs and confusion until I corrected the file location.
 
-  Option 1: Using the `VITE_` Prefix and `import.meta.env`
+Option 1: Using the `VITE_` Prefix and `import.meta.env`
 
-  In my `.env` file, I specified:
+In my `.env` file, I specified:
 
-  ```
+```
+
     VITE_REACT_APP_API_KEY = my_api_key
-  ```
 
-  Within my `firebase.js`, I defined the firebaseConfig as follows:
+```
 
-  ```
-  const firebaseConfig = {
-    apiKey: import.meta.env.VITE_REACT_APP_API_KEY,
-  };
-  ```
+Within my `firebase.js`, I defined the firebaseConfig as follows:
 
-  For the `vite.config.js`, it was configured like this:
+```
 
-  ```
-  import react from "@vitejs/plugin-react";
-  import { defineConfig } from "vite";
+const firebaseConfig = {
+apiKey: import.meta.env.VITE_REACT_APP_API_KEY,
+};
 
-  export default defineConfig(() => {
-  return {
-    plugins: [react()],
-  };
-  });
+```
 
-  ```
+For the `vite.config.js`, it was configured like this:
 
-  Option 2: Using `loadEnv` for Configuration
+```
 
-  In my `.env`, I specified:
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
 
-  ```
+export default defineConfig(() => {
+return {
+plugins: [react()],
+};
+});
+
+```
+
+Option 2: Using `loadEnv` for Configuration
+
+In my `.env`, I specified:
+
+```
+
     REACT_APP_API_KEY = my_api_key
-  ```
 
-  Within my `firebase.js`, I defined the firebaseConfig as follows:
+```
 
-  ```
-  const firebaseConfig = {
-    apiKey: process.env.REACT_APP_API_KEY,
-  };
-  ```
+Within my `firebase.js`, I defined the firebaseConfig as follows:
 
-  For the `vite.config.js`, I configured it as suggested in this article:
-  [Uncaught ReferenceError: process is not defined](https://dev.to/boostup/uncaught-referenceerror-process-is-not-defined-12kg)
+```
 
-  ```
-  import react from "@vitejs/plugin-react";
-  import { defineConfig, loadEnv } from "vite";
+const firebaseConfig = {
+apiKey: process.env.REACT_APP_API_KEY,
+};
 
-  //vitejs.dev/config/
-  export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, process.cwd(), "");
-    return {
-      define: {
-        "process.env.REACT_APP_API_KEY": JSON.stringify(env.REACT_APP_API_KEY),
-      },
-      plugins: [react()],
-    };
-  });
+```
 
-  ```
+For the `vite.config.js`, I configured it as suggested in this article:
+[Uncaught ReferenceError: process is not defined](https://dev.to/boostup/uncaught-referenceerror-process-is-not-defined-12kg)
+
+```
+
+import react from "@vitejs/plugin-react";
+import { defineConfig, loadEnv } from "vite";
+
+//vitejs.dev/config/
+export default defineConfig(({ mode }) => {
+const env = loadEnv(mode, process.cwd(), "");
+return {
+define: {
+"process.env.REACT_APP_API_KEY": JSON.stringify(env.REACT_APP_API_KEY),
+},
+plugins: [react()],
+};
+});
+
+```
 
 ### Continued development
 
 - Effective Time Management and Estimation ୧ ‧₊˚ 📅 ⋆｡°✩
 
-  Initially, I didn't have a strict time management strategy in mind for this project. However, as I delved into the development process, I realized the significance of having a well-structured plan. Without proactive planning, it's easy to get sidetracked by appealing yet unimportant features, resulting in wasted time and limited progress.
+Initially, I didn't have a strict time management strategy in mind for this project. However, as I delved into the development process, I realized the significance of having a well-structured plan. Without proactive planning, it's easy to get sidetracked by appealing yet unimportant features, resulting in wasted time and limited progress.
 
 - Pagination ୧ ‧₊˚ 📄1️⃣ ⋆｡°✩
 
-  At the moment, I have a limited number of blogs listed on the "Blogs" page, making pagination appear unnecessary. However, as my blog collection grows, I will definitely contemplate the implementation of pagination. From what I understand, this feature can be achieved using either React Router or Firebase, and I look forward to incorporating it as the need arises.
+At the moment, I have a limited number of blogs listed on the "Blogs" page, making pagination appear unnecessary. However, as my blog collection grows, I will definitely contemplate the implementation of pagination. From what I understand, this feature can be achieved using either React Router or Firebase, and I look forward to incorporating it as the need arises.
 
 - Real-time Updates with onSnapshot ୧ ‧₊˚ 🔄⚡ ⋆｡°✩
 
-  Currently, I retrieve blogs data using getDocs() to gain hands-on experience with Data Router's functionalities, including features like loaders, defer, Await, and React Suspense. However, I've observed that when I click the "delete" button on the "Blogs" page, the page doesn't update in real-time, primarily because it doesn't utilize onSnapshot. In the future, I'm eager to address this and ensure real-time updates for a more responsive user experience.
+Currently, I retrieve blogs data using getDocs() to gain hands-on experience with Data Router's functionalities, including features like loaders, defer, Await, and React Suspense. However, I've observed that when I click the "delete" button on the "Blogs" page, the page doesn't update in real-time, primarily because it doesn't utilize onSnapshot. In the future, I'm eager to address this and ensure real-time updates for a more responsive user experience.
 
 - Optimizing with useMemo and memo ୧ ‧₊˚ ♻️ ⋆｡°✩
 
-  In the current project, I haven't employed useMemo or memo because I think it is not necessary as some states or props are bound to change rapidly and there are no expensive computations. However, I acknowledge the possibility that I might have overlooked some opportunities to utilize them in my project. I'm excited about gaining more experience in using them in the future.
+In the current project, I haven't employed useMemo or memo because I think it is not necessary as some states or props are bound to change rapidly and there are no expensive computations. However, I acknowledge the possibility that I might have overlooked some opportunities to utilize them in my project. I'm excited about gaining more experience in using them in the future.
 
 - Post-Login Redirection ୧ ‧₊˚ 🔀 ⋆｡°✩
 
-  In the current version of my website, once a user logs in successfully, a confirmation page is displayed without automatic redirection. While in a small-scale application, this might not appear crucial or inconvenient, particularly when access is limited to just me. However, improving this functionality holds the potential for a more seamless user experience. Redirection after login is a commonly expected feature in most websites, and I'm excited about implementing it to practice and enhance the overall user experience.
+In the current version of my website, once a user logs in successfully, a confirmation page is displayed without automatic redirection. While in a small-scale application, this might not appear crucial or inconvenient, particularly when access is limited to just me. However, improving this functionality holds the potential for a more seamless user experience. Redirection after login is a commonly expected feature in most websites, and I'm excited about implementing it to practice and enhance the overall user experience.
 
 - Real-time User Profile Updates ୧ ‧₊˚ ⚡ ⋆｡°✩
 
-  At present, when I make changes to the user's profile, it requires an additional page refresh to display the updated username and photo. My goal for the new version of the website is to seamlessly reflect these changes in real-time.
+At present, when I make changes to the user's profile, it requires an additional page refresh to display the updated username and photo. My goal for the new version of the website is to seamlessly reflect these changes in real-time.
 
 - Exploring Color Theory ୧ ‧₊˚ 🎨 ⋆｡°✩
 
-  One of the primary challenges I encountered while working on this project was the selection of colors for both light and dark modes. Overall, I'm satisfied with the colors I ultimately chose. However, I am fully aware that there is a lot of knowledge to be gained in the realm of color theory, especially in the context of creating visually appealing, user-friendly, and accessible websites and applications.
+One of the primary challenges I encountered while working on this project was the selection of colors for both light and dark modes. Overall, I'm satisfied with the colors I ultimately chose. However, I am fully aware that there is a lot of knowledge to be gained in the realm of color theory, especially in the context of creating visually appealing, user-friendly, and accessible websites and applications.
 
 ### Helpful Resources
 
@@ -254,7 +301,7 @@ Moreover, I envision this website as a reflection of my personality and preferen
 
 - [Open Weather API](https://openweathermap.org/)
 
-  To get local weather and temperature depending on visitor's' location.
+To get local weather and temperature depending on visitor's' location.
 
 - [Tweet Button](https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/overview)
 - [Facebook Share Button](https://developers.facebook.com/docs/plugins/share-button/)
@@ -332,25 +379,25 @@ Moreover, I envision this website as a reflection of my personality and preferen
 - [encodeURIComponent()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent)
 - [Chrome 80 shows timestamp "24:xx" instead of "00:00".](https://support.google.com/chrome/thread/29828561/chrome-80-shows-timestamp-24-xx-instead-of-00-00?hl=en)
 
-  While in the development process, I encountered an issue specific to Chrome on macOS. The problem was that when displaying the time for 12:00 AM, it appeared as 24 instead of 00. I managed to resolve this issue by using `hourCycle: 23h` instead of `hour12: false`.
+While in the development process, I encountered an issue specific to Chrome on macOS. The problem was that when displaying the time for 12:00 AM, it appeared as 24 instead of 00. I managed to resolve this issue by using `hourCycle: 23h` instead of `hour12: false`.
 
 #### Markdown
 
 - [react-md-editor](https://uiwjs.github.io/react-md-editor/)
 
-  I first tried rich text editor (TinyMCE) but later switched to Markdown editor because firstly rich text editor's data can not be stored formatted in Firebase as I expected. Secondly, I am more familiar with Markdown so far. However, I will be more than willing to learn more about rich text editors and utilize them in my future projects.
+I first tried rich text editor (TinyMCE) but later switched to Markdown editor because firstly rich text editor's data can not be stored formatted in Firebase as I expected. Secondly, I am more familiar with Markdown so far. However, I will be more than willing to learn more about rich text editors and utilize them in my future projects.
 
 - [How can I set the placeholder value? #154](https://github.com/uiwjs/react-md-editor/issues/154)
 
 - [react-markdown](https://github.com/remarkjs/react-markdown)
 
-  To display Markdown in my website.
+To display Markdown in my website.
 
 - [Marked](https://marked.js.org/)
 - [html-react-parser](https://github.com/remarkablemark/html-react-parser)
 - [remark-gfm](https://github.com/remarkjs/remark-gfm)
 
-  Didn't use in this website yet, but seems helpful to display footnotes, strike through, tables, task lists and URLs directly.
+Didn't use in this website yet, but seems helpful to display footnotes, strike through, tables, task lists and URLs directly.
 
 - [Emoji list markers](https://talk.commonmark.org/t/emoji-list-markers/3560)
 
@@ -358,7 +405,7 @@ Moreover, I envision this website as a reflection of my personality and preferen
 
 - [use-sound](https://github.com/joshwcomeau/use-sound)
 
-  This is a very helpful React custom hook created by Josh Comeau that makes it very easy to work with sound.
+This is a very helpful React custom hook created by Josh Comeau that makes it very easy to work with sound.
 
 - [react-share](https://github.com/nygardk/react-share)
 - [Announcing “use-sound”, a React Hook for Sound Effects](https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/)
@@ -367,9 +414,9 @@ Moreover, I envision this website as a reflection of my personality and preferen
 - [A Pitfall I Almost Fell Into… Learn how to save your API KEYS](https://medium.com/@oadaramola/a-pitfall-i-almost-fell-into-d1d3461b2fb8)
 - [useRef](https://react.dev/reference/react/useRef#referencing-a-value-with-a-ref)
 
-  I came across a bug in my project where, if I clicked on in-page links and then chose to navigate "back to blogs" or simply used the browser's back button, I was unexpectedly directed to "/blogsundefined" instead of the intended "/blogs" route. It turned out that this issue stemmed from my desire to have users return to the previously selected category filter, and I was checking the location state to achieve this. However, after clicking in-page links, the location state became undefined.
+I came across a bug in my project where, if I clicked on in-page links and then chose to navigate "back to blogs" or simply used the browser's back button, I was unexpectedly directed to "/blogsundefined" instead of the intended "/blogs" route. It turned out that this issue stemmed from my desire to have users return to the previously selected category filter, and I was checking the location state to achieve this. However, after clicking in-page links, the location state became undefined.
 
-  My initial approach involved using useState to preserve this information, but it left me with an unused setState and felt like an unnecessary workaround. Upon further exploration, I realized that I could effectively handle this scenario using useRef, which provided the desired solution without the complications. This adjustment resolved the bug, ensuring the correct URL redirection and retaining the desired category filter selection.
+My initial approach involved using useState to preserve this information, but it left me with an unused setState and felt like an unnecessary workaround. Upon further exploration, I realized that I could effectively handle this scenario using useRef, which provided the desired solution without the complications. This adjustment resolved the bug, ensuring the correct URL redirection and retaining the desired category filter selection.
 
 #### React Router
 
@@ -377,18 +424,18 @@ Moreover, I envision this website as a reflection of my personality and preferen
 - [Scroll Restoration v5](https://v5.reactrouter.com/web/guides/scroll-restoration)
 - [ScrollRestoration v6](https://reactrouter.com/en/main/components/scroll-restoration)
 
-  I encountered challenges while implementing a "back to top" button, and two important factors came to my attention during the process.
+I encountered challenges while implementing a "back to top" button, and two important factors came to my attention during the process.
 
-  Firstly, I discovered that my scrollable container was the body element, as indicated by Firefox's developer tools, rather than the browser window itself. This distinction was crucial for tailoring the button's functionality.
+Firstly, I discovered that my scrollable container was the body element, as indicated by Firefox's developer tools, rather than the browser window itself. This distinction was crucial for tailoring the button's functionality.
 
-  Secondly, I observed that my "back to top" button did not reset the scroll position to the new page's beginning; instead, it retained the old page's scroll position. To address this issue, I explored the use of scrollRestoration provided by React Router, which was beneficial for managing scroll behavior during navigation. However, it's worth noting that the scrollRestoration feature primarily operates at the window level, which didn't fully address my needs.
+Secondly, I observed that my "back to top" button did not reset the scroll position to the new page's beginning; instead, it retained the old page's scroll position. To address this issue, I explored the use of scrollRestoration provided by React Router, which was beneficial for managing scroll behavior during navigation. However, it's worth noting that the scrollRestoration feature primarily operates at the window level, which didn't fully address my needs.
 
-  To resolve this, I implemented a workaround by refreshing the "scroll to top" function based on the current pathname using useLocation. This approach allowed me to regain control over the scroll position and ensure that the page starts from the top when navigating to a new location.
+To resolve this, I implemented a workaround by refreshing the "scroll to top" function based on the current pathname using useLocation. This approach allowed me to regain control over the scroll position and ensure that the page starts from the top when navigating to a new location.
 
 - [<ScrollRestoration> with scrolling container other than window #9495](https://github.com/remix-run/react-router/discussions/9495)
 - [index.tsx:24 Uncaught Error: useLocation() may be used only in the context of a <Router> component](https://stackoverflow.com/questions/71979809/index-tsx24-uncaught-error-uselocation-may-be-used-only-in-the-context-of-a)
 
-  I encountered the same error and was considering where to put my scroll component for the best practice. This answer inspired me to add it to the layout route and enable the utilization of useLocation.
+I encountered the same error and was considering where to put my scroll component for the best practice. This answer inspired me to add it to the layout route and enable the utilization of useLocation.
 
 #### Styled-Components
 
@@ -399,19 +446,19 @@ Moreover, I envision this website as a reflection of my personality and preferen
 
 - [How to Import SVGs in a React and Vite app](https://www.freecodecamp.org/news/how-to-import-svgs-in-react-and-vite/#3importingsvgsasreactcomponents)
 
-  I usually use SVGR to transform SVGs into React components to work with.
+I usually use SVGR to transform SVGs into React components to work with.
 
 - [Formspree](https://formspree.io/)
 
-  To create my contact form.
+To create my contact form.
 
 - [LT Browser](https://www.lambdatest.com/lt-browser)
 
-  To test responsive designs on different devices locally.
+To test responsive designs on different devices locally.
 
 - [Find scrollable elements](https://phuoc.ng/collection/tips/find-scrollable-elements/)
 
-  To find which elements are scrollable, you can check the Firefox inspector.
+To find which elements are scrollable, you can check the Firefox inspector.
 
 #### Vite
 
@@ -451,3 +498,7 @@ Moreover, I envision this website as a reflection of my personality and preferen
 - GitHub - [@zun-liang](https://github.com/zun-liang)
 - Frontend Mentor - [@zun-liang](https://www.frontendmentor.io/profile/zun-liang)
 - freeCodeCamp - [@zun-liang](https://www.freecodecamp.org/zun-liang)
+
+```
+
+```

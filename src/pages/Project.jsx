@@ -70,6 +70,7 @@ const StyledListItem = styled.li`
 const FiguresContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 const StyledFigure = styled.figure`
   margin: 1.5rem auto;
@@ -80,7 +81,6 @@ const StyledFigure = styled.figure`
 `;
 const StyledImg = styled.img`
   margin: 0 auto;
-  height: 150px;
   border-radius: 1rem;
   box-shadow: ${BoxShadowSwitch};
 `;
@@ -117,10 +117,11 @@ const Project = () => {
           ))}
         </StyledList>
         {proj.funcImages.map((img) => (
-          <StyledFigure key={img.id}>
+          <StyledFigure key={img.id} style={{ margin: "1.5rem auto" }}>
             <StyledImg
               src={mode ? `${img.srcLight}` : `${img.srcDark}`}
               alt={img.title}
+              style={{ width: img.width }}
             />
             <StyledFigureCaption>{img.title}</StyledFigureCaption>
           </StyledFigure>
@@ -143,11 +144,12 @@ const Project = () => {
               <StyledP key={p.id}>{p.text}</StyledP>
             ))}
             <FiguresContainer>
-              {spot.images.map((img) => (
+              {spot.images?.map((img) => (
                 <StyledFigure key={img.id}>
                   <StyledImg
                     src={mode ? `${img.srcLight}` : `${img.srcDark}`}
                     alt={img.title}
+                    style={{ height: img.height }}
                   />
                   <StyledFigureCaption>{img.title}</StyledFigureCaption>
                 </StyledFigure>
@@ -159,7 +161,9 @@ const Project = () => {
         {proj.learned.map((lea) => (
           <>
             <StyledH4>{lea.title}</StyledH4>
-            <StyledP key={lea.id}>{lea.text}</StyledP>
+            {lea.text.map((t) => (
+              <StyledP key={t.id}>{t.text}</StyledP>
+            ))}
           </>
         ))}
       </>

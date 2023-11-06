@@ -85,7 +85,7 @@ Moreover, I envision this website as a reflection of my personality and preferen
 
   What's more, I especially utilized React Router v6 data router and its associated functions, including features such as `loader`, `action`, `defer`, `Await`, and `React.Suspense` in this project, to enhance the overall user experience and optimize the website's performance. Loader ensured that fetched data was readily available when a page loaded. Action simplified the handling of forms in React applications. Defer, Await and React.Suspense collectively improved the user experience by providing a fallback user interface while the data was being loaded. This proved to be particularly valuable since I relied on Google services to display my blogs, which may not be available in some regions. To accommodate all visitors, I also provided a backup link for those interested in my blogs.🚀
 
-- Transfer Markdown to HTML and Parse HTML in React App ୧ ‧₊˚ 🌐🔁 ⋆｡°✩
+- Transfer Markdown to HTML and Parse HTML in React App ୧ ‧₊˚ 🌐 🔁 ⋆｡°✩
 
   Additionally, before I decided to convert Markdown to HTML and parse it for display on the web page, I initially attempted to save Markdown directly in Firestore and retrieve its data for display 💭. Unfortunately, I encountered issues with the Markdown formatting, as it couldn't render correctly. After research, I realized that a better approach would be to save HTML instead 🤔, which, in turn, required using a parser to convert the HTML to React elements.
 
@@ -100,7 +100,7 @@ Moreover, I envision this website as a reflection of my personality and preferen
   Initially, my blog data structure was rather straightforward, with "likes" and "comments" treated as fields within each blog document. This approach seemed logical at first. However, I soon encountered an issue with Firestore's inability to accommodate updates to comments, as it doesn't support `push`ing new values (new comments) to an array 🤔. After delving into some research, I discovered the flexibility of adding subcollections within any document. This structure resembles a JSON tree, with layers of hierarchy:
 
   ```
-  collection = [
+  collection {
     doc1 {
         field1: data,
         field2: data,
@@ -111,7 +111,7 @@ Moreover, I envision this website as a reflection of my personality and preferen
                 field1: data,
                 field2: data,
                 ...
-                subcollection{
+                subcollection {
                     ...
                 }
             },
@@ -130,7 +130,7 @@ Moreover, I envision this website as a reflection of my personality and preferen
         ...
     }
     ...
-  ]
+  }
 
   ```
 
@@ -173,7 +173,7 @@ Moreover, I envision this website as a reflection of my personality and preferen
 
 Honestly, I preferred tutorial videos over documentation, especially before I fully appreciated the power of reading and understanding documentation. There were two main reasons for this preference. Firstly, English is not my first language, and initially, learning something new and abstract in a second language could be overwhelming. Secondly, as a beginner, there's often a strong desire to accelerate the learning process and showcase what I've learned to others, even when my understanding is limited.
 
-However, as I became aware of the barriers that were holding me back from delving into documentation, I intentionally slowed down my approach. I started to read documentation bit by bit, taking my time to understand the content. Surprisingly, this method has proven to be more effective for my learning journey. It has allowed me to build a more solid foundation of knowledge and comprehension .
+However, as I became aware of the barriers that were holding me back from delving into documentation, I intentionally slowed down my approach. I started to read documentation bit by bit, taking my time to understand the content. Surprisingly, this method has proven to be more effective for my learning journey. It has allowed me to build a more solid foundation of knowledge and comprehension.
 
 - Git Branch - Merge and Delete ୧ ‧₊˚ 🔀 ⋆｡°✩
 

@@ -57,49 +57,51 @@ In building and designing this website, I've put a strong emphasis on **user exp
 
 ### Purpose and Goal
 
-<ul>
-<li style="list-style-type: '✨'">&nbsp;Professional Connection
-<li style="list-style-type: '✨'">&nbsp;Personal Connection
-</ul>
-
 The primary purpose behind creating this portfolio website is to establish a unique online space where I can share my ideas 💡, communicate my skills 💻, and connect with other developers 👩‍💻👨‍💻. Having observed numerous impressive portfolio websites out there, it's an immense source of pride and satisfaction to finally have one of my own 🚀.
 
 Moreover, I envision this website as a reflection of my personality and preferences 🌈. It's not just a professional showcase; it's a personal space where visitors can get to know the person behind the work 👩‍💻. Through this platform, I aim to inspire and foster connections with those who share my interests and passions 💖.
 
 ### Spotlight
 
-<ul>
-<li style="list-style-type: '✨'">&nbsp;Firebase - Retrieve and Manage Data
-<li style="list-style-type: '✨'">&nbsp;User Authentication - "Secret" Blog Management
-<li style="list-style-type: '✨'">&nbsp;React - createContext and useContext
-<li style="list-style-type: '✨'">&nbsp;Styled-Components - Theming
-<li style="list-style-type: '✨'">&nbsp;React Router 6 - Data Router
-<li style="list-style-type: '✨'">&nbsp;Transfer Markdown to HTML and Parse HTML in React App
-</ul>
+- Firebase - Retrieve and Manage Data ୧ ‧₊˚🗂️🔎 ⋆｡°✩
 
-At the time I started to build this website, I didn't have the knowledge or experience to work with databases and backend systems. However, I soon discovered that Firebase is a fantastic tool that I could relatively easily grasp and utilize in my project ✨. I utilized Firestore's `getDoc`, `getDocs`, `ref`, `doc`, `orderBy`, and `query` to retrieve and display blogs data.
+  At the time I started to build this website, I didn't have the knowledge or experience to work with databases and backend systems. However, I soon discovered that Firebase is a fantastic tool that I could relatively easily grasp and utilize in my project ✨. I utilized Firestore's `getDoc`, `getDocs`, `ref`, `doc`, `orderBy`, and `query` to retrieve and display blogs data.
 
-During the process of building this website, I also embarked on my first experience with user authentication. While it may not be immediately evident to regular visitors, I utilized Firestore's `auth`, `onAuthStateChanged`, `signIn`, `signOut`, `setDoc`, `deleteDoc`, `updateDoc`, and `updateProfile` to integrate a simple blog management system into this project ✨. This system allows me to exclusively log in as admin, create, update, and edit blogs, and update user profile all while securely saving them to Firebase.
+- User Authentication - "Secret" Blog Management ୧ ‧₊˚ 📁🗝 ⋆｡°✩
 
-Especially, while working with Firestore's `updateProfile` to update user names and photos, I found that it only supports updating a URL for photos, rather than the commonly supported method of uploading pictures directly from local devices. After conducting some research, I discovered that the combination of Firestore and Firebase Cloud Storage can achieve this feature. I accomplished this by using `getStorage`, `ref`, `uploadBytes`, and `getDownloadURL` to store locally uploaded images and provide a URL for downloading. I then utilized this url to update user profiles 📸 🔁.
+  During the process of building this website, I also embarked on my first experience with user authentication. While it may not be immediately evident to regular visitors, I utilized Firestore's `auth`, `onAuthStateChanged`, `signIn`, `signOut`, `setDoc`, `deleteDoc`, `updateDoc`, and `updateProfile` to integrate a simple blog management system into this project ✨. This system allows me to exclusively log in as admin, create, update, and edit blogs, and update user profile all while securely saving them to Firebase.
 
-Moreover, this is the very first time I used React `createContext` and `useContext` in my project. At first, I kept having bugs of context being "undefined" because I misunderstood that there was no need to import context in the components that needed it 😔. Secondly, I didn't realize that I could wrap the `main.jsx` with the context provider. Although my `App.jsx` required access to a couple of contexts, I continued importing context in it while it was wrapped by the same context provider, which of course didn't work as I expected 😔. It was quite frustrating but I didn't give up. I finally figured out the reasons and fixed the bugs after reading React's documentation and other people's examples 💪.
+  Especially, while working with Firestore's `updateProfile` to update user names and photos, I found that it only supports updating a URL for photos, rather than the commonly supported method of uploading pictures directly from local devices. After conducting some research, I discovered that the combination of Firestore and Firebase Cloud Storage can achieve this feature. I accomplished this by using `getStorage`, `ref`, `uploadBytes`, and `getDownloadURL` to store locally uploaded images and provide a URL for downloading. I then utilized this url to update user profiles 📸 🔁.
 
-Furthermore, I used [Styled-components Theming](https://styled-components.com/docs/advanced#theming) with React context to manage theme colors based on light or dark mode. As I mentioned above, once I figured out how to set up context providers and use context in my project, Theming became a straightforward approach that I successfully implemented. However, there is one main difference between Theming and React context 🤔. Theming only accepts objects as value (which has to be named "theme"), while React context accepts all types of values. Apparently, React context is more flexible, but I chose to use Theming particularly in this project to avoid manually passing props to styled components, for example, `<StyledH1 ${theme}={theme}>Title</StyledH1>`. Without Theming, I would have had to pass `${theme}={theme}` as a prop to every single styled component in my entire project, resulting in a considerable amount of repetitive work in the end 🤯.
+- React - createContext and useContext ୧ ‧₊˚ ➰🗞️ ⋆｡°✩
 
-What's more, I especially utilized React Router v6 data router and its associated functions, including features such as `loader`, `action`, `defer`, `Await`, and `React.Suspense` in this project, to enhance the overall user experience and optimize the website's performance. Loader ensured that fetched data was readily available when a page loaded. Action simplified the handling of forms in React applications. Defer, Await and React.Suspense collectively improved the user experience by providing a fallback user interface while the data was being loaded. This proved to be particularly valuable since I relied on Google services to display my blogs, which may not be available in some regions. To accommodate all visitors, I also provided a backup link for those interested in my blogs.🚀
+  Moreover, this is the very first time I used React `createContext` and `useContext` in my project. At first, I kept having bugs of context being "undefined" because I misunderstood that there was no need to import context in the components that needed it 😔. Secondly, I didn't realize that I could wrap the `main.jsx` with the context provider. Although my `App.jsx` required access to a couple of contexts, I continued importing context in it while it was wrapped by the same context provider, which of course didn't work as I expected 😔. It was quite frustrating but I didn't give up. I finally figured out the reasons and fixed the bugs after reading React's documentation and other people's examples 💪.
 
-Last but not least, before I decided to convert Markdown to HTML and parse it for display on the web page, I initially attempted to save Markdown directly in Firestore and retrieve its data for display 💭. Unfortunately, I encountered issues with the Markdown formatting, as it couldn't render correctly. After research, I realized that a better approach would be to save HTML instead 🤔, which, in turn, required using a parser to convert the HTML to React elements.
+- Styled-Components - Theming ⊹🍵₊ ⊹ 𓍢ִ໋🌷͙֒⊹
 
-When I applied the parser, it did indeed display the content with styles, but it didn't adhere to the CSS styles I had defined for my entire website. To address this, I decided to customize the parsing rules by transforming all HTML elements into styled components 👩🏻‍💻. This customization worked for most of the content. However, I noticed that all anchor links were non-functional.
+  Furthermore, I used [Styled-components Theming](https://styled-components.com/docs/advanced#theming) with React context to manage theme colors based on light or dark mode. As I mentioned above, once I figured out how to set up context providers and use context in my project, Theming became a straightforward approach that I successfully implemented. However, there is one main difference between Theming and React context 🤔. Theming only accepts objects as value (which has to be named "theme"), while React context accepts all types of values. Apparently, React context is more flexible, but I chose to use Theming particularly in this project to avoid manually passing props to styled components, for example, `<StyledH1 ${theme}={theme}>Title</StyledH1>`. Without Theming, I would have had to pass `${theme}={theme}` as a prop to every single styled component in my entire project, resulting in a considerable amount of repetitive work in the end 🤯.
 
-Upon investigating the data I had saved in Firestore and inspecting the content in the developer tools 🧐, it became clear that the customized parsing rules had inadvertently removed all the id attributes. To resolve this issue, I made the necessary adjustments by adding `const id = domNode.attribs.id` and ensuring that `id={id}` was included when rendering the elements.🛠👩🏻‍💻
+- React Router 6 - Data Router ୧ ‧₊˚ 💻⚙️ ⋆｡°✩
 
-❓ firestore doesn't accept the way of pushing new item to array, instead created a new sub collection under the same blog item and access use collection, collection() and doc() are different, but add new comment is also adding doc, learn the structure
+  What's more, I especially utilized React Router v6 data router and its associated functions, including features such as `loader`, `action`, `defer`, `Await`, and `React.Suspense` in this project, to enhance the overall user experience and optimize the website's performance. Loader ensured that fetched data was readily available when a page loaded. Action simplified the handling of forms in React applications. Defer, Await and React.Suspense collectively improved the user experience by providing a fallback user interface while the data was being loaded. This proved to be particularly valuable since I relied on Google services to display my blogs, which may not be available in some regions. To accommodate all visitors, I also provided a backup link for those interested in my blogs.🚀
 
-❓ Not all browsers support navigator.share, so created custom share, tried to make by myself but got help from react share as well
+- Transfer Markdown to HTML and Parse HTML in React App ୧ ‧₊˚ 🌐🔁 ⋆｡°✩
 
-❓ different security rules for blogs vs likes and comments. I found this bug when I was testing comments on mobile devices. At first, I thought it was due to mobile devices setup and I can not submit form, then I realized it was because I didn't login as admin. At that point, only admin has access to like or comment. Then i did research to update the security rules based on data and also restructured likes, removed it from fields but as a sub collection. actually i don't have to do this, but did it anyway
+  Additionally, before I decided to convert Markdown to HTML and parse it for display on the web page, I initially attempted to save Markdown directly in Firestore and retrieve its data for display 💭. Unfortunately, I encountered issues with the Markdown formatting, as it couldn't render correctly. After research, I realized that a better approach would be to save HTML instead 🤔, which, in turn, required using a parser to convert the HTML to React elements.
+
+  When I applied the parser, it did indeed display the content with styles, but it didn't adhere to the CSS styles I had defined for my entire website. To address this, I decided to customize the parsing rules by transforming all HTML elements into styled components 👩🏻‍💻. This customization worked for most of the content. However, I noticed that all anchor links were non-functional.
+
+  Upon investigating the data I had saved in Firestore and inspecting the content in the developer tools 🧐, it became clear that the customized parsing rules had inadvertently removed all the id attributes. To resolve this issue, I made the necessary adjustments by adding `const id = domNode.attribs.id` and ensuring that `id={id}` was included when rendering the elements.🛠👩🏻‍💻
+
+- User Interactions - Blog liking, commenting, and sharing ୧ ‧₊˚ 🤍💬🔗 ⋆｡°✩
+
+  Last but not least, when I was on the verge of completing the initial version of my website, I realized that incorporating interactive elements into the blog section could make the experience much more engaging. Consequently, I introduced features for liking 🤍, commenting 💬, and sharing 🔗. During the course of this development, I encountered a few noteworthy insights.
+
+  Initially, my blog data structure was rather straightforward, with "likes" and "comments" treated as fields within each blog document. This approach seemed logical at first. However, I soon encountered an issue with Firestore's inability to accommodate updates to comments, as it doesn't support `push`ing new values (new comments) to an array 🤔. After delving into some research, I discovered the flexibility of adding subcollections within any document. This structure resembles a JSON tree, with layers of hierarchy: `collection => doc1, doc2, doc3... => within each doc {{field1, field2, field3...}, subcollection1, subcollection2, subcollection3...} => within each subcollection {doc, doc2, doc3...} => ....` This revelation led me to reorganize the data, storing "comments" as a subcollection, allowing each comment to have its own set of fields, including `id`, `name`, `text`, and `timestamp`.
+
+  Additionally, I decided to create a "likes" subcollection within each blog document to address security concerns related to controlled access for reading and writing. This decision stemmed from an issue I encountered while testing comments on mobile devices. Initially, I attributed the problem to mobile device settings, assuming I couldn't submit forms. However, I soon realized that the issue was tied to permissions, and only an admin had the privilege to like or comment, as these features were initially included as fields within each blog document. I conducted research and adjusted the security rules based on the revised data structure, effectively resolving this access issue 🗝.
+
+  To enable the sharing functionality, I utilized both `navigator.share` and `react-share`. While most modern browsers support `navigator.share`, I also created custom sharing options for browsers lacking this support. My intention was to build as much as possible from scratch. However, certain social platforms posed challenges, with limited developer support and lack of acceptable sharing links. Consequently, I integrated `react-share` to facilitate sharing on such platforms while maintaining a cohesive user experience 🫧.
 
 ### Links
 
@@ -130,25 +132,25 @@ Upon investigating the data I had saved in Firestore and inspecting the content 
 
 ### What I learned
 
-- Reading Documentation 📖👩‍💻
+- Reading Documentation ୧ ‧₊˚📖👩‍💻 ⋆｡°✩
 
-  Honestly, I preferred tutorial videos over documentation, especially before I fully appreciated the power of reading and understanding documentation. There were two main reasons for this preference. Firstly, English is not my first language, and initially, learning something new and abstract in a second language could be overwhelming 🤯. Secondly, as a beginner, there's often a strong desire to accelerate the learning process and showcase what I've learned to others, even when my understanding is limited.
+  Honestly, I preferred tutorial videos over documentation, especially before I fully appreciated the power of reading and understanding documentation. There were two main reasons for this preference. Firstly, English is not my first language, and initially, learning something new and abstract in a second language could be overwhelming. Secondly, as a beginner, there's often a strong desire to accelerate the learning process and showcase what I've learned to others, even when my understanding is limited.
 
-  However, as I became aware of the barriers that were holding me back from delving into documentation, I intentionally slowed down my approach. I started to read documentation bit by bit, taking my time to understand the content 📝. Surprisingly, this method has proven to be more effective for my learning journey. It has allowed me to build a more solid foundation of knowledge and comprehension 🎯.
+  However, as I became aware of the barriers that were holding me back from delving into documentation, I intentionally slowed down my approach. I started to read documentation bit by bit, taking my time to understand the content. Surprisingly, this method has proven to be more effective for my learning journey. It has allowed me to build a more solid foundation of knowledge and comprehension .
 
-- Git Branch - Merge and Delete 🔀
+- Git Branch - Merge and Delete ୧ ‧₊˚ 🔀 ⋆｡°✩
 
   This project is more complicated than the previous ones I've worked on. In such complex projects, using Git intelligently can be very beneficial. In this project, I utilized `git branch <branch name>`, `git checkout <branch name>`, `git merge <branch name>`, `git branch -d <branch name>`, and `git branch -D <branch name>` to experiment with fresh ideas and alternative approaches, ensuring that I can explore these concepts without jeopardizing the well-functioning codebase I've already established. If these new ideas or approaches prove successful, I seamlessly merge them into the "master" branch.
 
-- Environment Variables 🔐
+- Environment Variables ୧ ‧₊˚ 🔐🔗 ⋆｡°✩
 
-  In this project, I integrated API services from both Firebase and Open Weather, each requiring a private API key. Committing these keys to a public GitHub repository would expose my accounts to potential security risks. In addressing this concern, I explored a common solution—storing sensitive information in environment variables and configuring Git to ignore the file containing these variables. This way, when I push my local repository to GitHub, I can set up these variables on the remote platform.🔒💻
+  In this project, I integrated API services from both Firebase and Open Weather, each requiring a private API key. Committing these keys to a public GitHub repository would expose my accounts to potential security risks. In addressing this concern, I explored a common solution—storing sensitive information in environment variables and configuring Git to ignore the file containing these variables. This way, when I push my local repository to GitHub, I can set up these variables on the remote platform.
 
-  However, during the process of implementing environment variables in my project, I encountered some issues related to Vite. Specifically, when I attempted to use `process.env` directly in Vite, Vite couldn't access environment variables' values.🛠❌
+  However, during the process of implementing environment variables in my project, I encountered some issues related to Vite. Specifically, when I attempted to use `process.env` directly in Vite, Vite couldn't access environment variables' values.
 
-  After further research, I identified two effective solutions. I could either add a `VITE_` prefix to my environment variables and access them using `import.meta.env`, or I could use `loadEnv` to define and utilize these variables. Both methods proved successful for my project.🤝🔑
+  After further research, I identified two effective solutions. I could either add a `VITE_` prefix to my environment variables and access them using `import.meta.env`, or I could use `loadEnv` to define and utilize these variables. Both methods proved successful for my project.
 
-  The only stumbling block that gave me some trouble was initially placing the `.env` file in the `src` folder instead of the `root` directory. This caused persistent bugs and confusion until I corrected the file location 📂🐞.
+  The only stumbling block that gave me some trouble was initially placing the `.env` file in the `src` folder instead of the `root` directory. This caused persistent bugs and confusion until I corrected the file location.
 
   Option 1: Using the `VITE_` Prefix and `import.meta.env`
 
@@ -218,31 +220,31 @@ Upon investigating the data I had saved in Firestore and inspecting the content 
 
 ### Continued development
 
-- Effective Time Management and Estimation 📅✅
+- Effective Time Management and Estimation ୧ ‧₊˚ 📅 ⋆｡°✩
 
   Initially, I didn't have a strict time management strategy in mind for this project. However, as I delved into the development process, I realized the significance of having a well-structured plan. Without proactive planning, it's easy to get sidetracked by appealing yet unimportant features, resulting in wasted time and limited progress.
 
-- Pagination 📄1️⃣
+- Pagination ୧ ‧₊˚ 📄1️⃣ ⋆｡°✩
 
   At the moment, I have a limited number of blogs listed on the "Blogs" page, making pagination appear unnecessary. However, as my blog collection grows, I will definitely contemplate the implementation of pagination. From what I understand, this feature can be achieved using either React Router or Firebase, and I look forward to incorporating it as the need arises.
 
-- Real-time Updates with onSnapshot 🔄⚡
+- Real-time Updates with onSnapshot ୧ ‧₊˚ 🔄⚡ ⋆｡°✩
 
   Currently, I retrieve blogs data using getDocs() to gain hands-on experience with Data Router's functionalities, including features like loaders, defer, Await, and React Suspense. However, I've observed that when I click the "delete" button on the "Blogs" page, the page doesn't update in real-time, primarily because it doesn't utilize onSnapshot. In the future, I'm eager to address this and ensure real-time updates for a more responsive user experience.
 
-- Optimizing with useMemo and memo ♻️
+- Optimizing with useMemo and memo ୧ ‧₊˚ ♻️ ⋆｡°✩
 
   In the current project, I haven't employed useMemo or memo because I think it is not necessary as some states or props are bound to change rapidly and there are no expensive computations. However, I acknowledge the possibility that I might have overlooked some opportunities to utilize them in my project. I'm excited about gaining more experience in using them in the future.
 
-- Post-Login Redirection 🔀
+- Post-Login Redirection ୧ ‧₊˚ 🔀 ⋆｡°✩
 
   In the current version of my website, once a user logs in successfully, a confirmation page is displayed without automatic redirection. While in a small-scale application, this might not appear crucial or inconvenient, particularly when access is limited to just me. However, improving this functionality holds the potential for a more seamless user experience. Redirection after login is a commonly expected feature in most websites, and I'm excited about implementing it to practice and enhance the overall user experience.
 
-- Real-time User Profile Updates ⚡
+- Real-time User Profile Updates ୧ ‧₊˚ ⚡ ⋆｡°✩
 
   At present, when I make changes to the user's profile, it requires an additional page refresh to display the updated username and photo. My goal for the new version of the website is to seamlessly reflect these changes in real-time.
 
-- Exploring Color Theory 🎨
+- Exploring Color Theory ୧ ‧₊˚ 🎨 ⋆｡°✩
 
   One of the primary challenges I encountered while working on this project was the selection of colors for both light and dark modes. Overall, I'm satisfied with the colors I ultimately chose. However, I am fully aware that there is a lot of knowledge to be gained in the realm of color theory, especially in the context of creating visually appealing, user-friendly, and accessible websites and applications.
 

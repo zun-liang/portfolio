@@ -35,7 +35,7 @@ const CommentsContainer = styled.div`
     padding: 2rem 2rem 3rem 2rem;
   }
 `;
-const StyledP = styled.p`
+const StyledTitle = styled.p`
   text-align: center;
   font-family: "Black Ops One", sans-serif;
   color: ${TertiaryHighlight};
@@ -87,7 +87,7 @@ const Comments = ({ blogID }) => {
     <>
       {displayComments.length > 0 && (
         <CommentsContainer>
-          <StyledP>Comments &#40;{displayComments.length}&#41;</StyledP>
+          <StyledTitle>Comments &#40;{displayComments.length}&#41;</StyledTitle>
           {displayComments}
         </CommentsContainer>
       )}

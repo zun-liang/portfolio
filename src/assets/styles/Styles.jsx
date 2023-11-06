@@ -251,6 +251,9 @@ const StyledList = styled.ul`
     color: ${SecondaryTertiary};
     font-size: 16px;
   }
+  & > li > p {
+    margin-bottom: 1rem;
+  }
 `;
 const StyledLink = styled.a`
   text-underline-offset: 2px;

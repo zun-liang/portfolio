@@ -28,7 +28,7 @@ const StyledImg = styled.img`
   border-radius: 50%;
 `;
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: ${PrimaryHighlight};
 `;
 

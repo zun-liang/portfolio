@@ -30,10 +30,10 @@ export const projects = [
       },
       {
         id: "func3",
-        text: "Effortlessly update my user name and profile photo locally",
+        text: "Effortlessly update my user name and profile photo",
       },
       { id: "func4", text: "Create and edit blogs in Markdown" },
-      { id: "func5", text: "Delete or post blogs" },
+      { id: "func5", text: "Delete and post blogs" },
       {
         id: "func6",
         text: "Dynamically showcase tags to categorize and organize blog posts",
@@ -162,7 +162,7 @@ export const projects = [
           {
             id: "image4",
             title: "User Profile Management",
-            height: "200px",
+            height: "150px",
             srcLight:
               "../src/assets/images/screenshots/portfolio/update-user-profile-light.png",
             srcDark:
@@ -200,7 +200,27 @@ export const projects = [
           },
           {
             id: "spot-text-2",
-            text: 'Initially, my blog data structure was rather straightforward, with "likes" and "comments" treated as fields within each blog document. This approach seemed logical at first. However, I soon encountered an issue with Firestore\'s inability to accommodate updates to comments, as it doesn\'t support `push`ing new values (new comments) to an array 🤔. After delving into some research, I discovered the flexibility of adding subcollections within any document. This structure resembles a JSON tree, with layers of hierarchy: ',
+            text: 'Initially, my blog data structure was rather straightforward, with "likes" and "comments" treated as fields within each blog document. This approach seemed logical at first. However, I soon encountered an issue with Firestore\'s inability to accommodate updates to comments, as it doesn\'t support `push`ing new values (new comments) to an array 🤔. After delving into some research, I discovered the flexibility of adding subcollections within any document. This structure resembles a JSON tree, with layers of hierarchy:',
+            images: [
+              {
+                id: "spot-text-2-image-example1",
+                title: "Data Structure",
+                height: "500px",
+                srcLight:
+                  "../src/assets/images/screenshots/portfolio/code-block-light.png",
+                srcDark:
+                  "../src/assets/images/screenshots/portfolio/code-block-dark.png",
+              },
+              {
+                id: "spot-text-2-image-example2",
+                title: "Blogs Collection Structure",
+                height: "500px",
+                srcLight:
+                  "../src/assets/images/screenshots/portfolio/blogs-structure-light.png",
+                srcDark:
+                  "../src/assets/images/screenshots/portfolio/blogs-structure-dark.png",
+              },
+            ],
           },
           {
             id: "spot-text-3",
@@ -213,14 +233,6 @@ export const projects = [
           {
             id: "spot-text-5",
             text: "To enable the sharing functionality, I utilized both `navigator.share` and `react-share`. While most modern browsers support `navigator.share`, I also created custom sharing options for browsers lacking this support. My intention was to build as much as possible from scratch. However, certain social platforms posed challenges, with limited developer support and lack of acceptable sharing links. Consequently, I integrated `react-share` to facilitate sharing on such platforms while maintaining a cohesive user experience 🫧.",
-          },
-        ],
-        images: [
-          {
-            id: "image",
-            title: "",
-            srcLight: "",
-            srcDark: "",
           },
         ],
       },
@@ -287,7 +299,7 @@ export const projects = [
     name: "Todo App",
     period: "August 2023",
     description:
-      "A simple todo app built with React and Styled-Components for managing tasks.",
+      "A simple todo app built with React and Styled-Components for managing daily tasks.",
     codeURL: "https://github.com/zun-liang/todo-app",
     femURL: "https://www.frontendmentor.io/solutions/todo-app-_MCCMFmZnq",
     liveURL: "https://zun-liang.github.io/todo-app/",
@@ -298,7 +310,7 @@ export const projects = [
     introduction: [
       {
         id: "intro1",
-        text: "This solo project is the solution to Frontend Mentor Challenge Todo App. Frontend Mentor provides app designs and I create the app from scratch to make it match its designs as much as possible.",
+        text: "This individual project represents the solution to the Frontend Mentor Challenge - Todo App. Frontend Mentor supplies app designs, and I've crafted this app from the ground up, meticulously ensuring it aligns with the provided designs to the best of my ability.",
       },
     ],
     funcTitle: "In this app, users are able to:⋆˙⟡",
@@ -319,6 +331,17 @@ export const projects = [
       { id: "func8", text: "Toggle light and dark mode" },
       { id: "func9", text: "Drag and drop to reorder items on the list" },
     ],
+    funcImages: [
+      {
+        id: "image1",
+        title: "Todo App",
+        width: "100%",
+        srcLight:
+          "../src/assets/images/screenshots/todo-app/screenshot-desktop-light.png",
+        srcDark:
+          "../src/assets/images/screenshots/todo-app/screenshot-desktop-dark.png",
+      },
+    ],
     tools: [
       "HTML",
       "CSS",
@@ -333,11 +356,11 @@ export const projects = [
     purpose: [
       {
         id: "pur1",
-        text: "My main purpose of doing this project is to practice working with localStorage. At the time of doing this project, I haven't learned how to store data except for saving them in localStorage or sessionStorage.",
+        text: "The primary objective of doing this project was to enhance my proficiency in utilizing localStorage. During the project's initiation, my knowledge was primarily confined to storing and retrieving data through localStorage or sessionStorage.",
       },
       {
         id: "pur2",
-        text: "What's more, when I was looking for next challenges, this challenge's bonus feature \"drag and drop\" caught my eyes. I think it must be a very interesting feature to work on. It turned out to be true.",
+        text: 'Furthermore, while searching for subsequent challenges, the "drag and drop" bonus feature within this project immediately intrigued me. I foresaw it as an engaging aspect to tackle, which would not only provide an opportunity to practice reading documentation but also enhance my problem-solving skills and more.',
       },
     ],
 
@@ -348,7 +371,16 @@ export const projects = [
         text: [
           {
             id: "spot-text-1",
-            text: 'This is the first time I worked on a project requiring for drag and drop feature. After some research, I found React Beautiful DND is a solid candidate for this challenge. However, after I implemented DND in my project, my project keeps reporting an issue "Invariant failed: Draggable: requires an integer index prop". I started research right away and found out that the original React Beautiful DND is no longer maintained. A new DND called @hello/pangea/DND is active now. Then I switched to this one and made some updates to make it work.',
+            text: 'This is the first time I worked on a project that demanded the implementation of a drag and drop feature. After some research, I I discovered that React Beautiful DND was a promising solution for this challenge. However, shortly after integrating DND into my project, I encountered a persistent issue, prompting an error message: "Invariant failed: Draggable: requires an integer index prop." Without hesitation, I delved into further research and found out that the original React Beautiful DND was no longer maintained. Subsequently, I transitioned to an alternative DND library, namely, @hello/pangea/DND, and diligently made the necessary updates to ensure seamless functionality.',
+          },
+        ],
+        images: [
+          {
+            id: "image1",
+            title: "Drag and Drop",
+            height: "300px",
+            srcLight: "../src/assets/images/screenshots/todo-app/drag-drop.gif",
+            srcDark: "../src/assets/images/screenshots/todo-app/drag-drop.gif",
           },
         ],
       },
@@ -357,7 +389,12 @@ export const projects = [
       {
         id: "learn1",
         title: "Using NanoID to generate React map keys⋆˙⟡",
-        text: "In this project, I especially learned how to use NanoID to generate React map keys and how to use React Beautiful DND. I used to think that NanoID can only generate random IDs which is not helpful for generating React map keys. However, I found that if I use NanoID to generate to do item's id and use its id as key, then it works perfectly.",
+        text: [
+          {
+            id: "learn-text-1",
+            text: "This project was a significant learning experience, particularly in my discovery of how to utilize NanoID for generating React map keys. Initially, I held the belief that NanoID could only produce random IDs, making it unsuitable for generating stable React map keys. However, I suddenly realized that I could utilize NanoID to address the issue of certain to-do items sharing identical IDs. The key was to use NanoID to generate IDs during the creation of to-do items, thus ensuring that each item's ID was not only unique but also stable, eliminating any potential conflicts. This newfound insight allowed me to effectively utilize NanoID in managing React map keys, enhancing the project's performance.",
+          },
+        ],
       },
     ],
   },

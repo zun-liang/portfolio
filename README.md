@@ -134,6 +134,49 @@ Moreover, I envision this website as a reflection of my personality and preferen
 
   ```
 
+  ```
+  blogs {
+
+    blog_1 {
+      id: blog_1_id,
+      title: blog_1_title,
+      overview: blog_1_overview,
+      content: blog_1_content,
+      timestamp: blog_1_timestamp,
+      tag: {blog_1_tag1, blog_1_tag2, blog_1_tag3...},
+      likes {
+          likes {
+                likes: blog_1_likes,
+              }
+          },
+      comments {
+        comment_1 {
+                  id: comment_1_id,
+                  name: comment_1_name,
+                  text: comment_1_text,
+                  timestamp: comment_1_timestamp,
+        },
+        comment_2 {
+            ...
+        },
+        comment_3 {
+            ...
+        },
+      },
+      },
+
+    blog_2 {
+        ...
+    },
+
+    blog_3 {
+        ...
+    }
+    ...
+    }
+
+  ```
+
   This revelation led me to reorganize the data, storing "comments" as a subcollection, allowing each comment to have its own set of fields, including `id`, `name`, `text`, and `timestamp`.
 
   Additionally, I decided to create a "likes" subcollection within each blog document to address security concerns related to controlled access for reading and writing. This decision stemmed from an issue I encountered while testing comments on mobile devices. Initially, I attributed the problem to mobile device settings, assuming I couldn't submit forms. However, I soon realized that the issue was tied to permissions, and only an admin had the privilege to like or comment, as these features were initially included as fields within each blog document. I conducted research and adjusted the security rules based on the revised data structure, effectively resolving this access issue 🗝.

@@ -116,7 +116,7 @@ const Project = () => {
             <StyledListItem key={func.id}>{func.text}</StyledListItem>
           ))}
         </StyledList>
-        {proj.funcImages.map((img) => (
+        {proj.funcImages?.map((img) => (
           <StyledFigure key={img.id} style={{ margin: "1.5rem auto" }}>
             <StyledImg
               src={mode ? `${img.srcLight}` : `${img.srcDark}`}
@@ -140,8 +140,22 @@ const Project = () => {
         {proj.spotlight.map((spot) => (
           <>
             <StyledH4 key={spot.id}>{spot.title}</StyledH4>
-            {spot.text.map((p) => (
-              <StyledP key={p.id}>{p.text}</StyledP>
+            {spot.text?.map((p) => (
+              <>
+                <StyledP>{p.text}</StyledP>
+                <FiguresContainer>
+                  {p.images?.map((img) => (
+                    <StyledFigure key={img.id}>
+                      <StyledImg
+                        src={mode ? `${img.srcLight}` : `${img.srcDark}`}
+                        alt={img.title}
+                        style={{ height: img.height }}
+                      />
+                      <StyledFigureCaption>{img.title}</StyledFigureCaption>
+                    </StyledFigure>
+                  ))}
+                </FiguresContainer>
+              </>
             ))}
             <FiguresContainer>
               {spot.images?.map((img) => (
@@ -161,7 +175,7 @@ const Project = () => {
         {proj.learned.map((lea) => (
           <>
             <StyledH4>{lea.title}</StyledH4>
-            {lea.text.map((t) => (
+            {lea.text?.map((t) => (
               <StyledP key={t.id}>{t.text}</StyledP>
             ))}
           </>

@@ -32,7 +32,6 @@ export default defineConfig(({ mode }) => {
         env.REACT_APP_WEATHER_APP_ID
       ),
     },
-    base: "/",
     plugins: [svgr(), react()],
   };
 });

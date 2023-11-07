@@ -1,3 +1,29 @@
+import PortfolioLight from "./assets/images/screenshots/portfolio/screenshot-desktop-light.png";
+import PortfolioDark from "./assets/images/screenshots/portfolio/screenshot-desktop-dark.png";
+import EditorLight from "./assets/images/screenshots/portfolio/editor-light.png";
+import EditorDark from "./assets/images/screenshots/portfolio/editor-dark.png";
+import PostLight from "./assets/images/screenshots/portfolio/post-light.png";
+import PostDark from "./assets/images/screenshots/portfolio/post-dark.png";
+import DraftLight from "./assets/images/screenshots/portfolio/draft-light.png";
+import DraftDark from "./assets/images/screenshots/portfolio/draft-dark.png";
+import GetDraftLight from "./assets/images/screenshots/portfolio/get-draft-light.png";
+import GetDraftDark from "./assets/images/screenshots/portfolio/get-draft-dark.png";
+import LoginLight from "./assets/images/screenshots/portfolio/login-light.png";
+import LoginDark from "./assets/images/screenshots/portfolio/login-dark.png";
+import LoggedinLight from "./assets/images/screenshots/portfolio/loggedin-light.png";
+import LoggedinDark from "./assets/images/screenshots/portfolio/loggedin-dark.png";
+import LogoutLight from "./assets/images/screenshots/portfolio/loggedout-light.png";
+import LogoutDark from "./assets/images/screenshots/portfolio/loggedout-dark.png";
+import UserProfileLight from "./assets/images/screenshots/portfolio/update-user-profile-light.png";
+import UserProfileDark from "./assets/images/screenshots/portfolio/update-user-profile-dark.png";
+import DataStructureLight from "./assets/images/screenshots/portfolio/code-block-light.png";
+import DataStructureDark from "./assets/images/screenshots/portfolio/code-block-dark.png";
+import BlogsCollectionLight from "./assets/images/screenshots/portfolio/blogs-structure-light.png";
+import BlogsCollectionDark from "./assets/images/screenshots/portfolio/blogs-structure-dark.png";
+import TodoLight from "./assets/images/screenshots/todo-app/screenshot-desktop-light.png";
+import TodoDark from "./assets/images/screenshots/todo-app/screenshot-desktop-dark.png";
+import DragDrop from "./assets/images/screenshots/todo-app/drag-drop.gif";
+
 export const projects = [
   {
     id: "portfolio",
@@ -8,9 +34,8 @@ export const projects = [
     codeURL: "https://github.com/zun-liang/portfolio",
     femURL: null,
     liveURL: "https://zunldev.com/",
-    srcLight:
-      "/assets/images/screenshots/portfolio/screenshot-desktop-light.png",
-    srcDark: "/assets/images/screenshots/portfolio/screenshot-desktop-dark.png",
+    srcLight: `${PortfolioLight}`,
+    srcDark: `${PortfolioDark}`,
     introduction: [
       {
         id: "intro1",
@@ -43,8 +68,8 @@ export const projects = [
         id: "image1",
         title: "Editor",
         width: "100%",
-        srcLight: "/assets/images/screenshots/portfolio/editor-light.png",
-        srcDark: "/assets/images/screenshots/portfolio/editor-dark.png",
+        srcLight: `${EditorLight}`,
+        srcDark: `${EditorDark}`,
       },
     ],
     tools: [
@@ -93,23 +118,22 @@ export const projects = [
             id: "image1",
             title: "Post Confirmation",
             height: "150px",
-            srcLight: "/assets/images/screenshots/portfolio/post-light.png",
-            srcDark: "/assets/images/screenshots/portfolio/post-dark.png",
+            srcLight: `${PostLight}`,
+            srcDark: `${PostDark}`,
           },
           {
             id: "image2",
             title: "Save Draft Confirmation",
             height: "150px",
-            srcLight: "/assets/images/screenshots/portfolio/draft-light.png",
-            srcDark: "/assets/images/screenshots/portfolio/draft-dark.png",
+            srcLight: `${DraftLight}`,
+            srcDark: `${DraftDark}`,
           },
           {
             id: "image3",
             title: "Retrieve Draft",
             height: "150px",
-            srcLight:
-              "/assets/images/screenshots/portfolio/get-draft-light.png",
-            srcDark: "/assets/images/screenshots/portfolio/get-draft-dark.png",
+            srcLight: `${GetDraftLight}`,
+            srcDark: `${GetDraftDark}`,
           },
         ],
       },
@@ -131,32 +155,29 @@ export const projects = [
             id: "image1",
             title: "Log in Form",
             height: "150px",
-            srcLight: "/assets/images/screenshots/portfolio/login-light.png",
-            srcDark: "/assets/images/screenshots/portfolio/login-dark.png",
+            srcLight: `${LoginLight}`,
+            srcDark: `${LoginDark}`,
           },
           {
             id: "image2",
             title: "Log in Confirmation",
             height: "150px",
-            srcLight: "/assets/images/screenshots/portfolio/loggedin-light.png",
-            srcDark: "/assets/images/screenshots/portfolio/loggedin-dark.png",
+            srcLight: `${LoggedinLight}`,
+            srcDark: `${LoggedinDark}`,
           },
           {
             id: "image3",
             title: "Log out Confirmation",
             height: "150px",
-            srcLight:
-              "/assets/images/screenshots/portfolio/loggedout-light.png",
-            srcDark: "/assets/images/screenshots/portfolio/loggedout-dark.png",
+            srcLight: `${LogoutLight}`,
+            srcDark: `${LogoutDark}`,
           },
           {
             id: "image4",
             title: "User Profile Management",
             height: "150px",
-            srcLight:
-              "/assets/images/screenshots/portfolio/update-user-profile-light.png",
-            srcDark:
-              "/assets/images/screenshots/portfolio/update-user-profile-dark.png",
+            srcLight: `${UserProfileLight}`,
+            srcDark: `${UserProfileDark}`,
           },
         ],
       },
@@ -196,19 +217,15 @@ export const projects = [
                 id: "spot-text-2-image-example1",
                 title: "Data Structure",
                 height: "500px",
-                srcLight:
-                  "/assets/images/screenshots/portfolio/code-block-light.png",
-                srcDark:
-                  "/assets/images/screenshots/portfolio/code-block-dark.png",
+                srcLight: `${DataStructureLight}`,
+                srcDark: `${DataStructureDark}`,
               },
               {
                 id: "spot-text-2-image-example2",
                 title: "Blogs Collection Structure",
                 height: "500px",
-                srcLight:
-                  "/assets/images/screenshots/portfolio/blogs-structure-light.png",
-                srcDark:
-                  "/assets/images/screenshots/portfolio/blogs-structure-dark.png",
+                srcLight: `${BlogsCollectionLight}`,
+                srcDark: `${BlogsCollectionDark}`,
               },
             ],
           },
@@ -275,14 +292,6 @@ export const projects = [
         ],
       },
     ],
-    learnedImages: [
-      {
-        id: "image",
-        title: "",
-        srcLight: "",
-        srcDark: "",
-      },
-    ],
   },
   {
     id: "todo-app",
@@ -293,9 +302,8 @@ export const projects = [
     codeURL: "https://github.com/zun-liang/todo-app",
     femURL: "https://www.frontendmentor.io/solutions/todo-app-_MCCMFmZnq",
     liveURL: "https://zun-liang.github.io/todo-app/",
-    srcLight:
-      "/assets/images/screenshots/todo-app/screenshot-desktop-light.png",
-    srcDark: "/assets/images/screenshots/todo-app/screenshot-desktop-dark.png",
+    srcLight: `${TodoLight}`,
+    srcDark: `${TodoDark}`,
     introduction: [
       {
         id: "intro1",
@@ -325,10 +333,8 @@ export const projects = [
         id: "image1",
         title: "Todo App",
         width: "100%",
-        srcLight:
-          "/assets/images/screenshots/todo-app/screenshot-desktop-light.png",
-        srcDark:
-          "/assets/images/screenshots/todo-app/screenshot-desktop-dark.png",
+        srcLight: `${TodoLight}`,
+        srcDark: `${TodoDark}`,
       },
     ],
     tools: [
@@ -368,8 +374,8 @@ export const projects = [
             id: "image1",
             title: "Drag and Drop",
             height: "300px",
-            srcLight: "/assets/images/screenshots/todo-app/drag-drop.gif",
-            srcDark: "/assets/images/screenshots/todo-app/drag-drop.gif",
+            srcLight: `${DragDrop}`,
+            srcDark: `${DragDrop}`,
           },
         ],
       },

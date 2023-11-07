@@ -76,7 +76,7 @@ export const projects = [
       },
       {
         id: "pur3",
-        text: "In a nutshell, the integrated blog management system empowers me to infuse my blogs with creativity and personalization, making it far more than just a time sink or a simple job showcase. Instead, it represents an incredible chance to refine my current skills, embark on thrilling new learning journeys, and build a one-of-a-kind, engaging digital space. 💖",
+        text: "In general, the integrated blog management system empowers me to infuse my blogs with creativity and personalization, making it far more than just a time sink or a simple job showcase. Instead, it represents an incredible chance to refine my current skills, embark on thrilling new learning journeys, and build a one-of-a-kind, engaging digital space. 💖",
       },
     ],
     spotlight: [

@@ -56,6 +56,8 @@ export const SecondaryTransparent = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "transparent";
 export const SecondaryHover = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "var(--dark-hover)";
+export const SecondaryHighlight = ({ theme }) =>
+  theme.mode ? "var(--light-secondary)" : "var(--dark-highlight)";
 export const SecondaryDot = ({ theme }) =>
   theme.mode ? "var(--light-secondary)" : "var(--dark-dot)";
 export const TertiaryPrimary = ({ theme }) =>
@@ -218,7 +220,7 @@ const StyledP = styled.p`
     }
   }
   & > code {
-    color: ${SecondaryTertiary};
+    color: ${SecondaryHighlight};
     background-color: ${TertiaryBackground};
     font-size: 16px;
     padding: 2px;
@@ -231,7 +233,7 @@ const StyledPre = styled.pre`
   overflow-x: scroll;
   & > code,
   & > p > code {
-    color: ${SecondaryTertiary};
+    color: ${SecondaryHighlight};
     font-size: 16px;
   }
 `;
@@ -269,7 +271,7 @@ const StyledList = styled.ul`
   }
   & > li > pre > code,
   & > li > pre > p > code {
-    color: ${SecondaryTertiary};
+    color: ${SecondaryHighlight};
     font-size: 16px;
   }
   & > li > p {

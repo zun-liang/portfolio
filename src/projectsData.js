@@ -276,7 +276,7 @@ export const projects = [
           },
           {
             id: "learn-text-3",
-            text: "After further research, I identified two effective solutions. I could either add a `VITE_` prefix to my environment variables and access them using `import.meta.env`, or I could use `loadEnv` to define and utilize these variables. Both methods proved successful for my project.",
+            text: 'After further research, I identified two effective solutions. I could either add a "VITE" prefix to my environment variables and access them using "import.meta.env", or I could use "loadEnv" to define and utilize these variables. Both methods proved successful for my project.',
           },
           {
             id: "learn-text-4",

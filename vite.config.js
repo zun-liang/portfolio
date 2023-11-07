@@ -32,7 +32,7 @@ export default defineConfig(({ mode }) => {
         env.REACT_APP_WEATHER_APP_ID
       ),
     },
-    base: "/zun-liang.github.io",
+    base: "/",
     plugins: [svgr(), react()],
   };
 });

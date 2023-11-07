@@ -198,7 +198,7 @@ const Header = ({ screenWidth }) => {
         </Wrapper>
       )}
       <TitleContainer>
-        <Title>ZUN LIANG</Title>
+        <Title>ZUN L. DEV</Title>
         <SubTitleBlink> ⊹</SubTitleBlink>
         <SubTitleBlinkSlow>˚</SubTitleBlinkSlow>
         <SubTitleBlink>₊</SubTitleBlink>

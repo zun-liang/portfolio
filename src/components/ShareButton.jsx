@@ -95,7 +95,7 @@ const ShareButton = ({ title, text, url }) => {
   const [showCustom, setShowCustom] = useState(false);
   const updatedTitle = title.split(" ").slice(1).join(" ");
   const updatedText = text.replace(/<[^>]*>/g, "");
-  const updatedURL = `https://zun-liang.github.io/blogs/${url}`;
+  const updatedURL = `https://zunldev.com/blogs/${url}`;
 
   const handleXMark = () => {
     setShowCustom(false);

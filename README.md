@@ -97,7 +97,7 @@ Moreover, I envision this website as a reflection of my personality and preferen
 
   Last but not least, when I was on the verge of completing the initial version of my website, I realized that incorporating interactive elements into the blog section could make the experience much more engaging. Consequently, I introduced features for liking 🤍, commenting 💬, and sharing 🔗. During the course of this development, I encountered a few noteworthy insights.
 
-  Initially, my blog data structure was rather straightforward, with "likes" and "comments" treated as fields within each blog document. This approach seemed logical at first. However, I soon encountered an issue with Firestore's inability to accommodate updates to comments, as it doesn't support `push`ing new values (new comments) to an array 🤔. After delving into some research, I discovered the flexibility of adding subcollections within any document. This revelation led me to reorganize the data, storing "comments" as a subcollection, allowing each comment to have its own set of fields, including `id`, `name`, `text`, and `timestamp`. To know more about this structure, check out my blog [Firestore Data Structure](https://zun-liang.github.io/blogs/firestore-data-structure-7sMKb6jf0Ml5WmSLamZBL).
+  Initially, my blog data structure was rather straightforward, with "likes" and "comments" treated as fields within each blog document. This approach seemed logical at first. However, I soon encountered an issue with Firestore's inability to accommodate updates to comments, as it doesn't support `push`ing new values (new comments) to an array 🤔. After delving into some research, I discovered the flexibility of adding subcollections within any document. This revelation led me to reorganize the data, storing "comments" as a subcollection, allowing each comment to have its own set of fields, including `id`, `name`, `text`, and `timestamp`. To know more about this structure, check out my blog [Firestore Data Structure](https://zunldev.com/blogs/firestore-data-structure-7sMKb6jf0Ml5WmSLamZBL).
 
   Additionally, I decided to create a "likes" subcollection within each blog document to address security concerns related to controlled access for reading and writing. This decision stemmed from an issue I encountered while testing comments on mobile devices. Initially, I attributed the problem to mobile device settings, assuming I couldn't submit forms. However, I soon realized that the issue was tied to permissions, and only an admin had the privilege to like or comment, as these features were initially included as fields within each blog document. I conducted research and adjusted the security rules based on the revised data structure, effectively resolving this access issue 🗝.
 
@@ -105,8 +105,8 @@ Moreover, I envision this website as a reflection of my personality and preferen
 
 ### Links
 
-- Github URL: [click here](https://github.com/zun-liang/zun-liang.github.io)
-- Live Site URL: [click here](https://zun-liang.github.io/)
+- Github URL: [click here](https://github.com/zun-liang/portfolio)
+- Live Site URL: [click here](https://zunldev.com/)
 
 ## My process
 
@@ -148,7 +148,7 @@ Moreover, I envision this website as a reflection of my personality and preferen
 
   However, during the process of implementing environment variables in my project, I encountered some issues related to Vite. Specifically, when I attempted to use `process.env` directly in Vite, Vite couldn't access environment variables' values.
 
-  After further research, I identified two effective solutions. I could either add a `VITE_` prefix to my environment variables and access them using `import.meta.env`, or I could use `loadEnv` to define and utilize these variables. Both methods proved successful for my project. To learn the details about the two approaches, check out my blog [Save Private API Keys in Environment Variables in Vite](http://zun-liang.github.io/blogs/save-private-api-keys-in-environment-variables-in-vite-qFY1zT7CTbZwwyE9l5ykM).
+  After further research, I identified two effective solutions. I could either add a `VITE_` prefix to my environment variables and access them using `import.meta.env`, or I could use `loadEnv` to define and utilize these variables. Both methods proved successful for my project. To learn the details about the two approaches, check out my blog [Save Private API Keys in Environment Variables in Vite](http://zunldev.com/blogs/save-private-api-keys-in-environment-variables-in-vite-qFY1zT7CTbZwwyE9l5ykM).
 
   The only stumbling block that gave me some trouble was initially placing the `.env` file in the `src` folder instead of the `root` directory. This caused persistent bugs and confusion until I corrected the file location.
 
@@ -288,6 +288,10 @@ To get local weather and temperature depending on visitor's' location.
 
 - [Emoji list markers](https://talk.commonmark.org/t/emoji-list-markers/3560)
 
+#### Netlify
+
+- [How to Deploy a React Router-Based Application to Netlify](https://www.freecodecamp.org/news/how-to-deploy-react-router-based-app-to-netlify/)
+
 #### React
 
 - [use-sound](https://github.com/joshwcomeau/use-sound)
@@ -382,7 +386,7 @@ To get local weather and temperature depending on visitor's' location.
 
 ## Author
 
-- Website - [Zun Liang](https://zun-liang.github.io/)
+- Website - [Zun Liang](https://zunldev.com/)
 - GitHub - [@zun-liang](https://github.com/zun-liang)
 - Frontend Mentor - [@zun-liang](https://www.frontendmentor.io/profile/zun-liang)
 - freeCodeCamp - [@zun-liang](https://www.freecodecamp.org/zun-liang)

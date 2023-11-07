@@ -4,19 +4,12 @@ import { useNavigate, useParams } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import {
-  BoxShadowSwitch,
-  HighlightSwitch,
-  ParagraphSwitch,
-  PrimaryTertiary,
-  SecondaryParagraph,
-  SecondaryTransparent,
-} from "../assets/styles/Styles";
+import { BoxShadowSwitch, HighlightSwitch, ParagraphSwitch, PrimaryTertiary, SecondaryParagraph, SecondaryTransparent } from "../assets/styles/Styles";
 import BackButton from "../components/BackButton";
 import ProjectLinks from "../components/ProjectLinks";
+import { ModeContext } from "../contexts/ModeContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { projects } from "../projectsData";
-import { ModeContext } from "../contexts/ModeContext";
 
 const ProjectContainer = styled.div`
   width: 80vw;

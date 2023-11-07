@@ -9,9 +9,9 @@ export const projects = [
     femURL: null,
     liveURL: "https://zun-liang.github.io/",
     srcLight:
-      "../src/assets/images/screenshots/portfolio/screenshot-desktop-light.png",
+      "../assets/images/screenshots/portfolio/screenshot-desktop-light.png",
     srcDark:
-      "../src/assets/images/screenshots/portfolio/screenshot-desktop-dark.png",
+      "../assets/images/screenshots/portfolio/screenshot-desktop-dark.png",
     introduction: [
       {
         id: "intro1",
@@ -44,8 +44,8 @@ export const projects = [
         id: "image1",
         title: "Editor",
         width: "100%",
-        srcLight: "../src/assets/images/screenshots/portfolio/editor-light.png",
-        srcDark: "../src/assets/images/screenshots/portfolio/editor-dark.png",
+        srcLight: "../assets/images/screenshots/portfolio/editor-light.png",
+        srcDark: "../assets/images/screenshots/portfolio/editor-dark.png",
       },
     ],
     tools: [
@@ -94,27 +94,24 @@ export const projects = [
             id: "image1",
             title: "Post Confirmation",
             height: "150px",
-            srcLight:
-              "../src/assets/images/screenshots/portfolio/post-light.png",
-            srcDark: "../src/assets/images/screenshots/portfolio/post-dark.png",
+            srcLight: "../assets/images/screenshots/portfolio/post-light.png",
+            srcDark: "../assets/images/screenshots/portfolio/post-dark.png",
           },
           {
             id: "image2",
             title: "Save Draft Confirmation",
             height: "150px",
-            srcLight:
-              "../src/assets/images/screenshots/portfolio/draft-light.png",
-            srcDark:
-              "../src/assets/images/screenshots/portfolio/draft-dark.png",
+            srcLight: "../assets/images/screenshots/portfolio/draft-light.png",
+            srcDark: "../assets/images/screenshots/portfolio/draft-dark.png",
           },
           {
             id: "image3",
             title: "Retrieve Draft",
             height: "150px",
             srcLight:
-              "../src/assets/images/screenshots/portfolio/get-draft-light.png",
+              "../assets/images/screenshots/portfolio/get-draft-light.png",
             srcDark:
-              "../src/assets/images/screenshots/portfolio/get-draft-dark.png",
+              "../assets/images/screenshots/portfolio/get-draft-dark.png",
           },
         ],
       },
@@ -136,37 +133,34 @@ export const projects = [
             id: "image1",
             title: "Log in Form",
             height: "150px",
-            srcLight:
-              "../src/assets/images/screenshots/portfolio/login-light.png",
-            srcDark:
-              "../src/assets/images/screenshots/portfolio/login-dark.png",
+            srcLight: "../assets/images/screenshots/portfolio/login-light.png",
+            srcDark: "../assets/images/screenshots/portfolio/login-dark.png",
           },
           {
             id: "image2",
             title: "Log in Confirmation",
             height: "150px",
             srcLight:
-              "../src/assets/images/screenshots/portfolio/loggedin-light.png",
-            srcDark:
-              "../src/assets/images/screenshots/portfolio/loggedin-dark.png",
+              "../assets/images/screenshots/portfolio/loggedin-light.png",
+            srcDark: "../assets/images/screenshots/portfolio/loggedin-dark.png",
           },
           {
             id: "image3",
             title: "Log out Confirmation",
             height: "150px",
             srcLight:
-              "../src/assets/images/screenshots/portfolio/loggedout-light.png",
+              "../assets/images/screenshots/portfolio/loggedout-light.png",
             srcDark:
-              "../src/assets/images/screenshots/portfolio/loggedout-dark.png",
+              "../assets/images/screenshots/portfolio/loggedout-dark.png",
           },
           {
             id: "image4",
             title: "User Profile Management",
             height: "150px",
             srcLight:
-              "../src/assets/images/screenshots/portfolio/update-user-profile-light.png",
+              "../assets/images/screenshots/portfolio/update-user-profile-light.png",
             srcDark:
-              "../src/assets/images/screenshots/portfolio/update-user-profile-dark.png",
+              "../assets/images/screenshots/portfolio/update-user-profile-dark.png",
           },
         ],
       },
@@ -207,18 +201,18 @@ export const projects = [
                 title: "Data Structure",
                 height: "500px",
                 srcLight:
-                  "../src/assets/images/screenshots/portfolio/code-block-light.png",
+                  "../assets/images/screenshots/portfolio/code-block-light.png",
                 srcDark:
-                  "../src/assets/images/screenshots/portfolio/code-block-dark.png",
+                  "../assets/images/screenshots/portfolio/code-block-dark.png",
               },
               {
                 id: "spot-text-2-image-example2",
                 title: "Blogs Collection Structure",
                 height: "500px",
                 srcLight:
-                  "../src/assets/images/screenshots/portfolio/blogs-structure-light.png",
+                  "../assets/images/screenshots/portfolio/blogs-structure-light.png",
                 srcDark:
-                  "../src/assets/images/screenshots/portfolio/blogs-structure-dark.png",
+                  "../assets/images/screenshots/portfolio/blogs-structure-dark.png",
               },
             ],
           },
@@ -304,9 +298,9 @@ export const projects = [
     femURL: "https://www.frontendmentor.io/solutions/todo-app-_MCCMFmZnq",
     liveURL: "https://zun-liang.github.io/todo-app/",
     srcLight:
-      "../src/assets/images/screenshots/todo-app/screenshot-desktop-light.png",
+      "../assets/images/screenshots/todo-app/screenshot-desktop-light.png",
     srcDark:
-      "../src/assets/images/screenshots/todo-app/screenshot-desktop-dark.png",
+      "../assets/images/screenshots/todo-app/screenshot-desktop-dark.png",
     introduction: [
       {
         id: "intro1",
@@ -337,9 +331,9 @@ export const projects = [
         title: "Todo App",
         width: "100%",
         srcLight:
-          "../src/assets/images/screenshots/todo-app/screenshot-desktop-light.png",
+          "../assets/images/screenshots/todo-app/screenshot-desktop-light.png",
         srcDark:
-          "../src/assets/images/screenshots/todo-app/screenshot-desktop-dark.png",
+          "../assets/images/screenshots/todo-app/screenshot-desktop-dark.png",
       },
     ],
     tools: [
@@ -379,8 +373,8 @@ export const projects = [
             id: "image1",
             title: "Drag and Drop",
             height: "300px",
-            srcLight: "../src/assets/images/screenshots/todo-app/drag-drop.gif",
-            srcDark: "../src/assets/images/screenshots/todo-app/drag-drop.gif",
+            srcLight: "../assets/images/screenshots/todo-app/drag-drop.gif",
+            srcDark: "../assets/images/screenshots/todo-app/drag-drop.gif",
           },
         ],
       },

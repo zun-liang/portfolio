@@ -1,10 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import styled from "styled-components";
 import useSound from "use-sound";
 
@@ -74,16 +69,16 @@ const App = () => {
   /* === Toggle favicon depending on mode === */
   const { mode, isLight } = useContext(ModeContext);
   const initialFavicon32 = isLight
-    ? "./src/assets/images/favicon/light/favicon-32x32.png"
-    : "./src/assets/images/favicon/dark/favicon-32x32.png";
+    ? "/public/favicon/light/favicon-32x32.png"
+    : "/public/favicon/dark/favicon-32x32.png";
   const [faviconHref32, setFaviconHref32] = useState(initialFavicon32);
 
   useEffect(() => {
     const favicon32 = document.getElementById("favicon32");
     favicon32.href = faviconHref32;
     const updatedFavicon32 = mode
-      ? "./src/assets/images/favicon/light/favicon-32x32.png"
-      : "./src/assets/images/favicon/dark/favicon-32x32.png";
+      ? "/public/favicon/light/favicon-32x32.png"
+      : "/public/favicon/dark/favicon-32x32.png";
     setFaviconHref32(updatedFavicon32);
   }, [mode, faviconHref32]);
 

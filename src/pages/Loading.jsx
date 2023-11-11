@@ -2,16 +2,9 @@ import { useContext } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import LoadingImage from "../assets/images/favicon/dark/apple-touch-icon.png";
-import LoadingImageLight from "../assets/images/favicon/light/apple-touch-icon.png";
-import {
-  AutoSwitch,
-  BasicButton,
-  BGSwitch,
-  OpaqueSwitch,
-  PrimarySecondary,
-  PrimarySwitch,
-} from "../assets/styles/Styles.jsx";
+import LoadingImage from "../../public/favicon/dark/apple-touch-icon.png";
+import LoadingImageLight from "../../public/favicon/light/apple-touch-icon.png";
+import { AutoSwitch, BasicButton, BGSwitch, OpaqueSwitch, PrimarySecondary, PrimarySwitch } from "../assets/styles/Styles.jsx";
 import { ModeContext } from "../contexts/ModeContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import GlobalStyles from "../GlobalStyles";

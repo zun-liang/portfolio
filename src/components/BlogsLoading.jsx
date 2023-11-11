@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import styled from "styled-components";
 
-import Logo from "../assets/images/favicon/dark/apple-touch-icon.png";
-import LogoLight from "../assets/images/favicon/light/apple-touch-icon.png";
+import Logo from "../../public/favicon/dark/apple-touch-icon.png";
+import LogoLight from "../../public/favicon/light/apple-touch-icon.png";
 import {
   PointerSwitch,
-  TertiarySecondary,
-  TertiaryPrimary,
   SecondaryTransparent,
+  TertiaryPrimary,
+  TertiarySecondary,
 } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 

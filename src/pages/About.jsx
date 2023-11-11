@@ -1,21 +1,12 @@
-import {
-  faCss3Alt,
-  faGitAlt,
-  faGithub,
-  faHtml5,
-  faNode,
-  faReact,
-  faSquareJs,
-} from "@fortawesome/free-brands-svg-icons";
+import { faCss3Alt, faGitAlt, faGithub, faHtml5, faNode, faReact, faSquareJs } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import Logo from "../assets/images/favicon/dark/apple-touch-icon.png";
-import LogoLight from "../assets/images/favicon/light/apple-touch-icon.png";
 import { ReactComponent as FBIcon } from "../assets/images/brands/firebase.svg";
 import { ReactComponent as JestIcon } from "../assets/images/brands/jest.svg";
+import { ReactComponent as NetlifyIcon } from "../assets/images/brands/netlify.svg";
 import { ReactComponent as NextIcon } from "../assets/images/brands/next-js.svg";
 import { ReactComponent as RRIcon } from "../assets/images/brands/react-router.svg";
 import { ReactComponent as ReduxIcon } from "../assets/images/brands/redux.svg";
@@ -23,14 +14,9 @@ import { ReactComponent as SCIcon } from "../assets/images/brands/styled-compone
 import { ReactComponent as RTLIcon } from "../assets/images/brands/testing-library.svg";
 import { ReactComponent as TSIcon } from "../assets/images/brands/typescript.svg";
 import { ReactComponent as VSCIcon } from "../assets/images/brands/vscode.svg";
-import {
-  BackgroundSwitch,
-  ParagraphSwitch,
-  PointerSwitch,
-  SecondaryParagraph,
-  TertiaryPrimary,
-  TertiarySwitch,
-} from "../assets/styles/Styles";
+import Logo from "../assets/images/favicon/dark/apple-touch-icon.png";
+import LogoLight from "../assets/images/favicon/light/apple-touch-icon.png";
+import { BackgroundSwitch, ParagraphSwitch, PointerSwitch, SecondaryParagraph, TertiaryPrimary, TertiarySwitch } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 
@@ -187,6 +173,13 @@ const StyledReduxIcon = styled(ReduxIcon)`
     fill: ${TertiaryPrimary};
   }
 `;
+const StyledNetlifyIcon = styled(NetlifyIcon)`
+  width: 1rem;
+  height: 1rem;
+  & > path {
+    fill: ${TertiaryPrimary};
+  }
+`;
 
 const About = () => {
   const { mode } = useContext(ModeContext);
@@ -279,6 +272,10 @@ const About = () => {
           <StyledListItem>
             <StyledFBIcon />
             <span>Firebase 9</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledNetlifyIcon />
+            <span>Netlify</span>
           </StyledListItem>
         </StyledList>
       </Section>

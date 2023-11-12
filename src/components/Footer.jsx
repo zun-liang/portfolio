@@ -1,16 +1,12 @@
 /* eslint-disable react/prop-types */
-import { faFreeCodeCamp, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faFreeCodeCamp, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import styled from "styled-components";
 
 import { ReactComponent as FEM } from "../assets/images/brands/frontend-mentor.svg";
-import {
-  PointerSwitch,
-  PrimarySwitch,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { PointerSwitch, PrimarySwitch, TertiarySecondary } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
@@ -124,15 +120,15 @@ const Footer = () => {
             <Icon icon={faGithub} />
           </StyledLink>
         </StyledListItem>
-        {/*<StyledListItem>
+        <StyledListItem>
           <StyledLink
             target="_blank"
-            href="https://www.linkedin.com"
+            href="https://www.linkedin.com/in/zun-liang-b962b829b/"
             onClick={playPick}
           >
             <Icon icon={faLinkedin} />
           </StyledLink>
-        </StyledListItem> */}
+        </StyledListItem>
         <StyledListItem>
           <StyledLink href="mailto:contact@zunldev.com" onClick={playPick}>
             <Icon icon={faEnvelope} />

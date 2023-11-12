@@ -1,13 +1,8 @@
 /* eslint-disable react/prop-types */
-import {
-  faFreeCodeCamp,
-  faGithub,
-  //faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
+import { faFreeCodeCamp, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { ReactComponent as FEM } from "../assets/images/brands/frontend-mentor.svg";
@@ -66,7 +61,6 @@ const StyledLink = styled.a`
     color: ${PrimarySwitch};
   }
 `;
-const StyledLinkEn = styled(Link)``;
 const Icon = styled(FontAwesomeIcon)`
   width: 1.5rem;
   height: 1.5rem;
@@ -140,9 +134,9 @@ const Footer = () => {
           </StyledLink>
         </StyledListItem> */}
         <StyledListItem>
-          <StyledLinkEn to="/contact" onClick={playPick}>
+          <StyledLink href="mailto:contact@zunldev.com" onClick={playPick}>
             <Icon icon={faEnvelope} />
-          </StyledLinkEn>
+          </StyledLink>
         </StyledListItem>
       </StyledList>
       <StyledP>

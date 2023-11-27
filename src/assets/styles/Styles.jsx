@@ -278,6 +278,25 @@ const StyledList = styled.ul`
     margin-bottom: 1rem;
     font-size: 1rem;
   }
+  & > li > figure {
+    margin: 1rem auto;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  & > li > figure > img {
+    margin: 0 auto;
+    border-radius: 1rem;
+    box-shadow: ${BoxShadowSwitch};
+  }
+  & > li > figure > figcaption {
+    margin: 0.5rem 0;
+    text-align: center;
+    font-family: "Black Ops One", sans-serif;
+    font-size: 0.9rem;
+    color: ${HighlightSwitch};
+  }
 `;
 const StyledLink = styled.a`
   text-underline-offset: 2px;
@@ -288,6 +307,25 @@ const StyledLink = styled.a`
   &:active,
   &:visited {
     color: ${ParagraphSwitch};
+  }
+`;
+const StyledFigure = styled.figure`
+  margin: 1rem auto;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & > img {
+    margin: 0 auto;
+    border-radius: 1rem;
+    box-shadow: ${BoxShadowSwitch};
+  }
+  & > figcaption {
+    margin: 0.5rem 0;
+    text-align: center;
+    font-family: "Black Ops One", sans-serif;
+    font-size: 0.9rem;
+    color: ${HighlightSwitch};
   }
 `;
 const StyledImg = styled.img``;
@@ -330,6 +368,12 @@ export const createMarkdownOptions = () => {
       if (domNode.type === "tag" && domNode.name === "a") {
         const id = domNode.attribs.id;
         return <StyledLink id={id}>{domToReact(domNode.children)}</StyledLink>;
+      }
+      if (domNode.type === "tag" && domNode.name === "figure") {
+        const id = domNode.attribs.id;
+        return (
+          <StyledFigure id={id}>{domToReact(domNode.children)}</StyledFigure>
+        );
       }
       if (domNode.type === "tag" && domNode.name === "img") {
         const id = domNode.attribs.id;

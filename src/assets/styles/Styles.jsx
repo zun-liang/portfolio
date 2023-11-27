@@ -286,6 +286,7 @@ const StyledList = styled.ul`
     align-items: center;
   }
   & > li > figure > img {
+    width: 100%;
     margin: 0 auto;
     border-radius: 1rem;
     box-shadow: ${BoxShadowSwitch};
@@ -296,6 +297,16 @@ const StyledList = styled.ul`
     font-family: "Black Ops One", sans-serif;
     font-size: 0.9rem;
     color: ${HighlightSwitch};
+  }
+  @media (min-width: 600px) {
+    & > li > figure > img {
+      width: 300px;
+    }
+  }
+  @media (min-width: 1200px) {
+    & > li > figure > img {
+      width: 400px;
+    }
   }
 `;
 const StyledLink = styled.a`
@@ -316,6 +327,7 @@ const StyledFigure = styled.figure`
   flex-direction: column;
   align-items: center;
   & > img {
+    width: 100%;
     margin: 0 auto;
     border-radius: 1rem;
     box-shadow: ${BoxShadowSwitch};
@@ -326,6 +338,16 @@ const StyledFigure = styled.figure`
     font-family: "Black Ops One", sans-serif;
     font-size: 0.9rem;
     color: ${HighlightSwitch};
+  }
+  @media (min-width: 600px) {
+    & > img {
+      width: 300px;
+    }
+  }
+  @media (min-width: 1200px) {
+    & > img {
+      width: 400px;
+    }
   }
 `;
 const StyledImg = styled.img``;

@@ -1,28 +1,28 @@
-import PortfolioLight from "./assets/images/screenshots/portfolio/screenshot-desktop-light.png";
-import PortfolioDark from "./assets/images/screenshots/portfolio/screenshot-desktop-dark.png";
-import EditorLight from "./assets/images/screenshots/portfolio/editor-light.png";
-import EditorDark from "./assets/images/screenshots/portfolio/editor-dark.png";
-import PostLight from "./assets/images/screenshots/portfolio/post-light.png";
-import PostDark from "./assets/images/screenshots/portfolio/post-dark.png";
-import DraftLight from "./assets/images/screenshots/portfolio/draft-light.png";
-import DraftDark from "./assets/images/screenshots/portfolio/draft-dark.png";
-import GetDraftLight from "./assets/images/screenshots/portfolio/get-draft-light.png";
-import GetDraftDark from "./assets/images/screenshots/portfolio/get-draft-dark.png";
-import LoginLight from "./assets/images/screenshots/portfolio/login-light.png";
-import LoginDark from "./assets/images/screenshots/portfolio/login-dark.png";
-import LoggedinLight from "./assets/images/screenshots/portfolio/loggedin-light.png";
-import LoggedinDark from "./assets/images/screenshots/portfolio/loggedin-dark.png";
-import LogoutLight from "./assets/images/screenshots/portfolio/loggedout-light.png";
-import LogoutDark from "./assets/images/screenshots/portfolio/loggedout-dark.png";
-import UserProfileLight from "./assets/images/screenshots/portfolio/update-user-profile-light.png";
-import UserProfileDark from "./assets/images/screenshots/portfolio/update-user-profile-dark.png";
-import DataStructureLight from "./assets/images/screenshots/portfolio/code-block-light.png";
-import DataStructureDark from "./assets/images/screenshots/portfolio/code-block-dark.png";
-import BlogsCollectionLight from "./assets/images/screenshots/portfolio/blogs-structure-light.png";
 import BlogsCollectionDark from "./assets/images/screenshots/portfolio/blogs-structure-dark.png";
-import TodoLight from "./assets/images/screenshots/todo-app/screenshot-desktop-light.png";
-import TodoDark from "./assets/images/screenshots/todo-app/screenshot-desktop-dark.png";
+import BlogsCollectionLight from "./assets/images/screenshots/portfolio/blogs-structure-light.png";
+import DataStructureDark from "./assets/images/screenshots/portfolio/code-block-dark.png";
+import DataStructureLight from "./assets/images/screenshots/portfolio/code-block-light.png";
+import DraftDark from "./assets/images/screenshots/portfolio/draft-dark.png";
+import DraftLight from "./assets/images/screenshots/portfolio/draft-light.png";
+import EditorDark from "./assets/images/screenshots/portfolio/editor-dark.png";
+import EditorLight from "./assets/images/screenshots/portfolio/editor-light.png";
+import GetDraftDark from "./assets/images/screenshots/portfolio/get-draft-dark.png";
+import GetDraftLight from "./assets/images/screenshots/portfolio/get-draft-light.png";
+import LoggedinDark from "./assets/images/screenshots/portfolio/loggedin-dark.png";
+import LoggedinLight from "./assets/images/screenshots/portfolio/loggedin-light.png";
+import LogoutDark from "./assets/images/screenshots/portfolio/loggedout-dark.png";
+import LogoutLight from "./assets/images/screenshots/portfolio/loggedout-light.png";
+import LoginDark from "./assets/images/screenshots/portfolio/login-dark.png";
+import LoginLight from "./assets/images/screenshots/portfolio/login-light.png";
+import PostDark from "./assets/images/screenshots/portfolio/post-dark.png";
+import PostLight from "./assets/images/screenshots/portfolio/post-light.png";
+import PortfolioDark from "./assets/images/screenshots/portfolio/screenshot-desktop-dark.png";
+import PortfolioLight from "./assets/images/screenshots/portfolio/screenshot-desktop-light.png";
+import UserProfileDark from "./assets/images/screenshots/portfolio/update-user-profile-dark.png";
+import UserProfileLight from "./assets/images/screenshots/portfolio/update-user-profile-light.png";
 import DragDrop from "./assets/images/screenshots/todo-app/drag-drop.gif";
+import TodoDark from "./assets/images/screenshots/todo-app/screenshot-desktop-dark.png";
+import TodoLight from "./assets/images/screenshots/todo-app/screenshot-desktop-light.png";
 
 export const projects = [
   {
@@ -283,7 +283,7 @@ export const projects = [
           },
           {
             id: "learn-text-3",
-            text: 'After further research, I identified two effective solutions. I could either add a "VITE" prefix to my environment variables and access them using "import.meta.env", or I could use "loadEnv" to define and utilize these variables. Both methods proved successful for my project.',
+            text: 'After further research, I identified two effective solutions. I could either add a "VITE" prefix to my environment variables and access them using "import meta env", or I could use "loadEnv" to define and utilize these variables. Both methods proved successful for my project.',
           },
           {
             id: "learn-text-4",

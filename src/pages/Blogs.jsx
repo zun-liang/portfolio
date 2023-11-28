@@ -2,10 +2,25 @@
 /* eslint-disable react/prop-types */
 import { getDocs, orderBy, query } from "firebase/firestore";
 import { Suspense, useContext, useEffect } from "react";
-import { Await, defer, Link, useLoaderData, useSearchParams } from "react-router-dom";
+import {
+  Await,
+  defer,
+  Link,
+  useLoaderData,
+  useSearchParams,
+} from "react-router-dom";
 import styled from "styled-components";
 
-import { BasicButton, OpaqueSwitch, PointerSwitch, PrimarySecondary, PrimarySwitch, SecondaryTransparent, TertiaryHighlight, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  BasicButton,
+  OpaqueSwitch,
+  PointerSwitch,
+  PrimarySecondary,
+  PrimarySwitch,
+  SecondaryTransparent,
+  TertiaryHighlight,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import BlogOverview from "../components/BlogOverview";
 import BlogsLoading from "../components/BlogsLoading";
 import DeleteButton from "../components/DeleteButton";
@@ -32,6 +47,7 @@ const StyledDiv = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  position: relative;
 `;
 const BlogLink = styled(Link)`
   width: 100%;
@@ -40,6 +56,8 @@ const BlogLink = styled(Link)`
 `;
 const ButtonsContainer = styled.div`
   display: none;
+  position: absolute;
+  right: 0;
   ${StyledDiv}:hover & {
     display: flex;
     gap: 1.5rem;

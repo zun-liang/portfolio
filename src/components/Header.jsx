@@ -26,6 +26,8 @@ import Menu from "./Menu";
 import MusicPlayer from "./MusicPlayer";
 import SoundSwitch from "./SoundSwitch";
 import Time from "./Time";
+import { ReactComponent as ModeLight } from "../assets/images/mode-light.svg";
+import { ReactComponent as ModeDark } from "../assets/images/mode-dark.svg";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -47,14 +49,18 @@ const Wrapper = styled.div`
   align-self: flex-start;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.6rem;
   margin-top: 2.5rem;
   margin-bottom: -4rem;
+  @media (min-width: 375px) {
+    gap: 0.7rem;
+  }
   @media (min-width: 400px) {
     margin-top: 0.4rem;
-    margin-bottom: -1.6rem;
+    margin-bottom: -1.8rem;
   }
   @media (min-width: 750px) {
+    gap: 1rem;
     margin-top: 0;
     margin-bottom: -1.4rem;
   }
@@ -135,10 +141,35 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   font-size: 0.8rem;
   color: ${TertiarySecondary};
 `;
-const ModeSwitch = styled.p`
-  font-size: 1.5rem;
+const ModeSwitch = styled.div`
   cursor: ${PointerSwitch};
-  text-shadow: 1px 1px ${SecondarySwitch};
+`;
+const StyledModeLight = styled(ModeLight)`
+  width: 5rem;
+  height: 3.2rem;
+  filter: drop-shadow(1px 1px var(--light-background));
+  @media (min-width: 375px) {
+    width: 6rem;
+    height: 3.5rem;
+  }
+  @media (min-width: 600px) {
+    width: 7rem;
+  }
+`;
+const StyledModeDark = styled(ModeDark)`
+  width: 5rem;
+  height: 2.2rem;
+  filter: drop-shadow(1px 1px var(--dark-primary));
+  & > g {
+    fill: var(--dark-secondary);
+  }
+  @media (min-width: 375px) {
+    width: 5.5rem;
+    height: 2.5rem;
+  }
+  @media (min-width: 600px) {
+    width: 6rem;
+  }
 `;
 
 const Header = ({ screenWidth }) => {
@@ -226,7 +257,7 @@ const Header = ({ screenWidth }) => {
         <Time />
       </StyledDiv>
       <ModeSwitch onClick={updateMode}>
-        {mode ? "✩·͙*̩̩͙˚̩̥̩̥*̩̩͙✩·͙˚̩̥̩̥." : "⁺☁️☼₊☁️⁺₊"}
+        {mode ? <StyledModeLight /> : <StyledModeDark />}
       </ModeSwitch>
     </StyledHeader>
   );

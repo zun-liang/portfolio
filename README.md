@@ -310,6 +310,8 @@ To get local weather and temperature depending on visitor's' location.
 
   My initial approach involved using useState to preserve this information, but it left me with an unused setState and felt like an unnecessary workaround. Upon further exploration, I realized that I could effectively handle this scenario using useRef, which provided the desired solution without the complications. This adjustment resolved the bug, ensuring the correct URL redirection and retaining the desired category filter selection.
 
+- [Using Highlight.js in React](https://blog.robbie.digital/posts/highlight-js)
+
 #### React Router
 
 - [React Router Version 6 Tutorial – How to Set Up Router and Route to Other Components](https://www.freecodecamp.org/news/how-to-use-react-router-version-6/)

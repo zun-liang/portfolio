@@ -184,24 +184,24 @@ const StyledH1 = styled.h1`
   text-shadow: -2px -2px ${SecondaryParagraph};
 `;
 const StyledH2 = styled.h2`
-  color: ${TertiarySwitch};
-  text-shadow: -1px -1px ${SecondaryParagraph};
+  color: ${PrimaryTertiary};
+  text-shadow: -1px -1px ${SecondaryTransparent};
   font-family: "Black Ops One", sans-serif;
   font-size: 1.6rem;
 `;
 const StyledH3 = styled.h3`
-  color: ${TertiarySwitch};
-  text-shadow: -1px -1px ${SecondaryParagraph};
+  color: ${PrimaryTertiary};
+  text-shadow: -1px -1px ${SecondaryTransparent};
   font-family: "Black Ops One", sans-serif;
   font-size: 1.3rem;
 `;
 const StyledH4 = styled.h4`
-  color: ${TertiarySwitch};
+  color: ${PrimarySecondary};
   font-family: "Black Ops One", sans-serif;
   font-size: 1.2rem;
 `;
 const StyledH5 = styled.h5`
-  color: ${TertiarySwitch};
+  color: ${PrimarySecondary};
   font-family: "Black Ops One", sans-serif;
   font-size: 1.1rem;
 `;
@@ -219,24 +219,8 @@ const StyledP = styled.p`
       color: ${HighlightSwitch};
     }
   }
-  & > code {
-    color: ${SecondaryHighlight};
-    background-color: ${TertiaryBackground};
-    font-size: 16px;
-    padding: 2px;
-  }
 `;
-const StyledPre = styled.pre`
-  background-color: ${TertiaryBackground};
-  padding: 1.5rem;
-  border-radius: 1rem;
-  overflow-x: scroll;
-  & > code,
-  & > p > code {
-    color: ${SecondaryHighlight};
-    font-size: 16px;
-  }
-`;
+const StyledPre = styled.pre``;
 const StyledList = styled.ul`
   & > li {
     margin-left: 2rem;
@@ -268,11 +252,6 @@ const StyledList = styled.ul`
     padding: 1.5rem;
     border-radius: 1rem;
     overflow-x: scroll;
-  }
-  & > li > pre > code,
-  & > li > pre > p > code {
-    color: ${SecondaryHighlight};
-    font-size: 16px;
   }
   & > li > p {
     margin-bottom: 1rem;

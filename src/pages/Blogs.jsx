@@ -97,6 +97,9 @@ const Time = styled.p`
   font-weight: 500;
   color: ${TertiaryHighlight};
   text-shadow: 1px 1px ${SecondaryTransparent};
+  & > span {
+    font-style: italic;
+  }
 `;
 const StyledH2 = styled.h2`
   display: inline;
@@ -208,7 +211,15 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
                     <StyledH2>
                       {blog.title.split(" ").slice(1).join(" ")}
                     </StyledH2>
-                    <Time>{blog.timestamp?.toDate().toLocaleString()}</Time>
+                    <Time>
+                      {blog.timestamp?.toDate().toLocaleString()}
+                      {blog.updatedTimestamp && (
+                        <span>
+                          , edited on{" "}
+                          {blog.updatedTimestamp?.toDate().toLocaleString()}
+                        </span>
+                      )}
+                    </Time>
                     <BlogOverview overview={blog.overview} />
                   </BlogContainer>
                 </BlogLink>

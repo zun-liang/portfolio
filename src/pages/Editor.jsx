@@ -1,22 +1,9 @@
-import {
-  faFileImport,
-  faFloppyDisk,
-  faHashtag,
-  faPaperPlane,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
+import { faFileImport, faFloppyDisk, faHashtag, faPaperPlane, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import MDEditor from "@uiw/react-md-editor";
-import {
-  deleteDoc,
-  doc,
-  getDoc,
-  serverTimestamp,
-  setDoc,
-  updateDoc,
-} from "firebase/firestore";
+import { deleteDoc, doc, getDoc, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
 import { marked } from "marked";
 import { nanoid } from "nanoid";
 import { useContext, useEffect, useState } from "react";
@@ -25,14 +12,7 @@ import styled from "styled-components";
 import useSound from "use-sound";
 
 import Crumple from "../assets/sounds/crumple.mp3";
-import {
-  BasicInput,
-  HighlightSwitch,
-  PointerSwitch,
-  PrimarySecondary,
-  TertiaryHighlight,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { BasicInput, HighlightSwitch, PointerSwitch, PrimarySecondary, TertiaryHighlight, TertiarySecondary } from "../assets/styles/Styles";
 import BackButton from "../components/BackButton";
 import Post from "../components/Post";
 import UpdateProfile from "../components/UpdateProfile";
@@ -165,10 +145,12 @@ const Editor = ({
   };
 
   const retrievedId = blogToEdit?.id;
+  const retrievedTimestamp = blogToEdit?.timestamp;
 
   const updatedBlogObj = {
     id: retrievedId,
-    timestamp: timestamp,
+    timestamp: retrievedTimestamp,
+    updatedTimestamp: timestamp,
     title: title,
     overview: overview,
     content: content,

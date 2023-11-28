@@ -40,8 +40,11 @@ const StyledH1 = styled.h1`
   grid-column: 1 / 3;
   text-align: center;
   font-family: "Black Ops One", sans-serif;
-  font-size: 5rem;
+  font-size: 4rem;
   text-shadow: 5px 5px ${SecondarySwitch};
+  @media (min-width: 375px) {
+    font-size: 5rem;
+  }
   @media (min-width: 750px) {
     font-size: 6.5rem;
   }
@@ -62,8 +65,12 @@ const StyledH2 = styled.h2`
   }
 `;
 const StyledImg = styled.img`
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
+  @media (min-width: 375px) {
+    width: 5rem;
+    height: 5rem;
+  }
   @media (min-width: 750px) {
     width: 7rem;
     height: 7rem;
@@ -71,7 +78,10 @@ const StyledImg = styled.img`
 `;
 const StyledGif = styled.img`
   align-self: start;
-  width: 6rem;
+  width: 5rem;
+  @media (min-width: 375px) {
+    width: 6rem;
+  }
   @media (min-width: 750px) {
     width: 7rem;
   }

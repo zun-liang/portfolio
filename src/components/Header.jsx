@@ -164,11 +164,11 @@ const StyledModeDark = styled(ModeDark)`
     fill: var(--dark-secondary);
   }
   @media (min-width: 375px) {
-    width: 5.5rem;
+    width: 6rem;
     height: 2.5rem;
   }
   @media (min-width: 600px) {
-    width: 6rem;
+    width: 7rem;
   }
 `;
 

@@ -220,7 +220,9 @@ const StyledP = styled.p`
     }
   }
 `;
-const StyledPre = styled.pre``;
+const StyledPre = styled.pre`
+  overflow: auto;
+`;
 const StyledList = styled.ul`
   & > li {
     margin-left: 2rem;
@@ -246,12 +248,6 @@ const StyledList = styled.ul`
     &:visited {
       color: ${HighlightSwitch};
     }
-  }
-  & > li > pre {
-    background-color: ${TertiaryBackground};
-    padding: 1.5rem;
-    border-radius: 1rem;
-    overflow-x: scroll;
   }
   & > li > p {
     margin-bottom: 1rem;

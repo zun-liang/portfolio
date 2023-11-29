@@ -1,10 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import styled from "styled-components";
 import useSound from "use-sound";
 
@@ -96,7 +91,6 @@ const App = () => {
     const updatedFaviconHref32 = mode
       ? "/favicon/light/favicon-32x32.png"
       : "/favicon/dark/favicon-32x32.png";
-
     setFaviconHref32(updatedFaviconHref32);
   }, [mode, faviconHref32]);
 

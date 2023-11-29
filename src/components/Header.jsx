@@ -15,6 +15,7 @@ import Key from "../assets/sounds/key.mp3";
 import {
   AutoSwitch,
   PointerSwitch,
+  PrimarySecondary,
   PrimarySwitch,
   SecondaryPrimary,
   SecondarySwitch,
@@ -91,6 +92,9 @@ const SubTitle = styled.span`
   > span {
     font-family: "Lobster", sans-serif;
     font-size: 1rem;
+    color: ${PrimarySecondary};
+    text-shadow: 1px 1px ${SecondaryPrimary};
+    margin-left: 2px;
     @media (min-width: 1024px) {
       display: none;
     }
@@ -120,8 +124,10 @@ const StyledDiv = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
+  margin: 0.4rem 0;
   @media (min-width: 750px) {
     gap: 7px;
+    margin: 0.7rem 0;
   }
   @media (min-width: 1024px) {
     gap: 9px;

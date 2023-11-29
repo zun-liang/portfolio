@@ -7,13 +7,11 @@ import { SecondaryPrimary, TertiarySecondary } from "../assets/styles/Styles";
 
 const TimeContainer = styled.p`
   text-align: right;
-  margin: 0.5rem 0;
   color: ${TertiarySecondary};
   text-shadow: 1px 1px ${SecondaryPrimary};
   font-size: 0.8rem;
   @media (min-width: 750px) {
     font-size: 0.9rem;
-    margin: 0.8rem 0;
   }
 `;
 

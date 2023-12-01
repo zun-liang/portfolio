@@ -1,19 +1,19 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Zun Liang ˖₊˚ 🦋⋅𓂃 ࣪ ִֶָ☾.˖ ࣪⊹",
+    "short_name": "Zun Liang",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png",
+            "src": "/favicon/dark/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/android-chrome-512x512.png",
+            "src": "/favicon/dark/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
     ],
-    "theme_color": "#ff76a7",
-    "background_color": "#ff76a7",
+    "theme_color": "#121212",
+    "background_color": "#121212",
     "display": "standalone"
 }

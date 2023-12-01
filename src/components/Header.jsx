@@ -1,7 +1,4 @@
-import {
-  faTemperatureLow,
-  faUmbrella,
-} from "@fortawesome/free-solid-svg-icons";
+import { faTemperatureLow, faUmbrella } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
@@ -11,39 +8,31 @@ import useSound from "use-sound";
 
 import Off from "..//assets/sounds/off.mp3";
 import On from "..//assets/sounds/on.mp3";
+import { ReactComponent as ModeDark } from "../assets/images/mode-dark.svg";
+import { ReactComponent as ModeLight } from "../assets/images/mode-light.svg";
 import Key from "../assets/sounds/key.mp3";
-import {
-  AutoSwitch,
-  PointerSwitch,
-  PrimarySecondary,
-  PrimarySwitch,
-  SecondaryPrimary,
-  SecondarySwitch,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { AutoSwitch, PointerSwitch, PrimarySecondary, PrimarySwitch, SecondaryPrimary, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 import { SoundContext } from "../contexts/SoundContext";
 import Menu from "./Menu";
 import MusicPlayer from "./MusicPlayer";
 import SoundSwitch from "./SoundSwitch";
 import Time from "./Time";
-import { ReactComponent as ModeLight } from "../assets/images/mode-light.svg";
-import { ReactComponent as ModeDark } from "../assets/images/mode-dark.svg";
 
 const StyledHeader = styled.header`
   width: 100%;
-  padding: 1.5rem 1.8rem;
+  padding: 1.2rem 1.8rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   @media (min-width: 750px) {
-    padding: 1.8rem 2.5rem 0;
+    padding: 1.5rem 2.5rem 0;
   }
   @media (min-width: 1024px) {
     padding: 2rem 3rem 0;
   }
   @media (min-width: 1350px) {
-    padding: 2.3rem 4rem 0;
+    padding: 2rem 4rem 0;
   }
 `;
 const Wrapper = styled.div`

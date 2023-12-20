@@ -1,9 +1,13 @@
 import {
+  faCodepen,
   faCss3Alt,
+  faFigma,
   faGitAlt,
   faGithub,
   faHtml5,
+  faMarkdown,
   faNode,
+  faNpm,
   faReact,
   faSquareJs,
 } from "@fortawesome/free-brands-svg-icons";
@@ -21,6 +25,7 @@ import { ReactComponent as ReduxIcon } from "../assets/images/brands/redux.svg";
 import { ReactComponent as SCIcon } from "../assets/images/brands/styled-components.svg";
 import { ReactComponent as RTLIcon } from "../assets/images/brands/testing-library.svg";
 import { ReactComponent as TSIcon } from "../assets/images/brands/typescript.svg";
+import { ReactComponent as ViteIcon } from "../assets/images/brands/vite.svg";
 import { ReactComponent as VSCIcon } from "../assets/images/brands/vscode.svg";
 import Logo from "../assets/images/logo-dark.png";
 import LogoLight from "../assets/images/logo-light.png";
@@ -53,6 +58,16 @@ const AboutContainer = styled.div`
 const Section = styled.div`
   display: flex;
   flex-direction: column;
+`;
+const AchievementSection = styled(Section)`
+  @media (min-width: 1200px) {
+    margin-top: -10rem;
+  }
+`;
+const ChallengeSection = styled(Section)`
+  @media (min-width: 1200px) {
+    grid-column: 1 / 2;
+  }
 `;
 const StyledDiv = styled.div`
   margin-bottom: 0.7rem;
@@ -195,6 +210,13 @@ const StyledNetlifyIcon = styled(NetlifyIcon)`
     fill: ${TertiaryPrimary};
   }
 `;
+const StyledViteIcon = styled(ViteIcon)`
+  width: 1rem;
+  height: 1rem;
+  & > defs > linearGradient > stop {
+    stop-color: ${TertiaryPrimary};
+  }
+`;
 
 const About = () => {
   const { mode } = useContext(ModeContext);
@@ -254,6 +276,14 @@ const About = () => {
             <Icon icon={faSquareJs} />
             <span>JavaScript ES6+</span>
           </StyledListItem>
+          <StyledListItem>
+            <StyledTSIcon />
+            <span>TypeScript</span>
+          </StyledListItem>
+          <StyledListItem>
+            <Icon icon={faMarkdown} />
+            <span>Markdown</span>
+          </StyledListItem>
         </StyledList>
         <StyledList>
           <StyledH2>Libraries</StyledH2>
@@ -269,6 +299,14 @@ const About = () => {
             <StyledRRIcon />
             <span>React Router v6</span>
           </StyledListItem>
+          <StyledListItem>
+            <Icon icon={faNpm} />
+            <span>npm</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledViteIcon />
+            <span>Vite</span>
+          </StyledListItem>
         </StyledList>
         <StyledList>
           <StyledH2>Tools</StyledH2>
@@ -281,20 +319,28 @@ const About = () => {
             <span>GitHub</span>
           </StyledListItem>
           <StyledListItem>
+            <StyledFBIcon />
+            <span>Firebase 9</span>
+          </StyledListItem>
+          <StyledListItem>
             <StyledVSCIcon />
             <span>VS Code</span>
           </StyledListItem>
           <StyledListItem>
-            <StyledFBIcon />
-            <span>Firebase 9</span>
+            <Icon icon={faCodepen} />
+            <span>CodePen</span>
           </StyledListItem>
           <StyledListItem>
             <StyledNetlifyIcon />
             <span>Netlify</span>
           </StyledListItem>
+          <StyledListItem>
+            <Icon icon={faFigma} />
+            <span>Figma</span>
+          </StyledListItem>
         </StyledList>
       </Section>
-      <Section>
+      <AchievementSection>
         <StyledH2>
           <StyledLink
             target="_blank"
@@ -335,8 +381,8 @@ const About = () => {
           </StyledListItem>
           <StyledListItem>...</StyledListItem>
         </StyledList>
-      </Section>
-      <Section>
+      </AchievementSection>
+      <ChallengeSection>
         <StyledH2>Next Challenges</StyledH2>
         <StyledList>
           <StyledListItem>
@@ -352,10 +398,6 @@ const About = () => {
             <span>React Testing Library</span>
           </StyledListItem>
           <StyledListItem>
-            <StyledTSIcon />
-            <span>TypeScript</span>
-          </StyledListItem>
-          <StyledListItem>
             <StyledNextIcon />
             <span>Next.js</span>
           </StyledListItem>
@@ -369,7 +411,7 @@ const About = () => {
           </StyledListItem>
           <StyledListItem>...</StyledListItem>
         </StyledList>
-      </Section>
+      </ChallengeSection>
     </AboutContainer>
   );
 };

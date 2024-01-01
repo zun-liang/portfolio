@@ -1,12 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-import {
-  AutoSwitch,
-  BackgroundSwitch,
-  BGSwitch,
-  PrimarySwitch,
-  TertiaryHighlight,
-} from "./assets/styles/Styles";
+import { AutoSwitch, BackgroundSwitch, BGSwitch, PrimarySwitch, TertiaryHighlight } from "./assets/styles/Styles";
 
 const GlobalStyles = createGlobalStyle`
     * {
@@ -86,6 +80,16 @@ const GlobalStyles = createGlobalStyle`
         html,
         body {
             font-size: 20px;
+        }
+    }
+    @media (prefers-reduced-motion: reduce) {  
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
         }
     }
 `;

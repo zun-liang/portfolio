@@ -3,13 +3,7 @@ import { NavLink } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import {
-  BGSwitch,
-  PointerSwitch,
-  PrimarySecondary,
-  PrimarySwitch,
-  SecondaryTransparent,
-} from "../assets/styles/Styles";
+import { BGSwitch, PointerSwitch, PrimarySecondary, PrimarySwitch, SecondaryTransparent } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 
 const MenuContainer = styled.div`

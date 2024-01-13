@@ -7,32 +7,27 @@ import Profile from "../assets/images/profile.png";
 import { SecondarySwitch } from "../assets/styles/Styles.jsx";
 
 const HomeContainer = styled.div`
-  width: 70%;
-  height: 60%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 70vw;
+  height: 60vh;
+  position: relative;
+  top: -4rem;
+  margin-bottom: -3rem;
   display: grid;
   grid-template-columns: 5rem 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   align-items: center;
   @media (min-width: 750px) {
-    width: 65%;
-    height: 55%;
+    width: 65vw;
+    height: 55vh;
     grid-template-columns: 7rem 1fr;
     grid-template-rows: 1fr 2fr 1fr;
   }
   @media (min-width: 1024px) {
-    width: 70%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    width: 70vw;
     grid-template-rows: 1fr 1fr 1fr;
   }
   @media (min-width: 1200px) {
-    width: 50%;
-    top: 45%;
-    transform: translate(-50%, -45%);
+    width: 50vw;
     grid-template-rows: 2fr 2fr 1fr;
   }
 `;

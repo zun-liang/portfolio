@@ -1,4 +1,7 @@
-import { faTemperatureLow, faUmbrella } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTemperatureLow,
+  faUmbrella,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
@@ -11,7 +14,15 @@ import On from "..//assets/sounds/on.mp3";
 import { ReactComponent as ModeDark } from "../assets/images/mode-dark.svg";
 import { ReactComponent as ModeLight } from "../assets/images/mode-light.svg";
 import Key from "../assets/sounds/key.mp3";
-import { AutoSwitch, PointerSwitch, PrimarySecondary, PrimarySwitch, SecondaryPrimary, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  AutoSwitch,
+  PointerSwitch,
+  PrimarySecondary,
+  PrimarySwitch,
+  SecondaryPrimary,
+  SecondarySwitch,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 import { SoundContext } from "../contexts/SoundContext";
 import Menu from "./Menu";
@@ -256,7 +267,10 @@ const Header = ({ screenWidth }) => {
           <Weather>
             <StyledFontAwesomeIcon icon={faUmbrella} aria-label="weather" />
             &nbsp;&nbsp;n/a&nbsp;&nbsp;
-            <StyledFontAwesomeIcon icon={faTemperatureLow} aria-label="temperature"/>
+            <StyledFontAwesomeIcon
+              icon={faTemperatureLow}
+              aria-label="temperature"
+            />
             &nbsp;n/a&nbsp;
           </Weather>
         ) : (

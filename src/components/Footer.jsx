@@ -23,9 +23,12 @@ import SoundSwitch from "./SoundSwitch";
 
 const StyledFooter = styled.footer`
   width: 100%;
-  padding: 1.5rem;
+  padding: 1.2rem;
   display: flex;
   flex-direction: column;
+  @media (min-width: 320px) {
+    padding: 1.5rem;
+  }
   @media (min-width: 750px) {
     padding: 1.5rem 1.5rem 1.8rem;
   }
@@ -70,6 +73,10 @@ const Icon = styled(FontAwesomeIcon)`
   height: 1.5rem;
   color: ${PrimarySwitch};
   cursor: ${PointerSwitch};
+  @media (min-width: 750px) {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
 `;
 const FEMIcon = styled(FEM)`
   width: 1.5rem;
@@ -86,6 +93,9 @@ const StyledP = styled.p`
   letter-spacing: 1px;
   font-size: 0.8rem;
   color: ${TertiarySecondary};
+  @media (min-width: 750px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const Footer = () => {

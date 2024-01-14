@@ -11,6 +11,9 @@ const TimeContainer = styled.p`
   text-shadow: 1px 1px ${SecondaryPrimary};
   font-size: 0.8rem;
   @media (min-width: 750px) {
+    font-size: 1rem;
+  }
+  @media (min-width: 1024px) {
     font-size: 0.9rem;
   }
 `;

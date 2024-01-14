@@ -6,11 +6,7 @@ import styled from "styled-components";
 import useSound from "use-sound";
 
 import Interface from "../assets/sounds/interface.mp3";
-import {
-  PointerSwitch,
-  PrimarySecondary,
-  TertiaryDot,
-} from "../assets/styles/Styles";
+import { PointerSwitch, PrimarySecondary, TertiaryDot } from "../assets/styles/Styles";
 import { SoundContext } from "../contexts/SoundContext";
 
 const Container = styled.div`

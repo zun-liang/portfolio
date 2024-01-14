@@ -8,13 +8,13 @@ import { SecondarySwitch } from "../assets/styles/Styles.jsx";
 
 const HomeContainer = styled.div`
   width: 70vw;
-  height: 60vh;
+  height: auto;
+  max-height: 50vh;
   position: relative;
-  top: -4rem;
-  margin-bottom: -3rem;
+  top: -1.1rem;
   display: grid;
   grid-template-columns: 5rem 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
   align-items: center;
   @media (min-width: 750px) {
     width: 65vw;
@@ -24,6 +24,7 @@ const HomeContainer = styled.div`
   }
   @media (min-width: 1024px) {
     width: 70vw;
+    top: -1.5rem;
     grid-template-rows: 1fr 1fr 1fr;
   }
   @media (min-width: 1200px) {

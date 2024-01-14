@@ -1,7 +1,4 @@
-import {
-  faTemperatureLow,
-  faUmbrella,
-} from "@fortawesome/free-solid-svg-icons";
+import { faTemperatureLow, faUmbrella } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
@@ -14,15 +11,7 @@ import On from "..//assets/sounds/on.mp3";
 import { ReactComponent as ModeDark } from "../assets/images/mode-dark.svg";
 import { ReactComponent as ModeLight } from "../assets/images/mode-light.svg";
 import Key from "../assets/sounds/key.mp3";
-import {
-  AutoSwitch,
-  PointerSwitch,
-  PrimarySecondary,
-  PrimarySwitch,
-  SecondaryPrimary,
-  SecondarySwitch,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { AutoSwitch, PointerSwitch, PrimarySecondary, PrimarySwitch, SecondaryPrimary, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 import { SoundContext } from "../contexts/SoundContext";
 import Menu from "./Menu";
@@ -36,6 +25,9 @@ const StyledHeader = styled.header`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  @media (min-width: 320px) {
+    padding: 1.5rem 1.8rem;
+  }
   @media (min-width: 750px) {
     padding: 1.5rem 2.5rem 0;
   }
@@ -61,9 +53,7 @@ const Wrapper = styled.div`
     margin-bottom: -1.8rem;
   }
   @media (min-width: 750px) {
-    gap: 1rem;
-    margin-top: 0;
-    margin-bottom: -1.4rem;
+    gap: 1.5rem;
   }
   @media screen and (orientation: landscape) {
     display: none;
@@ -80,7 +70,7 @@ const Title = styled.p`
   color: ${PrimarySwitch};
   text-shadow: -2px -2px ${SecondarySwitch};
   @media (min-width: 750px) {
-    font-size: 1.9rem;
+    font-size: 2rem;
   }
   @media (min-width: 1024px) {
     font-size: 1.8rem;
@@ -98,12 +88,16 @@ const SubTitle = styled.span`
     color: ${PrimarySecondary};
     text-shadow: 1px 1px ${SecondaryPrimary};
     margin-left: 2px;
+    @media (min-width: 750px) {
+      font-size: 1.3rem;
+    }
     @media (min-width: 1024px) {
       display: none;
     }
   }
   @media (min-width: 750px) {
     cursor: ${AutoSwitch};
+    font-size: 1.7rem;
   }
 `;
 const SubTitleBlink = styled(SubTitle)`
@@ -143,12 +137,21 @@ const Weather = styled.p`
   text-shadow: 1px 1px ${SecondaryPrimary};
   font-size: 0.8rem;
   @media (min-width: 750px) {
+    font-size: 1rem;
+  }
+  @media (min-width: 1024px) {
     font-size: 0.9rem;
   }
 `;
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   font-size: 0.8rem;
   color: ${TertiarySecondary};
+  @media (min-width: 750px) {
+    font-size: 0.9rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 0.9rem;
+  }
 `;
 const ModeSwitch = styled.div`
   cursor: ${PointerSwitch};

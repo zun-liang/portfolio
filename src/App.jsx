@@ -1,5 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import styled from "styled-components";
 import useSound from "use-sound";
 
@@ -56,11 +61,15 @@ const App = () => {
 
   useEffect(() => {
     window.addEventListener("resize", setAppHeight);
-    screen.orientation.addEventListener("change", setAppHeight);
+    if (screen.orientation) {
+      screen.orientation.addEventListener("change", setAppHeight);
+    }
     setAppHeight();
     return () => {
       window.removeEventListener("resize", setAppHeight);
-      screen.orientation.removeEventListener("change", setAppHeight);
+      if (screen.orientation) {
+        screen.orientation.removeEventListener("change", setAppHeight);
+      }
     };
   }, [screenHeight]);
 

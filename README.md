@@ -372,6 +372,7 @@ To get local weather and temperature depending on visitor's' location.
 - [audio: The Embed Audio element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio)
 - [Using files from web applications](https://developer.mozilla.org/en-US/docs/Web/API/File_API/Using_files_from_web_applications)
 - [Navigator: share() method](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)
+- [ScreenOrientation: change event](https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation/change_event)
 
 ## References
 

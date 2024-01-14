@@ -46,17 +46,23 @@ const App = () => {
   const [playPageTurn] = useSound(PageTurn, { soundEnabled: sound });
   const [playSwoosh] = useSound(Swoosh, { soundEnabled: sound });
 
-  /* === Automatically adjust app height depending on screen sizes === */
+  /* === Automatically adjust app height depending on screen size or orientation === */
+  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
   const setAppHeight = () => {
     const doc = document.documentElement;
     doc.style.setProperty("--app-height", `${window.innerHeight}px`);
+    setScreenHeight(window.innerHeight);
   };
 
   useEffect(() => {
     window.addEventListener("resize", setAppHeight);
+    screen.orientation.addEventListener("change", setAppHeight);
     setAppHeight();
-    return () => window.removeEventListener("resize", setAppHeight);
-  }, []);
+    return () => {
+      window.removeEventListener("resize", setAppHeight);
+      screen.orientation.removeEventListener("change", setAppHeight);
+    };
+  }, [screenHeight]);
 
   /* === Get current screen width when resizing === */
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);

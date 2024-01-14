@@ -354,6 +354,8 @@ To get local weather and temperature depending on visitor's' location.
 
   To find which elements are scrollable, you can check the Firefox inspector.
 
+- [Google Search Central Introduction to robots.txt](https://developers.google.com/search/docs/crawling-indexing/robots/intro)
+
 #### Vite
 
 - [How to use process.env in Vite](https://dev.to/whchi/how-to-use-processenv-in-vite-ho9)

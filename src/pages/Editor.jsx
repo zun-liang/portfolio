@@ -265,28 +265,42 @@ const Editor = ({
       <UpperDiv>
         <UserProfile />
         <UpdateProfile />
-        <StyledFontAwesomeIcon icon={faFileImport} onClick={getDraft} />
-        <StyledFontAwesomeIcon icon={faTrash} onClick={reset} />
+        <StyledFontAwesomeIcon
+          icon={faFileImport}
+          aria-label="get draft"
+          onClick={getDraft}
+        />
+        <StyledFontAwesomeIcon
+          icon={faTrash}
+          aria-label="reset"
+          onClick={reset}
+        />
       </UpperDiv>
       <StyledMDEditor
         value={blog}
         onChange={setBlog}
+        aria-label="## blog title \n\n blog body..."
         textareaProps={{
           placeholder: "## blog title \n\n blog body...",
         }}
       />
       <StyledDiv>
-        <StyledTagIcon icon={faHashtag} />
+        <StyledTagIcon aria-label="hash tag" icon={faHashtag} />
         <TagInput
           id="tag"
           name="tag"
           value={tagInput}
           onChange={handleTagInput}
+          aria-label="tags separate by space..."
           placeholder="tags separate by space..."
         />
         <BackButton handleClick={handleClick} />
-        <StyledSaveIcon icon={faFloppyDisk} onClick={saveDraft} />
-        <StyledFontAwesomeIcon icon={faPaperPlane} onClick={post} />
+        <StyledSaveIcon
+          icon={faFloppyDisk}
+          onClick={saveDraft}
+          aria-label="save draft"
+        />
+        <StyledFontAwesomeIcon icon={faPaperPlane} onClick={post} aria-label="post"/>
       </StyledDiv>
       {!getDraftResponse && <StyledP>No draft found.</StyledP>}
       {invalidPost && (

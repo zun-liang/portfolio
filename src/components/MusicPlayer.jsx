@@ -55,8 +55,12 @@ const MusicPlayer = () => {
       <audio id="music">
         <source src={MusicBox} type="audio/mpeg" />
       </audio>
-      {play && <OffButton icon={faMusic} onClick={handleOff} />}
-      {!play && <PlayButton icon={faMusic} onClick={handleOn} />}
+      {play && (
+        <OffButton icon={faMusic} aria-label="music off" onClick={handleOff} />
+      )}
+      {!play && (
+        <PlayButton icon={faMusic} aria-label="music on" onClick={handleOn} />
+      )}
     </>
   );
 };

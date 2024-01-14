@@ -5,17 +5,7 @@ import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import {
-  BackgroundDot,
-  BackgroundTransparent,
-  OpaqueSwitch,
-  PointerSwitch,
-  PrimarySwitch,
-  SecondaryHover,
-  SecondaryTransparent,
-  TertiaryHighlight,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { BackgroundDot, BackgroundTransparent, OpaqueSwitch, PointerSwitch, PrimarySwitch, SecondaryHover, SecondaryTransparent, TertiaryHighlight, TertiarySecondary } from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 import ProjectLinks from "./ProjectLinks";
 
@@ -121,6 +111,7 @@ const ProjectOverview = ({ projectsArr, playPageTurn }) => {
       <StyledImg
         src={mode ? project.srcLight : project.srcDark}
         alt="project preview"
+        aria-label="project preview"
       />
       <StyledH2>{project.name}</StyledH2>
       <StyledDiv>
@@ -128,7 +119,7 @@ const ProjectOverview = ({ projectsArr, playPageTurn }) => {
         <ProjectLinks proj={project} />
       </StyledDiv>
       <StyledP>{project.description}</StyledP>
-      <ProjectLink to={project.id} onClick={playPageTurn}>
+      <ProjectLink to={project.id} aria-label="read more" onClick={playPageTurn}>
         <Read>Read More</Read>
         <StyledFontAwesomeIcon icon={faAngleDoubleRight} />
       </ProjectLink>

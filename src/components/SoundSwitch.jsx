@@ -6,7 +6,11 @@ import styled from "styled-components";
 import useSound from "use-sound";
 
 import Interface from "../assets/sounds/interface.mp3";
-import { PointerSwitch, PrimarySecondary, TertiaryDot } from "../assets/styles/Styles";
+import {
+  PointerSwitch,
+  PrimarySecondary,
+  TertiaryDot,
+} from "../assets/styles/Styles";
 import { SoundContext } from "../contexts/SoundContext";
 
 const Container = styled.div`
@@ -44,9 +48,17 @@ const SoundSwitch = () => {
   return (
     <Container>
       {sound ? (
-        <StyledFontAwesomeIcon icon={faVolumeHigh} onClick={toggleSound} />
+        <StyledFontAwesomeIcon
+          icon={faVolumeHigh}
+          aria-label="volume up"
+          onClick={toggleSound}
+        />
       ) : (
-        <StyledFontAwesomeIcon icon={faVolumeOff} onClick={toggleSound} />
+        <StyledFontAwesomeIcon
+          icon={faVolumeOff}
+          aria-label="volume down"
+          onClick={toggleSound}
+        />
       )}
     </Container>
   );

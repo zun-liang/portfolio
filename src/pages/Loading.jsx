@@ -102,25 +102,44 @@ const Loading = ({ setLoading, today }) => {
         <StyledLoadingImage
           src={mode ? LoadingImageLight : LoadingImage}
           alt="loading image"
+          aria-label="loading image"
         />
         <StyledP>How are you feeling today?</StyledP>
         <StyledDiv>
-          <StyledButton onClick={handleClick}>Happy ♡⸜(˶˃ ᵕ ˂˶)⸝♡</StyledButton>
-          <StyledButton onClick={handleClick}>Sad (っ◞‸◟ c)</StyledButton>
-          <StyledButton onClick={handleClick}>Calm („ᵕᴗᵕ„)</StyledButton>
-          <StyledButton onClick={handleClick}>Surprised ˶✧｡✧˶</StyledButton>
-          <StyledButton onClick={handleClick}>Worried (•᷄- •᷅ ;)</StyledButton>
-          <StyledButton onClick={handleClick}>Scared ૮₍˶Ó﹏Ò ⑅₎ა</StyledButton>
-          <StyledButton onClick={handleClick}>Bored ( ¬⤙¬ )</StyledButton>
-          <StyledButton onClick={handleClick}>
+          <StyledButton aria-label="happy" onClick={handleClick}>
+            Happy ♡⸜(˶˃ ᵕ ˂˶)⸝♡
+          </StyledButton>
+          <StyledButton aria-label="sad" onClick={handleClick}>
+            Sad (っ◞‸◟ c)
+          </StyledButton>
+          <StyledButton aria-label="calm" onClick={handleClick}>
+            Calm („ᵕᴗᵕ„)
+          </StyledButton>
+          <StyledButton aria-label="surprised" onClick={handleClick}>
+            Surprised ˶✧｡✧˶
+          </StyledButton>
+          <StyledButton aria-label="worried" onClick={handleClick}>
+            Worried (•᷄- •᷅ ;)
+          </StyledButton>
+          <StyledButton aria-label="scared" onClick={handleClick}>
+            Scared ૮₍˶Ó﹏Ò ⑅₎ა
+          </StyledButton>
+          <StyledButton aria-label="bored" onClick={handleClick}>
+            Bored ( ¬⤙¬ )
+          </StyledButton>
+          <StyledButton aria-label="embarrassed" onClick={handleClick}>
             Embarrassed (,,&#62;﹏&#60;,,)
           </StyledButton>
-          <StyledButton onClick={handleClick}>Angry ୧(๑•̀ᗝ•́)૭</StyledButton>
-          <StyledButton onClick={handleClick}>
+          <StyledButton aria-label="angry" onClick={handleClick}>
+            Angry ୧(๑•̀ᗝ•́)૭
+          </StyledButton>
+          <StyledButton aria-label="confused" onClick={handleClick}>
             Confused (｡· v ·｡) ?
           </StyledButton>
         </StyledDiv>
-        <PassButton onClick={handleClick}>Pass (-_-,)</PassButton>
+        <PassButton aria-label="pass" onClick={handleClick}>
+          Pass (-_-,)
+        </PassButton>
       </LoadingContainer>
     </>
   );

@@ -89,6 +89,7 @@ const Projects = ({ playPageTurn }) => {
     <ProjectsContainer>
       <ProjectOverview projectsArr={projectsArr} playPageTurn={playPageTurn} />
       <StyledLink
+        aria-label="view more"
         target="_blank"
         href="https://github.com/zun-liang"
         onClick={playMagic}

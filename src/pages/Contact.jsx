@@ -5,18 +5,7 @@ import styled from "styled-components";
 
 import SpeechBubble from "../assets/images/hi.png";
 import Profile from "../assets/images/profile.png";
-import {
-  AutoSwitch,
-  BasicButton,
-  BasicInput,
-  HoverSwitch,
-  OpacitySwitch,
-  PrimarySwitch,
-  SecondarySwitch,
-  SecondaryTertiary,
-  TertiaryParagraph,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { AutoSwitch, BasicButton, BasicInput, HoverSwitch, OpacitySwitch, PrimarySwitch, SecondarySwitch, SecondaryTertiary, TertiaryParagraph, TertiarySecondary } from "../assets/styles/Styles";
 
 const StyledDiv = styled.div`
   width: 70%;
@@ -167,7 +156,7 @@ const Contact = ({ playSwoosh }) => {
     playSwoosh();
     return (
       <StyledDiv>
-        <StyledImg src={Profile} alt="profile" />
+        <StyledImg src={Profile} alt="profile" aria-label="profile"/>
         <StyledSpeechBubble src={SpeechBubble} alt="speech bubble" />
         <StyledP>Thanks for reaching out to me!</StyledP>
         <StyledP>I will get back to you as soon as possible!</StyledP>
@@ -198,6 +187,7 @@ const Contact = ({ playSwoosh }) => {
         type="text"
         name="name"
         placeholder="Enter your name..."
+        aria-label="Enter your name..."
         required
       />
       <StyledLabel htmlFor="email">Email Address</StyledLabel>
@@ -206,6 +196,7 @@ const Contact = ({ playSwoosh }) => {
         type="email"
         name="email"
         placeholder="Enter your email..."
+        aria-label="Enter your email..."
         required
       />
       <ValidationError prefix="Email" field="email" errors={state.errors} />
@@ -215,10 +206,15 @@ const Contact = ({ playSwoosh }) => {
         id="message"
         name="message"
         placeholder="Please leave me a message here... (*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ"
+        aria-label="Please leave me a message here... (*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ"
         required
       />
       <ValidationError prefix="Message" field="message" errors={state.errors} />
-      <StyledButton type="submit" disabled={state.submitting}>
+      <StyledButton
+        type="submit"
+        disabled={state.submitting}
+        aria-label="submit"
+      >
         Submit
       </StyledButton>
     </StyledForm>

@@ -3,7 +3,14 @@ import { useContext } from "react";
 import styled from "styled-components";
 
 import Party from "../assets/images/party_boygirl.png";
-import { BasicButton, BasicLink, HoverSwitch, PrimarySecondary, PrimarySwitch, SecondaryTransparent } from "../assets/styles/Styles";
+import {
+  BasicButton,
+  BasicLink,
+  HoverSwitch,
+  PrimarySecondary,
+  PrimarySwitch,
+  SecondaryTransparent,
+} from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 
 const PostContainer = styled.div`
@@ -60,15 +67,17 @@ const Post = ({ draft, setShowPost }) => {
 
   return (
     <PostContainer>
-      <StyledImg src={Party} alt="party boy girl" />
+      <StyledImg src={Party} alt="party boy girl" aria-label="party boy girl" />
       {draft ? (
         <StyledP>You&apos;ve successfully saved your draft!</StyledP>
       ) : (
         <StyledP>You&apos;ve successfully posted your blog!</StyledP>
       )}
       <StyledDiv>
-        <StyledButton onClick={goToEditor}>Go to Editor</StyledButton>
-        <StyledLink to="/blogs" onClick={playPick}>
+        <StyledButton aria-label="go to editor" onClick={goToEditor}>
+          Go to Editor
+        </StyledButton>
+        <StyledLink to="/blogs" aria-label="go to blogs" onClick={playPick}>
           Go to Blogs
         </StyledLink>
       </StyledDiv>

@@ -37,6 +37,7 @@ const CommentButton = ({ comment, setComment }) => {
   return (
     <StyledFontAwesomeIcon
       icon={faCommentDots}
+      aria-label="comment"
       onClick={handleComment}
       $comment={comment}
     />

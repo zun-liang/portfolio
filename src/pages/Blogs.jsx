@@ -188,6 +188,7 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
             const filtersToDisplay = distinctFilters.map((filter) => (
               <Filter
                 key={filter}
+                aria-label={filter}
                 onClick={() => generateSearchParams("category", filter)}
               >
                 {filter === "html"
@@ -203,6 +204,7 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
             const blogs = filteredBlogs.map((blog) => (
               <StyledDiv key={blog.id}>
                 <BlogLink
+                  aria-label="read blog"
                   to={encodeURIComponent(blog.id)}
                   state={{ search: `?${searchParams.toString()}` }}
                   onClick={playPageTurn}
@@ -239,6 +241,7 @@ const Blogs = ({ playPageTurn, setBlogToEdit, setTagsToEdit }) => {
                 <Filters>
                   {filtersToDisplay}
                   <Filter
+                    aria-label="all"
                     onClick={() => generateSearchParams("category", null)}
                   >
                     All

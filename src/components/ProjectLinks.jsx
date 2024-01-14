@@ -8,11 +8,7 @@ import styled from "styled-components";
 
 import { ReactComponent as Puzzle } from "../assets/images/icons/puzzle.svg";
 import { ReactComponent as Website } from "../assets/images/icons/website.svg";
-import {
-  PointerSwitch,
-  PrimarySecondary,
-  TertiaryHighlight,
-} from "../assets/styles/Styles";
+import { PointerSwitch, PrimarySecondary, TertiaryHighlight } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 
 const StyledDiv = styled.div`
@@ -61,14 +57,24 @@ const ProjectLinks = ({ proj }) => {
   const playPick = useContext(PlayPickContext);
   return (
     <StyledDiv>
-      <StyledLink target="_blank" href={proj.codeURL} onClick={playPick}>
+      <StyledLink
+        target="_blank"
+        aria-label="code"
+        href={proj.codeURL}
+        onClick={playPick}
+      >
         <Icon icon={faCode} />
       </StyledLink>
-      <StyledLink target="_blank" href={proj.liveURL} onClick={playPick}>
+      <StyledLink
+        target="_blank"
+        aria-label="live"
+        href={proj.liveURL}
+        onClick={playPick}
+      >
         <StyledWebsiteIcon />
       </StyledLink>
       {proj.femURL && (
-        <StyledLink target="_blank" href={proj.femURL} onClick={playPick}>
+        <StyledLink target="_blank" aria-label="challenge" href={proj.femURL} onClick={playPick}>
           <StyledPuzzleIcon />
         </StyledLink>
       )}

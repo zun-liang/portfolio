@@ -33,9 +33,13 @@ const LoginButton = () => {
   return (
     <>
       {loggedin ? (
-        <StyledFontAwesomeIcon icon={faPenNib} onClick={goToEditor} />
+        <StyledFontAwesomeIcon
+          icon={faPenNib}
+          aria-label="write"
+          onClick={goToEditor}
+        />
       ) : (
-        <StyledFontAwesomeIcon icon={faRightToBracket} onClick={login} />
+        <StyledFontAwesomeIcon icon={faRightToBracket} aria-label="log in" onClick={login} />
       )}
     </>
   );

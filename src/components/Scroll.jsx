@@ -51,7 +51,15 @@ const Scroll = () => {
     playSparkle();
   };
 
-  return <>{scroll && <ScrollButton onClick={scrollToTop}>🦋</ScrollButton>}</>;
+  return (
+    <>
+      {scroll && (
+        <ScrollButton aria-label="scroll to top" onClick={scrollToTop}>
+          🦋
+        </ScrollButton>
+      )}
+    </>
+  );
 };
 
 export default Scroll;

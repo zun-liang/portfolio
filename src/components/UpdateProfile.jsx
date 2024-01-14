@@ -5,17 +5,7 @@ import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { useState } from "react";
 import styled from "styled-components";
 
-import {
-  ActionDiv,
-  BackContainer,
-  BasicButton,
-  BasicInput,
-  PointerSwitch,
-  PrimarySecondary,
-  PrimarySwitch,
-  TertiaryHighlight,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { ActionDiv, BackContainer, BasicButton, BasicInput, PointerSwitch, PrimarySecondary, PrimarySwitch, TertiaryHighlight, TertiarySecondary } from "../assets/styles/Styles";
 import { auth } from "../firebase";
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
@@ -101,7 +91,11 @@ const UpdateProfile = () => {
 
   return (
     <>
-      <StyledFontAwesomeIcon icon={faUserPen} onClick={handleClick} />
+      <StyledFontAwesomeIcon
+        aria-label="update"
+        icon={faUserPen}
+        onClick={handleClick}
+      />
       {edit && (
         <BackContainer>
           <StyledDiv>
@@ -112,6 +106,7 @@ const UpdateProfile = () => {
               name="username"
               value={userName}
               onChange={handleUserName}
+              aria-label="username"
               required
             />
             <StyledLabel htmlFor="userphoto">Profile Picture:</StyledLabel>
@@ -120,10 +115,13 @@ const UpdateProfile = () => {
               id="userphoto"
               name="userphoto"
               onChange={handleUserPhoto}
+              aria-label="userphoto"
               required
             />
-            <StyledButton onClick={upload}>Upload</StyledButton>
-            <StyledButton onClick={quitEdit}>Cancel</StyledButton>
+            <StyledButton aria-label="upload" onClick={upload}>
+              Upload
+            </StyledButton>
+            <StyledButton aria-label="cancel" onClick={quitEdit}>Cancel</StyledButton>
           </StyledDiv>
         </BackContainer>
       )}

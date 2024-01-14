@@ -153,9 +153,13 @@ const Login = () => {
     <>
       {loggedin ? (
         <StyledDiv>
-          <StyledImg src={Party} alt="party boy girl" />
+          <StyledImg
+            src={Party}
+            alt="party boy girl"
+            aria-label="party boy girl"
+          />
           <StyledH2>You&apos;ve successfully logged in!</StyledH2>
-          <StyledLink to="/editor" onClick={playPick}>
+          <StyledLink to="/editor" onClick={playPick} aria-label="go to editor">
             Go to Editor
           </StyledLink>
         </StyledDiv>
@@ -167,6 +171,7 @@ const Login = () => {
             id="email"
             name="email"
             placeholder="Enter admin email..."
+            aria-label="Enter admin email..."
             required
           />
           <StyledLabel htmlFor="password">Password</StyledLabel>
@@ -175,10 +180,15 @@ const Login = () => {
             id="password"
             name="password"
             placeholder="Enter admin password..."
+            aria-label="Enter admin password..."
             required
           />
           {errorMessage && <StyledP>{errorMessage}</StyledP>}
-          <StyledButton onClick={playPick} disabled={state === "submitting"}>
+          <StyledButton
+            aria-label="log in"
+            onClick={playPick}
+            disabled={state === "submitting"}
+          >
             {state === "submitting" ? "Logging in..." : "Log in"}
           </StyledButton>
         </LoginPage>

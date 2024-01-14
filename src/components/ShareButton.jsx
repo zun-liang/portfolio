@@ -8,8 +8,8 @@ import { faShare, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 /* eslint-disable react/prop-types */
 import { useContext, useState } from "react";
-import styled from "styled-components";
 import { RedditShareButton } from "react-share";
+import styled from "styled-components";
 
 import {
   BackgroundDot,
@@ -123,12 +123,18 @@ const ShareButton = ({ title, text, url }) => {
   };
   return (
     <ShareContainer>
-      <StyledShareIcon icon={faShare} onClick={handleShare} $share={share} />
+      <StyledShareIcon
+        icon={faShare}
+        onClick={handleShare}
+        aria-label="share"
+        $share={share}
+      />
       {showCustom && (
         <CustomizedShare>
           <a
             target="_blank"
             rel="noreferrer"
+            aria-label="Twitter"
             className="twitter-share-button"
             href={`https://twitter.com/intent/tweet?text=${updatedTitle}&url=${updatedURL}`}
           >
@@ -138,6 +144,7 @@ const ShareButton = ({ title, text, url }) => {
             <a
               target="_blank"
               rel="noreferrer"
+              aria-label="Facebook"
               href={`https://www.facebook.com/sharer/sharer.php?u=${updatedURL}`}
               className="fb-xfbml-parse-ignore"
             >
@@ -147,14 +154,19 @@ const ShareButton = ({ title, text, url }) => {
           <a
             target="_blank"
             rel="noreferrer"
+            aria-label="Telegram"
             href={`https://t.me/share/url?url=${updatedURL}&text=${updatedText}`}
           >
             <StyledFontAwesomeIcon icon={faTelegram} />
           </a>
-          <RedditShareButton url={updatedURL} title={updatedTitle}>
+          <RedditShareButton
+            aria-label="Reddit"
+            url={updatedURL}
+            title={updatedTitle}
+          >
             <StyledFontAwesomeIcon icon={faRedditAlien} />
           </RedditShareButton>
-          <XMarkContainer onClick={handleXMark}>
+          <XMarkContainer aria-label="close" onClick={handleXMark}>
             <StyledXMark icon={faXmark} />
           </XMarkContainer>
         </CustomizedShare>

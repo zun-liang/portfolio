@@ -56,9 +56,13 @@ const Logout = () => {
   if (!showLogout) return <Navigate to="/404" replace />;
   return (
     <LogoutContainer>
-      <StyledImg src={CoffeeNight} alt="girl drinking coffee at night" />
+      <StyledImg
+        src={CoffeeNight}
+        alt="girl drinking coffee at night"
+        aria-label="girl drinking coffee at night"
+      />
       <StyledP>You&apos;ve successfully logged out!</StyledP>
-      <StyledLink to="/" onClick={playPick}>
+      <StyledLink to="/" onClick={playPick} aria-label="go back home">
         Go back Home
       </StyledLink>
     </LogoutContainer>

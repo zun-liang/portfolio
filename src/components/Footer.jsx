@@ -114,6 +114,7 @@ const Footer = () => {
         <StyledListItem>
           <StyledLink
             target="_blank"
+            aria-label="freeCodeCamp"
             href="https://www.freecodecamp.org/zun-liang"
             onClick={playPick}
           >
@@ -123,6 +124,7 @@ const Footer = () => {
         <StyledListItem>
           <StyledLink
             target="_blank"
+            aria-label="Frontend Mentor"
             href="https://www.frontendmentor.io/profile/zun-liang"
             onClick={playPick}
           >
@@ -132,6 +134,7 @@ const Footer = () => {
         <StyledListItem>
           <StyledLink
             target="_blank"
+            aria-label="GitHub"
             href="https://github.com/zun-liang"
             onClick={playPick}
           >
@@ -141,6 +144,7 @@ const Footer = () => {
         <StyledListItem>
           <StyledLink
             target="_blank"
+            aria-label="LinkedIn"
             href="https://www.linkedin.com/in/zun-liang/"
             onClick={playPick}
           >
@@ -148,7 +152,11 @@ const Footer = () => {
           </StyledLink>
         </StyledListItem>
         <StyledListItem>
-          <StyledLink href="mailto:contact@zunldev.com" onClick={playPick}>
+          <StyledLink
+            href="mailto:contact@zunldev.com"
+            onClick={playPick}
+            aria-label="send email"
+          >
             <Icon icon={faEnvelope} />
           </StyledLink>
         </StyledListItem>

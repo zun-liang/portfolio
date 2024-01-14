@@ -6,11 +6,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import {
-  PointerSwitch,
-  PrimarySecondary,
-  TertiaryDot,
-} from "../assets/styles/Styles";
+import { PointerSwitch, PrimarySecondary, TertiaryDot } from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { LogoutContext } from "../contexts/LogoutContext";
 import { auth } from "../firebase";
@@ -44,7 +40,7 @@ const LogoutButton = () => {
   return (
     <>
       {loggedin && (
-        <StyledFontAwesomeIcon icon={faRightFromBracket} onClick={logout} />
+        <StyledFontAwesomeIcon icon={faRightFromBracket} aria-label="log out" onClick={logout} />
       )}
     </>
   );

@@ -8,16 +8,7 @@ import styled from "styled-components";
 import useSound from "use-sound";
 
 import Crumple from "../assets/sounds/crumple.mp3";
-import {
-  ActionDiv,
-  BackContainer,
-  BasicButton,
-  PointerSwitch,
-  PrimarySecondary,
-  PrimarySwitch,
-  TertiaryDot,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { ActionDiv, BackContainer, BasicButton, PointerSwitch, PrimarySecondary, PrimarySwitch, TertiaryDot, TertiarySecondary } from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { SoundContext } from "../contexts/SoundContext";
 import { db } from "../firebase";
@@ -83,11 +74,17 @@ const DeleteButton = ({ blogID }) => {
             <BackContainer>
               <StyledDiv>
                 <StyledP>Blog deleted.</StyledP>
-                <StyledButton onClick={handleDeleteDone}>Ok</StyledButton>
+                <StyledButton aria-label="ok" onClick={handleDeleteDone}>
+                  Ok
+                </StyledButton>
               </StyledDiv>
             </BackContainer>
           )}
-          <StyledFontAwesomeIcon icon={faTrash} onClick={deleteBlog} />
+          <StyledFontAwesomeIcon
+            aria-label="delete"
+            icon={faTrash}
+            onClick={deleteBlog}
+          />
         </>
       )}
     </>

@@ -3,7 +3,12 @@ import styled from "styled-components";
 
 import Logo from "../assets/images/logo-dark.png";
 import LogoLight from "../assets/images/logo-light.png";
-import { PointerSwitch, SecondaryTransparent, TertiaryPrimary, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  PointerSwitch,
+  SecondaryTransparent,
+  TertiaryPrimary,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 
 const StyledDiv = styled.div`
@@ -70,7 +75,7 @@ const BlogsLoading = () => {
   const { mode } = useContext(ModeContext);
   return (
     <StyledDiv>
-      <StyledImg src={mode ? LogoLight : Logo} alt="logo" />
+      <StyledImg src={mode ? LogoLight : Logo} alt="logo" aria-label="logo" />
       <StyledP>
         If Google services are not available in your area or this page is taking
         longer than expected, please click on{" "}

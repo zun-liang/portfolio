@@ -246,7 +246,7 @@ const Header = ({ screenWidth }) => {
         <SubTitleBlinkSlow>˚</SubTitleBlinkSlow>
         <SubTitleBlink>₊</SubTitleBlink>
         <SubTitleBlinkSlow>⊹</SubTitleBlinkSlow>
-        <SubTitle onClick={toggleMenu}>
+        <SubTitle aria-label="menu" onClick={toggleMenu}>
           ʚ☕️੭<span>menu</span>
         </SubTitle>
       </TitleContainer>
@@ -254,9 +254,9 @@ const Header = ({ screenWidth }) => {
       <StyledDiv>
         {fetchError ? (
           <Weather>
-            <StyledFontAwesomeIcon icon={faUmbrella} />
+            <StyledFontAwesomeIcon icon={faUmbrella} aria-label="weather" />
             &nbsp;&nbsp;n/a&nbsp;&nbsp;
-            <StyledFontAwesomeIcon icon={faTemperatureLow} />
+            <StyledFontAwesomeIcon icon={faTemperatureLow} aria-label="temperature"/>
             &nbsp;n/a&nbsp;
           </Weather>
         ) : (
@@ -268,7 +268,7 @@ const Header = ({ screenWidth }) => {
         )}
         <Time />
       </StyledDiv>
-      <ModeSwitch onClick={updateMode}>
+      <ModeSwitch onClick={updateMode} aria-label="switch mode">
         {mode ? <StyledModeLight /> : <StyledModeDark />}
       </ModeSwitch>
     </StyledHeader>

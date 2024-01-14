@@ -5,7 +5,11 @@ import { useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { PointerSwitch, PrimarySecondary, TertiaryDot } from "../assets/styles/Styles";
+import {
+  PointerSwitch,
+  PrimarySecondary,
+  TertiaryDot,
+} from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 
@@ -32,7 +36,13 @@ const EditButton = ({ setBlogToEdit, setTagsToEdit, blogData, blogTag }) => {
 
   return (
     <>
-      {loggedin && <StyledFontAwesomeIcon icon={faPenNib} onClick={editBlog} />}
+      {loggedin && (
+        <StyledFontAwesomeIcon
+          icon={faPenNib}
+          aria-label="edit"
+          onClick={editBlog}
+        />
+      )}
     </>
   );
 };

@@ -52,9 +52,13 @@ const UserProfile = () => {
       {loggedin && (
         <ProfileContainer>
           {userPhoto ? (
-            <StyledImg src={userPhoto} alt="user profile" />
+            <StyledImg
+              src={userPhoto}
+              alt="user profile"
+              aria-label="user profile"
+            />
           ) : (
-            <StyledFontAwesomeIcon icon={faUser} />
+            <StyledFontAwesomeIcon icon={faUser} aria-label="default user" />
           )}
           <StyledP>{userName ? userName : "Admin"}</StyledP>
         </ProfileContainer>

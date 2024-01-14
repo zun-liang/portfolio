@@ -4,7 +4,14 @@ import { useNavigate, useParams } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { BoxShadowSwitch, HighlightSwitch, ParagraphSwitch, PrimaryTertiary, SecondaryParagraph, SecondaryTransparent } from "../assets/styles/Styles";
+import {
+  BoxShadowSwitch,
+  HighlightSwitch,
+  ParagraphSwitch,
+  PrimaryTertiary,
+  SecondaryParagraph,
+  SecondaryTransparent,
+} from "../assets/styles/Styles";
 import BackButton from "../components/BackButton";
 import ProjectLinks from "../components/ProjectLinks";
 import { ModeContext } from "../contexts/ModeContext";
@@ -114,6 +121,7 @@ const Project = () => {
             <StyledImg
               src={mode ? `${img.srcLight}` : `${img.srcDark}`}
               alt={img.title}
+              aria-label={img.title}
               style={{ width: img.width }}
             />
             <StyledFigureCaption>{img.title}</StyledFigureCaption>
@@ -142,6 +150,7 @@ const Project = () => {
                       <StyledImg
                         src={mode ? `${img.srcLight}` : `${img.srcDark}`}
                         alt={img.title}
+                        aria-label={img.title}
                         style={{ height: img.height }}
                       />
                       <StyledFigureCaption>{img.title}</StyledFigureCaption>
@@ -156,6 +165,7 @@ const Project = () => {
                   <StyledImg
                     src={mode ? `${img.srcLight}` : `${img.srcDark}`}
                     alt={img.title}
+                    aria-label={img.title}
                     style={{ height: img.height }}
                   />
                   <StyledFigureCaption>{img.title}</StyledFigureCaption>

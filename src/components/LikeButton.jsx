@@ -1,25 +1,13 @@
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  doc,
-  increment,
-  updateDoc,
-  collection,
-  onSnapshot,
-  query,
-  setDoc,
-} from "firebase/firestore";
+import { collection, doc, increment, onSnapshot, query, setDoc, updateDoc } from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import useSound from "use-sound";
 
 import Poit from "../assets/sounds/poit.mp3";
-import {
-  PointerSwitch,
-  PrimarySecondary,
-  TertiaryHighlight,
-} from "../assets/styles/Styles";
+import { PointerSwitch, PrimarySecondary, TertiaryHighlight } from "../assets/styles/Styles";
 import { SoundContext } from "../contexts/SoundContext";
 import { db } from "../firebase";
 
@@ -143,6 +131,7 @@ const LikeButton = ({ blogID }) => {
       <StyledDiv>
         <StyledFontAwesomeIcon
           icon={faHeart}
+          aria-label="like"
           onClick={handleLike}
           $like={like}
         />

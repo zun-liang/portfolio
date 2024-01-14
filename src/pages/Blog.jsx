@@ -6,12 +6,7 @@ import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import {
-  HighlightSwitch,
-  PrimaryTertiary,
-  SecondaryParagraph,
-  TertiaryParagraph,
-} from "../assets/styles/Styles";
+import { HighlightSwitch, PrimaryTertiary, SecondaryParagraph, TertiaryParagraph } from "../assets/styles/Styles";
 import BackButton from "../components/BackButton";
 import BlogContent from "../components/BlogContent";
 import CommentButton from "../components/CommentButton";

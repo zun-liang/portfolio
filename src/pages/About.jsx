@@ -231,7 +231,11 @@ const About = () => {
       <Section>
         <StyledDiv>
           <StyledH2>Journey</StyledH2>
-          <StyledImg src={mode ? LogoLight : Logo} alt="decoration logo" />
+          <StyledImg
+            src={mode ? LogoLight : Logo}
+            alt="decoration logo"
+            aria-label="decoration logo"
+          />
         </StyledDiv>
         <StyledP>
           There are always charming programmers 👨🏻‍💻👩🏻‍💻 portrayed in TV shows and
@@ -346,6 +350,7 @@ const About = () => {
             target="_blank"
             href="https://github.com/zun-liang/certificates-achievements-archive"
             onClick={playPick}
+            aria-label="achievements"
           >
             Achievements
           </StyledLink>
@@ -356,6 +361,7 @@ const About = () => {
               target="_blank"
               href="https://www.freecodecamp.org/certification/zun-liang/responsive-web-design"
               onClick={playPick}
+              aria-label="Responsive Web Design Certification"
             >
               <span>✞ </span> Responsive Web Design Certification
             </StyledLink>
@@ -375,6 +381,7 @@ const About = () => {
               target="_blank"
               href="https://scrimba.com/certificate/u9enxdu5/greact"
               onClick={playPick}
+              aria-label="Advanced React Certification"
             >
               <span>✞ </span> Advanced React Certification
             </StyledLink>

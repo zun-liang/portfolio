@@ -114,6 +114,7 @@ const CommentInterface = ({ setComment, playSwoosh, blogID }) => {
         value={name}
         onChange={handleName}
         placeholder="Your nickname..."
+        aria-label="Your nickname..."
         required
       />
       {invalidComment && <InvalidMessage>Nickname is required.</InvalidMessage>}
@@ -125,11 +126,16 @@ const CommentInterface = ({ setComment, playSwoosh, blogID }) => {
         value={text}
         onChange={handleText}
         placeholder="Leave your comment here..."
+        aria-label="Leave your comment here..."
         required
       ></StyledTextarea>
       {invalidComment && <InvalidMessage>Comment is required.</InvalidMessage>}
-      <StyledButton onClick={handleSubmit}>Submit</StyledButton>
-      <StyledButton onClick={handleCancel}>Cancel</StyledButton>
+      <StyledButton aria-label="submit" onClick={handleSubmit}>
+        Submit
+      </StyledButton>
+      <StyledButton aria-label="cancel" onClick={handleCancel}>
+        Cancel
+      </StyledButton>
     </StyledForm>
   );
 };

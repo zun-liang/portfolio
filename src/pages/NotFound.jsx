@@ -3,11 +3,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 
 import Kuma from "../assets/images/ojigi_animal_kuma.png";
-import {
-  PrimarySecondary,
-  PrimarySwitch,
-  SecondaryTransparent,
-} from "../assets/styles/Styles";
+import { PrimarySecondary, PrimarySwitch, SecondaryTransparent } from "../assets/styles/Styles";
 
 const NotFoundPage = styled.div`
   display: flex;
@@ -42,7 +38,7 @@ const NotFound = () => {
 
   return (
     <NotFoundPage>
-      <StyledImg src={Kuma} alt="sorry bear" />
+      <StyledImg src={Kuma} alt="sorry bear" aria-label="sorry bear"/>
       <StyledH2>404 Not Found</StyledH2>
       <StyledP>
         Sorry, the page you are looking for doesn&apos;t seem to exist.

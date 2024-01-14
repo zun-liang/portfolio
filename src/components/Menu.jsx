@@ -3,7 +3,13 @@ import { NavLink } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { BGSwitch, PointerSwitch, PrimarySecondary, PrimarySwitch, SecondaryTransparent } from "../assets/styles/Styles";
+import {
+  BGSwitch,
+  PointerSwitch,
+  PrimarySecondary,
+  PrimarySwitch,
+  SecondaryTransparent,
+} from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 
 const MenuContainer = styled.div`
@@ -124,6 +130,7 @@ const Menu = ({ menu, setMenu, playKey }) => {
           <StyledListItem>
             <StyledLink
               to="."
+              aria-label="home"
               onClick={closeMenu}
               style={({ isActive }) => (isActive ? activeStyle : null)}
             >
@@ -133,6 +140,7 @@ const Menu = ({ menu, setMenu, playKey }) => {
           <StyledListItem>
             <StyledLink
               to="about"
+              aria-label="about me"
               onClick={closeMenu}
               style={({ isActive }) => (isActive ? activeStyle : null)}
             >
@@ -142,6 +150,7 @@ const Menu = ({ menu, setMenu, playKey }) => {
           <StyledListItem>
             <StyledLink
               to="projects"
+              aria-label="projects"
               onClick={closeMenu}
               style={({ isActive }) => (isActive ? activeStyle : null)}
             >
@@ -155,6 +164,7 @@ const Menu = ({ menu, setMenu, playKey }) => {
           <StyledListItem>
             <StyledLink
               to="blogs"
+              aria-label="blogs"
               onClick={closeMenu}
               style={({ isActive }) => (isActive ? activeStyle : null)}
             >
@@ -164,6 +174,7 @@ const Menu = ({ menu, setMenu, playKey }) => {
           <StyledListItem>
             <StyledLink
               to="contact"
+              aria-label="contact"
               onClick={closeMenu}
               style={({ isActive }) => (isActive ? activeStyle : null)}
             >

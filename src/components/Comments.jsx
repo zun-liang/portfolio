@@ -1,18 +1,8 @@
-import {
-  collection,
-  doc,
-  onSnapshot,
-  orderBy,
-  query,
-} from "firebase/firestore";
+import { collection, doc, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import {
-  OpaqueSwitch,
-  PrimarySecondary,
-  TertiaryHighlight,
-} from "../assets/styles/Styles";
+import { OpaqueSwitch, PrimarySecondary, TertiaryHighlight } from "../assets/styles/Styles";
 /* eslint-disable react/prop-types */
 
 import { db } from "../firebase";
@@ -37,7 +27,7 @@ const CommentsContainer = styled.div`
 `;
 const StyledTitle = styled.p`
   text-align: center;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   color: ${TertiaryHighlight};
   font-size: 1.2rem;
   margin-bottom: -0.5rem;
@@ -48,7 +38,7 @@ const CommentContainer = styled.div`
   gap: 0.5rem;
 `;
 const Name = styled.p`
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   color: ${TertiaryHighlight};
 `;
 const Time = styled.p`

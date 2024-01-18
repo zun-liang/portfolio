@@ -2,25 +2,10 @@
 /* eslint-disable react/prop-types */
 import { getDocs, orderBy, query } from "firebase/firestore";
 import { Suspense, useContext, useEffect } from "react";
-import {
-  Await,
-  defer,
-  Link,
-  useLoaderData,
-  useSearchParams,
-} from "react-router-dom";
+import { Await, defer, Link, useLoaderData, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
-import {
-  BasicButton,
-  OpaqueSwitch,
-  PointerSwitch,
-  PrimarySecondary,
-  PrimarySwitch,
-  SecondaryTransparent,
-  TertiaryHighlight,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { BasicButton, OpaqueSwitch, PointerSwitch, PrimarySecondary, PrimarySwitch, SecondaryTransparent, TertiaryHighlight, TertiarySecondary } from "../assets/styles/Styles";
 import BlogOverview from "../components/BlogOverview";
 import BlogsLoading from "../components/BlogsLoading";
 import DeleteButton from "../components/DeleteButton";
@@ -104,8 +89,9 @@ const Time = styled.p`
 const StyledH2 = styled.h2`
   display: inline;
   font-size: 1.2rem;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   color: ${PrimarySwitch};
+  font-weight: 400;
 `;
 const StyledP = styled.p`
   font-size: 1rem;

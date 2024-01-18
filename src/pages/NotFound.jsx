@@ -18,15 +18,16 @@ const StyledImg = styled.img`
 `;
 const StyledH2 = styled.h2`
   font-size: 2rem;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   color: ${PrimarySwitch};
+  font-weight: 400;
   text-shadow: 1px 1px ${SecondaryTransparent};
 `;
 const StyledP = styled.p`
   width: 70%;
   text-align: center;
   font-size: 1.5rem;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   color: ${PrimarySecondary};
   text-shadow: 1px 1px ${SecondaryTransparent};
 `;
@@ -38,7 +39,7 @@ const NotFound = () => {
 
   return (
     <NotFoundPage>
-      <StyledImg src={Kuma} alt="sorry bear" aria-label="sorry bear"/>
+      <StyledImg src={Kuma} alt="sorry bear" aria-label="sorry bear" />
       <StyledH2>404 Not Found</StyledH2>
       <StyledP>
         Sorry, the page you are looking for doesn&apos;t seem to exist.

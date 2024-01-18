@@ -30,12 +30,12 @@ const StyledForm = styled.div`
 `;
 const InvalidMessage = styled.p`
   margin-top: -0.6rem;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   color: ${ErrorSwitch};
   font-size: 0.8rem;
 `;
 const StyledLabel = styled.label`
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   color: ${HighlightPrimary};
 `;
 const StyledInput = styled(BasicInput)`

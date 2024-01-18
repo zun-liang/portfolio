@@ -42,7 +42,7 @@ const StyledP = styled.p`
   width: 70vw;
   text-align: center;
   line-height: 1.8;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 1.5rem;
   color: ${TertiarySecondary};
   text-shadow: 1px 1px ${SecondaryTransparent};
@@ -60,7 +60,7 @@ const StyledP = styled.p`
     text-shadow: 1px 1px ${SecondaryTransparent};
   }
   & > span {
-    font-family: "Roboto", sans-serif;
+    font-family: var(--ff-regular);
   }
   @media (min-width: 750px) {
     font-size: 2rem;

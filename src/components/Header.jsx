@@ -76,7 +76,7 @@ const TitleContainer = styled.div`
 `;
 const Title = styled.p`
   margin-right: 0.5rem;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 1.5rem;
   color: ${PrimarySwitch};
   text-shadow: -2px -2px ${SecondarySwitch};

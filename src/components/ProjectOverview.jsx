@@ -5,7 +5,17 @@ import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { BackgroundDot, BackgroundTransparent, OpaqueSwitch, PointerSwitch, PrimarySwitch, SecondaryHover, SecondaryTransparent, TertiaryHighlight, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  BackgroundDot,
+  BackgroundTransparent,
+  OpaqueSwitch,
+  PointerSwitch,
+  PrimarySwitch,
+  SecondaryHover,
+  SecondaryTransparent,
+  TertiaryHighlight,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import { ModeContext } from "../contexts/ModeContext";
 import ProjectLinks from "./ProjectLinks";
 
@@ -64,9 +74,10 @@ const StyledImg = styled.img`
 `;
 const StyledH2 = styled.h2`
   margin-top: 0.5rem;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 1.2rem;
   color: ${PrimarySwitch};
+  font-weight: 400;
 `;
 const Time = styled.p`
   font-size: 0.8rem;
@@ -99,7 +110,7 @@ const ProjectLink = styled(Link)`
   }
 `;
 const Read = styled.p`
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   color: ${TertiarySecondary};
   font-size: 0.9rem;
 `;
@@ -119,7 +130,11 @@ const ProjectOverview = ({ projectsArr, playPageTurn }) => {
         <ProjectLinks proj={project} />
       </StyledDiv>
       <StyledP>{project.description}</StyledP>
-      <ProjectLink to={project.id} aria-label="read more" onClick={playPageTurn}>
+      <ProjectLink
+        to={project.id}
+        aria-label="read more"
+        onClick={playPageTurn}
+      >
         <Read>Read More</Read>
         <StyledFontAwesomeIcon icon={faAngleDoubleRight} />
       </ProjectLink>

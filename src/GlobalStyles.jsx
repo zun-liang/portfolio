@@ -10,6 +10,9 @@ const GlobalStyles = createGlobalStyle`
     }
 
     :root {
+        --ff-regular: "Roboto", sans-serif;
+        --ff-focus: "Black Ops One", sans-serif;
+        
         --light-background: #f7f8d4;
         --light-primary: #000000;
         --light-secondary: #ffffff;
@@ -42,7 +45,7 @@ const GlobalStyles = createGlobalStyle`
         height: 100%;
         background: ${BGSwitch};
         overflow-x: hidden;
-        font-family: "Roboto", sans-serif;
+        font-family: var(--ff-regular);
         font-size: 14px;
         color: ${PrimarySwitch}; 
         cursor: ${AutoSwitch};

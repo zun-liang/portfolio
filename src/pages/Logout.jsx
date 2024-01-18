@@ -4,13 +4,7 @@ import { Navigate } from "react-router-dom";
 import styled from "styled-components";
 
 import CoffeeNight from "../assets/images/face_night.png";
-import {
-  BasicLink,
-  HoverSwitch,
-  PrimarySecondary,
-  PrimarySwitch,
-  SecondaryTransparent,
-} from "../assets/styles/Styles";
+import { BasicLink, HoverSwitch, PrimarySecondary, PrimarySwitch, SecondaryTransparent } from "../assets/styles/Styles";
 import { LogoutContext } from "../contexts/LogoutContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 
@@ -26,7 +20,7 @@ const StyledImg = styled.img`
 `;
 const StyledP = styled.p`
   text-align: center;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 2rem;
   color: ${PrimarySwitch};
   text-shadow: 1px 1px ${SecondaryTransparent};

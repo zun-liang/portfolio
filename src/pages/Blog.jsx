@@ -6,7 +6,12 @@ import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { HighlightSwitch, PrimaryTertiary, SecondaryParagraph, TertiaryParagraph } from "../assets/styles/Styles";
+import {
+  HighlightSwitch,
+  PrimaryTertiary,
+  SecondaryParagraph,
+  TertiaryParagraph,
+} from "../assets/styles/Styles";
 import BackButton from "../components/BackButton";
 import BlogContent from "../components/BlogContent";
 import CommentButton from "../components/CommentButton";
@@ -36,7 +41,7 @@ const BlogContainer = styled.div`
 const MarkdownTitle = styled(Markdown)`
   color: ${PrimaryTertiary};
   font-size: 1.2rem;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   text-shadow: -2px -2px ${SecondaryParagraph};
   text-align: center;
 `;
@@ -57,7 +62,7 @@ const TagsContainer = styled.div`
 `;
 const Tag = styled.p`
   color: ${HighlightSwitch};
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
 `;
 const IconsContainer = styled.div`
   width: 100%;

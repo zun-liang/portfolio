@@ -4,14 +4,7 @@ import styled from "styled-components";
 
 import LoadingImage from "../assets/images/logo-dark.png";
 import LoadingImageLight from "../assets/images/logo-light.png";
-import {
-  AutoSwitch,
-  BasicButton,
-  BGSwitch,
-  OpaqueSwitch,
-  PrimarySecondary,
-  PrimarySwitch,
-} from "../assets/styles/Styles.jsx";
+import { AutoSwitch, BasicButton, BGSwitch, OpaqueSwitch, PrimarySecondary, PrimarySwitch } from "../assets/styles/Styles.jsx";
 import { ModeContext } from "../contexts/ModeContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import GlobalStyles from "../GlobalStyles";
@@ -43,7 +36,7 @@ const StyledLoadingImage = styled.img`
   }
 `;
 const StyledP = styled.p`
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 1.5rem;
   color: ${PrimarySecondary};
 `;

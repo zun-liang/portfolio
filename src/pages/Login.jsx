@@ -6,22 +6,8 @@ import { Form, useActionData, useNavigation } from "react-router-dom";
 import styled from "styled-components";
 
 import Party from "../assets/images/party_boygirl.png";
-import {
-  BasicLink,
-  ErrorSwitch,
-  PrimarySecondary,
-  SecondaryTransparent,
-} from "../assets/styles/Styles";
-import {
-  BasicButton,
-  HoverSwitch,
-  OpacitySwitch,
-  OutlineSwitch,
-  PrimarySwitch,
-  PrimaryTertiary,
-  SecondarySwitch,
-  TertiarySecondary,
-} from "../assets/styles/Styles";
+import { BasicLink, ErrorSwitch, PrimarySecondary, SecondaryTransparent } from "../assets/styles/Styles";
+import { BasicButton, HoverSwitch, OpacitySwitch, OutlineSwitch, PrimarySwitch, PrimaryTertiary, SecondarySwitch, TertiarySecondary } from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 import { auth } from "../firebase";
@@ -35,9 +21,10 @@ const StyledDiv = styled.div`
 `;
 const StyledH2 = styled.h2`
   text-align: center;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 1.8rem;
   color: ${PrimarySwitch};
+  font-weight: 400;
   text-shadow: 1px 1px ${SecondaryTransparent};
 `;
 const StyledImg = styled.img`
@@ -78,7 +65,7 @@ const LoginPage = styled(Form)`
   }
 `;
 const StyledLabel = styled.label`
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 1rem;
   color: ${PrimarySwitch};
   text-align: left;
@@ -91,7 +78,7 @@ const StyledInput = styled.input`
   border: none;
   border: 2px solid ${TertiarySecondary};
   font-size: 0.9rem;
-  font-family: "Roboto", sans-serif;
+  font-family: var(--ff-regular);
   color: ${PrimaryTertiary};
   background-color: white;
   &:focus {
@@ -109,7 +96,7 @@ const StyledInput = styled.input`
 `;
 const StyledP = styled.p`
   margin: -0.5rem 0;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   color: ${ErrorSwitch};
 `;
 const StyledButton = styled(BasicButton)`

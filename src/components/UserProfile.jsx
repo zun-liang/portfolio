@@ -19,7 +19,7 @@ const StyledP = styled.p`
   font-size: 0.9rem;
   color: ${TertiaryHighlight};
   letter-spacing: 1px;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
 `;
 const StyledImg = styled.img`
   width: 2rem;

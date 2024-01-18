@@ -1,13 +1,25 @@
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { collection, doc, increment, onSnapshot, query, setDoc, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  increment,
+  onSnapshot,
+  query,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import useSound from "use-sound";
 
 import Poit from "../assets/sounds/poit.mp3";
-import { PointerSwitch, PrimarySecondary, TertiaryHighlight } from "../assets/styles/Styles";
+import {
+  PointerSwitch,
+  PrimarySecondary,
+  TertiaryHighlight,
+} from "../assets/styles/Styles";
 import { SoundContext } from "../contexts/SoundContext";
 import { db } from "../firebase";
 
@@ -57,7 +69,7 @@ const StyledPlus = styled.p`
 const StyledLikeNumber = styled.p`
   width: 5rem;
   margin-right: -2.2rem;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   color: ${TertiaryHighlight};
 `;
 

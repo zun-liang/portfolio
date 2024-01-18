@@ -5,7 +5,17 @@ import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { useState } from "react";
 import styled from "styled-components";
 
-import { ActionDiv, BackContainer, BasicButton, BasicInput, PointerSwitch, PrimarySecondary, PrimarySwitch, TertiaryHighlight, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  ActionDiv,
+  BackContainer,
+  BasicButton,
+  BasicInput,
+  PointerSwitch,
+  PrimarySecondary,
+  PrimarySwitch,
+  TertiaryHighlight,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import { auth } from "../firebase";
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
@@ -20,7 +30,7 @@ const StyledDiv = styled(ActionDiv)`
   width: 400px;
 `;
 const StyledLabel = styled.label`
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   color: ${TertiarySecondary};
 `;
 const StyledInput = styled(BasicInput)`
@@ -30,7 +40,7 @@ const StyledInput = styled(BasicInput)`
 `;
 const FileInput = styled.input`
   height: 1.5rem;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   color: ${TertiarySecondary};
 `;
 const StyledButton = styled(BasicButton)`
@@ -121,7 +131,9 @@ const UpdateProfile = () => {
             <StyledButton aria-label="upload" onClick={upload}>
               Upload
             </StyledButton>
-            <StyledButton aria-label="cancel" onClick={quitEdit}>Cancel</StyledButton>
+            <StyledButton aria-label="cancel" onClick={quitEdit}>
+              Cancel
+            </StyledButton>
           </StyledDiv>
         </BackContainer>
       )}

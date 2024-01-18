@@ -1,9 +1,22 @@
-import { faFileImport, faFloppyDisk, faHashtag, faPaperPlane, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faFileImport,
+  faFloppyDisk,
+  faHashtag,
+  faPaperPlane,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import MDEditor from "@uiw/react-md-editor";
-import { deleteDoc, doc, getDoc, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
+import {
+  deleteDoc,
+  doc,
+  getDoc,
+  serverTimestamp,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { marked } from "marked";
 import { nanoid } from "nanoid";
 import { useContext, useEffect, useState } from "react";
@@ -12,7 +25,14 @@ import styled from "styled-components";
 import useSound from "use-sound";
 
 import Crumple from "../assets/sounds/crumple.mp3";
-import { BasicInput, HighlightSwitch, PointerSwitch, PrimarySecondary, TertiaryHighlight, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  BasicInput,
+  HighlightSwitch,
+  PointerSwitch,
+  PrimarySecondary,
+  TertiaryHighlight,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import BackButton from "../components/BackButton";
 import Post from "../components/Post";
 import UpdateProfile from "../components/UpdateProfile";
@@ -83,7 +103,7 @@ const StyledSaveIcon = styled(FontAwesomeIcon)`
 `;
 const StyledP = styled.p`
   align-self: flex-end;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   color: ${HighlightSwitch};
 `;
 
@@ -300,7 +320,11 @@ const Editor = ({
           onClick={saveDraft}
           aria-label="save draft"
         />
-        <StyledFontAwesomeIcon icon={faPaperPlane} onClick={post} aria-label="post"/>
+        <StyledFontAwesomeIcon
+          icon={faPaperPlane}
+          onClick={post}
+          aria-label="post"
+        />
       </StyledDiv>
       {!getDraftResponse && <StyledP>No draft found.</StyledP>}
       {invalidPost && (

@@ -115,14 +115,14 @@ export const BasicButton = styled.button`
   background-color: unset;
   cursor: ${PointerSwitch};
   color: ${PrimarySwitch};
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 1rem;
 `;
 
 export const BasicLink = styled(Link)`
   text-decoration: none;
   cursor: ${PointerSwitch};
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 1rem;
 `;
 
@@ -130,7 +130,7 @@ export const BasicInput = styled.input`
   border-radius: 5px;
   border: 2px solid ${TertiarySecondary};
   font-size: 0.9rem;
-  font-family: "Roboto", sans-serif;
+  font-family: var(--ff-regular);
   font-weight: 400;
   color: ${PrimaryTertiary};
   background-color: white;
@@ -180,30 +180,35 @@ export const ActionDiv = styled.div`
 /* ===  HTML parse rules for blog body === */
 const StyledH1 = styled.h1`
   color: ${PrimaryTertiary};
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   text-shadow: -2px -2px ${SecondaryParagraph};
+  font-weight: 400;
 `;
 const StyledH2 = styled.h2`
   color: ${PrimaryTertiary};
   text-shadow: -1px -1px ${SecondaryTransparent};
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 1.6rem;
+  font-weight: 400;
 `;
 const StyledH3 = styled.h3`
   color: ${PrimaryTertiary};
   text-shadow: -1px -1px ${SecondaryTransparent};
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 1.3rem;
+  font-weight: 400;
 `;
 const StyledH4 = styled.h4`
   color: ${PrimarySecondary};
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 1.2rem;
+  font-weight: 400;
 `;
 const StyledH5 = styled.h5`
   color: ${PrimarySecondary};
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 1.1rem;
+  font-weight: 400;
 `;
 const StyledP = styled.p`
   color: ${ParagraphSwitch};
@@ -269,7 +274,7 @@ const StyledList = styled.ul`
   & > li > figure > figcaption {
     margin: 0.5rem 0;
     text-align: center;
-    font-family: "Black Ops One", sans-serif;
+    font-family: var(--ff-focus);
     font-size: 0.9rem;
     color: ${HighlightSwitch};
   }
@@ -310,7 +315,7 @@ const StyledFigure = styled.figure`
   & > figcaption {
     margin: 0.5rem 0;
     text-align: center;
-    font-family: "Black Ops One", sans-serif;
+    font-family: var(--ff-focus);
     font-size: 0.9rem;
     color: ${HighlightSwitch};
   }

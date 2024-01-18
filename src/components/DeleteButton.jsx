@@ -8,7 +8,16 @@ import styled from "styled-components";
 import useSound from "use-sound";
 
 import Crumple from "../assets/sounds/crumple.mp3";
-import { ActionDiv, BackContainer, BasicButton, PointerSwitch, PrimarySecondary, PrimarySwitch, TertiaryDot, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  ActionDiv,
+  BackContainer,
+  BasicButton,
+  PointerSwitch,
+  PrimarySecondary,
+  PrimarySwitch,
+  TertiaryDot,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { SoundContext } from "../contexts/SoundContext";
 import { db } from "../firebase";
@@ -30,7 +39,7 @@ const StyledButton = styled(BasicButton)`
 `;
 const StyledP = styled.p`
   text-align: center;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   color: ${TertiarySecondary};
 `;
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`

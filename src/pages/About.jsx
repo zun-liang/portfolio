@@ -105,8 +105,9 @@ const StyledLink = styled.a`
 `;
 const StyledH2 = styled.h2`
   margin: 1rem 0 0.5rem;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   color: ${TertiarySwitch};
+  font-weight: 400;
   text-shadow: -1px -1px ${SecondaryParagraph};
   ${StyledLink} {
     color: ${TertiarySwitch};

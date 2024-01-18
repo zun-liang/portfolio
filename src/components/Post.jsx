@@ -3,14 +3,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 
 import Party from "../assets/images/party_boygirl.png";
-import {
-  BasicButton,
-  BasicLink,
-  HoverSwitch,
-  PrimarySecondary,
-  PrimarySwitch,
-  SecondaryTransparent,
-} from "../assets/styles/Styles";
+import { BasicButton, BasicLink, HoverSwitch, PrimarySecondary, PrimarySwitch, SecondaryTransparent } from "../assets/styles/Styles";
 import { PlayPickContext } from "../contexts/PlayPickContext";
 
 const PostContainer = styled.div`
@@ -26,7 +19,7 @@ const StyledImg = styled.img`
 const StyledP = styled.p`
   text-align: center;
   grid-column: 1 /4;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 1.8rem;
   color: ${PrimarySwitch};
   text-shadow: 1px 1px ${SecondaryTransparent};

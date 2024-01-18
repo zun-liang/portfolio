@@ -35,7 +35,7 @@ const HomeContainer = styled.div`
 const StyledH1 = styled.h1`
   grid-column: 1 / 3;
   text-align: center;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 4rem;
   text-shadow: 5px 5px ${SecondarySwitch};
   @media (min-width: 375px) {

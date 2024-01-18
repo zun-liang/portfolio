@@ -5,7 +5,18 @@ import styled from "styled-components";
 
 import SpeechBubble from "../assets/images/hi.png";
 import Profile from "../assets/images/profile.png";
-import { AutoSwitch, BasicButton, BasicInput, HoverSwitch, OpacitySwitch, PrimarySwitch, SecondarySwitch, SecondaryTertiary, TertiaryParagraph, TertiarySecondary } from "../assets/styles/Styles";
+import {
+  AutoSwitch,
+  BasicButton,
+  BasicInput,
+  HoverSwitch,
+  OpacitySwitch,
+  PrimarySwitch,
+  SecondarySwitch,
+  SecondaryTertiary,
+  TertiaryParagraph,
+  TertiarySecondary,
+} from "../assets/styles/Styles";
 
 const StyledDiv = styled.div`
   width: 70%;
@@ -66,7 +77,7 @@ const StyledP = styled.p`
   margin: 1rem auto;
   text-align: left;
   line-height: 1.5;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 1.5rem;
   color: ${TertiaryParagraph};
   text-shadow: 1px 1px ${SecondaryTertiary};
@@ -75,9 +86,10 @@ const StyledP = styled.p`
   }
 `;
 const StyledH2 = styled.h2`
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 1.25rem;
   color: ${PrimarySwitch};
+  font-weight: 400;
   text-shadow: 1px 1px ${SecondarySwitch};
   @media (min-width: 750px) {
     font-size: 1.4rem;
@@ -108,7 +120,7 @@ const Message = styled.li`
 const StyledLabel = styled.label`
   width: 100%;
   text-align: left;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   color: ${PrimarySwitch};
 `;
 const StyledInput = styled(BasicInput)`
@@ -156,7 +168,7 @@ const Contact = ({ playSwoosh }) => {
     playSwoosh();
     return (
       <StyledDiv>
-        <StyledImg src={Profile} alt="profile" aria-label="profile"/>
+        <StyledImg src={Profile} alt="profile" aria-label="profile" />
         <StyledSpeechBubble src={SpeechBubble} alt="speech bubble" />
         <StyledP>Thanks for reaching out to me!</StyledP>
         <StyledP>I will get back to you as soon as possible!</StyledP>

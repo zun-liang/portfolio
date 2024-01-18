@@ -5,11 +5,7 @@ import styled from "styled-components";
 import useSound from "use-sound";
 
 import Magic from "../assets/sounds/magic-mallet.mp3";
-import {
-  PointerSwitch,
-  SecondaryTransparent,
-  TertiaryHighlight,
-} from "../assets/styles/Styles";
+import { PointerSwitch, SecondaryTransparent, TertiaryHighlight } from "../assets/styles/Styles";
 import ProjectOverview from "../components/ProjectOverview";
 import { SoundContext } from "../contexts/SoundContext";
 import { projects } from "../projectsData";
@@ -61,7 +57,7 @@ const StyledLink = styled.a`
     text-shadow: 1px 1px ${SecondaryTransparent};
   }
   > span {
-    font-family: "Black Ops One", sans-serif;
+    font-family: var(--ff-focus);
     margin-right: 0.3rem;
   }
   &:hover ${View2} {

@@ -68,7 +68,7 @@ const StyledList = styled.ul`
 `;
 const StyledListItem = styled.li`
   list-style: none;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 21px;
   color: ${PrimarySwitch};
   @media (min-width: 1024px) {
@@ -79,7 +79,7 @@ const MenuBorder = styled.li`
   list-style: none;
   margin: 10px;
   font-size: 20px;
-  font-family: "Roboto", sans-serif;
+  font-family: var(--ff-regular);
   font-weight: 900;
   color: ${PrimarySwitch};
   @media (min-width: 1024px) {

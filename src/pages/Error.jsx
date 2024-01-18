@@ -4,7 +4,13 @@ import { useRouteError } from "react-router-dom";
 import styled from "styled-components";
 
 import Kuma from "../assets/images/ojigi_animal_kuma.png";
-import { BasicLink, HoverSwitch, PrimarySecondary, PrimarySwitch, SecondaryTransparent } from "../assets/styles/Styles";
+import {
+  BasicLink,
+  HoverSwitch,
+  PrimarySecondary,
+  PrimarySwitch,
+  SecondaryTransparent,
+} from "../assets/styles/Styles";
 
 const ErrorPage = styled.div`
   width: 100%;
@@ -23,7 +29,7 @@ const StyledP = styled.p`
   text-align: center;
   line-height: 1.5;
   font-size: 1.5rem;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   color: ${PrimarySwitch};
   text-shadow: 1px 1px ${SecondaryTransparent};
   @media (min-width: 750px) {
@@ -57,7 +63,7 @@ const Error = () => {
 
   return (
     <ErrorPage>
-      <StyledImg src={Kuma} alt="sorry bear" aria-label="sorry bear"/>
+      <StyledImg src={Kuma} alt="sorry bear" aria-label="sorry bear" />
       <StyledP>{error.message}</StyledP>
       <StyledLink to="/">Go Back Home</StyledLink>
     </ErrorPage>

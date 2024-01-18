@@ -35,7 +35,8 @@ const ProjectContainer = styled.div`
 const StyledH2 = styled.h2`
   color: ${PrimaryTertiary};
   font-size: 1.7rem;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
+  font-weight: 400;
   text-shadow: -1px -1px ${SecondaryParagraph};
   text-align: center;
 `;
@@ -47,14 +48,16 @@ const StyledDiv = styled.div`
 const StyledH3 = styled.h3`
   color: ${PrimaryTertiary};
   font-size: 1.4rem;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
+  font-weight: 400;
   text-shadow: -1px -1px ${SecondaryParagraph};
 `;
 const StyledH4 = styled.h4`
   color: ${PrimaryTertiary};
   text-shadow: -1px -1px ${SecondaryTransparent};
   font-size: 1.1rem;
-  font-family: "Black Ops One", sans-serif;
+  font-weight: 400;
+  font-family: var(--ff-focus);
 `;
 const StyledP = styled.p`
   color: ${ParagraphSwitch};
@@ -87,7 +90,7 @@ const StyledImg = styled.img`
 const StyledFigureCaption = styled.figcaption`
   margin: 0.5rem 0;
   text-align: center;
-  font-family: "Black Ops One", sans-serif;
+  font-family: var(--ff-focus);
   font-size: 0.9rem;
   color: ${HighlightSwitch};
 `;

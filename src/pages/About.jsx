@@ -271,15 +271,15 @@ const About = () => {
         <StyledList>
           <StyledListItem>
             <Icon icon={faHtml5} />
-            <span>HTML5</span>
+            <span>HTML</span>
           </StyledListItem>
           <StyledListItem>
             <Icon icon={faCss3Alt} />
-            <span>CSS3</span>
+            <span>CSS</span>
           </StyledListItem>
           <StyledListItem>
             <Icon icon={faSquareJs} />
-            <span>JavaScript ES6+</span>
+            <span>JavaScript</span>
           </StyledListItem>
           <StyledListItem>
             <StyledTSIcon />
@@ -294,7 +294,7 @@ const About = () => {
           <StyledH2>Libraries</StyledH2>
           <StyledListItem>
             <Icon icon={faReact} />
-            <span>React 18</span>
+            <span>React</span>
           </StyledListItem>
           <StyledListItem>
             <StyledSCIcon />
@@ -302,7 +302,7 @@ const About = () => {
           </StyledListItem>
           <StyledListItem>
             <StyledRRIcon />
-            <span>React Router v6</span>
+            <span>React Router</span>
           </StyledListItem>
           <StyledListItem>
             <Icon icon={faNpm} />
@@ -325,7 +325,7 @@ const About = () => {
           </StyledListItem>
           <StyledListItem>
             <StyledFBIcon />
-            <span>Firebase 9</span>
+            <span>Firebase</span>
           </StyledListItem>
           <StyledListItem>
             <StyledVSCIcon />

@@ -27,6 +27,8 @@ import { ReactComponent as RTLIcon } from "../assets/images/brands/testing-libra
 import { ReactComponent as TSIcon } from "../assets/images/brands/typescript.svg";
 import { ReactComponent as ViteIcon } from "../assets/images/brands/vite.svg";
 import { ReactComponent as VSCIcon } from "../assets/images/brands/vscode.svg";
+import { ReactComponent as PostgreSQLIcon} from "../assets/images/brands/postgresql.svg";
+import { ReactComponent as BashIcon } from "../assets/images/brands/bash.svg";
 import Logo from "../assets/images/logo-dark.png";
 import LogoLight from "../assets/images/logo-light.png";
 import {
@@ -218,6 +220,16 @@ const StyledViteIcon = styled(ViteIcon)`
     stop-color: ${TertiaryPrimary};
   }
 `;
+const StyledPostgreSQLIcon = styled(PostgreSQLIcon)`
+    width: 1rem;
+    height: 1rem;
+    fill: ${TertiaryPrimary};
+`;
+const StyledBashIcon = styled(BashIcon)`
+    width: 1rem;
+    height: 1rem;
+    fill: ${TertiaryPrimary};
+`;
 
 const About = () => {
   const { mode } = useContext(ModeContext);
@@ -267,7 +279,7 @@ const About = () => {
         </StyledP>
       </Section>
       <Section>
-        <StyledH2>Languages</StyledH2>
+        <StyledH2>Languages & Tools</StyledH2>
         <StyledList>
           <StyledListItem>
             <Icon icon={faHtml5} />
@@ -286,46 +298,20 @@ const About = () => {
             <span>TypeScript</span>
           </StyledListItem>
           <StyledListItem>
-            <Icon icon={faMarkdown} />
-            <span>Markdown</span>
-          </StyledListItem>
-        </StyledList>
-        <StyledList>
-          <StyledH2>Libraries</StyledH2>
-          <StyledListItem>
             <Icon icon={faReact} />
             <span>React</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledSCIcon />
-            <span>Styled-Components</span>
           </StyledListItem>
           <StyledListItem>
             <StyledRRIcon />
             <span>React Router</span>
           </StyledListItem>
           <StyledListItem>
-            <Icon icon={faNpm} />
-            <span>npm</span>
+            <StyledSCIcon />
+            <span>Styled-Components</span>
           </StyledListItem>
           <StyledListItem>
-            <StyledViteIcon />
-            <span>Vite</span>
-          </StyledListItem>
-        </StyledList>
-        <StyledList>
-          <StyledH2>Tools</StyledH2>
-          <StyledListItem>
-            <Icon icon={faGitAlt} />
-            <span>Git</span>
-          </StyledListItem>
-          <StyledListItem>
-            <Icon icon={faGithub} />
-            <span>GitHub</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledFBIcon />
-            <span>Firebase</span>
+            <Icon icon={faMarkdown} />
+            <span>Markdown</span>
           </StyledListItem>
           <StyledListItem>
             <StyledVSCIcon />
@@ -336,12 +322,46 @@ const About = () => {
             <span>CodePen</span>
           </StyledListItem>
           <StyledListItem>
-            <StyledNetlifyIcon />
-            <span>Netlify</span>
-          </StyledListItem>
-          <StyledListItem>
             <Icon icon={faFigma} />
             <span>Figma</span>
+          </StyledListItem>
+        </StyledList>
+        <StyledList>
+          <StyledListItem>
+            <StyledPostgreSQLIcon />
+            <span>PostgreSQL</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledBashIcon />
+            <span>Shell Script</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledFBIcon />
+            <span>Firebase</span>
+          </StyledListItem>
+          <StyledListItem>
+            <Icon icon={faNpm} />
+            <span>npm</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledViteIcon />
+            <span>Vite</span>
+          </StyledListItem>
+          <StyledListItem>
+            <Icon icon={faGitAlt} />
+            <span>Git</span>
+          </StyledListItem>
+          <StyledListItem>
+            <Icon icon={faGithub} />
+            <span>GitHub</span>
+          </StyledListItem>
+          <StyledListItem>
+            <Icon icon={faGithub} />
+            <span>GitHub Pages</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledNetlifyIcon />
+            <span>Netlify</span>
           </StyledListItem>
         </StyledList>
       </Section>

@@ -36,6 +36,7 @@ import {
   ParagraphSwitch,
   PointerSwitch,
   SecondaryParagraph,
+  TertiaryHighlight,
   TertiaryPrimary,
   TertiarySwitch,
 } from "../assets/styles/Styles";
@@ -103,6 +104,9 @@ const StyledLink = styled.a`
   > span {
     color: ${TertiarySwitch};
     text-shadow: -1px -1px ${SecondaryParagraph};
+  }
+  > small {
+    color: ${TertiaryHighlight};
   }
 `;
 const StyledH2 = styled.h2`
@@ -384,7 +388,7 @@ const About = () => {
               onClick={playPick}
               aria-label="Responsive Web Design Certification"
             >
-              <span>✞ </span> Responsive Web Design Certification
+              <span>✞ </span> Responsive Web Design Certification <small>06/16/2022</small>
             </StyledLink>
           </StyledListItem>
           <StyledListItem>
@@ -394,17 +398,7 @@ const About = () => {
               onClick={playPick}
               aria-label="JavaScript Algorithms and Data Structures Certification"
             >
-              <span>✞ </span> JavaScript Algorithms and Data Structures Certification
-            </StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink
-              target="_blank"
-              href="https://www.freecodecamp.org/certification/zun-liang/relational-database-v8"
-              onClick={playPick}
-              aria-label="Relational Database Certification"
-            >
-              <span>✞ </span> Relational Database Certification
+              <span>✞ </span> JavaScript Algorithms and Data Structures Certification <small>11/30/22</small>
             </StyledLink>
           </StyledListItem>
           <StyledListItem>
@@ -414,7 +408,7 @@ const About = () => {
               onClick={playPick}
               aria-label="Advanced React Certification"
             >
-              <span>✞ </span> Advanced React Certification
+              <span>✞ </span> Advanced React Certification <small>05/13/2023</small>
             </StyledLink>
           </StyledListItem>
           <StyledListItem>
@@ -424,7 +418,17 @@ const About = () => {
               onClick={playPick}
               aria-label="Career Essentials in Generative AI by Microsoft and Linkedin Certification"
             >
-              <span>✞ </span> Career Essentials in Generative AI by Microsoft and Linkedin Certification
+              <span>✞ </span> Career Essentials in Generative AI by Microsoft and Linkedin Certification <small>04/20/2024</small>
+            </StyledLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLink
+              target="_blank"
+              href="https://www.freecodecamp.org/certification/zun-liang/relational-database-v8"
+              onClick={playPick}
+              aria-label="Relational Database Certification"
+            >
+              <span>✞ </span> Relational Database Certification <small>05/12/2024</small>
             </StyledLink>
           </StyledListItem>
         </StyledList>

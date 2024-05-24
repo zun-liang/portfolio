@@ -72,12 +72,13 @@ const Section = styled.div`
 `;
 const AchievementSection = styled(Section)`
   @media (min-width: 1200px) {
-    margin-top: -10rem;
+    margin-top: -25rem;
   }
 `;
 const ChallengeSection = styled(Section)`
   @media (min-width: 1200px) {
     grid-column: 1 / 2;
+    margin-top: -11rem;
   }
 `;
 const StyledDiv = styled.div`

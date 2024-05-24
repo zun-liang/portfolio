@@ -10,6 +10,8 @@ import {
   faNpm,
   faReact,
   faSquareJs,
+  faBootstrap,
+  faSass,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect } from "react";
@@ -27,8 +29,14 @@ import { ReactComponent as RTLIcon } from "../assets/images/brands/testing-libra
 import { ReactComponent as TSIcon } from "../assets/images/brands/typescript.svg";
 import { ReactComponent as ViteIcon } from "../assets/images/brands/vite.svg";
 import { ReactComponent as VSCIcon } from "../assets/images/brands/vscode.svg";
-import { ReactComponent as PostgreSQLIcon} from "../assets/images/brands/postgresql.svg";
+import { ReactComponent as PostgreSQLIcon } from "../assets/images/brands/postgresql.svg";
 import { ReactComponent as BashIcon } from "../assets/images/brands/bash.svg";
+import { ReactComponent as ExpressIcon } from "../assets/images/brands/express.svg";
+import { ReactComponent as JekyllIcon } from "../assets/images/brands/jekyll.svg";
+import { ReactComponent as JQueryIcon } from "../assets/images/brands/jquery.svg";
+import { ReactComponent as MongoDBIcon } from "../assets/images/brands/mongodb.svg";
+import { ReactComponent as NodemonIcon } from "../assets/images/brands/nodemon.svg";
+import { ReactComponent as PostmanIcon } from "../assets/images/brands/postman.svg";
 import Logo from "../assets/images/logo-dark.png";
 import LogoLight from "../assets/images/logo-light.png";
 import {
@@ -225,14 +233,44 @@ const StyledViteIcon = styled(ViteIcon)`
   }
 `;
 const StyledPostgreSQLIcon = styled(PostgreSQLIcon)`
-    width: 1rem;
-    height: 1rem;
-    fill: ${TertiaryPrimary};
+  width: 1rem;
+  height: 1rem;
+  fill: ${TertiaryPrimary};
 `;
 const StyledBashIcon = styled(BashIcon)`
-    width: 1rem;
-    height: 1rem;
-    fill: ${TertiaryPrimary};
+  width: 1rem;
+  height: 1rem;
+  fill: ${TertiaryPrimary};
+`;
+const StyledExpressIcon = styled(ExpressIcon)`
+  width: 1rem;
+  height: 1rem;
+  fill: ${TertiaryPrimary};
+`;
+const StyledJekyllIcon = styled(JekyllIcon)`
+  width: 1rem;
+  height: 1rem;
+  fill: ${TertiaryPrimary};
+`;
+const StyledJQueryIcon = styled(JQueryIcon)`
+  width: 1rem;
+  height: 1rem;
+  fill: ${TertiaryPrimary};
+`;
+const StyledMongoDBIcon = styled(MongoDBIcon)`
+  width: 1rem;
+  height: 1rem;
+  fill: ${TertiaryPrimary};
+`;
+const StyledNodemonIcon = styled(NodemonIcon)`
+  width: 1rem;
+  height: 1rem;
+  fill: ${TertiaryPrimary};
+`;
+const StyledPostmanIcon = styled(PostmanIcon)`
+  width: 1rem;
+  height: 1rem;
+  fill: ${TertiaryPrimary};
 `;
 
 const About = () => {
@@ -286,70 +324,28 @@ const About = () => {
         <StyledH2>Languages & Tools</StyledH2>
         <StyledList>
           <StyledListItem>
-            <Icon icon={faHtml5} />
-            <span>HTML</span>
-          </StyledListItem>
-          <StyledListItem>
-            <Icon icon={faCss3Alt} />
-            <span>CSS</span>
-          </StyledListItem>
-          <StyledListItem>
-            <Icon icon={faSquareJs} />
-            <span>JavaScript</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledTSIcon />
-            <span>TypeScript</span>
-          </StyledListItem>
-          <StyledListItem>
-            <Icon icon={faReact} />
-            <span>React</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledRRIcon />
-            <span>React Router</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledSCIcon />
-            <span>Styled-Components</span>
-          </StyledListItem>
-          <StyledListItem>
-            <Icon icon={faMarkdown} />
-            <span>Markdown</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledVSCIcon />
-            <span>VS Code</span>
+            <Icon icon={faBootstrap} />
+            <span>Bootstrap</span>
           </StyledListItem>
           <StyledListItem>
             <Icon icon={faCodepen} />
             <span>CodePen</span>
           </StyledListItem>
           <StyledListItem>
+            <Icon icon={faCss3Alt} />
+            <span>CSS</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledExpressIcon />
+            <span>Express.js</span>
+          </StyledListItem>
+          <StyledListItem>
             <Icon icon={faFigma} />
             <span>Figma</span>
-          </StyledListItem>
-        </StyledList>
-        <StyledList>
-          <StyledListItem>
-            <StyledPostgreSQLIcon />
-            <span>PostgreSQL</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledBashIcon />
-            <span>Shell Script</span>
           </StyledListItem>
           <StyledListItem>
             <StyledFBIcon />
             <span>Firebase</span>
-          </StyledListItem>
-          <StyledListItem>
-            <Icon icon={faNpm} />
-            <span>npm</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledViteIcon />
-            <span>Vite</span>
           </StyledListItem>
           <StyledListItem>
             <Icon icon={faGitAlt} />
@@ -364,8 +360,88 @@ const About = () => {
             <span>GitHub Pages</span>
           </StyledListItem>
           <StyledListItem>
+            <Icon icon={faHtml5} />
+            <span>HTML</span>
+          </StyledListItem>
+          <StyledListItem>
+            <Icon icon={faSquareJs} />
+            <span>JavaScript</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledJekyllIcon />
+            <span>Jekyll</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledJQueryIcon />
+            <span>jQuery</span>
+          </StyledListItem>
+          <StyledListItem>
+            <Icon icon={faMarkdown} />
+            <span>Markdown</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledMongoDBIcon />
+            <span>MongoDB</span>
+          </StyledListItem>
+          <StyledListItem>
             <StyledNetlifyIcon />
             <span>Netlify</span>
+          </StyledListItem>
+          <StyledListItem>
+            <Icon icon={faNode} />
+            <span>Node.js</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledNodemonIcon />
+            <span>Nodemon</span>
+          </StyledListItem>
+          <StyledListItem>
+            <Icon icon={faNpm} />
+            <span>npm</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledPostgreSQLIcon />
+            <span>PostgreSQL</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledPostmanIcon />
+            <span>Postman</span>
+          </StyledListItem>
+          <StyledListItem>
+            <Icon icon={faReact} />
+            <span>React</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledRRIcon />
+            <span>React Router</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledReduxIcon />
+            <span>Redux</span>
+          </StyledListItem>
+          <StyledListItem>
+            <Icon icon={faSass} />
+            <span>SASS</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledBashIcon />
+            <span>Shell Script</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledSCIcon />
+            <span>Styled-Components</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledTSIcon />
+            <span>TypeScript</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledViteIcon />
+            <span>Vite</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledVSCIcon />
+            <span>VS Code</span>
           </StyledListItem>
         </StyledList>
       </Section>
@@ -388,7 +464,8 @@ const About = () => {
               onClick={playPick}
               aria-label="Responsive Web Design Certification"
             >
-              <span>✞ </span> Responsive Web Design Certification <small>06/16/2022</small>
+              <span>✞ </span> Responsive Web Design Certification{" "}
+              <small>06/16/2022</small>
             </StyledLink>
           </StyledListItem>
           <StyledListItem>
@@ -398,7 +475,8 @@ const About = () => {
               onClick={playPick}
               aria-label="JavaScript Algorithms and Data Structures Certification"
             >
-              <span>✞ </span> JavaScript Algorithms and Data Structures Certification <small>11/30/22</small>
+              <span>✞ </span> JavaScript Algorithms and Data Structures
+              Certification <small>11/30/22</small>
             </StyledLink>
           </StyledListItem>
           <StyledListItem>
@@ -408,7 +486,8 @@ const About = () => {
               onClick={playPick}
               aria-label="Advanced React Certification"
             >
-              <span>✞ </span> Advanced React Certification <small>05/13/2023</small>
+              <span>✞ </span> Advanced React Certification{" "}
+              <small>05/13/2023</small>
             </StyledLink>
           </StyledListItem>
           <StyledListItem>
@@ -418,7 +497,8 @@ const About = () => {
               onClick={playPick}
               aria-label="Career Essentials in Generative AI by Microsoft and Linkedin Certification"
             >
-              <span>✞ </span> Career Essentials in Generative AI by Microsoft and Linkedin Certification <small>04/20/2024</small>
+              <span>✞ </span> Career Essentials in Generative AI by Microsoft
+              and Linkedin Certification <small>04/20/2024</small>
             </StyledLink>
           </StyledListItem>
           <StyledListItem>
@@ -428,7 +508,8 @@ const About = () => {
               onClick={playPick}
               aria-label="Relational Database Certification"
             >
-              <span>✞ </span> Relational Database Certification <small>05/12/2024</small>
+              <span>✞ </span> Relational Database Certification{" "}
+              <small>05/12/2024</small>
             </StyledLink>
           </StyledListItem>
         </StyledList>
@@ -436,10 +517,6 @@ const About = () => {
       <ChallengeSection>
         <StyledH2>Next Challenges</StyledH2>
         <StyledList>
-          <StyledListItem>
-            <StyledReduxIcon />
-            <span>Redux</span>
-          </StyledListItem>
           <StyledListItem>
             <StyledJestIcon />
             <span>Jest</span>
@@ -451,10 +528,6 @@ const About = () => {
           <StyledListItem>
             <StyledNextIcon />
             <span>Next.js</span>
-          </StyledListItem>
-          <StyledListItem>
-            <Icon icon={faNode} />
-            <span>Node.js</span>
           </StyledListItem>
           <StyledListItem>
             <Icon icon={faReact} />

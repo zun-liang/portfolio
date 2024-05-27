@@ -64,23 +64,24 @@ const AboutContainer = styled.div`
     width: 70vw;
     padding: 0 0 2rem;
     display: grid;
-    grid-template-columns: 3fr 1fr;
-    column-gap: 8rem;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 7rem;
   }
 `;
 const Section = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const AchievementSection = styled(Section)`
-  @media (min-width: 1200px) {
-    margin-top: -25rem;
+const LanguageSection = styled(Section)`
+  display: grid;
+  grid-template-rows: 4rem 1fr;
+  grid-template-columns: 1fr 1fr;
+  @media (min-width: 750px) {
+    grid-template-columns: 15rem 1fr;
   }
-`;
-const ChallengeSection = styled(Section)`
   @media (min-width: 1200px) {
-    grid-column: 1 / 2;
-    margin-top: -11rem;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2.5rem;
   }
 `;
 const StyledDiv = styled.div`
@@ -131,6 +132,9 @@ const StyledH2 = styled.h2`
     text-shadow: -1px -1px ${SecondaryParagraph};
   }
 `;
+const LanguageTitle = styled(StyledH2)`
+  grid-column: 1 / 3;
+`;
 const StyledP = styled.p`
   margin-bottom: 1rem;
   color: ${ParagraphSwitch};
@@ -148,7 +152,10 @@ const StyledListItem = styled.li`
   color: ${ParagraphSwitch};
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.5rem;
+  > span {
+    white-space: nowrap;
+  }
 `;
 const Icon = styled(FontAwesomeIcon)`
   width: 1rem;
@@ -329,8 +336,8 @@ const About = () => {
           with everyone along the way 🤗.
         </StyledP>
       </Section>
-      <Section>
-        <StyledH2>Languages & Tools</StyledH2>
+      <LanguageSection>
+        <LanguageTitle>Languages & Tools</LanguageTitle>
         <StyledList>
           <StyledListItem>
             <Icon icon={faBootstrap} />
@@ -346,7 +353,7 @@ const About = () => {
           </StyledListItem>
           <StyledListItem>
             <StyledExpressIcon />
-            <span>Express.js</span>
+            <span>Express</span>
           </StyledListItem>
           <StyledListItem>
             <Icon icon={faFigma} />
@@ -396,6 +403,8 @@ const About = () => {
             <StyledMongooseIcon />
             <span>Mongoose</span>
           </StyledListItem>
+          </StyledList>
+          <StyledList>
           <StyledListItem>
             <StyledNetlifyIcon />
             <span>Netlify</span>
@@ -442,7 +451,7 @@ const About = () => {
           </StyledListItem>
           <StyledListItem>
             <StyledStyledComIcon />
-            <span>Styled-Components</span>
+            <span>styled-components</span>
           </StyledListItem>
           <StyledListItem>
             <StyledTypescriptIcon />
@@ -454,11 +463,11 @@ const About = () => {
           </StyledListItem>
           <StyledListItem>
             <StyledVSCodeIcon />
-            <span>VS Code</span>
+            <span>Visual Studio Code</span>
           </StyledListItem>
         </StyledList>
-      </Section>
-      <AchievementSection>
+      </LanguageSection>
+      <Section>
         <StyledH2>
           <StyledLink
             target="_blank"
@@ -526,8 +535,8 @@ const About = () => {
             </StyledLink>
           </StyledListItem>
         </StyledList>
-      </AchievementSection>
-      <ChallengeSection>
+      </Section>
+      <Section>
         <StyledH2>Next Challenges</StyledH2>
         <StyledList>
           <StyledListItem>
@@ -548,7 +557,7 @@ const About = () => {
           </StyledListItem>
           <StyledListItem>...</StyledListItem>
         </StyledList>
-      </ChallengeSection>
+      </Section>
     </AboutContainer>
   );
 };

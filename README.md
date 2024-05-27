@@ -210,6 +210,7 @@ To get local weather and temperature depending on visitor's' location.
 - [transform-origin](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin)
 - [Shadow Palette Generator](https://www.joshwcomeau.com/shadow-palette/)
 - [drop-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/drop-shadow)
+- [white-space](https://developer.mozilla.org/en-US/docs/Web/CSS/white-space)
 
 #### Designs
 

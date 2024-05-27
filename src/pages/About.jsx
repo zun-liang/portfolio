@@ -18,26 +18,27 @@ import { useContext, useEffect } from "react";
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-import { ReactComponent as FBIcon } from "../assets/images/brands/firebase.svg";
-import { ReactComponent as JestIcon } from "../assets/images/brands/jest.svg";
-import { ReactComponent as NetlifyIcon } from "../assets/images/brands/netlify.svg";
-import { ReactComponent as NextIcon } from "../assets/images/brands/next-js.svg";
-import { ReactComponent as RRIcon } from "../assets/images/brands/react-router.svg";
-import { ReactComponent as ReduxIcon } from "../assets/images/brands/redux.svg";
-import { ReactComponent as SCIcon } from "../assets/images/brands/styled-components.svg";
-import { ReactComponent as RTLIcon } from "../assets/images/brands/testing-library.svg";
-import { ReactComponent as TSIcon } from "../assets/images/brands/typescript.svg";
-import { ReactComponent as ViteIcon } from "../assets/images/brands/vite.svg";
-import { ReactComponent as VSCIcon } from "../assets/images/brands/vscode.svg";
-import { ReactComponent as PostgreSQLIcon } from "../assets/images/brands/postgresql.svg";
 import { ReactComponent as BashIcon } from "../assets/images/brands/bash.svg";
 import { ReactComponent as ExpressIcon } from "../assets/images/brands/express.svg";
+import { ReactComponent as FirebaseIcon } from "../assets/images/brands/firebase.svg";
 import { ReactComponent as JekyllIcon } from "../assets/images/brands/jekyll.svg";
+import { ReactComponent as JestIcon } from "../assets/images/brands/jest.svg";
 import { ReactComponent as JQueryIcon } from "../assets/images/brands/jquery.svg";
 import { ReactComponent as MongoDBIcon } from "../assets/images/brands/mongodb.svg";
-import { ReactComponent as NodemonIcon } from "../assets/images/brands/nodemon.svg";
-import { ReactComponent as PostmanIcon } from "../assets/images/brands/postman.svg";
 import { ReactComponent as MongooseIcon } from "../assets/images/brands/mongoose.svg";
+import { ReactComponent as NetlifyIcon } from "../assets/images/brands/netlify.svg";
+import { ReactComponent as NextIcon } from "../assets/images/brands/next-js.svg";
+import { ReactComponent as NodemonIcon } from "../assets/images/brands/nodemon.svg";
+import { ReactComponent as PostgreSQLIcon } from "../assets/images/brands/postgresql.svg";
+import { ReactComponent as PostmanIcon } from "../assets/images/brands/postman.svg";
+import { ReactComponent as ReactRouterIcon } from "../assets/images/brands/react-router.svg";
+import { ReactComponent as ReduxIcon } from "../assets/images/brands/redux.svg";
+import { ReactComponent as StyledComIcon } from "../assets/images/brands/styled-components.svg";
+import { ReactComponent as TestingLibIcon } from "../assets/images/brands/testing-library.svg";
+import { ReactComponent as TypescriptIcon } from "../assets/images/brands/typescript.svg";
+import { ReactComponent as ViteIcon } from "../assets/images/brands/vite.svg";
+import { ReactComponent as VSCodeIcon } from "../assets/images/brands/vscode.svg";
+
 import Logo from "../assets/images/logo-dark.png";
 import LogoLight from "../assets/images/logo-light.png";
 import {
@@ -149,95 +150,10 @@ const StyledListItem = styled.li`
   align-items: center;
   gap: 0.3rem;
 `;
-
 const Icon = styled(FontAwesomeIcon)`
   width: 1rem;
   height: 1rem;
   color: ${TertiaryPrimary};
-`;
-const StyledRRIcon = styled(RRIcon)`
-  width: 1rem;
-  height: 1rem;
-  & > g > path {
-    fill: ${TertiaryPrimary};
-  }
-`;
-const StyledSCIcon = styled(SCIcon)`
-  width: 1rem;
-  height: 1rem;
-  & > path {
-    fill: ${TertiaryPrimary};
-  }
-`;
-const StyledJestIcon = styled(JestIcon)`
-  width: 1rem;
-  height: 1rem;
-  & > g > path:first-child {
-    fill: transparent;
-  }
-  & > g > path:last-child {
-    fill: ${TertiaryPrimary};
-  }
-`;
-const StyledTSIcon = styled(TSIcon)`
-  width: 1rem;
-  height: 1rem;
-  & > rect {
-    fill: ${TertiaryPrimary};
-  }
-  & > path {
-    fill: ${BackgroundSwitch};
-  }
-`;
-const StyledNextIcon = styled(NextIcon)`
-  width: 1rem;
-  height: 1rem;
-  fill: ${TertiaryPrimary};
-`;
-const StyledVSCIcon = styled(VSCIcon)`
-  width: 1rem;
-  height: 1rem;
-  & > path {
-    fill: ${TertiaryPrimary};
-  }
-`;
-const StyledFBIcon = styled(FBIcon)`
-  width: 1rem;
-  height: 1rem;
-  fill: ${TertiaryPrimary};
-`;
-const StyledRTLIcon = styled(RTLIcon)`
-  width: 1rem;
-  height: 1rem;
-  & > path {
-    fill: ${TertiaryPrimary};
-  }
-`;
-const StyledReduxIcon = styled(ReduxIcon)`
-  width: 1rem;
-  height: 1rem;
-  & > path {
-    fill: ${TertiaryPrimary};
-  }
-`;
-const StyledNetlifyIcon = styled(NetlifyIcon)`
-  width: 1rem;
-  height: 1rem;
-  & > path {
-    fill: ${TertiaryPrimary};
-  }
-`;
-const StyledViteIcon = styled(ViteIcon)`
-  width: 1rem;
-  height: 1rem;
-  & > defs > linearGradient > stop {
-    stop-color: ${TertiaryPrimary};
-  }
-`;
-const StyledPostgreSQLIcon = styled(PostgreSQLIcon)`
-  width: 1rem;
-  height: 1rem;
-  fill: ${TertiaryPrimary};
 `;
 const StyledBashIcon = styled(BashIcon)`
   width: 1rem;
@@ -249,10 +165,25 @@ const StyledExpressIcon = styled(ExpressIcon)`
   height: 1rem;
   fill: ${TertiaryPrimary};
 `;
+const StyledFirebaseIcon = styled(FirebaseIcon)`
+  width: 1rem;
+  height: 1rem;
+  fill: ${TertiaryPrimary};
+`;
 const StyledJekyllIcon = styled(JekyllIcon)`
   width: 1rem;
   height: 1rem;
   fill: ${TertiaryPrimary};
+`;
+const StyledJestIcon = styled(JestIcon)`
+  width: 1rem;
+  height: 1rem;
+  & > g > path:first-child {
+    fill: transparent;
+  }
+  & > g > path:last-child {
+    fill: ${TertiaryPrimary};
+  }
 `;
 const StyledJQueryIcon = styled(JQueryIcon)`
   width: 1rem;
@@ -264,7 +195,31 @@ const StyledMongoDBIcon = styled(MongoDBIcon)`
   height: 1rem;
   fill: ${TertiaryPrimary};
 `;
+const StyledMongooseIcon = styled(MongooseIcon)`
+  width: 1rem;
+  height: 1rem;
+  & > g {
+    fill: ${TertiaryPrimary};
+  }
+`;
+const StyledNetlifyIcon = styled(NetlifyIcon)`
+  width: 1rem;
+  height: 1rem;
+  & > path {
+    fill: ${TertiaryPrimary};
+  }
+`;
+const StyledNextIcon = styled(NextIcon)`
+  width: 1rem;
+  height: 1rem;
+  fill: ${TertiaryPrimary};
+`;
 const StyledNodemonIcon = styled(NodemonIcon)`
+  width: 1rem;
+  height: 1rem;
+  fill: ${TertiaryPrimary};
+`;
+const StyledPostgreSQLIcon = styled(PostgreSQLIcon)`
   width: 1rem;
   height: 1rem;
   fill: ${TertiaryPrimary};
@@ -274,13 +229,58 @@ const StyledPostmanIcon = styled(PostmanIcon)`
   height: 1rem;
   fill: ${TertiaryPrimary};
 `;
-const StyledMongooseIcon = styled(MongooseIcon)`
+const StyledReactRouterIcon = styled(ReactRouterIcon)`
   width: 1rem;
   height: 1rem;
-  & > g {
+  & > g > path {
     fill: ${TertiaryPrimary};
   }
-`
+`;
+const StyledReduxIcon = styled(ReduxIcon)`
+  width: 1rem;
+  height: 1rem;
+  & > path {
+    fill: ${TertiaryPrimary};
+  }
+`;
+const StyledStyledComIcon = styled(StyledComIcon)`
+  width: 1rem;
+  height: 1rem;
+  & > path {
+    fill: ${TertiaryPrimary};
+  }
+`;
+const StyledTestingLibIcon = styled(TestingLibIcon)`
+  width: 1rem;
+  height: 1rem;
+  & > path {
+    fill: ${TertiaryPrimary};
+  }
+`;
+const StyledTypescriptIcon = styled(TypescriptIcon)`
+  width: 1rem;
+  height: 1rem;
+  & > rect {
+    fill: ${TertiaryPrimary};
+  }
+  & > path {
+    fill: ${BackgroundSwitch};
+  }
+`;
+const StyledViteIcon = styled(ViteIcon)`
+  width: 1rem;
+  height: 1rem;
+  & > defs > linearGradient > stop {
+    stop-color: ${TertiaryPrimary};
+  }
+`;
+const StyledVSCodeIcon = styled(VSCodeIcon)`
+  width: 1rem;
+  height: 1rem;
+  & > path {
+    fill: ${TertiaryPrimary};
+  }
+`;
 
 const About = () => {
   const { mode } = useContext(ModeContext);
@@ -353,7 +353,7 @@ const About = () => {
             <span>Figma</span>
           </StyledListItem>
           <StyledListItem>
-            <StyledFBIcon />
+            <StyledFirebaseIcon />
             <span>Firebase</span>
           </StyledListItem>
           <StyledListItem>
@@ -425,7 +425,7 @@ const About = () => {
             <span>React</span>
           </StyledListItem>
           <StyledListItem>
-            <StyledRRIcon />
+            <StyledReactRouterIcon />
             <span>React Router</span>
           </StyledListItem>
           <StyledListItem>
@@ -441,11 +441,11 @@ const About = () => {
             <span>Shell Script</span>
           </StyledListItem>
           <StyledListItem>
-            <StyledSCIcon />
+            <StyledStyledComIcon />
             <span>Styled-Components</span>
           </StyledListItem>
           <StyledListItem>
-            <StyledTSIcon />
+            <StyledTypescriptIcon />
             <span>TypeScript</span>
           </StyledListItem>
           <StyledListItem>
@@ -453,7 +453,7 @@ const About = () => {
             <span>Vite</span>
           </StyledListItem>
           <StyledListItem>
-            <StyledVSCIcon />
+            <StyledVSCodeIcon />
             <span>VS Code</span>
           </StyledListItem>
         </StyledList>
@@ -535,7 +535,7 @@ const About = () => {
             <span>Jest</span>
           </StyledListItem>
           <StyledListItem>
-            <StyledRTLIcon />
+            <StyledTestingLibIcon />
             <span>React Testing Library</span>
           </StyledListItem>
           <StyledListItem>

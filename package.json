@@ -29,7 +29,7 @@
     "react-share": "^4.4.1",
     "styled-components": "^6.0.7",
     "use-sound": "^4.0.1",
-    "vite-plugin-svgr": "^3.2.0"
+    "vite-plugin-svgr": "^3.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

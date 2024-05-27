@@ -37,6 +37,7 @@ import { ReactComponent as JQueryIcon } from "../assets/images/brands/jquery.svg
 import { ReactComponent as MongoDBIcon } from "../assets/images/brands/mongodb.svg";
 import { ReactComponent as NodemonIcon } from "../assets/images/brands/nodemon.svg";
 import { ReactComponent as PostmanIcon } from "../assets/images/brands/postman.svg";
+import { ReactComponent as MongooseIcon } from "../assets/images/brands/mongoose.svg";
 import Logo from "../assets/images/logo-dark.png";
 import LogoLight from "../assets/images/logo-light.png";
 import {
@@ -273,6 +274,13 @@ const StyledPostmanIcon = styled(PostmanIcon)`
   height: 1rem;
   fill: ${TertiaryPrimary};
 `;
+const StyledMongooseIcon = styled(MongooseIcon)`
+  width: 1rem;
+  height: 1rem;
+  & > g {
+    fill: ${TertiaryPrimary};
+  }
+`
 
 const About = () => {
   const { mode } = useContext(ModeContext);
@@ -383,6 +391,10 @@ const About = () => {
           <StyledListItem>
             <StyledMongoDBIcon />
             <span>MongoDB</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledMongooseIcon />
+            <span>Mongoose</span>
           </StyledListItem>
           <StyledListItem>
             <StyledNetlifyIcon />

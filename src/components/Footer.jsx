@@ -10,6 +10,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 
 import { ReactComponent as FEM } from "../assets/images/brands/frontend-mentor.svg";
+import { ReactComponent as Leetcode } from "../assets/images/brands/leetcode.svg";
 import {
   PointerSwitch,
   PrimarySwitch,
@@ -52,9 +53,9 @@ const StyledList = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.1rem;
   @media (min-width: 750px) {
-    gap: 2rem;
+    gap: 1.6rem;
   }
 `;
 const StyledListItem = styled.li`
@@ -87,6 +88,13 @@ const FEMIcon = styled(FEM)`
   }
   cursor: ${PointerSwitch};
 `;
+const LeetcodeIcon = styled(Leetcode)`
+  width: 1.5rem;
+  height: 1.5rem;
+  transform: scale(0.9);
+  fill: ${PrimarySwitch};
+  cursor: ${PointerSwitch};
+`;
 const StyledP = styled.p`
   margin-top: 0.8rem;
   text-align: center;
@@ -100,7 +108,6 @@ const StyledP = styled.p`
 
 const Footer = () => {
   const playPick = useContext(PlayPickContext);
-  const Year = new Date().getFullYear();
 
   return (
     <StyledFooter>
@@ -134,6 +141,16 @@ const Footer = () => {
         <StyledListItem>
           <StyledLink
             target="_blank"
+            aria-label="Leetcode"
+            href="https://leetcode.com/u/zunliang/"
+            onClick={playPick}
+          >
+            <LeetcodeIcon />
+          </StyledLink>
+        </StyledListItem>
+        <StyledListItem>
+          <StyledLink
+            target="_blank"
             aria-label="GitHub"
             href="https://github.com/zun-liang"
             onClick={playPick}
@@ -161,10 +178,7 @@ const Footer = () => {
           </StyledLink>
         </StyledListItem>
       </StyledList>
-      <StyledP>
-        © {Year > 2023 ? `2023 - ${Year}` : "2023"} Zun Liang. All Rights
-        Reserved.
-      </StyledP>
+      <StyledP>© 2023 Zun Liang. All Rights Reserved.</StyledP>
     </StyledFooter>
   );
 };

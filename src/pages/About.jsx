@@ -1,17 +1,13 @@
 import {
-  faCodepen,
   faCss3Alt,
   faFigma,
   faGitAlt,
   faGithub,
   faHtml5,
-  faMarkdown,
   faNode,
   faNpm,
   faReact,
   faSquareJs,
-  faBootstrap,
-  faSass,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect } from "react";
@@ -21,20 +17,13 @@ import styled from "styled-components";
 import { ReactComponent as BashIcon } from "../assets/images/brands/bash.svg";
 import { ReactComponent as ExpressIcon } from "../assets/images/brands/express.svg";
 import { ReactComponent as FirebaseIcon } from "../assets/images/brands/firebase.svg";
-import { ReactComponent as JekyllIcon } from "../assets/images/brands/jekyll.svg";
-import { ReactComponent as JestIcon } from "../assets/images/brands/jest.svg";
-import { ReactComponent as JQueryIcon } from "../assets/images/brands/jquery.svg";
 import { ReactComponent as MongoDBIcon } from "../assets/images/brands/mongodb.svg";
 import { ReactComponent as MongooseIcon } from "../assets/images/brands/mongoose.svg";
 import { ReactComponent as NetlifyIcon } from "../assets/images/brands/netlify.svg";
-import { ReactComponent as NextIcon } from "../assets/images/brands/next-js.svg";
-import { ReactComponent as NodemonIcon } from "../assets/images/brands/nodemon.svg";
 import { ReactComponent as PostgreSQLIcon } from "../assets/images/brands/postgresql.svg";
-import { ReactComponent as PostmanIcon } from "../assets/images/brands/postman.svg";
 import { ReactComponent as ReactRouterIcon } from "../assets/images/brands/react-router.svg";
 import { ReactComponent as ReduxIcon } from "../assets/images/brands/redux.svg";
 import { ReactComponent as StyledComIcon } from "../assets/images/brands/styled-components.svg";
-import { ReactComponent as TestingLibIcon } from "../assets/images/brands/testing-library.svg";
 import { ReactComponent as TypescriptIcon } from "../assets/images/brands/typescript.svg";
 import { ReactComponent as ViteIcon } from "../assets/images/brands/vite.svg";
 import { ReactComponent as VSCodeIcon } from "../assets/images/brands/vscode.svg";
@@ -64,7 +53,7 @@ const AboutContainer = styled.div`
     width: 70vw;
     padding: 0 0 2rem;
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 1fr;
     column-gap: 7rem;
   }
 `;
@@ -73,16 +62,8 @@ const Section = styled.div`
   flex-direction: column;
 `;
 const LanguageSection = styled(Section)`
-  display: grid;
-  grid-template-rows: 4rem 1fr;
-  grid-template-columns: 1fr 1fr;
-  @media (min-width: 750px) {
-    grid-template-columns: 15rem 1fr;
-  }
-  @media (min-width: 1200px) {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 2.5rem;
-  }
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
 `;
 const StyledDiv = styled.div`
   margin-bottom: 0.7rem;
@@ -177,26 +158,6 @@ const StyledFirebaseIcon = styled(FirebaseIcon)`
   height: 1rem;
   fill: ${TertiaryPrimary};
 `;
-const StyledJekyllIcon = styled(JekyllIcon)`
-  width: 1rem;
-  height: 1rem;
-  fill: ${TertiaryPrimary};
-`;
-const StyledJestIcon = styled(JestIcon)`
-  width: 1rem;
-  height: 1rem;
-  & > g > path:first-child {
-    fill: transparent;
-  }
-  & > g > path:last-child {
-    fill: ${TertiaryPrimary};
-  }
-`;
-const StyledJQueryIcon = styled(JQueryIcon)`
-  width: 1rem;
-  height: 1rem;
-  fill: ${TertiaryPrimary};
-`;
 const StyledMongoDBIcon = styled(MongoDBIcon)`
   width: 1rem;
   height: 1rem;
@@ -216,22 +177,7 @@ const StyledNetlifyIcon = styled(NetlifyIcon)`
     fill: ${TertiaryPrimary};
   }
 `;
-const StyledNextIcon = styled(NextIcon)`
-  width: 1rem;
-  height: 1rem;
-  fill: ${TertiaryPrimary};
-`;
-const StyledNodemonIcon = styled(NodemonIcon)`
-  width: 1rem;
-  height: 1rem;
-  fill: ${TertiaryPrimary};
-`;
 const StyledPostgreSQLIcon = styled(PostgreSQLIcon)`
-  width: 1rem;
-  height: 1rem;
-  fill: ${TertiaryPrimary};
-`;
-const StyledPostmanIcon = styled(PostmanIcon)`
   width: 1rem;
   height: 1rem;
   fill: ${TertiaryPrimary};
@@ -251,13 +197,6 @@ const StyledReduxIcon = styled(ReduxIcon)`
   }
 `;
 const StyledStyledComIcon = styled(StyledComIcon)`
-  width: 1rem;
-  height: 1rem;
-  & > path {
-    fill: ${TertiaryPrimary};
-  }
-`;
-const StyledTestingLibIcon = styled(TestingLibIcon)`
   width: 1rem;
   height: 1rem;
   & > path {
@@ -340,94 +279,20 @@ const About = () => {
         <LanguageTitle>Languages & Tools</LanguageTitle>
         <StyledList>
           <StyledListItem>
-            <Icon icon={faBootstrap} />
-            <span>Bootstrap</span>
-          </StyledListItem>
-          <StyledListItem>
-            <Icon icon={faCodepen} />
-            <span>CodePen</span>
+            <Icon icon={faHtml5} />
+            <span>HTML</span>
           </StyledListItem>
           <StyledListItem>
             <Icon icon={faCss3Alt} />
             <span>CSS</span>
           </StyledListItem>
           <StyledListItem>
-            <StyledExpressIcon />
-            <span>Express</span>
-          </StyledListItem>
-          <StyledListItem>
-            <Icon icon={faFigma} />
-            <span>Figma</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledFirebaseIcon />
-            <span>Firebase</span>
-          </StyledListItem>
-          <StyledListItem>
-            <Icon icon={faGitAlt} />
-            <span>Git</span>
-          </StyledListItem>
-          <StyledListItem>
-            <Icon icon={faGithub} />
-            <span>GitHub</span>
-          </StyledListItem>
-          <StyledListItem>
-            <Icon icon={faGithub} />
-            <span>GitHub Pages</span>
-          </StyledListItem>
-          <StyledListItem>
-            <Icon icon={faHtml5} />
-            <span>HTML</span>
-          </StyledListItem>
-          <StyledListItem>
             <Icon icon={faSquareJs} />
             <span>JavaScript</span>
           </StyledListItem>
           <StyledListItem>
-            <StyledJekyllIcon />
-            <span>Jekyll</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledJQueryIcon />
-            <span>jQuery</span>
-          </StyledListItem>
-          <StyledListItem>
-            <Icon icon={faMarkdown} />
-            <span>Markdown</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledMongoDBIcon />
-            <span>MongoDB</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledMongooseIcon />
-            <span>Mongoose</span>
-          </StyledListItem>
-          </StyledList>
-          <StyledList>
-          <StyledListItem>
-            <StyledNetlifyIcon />
-            <span>Netlify</span>
-          </StyledListItem>
-          <StyledListItem>
-            <Icon icon={faNode} />
-            <span>Node.js</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledNodemonIcon />
-            <span>Nodemon</span>
-          </StyledListItem>
-          <StyledListItem>
-            <Icon icon={faNpm} />
-            <span>npm</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledPostgreSQLIcon />
-            <span>PostgreSQL</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledPostmanIcon />
-            <span>Postman</span>
+            <StyledTypescriptIcon />
+            <span>TypeScript</span>
           </StyledListItem>
           <StyledListItem>
             <Icon icon={faReact} />
@@ -442,28 +307,68 @@ const About = () => {
             <span>Redux</span>
           </StyledListItem>
           <StyledListItem>
-            <Icon icon={faSass} />
-            <span>SASS</span>
+            <StyledStyledComIcon />
+            <span>styled-components</span>
+          </StyledListItem>
+          <StyledListItem>
+            <Icon icon={faFigma} />
+            <span>Figma</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledViteIcon />
+            <span>Vite</span>
+          </StyledListItem>
+        </StyledList>
+        <StyledList>
+          <StyledListItem>
+            <Icon icon={faNode} />
+            <span>Node.js</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledExpressIcon />
+            <span>Express</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledFirebaseIcon />
+            <span>Firebase</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledMongoDBIcon />
+            <span>MongoDB</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledMongooseIcon />
+            <span>Mongoose</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledPostgreSQLIcon />
+            <span>PostgreSQL</span>
+          </StyledListItem>
+        </StyledList>
+        <StyledList>
+          <StyledListItem>
+            <Icon icon={faGitAlt} />
+            <span>Git</span>
+          </StyledListItem>
+          <StyledListItem>
+            <Icon icon={faGithub} />
+            <span>GitHub</span>
+          </StyledListItem>
+          <StyledListItem>
+            <Icon icon={faNpm} />
+            <span>npm</span>
           </StyledListItem>
           <StyledListItem>
             <StyledBashIcon />
             <span>Shell Script</span>
           </StyledListItem>
           <StyledListItem>
-            <StyledStyledComIcon />
-            <span>styled-components</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledTypescriptIcon />
-            <span>TypeScript</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledViteIcon />
-            <span>Vite</span>
-          </StyledListItem>
-          <StyledListItem>
             <StyledVSCodeIcon />
             <span>Visual Studio Code</span>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledNetlifyIcon />
+            <span>Netlify</span>
           </StyledListItem>
         </StyledList>
       </LanguageSection>
@@ -545,28 +450,6 @@ const About = () => {
               <small>06/24/2024</small>
             </StyledLink>
           </StyledListItem>
-        </StyledList>
-      </Section>
-      <Section>
-        <StyledH2>Next Challenges</StyledH2>
-        <StyledList>
-          <StyledListItem>
-            <StyledJestIcon />
-            <span>Jest</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledTestingLibIcon />
-            <span>React Testing Library</span>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledNextIcon />
-            <span>Next.js</span>
-          </StyledListItem>
-          <StyledListItem>
-            <Icon icon={faReact} />
-            <span>React Native</span>
-          </StyledListItem>
-          <StyledListItem>...</StyledListItem>
         </StyledList>
       </Section>
     </AboutContainer>

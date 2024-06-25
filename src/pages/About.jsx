@@ -534,6 +534,17 @@ const About = () => {
               <small>05/12/2024</small>
             </StyledLink>
           </StyledListItem>
+          <StyledListItem>
+            <StyledLink
+              target="_blank"
+              href="https://www.freecodecamp.org/certification/zun-liang/front-end-development-libraries"
+              onClick={playPick}
+              aria-label="Front End Development Libraries Certification"
+            >
+              <span>✞ </span> Front End Development Libraries Certification{" "}
+              <small>06/24/2024</small>
+            </StyledLink>
+          </StyledListItem>
         </StyledList>
       </Section>
       <Section>

@@ -5,8 +5,9 @@ import styled from "styled-components";
 import useSound from "use-sound";
 
 import Sparkle from "../assets/sounds/sparkle.mp3";
-import { PointerSwitch } from "../assets/styles/Styles";
+import { PointerSwitch, PrimarySecondary } from "../assets/styles/Styles";
 import { SoundContext } from "../contexts/SoundContext";
+import { ReactComponent as ButterflyIcon } from "../assets/images/butterfly.svg";
 
 const ScrollButton = styled.button`
   position: fixed;
@@ -14,7 +15,6 @@ const ScrollButton = styled.button`
   right: 1rem;
   border: none;
   background-color: unset;
-  font-size: 3rem;
   cursor: ${PointerSwitch};
   @media (min-width: 375px) {
     right: 1.8rem;
@@ -22,6 +22,11 @@ const ScrollButton = styled.button`
   @media (min-width: 750px) {
     right: 3rem;
   }
+`;
+const StyledButterflyIcon = styled(ButterflyIcon)`
+  width: 3rem;
+  height: 3rem;
+  fill: ${PrimarySecondary};
 `;
 
 const Scroll = () => {
@@ -55,7 +60,7 @@ const Scroll = () => {
     <>
       {scroll && (
         <ScrollButton aria-label="scroll to top" onClick={scrollToTop}>
-          🦋
+          <StyledButterflyIcon />
         </ScrollButton>
       )}
     </>

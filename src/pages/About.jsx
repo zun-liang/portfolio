@@ -403,7 +403,7 @@ const About = () => {
               aria-label="JavaScript Algorithms and Data Structures Certification"
             >
               <span>✞ </span> JavaScript Algorithms and Data Structures
-              Certification <small>11/30/22</small>
+              Certification <small>11/30/2022</small>
             </StyledLink>
           </StyledListItem>
           <StyledListItem>
@@ -448,6 +448,16 @@ const About = () => {
             >
               <span>✞ </span> Front End Development Libraries Certification{" "}
               <small>06/24/2024</small>
+            </StyledLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLink
+              target="_blank"
+              href="https://github.com/zun-liang/certificates-achievements-archive"
+              onClick={playPick}
+              aria-label="NodeJS Certification"
+            >
+              <span>✞ </span> NodeJS Certification <small>08/09/2024</small>
             </StyledLink>
           </StyledListItem>
         </StyledList>

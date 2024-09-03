@@ -142,7 +142,7 @@ const Footer = () => {
           <StyledLink
             target="_blank"
             aria-label="Leetcode"
-            href="https://leetcode.com/u/zunliang/"
+            href="https://leetcode.com/u/zun-liang/"
             onClick={playPick}
           >
             <LeetcodeIcon />

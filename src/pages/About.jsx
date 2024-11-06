@@ -420,17 +420,6 @@ const About = () => {
           <StyledListItem>
             <StyledLink
               target="_blank"
-              href="https://www.linkedin.com/learning/certificates/3bca94f0d7d422424959625d39c58b2dfc16d25cba7f083ea23390185ba2527c"
-              onClick={playPick}
-              aria-label="Career Essentials in Generative AI by Microsoft and Linkedin Certification"
-            >
-              <span>✞ </span> Career Essentials in Generative AI by Microsoft
-              and Linkedin Certification <small>04/20/2024</small>
-            </StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink
-              target="_blank"
               href="https://www.freecodecamp.org/certification/zun-liang/relational-database-v8"
               onClick={playPick}
               aria-label="Relational Database Certification"

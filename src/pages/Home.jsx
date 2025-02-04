@@ -51,10 +51,13 @@ const StyledH2 = styled.h2`
   font-size: 1.6rem;
   font-weight: ${({ theme }) => (theme.mode ? "900" : "700")};
   color: ${SecondarySwitch};
-  -webkit-text-stroke: ${({ theme }) =>
-    theme.mode ? "1px var(--light-tertiary)" : ""};
   text-shadow: ${({ theme }) =>
-    theme.mode ? "" : "2px 2px var(--dark-primary)"};
+    theme.mode
+      ? `-1px -1px 0 var(--light-tertiary),  
+   1px -1px 0 var(--light-tertiary),  
+   -1px 1px 0 var(--light-tertiary),  
+    1px 1px 0 var(--light-tertiary)`
+      : "2px 2px var(--dark-primary)"};
   @media (min-width: 750px) {
     line-height: 1.6;
     font-size: 2.2rem;

@@ -411,9 +411,9 @@ const About = () => {
               target="_blank"
               href="https://scrimba.com/certificate/u9enxdu5/greact"
               onClick={playPick}
-              aria-label="Advanced React Certification"
+              aria-label="Advanced React Certificate"
             >
-              <span>✞ </span> Advanced React Certification{" "}
+              <span>✞ </span> Advanced React Certificate{" "}
               <small>05/13/2023</small>
             </StyledLink>
           </StyledListItem>
@@ -444,9 +444,20 @@ const About = () => {
               target="_blank"
               href="https://github.com/zun-liang/certificates-achievements-archive"
               onClick={playPick}
-              aria-label="NodeJS Certification"
+              aria-label="NodeJS Certificate"
             >
-              <span>✞ </span> NodeJS Certification <small>08/09/2024</small>
+              <span>✞ </span> NodeJS Certificate <small>08/09/2024</small>
+            </StyledLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLink
+              target="_blank"
+              href="https://courses.edx.org/certificates/7a07c00ef011460f9a7bd114f30531d5?_gl=1*1azdux2*_gcl_au*MTcyMjA1NzM1OC4xNzMwOTE4OTI1*_ga*MTc2MjMyNTY4Mi4xNzMwOTE4OTI1*_ga_D3KS4KMDT0*MTczODY4OTg3MS40MC4wLjE3Mzg2ODk4NzEuNjAuMC4w"
+              onClick={playPick}
+              aria-label="CS1301xI Certificate"
+            >
+              <span>✞ </span> GTx CS1301xI: Computing in Python I Certificate{" "}
+              <small>02/02/2025</small>
             </StyledLink>
           </StyledListItem>
         </StyledList>

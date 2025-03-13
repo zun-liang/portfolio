@@ -460,6 +460,17 @@ const About = () => {
               <small>02/02/2025</small>
             </StyledLink>
           </StyledListItem>
+          <StyledListItem>
+            <StyledLink
+              target="_blank"
+              href="https://courses.edx.org/certificates/6c608f372f3f4a53a5b0c46f311624ff?_gl=1*1kj7roz*_gcl_au*MTIyMTQxNjg4NS4xNzM4Nzk4ODQ5*_ga*MTc2MjMyNTY4Mi4xNzMwOTE4OTI1*_ga_D3KS4KMDT0*MTc0MTg5MTU3OC45MS4xLjE3NDE4OTMwNTMuNjAuMC4w"
+              onClick={playPick}
+              aria-label="CS1301xII Certificate"
+            >
+              <span>✞ </span> GTx CS1301xII: Computing in Python II Certificate{" "}
+              <small>03/11/2025</small>
+            </StyledLink>
+          </StyledListItem>
         </StyledList>
       </Section>
     </AboutContainer>

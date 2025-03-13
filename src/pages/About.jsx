@@ -8,6 +8,7 @@ import {
   faNpm,
   faReact,
   faSquareJs,
+  faPython,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect } from "react";
@@ -320,6 +321,10 @@ const About = () => {
           </StyledListItem>
         </StyledList>
         <StyledList>
+          <StyledListItem>
+            <Icon icon={faPython} />
+            <span>Python</span>
+          </StyledListItem>
           <StyledListItem>
             <Icon icon={faNode} />
             <span>Node.js</span>

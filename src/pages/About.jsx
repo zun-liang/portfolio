@@ -461,8 +461,8 @@ const About = () => {
               onClick={playPick}
               aria-label="CS1301xI Certificate"
             >
-              <span>✞ </span> GTx CS1301xI: Computing in Python I Certificate{" "}
-              <small>02/02/2025</small>
+              <span>✞ </span> GTx CS1301xI: Computing in Python I: Fundamentals
+              and Procedural Programming <small>02/02/2025</small>
             </StyledLink>
           </StyledListItem>
           <StyledListItem>
@@ -472,8 +472,30 @@ const About = () => {
               onClick={playPick}
               aria-label="CS1301xII Certificate"
             >
-              <span>✞ </span> GTx CS1301xII: Computing in Python II Certificate{" "}
-              <small>03/11/2025</small>
+              <span>✞ </span> GTx CS1301xII: Computing in Python II: Control
+              Structures <small>03/11/2025</small>
+            </StyledLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLink
+              target="_blank"
+              href="https://courses.edx.org/certificates/72ac93106f944e78baa0a874bcd007eb?_gl=1*139zly6*_gcl_au*MTg0NTE5NjQ2LjE3NDY1Nzk1MTI.*_ga*MTc2MjMyNTY4Mi4xNzMwOTE4OTI1*_ga_D3KS4KMDT0*czE3NDc3ODEwNjEkbzE5NCRnMSR0MTc0Nzc4Mjg0OSRqNTAkbDAkaDAkZC1IYzFTc2VEcXFraTJXWXhTaWhFajJlVF85OHVMdE16OXc."
+              onClick={playPick}
+              aria-label="CS1301xIII Certificate"
+            >
+              <span>✞ </span> GTx CS1301xIII: Computing in Python III: Data
+              Structures <small>04/08/2025</small>
+            </StyledLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLink
+              target="_blank"
+              href="https://courses.edx.org/certificates/4738915d71b04eaca0a3867db5b29c10?_gl=1*1ee3ant*_gcl_au*MTg0NTE5NjQ2LjE3NDY1Nzk1MTI.*_ga*MTc2MjMyNTY4Mi4xNzMwOTE4OTI1*_ga_D3KS4KMDT0*czE3NDc3ODEwNjEkbzE5NCRnMSR0MTc0Nzc4MzA0NyRqNjAkbDAkaDAkZC1IYzFTc2VEcXFraTJXWXhTaWhFajJlVF85OHVMdE16OXc."
+              onClick={playPick}
+              aria-label="CS1301xII Certificate"
+            >
+              <span>✞ </span> GTx CS1301xIV: Computing in Python IV: Objects &
+              Algorithms <small>05/20/2025</small>
             </StyledLink>
           </StyledListItem>
         </StyledList>

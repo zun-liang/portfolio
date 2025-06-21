@@ -492,10 +492,22 @@ const About = () => {
               target="_blank"
               href="https://courses.edx.org/certificates/4738915d71b04eaca0a3867db5b29c10?_gl=1*1ee3ant*_gcl_au*MTg0NTE5NjQ2LjE3NDY1Nzk1MTI.*_ga*MTc2MjMyNTY4Mi4xNzMwOTE4OTI1*_ga_D3KS4KMDT0*czE3NDc3ODEwNjEkbzE5NCRnMSR0MTc0Nzc4MzA0NyRqNjAkbDAkaDAkZC1IYzFTc2VEcXFraTJXWXhTaWhFajJlVF85OHVMdE16OXc."
               onClick={playPick}
-              aria-label="CS1301xII Certificate"
+              aria-label="CS1301xIV Certificate"
             >
               <span>✞ </span> GTx CS1301xIV: Computing in Python IV: Objects &
               Algorithms <small>05/20/2025</small>
+            </StyledLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLink
+              target="_blank"
+              href="https://courses.edx.org/certificates/f900dafdaf8546baaf3fd4bbf9b49aba?_gl=1*rix7zf*_gcl_au*MTg0NTE5NjQ2LjE3NDY1Nzk1MTI.*_ga*MTc2MjMyNTY4Mi4xNzMwOTE4OTI1*_ga_D3KS4KMDT0*czE3NTA1MTc0MzAkbzI2OCRnMSR0MTc1MDUxNzQzOSRqNTEkbDAkaDA."
+              onClick={playPick}
+              aria-label="CS1331xI Certificate"
+            >
+              <span>✞ </span> GTx CS1331xI: Introduction to Object-Oriented
+              Programming with Java I: Foundations and Syntax Basics{" "}
+              <small>06/21/2025</small>
             </StyledLink>
           </StyledListItem>
         </StyledList>

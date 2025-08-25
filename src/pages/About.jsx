@@ -510,6 +510,18 @@ const About = () => {
               <small>06/21/2025</small>
             </StyledLink>
           </StyledListItem>
+          <StyledListItem>
+            <StyledLink
+              target="_blank"
+              href="https://courses.edx.org/certificates/2232d682ddba49ce98690ee1c9c07c14?_gl=1*t5pyuu*_gcl_au*MTM5Njk1MjkxLjE3NTQ2ODEyODM.*_ga*MTc2MjMyNTY4Mi4xNzMwOTE4OTI1*_ga_D3KS4KMDT0*czE3NTYwODMyNzEkbzM5NCRnMSR0MTc1NjA4MzQzMSRqNTYkbDAkaDA."
+              onClick={playPick}
+              aria-label="CS1331xII Certificate"
+            >
+              <span>✞ </span> GTx CS1331xII: Introduction to Object-Oriented
+              Programming with Java II: Object-Oriented Programming and
+              Algorithms <small>08/23/2025</small>
+            </StyledLink>
+          </StyledListItem>
         </StyledList>
       </Section>
     </AboutContainer>

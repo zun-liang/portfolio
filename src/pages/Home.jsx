@@ -96,7 +96,7 @@ const Home = () => {
       <StyledImg src={Profile} alt="profile" aria-label="profile" />
       <StyledGif src={SpeechBubble} alt="speech bubble" />
       <StyledH1>ZUN LIANG,</StyledH1>
-      <StyledH2>A front end developer.</StyledH2>
+      <StyledH2>A full stack developer.</StyledH2>
     </HomeContainer>
   );
 };
